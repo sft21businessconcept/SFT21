@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izbor Iznosa - SFT21 Business Concept</title>
+    <script>
+        function applySft21Theme() {
+            try {
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+                if (theme === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                } else {
+                    document.documentElement.classList.remove('light-mode');
+                }
+            } catch (e) {
+                console.error('Error applying theme:', e);
+            }
+        }
+        applySft21Theme();
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                applySft21Theme();
+            }
+        });
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --primary-color: #6a1b9a; /* Purple */
+            --secondary-color: #ab47bc; /* Lighter Purple */
+            --accent-color: #ff00ff; /* Magenta */
+            --fluorescent-green: #80ff00; /* Fluorescent Green */
+            --text-color: #e5e7eb; /* Light gray for text */
+            --background-dark: #0d0118; /* Dark background */
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-dark);
+        }
+        #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .header-title-text {
+            color: var(--fluorescent-green); font-size: 1.1rem;
+        }
+        @media (min-width: 640px) { .header-title-text { font-size: 1.25rem; } }
+        @media (min-width: 768px) { .header-title-text { font-size: 1.35rem; } }
+        @media (min-width: 1024px) { .header-title-text { font-size: 1.5rem; } }
+
+        .content-box-wrapper {
+            display: flex; justify-content: center; align-items: flex-start;
+            min-height: calc(100vh - 80px); padding-top: 140px; padding-bottom: 4rem;
+        }
+        .content-box {
+            background-color: rgba(106, 27, 154, 0.1); backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(171, 71, 188, 0.3);
+            border-radius: 20px; padding: 2rem 2.5rem; max-width: 900px; width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); position: relative;
+            color: var(--text-color); overflow-y: auto; max-height: calc(100vh - 140px);
+        }
+        .content-box-close {
+            position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem;
+            color: rgba(229, 231, 235, 0.7); cursor: pointer; transition: color 0.3s ease;
+            background: none; border: none; padding: 0; line-height: 1;
+        }
+        .content-box-close:hover { color: white; }
+        .instruction-text-block {
+            text-align: center; margin-bottom: 2.5rem; color: var(--fluorescent-green);
+            font-size: 1.1rem; line-height: 1.6; font-weight: 600; text-transform: uppercase;
+        }
+         .instruction-text-block p { margin-bottom: 0.2rem; }
+        .options-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem; justify-content: center;
+        }
+        @media (min-width: 768px) { .options-grid { grid-template-columns: repeat(5, 1fr); } }
+        .option-btn {
+            background-color: var(--primary-color); color: white; padding: 0.8rem 1rem;
+            border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.95rem;
+            border: 2px solid transparent; transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center; width: 100%; display: flex; align-items: center; justify-content: center;
+            min-height: 50px; opacity: 0;
+        }
+        .option-btn:hover {
+            background-color: var(--secondary-color); transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(106, 27, 154, 0.4);
+        }
+
+        /* === ISPRAVAK SAMO ZA HEADER NA MOBILNOM === */
+        @media (max-width: 768px) {
+            nav.fixed {
+                height: auto;
+            }
+            .header-container {
+                flex-direction: column;
+                align-items: center;
+                height: auto;
+                padding: 0.5rem 0;
+                gap: 0.25rem;
+            }
+            .header-title-container {
+                position: static;
+                transform: none;
+                width: 100%;
+                padding: 0;
+                pointer-events: auto;
+            }
+            .header-title-text {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+    <style>
+        html.light-mode body { background-color: #f8fafc !important; color: #334155 !important; }
+        html.light-mode nav.fixed { background-color: rgba(255, 255, 255, 0.9) !important; border-bottom: 1px solid var(--primary-color) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;}
+        html.light-mode .logo-nav .small-text, html.light-mode .logo-nav .text-logo-orange, html.light-mode .logo-nav .text-white { color: var(--primary-color) !important; }
+        html.light-mode .header-title-text { color: var(--primary-color) !important; }
+        html.light-mode #network-canvas { background-color: transparent !important; }
+        html.light-mode .content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
+        html.light-mode .content-box-close { color: #64748b !important; }
+        html.light-mode .content-box-close:hover { color: #1e293b !important; }
+        html.light-mode .instruction-text-block { color: var(--primary-color) !important; }
+        html.light-mode .option-btn { background-color: var(--primary-color) !important; color: white !important; }
+        html.light-mode .option-btn:hover { background-color: var(--secondary-color) !important; }
+    </style>
+</head>
+
+<body class="bg-gray-900">
+    <canvas id="network-canvas"></canvas>
+
+    <nav class="fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="header-container flex items-center relative h-12">
+                <a href="index.html" title="Povratak na početnu stranicu" class="flex items-center">
+                    <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
+                         <div class="flex flex-col logo-nav">
+                         <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
+                    </div>
+                </a>
+                <div class="header-title-container absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full px-4 pointer-events-none">
+                <span class="header-title-text font-semibold uppercase tracking-wider">IZNOS UPLATE IZ STAROG SISTEMA</span>
+                </div>
+                 <div class="w-auto ml-auto"> </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="animated-background"></div>
+
+        <div class="content-box-wrapper">
+            <div class="content-box">
+              <button class="content-box-close" onclick="window.location.href='odluka.html#odlukaGumbi';" title="Natrag na odluku">×</button>
+                
+                <div class="instruction-text-block">
+                    <p>Kako bi donijeli odluku o tome da li želite</p>
+                    <p>odustati ili nastaviti poslovanje</p>
+                    <p>klikom na dugme ispod izaberite iznos</p>
+                    <p>sa kojim ste započeli poslovanje u starom sistemu</p>
+                </div>
+
+                <div class="options-grid">
+                    <a href="prikaz_opcije.html?iznos=30&valuta=usd" class="option-btn">30 $</a>
+                    <a href="prikaz_opcije.html?iznos=42&valuta=eur" class="option-btn">42 €</a>
+                    <a href="prikaz_opcije.html?iznos=55&valuta=usd" class="option-btn">55 $</a>
+                    <a href="prikaz_opcije.html?iznos=77&valuta=eur" class="option-btn">77 €</a>
+                    <a href="prikaz_opcije.html?iznos=105&valuta=usd" class="option-btn">105 $</a>
+                    <a href="prikaz_opcije.html?iznos=145&valuta=eur" class="option-btn">145 €</a>
+                    <a href="prikaz_opcije.html?iznos=205&valuta=usd" class="option-btn">205 $</a>
+                    <a href="prikaz_opcije.html?iznos=285&valuta=eur" class="option-btn">285 €</a>
+                    <a href="prikaz_opcije.html?iznos=455&valuta=usd" class="option-btn">455 $</a>
+                    <a href="prikaz_opcije.html?iznos=630&valuta=eur" class="option-btn">630 €</a>
+                    <a href="prikaz_opcije.html?iznos=955&valuta=usd" class="option-btn">955 $</a>
+                    <a href="prikaz_opcije.html?iznos=1325&valuta=eur" class="option-btn">1325 €</a>
+                    <a href="prikaz_opcije.html?iznos=1955&valuta=usd" class="option-btn">1955 $</a>
+                    <a href="prikaz_opcije.html?iznos=2710&valuta=eur" class="option-btn">2710 €</a>
+                    <a href="prikaz_opcije.html?iznos=veci&valuta=iznos" class="option-btn">Veći iznos</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoImage = document.getElementById('site-logo');
+
+            // --- Theme change logic ---
+            const applyTheme = () => {
+                const isLight = document.documentElement.classList.contains('light-mode');
+                if (logoImage) {
+                    logoImage.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
+                }
+                if (window.setAnimationTheme) {
+                    window.setAnimationTheme(isLight ? 'light' : 'dark');
+                }
+            };
+            
+            // Re-apply theme on pageshow for bfcache
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    applyTheme();
+                }
+            });
+            applyTheme(); // Initial application
+
+            // --- GSAP Animations ---
+            if (typeof gsap !== 'undefined') {
+                try {
+                    gsap.from('.content-box', { duration: 1, opacity: 0, y: 50, scale: 0.95, ease: "power3.out", delay: 0.3 });
+                    const optionButtons = gsap.utils.toArray('.option-btn');
+                    if (optionButtons.length > 0) {
+                        gsap.set(optionButtons, { opacity: 0, y: 30, scale: 0.9 });
+                        gsap.to(optionButtons, {
+                            duration: 0.7, opacity: 1, y: 0, scale: 1,
+                            ease: "power2.out", stagger: 0.05, delay: 0.8 
+                        });
+                    }
+                } catch (error) {
+                    console.error("GSAP Error:", error);
+                }
+            }
+        });
+    </script>
+    <!-- Background Animation Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('network-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
+        const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
+        let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+
+        const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                this.radius = currentOptions.defaultRadius;
+                this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
+            }
+            draw() {
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, 0.85)`; ctx.fill();
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x > canvas.width || this.x < 0) this.vx = -this.vx;
+                if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
+            }
+        }
+
+        const initParticles = () => {
+            particles = [];
+            for (let i = 0; i < currentOptions.particleAmount; i++) {
+                particles.push(new Particle());
+            }
+        };
+
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        };
+
+        window.setAnimationTheme = (theme) => {
+            currentOptions = (theme === 'light') ? lightOptions : darkOptions;
+            initParticles();
+        };
+        
+        resizeCanvas();
+        animate();
+    });
+    </script>
+</body>
+</html>

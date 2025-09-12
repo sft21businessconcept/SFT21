@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registracija - SFT21 Business Concept</title>
+<!-- ============================================= -->
+<!-- UNIVERZALNA SKRIPTA ZA INICIJALIZACIJU TEME (ISPRAVLJENO) -->
+<!-- Rješava "bljesak" i problem s back-forward cacheom -->
+<!-- ============================================= -->
+<script>
+        // Funkcija za primjenu teme, da izbjegnemo ponavljanje koda
+        function applySft21Theme() {
+            try {
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+
+                // Selektori za ikone
+                const darkIcon = document.getElementById('theme-toggle-dark-icon');
+                const lightIcon = document.getElementById('theme-toggle-light-icon');
+                const darkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+                const lightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+
+                if (theme === 'light') {
+                    // Primijeni klasu na <html>
+                    document.documentElement.classList.add('light-mode');
+                    // Podesi vidljivost ikona
+                    if (darkIcon) darkIcon.classList.add('hidden');
+                    if (lightIcon) lightIcon.classList.remove('hidden');
+                    if (darkIconMobile) darkIconMobile.classList.add('hidden');
+                    if (lightIconMobile) lightIconMobile.classList.remove('hidden');
+                } else {
+                    // Primijeni klasu na <html>
+                    document.documentElement.classList.remove('light-mode');
+                    // Podesi vidljivost ikona
+                    if (darkIcon) darkIcon.classList.remove('hidden');
+                    if (lightIcon) lightIcon.classList.add('hidden');
+                    if (darkIconMobile) darkIconMobile.classList.remove('hidden');
+                    if (lightIconMobile) lightIconMobile.classList.add('hidden');
+                }
+                
+                // Obavijesti animaciju pozadine o promjeni teme (ako postoji)
+                if (window.setAnimationTheme) {
+                    window.setAnimationTheme(theme);
+                }
+
+            } catch (e) {
+                console.error('Greška pri primjeni teme:', e);
+            }
+        }
+
+        // 1. Primijeni temu ODMAH pri učitavanju da se spriječi "bljesak"
+        applySft21Theme();
+
+        // 2. Dodaj listener za 'pageshow' događaj.
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                console.log('Stranica učitana iz bfcachea, ponovno primjenjujem temu.');
+                applySft21Theme();
+            }
+        });
+    </script>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Orbitron:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* --- Osnovne Varijable i Stilovi --- */
+        :root {
+            --primary-color: #6a1b9a; /* Purple */
+            --secondary-color: #ab47bc; /* Lighter Purple */
+            --accent-color: #c55bd7;
+            --success-color: #7b1fa2;
+            --danger-color: #d81b60;
+            --warning-color: #ce93d8;
+            --light-color: #f3e5f5;
+            --dark-color: #0e076a;
+            --gray-color: #5728ac;
+            --text-color: #e5e7eb;
+            --fluorescent-green: #80ff00; /* Fluorescentno zelena */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1d012e;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--fluorescent-green); /* Glavni naslovi zeleni */
+        }
+        /* --- Navigacija --- */
+        nav.fixed { position: fixed; top: 0; left: 0; width: 100%; z-index: 50; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); background-color: rgba(13, 1, 24, 0.8); border-bottom: 1px solid var(--fluorescent-green); box-shadow: 0 2px 10px rgba(128, 255, 0, 0.2); } /* Zeleni border/shadow */
+        .logo-nav { font-size: 1.75rem; line-height: 1; display: flex; flex-direction: column; align-items: center; }
+        .logo-nav .small-text { font-size: 0.75rem; color: #d1d5db; font-weight: normal; margin-bottom: -0.2em; }
+        .text-logo-orange { color: var(--fluorescent-green); } /* Logo SFT */
+
+
+        /* Izbornik Jezika */
+        .language-dropdown { display: none; position: absolute; background-color: #1f2937; border: 1px solid var(--fluorescent-green); border-radius: 0.375rem; margin-top: 0.5rem; padding: 0.25rem 0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); right: 0; z-index: 60; min-width: 85px; width: auto; }
+        .language-dropdown.active { display: block; }
+        .language-item { display: flex; align-items: center; padding: 0.6rem 1rem; font-size: 0.875rem; color: #d1d5db; white-space: nowrap; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; }
+        .language-item:hover { background-color: var(--primary-color); color: white; }
+        .language-item .flag-image, .language-item .flag-icon { width: 20px; height: 15px; object-fit: cover; margin-right: 0.75rem; flex-shrink: 0; }
+        .language-item span:not(.flag-icon) { font-weight: 500; }
+        .language-dropdown-mobile { display: none; position: static; margin-top: 0.5rem; width: 100%; padding: 0.5rem 0; background-color: rgba(0,0,0,0.3); border-top: 1px solid rgba(128, 255, 0, 0.1); }
+        .language-dropdown-mobile.active { display: block; }
+        .language-dropdown-mobile .language-item { justify-content: center; padding: 0.75rem 1.5rem; }
+        .language-dropdown-mobile .language-item:hover { background-color: var(--primary-color); }
+
+        /* Mobilni Meni */
+        .nav-menu { display: none; }
+        @media (max-width: 768px) {
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); background-color: #0d0118; flex-direction: column; transition: all 0.5s ease; padding: 20px 0; z-index: 100; border-right: 1px solid var(--fluorescent-green); display: flex; }
+            .nav-menu.active { left: 0; }
+            .hamburger { display: block; cursor: pointer; }
+            .hamburger .bar { display: block; width: 25px; height: 3px; margin: 5px 0; background-color: white; transition: all 0.3s ease; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .nav-menu .mobile-language-selector { padding-left: 1.5rem; padding-right: 1.5rem;}
+            .nav-menu .flex-col.space-y-3 { padding-left: 1.5rem; padding-right: 1.5rem;} /* Ispravljen padding za gumbe */
+        }
+        .hamburger { display: none; } @media (max-width: 768px) { .hamburger { display: block; } }
+
+        /* --- Registracijska Stranica --- */
+        .registration-section { padding-top: 10rem; padding-bottom: 4rem; } /* Smanjen gornji padding */
+        .image-placeholder { background-color: rgba(106, 27, 154, 0.1); border: 1px dashed var(--fluorescent-green); border-radius: 15px; display: flex; align-items: center; justify-content: center; min-height: 300px; color: rgba(255, 255, 255, 0.3); font-style: italic; background-image: url('https://images.pexels.com/photos/3184431/pexels-photo-3184431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); background-size: cover; background-position: center; }
+        .benefits-list li { display: flex; align-items: flex-start; margin-bottom: 0.8rem; color: #e5e7eb; line-height: 1.6; }
+        .benefits-list i { color: var(--fluorescent-green); margin-right: 0.8rem; margin-top: 0.25rem; flex-shrink: 0; }
+        .glass-card { background: rgba(106, 27, 154, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--fluorescent-green); border-radius: 15px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); padding: 1.5rem; } /* Dodan padding za glass-card */
+
+        /* Forma Kontejner */
+        .registration-form-container { background-color: rgba(106, 27, 154, 0.05); border: 1px solid var(--fluorescent-green); /* ZELENI OKVIR */ border-radius: 15px; padding: 2rem 2.5rem; color: var(--text-color); }
+        
+/* NOVI STILOVI ZA GUMBE TIPA RAČUNA */
+.btn-account-type {
+    padding: 0.6rem 1.5rem;
+    border: 1px solid var(--fluorescent-green);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    /* Zadano (neaktivno) stanje je SADA zeleno */
+    background-color: var(--fluorescent-green);
+    color: #0e076a;
+}
+.btn-account-type.active {
+    /* Aktivno stanje je SADA prozirno */
+    background-color: transparent;
+    color: var(--fluorescent-green);
+}
+.btn-account-type:not(.active):hover {
+    /* Hover na neaktivnom (zelenom) gumbu */
+    background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%);
+}
+.btn-account-type.active:hover {
+    /* Hover na aktivnom (prozirnom) gumbu */
+    background-color: rgba(128, 255, 0, 0.1);
+}
+
+        .btn-account-type:not(.active):hover {
+            /* Hover na neaktivnom (zelenom) gumbu */
+            background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%);
+        }
+        .btn-account-type.active:hover {
+            /* Hover na aktivnom (prozirnom) gumbu */
+            background-color: rgba(128, 255, 0, 0.1);
+        }
+        
+        .social-login-button { display: flex; align-items: center; justify-content: center; padding: 0.75rem 1rem; border: 1px solid var(--fluorescent-green); border-radius: 8px; color: #e5e7eb; background-color: rgba(128, 255, 0, 0.05); transition: background-color 0.3s, border-color 0.3s; text-decoration: none; font-weight: 500; }
+        .social-login-button:hover { background-color: rgba(128, 255, 0, 0.15); border-color: var(--fluorescent-green); color: white; }
+        .social-login-button i, .social-login-button svg { width: 20px; height: 20px; }
+        .social-login-button i.fa-apple { color: #ccc;} .social-login-button:hover i.fa-apple { color: #fff; }
+        .form-label-register { display: block; margin-bottom: 0.3rem; font-size: 0.875rem; color: #cbd5e1; font-weight: 500; }
+        .form-input-register { width: 100%; padding: 0.75rem 1rem; background-color: rgba(106, 27, 154, 0.1); border: 1px solid var(--fluorescent-green); border-radius: 8px; color: white; transition: border-color 0.3s, box-shadow 0.3s; }
+        .form-input-register:focus { outline: none; border-color: var(--fluorescent-green); box-shadow: 0 0 0 2px rgba(128, 255, 0, 0.2); }
+        .form-input-register::placeholder { color: rgba(255, 255, 255, 0.4); }
+        #dob-dd, #dob-mm, #dob-yyyy { text-align: center; }
+        
+        /* NOVI STILOVI ZA CUSTOM COUNTRY SELECTOR */
+        .custom-select-wrapper { position: relative; }
+        .custom-select-trigger {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: rgba(106, 27, 154, 0.1);
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .custom-select-trigger:hover, .custom-select-trigger.active {
+             border-color: var(--fluorescent-green); box-shadow: 0 0 0 2px rgba(128, 255, 0, 0.2);
+        }
+        .custom-select-trigger .flag-in-select { width: 20px; height: auto; margin-right: 0.75rem; }
+        .custom-select-trigger .country-name { flex-grow: 1; }
+        .custom-select-trigger::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--fluorescent-green); transition: transform 0.2s ease; }
+        .custom-select-trigger.active::after { transform: rotate(180deg); }
+        .custom-select-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #1f2937;
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 0 0 8px 8px;
+            margin-top: -1px; /* Da se preklopi s borderom */
+            z-index: 70;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        .custom-select-options.active { display: block; }
+        .custom-select-options .option {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .custom-select-options .option:hover { background-color: var(--primary-color); }
+        .custom-select-options .option img { width: 20px; height: 15px; object-fit: cover; margin-right: 0.75rem; }
+        /* Kraj novih stilova */
+        
+        .form-radio-register { appearance: none; -webkit-appearance: none; -moz-appearance: none; width: 1rem; height: 1rem; border: 1px solid var(--fluorescent-green); border-radius: 50%; cursor: pointer; position: relative; transition: border-color 0.2s; margin-top: 0.1rem; }
+        .form-radio-register:checked { border-color: var(--fluorescent-green); }
+        .form-radio-register:checked::after { content: ''; display: block; width: 0.5rem; height: 0.5rem; background-color: var(--fluorescent-green); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .form-radio-register:focus { box-shadow: 0 0 0 2px rgba(128, 255, 0, 0.2); }
+        .phone-input-wrapper { display: flex; align-items: center; border: 1px solid var(--fluorescent-green); border-radius: 8px; background-color: rgba(106, 27, 154, 0.1); overflow: hidden; }
+        .country-code-select { display: flex; align-items: center; padding: 0.75rem; background-color: rgba(106, 27, 154, 0.2); cursor: default; /* Nije više klikabilno */ border-right: 1px solid var(--fluorescent-green); color: white; }
+        .country-code-select img { width: 20px; height: auto; margin-right: 0.5rem; }
+        .country-code-select span { font-weight: 500; margin-right: 0.3rem;}
+        .form-input-register-phone { flex-grow: 1; border: none; background: none; padding: 0.75rem 1rem; color: white; }
+        .form-input-register-phone:focus { outline: none; box-shadow: none; }
+        .form-checkbox-register { appearance: none; -webkit-appearance: none; -moz-appearance: none; width: 1rem; height: 1rem; border: 1px solid var(--fluorescent-green); border-radius: 3px; cursor: pointer; position: relative; transition: border-color 0.2s, background-color 0.2s; flex-shrink: 0; }
+        .form-checkbox-register:checked { background-color: var(--fluorescent-green); border-color: var(--fluorescent-green); }
+        .form-checkbox-register:checked::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.7rem; color: #0e076a; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .form-checkbox-register:focus { box-shadow: 0 0 0 2px rgba(128, 255, 0, 0.2); }
+        .btn-cancel { background: none; border: 1px solid #6b7280; color: #9ca3af; border-radius: 50px; font-weight: 500; transition: background-color 0.3s, color 0.3s; padding: 0.6rem 1.5rem; font-size: 0.9rem; }
+        .btn-cancel:hover { background-color: #4b5563; color: white; }
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--fluorescent-green); /* Ispravljeno na zelenu */
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    left: 0; 
+    top: 0;  
+    transform: translate(-50%, -50%);
+    /* OVDJE JE PROMJENA: Uklonili smo 'transform' iz tranzicije */
+    transition: background-color 0.2s ease, scale 0.2s ease;
+}
+        .cursor-trail-point { position: fixed; width: 12px; height: 12px; background-color: rgb(239, 243, 3); border-radius: 50%; pointer-events: none; left: -50px; top: -50px; z-index: 9998; transition: transform 60ms cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease; transform: translate(-50%, -50%); opacity: 1; }
+       
+        /* Promjena fonta u Century Gothic */
+        body, h1, h2, h3, h4, h5, h6, p, span, div, button, input, select, textarea {
+            font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+        }
+        
+        /* Zeleni naslovi za specifične sekcije */
+        .glass-card h4, 
+        div:contains("Dobro došli u SFteam!"),
+        div:contains("Verifikacija identiteta - KYC") {
+            color: #80ff00 !important;
+        }
+        
+        /* Razmak između sekcija */
+        div:contains("Verifikacija identiteta - KYC") {
+            margin-top: 2rem !important;
+        }
+        
+        /* Zeleni gumb Dalje */
+        button:contains("Dalje"),
+        .btn-primary,
+        [type="submit"] {
+            background-color: #80ff00 !important;
+            color: #0e076a !important;
+        }
+        
+        /* Centrirani tekst */
+        div:contains("... ili nastavite popunjavanjem podataka") {
+            text-align: center !important;
+        }
+
+        /* DODANI STILOVI ZA ANIMACIJU POZADINE */
+#network-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Postavlja platno iza svog sadržaja */
+    background-color: #1d012e;
+}
+
+html.light-mode #network-canvas {
+    background-color: transparent !important; /* Učini platno prozirnim u light modu */
+}
+
+/* Stil koji boji naziv učitane datoteke u zeleno */
+.filename-visible {
+    color: var(--fluorescent-green) !important;
+    font-weight: 500;
+}
+
+/* ============================================= */
+/* === STANDARDNI STILOVI ZA GUMBE (PREUZETO SA LOGIN.HTML) === */
+/* ============================================= */
+.btn-primary {
+    background-color: var(--fluorescent-green);
+    color: #0e076a;
+    padding: 7px 14px;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-size: 0.75rem;
+}
+.btn-primary:hover {
+    background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%);
+    transform: translateY(-2px);
+}
+.btn-outline {
+    background-color: transparent;
+    color: var(--fluorescent-green);
+    border: 2px solid var(--fluorescent-green);
+    padding: 7px 14px;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    font-size: 0.75rem;
+}
+.btn-outline:hover {
+    background-color: var(--fluorescent-green);
+    color: #0e076a;
+    transform: translateY(-2px);
+}
+
+    .btn-kyc-guardian {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 1rem;
+        border: 1px solid var(--fluorescent-green);
+        background-color: transparent;
+        color: var(--fluorescent-green);
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .btn-kyc-guardian:hover {
+        background-color: rgba(128, 255, 0, 0.1);
+    }
+    .btn-kyc-guardian.completed {
+        background-color: var(--fluorescent-green);
+        color: #0e076a;
+        border-color: var(--fluorescent-green);
+        cursor: not-allowed;
+    }
+    .btn-kyc-guardian.completed:hover {
+        background-color: var(--fluorescent-green);
+    }
+    .btn-kyc-guardian .fa-check {
+        margin-right: 0.5rem;
+    }
+
+    /* ============================================= */
+/* === FORSIRANI STIL ZA GUMB U POPUPU === */
+/* ============================================= */
+
+/* Ciljamo kontejner gumba unutar popupa za suglasnost */
+#parental-consent-popup .popup-actions {
+    width: 100%; /* Osiguraj da zauzima punu širinu */
+    display: flex;
+    justify-content: center; /* Ovo će centrirati gumb */
+    margin-top: 2rem; /* Dodaj malo razmaka */
+}
+
+/* Ciljamo gumb direktno da popravimo njegov izgled */
+#parental-consent-popup .popup-actions .btn-primary {
+    /* Vraćanje originalnog izgleda */
+    background-color: var(--fluorescent-green) !important;
+    color: #0e076a !important;
+    padding: 12px 30px !important;
+    border-radius: 50px !important; /* Vraćanje zaobljenog oblika */
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    border: none !important;
+
+    /* Resetiranje bilo kakvih čudnih dimenzija */
+    width: auto;
+    height: auto;
+    min-width: 200px; /* Dajmo mu minimalnu širinu */
+}
+
+/* Popravak hover efekta */
+#parental-consent-popup .popup-actions .btn-primary:hover {
+    background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%) !important;
+    transform: translateY(-2px);
+}
+
+/* =================================================================== */
+/* === POPRAVAK IZGLEDA PADAJUĆEG IZBORNIKA ZA JEZIK (LIGHT MODE) === */
+/* =================================================================== */
+
+/* Stil za sam kontejner padajućeg izbornika */
+html.light-mode .language-dropdown {
+    background-color: #ffffff !important; /* Bijela pozadina kao na login stranici */
+    border: 1px solid #e2e8f0 !important; /* Svijetlo sivi obrub */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important; /* Suptilna sjena */
+}
+
+/* Stil za pojedinačnu stavku (jezik) u izborniku */
+html.light-mode .language-dropdown .language-item {
+    color: #475569 !important; /* Tamno siva boja teksta */
+}
+
+/* Stil za stavku kada se prijeđe mišem preko nje (hover) */
+html.light-mode .language-dropdown .language-item:hover {
+    background-color: rgba(106, 27, 154, 0.05) !important; /* Vrlo svijetla ljubičasta pozadina */
+    color: var(--primary-color) !important; /* Ljubičasti tekst */
+}
+
+/* ======================================================= */
+/* === POPRAVAK POZADINE MOBILNOG IZBORNIKA (LIGHT MODE) === */
+/* ======================================================= */
+html.light-mode .nav-menu {
+    background-color: #ffffff !important; /* Bijela pozadina */
+    border-right-color: #e2e8f0 !important; /* Svijetlo siva granica, da se uklopi */
+}
+
+/* ============================================= */
+/* === PROMJENA BOJE IKONA U FOOTERU (ZELENA) === */
+/* ============================================= */
+footer .fab {
+    color: var(--fluorescent-green) !important; /* Postavlja osnovnu boju na zelenu */
+    transition: color 0.3s ease;
+}
+
+footer a:hover .fab {
+    color: white !important; /* Mijenja boju u bijelu kada se prijeđe mišem */
+}
+
+    </style>
+<!-- ================================================== -->
+<!-- === STILOVI ZA LIGHT MODE DIREKTNO U HTML-u === -->
+<!-- ================================================== -->
+<style>
+    html.light-mode body {
+        background-color: #f8fafc !important; /* Svijetla pozadina */
+        color: #334155 !important; /* Tamni tekst */
+    }
+
+    /* Navigacija u light modu */
+    html.light-mode nav.fixed {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        border-bottom-color: var(--primary-color) !important; /* Glavna ljubičasta */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+    }
+    html.light-mode .logo-nav .small-text,
+    html.light-mode .logo-nav .text-logo-orange,
+    html.light-mode .logo-nav .text-white {
+        color: var(--primary-color) !important; /* Logo tekst ljubičasti */
+    }
+    html.light-mode nav a.btn-primary.register-login-btn {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+    }
+    html.light-mode nav a.btn-primary.register-login-btn:hover {
+        background-color: var(--secondary-color) !important;
+    }
+    html.light-mode nav a.btn-outline.register-register-btn {
+        color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+    }
+    html.light-mode nav a.btn-outline.register-register-btn:hover {
+        background-color: rgba(106, 27, 154, 0.1) !important;
+        color: var(--primary-color) !important;
+    }
+    html.light-mode nav .language-selector .language-trigger i,
+    html.light-mode nav .mobile-language-selector .mobile-language-trigger i,
+    html.light-mode #theme-toggle i,
+    html.light-mode #theme-toggle-mobile i {
+        color: var(--primary-color) !important; /* Ikone globusa i teme */
+    }
+    html.light-mode .fa-globe,
+    html.light-mode .language-trigger i,
+    html.light-mode i.fas.fa-globe {
+        color: var(--primary-color) !important;
+    }
+    html.light-mode .hamburger .bar {
+        background-color: var(--primary-color) !important; /* Boja hamburger linija */
+    }
+
+    /* Naslovi u light modu */
+    html.light-mode h1,
+    html.light-mode h2,
+    html.light-mode h3,
+    html.light-mode h4,
+    html.light-mode h5,
+    html.light-mode h6,
+    html.light-mode .registration-section h1,
+    html.light-mode .glass-card h4 {
+        color: var(--primary-color) !important; /* Svi naslovi ljubičasti */
+    }
+
+    /* Tekst u light modu */
+    html.light-mode p,
+    html.light-mode span,
+    html.light-mode div {
+        color: #475569; /* Tamno siva boja teksta za općenite elemente */
+    }
+    html.light-mode .text-gray-300 {
+        color: #475569 !important;
+    }
+    html.light-mode .text-gray-400 {
+        color: #64748b !important;
+    }
+
+    /* ======================================================= */
+/* === POPRAVAK IZBORNIKA ZA JEZIK (MOBILNI - LIGHT MODE) === */
+/* ======================================================= */
+html.light-mode .language-dropdown-mobile {
+    background-color: #f1f5f9 !important; /* Svijetlo siva/plavkasta pozadina */
+    border-top-color: #e2e8f0 !important; /* Još svjetlija linija iznad */
+}
+
+/* Stil za pojedinačni link (ENG, HRV) */
+html.light-mode .language-dropdown-mobile .language-item {
+    color: #475569 !important; /* Tamno sivi tekst */
+}
+
+/* Efekt kada se prijeđe mišem preko linka */
+html.light-mode .language-dropdown-mobile .language-item:hover {
+    background-color: rgba(106, 27, 154, 0.1) !important; /* Vrlo svijetla ljubičasta */
+    color: var(--primary-color) !important; /* Ljubičasti tekst */
+}
+
+
+    /* Kartice i kontejneri u light modu */
+    html.light-mode .glass-card,
+    html.light-mode .registration-form-container {
+        background-color: #ffffff !important;
+        border-color: var(--primary-color) !important; 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    }
+    html.light-mode .image-placeholder {
+        border-color: var(--primary-color) !important; 
+        background-color: #f8fafc !important; 
+    }
+
+    /* Lista prednosti i ikone */
+    html.light-mode .benefits-list li {
+        color: #334155 !important; /* Tekst liste */
+    }
+    html.light-mode .benefits-list i.fas.fa-check-circle {
+        color: var(--primary-color) !important; /* Boja ikona liste */
+    }
+
+/* Gumbi za tip računa (Osobni/Poslovni) */
+html.light-mode .btn-account-type {
+    background-color: var(--primary-color) !important; /* Neaktivni gumb je sada ljubičast */
+    color: white !important;
+    border-color: var(--primary-color) !important;
+}
+html.light-mode .btn-account-type.active {
+    background-color: transparent !important; /* Aktivni gumb je sada proziran */
+    color: var(--primary-color) !important;
+}
+html.light-mode .btn-account-type:not(.active):hover {
+    background-color: var(--secondary-color) !important; /* Hover za neaktivni (ljubičasti) */
+}
+html.light-mode .btn-account-type.active:hover {
+    background-color: rgba(106, 27, 154, 0.1) !important; /* Hover za aktivni (prozirni) */
+    color: var(--primary-color) !important;
+}
+
+    /* Social media gumbi */
+    html.light-mode .social-login-button {
+        border-color: var(--primary-color) !important; 
+        background-color: #f8fafc !important;
+        color: #334155 !important;
+    }
+    html.light-mode .social-login-button:hover {
+        background-color: #f1f5f9 !important;
+    }
+    html.light-mode .social-login-button i.fab.fa-apple {
+        color: #334155 !important;
+    }
+
+    /* Forma za registraciju */
+    html.light-mode .registration-form-container .border-gray-700 {
+        border-color: #e2e8f0 !important;
+    }
+    html.light-mode .form-label-register {
+        color: #475569 !important;
+    }
+    html.light-mode .form-input-register,
+    html.light-mode .custom-select-trigger,
+    html.light-mode .phone-input-wrapper {
+        background-color: #f1f5f9 !important;
+        border-color: var(--primary-color) !important; /* <--- OVO JE IZMIJENJENO */
+        color: #1e293b !important;    
+    }
+
+    html.light-mode .form-input-register-phone {
+        color: #1e293b !important; /* Ista boja kao i ostala polja */
+    }
+
+    html.light-mode .form-input-register::placeholder {
+        color: #828d9c !important;
+    }
+    html.light-mode .form-input-register:focus,
+    html.light-mode .custom-select-trigger:hover,
+    html.light-mode .custom-select-trigger.active,
+    html.light-mode .phone-input-wrapper:focus-within {
+        border-color: var(--primary-color) !important;
+        box-shadow: 0 0 0 2px rgba(106, 27, 154, 0.2) !important;
+    }
+    html.light-mode .custom-select-options {
+        background-color: #f1f5f9 !important;
+        border-color: #cbd5e1 !important;
+    }
+    html.light-mode .custom-select-options .option {
+        color: #334155 !important;
+    }
+    html.light-mode .custom-select-options .option:hover {
+        background-color: var(--secondary-color) !important;
+        color: white !important;
+    }
+    html.light-mode .custom-select-trigger::after {
+        color: var(--primary-color) !important;
+    }
+    html.light-mode .country-code-select {
+        background-color: #e2e8f0 !important;
+        border-right-color: #cbd5e1 !important;
+        color: #334155 !important;
+    }
+
+    /* Radio i Checkbox gumbi */
+    html.light-mode .form-radio-register {
+        border-color: #94a3b8 !important;
+    }
+    html.light-mode .form-radio-register:checked {
+        border-color: var(--primary-color) !important;
+    }
+    html.light-mode .form-radio-register:checked::after {
+        background-color: var(--primary-color) !important;
+    }
+    html.light-mode .form-checkbox-register {
+        border-color: #94a3b8 !important;
+    }
+    html.light-mode .form-checkbox-register:checked {
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+    }
+    html.light-mode .form-checkbox-register:checked::after {
+        color: white !important;
+    }
+    html.light-mode .space-y-3 span.text-gray-300 {
+        color: #475569 !important;
+    }
+    html.light-mode a.text-fluorescent-green.underline {
+        color: var(--primary-color) !important;
+    }
+    html.light-mode a.text-fluorescent-green.underline:hover {
+        color: var(--secondary-color) !important;
+    }
+
+    /* Gumb "Dalje" */
+    html.light-mode #dalje-button,
+    html.light-mode .btn-primary,
+    html.light-mode [type="submit"] {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+    }
+    html.light-mode #dalje-button:hover,
+    html.light-mode .btn-primary:hover,
+    html.light-mode [type="submit"]:hover {
+        background-color: var(--secondary-color) !important;
+    }
+
+    /* Footer u light modu */
+    html.light-mode footer.bg-gray-900 {
+        background-color: #1e293b !important;
+        border-top-color: #334155 !important;
+    }
+    html.light-mode footer h3,
+    html.light-mode footer h4 {
+        color: white !important;
+    }
+    html.light-mode footer .text-gray-400,
+    html.light-mode footer a,
+    html.light-mode footer .fab {
+        color: #a0aec0 !important;
+    }
+    html.light-mode footer a:hover {
+        color: white !important;
+    }
+    html.light-mode footer .border-t.border-gray-800 {
+        border-color: #334155 !important;
+    }
+
+    html.light-mode .text-logo-orange,
+    html.light-mode div:contains("Dobro došli u SFteam!"),
+    html.light-mode div:contains("Verifikacija identiteta - KYC") {
+        color: var(--primary-color) !important;
+    }
+
+/* ======================================================= */
+/* === ISPRAVAK IZGLEDA GUMBA NA REGISTER STRANICI (LIGHT MODE) === */
+/* ======================================================= */
+
+/* Gumb "Prijava" (.btn-primary) mora biti ljubičast */
+html.light-mode nav a.btn-primary {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--primary-color) !important;
+}
+html.light-mode nav a.btn-primary:hover {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+/* Gumb "Registracija" (.btn-outline) mora biti proziran */
+html.light-mode nav a.btn-outline {
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+    border: 2px solid var(--primary-color) !important;
+}
+html.light-mode nav a.btn-outline:hover {
+    background-color: rgba(106, 27, 154, 0.1) !important;
+}
+
+    /* === STILOVI ZA POPUP U LIGHT MODU (KYC GUMB I TEKST DATOTEKE) === */
+
+    /* KYC Gumb u popupu */
+    html.light-mode .btn-kyc-guardian {
+        border-color: var(--primary-color) !important;
+        color: var(--primary-color) !important;
+        background-color: transparent !important;
+    }
+    html.light-mode .btn-kyc-guardian:hover {
+        background-color: rgba(106, 27, 154, 0.1) !important;
+    }
+
+    /* Završen KYC Gumb u popupu */
+    html.light-mode .btn-kyc-guardian.completed {
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        color: white !important;
+    }
+    html.light-mode .btn-kyc-guardian.completed:hover {
+        background-color: var(--secondary-color) !important;
+    }
+
+    /* Tekst učitane datoteke (npr. "potpis.jpg") u popupu */
+    html.light-mode .file-upload-filename.filename-visible {
+        color: var(--primary-color) !important;
+    }
+</style>
+<style>
+    #info-popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        z-index: 9990;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #registration-info-popup {
+        background: #0d0118; 
+        border: 1px solid var(--fluorescent-green);
+        border-radius: 15px;
+        padding: 2rem;
+        max-width: 650px;
+        width: 90%;
+        position: relative;
+        box-shadow: 0 8px 32px 0 rgba(128, 255, 0, 0.3);
+        text-align: justify;
+    }
+
+    #registration-info-popup h4 {
+        color: var(--fluorescent-green) !important;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+    }
+
+    #registration-info-popup p {
+        color: #e5e7eb;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    #registration-info-popup .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #aaa;
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.2s ease;
+    }
+    #registration-info-popup .popup-close:hover {
+        color: white;
+    }
+
+    /* --- STILOVI ZA LIGHT MODE --- */
+    html.light-mode #info-popup-overlay {
+        background: rgba(248, 250, 252, 0.7);
+    }
+    html.light-mode #registration-info-popup {
+        background: #ffffff;
+        border-color: var(--primary-color);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    html.light-mode #registration-info-popup h4 {
+        color: var(--primary-color) !important;
+    }
+    html.light-mode #registration-info-popup p {
+        color: #334155;
+    }
+    html.light-mode #registration-info-popup .popup-close {
+        color: #64748b;
+    }
+    html.light-mode #registration-info-popup .popup-close:hover {
+        color: #1e293b;
+    }
+
+/* ======================================================= */
+/* === ISPRAVAK BOJE I PONAŠANJA IKONA TEME === */
+/* ======================================================= */
+
+/* Sakrij obje ikone inicijalno da spriječimo "bljesak" */
+#theme-toggle-dark-icon, #theme-toggle-light-icon,
+#theme-toggle-dark-icon-mobile, #theme-toggle-light-icon-mobile {
+    display: none;
+}
+
+/* --- DARK MODE (Zadani način) --- */
+/* U tamnom modu, prikaži SUNCE i oboji ga zeleno */
+html:not(.light-mode) #theme-toggle-light-icon,
+html:not(.light-mode) #theme-toggle-light-icon-mobile {
+    display: inline-block;
+    color: var(--fluorescent-green) !important;
+}
+
+/* --- LIGHT MODE --- */
+/* U svijetlom modu, prikaži MJESEC (boja se kontrolira kroz light-mode stilove) */
+html.light-mode #theme-toggle-dark-icon,
+html.light-mode #theme-toggle-dark-icon-mobile {
+    display: inline-block;
+}
+</style>
+</head>
+<style>
+    body, h1, h2, h3, h4, h5, h6, p, span, div, button, input, select, textarea {
+        font-family: 'Arial Narrow', Arial, sans-serif !important;
+    }
+    /* Vraćanje zelene boje za globus u headeru */
+    .fa-globe, 
+    .language-trigger i,
+    i.fas.fa-globe {
+        color: #80ff00 !important;
+    }
+    
+    /* Ako je globus unutar buttona ili linka */
+    button i.fas.fa-globe,
+    a i.fas.fa-globe {
+        color: #80ff00 !important;
+    }
+    /* Stanje greške za input/select polja */
+    .form-input-register.border-red-500,
+    .custom-select-trigger.border-red-500, /* DODANO za novi selektor */
+    .phone-input-wrapper.border-red-500 {
+        border-color: #ef4444 !important; /* Tailwind red-500 */
+    }
+    .form-input-register.border-red-500:focus,
+    .custom-select-trigger.border-red-500.active, /* DODANO */
+    .form-input-register-phone:focus + .phone-input-wrapper.border-red-500 {
+        box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3) !important; /* Crveni focus ring */
+    }
+
+    /* Stanje greške za labele (povezane s inputima ili checkboxima) */
+    label.text-red-500 {
+        color: #ef4444 !important; /* Tailwind red-500 */
+    }
+
+    /* Stil za gumb "U redu" u popupu za validaciju */
+    #validation-popup-ok {
+            background-color: var(--fluorescent-green) !important;
+            color: #0e076a !important;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            padding: 8px 24px; /* Malo manji padding */
+            transition: background-color 0.3s;
+    }
+    #validation-popup-ok:hover {
+            background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%) !important;
+    }
+
+    /* Osiguraj da je popup overlay iznad ostalih elemenata */
+    #validation-popup-overlay {
+        z-index: 9999; /* Visoki z-index */
+    }
+</style>
+<!-- ============================================= -->
+<!-- === NOVI STILOVI ZA POPUP-e ZA PROVJERU GODINA === -->
+<!-- ============================================= -->
+<style>
+    #age-popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 10000;
+        display: none; /* Inicijalno skriven */
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .age-popup-container {
+        background: #0d0118; 
+        border: 1px solid var(--fluorescent-green);
+        border-radius: 15px;
+        padding: 2.5rem;
+        max-width: 900px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 8px 40px 0 rgba(128, 255, 0, 0.35);
+        text-align: left;
+    }
+    
+    .age-popup-container h3 {
+        color: var(--danger-color) !important;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.75rem;
+    }
+    .age-popup-container h4 {
+        color: var(--fluorescent-green) !important;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        border-bottom: 1px solid rgba(128, 255, 0, 0.2);
+        padding-bottom: 0.5rem;
+    }
+    
+    .age-popup-container p {
+        color: #e5e7eb;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+    .age-popup-container .popup-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 2.2rem;
+        color: #aaa;
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.2s ease;
+    }
+    .age-popup-container .popup-close:hover { color: white; }
+    
+    /* Stilovi za formu unutar popupa */
+    .guardian-form-grid {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    .guardian-column {
+        flex: 1;
+        min-width: 280px;
+    }
+    .guardian-column h5 {
+        text-align: center;
+        color: var(--fluorescent-green);
+        margin-bottom: 1rem;
+        font-weight: bold;
+    }
+    
+    /* Custom file upload button */
+    .file-upload-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+    .file-upload-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+        background-color: rgba(106, 27, 154, 0.1);
+        border: 1px solid var(--fluorescent-green);
+        border-radius: 8px;
+        color: var(--fluorescent-green);
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .file-upload-label:hover {
+        background-color: rgba(128, 255, 0, 0.1);
+    }
+    .file-upload-label i {
+        margin-right: 0.75rem;
+    }
+    #guardian-signature-1, #guardian-signature-2 {
+        display: none;
+    }
+    .file-upload-filename {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: #9ca3af;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .popup-note {
+        font-size: 0.9rem;
+        color: #f4f80b;
+        margin-top: 0.5rem;
+        background-color: rgba(0,0,0,0.2);
+        padding: 0.5rem;
+        border-radius: 5px;
+    }
+.popup-actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+    .popup-actions .btn-primary {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+
+    #guardian-signature-1, #guardian-signature-2, #court-order-file {
+        display: none;
+    }
+
+    /* Light mode za nove popupe */
+    html.light-mode #age-popup-overlay {
+        background: rgba(248, 250, 252, 0.8);
+    }
+    html.light-mode .age-popup-container {
+        background: #ffffff;
+        border-color: var(--primary-color);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    html.light-mode .age-popup-container h3 {
+        color: var(--danger-color) !important;
+    }
+    html.light-mode .age-popup-container h4,
+    html.light-mode .age-popup-container .guardian-column h5 {
+        color: var(--primary-color) !important;
+        border-bottom-color: #e2e8f0;
+    }
+    html.light-mode .age-popup-container p {
+        color: #334155;
+    }
+    html.light-mode .age-popup-container .popup-close {
+        color: #64748b;
+    }
+    html.light-mode .age-popup-container .popup-close:hover {
+        color: #1e293b;
+    }
+    html.light-mode .file-upload-label {
+        background-color: #f1f5f9;
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+    html.light-mode .file-upload-label:hover {
+        background-color: rgba(106, 27, 154, 0.1);
+    }
+    html.light-mode .popup-note {
+        color: #475569;
+        background-color: #f1f5f9;
+    }
+
+    /* === PRILAGODBA GUMBA U MOBILNOM MENIJU ZA REGISTER STRANICU === */
+        @media (max-width: 768px) {
+            /* Ciljamo kontejner s gumbima */
+            .nav-menu .flex-col.space-y-3 {
+                margin-top: auto !important; /* Gura gumbe skroz na dno */
+                margin-bottom: 4rem !important; /* Dodaje malo razmaka od dna ekrana */
+                padding-left: 2.5rem !important;  /* Sužava gumbe */
+                padding-right: 2.5rem !important; /* Sužava gumbe */
+            }
+
+            /* Osiguravamo da su gumbi pune širine unutar suženog kontejnera */
+            .nav-menu .btn-primary,
+            .nav-menu .btn-outline {
+                width: 100%;
+            }
+        }
+</style>
+<body class="bg-gray-900 register-page">
+<canvas id="network-canvas"></canvas>
+<div class="custom-cursor"></div>
+<nav class="fixed top-0 left-0 w-full z-50">
+<div class="container mx-auto px-6 py-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<img alt="SFT21 logo" class="h-auto w-12 mr-4" id="site-logo" src="img/IFIG-logo.png"/>
+<a class="flex flex-col logo-nav" href="index.html" title="Idi na početnu stranicu">
+<div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
+</a>
+</div>
+<div class="hidden md:flex items-center space-x-4">
+<div class="language-selector relative">
+<button class="text-white hover:text-fluorescent-green transition-colors duration-300 text-xl p-2 rounded-full" id="theme-toggle" type="button">
+<i class="fas fa-moon" id="theme-toggle-dark-icon"></i>
+<i class="fas fa-sun hidden" id="theme-toggle-light-icon"></i>
+</button>
+<button class="language-trigger text-white hover:text-fluorescent-green transition-colors duration-300 text-xl" id="desktop-lang-trigger">
+<i class="fas fa-globe"></i>
+</button>
+<div class="language-dropdown" id="desktop-lang-dropdown">
+<a class="language-item" href="register_en.html"> <img alt="Engleski" class="flag-image" src="https://flagcdn.com/w20/gb.png"/> <span>ENG</span> </a>
+<a class="language-item" href="register.html"> <img alt="Hrvatski" class="flag-image" src="https://flagcdn.com/w20/hr.png"/> <span>HRV</span> </a>
+</div>
+</div>
+<a class="btn-primary text-xs" href="login.html">Prijava</a>
+<a class="btn-outline text-xs" href="register.html">Registracija</a>
+</div>
+<div class="md:hidden">
+<div class="hamburger"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </div>
+</div>
+</div>
+</div>
+<div class="nav-menu md:hidden">
+<div class="mobile-language-selector mt-4 mb-4 border-t border-b border-gray-700 py-2 px-6">
+<a class="block text-center transition-colors duration-300 sft21-nav-link mobile-language-trigger text-gray-300 hover:text-fluorescent-green" href="#" id="mobile-lang-trigger">
+<i class="fas fa-globe mr-2"></i> Odaberi jezik <i class="fas fa-chevron-down ml-1 text-xs"></i>
+</a>
+<button class="text-white hover:text-fluorescent-green transition-colors duration-300 text-2xl p-2 rounded-full" id="theme-toggle-mobile" type="button">
+<i class="fas fa-moon" id="theme-toggle-dark-icon-mobile"></i>
+<i class="fas fa-sun hidden" id="theme-toggle-light-icon-mobile"></i>
+</button>
+<div class="language-dropdown-mobile" id="mobile-lang-dropdown">
+<a class="language-item" href="register_en.html"> <img alt="Engleski" class="flag-image" src="https://flagcdn.com/w20/gb.png"/> <span>ENG</span> </a>
+<a class="language-item" href="register.html"> <img alt="Hrvatski" class="flag-image" src="https://flagcdn.com/w20/hr.png"/> <span>HRV</span> </a>
+</div>
+</div>
+<div class="flex flex-col space-y-3 px-6 mt-auto pb-4">
+<a class="btn-primary text-center text-xs" href="login.html">Prijava</a>
+<a class="btn-outline text-center text-xs" href="register.html">Registracija</a>
+</div>
+</div>
+</nav>
+<div id="info-popup-overlay">
+<!-- Sadržaj info popupa ostaje isti... -->
+<div id="registration-info-popup">
+<button aria-label="Zatvori obavijest" class="popup-close" id="close-info-popup-btn">×</button>
+<h4>Informacija</h4>
+<p>S obzirom da je ovo demo stranica registracija putem Facebook-a, Google-a, Apple-a nije moguća.</p>
+<p>Ova registracijska forma trenutno nije povezana sa bazom podataka, ne prikuplja niti sprema vaše unesene podatke ili fotografije, tako da bez ikakvih problema možete koristiti svoje prave ili izmišljene podatke kako bi se upoznali sa procesom registracije... sa procesom registracije maloljetnih osoba (16 do 18)... sa odabirom korisničkog imena i lozinke... te sa procesom verifikacije identiteta (KYC).            </p>
+</div>
+</div>
+<!-- Glavni sadržaj stranice ostaje isti... -->
+<main class="registration-section">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12 md:mb-16 fade-in">
+<h1 class="text-3xl md:text-5xl font-bold mb-4">Registracija</h1>
+<p class="text-xl text-gray-300 max-w-3xl mx-auto">
+<strong>Pridružite se SFT21 zajednici!</strong><p>
+<p>Vaše mjesto za edukaciju, inspiraciju i nove poslovne prilike.</p>
+<p>Upoznajte nove ljude, dijelite ideje i rastite zajedno s nama.</p>
+</p></p></div>
+<div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+<div class="w-full lg:w-5/12 fade-in" style="animation-delay: 0.2s;">
+<div class="glass-card p-6 mb-8">
+<h4 style="font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;"><strong>PREPORUKA</strong></h4> <div class="space-y-3">
+<label class="flex items-center cursor-pointer">
+<input checked="" class="form-radio-register" id="recommender-no" name="recommender_choice" type="radio" value="none"/>
+<span class="ml-2 text-sm text-gray-300">Nemam preporučitelja/icu</span>
+</label>
+<label class="flex items-center cursor-pointer">
+<input class="form-radio-register" id="recommender-yes" name="recommender_choice" type="radio" value="has_recommender"/>
+<span class="ml-2 text-sm text-gray-300">Moj/a preporučitelj/ica</span>
+</label>
+</div>
+<div class="mt-4 hidden" id="recommender-input-container">
+<input class="form-input-register w-full" id="recommender-details" name="recommender_details" placeholder="Podaci o preporučitelju" type="text"/>
+<p class="text-xs text-gray-400 mt-2">
+                                Upišite korisničko ime, ili email adresu, ili broj telefona preporučitelja
+                            </p>
+</div>
+</div>
+<div class="glass-card p-6 light-mode-border">
+<h4 style="font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;"><strong>Dobro došli u SFteam!</strong> </h4> <p class="text-gray-300 mb-4"><strong>Besplatno se registriraj i koristi usluge naše platforme:</strong></p>
+<ul class="benefits-list">
+<li><i class="fas fa-check-circle"></i>SFnet - poslovno-društvena mreža</li>
+<li><i class="fas fa-check-circle"></i>SFshop - online trgovina</li>
+<li><i class="fas fa-check-circle"></i>SFured – jedinstveni multifunkcionalni poslovni prostor</li>
+<li><i class="fas fa-check-circle"></i>SFkod – besplatni kod za sudjelovanje u nagradnim igrama</li>
+<li><i class="fas fa-check-circle"></i>Mogućnost zarade na više načina</li>
+</ul>
+</div>
+<div class="glass-card p-6 mt-8">
+<h4 style="font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important; margin-top: 2rem !important;"><strong>Verifikacija identiteta - KYC</strong></h4> <p class="text-gray-300 mb-4 text-justify" da="" dokumenta="" fotografije.="" i="" identitet="" identitet,="" li="" molimo="" napomenuti="" ne="" nego="" osobnog="" p="" potvrditi="" prekinete="" prije="" proces="" procesom="" procesu="" registracije="" registracije.<="" sa="" svoj="" trebati="" u="" ukoliko="" unosom="" vam="" vlastite="" započnete="" ćete="" želimo="" želite="">
+<p class="text-gray-300 mb-4 text-justify">KYC STANDARD PREDSTAVLJA PROCES U KOJEM SU KLIJENTI OBAVEZNI POTVRDITI SVOJ IDENTITET U SVRHU NASTAVKA LEGALNOG KORIŠTENJA STRANICA NAŠEG PORTALA, KAKO BI SE PRVENSTVENO SPRIJEČILO LAŽNO ILI VIŠESTRUKO REGISTRIRANJE, KRAĐA IDENTITETA, FINANCIJSKE PREVARE, PRANJE NOVCA, FINANCIRANJE TERORIZMA I SL. 
+                        </p>
+</p></div>
+<div class="image-placeholder mt-8"></div>
+</div>
+<div class="w-full lg:w-7/12 fade-in" style="animation-delay: 0.4s;">
+<div class="flex justify-center gap-4 mb-6">
+<button class="btn-account-type active" id="personal-account-btn" type="button">Osobni račun</button>
+<button class="btn-account-type" id="business-account-btn" type="button">Poslovni račun</button>
+</div>
+<div class="space-y-3 mb-8" id="social-login-container">
+<a class="social-login-button" href="#">
+<i class="fab fa-facebook-f text-blue-600 mr-3 text-xl"></i>
+<span>Dalje s Facebook</span>
+</a>
+<a class="social-login-button" href="#">
+<svg class="w-5 h-5 mr-3" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M48 24C48 22.0217 47.2205 20.1217 45.8579 18.7591C44.4953 17.3966 42.5954 16.617 40.617 16.617H24V24H36.417C35.6859 26.6839 33.8541 28.8841 31.3379 30.0195C28.8217 31.1549 25.8652 31.0984 23.383 29.877C20.9008 28.6556 19.1466 26.3738 18.558 23.676C17.9694 20.9782 18.6164 18.144 20.309 16.039L20.334 16.017L14.891 11.904C10.6914 15.7152 8.6045 21.2864 9.66988 26.853C10.7353 32.4196 14.7726 37.0789 20.14 39.047C25.5074 41.0151 31.4688 39.9796 36.001 36.337C40.5332 32.6944 43.1462 27.322 43.1462 21.709H43.17V21.709V18.709C43.17 17.806 43.017 16.916 42.728 16.084L42.707 16.03L40.617 16.617H40.617Z" fill="#4285F4" fill-rule="evenodd"></path><path clip-rule="evenodd" d="M4.891 16.039L4.86601 16.063L10.309 20.176C10.309 20.176 10.309 20.176 10.309 20.176C8.61642 22.281 7.96941 25.1152 8.55801 27.813C9.14661 30.5108 10.9008 32.7926 13.383 34.014C15.8652 35.2354 18.8217 35.2919 21.3379 34.1565C23.8541 33.0211 25.6859 30.8209 26.417 28.137H24V21H4.891V16.039Z" fill="#34A853" fill-rule="evenodd"></path><path clip-rule="evenodd" d="M10.309 4.316L4.891 0.0409999C-0.143953 4.46181 -0.58501 10.9273 2.039 16.039H4.891V16.039L10.309 11.904C9.29903 10.2565 8.99575 8.31933 9.45833 6.47157C9.9209 4.62381 11.1111 3.03775 12.7846 2.03669C14.458 1.03564 16.4818 0.699072 18.4742 1.09967C20.4666 1.50027 22.2864 2.60773 23.628 4.216L29.149 0.0889999C25.9156 -1.27373 22.1584 -1.53293 18.614 -0.846931C15.0696 -0.160931 11.9246 1.44674 9.73199 4.57907L10.309 4.316Z" fill="#FBBC05" fill-rule="evenodd"></path><path clip-rule="evenodd" d="M43.17 0H23.628L18.082 4.101C19.9179 2.70817 22.2576 1.95569 24.666 2.0001C31.9815 2.0001 38.0016 7.83503 38.463 15.088L40.617 14.5H43.17V0Z" fill="#EA4335" fill-rule="evenodd"></path></svg>
+<span>Dalje s Google</span>
+</a>
+<a class="social-login-button" href="#">
+<i class="fab fa-apple text-black mr-3 text-xl"></i>
+<span>Dalje s Apple</span>
+</a>
+</div>
+<h4 class="text-lg font-semibold mb-5 text-gray-300 border-t border-gray-700 pt-6 text-center" id="form-separator">... ili nastavite popunjavanjem podataka</h4>
+<form action="#" class="space-y-4" id="registration-main-form" method="POST">
+<div class="form-group">
+<label class="form-label-register" for="country">Zemlja*</label>
+<div class="custom-select-wrapper">
+<input id="country" name="country" required="" type="hidden" value="HR"/>
+<div class="custom-select-trigger" id="country-select-trigger">
+<img alt="Zastava" class="flag-in-select" src="https://flagcdn.com/w20/hr.png"/>
+<span class="country-name">Hrvatska</span>
+</div>
+<div class="custom-select-options" id="country-select-options">
+</div>
+</div>
+</div>
+<!-- ============================================= -->
+<!-- === POLJA ZA POSLOVNI RAČUN (inicijalno skrivena) === -->
+<!-- ============================================= -->
+<div class="hidden space-y-4" id="business-fields-container">
+<div class="form-group">
+<label class="form-label-register" for="business-name">Naziv pravne osobe ili poslovnog subjekta*</label>
+<input class="form-input-register" id="business-name" name="business_name" placeholder="Unesite naziv tvrtke" type="text"/>
+</div>
+<h4 class="text-lg font-semibold pt-2 text-fluorescent-green">ODGOVORNA OSOBA</h4>
+</div>
+<!-- ============================================= -->
+<!-- === KRAJ POLJA ZA POSLOVNI RAČUN === -->
+<!-- ============================================= -->
+<div class="form-group">
+<label class="form-label-register">Oslovljavanje*</label>
+<div class="flex items-center space-x-6 mt-1">
+<label class="flex items-center cursor-pointer">
+<input checked="" class="form-radio-register" name="salutation" type="radio" value="gosp"/>
+<span class="ml-2 text-sm text-gray-300">GOSP.</span>
+</label>
+<label class="flex items-center cursor-pointer">
+<input class="form-radio-register" name="salutation" type="radio" value="gda"/>
+<span class="ml-2 text-sm text-gray-300">GĐA.</span>
+</label>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label-register" for="first-name">Ime*</label>
+<input class="form-input-register" id="first-name" name="first_name" placeholder="Unesite vaše ime" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label-register" for="last-name">Prezime*</label>
+<input class="form-input-register" id="last-name" name="last_name" placeholder="Unesite vaše prezime" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label-register">Datum rođenja*</label>
+<div class="flex space-x-2">
+<input class="form-input-register w-1/3 text-center" id="dob-dd" maxlength="2" name="dob_dd" placeholder="DD" required="" type="text"/>
+<input class="form-input-register w-1/3 text-center" id="dob-mm" maxlength="2" name="dob_mm" placeholder="MM" required="" type="text"/>
+<input class="form-input-register w-1/3 text-center" id="dob-yyyy" maxlength="4" name="dob_yyyy" placeholder="GGGG" required="" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label-register" for="mobile-phone">Mobilni telefon*</label>
+<div class="flex items-center phone-input-wrapper">
+<div class="country-code-select">
+<img alt="Zastava" id="phone-flag" src="https://flagcdn.com/w20/hr.png"/>
+<span id="phone-prefix">+385</span>
+</div>
+<input class="form-input-register-phone" id="mobile-phone" name="mobile_phone" placeholder="Vaš broj mobitela" required="" type="tel"/>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label-register" for="reg-email">E-mail*</label>
+<input class="form-input-register" id="reg-email" name="email" placeholder="Vaša e-mail adresa" required="" type="email"/>
+</div>
+<div class="space-y-3 pt-4">
+<label class="flex items-start cursor-pointer">
+<input class="form-checkbox-register mt-1" name="terms_oup" required="" type="checkbox"/>
+<span class="ml-2 text-sm text-gray-300">Pročitao/la sam i prihvaćam <a class="text-fluorescent-green underline hover:text-green-400" href="#">Opće uvjete poslovanja</a>.*</span>
+</label>
+<label class="flex items-start cursor-pointer">
+<input class="form-checkbox-register mt-1" name="terms_privacy" required="" type="checkbox"/>
+<span class="ml-2 text-sm text-gray-300">Pročitao/la sam i prihvaćam <a class="text-fluorescent-green underline hover:text-green-400" href="#">Izjavu o zaštiti podataka</a> i <a class="text-fluorescent-green underline hover:text-green-400" href="#">Suglasnost za prosljeđivanje i korištenje podataka</a>.*</span>
+</label>
+<label class="flex items-start cursor-pointer">
+<input class="form-checkbox-register mt-1" name="terms_newsletter" type="checkbox"/>
+<span class="ml-2 text-sm text-gray-300">Da, želim primati obavijesti o najnovijim informacijama i posebnim ponudama, kao i o vaučerima, nagradnim igrama i akcijama putem emaila i telefona. Mogu se odjaviti u bilo kojem trenutku.</span>
+</label>
+</div>
+<div class="mt-6 text-xs text-gray-400 leading-relaxed">
+                              Ovu suglasnost za obradu nevedenih podataka imam pravo u bilo kojem trenutku opozvati za daljnje korištenje, u pisanom obliku slanjem OPOZIVA OSOBNIH PODATAKA putem emaila na adresu <strong>support@sft21.hr</strong>. Do opoziva izvršena obrada podataka temeljem ove suglasnosti ostaje pravovaljana.</div>
+<div class="pt-6 space-y-3">
+<button class="btn-primary w-full py-3" id="dalje-button" type="button">DALJE</button>
+<p class="text-xs text-gray-400 mt-4">*Obvezna polja</p>
+</form>
+</div> </div> </div>
+
+</main>
+
+
+<!-- Footer ostaje isti... -->
+<footer class="py-16 bg-gray-900 border-t border-gray-800 mt-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div class="md:col-span-1">
+        <h3 class="text-2xl font-bold mb-6 text-white">SFT21</h3>
+        <p class="text-gray-400 mb-8">Na jakim lokalnim i regionalnim temeljima stvaramo globalnu online zajednica koja povezuje ljude na jedan novi, humaniji i prije svega pošteniji način.</p>
+        <div class="flex space-x-4">
+            <a class="text-gray-400 hover:text-purple-400 transition-colors duration-300" href="#"><i class="fab fa-facebook-f text-xl"></i></a>
+            <a class="text-gray-400 hover:text-purple-400 transition-colors duration-300" href="#"><i class="fab fa-x-twitter text-xl"></i></a>
+            <a class="text-gray-400 hover:text-purple-400 transition-colors duration-300" href="#"><i class="fab fa-instagram text-xl"></i></a>
+            <a class="text-gray-400 hover:text-purple-400 transition-colors duration-300" href="#"><i class="fab fa-linkedin-in text-xl"></i></a>
+        </div>
+    </div>
+    <div>
+        <h4 class="text-lg font-bold mb-6 text-white">Brzi linkovi</h4>
+        <ul class="space-y-3">
+            <li><a class="text-gray-400 hover:text-purple-400 transition-colors duration-300" href="index.html#pocetna">Početna</a></li>
+            <li><a class="text-gray-400 hover:text-purple-400 transition-colors duration-300" href="index.html#poslovni-koncept">Poslovni koncept</a></li>
+            <li><a class="text-gray-400 hover:text-purple-400 transition-colors duration-300" href="index.html#investicija">Licencni paketi</a></li>
+            <li><a class="text-gray-400 hover:text-purple-400 transition-colors duration-300" href="index.html#startni-paketi">Startni paketi</a></li>
+            <li><a class="text-gray-400 hover:text-purple-400 transition-colors duration-300" href="register.html">Registracija</a></li>
+            <li><a class="text-gray-400 hover:text-purple-400 transition-colors duration-300" href="login.html">Prijava</a></li>
+            <li><a class="text-gray-400 hover:text-purple-400 transition-colors duration-300" href="index.html#kontakt">Kontakt</a></li>
+        </ul>
+    </div>
+    <div>
+        <h4 class="text-lg font-bold mb-6 text-white">Kontakt</h4>
+                    <ul class="space-y-3">
+                        <li class="text-gray-400">SFT21 LLC</li>
+                        <li class="text-gray-400">2120 Carey Ave, Cheyenne,</li>
+                        <li class="text-gray-400">WY 82001</li>
+                        <li class="text-gray-400">Wyoming, USA</li>
+                        <li><a href="mailto:info@sft21.com" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">info@sft21.com</a></li>
+                    </ul>
+    </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6 text-white">Pravne informacije</h4>
+                <ul class="space-y-3">
+                    <li><a href="terms-of-use.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Uvjeti korištenja</a></li>
+                    <li><a href="privacy-policy.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Politika privatnosti</a></li>
+                    <li><a href="privacy-policy.html#gdpr-rights" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">GDPR</a></li>
+                    <li><a href="business-rules.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Pravila poslovanja</a></li>
+                </ul>
+            </div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 text-center">
+    <p class="text-gray-400">© 2025 SFT21 LLC - Sva prava pridržana.</p>
+</div>
+</div>
+</footer>
+<!-- ============================================= -->
+<!-- === NOVI HTML ZA POPUP-e ZA PROVJERU GODINA === -->
+<!-- ============================================= -->
+<div id="age-popup-overlay">
+<!-- Popup 1: Za korisnike mlađe od 16 -->
+<div class="age-popup-container" id="age-restriction-popup" style="display: none; max-width: 500px;">
+<h3>Upozorenje!</h3>
+<p style="text-align: center; font-size: 1.1rem;">
+                Registracija malodobnih osoba mlađih od 16 godina <br/> <strong>NIJE MOGUĆA</strong>.
+            </p>
+<div class="popup-actions">
+<button class="btn-primary" id="age-restriction-ok-btn">U redu</button>
+</div>
+</div>
+<!-- Popup 2: Za korisnike između 16 i 18 -->
+<div class="age-popup-container" id="parental-consent-popup" style="display: none;">
+<button aria-label="Zatvori" class="popup-close" id="parental-consent-close-btn">×</button>
+<h3>Potrebna je suglasnost</h3>
+<p>
+                Registracija osobe starosti između 16 i 18 godina moguća je isključivo uz suglasnost roditelja ili staratelja. Kako bi nastavili proces registracije potrebno je popuniti Suglasnost roditelja ili staratelja.
+            </p>
+<h4>Poslovna suradnja sa maloljetnom osobom</h4>
+<p>
+                Sukladno pravilima poslovanja kompanija SFT21 dozvoljava registraciju i poslovnu suradnju sa maloljetnom osobom odnosno registraciju starijeg maloljetnika (16 do 18 godina) isključivo uz suglasnost zakonskog zastupnika – roditelja, posvojitelja, skrbnika.
+            </p>
+<form id="parental-consent-form">
+<h4 style="text-align: center;">SUGLASNOST ZAKONSKOG ZASTUPNIKA</h4>
+<p>Dolje potpisan/i zakonski zastupnik/ci maloljetnog djeteta;</p>
+<div class="grid md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="form-label-register" for="minor-name">Ime i prezime</label>
+<input class="form-input-register" id="minor-name" name="minor_name" placeholder="Ime i prezime maloljetnika" readonly="" type="text"/>
+</div>
+<div>
+<label class="form-label-register" for="minor-dob">Datum rođenja</label>
+<input class="form-input-register" id="minor-dob" name="minor_dob" placeholder="DD.MM.GGGG" readonly="" type="text"/>
+</div>
+<div>
+<label class="form-label-register" for="minor-email">Mail adresa</label>
+<input class="form-input-register" id="minor-email" name="minor_email" placeholder="primjer@email.com" readonly="" type="email"/>
+</div>
+<div>
+<label class="form-label-register" for="minor-phone">Broj mobitela</label>
+<input class="form-input-register" id="minor-phone" name="minor_phone" readonly="" type="tel" value="+"/>
+</div>
+</div>
+<p class="mt-4">Suglasan/na/ni sam/smo da se gore navedena osoba (stariji maloljetnik) registrira u SFT21 kompaniju kao punopravni član kroz sistem SFT21 te kao takvi pristajem/o na kompanijske uvjete korištenja i pravila privatnosti navedena na stranicama portala www.sft21.com</p>
+
+<div class="guardian-form-grid mt-6">
+<div class="guardian-column space-y-4">
+<h5>● ZAKONSKI ZASTUPNIK 1 ●</h5>
+<div><label class="form-label-register" for="guardian-name-1">Ime i prezime</label><input class="form-input-register" id="guardian-name-1" name="guardian_name_1" required="" type="text"/></div>
+<div><label class="form-label-register" for="guardian-id-1">Broj osobnog dokumenta</label><input class="form-input-register" id="guardian-id-1" name="guardian_id_1" required="" type="text"/></div>
+<div><label class="form-label-register" for="guardian-email-1">E-mail</label><input class="form-input-register" id="guardian-email-1" name="guardian_email_1" required="" type="email"/></div>
+<div><label class="form-label-register" for="guardian-phone-1">Broj telefona</label><input class="form-input-register" id="guardian-phone-1" name="guardian_phone_1" placeholder="+" required="" type="tel"/></div>
+<div>
+<label class="form-label-register" for="guardian-signature-1">Učitaj potpis</label>
+<div class="file-upload-wrapper">
+<label class="file-upload-label" for="guardian-signature-1"><i class="fas fa-signature"></i> <span>Odaberi datoteku</span></label>
+<input accept="image/png, image/jpeg, image/gif" id="guardian-signature-1" name="guardian_signature_1" required="" type="file"/>
+<span class="file-upload-filename" id="filename-1">Nije odabrana datoteka</span>
+</div>
+</div>
+<!-- NOVI GUMB ZA PRVOG SKRBNIKA -->
+<button class="btn-kyc-guardian" id="guardian-kyc-btn-1" type="button">KYC – Potvrda identiteta</button>
+</div>
+<div class="guardian-column space-y-4">
+<h5>● ZAKONSKI ZASTUPNIK 2 ●</h5>
+<div><label class="form-label-register" for="guardian-name-2">Ime i prezime</label><input class="form-input-register" id="guardian-name-2" name="guardian_name_2" type="text"/></div>
+<div><label class="form-label-register" for="guardian-id-2">Broj osobnog dokumenta</label><input class="form-input-register" id="guardian-id-2" name="guardian_id_2" type="text"/></div>
+<div><label class="form-label-register" for="guardian-email-2">E-mail</label><input class="form-input-register" id="guardian-email-2" name="guardian_email_2" type="email"/></div>
+<div><label class="form-label-register" for="guardian-phone-2">Broj telefona</label><input class="form-input-register" id="guardian-phone-2" name="guardian_phone_2" placeholder="+" type="tel"/></div>
+<div>
+<label class="form-label-register" for="guardian-signature-2">Učitaj potpis</label>
+<div class="file-upload-wrapper">
+<label class="file-upload-label" for="guardian-signature-2"><i class="fas fa-signature"></i> <span>Odaberi datoteku</span></label>
+<input accept="image/png, image/jpeg, image/gif" id="guardian-signature-2" name="guardian_signature_2" type="file"/>
+<span class="file-upload-filename" id="filename-2">Nije odabrana datoteka</span>
+</div>
+</div>
+<!-- NOVI GUMB ZA DRUGOG SKRBNIKA -->
+<button class="btn-kyc-guardian" id="guardian-kyc-btn-2" type="button">KYC – Potvrda identiteta</button>
+</div>
+<div class="popup-note mt-4">
+<strong>Napomena:</strong> Kako bi učitali vlastoručni potpis, potpišite se na komad bijelog papira identično potpisu s osobnog dokumenta. Uslikajte ili skenirajte potpis te sliku ili scan potpisa učitajte klikom na polje iznad: "Učitaj potpis - Odaberi datoteku".
+</div>
+<div class="mt-6" id="court-order-section">
+    <label class="form-label-register" for="court-order">Ukoliko samo jedan roditelj ili zakonski zastupnik ima skrbništvo učitaj Rješenje o skrbništvu.</label>
+
+    <!-- BLOK ZA UPLOAD RJEŠENJA -->
+    <div class="mt-4">
+        <div class="file-upload-wrapper">
+            <label class="file-upload-label" for="court-order-file">
+                <i class="fas fa-file-pdf"></i> <span>Odaberi datoteku</span>
+            </label>
+            <input accept=".pdf" id="court-order-file" name="court_order_file" type="file"/>
+            <span class="file-upload-filename" id="court-order-filename">Nije odabrana datoteka</span>
+        </div>
+        <div class="popup-note mt-2">
+            <strong>Napomena:</strong> Učitaj PDF kompletnog Rješenja o skrbništvu.
+        </div>
+    </div>
+</div>
+
+<!-- OČIŠĆENI DIV ZA GUMB -->
+<div class="popup-actions">
+    <button class="btn-primary" id="consent-form-submit-btn" type="button">Spremi i nastavi</button>
+</div>
+
+</form>
+</div>
+</div>
+
+
+<!-- Učitavanje vanjskih biblioteka -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.11.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.11.5/dist/ScrollTrigger.min.js"></script>
+
+<script>
+    // --- KONAČNA, JEDINSTVENA SKRIPTA ZA REGISTER.HTML (v18 - MAKSIMALNO POJEDNOSTAVLJENO) ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // === DEKLARACIJA SVIH ELEMENATA ===
+        const body = document.body;
+        const cursor = document.querySelector('.custom-cursor');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+        const logoImage = document.getElementById('site-logo');
+        const moonIcons = [document.getElementById('theme-toggle-dark-icon'), document.getElementById('theme-toggle-dark-icon-mobile')];
+        const sunIcons = [document.getElementById('theme-toggle-light-icon'), document.getElementById('theme-toggle-light-icon-mobile')];
+        const daljeButton = document.getElementById('dalje-button');
+        const registrationForm = document.getElementById('registration-main-form');
+        const dobDay = document.getElementById('dob-dd'), dobMonth = document.getElementById('dob-mm'), dobYear = document.getElementById('dob-yyyy');
+        const agePopupOverlay = document.getElementById('age-popup-overlay');
+        const ageRestrictionPopup = document.getElementById('age-restriction-popup');
+        const parentalConsentPopup = document.getElementById('parental-consent-popup');
+        const ageRestrictionOkBtn = document.getElementById('age-restriction-ok-btn');
+        const parentalConsentCloseBtn = document.getElementById('parental-consent-close-btn');
+        const guardianKycBtn1 = document.getElementById('guardian-kyc-btn-1');
+        const guardianKycBtn2 = document.getElementById('guardian-kyc-btn-2');
+        const consentSubmitBtn = document.getElementById('consent-form-submit-btn');
+
+        // ==========================================================
+        // === LOGIKA ZA PRIKAZ POLJA PREPORUČITELJA ===
+        // ==========================================================
+        const recommenderYesRadio = document.getElementById('recommender-yes');
+        const recommenderNoRadio = document.getElementById('recommender-no');
+        const recommenderInputContainer = document.getElementById('recommender-input-container');
+
+        function toggleRecommenderField() {
+            if (recommenderYesRadio && recommenderYesRadio.checked) {
+                recommenderInputContainer.classList.remove('hidden');
+            } else if (recommenderInputContainer) {
+                recommenderInputContainer.classList.add('hidden');
+            }
+        }
+
+        if (recommenderYesRadio && recommenderNoRadio) {
+            recommenderYesRadio.addEventListener('change', toggleRecommenderField);
+            recommenderNoRadio.addEventListener('change', toggleRecommenderField);
+        }
+        // === KRAJ LOGIKE ZA PREPORUČITELJA ===
+
+                // ==========================================================
+        // === LOGIKA ZA ODABIR ZEMLJE (COUNTRY SELECTOR) ===
+        // ==========================================================
+        const countryTrigger = document.getElementById('country-select-trigger');
+        const countryOptionsContainer = document.getElementById('country-select-options');
+        const countryHiddenInput = document.getElementById('country');
+        const phonePrefixSpan = document.getElementById('phone-prefix');
+        const phoneFlagImg = document.getElementById('phone-flag');
+        
+        // Lista zemalja (možete je proširiti po potrebi)
+        const countries = [
+            { code: 'HR', name: 'Hrvatska', prefix: '+385' },
+            { code: 'DE', name: 'Njemačka', prefix: '+49' },
+            { code: 'AT', name: 'Austrija', prefix: '+43' },
+            { code: 'CH', name: 'Švicarska', prefix: '+41' },
+            { code: 'SI', name: 'Slovenija', prefix: '+386' },
+            { code: 'RS', name: 'Srbija', prefix: '+381' },
+            { code: 'BA', name: 'Bosna i Hercegovina', prefix: '+387' },
+            { code: 'GB', name: 'Velika Britanija', prefix: '+44' },
+            { code: 'US', name: 'Sjedinjene Države', prefix: '+1' },
+        ];
+
+        // Funkcija za popunjavanje liste
+        function populateCountryOptions() {
+            if (!countryOptionsContainer) return;
+            countryOptionsContainer.innerHTML = ''; // Očisti postojeće opcije
+            countries.forEach(country => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                optionElement.dataset.code = country.code;
+                optionElement.dataset.prefix = country.prefix;
+                optionElement.innerHTML = `
+                    <img src="https://flagcdn.com/w20/${country.code.toLowerCase()}.png" alt="${country.name} zastava">
+                    <span>${country.name}</span>
+                `;
+                countryOptionsContainer.appendChild(optionElement);
+            });
+        }
+
+        // Funkcija za odabir zemlje
+        function selectCountry(optionElement) {
+            const code = optionElement.dataset.code;
+            const prefix = optionElement.dataset.prefix;
+            const name = optionElement.querySelector('span').textContent;
+            const flagSrc = optionElement.querySelector('img').src;
+
+            // Ažuriraj prikaz triggera
+            countryTrigger.querySelector('.country-name').textContent = name;
+            countryTrigger.querySelector('img').src = flagSrc;
+            
+            // Ažuriraj skriveno polje i telefonski prefiks
+            if (countryHiddenInput) countryHiddenInput.value = code;
+            if (phonePrefixSpan) phonePrefixSpan.textContent = prefix;
+            if (phoneFlagImg) phoneFlagImg.src = flagSrc;
+            
+            // Zatvori dropdown
+            countryTrigger.classList.remove('active');
+            countryOptionsContainer.classList.remove('active');
+        }
+
+        if (countryTrigger && countryOptionsContainer) {
+            // Popuni listu pri učitavanju stranice
+            populateCountryOptions();
+
+            // Otvori/zatvori dropdown na klik
+            countryTrigger.addEventListener('click', (event) => {
+                event.stopPropagation();
+                countryTrigger.classList.toggle('active');
+                countryOptionsContainer.classList.toggle('active');
+            });
+
+            // Odaberi zemlju na klik
+            countryOptionsContainer.addEventListener('click', (event) => {
+                const option = event.target.closest('.option');
+                if (option) {
+                    selectCountry(option);
+                }
+            });
+        }
+
+        // Zatvori dropdown ako se klikne bilo gdje drugdje na stranici
+        document.addEventListener('click', (event) => {
+            if (countryTrigger && !countryTrigger.contains(event.target)) {
+                countryTrigger.classList.remove('active');
+                countryOptionsContainer.classList.remove('active');
+            }
+        });
+        // === KRAJ LOGIKE ZA ODABIR ZEMLJE ===
+
+        // === INFO POPUP LOGIKA ===
+        const infoPopupOverlay = document.getElementById('info-popup-overlay');
+        const closeInfoPopupBtn = document.getElementById('close-info-popup-btn');
+
+        // Funkcija za zatvaranje, da ne ponavljamo kod
+        function closeInfoPopup() {
+            if (infoPopupOverlay) {
+                infoPopupOverlay.style.display = 'none';
+                sessionStorage.setItem('sft21_info_popup_closed', 'true');
+            }
+        }
+
+        // Pokaži popup ako nije već zatvoren
+        if (infoPopupOverlay && sessionStorage.getItem('sft21_info_popup_closed') !== 'true') {
+            infoPopupOverlay.style.display = 'flex';
+        }
+
+        // Listener za gumb 'X'
+        if (closeInfoPopupBtn) {
+            closeInfoPopupBtn.addEventListener('click', closeInfoPopup);
+        }
+        
+        // NOVI DIO: Listener za klik izvan popupa
+        if (infoPopupOverlay) {
+            infoPopupOverlay.addEventListener('click', (event) => {
+                // Provjeri je li element na koji smo kliknuli SAM overlay (tamna pozadina)
+                // a ne neki od njegovih sadržaja (bijeli okvir, tekst, gumb...)
+                if (event.target === infoPopupOverlay) {
+                    closeInfoPopup();
+                }
+            });
+        }
+        // === KRAJ INFO POPUP LOGIKE ===
+
+        // === LOGIKA ZA PROMJENU TEME ===
+        function updateLogoForTheme() { if (!logoImage) return; const isLight = document.documentElement.classList.contains('light-mode'); logoImage.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png'; }
+        function applyThemeClassAndIcons(theme) {
+            if (theme === 'light') {
+                document.documentElement.classList.add('light-mode');
+                moonIcons.forEach(icon => { if (icon) icon.style.display = 'inline-block'; });
+                sunIcons.forEach(icon => { if (icon) icon.style.display = 'none'; });
+            } else {
+                document.documentElement.classList.remove('light-mode');
+                moonIcons.forEach(icon => { if (icon) icon.style.display = 'none'; });
+                sunIcons.forEach(icon => { if (icon) icon.style.display = 'inline-block'; });
+            }
+        }
+        function handleThemeToggle() { const isLight = document.documentElement.classList.contains('light-mode'); const newTheme = isLight ? 'dark' : 'light'; localStorage.setItem('sft21_theme', newTheme); document.documentElement.classList.toggle('light-mode'); applyThemeClassAndIcons(newTheme); updateLogoForTheme(); if (window.setAnimationTheme) { window.setAnimationTheme(newTheme); } }
+        const currentTheme = localStorage.getItem('sft21_theme') || 'dark';
+        applyThemeClassAndIcons(currentTheme); updateLogoForTheme();
+        if (themeToggleBtn) { themeToggleBtn.addEventListener('click', handleThemeToggle); }
+        if (themeToggleMobileBtn) { themeToggleMobileBtn.addEventListener('click', handleThemeToggle); }
+        
+        // === OSNOVNE FUNKCIJE STRANICE ===
+        if (cursor && body) { let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0; const speed = 0.1; const updateCursor = () => { cursorX += (mouseX - cursorX) * speed; cursorY += (mouseY - cursorY) * speed; cursor.style.left = `${cursorX}px`; cursor.style.top = `${cursorY}px`; requestAnimationFrame(updateCursor); }; requestAnimationFrame(updateCursor); window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; }); document.addEventListener('mouseleave', () => cursor.style.opacity = '0'); document.addEventListener('mouseenter', () => cursor.style.opacity = '1'); document.querySelectorAll('a, button, input, [role="button"], label[for]').forEach(el => { el.addEventListener('mouseenter', () => gsap.to(cursor, { duration: 0.3, scale: 1.5 })); el.addEventListener('mouseleave', () => gsap.to(cursor, { duration: 0.3, scale: 1 })); }); }
+        if (hamburger && navMenu) { hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); document.body.classList.toggle('no-scroll'); }); }
+
+        const desktopLangTrigger = document.getElementById('desktop-lang-trigger');
+        const desktopLangDropdown = document.getElementById('desktop-lang-dropdown');
+        const mobileLangTrigger = document.getElementById('mobile-lang-trigger');
+        const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
+
+        if (desktopLangTrigger && desktopLangDropdown) {
+            desktopLangTrigger.addEventListener('click', (event) => {
+                event.stopPropagation(); // Sprječava da se događaj proširi dalje
+                desktopLangDropdown.classList.toggle('active');
+            });
+        }
+
+        if (mobileLangTrigger && mobileLangDropdown) {
+            mobileLangTrigger.addEventListener('click', (event) => {
+                event.preventDefault(); // Sprječava da link skoči na vrh stranice
+                event.stopPropagation();
+                mobileLangDropdown.classList.toggle('active');
+            });
+        }
+
+        // Dodajemo listener na cijeli prozor da zatvori izbornik ako se klikne izvan njega
+        window.addEventListener('click', (event) => {
+            if (desktopLangDropdown && desktopLangDropdown.classList.contains('active')) {
+                if (!desktopLangTrigger.contains(event.target)) {
+                    desktopLangDropdown.classList.remove('active');
+                }
+            }
+        });
+
+        // === LOGIKA ZA ODABIR TIPA RAČUNA ===
+        const personalBtn = document.getElementById('personal-account-btn');
+        const businessBtn = document.getElementById('business-account-btn');
+        const businessFieldsContainer = document.getElementById('business-fields-container');
+        const businessNameInput = document.getElementById('business-name');
+        const socialLoginContainer = document.getElementById('social-login-container'); // Novi element
+        const formSeparator = document.getElementById('form-separator'); // Novi element
+
+        if (personalBtn && businessBtn && businessFieldsContainer && businessNameInput && socialLoginContainer && formSeparator) {
+            const switchToPersonal = () => {
+                businessBtn.classList.remove('active');
+                personalBtn.classList.add('active');
+                businessFieldsContainer.classList.add('hidden');
+                businessNameInput.required = false;
+                
+                // Pokaži gumbe za društvene mreže
+                socialLoginContainer.style.display = 'block'; 
+                formSeparator.style.display = 'block';
+
+                localStorage.setItem('sft21_account_type', 'personal');
+            };
+
+            const switchToBusiness = () => {
+                personalBtn.classList.remove('active');
+                businessBtn.classList.add('active');
+                businessFieldsContainer.classList.remove('hidden');
+                businessNameInput.required = true;
+
+                // Sakrij gumbe za društvene mreže
+                socialLoginContainer.style.display = 'none';
+                formSeparator.style.display = 'none';
+
+                localStorage.setItem('sft21_account_type', 'business');
+            };
+            
+            personalBtn.addEventListener('click', switchToPersonal);
+            businessBtn.addEventListener('click', switchToBusiness);
+            
+            // Inicijalno stanje
+            switchToPersonal();
+        }
+
+        // === LOGIKA FORME I POPUPA ===
+        function getFormData() {
+             return { firstName: document.getElementById('first-name').value, lastName: document.getElementById('last-name').value, dobDd: document.getElementById('dob-dd').value, dobMm: document.getElementById('dob-mm').value, dobYyyy: document.getElementById('dob-yyyy').value, regEmail: document.getElementById('reg-email').value, mobilePhone: document.getElementById('mobile-phone').value, guardianName1: document.getElementById('guardian-name-1').value, guardianId1: document.getElementById('guardian-id-1').value, guardianEmail1: document.getElementById('guardian-email-1').value, guardianPhone1: document.getElementById('guardian-phone-1').value, guardianName2: document.getElementById('guardian-name-2').value, guardianId2: document.getElementById('guardian-id-2').value, guardianEmail2: document.getElementById('guardian-email-2').value, guardianPhone2: document.getElementById('guardian-phone-2').value, signature1_filename: document.getElementById('filename-1').textContent, signature2_filename: document.getElementById('filename-2').textContent, courtOrder_filename: document.getElementById('court-order-filename').textContent, };
+        }
+        function populateFormsFromStorage() { const savedData = sessionStorage.getItem('consentFormData'); if (savedData) { const data = JSON.parse(savedData); document.getElementById('first-name').value = data.firstName || ''; document.getElementById('last-name').value = data.lastName || ''; document.getElementById('dob-dd').value = data.dobDd || ''; document.getElementById('dob-mm').value = data.dobMm || ''; document.getElementById('dob-yyyy').value = data.dobYyyy || ''; document.getElementById('reg-email').value = data.regEmail || ''; document.getElementById('mobile-phone').value = data.mobilePhone || ''; document.getElementById('guardian-name-1').value = data.guardianName1 || ''; document.getElementById('guardian-id-1').value = data.guardianId1 || ''; document.getElementById('guardian-email-1').value = data.guardianEmail1 || ''; document.getElementById('guardian-phone-1').value = data.guardianPhone1 || ''; document.getElementById('guardian-name-2').value = data.guardianName2 || ''; document.getElementById('guardian-id-2').value = data.guardianId2 || ''; document.getElementById('guardian-email-2').value = data.guardianEmail2 || ''; document.getElementById('guardian-phone-2').value = data.guardianPhone2 || ''; if (data.signature1_filename && data.signature1_filename !== 'Nije odabrana datoteka') { const span = document.getElementById('filename-1'); span.textContent = data.signature1_filename; span.classList.add('filename-visible'); } if (data.signature2_filename && data.signature2_filename !== 'Nije odabrana datoteka') { const span = document.getElementById('filename-2'); span.textContent = data.signature2_filename; span.classList.add('filename-visible'); } if (data.courtOrder_filename && data.courtOrder_filename !== 'Nije odabrana datoteka') { const span = document.getElementById('court-order-filename'); span.textContent = data.courtOrder_filename; span.classList.add('filename-visible'); } } }
+        
+        function validateGuardianFieldsForKyc(guardianId) { const name = document.getElementById(`guardian-name-${guardianId}`).value.trim(); const idDoc = document.getElementById(`guardian-id-${guardianId}`).value.trim(); const email = document.getElementById(`guardian-email-${guardianId}`).value.trim(); const phone = document.getElementById(`guardian-phone-${guardianId}`).value.trim(); const signatureFile = document.getElementById(`guardian-signature-${guardianId}`).files; const signatureFilename = document.getElementById(`filename-${guardianId}`).textContent; if (!name || !idDoc || !email || !phone) { alert(`Molimo popunite sva obavezna polja za Zakonskog zastupnika ${guardianId}.`); return false; } if (signatureFile.length === 0 && (signatureFilename === 'Nije odabrana datoteka' || !signatureFilename)) { alert(`Molimo učitajte potpis za Zakonskog zastupnika ${guardianId}.`); return false; } return true; }
+        
+        function startGuardianKyc(guardianId) { 
+            if (!validateGuardianFieldsForKyc(guardianId)) { return; } 
+            sessionStorage.setItem('consentFormData', JSON.stringify(getFormData()));
+            sessionStorage.setItem('kycProcessForGuardian', guardianId); 
+            window.location.href = `office_kyc.html?source=guardian_kyc&guardian=${guardianId}`; 
+        }
+
+        function proceedToNextStep() {
+            console.log("Validacija uspješna. Preusmjeravanje na userdata.html"); 
+            sessionStorage.removeItem('consentFormData'); 
+            sessionStorage.removeItem('guardian1KycCompleted'); 
+            sessionStorage.removeItem('guardian2KycCompleted'); 
+            window.location.href = 'userdata.html'; 
+        }
+
+        function handleReturnAndState() {
+            populateFormsFromStorage();
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const kycCompleted = urlParams.get('kyc_complete');
+            const completedGuardianId = urlParams.get('guardian');
+
+            if (kycCompleted === 'true' && completedGuardianId) {
+                sessionStorage.setItem(`guardian${completedGuardianId}KycCompleted`, 'true');
+            }
+
+            const isGuardian1KycDone = sessionStorage.getItem('guardian1KycCompleted') === 'true';
+            const isGuardian2KycDone = sessionStorage.getItem('guardian2KycCompleted') === 'true';
+            
+            if (isGuardian1KycDone) { 
+                const btn1 = document.getElementById('guardian-kyc-btn-1'); 
+                if(btn1) { btn1.classList.add('completed'); btn1.disabled = true; btn1.innerHTML = '<i class="fas fa-check"></i> KYC Završen'; } 
+            }
+            if (isGuardian2KycDone) { 
+                const btn2 = document.getElementById('guardian-kyc-btn-2'); 
+                if(btn2) { btn2.classList.add('completed'); btn2.disabled = true; btn2.innerHTML = '<i class="fas fa-check"></i> KYC Završen'; } 
+            }
+            
+            const courtOrderSection = document.getElementById('court-order-section');
+            if (isGuardian1KycDone && isGuardian2KycDone) {
+                if (courtOrderSection) courtOrderSection.style.display = 'none';
+                if (consentSubmitBtn) consentSubmitBtn.textContent = 'Nastavi s registracijom';
+            } else {
+                if (courtOrderSection) courtOrderSection.style.display = 'block';
+                if (consentSubmitBtn) consentSubmitBtn.textContent = 'Spremi i nastavi';
+            }
+
+            if (kycCompleted === 'true' && completedGuardianId) {
+                if (typeof populateParentalConsentForm === 'function') populateParentalConsentForm();
+                if (typeof showParentalConsentPopup === 'function') showParentalConsentPopup();
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        }
+        
+        function setupFileInputStyling(inputId, displayId) { const fileInput = document.getElementById(inputId); const displaySpan = document.getElementById(displayId); if (fileInput && displaySpan) { fileInput.addEventListener('change', () => { if (fileInput.files.length > 0) { displaySpan.textContent = fileInput.files[0].name; displaySpan.classList.add('filename-visible'); } else { displaySpan.textContent = 'Nije odabrana datoteka'; displaySpan.classList.remove('filename-visible'); } }); } }
+        setupFileInputStyling('guardian-signature-1', 'filename-1');
+        setupFileInputStyling('guardian-signature-2', 'filename-2');
+        setupFileInputStyling('court-order-file', 'court-order-filename');
+
+        if (consentSubmitBtn) { 
+            consentSubmitBtn.addEventListener('click', () => { 
+                const isGuardian1KycDone = sessionStorage.getItem('guardian1KycCompleted') === 'true';
+                const isGuardian2KycDone = sessionStorage.getItem('guardian2KycCompleted') === 'true'; 
+                
+                // Ako su OBA gotova, preskoči validaciju i nastavi
+                if (isGuardian1KycDone && isGuardian2KycDone) {
+                    proceedToNextStep();
+                    return; // Važno: prekini daljnje izvršavanje
+                }
+
+                // Inače, radi punu validaciju (slučaj s 1 skrbnikom + rješenje)
+                const errors = []; 
+                const isCourtOrderUploaded = document.getElementById('court-order-filename').textContent !== 'Nije odabrana datoteka'; 
+                
+                if (!isGuardian1KycDone) { 
+                    errors.push('■ KYC proces za Zakonskog zastupnika 1 nije završen.'); 
+                } 
+                if (!isGuardian2KycDone && !isCourtOrderUploaded) { 
+                    errors.push('■ Potrebno je završiti KYC za Zakonskog zastupnika 2 ILI učitati Rješenje o skrbništvu.'); 
+                } 
+                
+                if (errors.length > 0) { 
+                    alert('Nije moguće nastaviti:\n\n' + errors.join('\n')); 
+                } else { 
+                    proceedToNextStep();
+                } 
+            }); 
+        }
+
+        function calculateAge(day, month, year) { if (isNaN(day) || isNaN(month) || isNaN(year) || year < 1920 || year > new Date().getFullYear()) return -1; const today = new Date(); const birthDate = new Date(year, month - 1, day); let age = today.getFullYear() - birthDate.getFullYear(); const m = today.getMonth() - birthDate.getMonth(); if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--; return age; }
+        function showAgeRestrictionPopup() { if (agePopupOverlay) agePopupOverlay.style.display = 'flex'; if (ageRestrictionPopup) ageRestrictionPopup.style.display = 'block'; if (parentalConsentPopup) parentalConsentPopup.style.display = 'none'; }
+        function showParentalConsentPopup() { if (agePopupOverlay) agePopupOverlay.style.display = 'flex'; if (ageRestrictionPopup) ageRestrictionPopup.style.display = 'none'; if (parentalConsentPopup) parentalConsentPopup.style.display = 'block'; }
+        function hideAllAgePopups() { if (agePopupOverlay) agePopupOverlay.style.display = 'none'; if (ageRestrictionPopup && ageRestrictionPopup.style.display === 'block') { if (dobDay) { dobDay.value = ''; dobMonth.value = ''; dobYear.value = ''; dobDay.focus(); } } }
+        function populateParentalConsentForm() { document.getElementById('minor-name').value = `${document.getElementById('first-name').value} ${document.getElementById('last-name').value}`; document.getElementById('minor-dob').value = `${dobDay.value}.${dobMonth.value}.${dobYear.value}`; document.getElementById('minor-email').value = document.getElementById('reg-email').value; document.getElementById('minor-phone').value = `${document.getElementById('phone-prefix').textContent}${document.getElementById('mobile-phone').value}`; }
+        function validateRegistrationForm() { if (!registrationForm) return false; let isValid = true; let firstErrorElement = null; registrationForm.querySelectorAll('.border-red-500').forEach(el => el.classList.remove('border-red-500')); registrationForm.querySelectorAll('.text-red-500').forEach(el => el.classList.remove('text-red-500')); registrationForm.querySelectorAll('input[required]').forEach(field => { const isVisible = field.offsetParent !== null; if (isVisible && !field.value.trim()) { isValid = false; if (!firstErrorElement) firstErrorElement = field; let wrapper = (field.id === 'country') ? document.getElementById('country-select-trigger') : field.closest('.phone-input-wrapper'); if (wrapper) wrapper.classList.add('border-red-500'); else field.classList.add('border-red-500'); const label = registrationForm.querySelector(`label[for="${field.id}"]`); if (label) label.classList.add('text-red-500'); } }); registrationForm.querySelectorAll('input[type="checkbox"][required]').forEach(checkbox => { if (!checkbox.checked) { isValid = false; if (!firstErrorElement) firstErrorElement = checkbox; const label = checkbox.closest('label'); if (label) label.classList.add('text-red-500'); } }); if (!isValid && firstErrorElement) { if (firstErrorElement.id === 'country') { document.getElementById('country-select-trigger').focus(); } else { firstErrorElement.focus(); } } return isValid; }
+        if (daljeButton) { daljeButton.addEventListener('click', (event) => { event.preventDefault(); event.stopPropagation(); if (!validateRegistrationForm()) { alert('Molimo ispravno popunite sva obavezna polja označena zvjezdicom (*).'); return; } const age = calculateAge(parseInt(dobDay.value), parseInt(dobMonth.value), parseInt(dobYear.value)); if (age < 16) { showAgeRestrictionPopup(); return; } if (age >= 16 && age < 18) { populateParentalConsentForm(); showParentalConsentPopup(); return; } window.location.href = 'userdata.html'; }); }
+        if (ageRestrictionOkBtn) ageRestrictionOkBtn.addEventListener('click', hideAllAgePopups);
+        if (parentalConsentCloseBtn) parentalConsentCloseBtn.addEventListener('click', hideAllAgePopups);
+        if (agePopupOverlay) agePopupOverlay.addEventListener('click', (e) => { if (e.target === agePopupOverlay) hideAllAgePopups(); });
+        if (guardianKycBtn1) { guardianKycBtn1.addEventListener('click', (e) => { e.preventDefault(); startGuardianKyc(1); }); }
+        if (guardianKycBtn2) { guardianKycBtn2.addEventListener('click', (e) => { e.preventDefault(); startGuardianKyc(2); }); }
+        
+        handleReturnAndState();
+    });
+</script>
+
+<!-- Preostale manje skripte -->
+<div class="modal" id="kycModal" style="display:none;"><div class="modal-content"><iframe frameborder="0" height="600px" id="kycFrame" src="" width="100%"></iframe></div></div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var btn = document.getElementById("btn-kyc");
+    if (btn) {
+      btn.addEventListener("click", function() {
+        document.getElementById("kycFrame").src = "office_kyc.html";
+        document.getElementById("kycModal").style.display = "block";
+      });
+    }
+    window.addEventListener("message", function(event) {
+      if (event.data === "kycCompleted") {
+        document.getElementById("kycModal").style.display = "none";
+        var consent = document.getElementById("consentModal");
+        if (consent) consent.style.display = "block";
+      }
+    });
+  });
+</script>
+
+<script>
+    // OVA SKRIPTA ZA ANIMACIJU POZADINE OSTAJE KAKVA JEST
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('network-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let particles = []; let mouse = { x: null, y: null };
+        const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4, mouseInteractionRadius: 150, mouseEffectStrength: 2 };
+        const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4, mouseInteractionRadius: 150, mouseEffectStrength: 2 };
+        let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+        const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
+        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+        class Particle { constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.z = Math.random() * 2 - 1; this.radius = currentOptions.defaultRadius * (1 + this.z * 0.5); this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed; this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed; } draw() { let finalRadius = this.radius; let opacity = 1; if (mouse.x !== null) { const dx = this.x - mouse.x; const dy = this.y - mouse.y; const dist = Math.sqrt(dx * dx + dy * dy); if (dist < currentOptions.mouseInteractionRadius) { const effect = (1 - dist / currentOptions.mouseInteractionRadius); finalRadius += effect * currentOptions.mouseEffectStrength; opacity += effect * 0.5; } } ctx.beginPath(); ctx.arc(this.x, this.y, finalRadius, 0, Math.PI * 2); ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, ${opacity * 0.85})`; ctx.fill(); } update() { this.x += this.vx * (1 + this.z * 0.5); this.y += this.vy * (1 + this.z * 0.5); if (this.x > canvas.width + 5) this.x = -5; else if (this.x < -5) this.x = canvas.width + 5; if (this.y > canvas.height + 5) this.y = -5; else if (this.y < -5) this.y = canvas.height + 5; } }
+        const initParticles = () => { particles = []; for (let i = 0; i < currentOptions.particleAmount; i++) { particles.push(new Particle()); } };
+        const drawLines = () => { let pulse = Math.sin(Date.now() * 0.001) * 0.2 + 0.8; for (let i = 0; i < particles.length; i++) { for (let j = i + 1; j < particles.length; j++) { const p1 = particles[i]; const p2 = particles[j]; const dist = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2)); if (dist < currentOptions.linkRadius) { let opacity = 1 - (dist / currentOptions.linkRadius); opacity *= pulse; if (mouse.x !== null) { const distToMouse1 = Math.sqrt(Math.pow(p1.x - mouse.x, 2) + Math.pow(p1.y - mouse.y, 2)); const distToMouse2 = Math.sqrt(Math.pow(p2.x - mouse.x, 2) + Math.pow(p2.y - mouse.y, 2)); if(distToMouse1 < currentOptions.mouseInteractionRadius || distToMouse2 < currentOptions.mouseInteractionRadius) { opacity = Math.min(1, opacity + 0.5); } } ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.strokeStyle = `rgba(${currentOptions.lineColorRGB}, ${opacity * 0.5})`; ctx.lineWidth = currentOptions.lineWidth; ctx.stroke(); } } } };
+        const animate = () => { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => p.update()); drawLines(); particles.forEach(p => p.draw()); requestAnimationFrame(animate); };
+        window.setAnimationTheme = (theme) => {
+            if (theme === 'light') { currentOptions = lightOptions; } 
+            else { currentOptions = darkOptions; }
+            initParticles();
+        };
+        resizeCanvas();
+        animate();
+    });
+</script>
+
+<div class="modal" id="kycModal" style="display:none;"><div class="modal-content"><iframe frameborder="0" height="600px" id="kycFrame" src="" width="100%"></iframe></div></div>
+<script>
+  // OVA MALA SKRIPTA ZA STARI MODAL VIŠE NIJE POTREBNA, ALI NE SMETA
+  document.addEventListener("DOMContentLoaded", function() {
+    var btn = document.getElementById("btn-kyc");
+    if (btn) {
+      btn.addEventListener("click", function() {
+        document.getElementById("kycFrame").src = "office_kyc.html";
+        document.getElementById("kycModal").style.display = "block";
+      });
+    }
+    window.addEventListener("message", function(event) {
+      if (event.data === "kycCompleted") {
+        document.getElementById("kycModal").style.display = "none";
+        var consent = document.getElementById("consentModal");
+        if (consent) consent.style.display = "block";
+      }
+    });
+  });
+</script>
+</body>
+</html>

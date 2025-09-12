@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verify Identity (KYC) - SFT21</title>
+<!-- ============================================= -->
+<!-- UNIVERSAL THEME INITIALIZATION SCRIPT -->
+<!-- Solves the "flash" and back-forward cache issue -->
+<!-- ============================================= -->
+<script>
+        function applySft21Theme() {
+            try {
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+                if (theme === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                } else {
+                    document.documentElement.classList.remove('light-mode');
+                }
+            } catch (e) {
+                console.error('Error applying theme:', e);
+            }
+        }
+        applySft21Theme();
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                console.log('Page loaded from bfcache, re-checking theme.');
+                applySft21Theme();
+            }
+        });
+    </script>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Orbitron:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/vertical-putovnica-final.css" rel="stylesheet"/>
+<style>
+        #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .kyc-container { background: rgba(13, 1, 24, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--fluorescent-green); border-radius: 15px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); color: var(--text-color); }
+        .kyc-title { color: var(--fluorescent-orange); font-weight: 700; font-size: 1.75rem; margin-bottom: 1rem; letter-spacing: 0.5px; }
+        .kyc-icon { font-size: 4rem; color: var(--fluorescent-orange); }
+        .kyc-letters { font-family: 'Orbitron', sans-serif; font-size: 2.25rem; font-weight: bold; color: var(--fluorescent-orange); text-align: center; letter-spacing: 5px; margin-bottom: 2rem; }
+        .kyc-text-block { text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+        .kyc-highlight-white { color: white; font-weight: bold; text-transform: uppercase; background-color: rgba(255, 255, 255, 0.05); padding: 0.5rem 1rem; border-radius: 5px; display: inline-block; margin-top: 0.5rem; margin-bottom: 0.5rem; }
+        .kyc-highlight-yellow { color: var(--fluorescent-orange); font-weight: 600; }
+        .kyc-list { list-style: none; padding-left: 0; margin-top: 0.5rem; margin-bottom: 1rem; text-align: left; display: inline-block; }
+        .kyc-list li { position: relative; padding-left: 1.2rem; margin-bottom: 0.3rem; }
+        .kyc-list li::before { content: "- "; color: var(--fluorescent-orange); position: absolute; left: 0; top: 0; font-weight: bold; }
+        .kyc-document-section { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px dashed rgba(128, 255, 0, 0.2); }
+        .kyc-document-images { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 1.5rem; margin-top: 1rem; margin-bottom: 2.5rem; }
+        .kyc-base-placeholder { background-color: rgba(255, 255, 255, 0.08); border: 1px dashed var(--fluorescent-green); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.8rem; color: #a0aec0; text-align: center; padding: 0.75rem; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+        .kyc-base-placeholder.kyc-placeholder-clickable { cursor: pointer; }
+        .kyc-base-placeholder.kyc-placeholder-clickable:hover { background-color: rgba(128, 255, 0, 0.05); box-shadow: 0 0 15px rgba(128, 255, 0, 0.3); }
+        .kyc-base-placeholder:not(.has-preview) .placeholder-prompt-text, .kyc-base-placeholder:not(.has-preview) .fa-camera-retro, .kyc-base-placeholder:not(.has-preview) .kyc-custom-icon, .kyc-base-placeholder:not(.has-preview) .placeholder-main-text, .kyc-base-placeholder:not(.has-preview) .placeholder-upload-text { opacity: 1; pointer-events: auto; transition: opacity 0.3s ease; }
+        .kyc-base-placeholder.has-preview .placeholder-prompt-text, .kyc-base-placeholder.has-preview .fa-camera-retro, .kyc-base-placeholder.has-preview .kyc-custom-icon, .kyc-base-placeholder.has-preview .placeholder-main-text, .kyc-base-placeholder.has-preview .placeholder-upload-text { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .kyc-base-placeholder .placeholder-upload-text { display: block; font-size: 0.7rem; color: #718096; z-index: 1; line-height: 1.2; text-decoration: underline; cursor: pointer; transition: color 0.2s ease; margin-top: 0.5rem; }
+        .kyc-base-placeholder .placeholder-upload-text:hover { color: var(--fluorescent-green); }
+        .kyc-base-placeholder .placeholder-main-text { display: block; font-size: 0.9rem; color: white; font-weight: 600; z-index: 1; line-height: 1.2; }
+        .kyc-base-placeholder i.fa-camera-retro { font-size: 3rem; }
+        .kyc-base-placeholder i.fa-camera-retro, .kyc-base-placeholder .kyc-custom-icon { display: block; margin-bottom: 0.5rem; color: var(--fluorescent-green); cursor: pointer; transition: color 0.2s ease; position: relative; z-index: 5; }
+        .kyc-document-placeholder-horizontal { width: 180px; height: 110px; }
+        .kyc-document-placeholder-vertical { width: 150px; height: 180px; }
+        #selfie-placeholder i.fa-camera-retro { font-size: 3rem; margin-bottom: 0.8rem; }
+        #selfie-placeholder .placeholder-upload-text, #id-card-placeholder .placeholder-upload-text, #passport-placeholder .placeholder-upload-text, #driver-license-placeholder .placeholder-upload-text { font-size: 0.9rem;  color: var(--fluorescent-green); }        
+        .btn-kyc-continue { display: inline-block; background-color: var(--fluorescent-green) !important; color: #0e076a !important; padding: 12px 40px; border-radius: 8px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border: none; box-shadow: 0 4px 10px rgba(128, 255, 0, 0.3); transition: all 0.3s ease; margin-top: 2rem; cursor: pointer; }
+        .btn-kyc-continue:hover { background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%) !important; box-shadow: 0 6px 15px rgba(128, 255, 0, 0.5); transform: translateY(-2px); }
+        #camera-modal .popup-content { max-width: 640px; padding: 1rem; text-align: center; background: #111827; }
+        #camera-feed-container { position: relative; width: 100%; max-width: 250px !important; margin-left: auto; margin-right: auto; aspect-ratio: 3 / 4; border-radius: 8px; overflow: hidden; border: 1px solid var(--fluorescent-green); margin-bottom: 1rem; transition: aspect-ratio 0.3s ease, max-width 0.3s ease; }
+        #camera-feed-container.is-horizontal { aspect-ratio: 4 / 3; max-width: 450px !important; }
+        #camera-feed { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        #camera-overlay { position: absolute; left: 50%; box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5); pointer-events: none; transition: all 0.3s ease; }
+        .camera-overlay-oval { border-radius: 50%; width: 70%; height: 90% !important; border: 3px dashed rgba(255, 255, 255, 0.7) !important; top: 50% !important; transform: translate(-50%, -50%) !important; }
+        .camera-overlay-rectangle-vertical { border-radius: 8px; width: 85% !important; height: 80% !important; border: 3px dashed rgba(255, 255, 255, 0.7) !important; top: 10% !important; transform: translateX(-50%) !important; }
+        #camera-overlay.camera-overlay-rectangle-horizontal { border-radius: 8px !important; width: 85% !important; height: 70% !important; border: 3px dashed rgba(255, 255, 255, 0.7) !important; top: 15% !important; transform: translateX(-50%) !important; }
+        #capture-btn { display: inline-block; padding: 10px 30px; background-color: var(--fluorescent-green); color: #0e076a; border: none; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; }
+        #capture-btn:hover { background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%); box-shadow: 0 6px 15px rgba(128, 255, 0, 0.4); transform: translateY(-2px); }
+        #snapshot-canvas { display: none; }
+        #review-popup-content { border: 1px solid #9c27b0; }
+    </style>
+<style>
+        html.light-mode body { background-color: #f8fafc !important; color: #334155 !important; }
+        html.light-mode #network-canvas { background-color: transparent !important; }
+        html.light-mode .kyc-container, html.light-mode .popup-content, html.light-mode #review-popup-content { background-color: #ffffff !important; border-color: var(--primary-color) !important; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important; }
+        html.light-mode .kyc-title, html.light-mode .kyc-icon, html.light-mode .kyc-letters, html.light-mode .kyc-highlight-yellow, html.light-mode .kyc-list li::before { color: var(--primary-color) !important; }
+        html.light-mode .text-gray-300, html.light-mode .kyc-text-block p { color: #475569 !important; }
+        html.light-mode .kyc-highlight-white { background-color: #f1f5f9 !important; color: var(--primary-color) !important; }
+        html.light-mode .kyc-base-placeholder { background-color: #f8fafc !important; border-color: #cbd5e1 !important; }
+        html.light-mode .placeholder-main-text, html.light-mode .placeholder-upload-text, html.light-mode .placeholder-prompt-text, html.light-mode #business-proof-note strong { color: #475569 !important; }
+        html.light-mode .kyc-base-placeholder i { color: var(--primary-color) !important; }
+        html.light-mode .btn-kyc-continue, html.light-mode #review-popup-nastavi, html.light-mode #capture-btn { background-color: var(--primary-color) !important; color: white !important; }
+        html.light-mode .btn-kyc-continue:hover, html.light-mode #review-popup-nastavi:hover, html.light-mode #capture-btn:hover { background-color: var(--secondary-color) !important; }
+        html.light-mode #review-popup-content h2, html.light-mode #review-popup-content h3 { color: var(--primary-color) !important; }
+    </style>
+</head>
+<body class="bg-gray-900">
+<canvas id="network-canvas"></canvas>
+<div class="custom-cursor"></div>
+<div class="popup-overlay" id="popup-overlay">
+<div class="popup-content" id="camera-modal" style="display: none;">
+<button aria-label="Close camera" class="popup-close">×</button>
+<h4 class="text-white text-center text-lg mb-3">Position your <span id="camera-prompt-text">head within the oval</span></h4>
+<div class="camera-feed-container" id="camera-feed-container">
+<video autoplay="" id="camera-feed" playsinline=""></video>
+<div class="camera-overlay-oval" id="camera-overlay"></div>
+</div>
+<canvas class="hidden" id="snapshot-canvas"></canvas>
+<div class="text-center">
+<button class="btn-primary" id="capture-btn" title="Take photo">CAPTURE</button>
+</div>
+</div>
+</div>
+<nav class="fixed top-0 left-0 w-full z-50"></nav>
+<main class="pt-1 pb-1">
+<div class="container mx-auto px-4">
+<input accept="image/png, image/jpeg, image/jpg, application/pdf" id="doc-upload-input" style="display: none;" type="file"/>
+<input accept="image/png, image/jpeg, image/jpg" capture="user" id="selfie-upload-input" style="display: none;" type="file"/>
+<div class="kyc-container max-w-4xl mx-auto p-8 md:p-12 text-center">
+<h2 class="kyc-title text-3xl md:text-4xl">Verify Your Identity</h2>
+<div class="kyc-icon-container"> <i class="fas fa-shield-alt kyc-icon"></i> </div>
+<div class="kyc-letters">K Y C</div>
+<div class="kyc-text-block space-y-6">
+<p class="text-gray-300 text-lg"> KYC is an acronym for "Know Your Customer". </p>
+<p class="kyc-highlight-white text-lg px-4"> THE KYC STANDARD IS A PROCESS WHERE CLIENTS ARE REQUIRED TO VERIFY THEIR IDENTITY TO CONTINUE THE LEGAL USE OF OUR PORTAL'S PAGES, PRIMARILY TO PREVENT FAKE OR MULTIPLE REGISTRATIONS, MONEY LAUNDERING, IDENTITY THEFT, FINANCIAL FRAUD, TERRORIST FINANCING, ETC. </p>
+</div>
+<div class="kyc-document-section">
+<p class="text-gray-300 text-lg mb-2"> <span class="kyc-highlight-yellow">Please provide the required documents for KYC verification:</span> </p>
+<ul class="kyc-list text-gray-300 text-lg mb-4">
+<li>ONE of the identification documents: <strong>ID card</strong>, or <strong>passport</strong>, or <strong>driver's license</strong>.</li>
+<li>Your <strong>own photo</strong> (selfie - head to shoulders).</li>
+</ul>
+<div class="kyc-document-images">
+<div class="kyc-base-placeholder kyc-document-placeholder-horizontal kyc-placeholder-clickable kyc-camera-placeholder" data-input="doc-upload-input" id="id-card-placeholder">
+<span class="placeholder-main-text text-gray-400 text-sm">ID CARD</span>
+<i class="fas fa-camera-retro text-gray-500 mb-3"></i>
+<span class="placeholder-upload-text text-gray-400 text-sm underline cursor-pointer">Upload document</span>
+</div>
+<div class="kyc-base-placeholder kyc-document-placeholder-vertical kyc-camera-placeholder kyc-placeholder-clickable" data-input="doc-upload-input" id="passport-placeholder">
+<span class="placeholder-main-text text-gray-400 text-sm">PASSPORT</span>
+<i class="fas fa-camera-retro text-gray-500 mb-3"></i>
+<span class="placeholder-upload-text text-gray-400 text-sm underline cursor-pointer">Upload document</span>
+</div>
+<div class="kyc-base-placeholder kyc-document-placeholder-horizontal kyc-camera-placeholder kyc-placeholder-clickable" data-input="doc-upload-input" id="driver-license-placeholder">
+<span class="placeholder-main-text text-gray-400 text-sm">DRIVER'S LICENSE</span>
+<i class="fas fa-camera-retro mb-2"></i>
+<span class="placeholder-upload-text text-gray-400 text-sm underline cursor-pointer">Upload document</span>
+</div>
+</div>
+<div class="flex flex-col justify-center items-center gap-8 mt-4 mb-10" id="lower-kyc-fields-container">
+<!-- SELFIE FIELD -->
+<div class="kyc-base-placeholder kyc-document-placeholder-vertical kyc-camera-placeholder kyc-placeholder-clickable" data-input="selfie-upload-input" id="selfie-placeholder">
+<span class="placeholder-main-text text-gray-400 text-sm">TAKE A SELFIE</span>
+<i class="fas fa-camera-retro text-gray-500 mb-2"></i>
+<span class="placeholder-upload-text text-gray-400 text-sm underline cursor-pointer">Upload photo</span>
+</div>
+<!-- BUSINESS FIELD (initially hidden) -->
+<div class="hidden flex-col items-center" id="business-proof-wrapper">
+<div class="kyc-base-placeholder kyc-document-placeholder-vertical kyc-placeholder-clickable" data-input="doc-upload-input" id="business-proof-placeholder">
+<span class="placeholder-main-text text-gray-400 text-sm">PROOF OF REGISTRATION</span>
+<i class="fas fa-file-alt text-gray-500 mb-2" style="font-size: 3rem;"></i>
+<span class="placeholder-upload-text text-fluorescent-green text-sm underline cursor-pointer" style="color: var(--fluorescent-green); font-size: 0.9rem;">Upload document</span>
+</div>
+<p class="text-gray-400 text-xs mt-2 text-center max-w-xs" id="business-proof-note">
+<strong>Note:</strong><br/>
+        Upload a PDF copy of the original registration certificate of the legal entity or business.
+    </p>
+</div>
+</div>
+<a class="btn-kyc-continue" href="#" id="kyc-continue-btn">CONFIRM SUBMISSION</a>
+</div>
+<p class="text-gray-400 text-base mb-6 max-w-xl mx-auto mt-8">
+                    The submission of these documents is required solely for the purpose of user identity verification and cannot be used for any other purpose.
+                </p>
+</div>
+</div>
+</main>
+
+<div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-[9990] flex items-center justify-center" id="validation-popup-overlay" style="display: none;">
+<div class="popup-content" id="validation-popup">
+<button aria-label="Close" class="popup-close">×</button>
+<h4 class="text-white text-center text-lg mb-3">Validation Error</h4>
+<p class="text-gray-300 text-center mb-4" id="validation-popup-message"></p>
+</div>
+</div>
+<div class="fixed inset-0 bg-black bg-opacity-70 z-[10000] flex items-center justify-center hidden" id="review-popup-overlay">
+<div class="glass-card p-8 text-center w-full max-w-md mx-4" id="review-popup-content">
+<h3 class="text-4xl font-semibold mb-4" style="color: var(--secondary-color); font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;">♣ K Y C ♣</h3>
+<h2 class="text-2xl font-bold mb-6" style="color: var(--secondary-color); font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;"><strong>Your documents are under review</strong></h2>
+<p class="text-gray-300 mb-4 leading-relaxed">
+<strong>Upon completion of the review, your account will be verified, after which you can continue to use the available pages of our portal, or your verification will be rejected with an explanation.</strong>
+</p>
+<p class="text-gray-300 mb-8 leading-relaxed">
+<strong>In case of identified irregularities (expired ID document, data mismatch, poor quality of the ID document photo or your own photo), you will be notified to repeat the action or upload a new photo.</strong>
+</p>
+<button class="btn-purple w-full py-3 px-6 rounded-full font-semibold uppercase tracking-wider transition-transform duration-300 transform hover:-translate-y-1" id="review-popup-nastavi" style="background-color: #6a1b9a; color: white; border: none;" type="button">CONTINUE</button>
+</div>
+</div>
+<div class="fixed inset-0 bg-black bg-opacity-70 z-[9999] flex items-center justify-center hidden" id="validation-popup-overlay">
+<div class="glass-card p-8 text-center w-full max-w-sm mx-4" id="validation-popup-content">
+<h3 class="text-xl font-bold mb-4 text-fluorescent-green" style="font-family: 'Orbitron', sans-serif;">Input Error</h3>
+<p class="text-gray-300 mb-6">Please fill in all required fields with correct data.</p>
+<button class="btn-primary rounded-full font-semibold py-2 px-6 uppercase tracking-wide transition-transform duration-300 transform hover:-translate-y-1" id="validation-popup-ok" type="button">OK</button>
+</div>
+</div>
+
+    <!-- ======================================================= -->
+    <!--      KONAČNI I ISPRAVLJENI SCRIPT BLOK ZA OFFICE_KYC.HTML     -->
+    <!-- ======================================================= -->
+
+    <!-- GSAP biblioteka, potrebna za animaciju kursora -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // === DEKLARACIJA ELEMENATA ===
+        const body = document.body;
+        const cursor = document.querySelector('.custom-cursor');
+        const canvas = document.getElementById('network-canvas');
+        const urlParams = new URLSearchParams(window.location.search);
+        const source = urlParams.get('source');
+        const guardianId = urlParams.get('guardian');
+        const isGuardianKyc = source === 'guardian_kyc' && guardianId;
+        const kycContinueBtn = document.getElementById('kyc-continue-btn');
+        const reviewPopup = document.getElementById('review-popup-overlay');
+        const reviewPopupNastaviBtn = document.getElementById('review-popup-nastavi');
+        const businessWrapper = document.getElementById('business-proof-wrapper');
+        const accountType = localStorage.getItem('sft21_account_type');
+        const cameraModal = document.getElementById('camera-modal');
+        const cameraFeed = document.getElementById('camera-feed');
+        const captureBtn = document.getElementById('capture-btn');
+        const snapshotCanvas = document.getElementById('snapshot-canvas');
+        const popupOverlay = document.getElementById('popup-overlay');
+        const cameraPromptText = document.getElementById('camera-prompt-text');
+        const cameraOverlay = document.getElementById('camera-overlay');
+        const cameraFeedContainer = document.getElementById('camera-feed-container');
+        const clickablePlaceholders = document.querySelectorAll('.kyc-placeholder-clickable');
+        const docUploadInput = document.getElementById('doc-upload-input');
+        const selfieUploadInput = document.getElementById('selfie-upload-input');
+        
+        let currentStream = null;
+        let isCameraOpening = false;
+
+        // === LOGIKA ZA KURSOR ===
+        if (cursor && body && typeof gsap !== 'undefined') {
+            let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+            const speed = 0.1;
+            const updateCursorPosition = () => {
+                cursorX += (mouseX - cursorX) * speed;
+                cursorY += (mouseY - cursorY) * speed;
+                cursor.style.left = `${cursorX}px`;
+                cursor.style.top = `${cursorY}px`;
+                requestAnimationFrame(updateCursorPosition);
+            };
+            requestAnimationFrame(updateCursorPosition);
+            window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+            document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
+            document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
+            document.querySelectorAll('a, button, input, label[for], .kyc-placeholder-clickable').forEach(el => {
+                el.addEventListener('mouseenter', () => gsap.to(cursor, { duration: 0.3, scale: 1.5 }));
+                el.addEventListener('mouseleave', () => gsap.to(cursor, { duration: 0.3, scale: 1 }));
+            });
+        }
+
+        // === LOGIKA ZA ANIMACIJU POZADINE (CANVAS) ===
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let particles = [];
+                let mouse = { x: null, y: null };
+                const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4, mouseInteractionRadius: 150, mouseEffectStrength: 2, };
+                const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4, mouseInteractionRadius: 150, mouseEffectStrength: 2, };
+                let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+                const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+                window.addEventListener('resize', resizeCanvas);
+                resizeCanvas();
+                window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+                window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+                class Particle {
+                    constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.z = Math.random() * 2 - 1; this.radius = currentOptions.defaultRadius * (1 + this.z * 0.5); this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed; this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed; }
+                    draw() { let finalRadius = this.radius; let opacity = 1; if (mouse.x !== null) { const dist = Math.sqrt(Math.pow(this.x - mouse.x, 2) + Math.pow(this.y - mouse.y, 2)); if (dist < currentOptions.mouseInteractionRadius) { const effect = (1 - dist / currentOptions.mouseInteractionRadius); finalRadius += effect * currentOptions.mouseEffectStrength; opacity += effect * 0.5; } } ctx.beginPath(); ctx.arc(this.x, this.y, finalRadius, 0, Math.PI * 2); ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, ${opacity * 0.85})`; ctx.fill(); }
+                    update() { this.x += this.vx * (1 + this.z * 0.5); this.y += this.vy * (1 + this.z * 0.5); if (this.x > canvas.width + 5) this.x = -5; else if (this.x < -5) this.x = canvas.width + 5; if (this.y > canvas.height + 5) this.y = -5; else if (this.y < -5) this.y = canvas.height + 5; }
+                }
+                const initParticles = () => { particles = []; for (let i = 0; i < currentOptions.particleAmount; i++) { particles.push(new Particle()); } };
+                const drawLines = () => { let pulse = Math.sin(Date.now() * 0.001) * 0.2 + 0.8; for (let i = 0; i < particles.length; i++) { for (let j = i + 1; j < particles.length; j++) { const dist = Math.sqrt(Math.pow(particles[i].x - particles[j].x, 2) + Math.pow(particles[i].y - particles[j].y, 2)); if (dist < currentOptions.linkRadius) { let opacity = (1 - (dist / currentOptions.linkRadius)) * pulse; if (mouse.x !== null) { const distToMouse1 = Math.sqrt(Math.pow(particles[i].x - mouse.x, 2) + Math.pow(particles[i].y - mouse.y, 2)); const distToMouse2 = Math.sqrt(Math.pow(particles[j].x - mouse.x, 2) + Math.pow(particles[j].y - mouse.y, 2)); if(distToMouse1 < currentOptions.mouseInteractionRadius || distToMouse2 < currentOptions.mouseInteractionRadius) { opacity = Math.min(1, opacity + 0.5); } } ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = `rgba(${currentOptions.lineColorRGB}, ${opacity * 0.5})`; ctx.lineWidth = currentOptions.lineWidth; ctx.stroke(); } } } };
+                const animate = () => { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => p.update()); drawLines(); particles.forEach(p => p.draw()); requestAnimationFrame(animate); };
+                window.setAnimationTheme = (theme) => { currentOptions = theme === 'light' ? lightOptions : darkOptions; initParticles(); };
+                initParticles(); animate();
+            }
+
+        // === LOGIKA KYC FORME ===
+        if (isGuardianKyc) {
+            if (businessWrapper) businessWrapper.style.display = 'none';
+        } else if (accountType === 'business') {
+            if (businessWrapper) {
+                businessWrapper.classList.remove('hidden');
+                businessWrapper.classList.add('flex');
+            }
+        }
+        
+        const stopCameraStream = () => { if (currentStream) { currentStream.getTracks().forEach(track => track.stop()); currentStream = null; } };
+        const closeAllPopups = () => { if (popupOverlay) popupOverlay.style.display = 'none'; document.querySelectorAll('.popup-content').forEach(p => p.style.display = 'none'); if (body) body.classList.remove('overflow-hidden'); stopCameraStream(); };
+        const displayPreview = (file, placeholderElement) => { if (!file || !placeholderElement) return; const reader = new FileReader(); reader.onload = (e) => { placeholderElement.style.backgroundImage = `url(${e.target.result})`; placeholderElement.classList.add('has-preview'); }; reader.readAsDataURL(file); };
+        const triggerFileInput = (inputId, placeholderId) => { const inputElement = document.getElementById(inputId); if (inputElement) { inputElement.dataset.targetPlaceholder = placeholderId; inputElement.click(); } };
+
+        const triggerCamera = async (placeholderId) => {
+            if (isCameraOpening) return;
+            isCameraOpening = true;
+
+            if (cameraModal) cameraModal.dataset.targetPlaceholder = placeholderId;
+            if (cameraPromptText && cameraOverlay && cameraFeedContainer) {
+                cameraOverlay.className = 'camera-overlay';
+                cameraFeedContainer.classList.remove('is-horizontal');
+                if (placeholderId === 'selfie-placeholder') {
+                    cameraPromptText.textContent = 'glavu unutar ovala';
+                    cameraOverlay.classList.add('camera-overlay-oval');
+                } else {
+                    cameraPromptText.textContent = 'dokument unutar okvira';
+                    cameraOverlay.classList.add('camera-overlay-rectangle-horizontal');
+                    cameraFeedContainer.classList.add('is-horizontal');
+                }
+            }
+            try {
+                stopCameraStream();
+                if (popupOverlay) popupOverlay.style.display = 'flex';
+                if (cameraModal) cameraModal.style.display = 'block';
+                if (body) body.classList.add('overflow-hidden');
+                currentStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+                if (cameraFeed) cameraFeed.srcObject = currentStream;
+            } catch (err) {
+                alert("Nije moguće pristupiti kameri. Provjerite dozvole.\n" + err.message);
+                closeAllPopups();
+            } finally {
+                setTimeout(() => { isCameraOpening = false; }, 300);
+            }
+        };
+
+        clickablePlaceholders.forEach(placeholder => {
+            placeholder.addEventListener('click', async (event) => {
+                if (placeholder.classList.contains('has-preview')) { placeholder.style.backgroundImage = ''; placeholder.classList.remove('has-preview'); return; }
+                const inputId = placeholder.dataset.input; const placeholderId = placeholder.id;
+                const clickedIcon = event.target.closest('i'); const clickedUploadText = event.target.classList.contains('placeholder-upload-text');
+                if (clickedIcon) { await triggerCamera(placeholderId); } 
+                else if (clickedUploadText) { triggerFileInput(inputId, placeholderId); }
+            });
+        });
+        
+        docUploadInput.addEventListener('change', (e) => { const file = e.target.files[0]; const targetId = e.target.dataset.targetPlaceholder; if(file && targetId) displayPreview(file, document.getElementById(targetId)); e.target.value = null; });
+        selfieUploadInput.addEventListener('change', (e) => { const file = e.target.files[0]; const targetId = e.target.dataset.targetPlaceholder; if(file && targetId) displayPreview(file, document.getElementById(targetId)); e.target.value = null; });
+        
+        if(captureBtn) captureBtn.addEventListener('click', () => { 
+            if (!currentStream || !cameraFeed || !snapshotCanvas) return; 
+            snapshotCanvas.width = cameraFeed.videoWidth; 
+            snapshotCanvas.height = cameraFeed.videoHeight; 
+            snapshotCanvas.getContext('2d').drawImage(cameraFeed, 0, 0); 
+            const dataUrl = snapshotCanvas.toDataURL('image/png'); 
+            const targetId = cameraModal.dataset.targetPlaceholder; 
+            if(targetId) { 
+                const targetEl = document.getElementById(targetId); 
+                targetEl.style.backgroundImage = `url(${dataUrl})`; 
+                targetEl.classList.add('has-preview'); 
+            } 
+            closeAllPopups(); 
+        });
+
+        document.querySelectorAll('.popup-close').forEach(btn => btn.addEventListener('click', closeAllPopups));
+        
+        if (kycContinueBtn) {
+            kycContinueBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                let docUploaded = false, selfieUploaded = false;
+                const idCard = document.getElementById('id-card-placeholder'), driverLicense = document.getElementById('driver-license-placeholder'), passport = document.getElementById('passport-placeholder'), selfie = document.getElementById('selfie-placeholder');
+                
+                if (idCard?.classList.contains('has-preview') || driverLicense?.classList.contains('has-preview') || passport?.classList.contains('has-preview')) {
+                    docUploaded = true;
+                }
+                if (selfie?.classList.contains('has-preview')) {
+                    selfieUploaded = true;
+                }
+                
+                if (!docUploaded || !selfieUploaded) {
+                    alert("Molimo učitajte jedan identifikacijski dokument i Vašu fotografiju.");
+                    return;
+                }
+
+                if (isGuardianKyc) {
+                    window.location.href = `register.html?kyc_complete=true&guardian=${guardianId}`;
+                } else {
+                    if (reviewPopup) reviewPopup.style.display = 'flex';
+                }
+            });
+        }
+
+        if (reviewPopupNastaviBtn) {
+            reviewPopupNastaviBtn.addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+        }
+    });
+    </script>
+
+</body>
+</html>

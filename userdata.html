@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korisnički podaci - SFT21 Business Concept</title>
+
+    <!-- ============================================= -->
+    <!-- UNIVERZALNA SKRIPTA ZA INICIJALIZACIJU TEME -->
+    <!-- Rješava "bljesak" i problem s back-forward cacheom -->
+    <!-- ============================================= -->
+    <script>
+        // Funkcija za primjenu teme, da izbjegnemo ponavljanje koda
+        function applySft21Theme() {
+            try {
+                // Ako tema nije postavljena, zadana je 'dark'
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+
+                if (theme === 'light') {
+                    // Ako je tema 'light', DODAJ klasu
+                    document.documentElement.classList.add('light-mode');
+                } else {
+                    // U svim ostalim slučajevima (ako je 'dark'), UKLONI klasu
+                    document.documentElement.classList.remove('light-mode');
+                }
+            } catch (e) {
+                console.error('Greška pri primjeni teme:', e);
+            }
+        }
+
+        // 1. Primijeni temu ODMAH pri učitavanju da se spriječi "bljesak"
+        applySft21Theme();
+
+        // 2. Dodaj listener za 'pageshow' događaj. Ovo rješava problem
+        //    kada se stranica učita iz "back-forward" cachea preglednika.
+        window.addEventListener('pageshow', function(event) {
+            // event.persisted je 'true' ako je stranica učitana iz cachea
+            if (event.persisted) {
+                console.log('Stranica učitana iz bfcachea, ponovno provjeravam temu.');
+                applySft21Theme();
+            }
+        });
+    </script>
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link na vanjsku CSS datoteku -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Dodajemo Arial Narrow font i specifične stilove za ovu stranicu -->
+    <style>
+        @font-face {
+            font-family: 'Arial Narrow';
+            src: local('Arial Narrow');
+        }
+
+        body, h1, h2, h3, h4, h5, h6, p, span, div, button, input, select, textarea {
+            font-family: 'Arial Narrow', Arial, sans-serif !important;
+        }
+
+        /* Podesite padding na vrhu/dnu body i onemogućite vertikalno skrolanje */
+        body {
+            padding-top: 1rem; /* Smanjen razmak od vrha */
+            padding-bottom: 0; /* Uklonjen razmak na dnu */
+            overflow-y: hidden; /* Onemogući vertikalno skrolanje */
+            background-color: #0d0118; /* Osiguraj tamnu pozadinu iz CSS varijable */
+            color: var(--text-color); /* Osiguraj boju teksta */
+            overflow-x: hidden; /* Spriječi horizontalni skrol */
+        }
+
+        /* DODANI STILOVI ZA ANIMACIJU POZADINE */
+        #network-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Postavlja platno iza svog sadržaja */
+        }
+
+        /* Stilovi za korisničko ime i lozinku */
+        .input-container {
+            position: relative;
+            margin-bottom: 2rem; /* Razmak ispod input kontejnera */
+        }
+
+        .input-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--fluorescent-green); /* Fluorescent Green */
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(106, 27, 154, 0.1); /* Izmijenjeno da koristi rgba ljubičastu */
+            border: 1px solid var(--fluorescent-green); /* Fluorescent Green border */
+            border-radius: 8px;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--fluorescent-green);
+            box-shadow: 0 0 0 3px rgba(128, 255, 0, 0.3); /* Green glow */
+            background-color: rgba(106, 27, 154, 0.2); /* Malo tamnija ljubičasta na focus */
+        }
+
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .input-requirements {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 1.5rem;
+            gap: 0.5rem;
+            padding: 0 1rem;
+        }
+
+        .requirement {
+            color: var(--fluorescent-green); /* Fluorescent Green */
+            font-size: 1rem;
+            padding: 0.25rem 0;
+            text-align: left;
+        }
+
+        .save-button {
+            background-color: var(--fluorescent-green); /* Fluorescent Green */
+            color: #0e076a; /* Dark Blue */
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: none;
+            margin-top: 1rem;
+            display: none; /* Hidden by default */
+            position: absolute;
+            right: 0;
+            bottom: -60px;
+        }
+
+        .save-button:hover {
+            background-color: #66cc00; /* Darker Green */
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(128, 255, 0, 0.4); /* Green shadow */
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--fluorescent-green); /* Fluorescent Green */
+            font-size: 1.2rem;
+        }
+
+        /* Animacija za pojavljivanje elemenata */
+        .fade-in-section { /* Nova klasa za specifičnu animaciju sekcije */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease; /* Malo sporija i glađa */
+        }
+
+        .fade-in-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Popup stilovi (preuzeti iz style.css) */
+        .popup { /* Koristi postojeći .popup iz style.css */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #0d0118; /* Tamna pozadina */
+            border: 1px solid var(--fluorescent-green); /* Zeleni border */
+            border-radius: 20px; /* Veći radius */
+            padding: 2rem; /* Veći padding */
+            z-index: 1000;
+            box-shadow: 0 8px 32px 0 rgba(128, 255, 0, 0.37); /* Zeleni glow */
+            max-width: 400px;
+            width: 90%;
+            display: none; /* Hidden by default */
+        }
+
+            .popup-content {
+            text-align: center; /* Horizontalno centriranje inline/text */
+            color: var(--text-color); /* Boja teksta */
+            display: flex; /* Omogući flexbox */
+            flex-direction: column; /* Elementi se slažu vertikalno */
+            justify-content: center; /* Centriraj elemente vertikalno u kontejneru */
+            align-items: center; /* Centriraj elemente horizontalno u kontejneru */
+            width: 100%; /* << DODAJTE OVU LINIJU */
+        }
+
+        .popup-title {
+            color: var(--fluorescent-green) !important; /* Zeleni naslov (nadjačava ostale) */
+            font-size: 1.5rem;
+            margin-bottom: 1rem; /* Razmak ispod naslova */
+            /* text-align: center; je redundantno zbog align-items: center na roditelju */
+        }
+
+        .popup-message {
+            margin-bottom: 1.5rem; /* Razmak ispod poruke */
+            font-size: 1.1rem;
+            line-height: 1.5; /* Bolji prored */
+             /* text-align: center; je redundantno zbog align-items: center na roditelju */
+        }
+
+        .popup-button { /* Koristi postojeći .btn-primary stil za gumbe */
+            /* Naslijeđuje stilove iz .btn-primary u style.css */
+            /* Osiguraj da boja teksta bude tamna */
+            color: #0e076a !important;
+            background-color: var(--fluorescent-green) !important;
+            padding: 10px 20px; /* Malo manji padding od default .btn-primary */
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem; /* Razmak iznad gumba */
+        }
+
+        .popup-button:hover {
+            background-color: #66cc00 !important; /* Tamnija zelena na hover */
+             /* transform: translateY(-2px); */ /* Opcija: dodati transform */
+            box-shadow: 0 5px 15px rgba(128, 255, 0, 0.4); /* Zeleni sjaj */
+        }
+
+
+        .popup-overlay { /* Koristi postojeći .popup-overlay iz style.css */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 999;
+            display: none; /* Hidden by default */
+        }
+
+        /* --- STIL ZA NAPOMENU KORISNIČKOG IMENA  --- */
+        /* Koristi se općeniti .warning-note stil iz style.css */
+        .warning-note { /* Stil definiran u style.css */
+             color: var(white); 
+             font-size: 1.2rem; /* Originalna veličina */
+             font-style: italic;
+             margin-top: 1.5rem;
+             text-align: center;
+             /* display is handled by JS */
+        }
+        /* --- KRAJ STILA --- */
+
+
+        /* Dodatni stilovi za responsive dizajn */
+        @media (max-width: 768px) {
+
+            body {
+                 padding-top: 1rem; /* Manji padding na mobitelu */
+                 padding-bottom: 0; /* Uklonjen razmak na dnu i na mobitelu */
+            }
+
+            .input-title {
+                font-size: 1.8rem;
+            }
+
+            .requirement {
+                font-size: 0.9rem;
+            }
+
+            .save-button {
+                position: static;
+                width: 100%;
+                margin-top: 2rem; /* Povećan razmak iznad gumba */
+                margin-bottom: 0; /* Uklonjen razmak ispod */
+            }
+
+            .input-container {
+                 margin-bottom: 1rem; /* Manji razmak ispod inputa */
+            }
+
+            .glass-card {
+                 padding: 1.5rem !important; /* Manji padding na karticama */
+            }
+             .glass-card + .glass-card {
+                 margin-top: 1.5rem !important; /* Manji razmak između kartica */
+            }
+
+            .popup {
+                 padding: 1.5rem; /* Manji padding na popupu */
+            }
+            .popup-message {
+                 font-size: 1rem;
+            }
+            /* Prilagodba napomene na mobitelu (ostavljena default veličina iz .warning-note) */
+
+        }
+        @media (min-width: 769px) {
+            .save-button {
+                 /* Osiguraj da je absolute pozicioniran na desktopu */
+                 position: absolute;
+                 bottom: -60px;
+                 right: 0;
+                 width: auto;
+                 margin-top: 1rem;
+            }
+        }
+    </style>
+
+        <!-- NOVI STILOVI ZA LIGHT MODE -->
+    <style>
+        html.light-mode body {
+            background-color: #f8fafc !important;
+            color: #334155 !important;
+        }
+        html.light-mode #network-canvas {
+            background-color: transparent !important; /* Canvas postaje proziran */
+        }
+        html.light-mode .glass-card {
+            background-color: #ffffff !important;
+            border-color: var(--primary-color) !important; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+        }
+        html.light-mode .input-title {
+            color: var(--primary-color) !important; /* Ljubičasta */
+        }
+        html.light-mode .input-field {
+            background-color: #f1f5f9 !important;
+            border-color: var(--primary-color) !important; /* <--- OVO JE IZMIJENJENO */
+            color: #1e293b !important;
+        }
+        html.light-mode .input-field::placeholder {
+            color: #94a3b8 !important;
+        }
+        html.light-mode .input-field:focus {
+            border-color: var(--primary-color) !important;
+            box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2) !important;
+            background-color: #ffffff !important;
+        }
+        html.light-mode .requirement {
+            color: #475569 !important; /* Tamno siva boja */
+        }
+        html.light-mode .toggle-password {
+            color: var(--primary-color) !important;
+        }
+        html.light-mode .warning-note {
+            color: var(--primary-color) !important;
+        }
+        html.light-mode .save-button {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+        }
+        html.light-mode .save-button:hover {
+            background-color: var(--secondary-color) !important;
+        }
+        /* Stilovi za popup u light modu */
+        html.light-mode .popup {
+            background-color: #ffffff !important;
+            border-color: var(--primary-color) !important;
+        }
+        html.light-mode .popup-title {
+            color: var(--primary-color) !important;
+        }
+        html.light-mode .popup-message {
+            color: #334155 !important;
+        }
+        html.light-mode .popup-button {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+        }
+        html.light-mode .popup-button:hover {
+            background-color: var(--secondary-color) !important;
+        }
+        /* Stilovi za popup u light modu */
+        html.light-mode .popup {
+            background-color: #ffffff !important;
+            border-color: var(--primary-color) !important;
+        }
+        /* >>> DODAJTE OVAJ BLOK ISPOD <<< */
+        html.light-mode .popup-content {
+            background-color: #ffffff !important; /* Osigurava bijelu pozadinu i za unutarnji dio */
+        }
+        /* >>> KRAJ BLOKA ZA DODAVANJE <<< */
+        html.light-mode .popup-title {
+            color: var(--primary-color) !important;
+        }
+        html.light-mode .popup-message {
+            color: #334155 !important;
+        }
+        html.light-mode .popup-button {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+        }
+        html.light-mode .popup-button:hover {
+            background-color: var(--secondary-color) !important;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900">
+    <!-- Platno za animaciju pozadine -->
+    <canvas id="network-canvas"></canvas>
+
+    <!-- Custom Cursor -->
+    <!-- Ovo je kontrolirano vanjskim script.js fajlom -->
+    <div class="custom-cursor"></div>
+
+    <!-- Popup Overlay -->
+    <div id="popup-overlay" class="popup-overlay"></div>
+
+    <!-- Error Popup -->
+    <div id="error-popup" class="popup">
+        <div class="popup-content">
+            <h3 class="popup-title">Greška</h3>
+            <p id="error-message" class="popup-message">Poruka greške</p>
+            <button id="error-close" class="popup-button">U redu</button> 
+        </div>
+    </div>
+
+    <!-- ====== GLAVNI SADRŽAJ ====== -->
+    <!-- Uklonjena klasa py-20 jer padding kontrolira body -->
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+            <!-- Korisničko ime sekcija -->
+            <div id="username-section" class="glass-card p-8 fade-in-section active"> <!-- UKLONJENA KLASA mb-8 -->
+                <h2 class="input-title">Izaberi korisničko ime</h2>
+
+                <div class="input-container">
+                    <input type="text" id="username-input" class="input-field" placeholder="Upiši korisničko ime" autocomplete="off" maxlength="21">
+                    <button id="username-save" class="save-button">SPREMI</button>
+                </div>
+
+                <div class="input-requirements">
+                    <div class="requirement">Korisničko ime mora imati najmanje 4 i najviše 21 znak. Možete koristiti;</div>
+                    <div class="requirement">- mala slova: a - z,</div>
+                    <div class="requirement">- velika slova: A - Z,</div>
+                    <div class="requirement">- brojeve: 0 - 9,</div>
+                    <div class="requirement">- ili kombinaciju slova i brojeva.</div>
+
+                </div>
+
+                <div class="warning-note text-3g text-white" id="username-warning" style="display: none;">
+                    *NAPOMENA: Izabrano korisničko ime klikom na "SPREMI" više se ne može promijeniti!!!
+                </div>
+            </div>
+
+            <!-- Lozinka sekcija (inicijalno skrivena) -->
+            <div id="password-section" class="glass-card p-8 fade-in-section" style="display: none;"> <!-- Promijenjena klasa za animaciju -->
+                <h2 class="input-title">Izaberi lozinku</h2>
+
+                <div class="input-container">
+                    <input type="password" id="password-input" class="input-field" placeholder="Upiši lozinku" autocomplete="off" maxlength="21">
+                    <span class="toggle-password">
+                        <i class="far fa-eye"></i>
+                    </span>
+                    <button id="password-save" class="save-button">SPREMI</button>
+                </div>
+
+                <div class="input-requirements">
+                    <div class="requirement">Lozinka mora imati najmanje 7 i najviše 21 znak te moa sadržavati minimalno jedno;</div>
+                    <div class="requirement">- malo slovo: a - z,</div>
+                    <div class="requirement">- veliko slovo: A - Z,</div>
+                    <div class="requirement">- broj: 0 - 9,</div>
+                    <div class="requirement">- poseban znak:! " # $ % & / _ + ~ = ?</div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- ====== KRAJ GLAVNOG SADRŽAJA ====== -->
+
+
+       <!-- ======================================================= -->
+    <!--      KONAČNI I ISPRAVLJENI SCRIPT BLOK ZA USERDATA.HTML     -->
+    <!-- ======================================================= -->
+    
+    <!-- GSAP biblioteka, potrebna za animaciju kursora -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // === DEKLARACIJA ELEMENATA ===
+            const body = document.body;
+            const cursor = document.querySelector('.custom-cursor');
+            const canvas = document.getElementById('network-canvas');
+            const usernameInput = document.getElementById('username-input');
+            const usernameSave = document.getElementById('username-save');
+            const usernameSection = document.getElementById('username-section');
+            const passwordSection = document.getElementById('password-section');
+            const passwordInput = document.getElementById('password-input');
+            const passwordSave = document.getElementById('password-save');
+            const togglePassword = document.querySelector('.toggle-password');
+            const errorPopup = document.getElementById('error-popup');
+            const errorMessage = document.getElementById('error-message');
+            const errorClose = document.getElementById('error-close');
+            const popupOverlay = document.getElementById('popup-overlay');
+
+            const existingUsernames = ['admin', 'administrator', 'user', 'test', 'demo', 'moderator', 'support', 'korisnik', 'gost', 'sfteam', 'sfadmin', 'sfuser', 'sft21'];
+
+            // === LOGIKA ZA KURSOR ===
+            if (cursor && body && typeof gsap !== 'undefined') {
+                let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+                const speed = 0.1;
+                const updateCursorPosition = () => {
+                    cursorX += (mouseX - cursorX) * speed;
+                    cursorY += (mouseY - cursorY) * speed;
+                    cursor.style.left = `${cursorX}px`;
+                    cursor.style.top = `${cursorY}px`;
+                    requestAnimationFrame(updateCursorPosition);
+                };
+                requestAnimationFrame(updateCursorPosition);
+                window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+                document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
+                document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
+                document.querySelectorAll('a, button, input').forEach(el => {
+                    el.addEventListener('mouseenter', () => gsap.to(cursor, { duration: 0.3, scale: 1.5 }));
+                    el.addEventListener('mouseleave', () => gsap.to(cursor, { duration: 0.3, scale: 1 }));
+                });
+            }
+
+            // =======================================================
+            //      >>> ISPRAVLJENA I KOMPLETNA ANIMACIJA POZADINE <<<
+            // =======================================================
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let particles = [];
+                let mouse = { x: null, y: null };
+                const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4, mouseInteractionRadius: 150, mouseEffectStrength: 2, };
+                const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4, mouseInteractionRadius: 150, mouseEffectStrength: 2, };
+                let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+                const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+                window.addEventListener('resize', resizeCanvas);
+                resizeCanvas();
+                window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+                window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+                class Particle {
+                    constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.z = Math.random() * 2 - 1; this.radius = currentOptions.defaultRadius * (1 + this.z * 0.5); this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed; this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed; }
+                    draw() { let finalRadius = this.radius; let opacity = 1; if (mouse.x !== null) { const dist = Math.sqrt(Math.pow(this.x - mouse.x, 2) + Math.pow(this.y - mouse.y, 2)); if (dist < currentOptions.mouseInteractionRadius) { const effect = (1 - dist / currentOptions.mouseInteractionRadius); finalRadius += effect * currentOptions.mouseEffectStrength; opacity += effect * 0.5; } } ctx.beginPath(); ctx.arc(this.x, this.y, finalRadius, 0, Math.PI * 2); ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, ${opacity * 0.85})`; ctx.fill(); }
+                    update() { this.x += this.vx * (1 + this.z * 0.5); this.y += this.vy * (1 + this.z * 0.5); if (this.x > canvas.width + 5) this.x = -5; else if (this.x < -5) this.x = canvas.width + 5; if (this.y > canvas.height + 5) this.y = -5; else if (this.y < -5) this.y = canvas.height + 5; }
+                }
+                const initParticles = () => { particles = []; for (let i = 0; i < currentOptions.particleAmount; i++) { particles.push(new Particle()); } };
+                const drawLines = () => { let pulse = Math.sin(Date.now() * 0.001) * 0.2 + 0.8; for (let i = 0; i < particles.length; i++) { for (let j = i + 1; j < particles.length; j++) { const dist = Math.sqrt(Math.pow(particles[i].x - particles[j].x, 2) + Math.pow(particles[i].y - particles[j].y, 2)); if (dist < currentOptions.linkRadius) { let opacity = (1 - (dist / currentOptions.linkRadius)) * pulse; if (mouse.x !== null) { const distToMouse1 = Math.sqrt(Math.pow(particles[i].x - mouse.x, 2) + Math.pow(particles[i].y - mouse.y, 2)); const distToMouse2 = Math.sqrt(Math.pow(particles[j].x - mouse.x, 2) + Math.pow(particles[j].y - mouse.y, 2)); if(distToMouse1 < currentOptions.mouseInteractionRadius || distToMouse2 < currentOptions.mouseInteractionRadius) { opacity = Math.min(1, opacity + 0.5); } } ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = `rgba(${currentOptions.lineColorRGB}, ${opacity * 0.5})`; ctx.lineWidth = currentOptions.lineWidth; ctx.stroke(); } } } };
+                const animate = () => { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => p.update()); drawLines(); particles.forEach(p => p.draw()); requestAnimationFrame(animate); };
+                window.setAnimationTheme = (theme) => { currentOptions = theme === 'light' ? lightOptions : darkOptions; initParticles(); };
+                initParticles(); animate();
+            }
+
+            // === LOGIKA FORME I POPUPA ===
+            function showError(message) {
+                if(errorMessage) errorMessage.textContent = message;
+                if(errorPopup) errorPopup.style.display = 'block';
+                if(popupOverlay) popupOverlay.style.display = 'block';
+            }
+
+            if (errorClose) {
+                errorClose.addEventListener('click', () => {
+                    if(errorPopup) errorPopup.style.display = 'none';
+                    if(popupOverlay) popupOverlay.style.display = 'none';
+                });
+            }
+
+            function isPasswordValid(password) {
+                return !/\s/.test(password) && password.length >= 7 && password.length <= 21 && /[a-z]/.test(password) && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[!\"#$%&\/_+~=?]/.test(password);
+            }
+
+            if (usernameInput && usernameSave) {
+                usernameInput.addEventListener('input', function() {
+                    const value = this.value.replace(/[^a-zA-Z0-9]/g, '');
+                    if (this.value !== value) {
+                        this.value = value;
+                        showError('Dozvoljena su samo slova i brojevi!');
+                    }
+                    if (this.value.length > 21) this.value = this.value.slice(0, 21);
+                    usernameSave.style.display = this.value.length >= 4 ? 'block' : 'none';
+                    document.getElementById('username-warning').style.display = this.value.length >= 4 ? 'block' : 'none';
+                });
+
+                usernameSave.addEventListener('click', function() {
+                    const value = usernameInput.value.trim().toLowerCase();
+                    if (value.length < 4 || existingUsernames.includes(value)) {
+                        showError(existingUsernames.includes(value) ? 'Korisničko ime već postoji.' : 'Korisničko ime mora imati najmanje 4 znaka.');
+                        return;
+                    }
+                    usernameSection.classList.remove('active');
+                    setTimeout(() => {
+                        usernameSection.style.display = 'none';
+                        passwordSection.style.display = 'block';
+                        setTimeout(() => {
+                            passwordSection.classList.add('active');
+                            if (passwordInput) passwordInput.focus();
+                        }, 10);
+                    }, 800);
+                });
+            }
+
+            if (passwordInput && passwordSave) {
+                passwordInput.addEventListener('input', function() {
+                    passwordSave.style.display = this.value.length >= 7 ? 'block' : 'none';
+                });
+
+                passwordSave.addEventListener('click', function() {
+                    if (isPasswordValid(passwordInput.value)) {
+                        window.location.href = 'office_kyc.html';
+                    } else {
+                        showError('Lozinka ne zadovoljava sve sigurnosne zahtjeve.');
+                    }
+                });
+            }
+
+            if (togglePassword && passwordInput) {
+                togglePassword.addEventListener('click', function() {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    this.querySelector('i').classList.toggle('fa-eye');
+                    this.querySelector('i').classList.toggle('fa-eye-slash');
+                });
+            }
+
+            if (usernameSection) {
+                usernameSection.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

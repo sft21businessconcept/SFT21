@@ -1,0 +1,2899 @@
+
+:root {
+    --primary-color: #6a1b9a; /* Purple */
+    --secondary-color: #ab47bc; /* Lighter Purple */
+    --accent-color: #c55bd7; /* Even Lighter Purple (used for original underline) */
+    --success-color: #7b1fa2;
+    --danger-color: #d81b60;
+    --warning-color: #ce93d8;
+    --light-color: #f3e5f5;
+    --dark-color: #0e076a;
+    --gray-color: #5728ac;
+    --text-color: #e5e7eb; /* Adjusted text color for dark background */
+    --fluorescent-orange: #d9ff00; /* A bright, fluorescent orange */
+    --success-green: #4ade80; /* DODANO: Zelena boja za kvačicu */
+    --fluorescent-green: #80ff00; /* A bright, fluorescent green */
+    --fluorescent-purple: #ff00ff; /* Nova varijabla za fluorescentno ljubičastu */
+}
+
+body {
+    font-family: 'Arial Narrow', 'Arial Narrow', Arial, sans-serif;
+    background-color: transparent; /* Postavite na prozirno */
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+
+/* --- Headings --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'arial Narrow', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif; /* Changed font family for headings */
+    color: var(--fluorescent-green); 
+}
+
+h1, /* Hero Title */
+#vizualni-model h2, /* Visual Model Title */
+#startni-paketi h2, /* Start Packages Title */
+#faq h2, /* FAQ Title */
+#faq-startni-paketi h2, /* FAQ Start Packages Title */
+#investicija h2, /* Investment Packages Title */
+#kontakt h2, /* Contact Title */
+#cta h2, /* CTA Title */
+#fransizni-model h3, /* Franšizni online poslovni model */
+#vazna-napomena h3, /* Važna napomena */
+#jedinstvena-prilika h2 /* Jedinstvena prilika title (was h2) */
+{
+    color: var(--fluorescent-green); 
+}
+
+footer h3,
+footer h4 {
+    color: var(--fluorescent-green) 
+}
+
+
+/* --- Navigation & Logo --- */
+.logo-nav {
+    font-size: 1.75rem; /* Slightly larger than text-2xl (1.5rem) */
+    line-height: 1; /* Adjust line height for stacked text */
+    display: flex; /* Use flex to align items */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.logo-nav .small-text {
+    font-size: 0.75rem; /* Tailwind's text-xs */
+    color: #d1d5db; /* Tailwind's text-gray-400 */
+    font-weight: normal;
+    margin-bottom: -0.2em; /* Adjust spacing */
+}
+
+.text-logo-orange {
+    color: var(--fluorescent-green);
+}
+
+nav.fixed {
+    position: fixed; /* Ensure it's fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50; /* Ensure it's above content */
+    backdrop-filter: blur(10px); /* Slightly stronger blur */
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(13, 1, 24, 0.8); /* Slightly more opaque background */
+    border-bottom: 1px solid var(--fluorescent-green);
+    box-shadow: 0 2px 10px rgba(255, 95, 0, 0.3); /* Orange glow */
+}
+
+
+
+
+
+
+.nav-menu {
+     display: none; /* Sakriven po defaultu */
+}
+
+@media (max-width: 768px) {
+  
+    .hidden.md\:flex {
+      display: none;
+    }
+    .md\:hidden {
+      display: block;
+    }
+  
+    .hamburger {
+      display: block;
+      cursor: pointer;
+    }
+  
+    .hamburger .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      background-color: white;
+      transition: all 0.3s ease-in-out;
+    }
+  
+    .hamburger.active .bar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  
+    /* KONSOLIDIRANI I ISPRAVLJENI STILOVI ZA GLAVNI MOBILNI MENI */
+    .nav-menu {
+      position: fixed;
+      top: 80px; /* Ispod fiksirane navigacije */
+      left: -100%; /* Sakriven izvan ekrana */
+      width: 100%;
+      height: calc(100vh - 80px); /* ISPRAVNA KALKULACIJA VISINE */
+      background-color: #0d0118; /* Tamna pozadina */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centriraj linkove unutar menija */
+      padding: 20px;
+      transition: left 0.5s ease-in-out;
+      z-index: 100;
+      border-right: 1px solid var(--fluorescent-green); /* Dodatni obrub */
+      overflow-y: hidden; /* Sakrij skrolanje dok meni nije aktivan */
+      padding-bottom: 100px; /* Dodatni padding na dnu za gumbove */
+      box-sizing: border-box; /* Važno za padding */
+    }
+  
+    .nav-menu.active {
+      left: 0; /* Prikaži meni */
+      overflow-y: auto; /* Omogući skrolanje kada je aktivan */
+      -webkit-overflow-scrolling: touch; /* Za glatkije skrolanje na iOS */
+    }
+  
+    /* Stilovi za pojedinačne linkove unutar glavnog mobilnog menija */
+    .nav-menu a {
+        color: white;
+        display: block;
+        padding: 0.75rem 1.5rem;
+        text-align: center; /* Centriranje teksta */
+        width: 100%; /* Da zauzme punu širinu */
+        transition: background-color 0.3s ease;
+        border-bottom: 1px solid rgba(128, 255, 0, 0.1); /* Lagani zeleni separator */
+    }
+    .nav-menu a:last-child {
+        border-bottom: none; /* Makni granicu na zadnjem elementu */
+    }
+  
+    .nav-menu a:hover {
+        color: var(--fluorescent-green);
+        background-color: rgba(255, 95, 0, 0.1);
+    }
+    .nav-menu a.active {
+         color: var(--fluorescent-green);
+    }
+
+    /* KONSOLIDIRANI I ISPRAVLJENI STILOVI ZA PADUĆI IZBORNIK "PLATFORME" UNUTAR MOBILNOG MENIJA */
+    .nav-menu .sft21-nav-item.dropdown .dropdown-menu {
+        display: none; /* Skriven po defaultu (JS ga kontrolira) */
+        position: static; /* KLJUČNO: Mora biti static da se prikaže unutar scrollable flowa roditelja */
+        max-height: 40vh; /* Maksimalna visina padajućeg menija (npr. 40% visine ekrana) */
+        overflow-y: auto;   /* KLJUČNO: Omogući vertikalno skrolanje unutar padajućeg menija */
+        -webkit-overflow-scrolling: touch; /* Poboljšava skrolanje na iOS uređajima */
+        background-color: #1f2937; /* Tamnija pozadina za razliku od glavnog menija */
+        border-radius: 0.375rem; /* Zaobljeni rubovi */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Mala sjena */
+        margin-top: 0.5rem; /* Razmak od gumba "Platforme" */
+        width: 90%; /* Širina padajućeg menija */
+        margin-left: auto; /* Centriranje padajućeg menija */
+        margin-right: auto; /* Centriranje padajućeg menija */
+        padding: 0.5rem 0; /* Padding unutar dropdowna */
+    }
+
+    /* Kada je dropdown otvoren na mobilnom (ovo kontrolira JS dodavanjem klase .open) */
+    .nav-menu .sft21-nav-item.dropdown.open .dropdown-menu {
+        display: block; /* Pokaži ga */
+    }
+
+    /* Stilovi za stavke unutar padajućeg izbornika "Platforme" */
+    .nav-menu .sft21-nav-item.dropdown .dropdown-menu .dropdown-item {
+        padding: 0.5rem 1rem; /* Vertikalni i horizontalni padding */
+        text-align: center; /* Centriranje teksta */
+        display: block; /* Osigurava da zauzimaju punu širinu za klik */
+        color: #e0e0e0; /* Boja teksta unutar dropdown stavki */
+        font-size: 0.875rem; /* Veličina fonta */
+    }
+    .nav-menu .sft21-nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+        background-color: var(--primary-color); /* Hover efekt */
+        color: white;
+    }
+
+    /* Stil za sam okidač (link s ikonom) u mobilnom izborniku */
+    .nav-menu .mobile-dropdown-toggle {
+        display: flex; /* Osiguraj da se sve poravna */
+        justify-content: space-between; /* Da ikona bude desno */
+        align-items: center; /* Poravnaj okomito */
+        width: 100%; /* Da zauzme cijelu širinu */
+        padding: 0.75rem 1.5rem;
+        color: white;
+        text-align: center; /* Centriranje teksta za okidač Platforme */
+        border-bottom: 1px solid rgba(128, 255, 0, 0.1); /* Lagani zeleni separator */
+    }
+
+    .nav-menu .mobile-dropdown-toggle:hover {
+        background-color: rgba(255, 95, 0, 0.1); /* Blagi narančasti hover */
+    }
+
+    .nav-menu .mobile-dropdown-toggle i.fas {
+        margin-left: 0.5rem; /* Malo razmaka između teksta i ikone */
+        transition: transform 0.3s ease;
+    }
+    /* Rotacija za ikonu kada je dropdown otvoren (kontrolira JS dodavanjem klase .open) */
+    .nav-menu .sft21-nav-item.dropdown.open .mobile-dropdown-toggle i.fas {
+        transform: rotate(180deg);
+    }
+
+    /* Jezik selector unutar mobilnog menija */
+    .nav-menu .mobile-language-selector .language-dropdown-mobile {
+        display: none; /* Skriven po defaultu (JS ga kontrolira) */
+        max-height: 20vh; /* Ograničite visinu ako je lista jezika dugačka */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .nav-menu .mobile-language-selector.open .language-dropdown-mobile {
+        display: block; /* Prikaži kad je selector otvoren */
+    }
+
+    /* Dodatni padding na dno mobilnog menija kako bi se gumbovi "Prijava" i "Registracija" uvijek vidjeli */
+    .nav-menu > .flex.flex-col.space-y-3.mt-5.px-6 {
+        margin-bottom: 20px; /* Prilagodite ako je potrebno više prostora */
+    }
+
+} /* KRAJ @media (max-width: 768px) */
+
+/* --- Buttons --- */
+.btn-primary {
+    background-color: var(--fluorescent-green);
+    color: #0e076a;
+    padding: 7px 14px;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* Start with transparent border */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary:hover {
+    background-color: #66cc00; /* Tamnija zelena - fallback */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 95, 0, 0.4); /* Orange glow */
+}
+
+.btn-primary::after {
+   content: none;
+}
+
+.btn-register {
+    background-color: var(--primary-color); /* Purple background */
+    color: white; /* White text */
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-register:hover {
+    background-color: var(--secondary-color); /* Lighter purple on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(106, 27, 154, 0.4); /* Purple shadow */
+}
+.btn-register::after {
+     content: none; /* Remove ::after */
+}
+
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--fluorescent-green);
+    border: 2px solid var(--fluorescent-green);
+    padding: 7px 14px;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--fluorescent-green); /* Purple background on hover */
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(106, 27, 154, 0.4);
+}
+
+.pricing-table .btn-primary {
+     background-color: var(--fluorescent-green);  
+     color: white; /* White text */
+}
+
+.pricing-table .btn-primary:hover {
+    background-color: var(--secondary-color); /* Lighter purple on hover */
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.bg-dark {
+    background-color: var(--dark-color);
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+
+.text-accent {
+    color: var(--accent-color);
+}
+
+.border-primary {
+    border-color: var(--primary-color);
+}
+
+.border-accent {
+    border-color: var(--accent-color);
+}
+
+.glass-card {
+    background: rgba(106, 27, 154, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--fluorescent-green);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+#o-nama .w-24.h-1 {
+    background-color: var(--fluorescent-green); /* Changed to green */
+}
+
+.animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(171, 71, 188, 0.3) 4px, transparent 4px);
+    background-size: 40px 40px;
+    animation: moveBackground 60s linear infinite;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 500px 500px;
+    }
+}
+
+.glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(106, 27, 154, 0.8) 0%, rgba(106, 27, 154, 0) 70%);
+    animation: pulse 8s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+
+.icon-box {
+    transition: all 0.3s ease;
+}
+
+.icon-box:hover {
+    transform: translateY(-10px);
+}
+
+.icon-box:hover i {
+    transform: scale(1.2);
+    color: var(--fluorescent-green) 
+}
+
+.icon-box i {
+    transition: all 0.3s ease;
+    color: var(--fluorescent-green) 
+}
+
+
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 50px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: 2px solid var(--primary-color);
+}
+
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--fluorescent-orange); 
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    left: 0; top: 0;  
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s linear, background-color 0.3s ease; /* Maknuta tranzicija za blend-mode */
+}
+
+body.light-mode .custom-cursor {
+    background-color: var(--dark-color);
+    mix-blend-mode: normal; 
+}
+.cursor-trail {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 95, 0, 0.2); 
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease; 
+}
+
+.pricing-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--fluorescent-green);
+}
+
+.pricing-table .btn-primary {
+    padding: 6px 15px; 
+    background-color: var(--fluorescent-green); 
+    color:#0e076a; 
+
+}
+
+.pricing-table .btn-primary:hover {
+    background-color: #66cc00; 
+}
+
+.pricing-table th, .pricing-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pricing-table th:last-child, .pricing-table td:last-child {
+    border-right: none;
+}
+
+.pricing-table th {
+    background-color: var(--fluorescent-green);
+    color: #0e076a;
+    font-weight: 600;
+}
+
+.pricing-table tbody tr {
+    background-color: rgba(106, 27, 154, 0.1);
+    transition: all 0.3s ease;
+}
+
+.pricing-table tbody tr:hover {
+    background-color: rgba(106, 27, 154, 0.3);
+    transform: scale(1.01);
+}
+
+.pricing-table tbody tr:nth-child(even) {
+    background-color: rgba(106, 27, 154, 0.05);
+}
+
+.pricing-table .lock-icon {
+    display: inline-block; 
+    width: 1.5em; 
+    text-align: center; 
+    font-size: 1.2em; 
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.pricing-table .lock-icon i {
+    color: var(--fluorescent-green)
+}
+
+
+.accordion {
+    margin-bottom: 10px;
+}
+
+.accordion-item {
+    background-color: rgba(106, 27, 154, 0.1); 
+}
+
+.accordion-header {
+    background-color: rgba(106, 27, 154, 0.2);
+    padding: 15px;
+    border-radius: 8px; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--fluorescent-green);
+}
+
+.accordion-header:hover {
+    background-color: rgba(106, 27, 154, 0.3);
+}
+
+.accordion-item.active .accordion-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease-in-out, padding 0.7s ease-in-out; 
+    background-color: rgba(106, 27, 154, 0.1);
+    border-radius: 0 0 8px 8px;
+    border-left: 1px solid var(--fluorescent-green);
+    border-right: 1px solid var(--fluorescent-green);
+    border-bottom: 1px solid var(--fluorescent-green);
+    padding: 0 15px; 
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 150vh; 
+    padding: 15px;
+}
+
+.accordion-header i {
+    color: var(--fluorescent-green);
+    transition: transform 0.3s ease-in-out; 
+}
+
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: rgba(106, 27, 154, 0.1);
+    border: 1px solid var(--fluorescent-green);
+    border-radius: 8px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--fluorescent-green);
+    box-shadow: 0 0 0 3px rgba(255, 95, 0, 0.3);
+}
+
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+@keyframes plasma-flow {
+    0% { transform: translate(-25%, -25%) rotate(0deg); }
+    50% { transform: translate(-25%, -25%) rotate(180deg) scale(1.1); }
+    100% { transform: translate(-25%, -25%) rotate(360deg); }
+}
+
+.animate-plasma-flow {
+    animation: plasma-flow 30s ease-in-out infinite alternate; 
+    opacity: 0.3; 
+}
+
+body.overflow-hidden {
+    overflow: hidden;
+}
+
+#video-popup > div {
+    padding-right: 1rem; 
+}
+
+
+.ip-card {
+    background-color: rgba(106, 27, 154, 0.1); 
+    border: 1px solid var(--fluorescent-green);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.ip-card-header {
+     background: linear-gradient(to right, var(--fluorescent-green), var(--success-green)); 
+     padding: 1rem 1.5rem;
+     text-align: center;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.ip-card-header h4 {
+    color: #0e076a !important; 
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; 
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3); 
+}
+.ip-card-body {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-color); 
+    font-size: 0.95rem; 
+    flex-grow: 1;
+    line-height: 1.7; 
+}
+ .ip-card-body p {
+     margin-bottom: 1rem; 
+ }
+ .ip-card-body span.label {
+     color: #d1d5db; 
+ }
+ .ip-card-body span.value {
+     font-weight: 700; 
+     color: #f3e5f5; 
+ }
+ .ip-card-body span.duration { 
+     display: block; 
+     font-size: 0.8rem; 
+     color: #9ca3af; 
+     margin-top: -0.5rem; 
+     margin-bottom: 1rem; 
+ }
+.ip-card-footer {
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: auto; 
+}
+
+ .info-box {
+    background: rgba(106, 27, 154, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid var(--fluorescent-green);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+ }
+.info-box:hover {
+     background: rgba(106, 27, 154, 0.2);
+     transform: scale(1.03);
+ }
+ .info-box-icon {
+     flex-shrink: 0;
+     margin-right: 1rem;
+     font-size: 1.75rem;
+     color: var(--fluorescent-green);
+     width: 40px;
+     text-align: center;
+ }
+.info-box-content h5 {
+     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; 
+     font-weight: 600;
+     color: rgb(255, 255, 255) ;
+     margin-bottom: 0.25rem;
+     font-size: 1.1rem;
+ }
+ .info-box-content p {
+     font-size: 0.8rem;
+     color: #d1d5db;
+     line-height: 1.4;
+     margin-bottom: 0; 
+ }
+
+.fa-check-circle, .fas.fa-check {
+     color: var(--fluorescent-green) 
+}
+
+.container .fas,
+.container .fab,
+.glass-card .fas,
+.glass-card .fab,
+.info-box .fas,
+.info-box .fab,
+.accordion-item .fas,
+.accordion-item .fab {
+    color: var(--fluorescent-green)
+}
+
+#kontakt .glass-card .fas,
+#kontakt .glass-card .fab {
+     color: var(--fluorescent-green)
+}
+#kontakt .glass-card .social-icons a i {
+     color: #d1d5db !important;
+}
+#kontakt .glass-card .social-icons a:hover i {
+     color: var(--accent-color) !important;
+}
+
+.faze-card .rounded-full {
+    border-color: var(--fluorescent-green) !important;
+}
+.faze-card .rounded-full span {
+    color: var(--fluorescent-green) !important;
+}
+.faze-card {
+    transition: all 0.5s ease;
+    cursor: pointer;
+    position: relative; 
+}
+.faze-status-icon {
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    left: 30px; 
+    font-size: 48px; 
+    color: var(--success-green) !important;
+    z-index: 10;
+}
+
+
+.ip-wide-card {
+     max-width: calc(1200px + 3rem);
+     margin-left: auto;
+     margin-right: auto;
+     padding-left: 2rem; 
+     padding-right: 2rem; 
+     box-sizing: border-box; 
+     padding: 0 !important; 
+}
+
+@media (max-width: 1280px) { 
+    .ip-wide-card {
+         max-width: calc(960px + 3rem);
+    }
+}
+@media (max-width: 1024px) {
+    .ip-wide-card {
+         max-width: calc(768px + 2rem);
+         padding-left: 1.5rem;
+         padding-right: 1.5rem;
+    }
+}
+@media (max-width: 768px) {
+    .ip-wide-card {
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+.ip-wide-card-header {
+    background: linear-gradient(to right, var(--fluorescent-green), var(--success-green));
+    padding: 1rem 1.5rem; 
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ip-wide-card-header .ip-wide-card-header-title { 
+    color:#0e076a !important;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    margin-bottom: 0; 
+}
+
+.ip-wide-card .amount-input-container {
+    display: none; 
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    text-align: center; 
+}
+
+.ip-wide-card .amount-input-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #d1d5db;
+    text-align: center;
+}
+
+.ip-wide-card .amount-input-wrapper {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+     margin-bottom: 1rem; 
+}
+
+.ip-wide-card .amount-input {
+     width: 150px; 
+     padding: 10px 12px;
+     border: 1px solid var(--fluorescent-green);
+     border-radius: 8px;
+     background-color: rgba(106, 27, 154, 0.1);
+     color: white;
+     text-align: center;
+     margin-right: 0.5rem; 
+     -moz-appearance: textfield; 
+}
+.ip-wide-card .amount-input::-webkit-outer-spin-button,
+.ip-wide-card .amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ip-wide-card .amount-input:focus {
+    outline: none;
+    border-color: var(--fluorescent-green);
+    box-shadow: 0 0 0 3px rgba(128, 255, 0, 0.2); 
+}
+
+.ip-wide-card .amount-input::placeholder {
+     color: rgba(255, 255, 255, 0.5);
+}
+
+.ip-wide-card .currency-symbol {
+    color: white;
+    font-size: 1rem;
+}
+
+.ip-wide-card .input-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem; 
+}
+.ip-wide-card .input-buttons .btn-primary {
+     padding: 8px 16px; 
+     font-size: 0.9rem;
+}
+.ip-wide-card .input-buttons .btn-outline { 
+     background-color: transparent;
+     color: #aaa; 
+     border: 1px solid #aaa; 
+     padding: 8px 16px;
+     font-size: 0.9rem;
+     border-radius: 50px;
+     font-weight: 600;
+     letter-spacing: 1px;
+     text-transform: uppercase;
+     transition: all 0.3s ease;
+}
+.ip-wide-card .input-buttons .btn-outline:hover {
+     background-color: #aaa;
+     color: #111; 
+     box-shadow: none;
+     transform: none; 
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 9990;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: #0d0118; 
+    border: 1px solid var(--fluorescent-green);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 700px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 8px 32px 0 rgba(128, 255, 0, 0.37);
+    color: var(--text-color);
+}
+nav .sft21-nav-item.dropdown .dropdown-menu {
+    display: none; 
+    position: absolute;
+    top: calc(100% + 5px); 
+    left: 50%;
+    transform: translateX(-50%); 
+    min-width: 140px; 
+    z-index: 100;
+    background-color: rgba(13, 1, 24, 0.9); 
+    border: 1px solid var(--fluorescent-green); 
+    border-radius: 8px;
+    padding: 0.5rem 0; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+nav .sft21-nav-item.dropdown:hover .dropdown-menu {
+    display: block; 
+    opacity: 1;
+    visibility: visible;
+}
+
+nav .sft21-nav-item.dropdown .dropdown-menu a.dropdown-item {
+    display: block;
+    padding: 0.6rem 1.2rem; 
+    color: #e0e0e0; 
+    text-decoration: none;
+    font-size: 0.875rem; 
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav .sft21-nav-item.dropdown .nav-link i.fa-chevron-down { 
+    font-size: 0.7rem;
+    margin-left: 0.3rem;
+    transition: transform 0.3s ease;
+    display: inline-block; 
+}
+
+nav .sft21-nav-item.dropdown:hover .nav-link i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+
+footer {
+}
+
+.pulsating-circle {
+    position: fixed;
+    left: 1.5em; 
+    bottom: 15px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid #66f804;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white; 
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    z-index: 1000; 
+    overflow: visible; 
+    padding: 5px;
+}
+
+.pulsating-circle .circle-content {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    line-height: 1.2; 
+}
+
+.pulsating-circle .circle-line {
+    display: block;
+    margin: 1px 0;
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.pulsating-circle .heart-symbol {
+    color: red; 
+    font-size: 1.6em;
+    margin: 2px 0;
+}
+
+@keyframes pulse-border {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.pulsating-circle::before {
+    content: '';
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgb(103, 255, 1); 
+    border-radius: 50%;
+    animation: pulse-border 1.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1; 
+}
+#validation-popup h4 {
+    font-size: 2rem !important; 
+}
+
+#validation-popup p {
+    text-align: center !important;
+    min-height: 50px; 
+}
+
+#validation-popup .popup-close {
+    display: none !important;
+}
+
+canvas#network-canvas {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; 
+    pointer-events: none; 
+    background-color: #1d012e; 
+}
+        .accordion-item.active .accordion-content { max-height: 150vh; padding-top: 1rem; padding-bottom: 4rem; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out; padding-top: 0; padding-bottom: 0; }
+        .accordion-content > div, .accordion-content p { margin-bottom: 1rem; text-align: justify; } .accordion-content > ul, .accordion-content > ol { padding-left: 1.5rem; padding-right: 1.5rem; color: #e5e7eb; line-height: 1.7; }
+        .accordion-content p { margin-bottom: 1rem; }
+        .accordion-content ul, .accordion-content ol { margin-left: 1.5rem; margin-bottom: 1rem; list-style-position: outside; }
+        .accordion-content ul li { margin-bottom: 0.5rem; list-style-type: disc; }
+        .accordion-content strong, .accordion-content b { color: #f3e5f5; }
+        .accordion-header i { transition: transform 0.3s ease-in-out; }
+        .ip-card { background-color: rgba(106, 27, 154, 0.1); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        .ip-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 25px rgba(106, 27, 154, 0.4); }
+        .ip-card-header { background: linear-gradient(to right, var(--fluorescent-green), var(--success-green)); padding: 1rem 1.5rem; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .ip-card-header h4 { color: white; font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; font-size: 1.25rem; font-weight: 700; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
+        .ip-card-body { padding: 1.5rem; text-align: center; color: #e5e7eb; font-size: 0.95rem; flex-grow: 1; line-height: 1.7; }
+        .ip-card-body p { margin-bottom: 1rem; }
+        .ip-card-body p:last-child { margin-bottom: 0; }
+        .ip-card-body span.label { color: #d1d5db; }
+        .ip-card-body span.value { font-weight: 700; color: #f3e5f5; }
+        .ip-card-body span.duration { display: block; font-size: 0.8rem; color: #9ca3af; margin-top: -0.5rem; margin-bottom: 1rem; }
+        .ip-card-footer { padding: 1.5rem; text-align: center; margin-top: auto; }
+        .info-box { background: rgba(106, 27, 154, 0.1); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border-radius: 10px; padding: 1.5rem; display: flex; align-items: center; transition: all 0.3s ease; }
+        .info-box:hover { background: rgba(106, 27, 154, 0.2); transform: scale(1.03); }
+        .info-box-icon { flex-shrink: 0; margin-right: 2rem; font-size: 1.75rem; width: 40px; text-align: center; }
+        .info-box-content h5 { font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; font-weight: 600; color: white; margin-bottom: 0.25rem; font-size: 1.1rem; }
+        .info-box-content p { font-size: 0.8rem; color: #d1d5db; line-height: 1.4; margin-bottom: 0; }
+        .ip-wide-card { padding: 0 !important; max-width: calc(1200px + 3rem); margin-left: auto; margin-right: auto; box-sizing: border-box; }
+        @media (max-width: 1280px) { .ip-wide-card { max-width: calc(960px + 3rem); } }
+        @media (max-width: 1024px) { .ip-wide-card { max-width: calc(768px + 2rem); } }
+        @media (max-width: 768px) { .ip-wide-card { max-width: 100%; } }
+        .ip-wide-card.glass-card { border: 1px solid var(--fluorescent-green); border-radius: 15px; overflow: hidden; }
+        .ip-wide-card-header { background: linear-gradient(to right, var(--fluorescent-green), var(--success-green)); padding: 1rem 1.5rem; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .ip-wide-card-header .ip-wide-card-header-title { color:#0e076a !important; font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; font-size: 1.5rem; font-weight: 700; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); margin-bottom: 0; }
+        .ip-wide-card .amount-input-container { display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed rgba(255, 255, 255, 0.1); text-align: center; }
+        .ip-wide-card .amount-input-container label { display: block; margin-bottom: 0.5rem; color: #d1d5db; text-align: center; }
+        .ip-wide-card .amount-input-wrapper { display: flex; justify-content: center; align-items: center; margin-bottom: 1rem; }
+        .ip-wide-card .amount-input { width: 150px; padding: 10px 12px; border: 1px solid var(--fluorescent-green); border-radius: 8px; background-color: rgba(106, 27, 154, 0.1); color: white; text-align: center; margin-right: 0.5rem; -moz-appearance: textfield; }
+        .ip-wide-card .amount-input::-webkit-outer-spin-button, .ip-wide-card .amount-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .ip-wide-card .amount-input:focus { outline: none; border-color: var(--fluorescent-green); box-shadow: 0 0 0 3px rgba(128, 255, 0, 0.2); }
+        .ip-wide-card .amount-input::placeholder { color: rgba(255, 255, 255, 0.5); }
+        .ip-wide-card .currency-symbol { color: white; font-size: 1rem; }
+        .ip-wide-card .input-buttons { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+        .ip-wide-card .input-buttons .btn-primary { padding: 8px 16px; font-size: 0.9rem; }
+        .ip-wide-card .input-buttons .btn-outline { background-color: transparent; color: #aaa; border: 1px solid #aaa; padding: 8px 16px; font-size: 0.9rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; }
+        .ip-wide-card .input-buttons .btn-outline:hover { background-color: #aaa; color: #111; box-shadow: none; transform: none; }
+
+        .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); z-index: 9990; display: none; justify-content: center; align-items: center; }
+        .popup-content { background: #0d0118; border: 1px solid var(--fluorescent-green); border-radius: 20px; padding: 2rem; max-width: 800px; width: 90%; text-align: left; position: relative; box-shadow: 0 8px 32px 0 rgba(128, 255, 0, 0.37); color: var(--text-color); max-height: 90vh; overflow-y: auto; }
+        .popup-content h4 { color: var(--fluorescent-green) !important; margin-bottom: 1rem; text-align: center; }
+        .popup-content p { margin-bottom: 1.5rem; line-height: 1.6; }
+        .popup-content form { margin-top: 1.5rem; text-align: left; }
+        .popup-content form .form-group { margin-bottom: 1rem; }
+        .popup-content form label { display: block; margin-bottom: 0.5rem; color: #d1d5db; font-size: 0.9rem; }
+        .popup-content form input[type="text"], .popup-content form input[type="email"], .popup-content form input[type="tel"], .popup-content form input[type="number"] { width: 100%; padding: 10px; border: 1px solid var(--fluorescent-green); border-radius: 5px; background-color: rgba(106, 27, 154, 0.1); color: white; box-sizing: border-box; }
+        .popup-content form input:focus { outline: none; border-color: var(--fluorescent-green); box-shadow: 0 0 0 3px rgba(128, 255, 0, 0.2); }
+        .popup-content form input::placeholder { color: rgba(255, 255, 255, 0.5); }
+        .popup-close { position: absolute; top: 10px; right: 10px; font-size: 1.5rem; color: #aaa; cursor: pointer; transition: color 0.2s ease; background: none; border: none; padding: 0; z-index: 9991; }
+        .popup-close:hover { color: white; }
+
+        #starter-package-info-popup .email-form-container { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed rgba(255, 255, 255, 0.2); display: flex; flex-direction: column; align-items: center; width: 100%; box-sizing: border-box; }
+        #starter-package-info-popup h4 { font-size: 1.5rem !important; margin-bottom: 1.5rem !important;}    
+        #starter-package-info-popup .email-form-container form { width: 100%; max-width: 550px; display: flex; flex-direction: column; align-items: center; }
+        #starter-package-info-popup #starter-package-email-input { width: 100%; padding: 10px 12px; border: 1px solid var(--fluorescent-green); border-radius: 8px; background-color: rgba(106, 27, 154, 0.1); color: white; text-align: center; box-sizing: border-box; margin-bottom: 1rem; }
+        #starter-package-info-popup #starter-package-email-input::placeholder { color: rgba(255, 255, 255, 0.5); }
+        #starter-package-info-popup #starter-package-submit-email { display: inline-block; }
+
+        #choose-investor-type-popup h4 {
+            font-size: 1.5rem !important; 
+            margin-bottom: 1.5rem !important;
+        }
+        #choose-investor-type-popup #btn-novi-investitor-choice.btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        #choose-investor-type-popup #btn-novi-investitor-choice.btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+         #choose-investor-type-popup .flex {
+            justify-content: center;
+        }
+
+        #investment-details-popup h4 {
+            font-size: 1.5rem !important; 
+            margin-bottom: 1.5rem !important; 
+        }
+        
+        .investment-package-field-container {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 8px;
+            background-color: rgba(106, 27, 154, 0.1);
+            box-sizing: border-box;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem; 
+
+        }
+
+        .package-item { 
+            display: flex; 
+            align-items: center; 
+            padding: 0.4rem 0.25rem;
+        }
+        .package-item.ip7-item {
+             align-items: center; 
+        }
+
+        .package-item input[type="checkbox"] { 
+            margin-right: 0.75rem; 
+            transform: scale(1.2); 
+            accent-color: var(--fluorescent-green); 
+            flex-shrink: 0; 
+            margin-top: 0.05em;
+        }
+        .package-label { 
+            color: #e0e0e0; 
+            cursor: pointer; 
+            font-size: 0.9rem; 
+            line-height: 1.4; 
+            flex-shrink: 0; 
+        }
+        #investment-package-selection .package-item.ip7-item .package-label {
+             margin-right: 0.5rem; 
+        }
+        
+        #investment-details-popup .form-input-ip7 {
+            width: 100px; 
+            padding: 6px 8px; 
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 5px;
+            background-color: rgba(106, 27, 154, 0.15); 
+            color: white;
+            box-sizing: border-box;
+            font-size: 0.9rem; 
+            text-align: right;
+            margin-left: 0; 
+        }
+        #investment-details-popup .form-input-ip7:focus {
+            outline: none; 
+            border-color: var(--fluorescent-green); 
+            box-shadow: 0 0 0 2px rgba(128, 255, 0, 0.3);
+        }
+        #investment-details-popup .form-input-ip7::placeholder { 
+            color: rgba(255, 255, 255, 0.4); 
+        }
+        #investment-details-popup #ip7-custom-amount-details:disabled { 
+            background-color: rgba(106, 27, 154, 0.05); 
+            cursor: not-allowed; 
+            border-color: rgba(128, 255, 0, 0.2); 
+        }
+        #investment-details-popup #total-investment-amount-details { 
+            font-weight: bold; 
+            color: var(--fluorescent-green);
+        }
+
+        .ai-chat-float-icon { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background-color: var(--primary-color); border-radius: 50%; border: 3px solid var(--fluorescent-green); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; cursor: pointer; z-index: 1000; opacity: 0.6; transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+        .ai-chat-float-icon:hover { opacity: 1; transform: scale(1.1); box-shadow: 0 8px 25px rgba(128, 255, 0, 0.4); }
+        .ai-chat-popup { position: fixed; bottom: calc(2rem + 60px + 1rem); right: 2rem; width: 320px; height: 450px; background-color: #1f2937; border: 1px solid var(--fluorescent-green); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); z-index: 999; display: none; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(20px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .ai-chat-popup.active { display: flex; opacity: 1; transform: translateY(0); }
+        .ai-chat-popup-header { background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); color: white; padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center; font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .ai-chat-close-btn { background: none; border: none; color: white; font-size: 1.5rem; line-height: 1; cursor: pointer; opacity: 0.8; transition: opacity 0.2s ease; }
+        .ai-chat-close-btn:hover { opacity: 1; }
+        .ai-chat-popup-body { flex-grow: 1; padding: 1rem; overflow-y: auto; background-color: #111827; }
+        .ai-chat-popup .ai-chat-input-container { background-color: #1f2937; padding: 0.75rem; border-top: 1px solid var(--fluorescent-green); }
+        .ai-chat-popup .ai-chat-input { background-color: #374151; border-color: #4b5563; }
+        .ai-chat-popup .ai-chat-input:focus { outline: none; border-color: var(--fluorescent-green); box-shadow: 0 0 0 1px rgba(128, 255, 0, 0.3); }
+        .ai-chat-popup .ai-chat-button { font-size: 1.125rem; background: none; border: none; padding: 0.5rem; cursor: pointer; transition: color 0.2s ease; }
+
+        #review-popup-overlay { }
+        #review-popup-content { background-color: rgba(106, 27, 154, 0.15); border: 1px solid var(--secondary-color); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+        #review-popup-content h3 { color: var(--secondary-color); font-weight: 600; margin-bottom: 1rem; }
+        #review-popup-content h2 { color: var(--fluorescent-green); margin-bottom: 1.5rem; }
+        #review-popup-content p { color: #d1d5db; line-height: 1.6; margin-bottom: 1rem; }
+        #review-popup-content p:last-of-type { margin-bottom: 2rem; }
+        .btn-purple { background-color: #6a1b9a; color: white; border: none; border-radius: 50px; font-weight: 600; padding: 12px 24px; text-transform: uppercase; letter-spacing: 1px; transition: background-color 0.3s, transform 0.3s; }
+        .btn-purple:hover { background-color: #ab47bc; transform: translateY(-2px); }
+        #validation-popup-overlay { z-index: 9999; }
+        #review-popup-overlay { z-index: 10000; }
+
+        .user-counter-widget { position: fixed; top: 100px; right: 30px; width: 300px; background: rgba(13, 1, 24, 0.9); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 15px; padding: 15px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); border: 1px solid var(--fluorescent-green); z-index: 990; cursor: grab; transition: transform 0.3s ease, opacity 0.3s ease, display 0s linear 0.3s; opacity: 1; user-select: none; display: block; }
+        .user-counter-widget.hidden { transform: translateX(110%); opacity: 0; pointer-events: none; transition: transform 0.3s ease, opacity 0.3s ease, display 0s linear 0.3s; display: none; }
+        .user-counter-widget.dragging { cursor: grabbing; box-shadow: 0 10px 30px rgba(128, 255, 0, 0.3); opacity: 0.95; }
+        .user-counter-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(128, 255, 0, 0.2); cursor: grab; }
+        .user-counter-header h3 { margin: 0; font-size: 1.1rem; color: var(--fluorescent-green); display: flex; align-items: center; }
+        .user-counter-actions button { background: none; border: none; color: rgba(255, 255, 255, 0.6); cursor: pointer; transition: color 0.3s ease; font-size: 18px; line-height: 1; padding: 0 5px; }
+        .user-counter-actions button:hover { color: white; }
+        .user-counter-body { cursor: default; }
+        .user-counter-number { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 15px; color: var(--fluorescent-green); text-shadow: 0 0 8px rgba(128, 255, 0, 0.5); }
+        .user-counter-list { max-height: 180px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--secondary-color) rgba(128, 255, 0, 0.1); }
+        .user-counter-list::-webkit-scrollbar { width: 5px; }
+        .user-counter-list::-webkit-scrollbar-track { background: rgba(128, 255, 0, 0.1); border-radius: 10px; }
+        .user-counter-list::-webkit-scrollbar-thumb { background-color: var(--secondary-color); border-radius: 10px; border: 1px solid rgba(128, 255, 0, 0.1); }
+        .user-counter-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(128, 255, 0, 0.1); animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .user-counter-item:last-child { border-bottom: none; }
+        .user-counter-flag { width: 24px; height: 16px; border-radius: 2px; object-fit: cover; border: 1px solid rgba(255,255,255,0.2); }
+        .user-counter-name { flex: 1; font-size: 0.85rem; color: #e0e0e0; }
+        .user-counter-time { font-size: 0.75rem; color: rgba(255, 255, 255, 0.5); }
+        .user-counter-placeholder { text-align: center; color: rgba(255, 255, 255, 0.4); font-size: 0.9rem; padding: 20px 0; }
+        .user-counter-show-btn { position: fixed; top: 85px; right: -45px; background: var(--primary-color); color: white; border: 2px solid var(--fluorescent-green); border-right: none; padding: 10px 10px 10px 15px; border-radius: 10px 0 0 10px; cursor: pointer; z-index: 989; transition: right 0.3s ease; font-size: 0.8rem; box-shadow: -5px 5px 10px rgba(0,0,0,0.3); display: none; }
+        .user-counter-show-btn.visible { right: 0; display: flex; align-items: center; }
+        .user-counter-show-btn:hover { background: var(--secondary-color); }
+
+        .language-dropdown { display: none; position: absolute; background-color: #1f2937; border: 1px solid var(--fluorescent-green); border-radius: 0.375rem; margin-top: 0.5rem; padding: 0.25rem 0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); right: 0; z-index: 60; min-width: 80px; }
+        .language-dropdown.active { display: block; }
+        .language-item { display: flex; align-items: center; padding: 0.5rem 0.75rem; font-size: 0.875rem; color: #d1d5db; white-space: nowrap; cursor: pointer; }
+        .language-item:hover { background-color: var(--primary-color); color: white; }
+        .language-item .flag-image, .language-item .flag-icon { width: 20px; height: auto; margin-right: 0.5rem; flex-shrink: 0; }
+        .language-item span:not(.flag-icon) { font-weight: 500; }
+        .language-dropdown-mobile { display: none; background-color: #111827; border-radius: 0.375rem; margin-top: 0.5rem; padding: 0.25rem 0; width: 100%; }
+        .language-dropdown-mobile.active { display: block; }
+        .language-dropdown-mobile .language-item { justify-content: center; padding: 0.5rem 1rem; }
+        .language-dropdown-mobile .language-item:hover { background-color: var(--primary-color); }
+        .dropdown-menu:not(.language-dropdown):not(.language-dropdown-mobile) { position: absolute; display: none; }
+        .group:hover .dropdown-menu:not(.language-dropdown):not(.language-dropdown-mobile) { display: block; background-color: #1f2937; border-radius: 0.375rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); padding: 0.25rem 0; margin-top: 0.5rem; border: 1px solid var(--fluorescent-green); }
+        .nav-menu .dropdown-menu:not(.language-dropdown-mobile) { display: none; }
+
+        .nav-menu .sft21-nav-item.dropdown .mobile-dropdown-toggle i { transition: transform 0.3s ease; display: inline-block; }
+        .nav-menu .sft21-nav-item.dropdown.open .mobile-dropdown-toggle i { transform: rotate(180deg); }
+        .nav-menu .sft21-nav-item.dropdown .dropdown-menu { display: none; }
+        .nav-menu .mobile-language-selector .language-dropdown-mobile { display: none; }
+
+        .hero-video-container { width: 100%; max-width: 600px; margin: auto; }
+
+        .dropdown-menu.active { display: block; }
+
+:root {
+    --accent-color: #ff00ff; /* FLUORESCENTNO LJUBIČASTA */
+}
+
+body.light-mode {
+    background-color: #f8fafc;
+    color: #334155;
+}
+
+/* === Navigacija === */
+body.light-mode nav.fixed {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom-color: #ff00ff; /* Ljubičasta */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+body.light-mode .logo-nav,
+body.light-mode .text-logo-orange {
+    color: var(--primary-color);
+}
+body.light-mode .logo-nav .small-text {
+    color: var(--primary-color);
+}
+
+body.light-mode #theme-toggle,
+body.light-mode #theme-toggle-mobile,
+body.light-mode #desktop-lang-trigger i,
+body.light-mode #mobile-lang-trigger i {
+    color: var(--primary-color);
+}
+/* === Gumbi === */
+body.light-mode .btn-primary {
+background-color: var(--primary-color);
+    color: white;
+}
+body.light-mode .btn-primary:hover {
+    background-color: #e600e6;
+}
+body.light-mode .btn-outline {
+    color: var(--primary-color); 
+    border-color: var(--primary-color); 
+}
+html.light-mode .btn-outline:hover {
+    background-color: var(--primary-color) !important; 
+    border-color: var(--primary-color) !important; 
+    color: white !important;
+}
+
+/* === Kartice i Okviri === */
+body.light-mode .glass-card,
+body.light-mode .ip-card,
+body.light-mode .info-box,
+body.light-mode .accordion-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+body.light-mode .glass-card,
+body.light-mode .form-input,
+body.light-mode .ip-card {
+    border-color: #ff00ff; /* Ljubičasto */
+}
+
+/* === Tekstovi i Naslovi === */
+body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4 { color: var(--primary-color); }
+body.light-mode .text-gray-300 { color: #475569 !important; }
+body.light-mode .glass-card p, body.light-mode .glass-card li { color: #475569; }
+
+/* === Ikone i specifični elementi === */
+body.light-mode .fa-check-circle, 
+body.light-mode .fas.fa-check {
+    color: #ff00ff; /* Ljubičasto */
+}
+body.light-mode .icon-box i {
+    color: #ff00ff; /* Ljubičasto */
+}
+body.light-mode .pricing-table .lock-icon i {
+    color: #ff00ff; /* Ljubičasto */
+}
+body.light-mode .info-box-icon {
+    color: #ff00ff; /* Ljubičasto */
+}
+body.light-mode .faze-card .rounded-full {
+    border-color: #ff00ff !important; /* Ljubičasto */
+}
+body.light-mode .faze-card .rounded-full span {
+    color: #ff00ff !important; /* Ljubičasto */
+}
+
+/* === Headeri na karticama === */
+body.light-mode .ip-card-header,
+body.light-mode .ip-wide-card-header {
+    background: linear-gradient(to right, #ff00ff, #c000c0); /* Ljubičasto */
+}
+body.light-mode .ip-card-header h4,
+body.light-mode .ip-wide-card-header-title {
+    color: white !important;
+}
+body.light-mode .pricing-table th {
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+/* === Linije ispod naslova === */
+body.light-mode #o-nama .w-24.h-1 {
+   background-color: var(--primary-color);
+}
+
+body.light-mode .logo-nav .text-logo-orange {
+    color: var(--primary-color);
+}
+
+body.light-mode .logo-nav .text-white {
+    color: var(--primary-color);
+}
+
+/* === Promjena boje ikona u "O nama" sekciji === */
+body.light-mode #o-nama .glass-card .fas {
+    color: var(--fluorescent-purple);
+}
+
+/* === Izmjena ikona u sekciji "Kako funkcionira" === */
+body.light-mode #kako-funkcionira .glass-card .rounded-full {
+    background-color: var(--primary-color);
+}
+
+body.light-mode #kako-funkcionira .glass-card .fas {
+    color: var(--fluorescent-purple);
+}
+
+/* === Izmjena ikona u sekciji "Prednosti" === */
+body.light-mode #prednosti .rounded-full {
+    background-color: var(--primary-color);
+}
+
+body.light-mode #prednosti .fas {
+    color: var(--fluorescent-purple);
+}
+
+/* === Ispravak boje za preostale zelene naslove === */
+body.light-mode #faq h2,
+body.light-mode #faq-startni-paketi h2,
+body.light-mode #fransizni-model h3,
+body.light-mode #vazna-napomena h3,
+body.light-mode #investicija h2,
+body.light-mode #jedinstvena-prilika h2,
+body.light-mode #kontakt h2,
+body.light-mode #vasa-odluka h2,
+body.light-mode #vizualni-model h2, 
+body.light-mode #startni-paketi h2 {  
+    color: var(--primary-color);
+}
+
+body.light-mode .accordion-header {
+    border-color: var(--fluorescent-purple);
+}
+
+body.light-mode .accordion-header span {
+    color: var(--primary-color);
+}
+
+body.light-mode #poslovni-koncept .icon-box {
+    background-color: var(--light-color);
+}
+
+body.light-mode #poslovni-koncept .icon-box h4 {
+    color: var(--primary-color);
+}
+
+body.light-mode #poslovni-koncept .icon-box .fas {
+    color: var(--fluorescent-purple);
+}
+
+body.light-mode #fransizni-model p.text-purple-300,
+body.light-mode #fransizni-model .grid span {
+    color: var(--primary-color);
+}
+
+body.light-mode .info-box .fas {
+    color: var(--fluorescent-purple);
+}
+body.light-mode .info-box-content h5 {
+    color: var(--primary-color);
+}
+
+body.light-mode .info-box-content p {
+    color: #475569;
+}
+
+body.light-mode #zasto-investirati .border-purple-500 {
+    border-color: var(--primary-color);
+}
+
+body.light-mode #zasto-investirati .border-purple-500 p {
+    color: var(--primary-color);
+}
+
+body.light-mode #objasnjenje-zarade-investicije strong,
+body.light-mode #objasnjenje-zarade-investicije .text-white {
+    color: var(--primary-color);
+}
+
+body.light-mode .ip-card-body,
+body.light-mode .ip-card-body span.label,
+body.light-mode .ip-card-body span.duration {
+    color: #475569;
+}
+
+body.light-mode .ip-card-body span.value {
+    color: var(--primary-color);
+}
+
+body.light-mode #odluka-na-vama strong.text-white {
+    color: var(--primary-color);
+}
+
+body.light-mode #kontakt .glass-card .bg-gray-800 {
+    background-color: var(--light-color);
+}
+
+body.light-mode #kontakt .glass-card .flex-shrink-0 > .fas {
+    color: var(--fluorescent-purple);
+}
+
+body.light-mode #kontakt .glass-card .social-icons a i {
+    color: var(--primary-color) !important;
+}
+
+body.light-mode #semfiai .glass-card .fas {
+    color: var(--fluorescent-purple);
+}
+
+.bg-gradient-to-r.from-purple-900 h2 {
+    color: var(--fluorescent-green);
+}
+
+.bg-gradient-to-r.from-purple-900 .btn-primary {
+    background-color: var(--fluorescent-green);
+    color: var(--dark-color);
+}
+
+body.light-mode footer h3,
+body.light-mode footer h4 {
+    color: white;
+}
+
+body.light-mode footer .fab {
+    color: var(--fluorescent-purple);
+}
+
+body.light-mode #ecosystem-details .fas {
+    color: var(--fluorescent-purple);
+}
+
+body.light-mode #ecosystem-details .font-semibold.text-white {
+    color: var(--primary-color);
+}
+
+body.light-mode #ecosystem-details ul li > div {
+    color: #475569;
+}
+
+body.light-mode #paket-info .text-4xl .fas {
+    color: var(--fluorescent-purple);
+}
+
+body.light-mode canvas#network-canvas {
+     background-color: transparent;
+}
+
+body.light-mode button#theme-toggle i,
+body.light-mode button#theme-toggle-mobile i,
+body.light-mode button#theme-toggle:hover i,
+body.light-mode button#theme-toggle-mobile:hover i {
+    color: var(--fluorescent-purple);
+}
+
+body.light-mode .hamburger .bar {
+    background-color: #6a1b9a; /* Ovo je ljubičasta boja (Primary color) */
+}
+
+/* --- Dodaj ovo na kraj postojeće datoteke css/style.css --- */
+
+/* Mobilni dropdown meni - stilovi za otvaranje */
+.nav-menu .sft21-nav-item.dropdown .dropdown-menu {
+    display: none; /* Sakriveno po defaultu */
+    position: static; /* Mora biti static da se prikaže unutar mobilnog izbornika */
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    width: 100%; /* Da zauzme cijelu širinu u mobilnom izborniku */
+    background-color: #1f2937; /* Tamna pozadina */
+    border: none; /* Makni defaultne granice ako ne trebaju */
+    border-radius: 0; /* U mobilnom izborniku možda ne treba zaobljene rubove */
+    box-shadow: none;
+    z-index: 10;
+    transition: none; /* Makni tranziciju pri otvaranju/zatvaranju */
+}
+
+/* Kad je dropdown otvoren na mobilnom */
+.nav-menu .sft21-nav-item.dropdown.open .dropdown-menu {
+    display: block; /* Pokaži ga */
+}
+
+/* Stil za body kada je izbornik aktivan, kako bi se spriječilo skrolanje cijele stranice */
+body.overflow-hidden.nav-menu-open { /* Dodaj ovu klasu na body preko JS-a */
+    overflow: hidden;
+}
+
+/* Stilovi za same stavke unutar mobilnog podmenija */
+.nav-menu .dropdown-menu a.dropdown-item {
+    padding: 0.75rem 1.5rem; /* Malo više paddinga */
+    text-align: left; /* Poravnaj tekst lijevo */
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    display: block; /* Da svaka stavka bude svoj red */
+}
+
+.nav-menu .dropdown-menu a.dropdown-item:hover {
+    background-color: var(--primary-color); /* Ljubičasta na hover */
+    color: white;
+}
+
+/* Stilovi za sam okidač (link s ikoncom) u mobilnom izborniku */
+.nav-menu .mobile-dropdown-toggle {
+    display: flex; /* Osiguraj da se sve poravna */
+    justify-content: space-between; /* Da ikona bude desno */
+    align-items: center; /* Poravnaj okomito */
+    width: 100%; /* Da zauzme cijelu širinu */
+    padding: 0.75rem 1.5rem;
+    color: white;
+    text-align: left; /* Poravnaj tekst lijevo */
+}
+
+.nav-menu .mobile-dropdown-toggle:hover {
+    background-color: rgba(255, 95, 0, 0.1); /* Blagi narančasti hover */
+}
+
+.nav-menu .mobile-dropdown-toggle i.fas {
+    margin-left: 0.5rem; /* Malo razmaka između teksta i ikone */
+    transition: transform 0.3s ease;
+}
+/* Dodaj rotaciju za ikonu kada je dropdown otvoren */
+.nav-menu .sft21-nav-item.dropdown.open .mobile-dropdown-toggle i.fas {
+    transform: rotate(180deg);
+}
+
+/* Ispravak za zatvaranje jezika */
+.nav-menu .mobile-language-selector .language-dropdown-mobile {
+    display: none; /* Sakrij ga po defaultu */
+}
+.nav-menu .mobile-language-selector.open .language-dropdown-mobile {
+    display: block; /* Pokaži ga kad je selector otvoren */
+}
+
+/* Dodatni popravak za zatvaranje izbornika kada se klikne na stavku */
+.nav-menu a:not([id*="lang-trigger"]):not(.mobile-dropdown-toggle) {
+    /* Ovdje će biti dodan event listener u JS-u */
+}
+
+/* Ovo pravilo je za podebljani tekst unutar odgovora koji ima klase font-bold i text-white */
+body.light-mode .accordion-content p.font-bold.text-white {
+    color: #800080 !important; /* Tamno ljubičasta */
+}
+
+/* Ovo pravilo je za podebljani tekst unutar odgovora koji ima samo klasu uppercase */
+body.light-mode .accordion-content p.uppercase {
+    color: #800080 !important; /* Tamno ljubičasta */
+}
+
+/* Ovo je i dalje ostavljeno za ostale podebljane dijelove teksta koji nemaju te specifične klase */
+body.light-mode .accordion-content strong,
+body.light-mode .accordion-content b {
+    color: #800080; /* Tamno ljubičasta */
+}
+
+/* Ovo pravilo je za naslov pitanja, ako zatreba */
+body.light-mode .accordion-header span.font-semibold {
+    color: #800080; /* Tamno ljubičasta */
+}
+
+/* --- POPRAVLJANJE SKROLANJA MOBILNOG MENIJA I DROPDOVNA --- */
+
+/* Glavni mobilni meni */
+.nav-menu {
+    position: fixed;
+    top: 80px; /* Ispod fiksirane navigacije */
+    left: -100%; /* Sakriven izvan ekrana */
+    width: 100%;
+    height: calc(100vh - 80px); /* Visina od početka do dna ekrana, minus visina fiksne navigacije */
+    background-color: #0d0118; /* Tamna pozadina */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    transition: left 0.5s ease-in-out;
+    z-index: 100;
+    border-right: 1px solid var(--fluorescent-green); /* Dodatni obrub */
+    overflow-y: auto; /* Omogućuje skrolanje ako je sadržaj predugačak */
+    -webkit-overflow-scrolling: touch; /* Za glatkije skrolanje na iOS */
+    padding-bottom: 100px; /* Dodatni padding na dnu da se izbjegne preklapanje s gumbima */
+    box-sizing: border-box; /* Važno za padding */
+}
+
+.nav-menu.active {
+    left: 0; /* Prikaži meni */
+}
+
+/* Stilovi za elemente unutar mobilnog menija */
+.nav-menu a {
+    width: 100%; /* Da zauzmu punu širinu */
+    padding: 0.75rem 1.5rem;
+    text-align: left; /* Poravnanje teksta lijevo */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-bottom: 1px solid rgba(128, 255, 0, 0.1); /* Lagani zeleni separator */
+}
+.nav-menu a:last-child {
+    border-bottom: none; /* Makni granicu na zadnjem elementu */
+}
+
+.nav-menu a:hover {
+    background-color: rgba(106, 27, 154, 0.3); /* Ljubičasti hover */
+    color: var(--fluorescent-green);
+}
+.nav-menu a.active {
+    color: var(--fluorescent-green);
+}
+
+/* Dropdown meni unutar mobilnog menija */
+.nav-menu .sft21-nav-item.dropdown .dropdown-menu {
+    display: none; /* Skriven po defaultu */
+    position: static; /* Važno: Da se prikaže unutar flowa mobilnog izbornika */
+    margin-top: 0; /* Resetiraj marginu */
+    padding: 0; /* Resetiraj padding */
+    width: 100%; /* Da zauzme punu širinu */
+    background-color: #1f2937; /* Tamna pozadina */
+    border: none; /* Bez granica */
+    border-radius: 0;
+    box-shadow: none;
+    z-index: 10;
+    transition: none; /* Makni tranzicije */
+    max-height: 300px; /* Ograniči visinu dropdowna */
+    overflow-y: auto; /* Omogući skrolanje unutar dropdowna */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Kada je dropdown otvoren */
+.nav-menu .sft21-nav-item.dropdown.open .dropdown-menu {
+    display: block;
+}
+
+/* Stil za stavke unutar mobilnog dropdowna */
+.nav-menu .dropdown-menu a.dropdown-item {
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    display: block;
+    border-bottom: 1px solid rgba(128, 255, 0, 0.05); /* Lagani zeleni separator */
+}
+.nav-menu .dropdown-menu a.dropdown-item:hover {
+    background-color: rgba(106, 27, 154, 0.3);
+}
+.nav-menu .dropdown-menu a.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+/* Stil za ikonu koja pokazuje da je dropdown otvoren */
+.nav-menu .mobile-dropdown-toggle i.fas {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+.nav-menu .sft21-nav-item.dropdown.open .mobile-dropdown-toggle i.fas {
+    transform: rotate(180deg); /* Rotiraj ikonu kada je otvoreno */
+}
+
+/* Skrolanje za jezik (ako je to dio dropdowna) */
+.nav-menu .mobile-language-selector .language-dropdown-mobile {
+    display: none; /* Sakriveno po defaultu */
+}
+.nav-menu .mobile-language-selector.open .language-dropdown-mobile {
+    display: block; /* Prikaži kad je selector otvoren */
+}
+
+/* Popravak za zatvaranje menija klikom na stavku */
+.nav-menu a:not([id*="lang-trigger"]):not(.mobile-dropdown-toggle) {
+    /* Event listener se dodaje u JS, ovo je samo fallback stil ako zatreba */
+}
+
+/* Dodatni padding na dno mobilnog menija kako bi se gumbovi vidjeli */
+.nav-menu {
+    padding-bottom: 100px; /* Prilagodite ako imate fiksni footer ili druge elemente na dnu */
+}
+
+/* Konačno, osigurajte da je body.overflow-hidden ispravno primijenjen u JS kad se hamburger aktivira */
+body.overflow-hidden {
+    overflow: hidden;
+}
+
+/* ================================================== */
+/*  KONAČNI UNIVERZALNI HOVER EFEKT S POJAČANJEM        */
+/* ================================================== */
+
+.interactive-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.interactive-card:hover {
+    transform: translateY(-5px) scale(1.03) !important;
+    box-shadow: 0 15px 25px rgba(23, 0, 43, 0.5) !important;
+}
+
+/* === DODATNI STILOVI ZA LIGHT MODE NA LOGIN STRANICI === */
+
+/* Pozadina i osnovni tekst za login stranicu */
+body.light-mode.login-page {
+    background-color: #f8fafc; /* Svijetlo siva pozadina */
+    color: #334155; /* Tamno sivi tekst */
+}
+
+/* Stilovi za login karticu */
+body.light-mode .login-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: #e2e8f0; /* Svijetlo sivi obrub */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Naslovi na kartici */
+body.light-mode .login-title,
+body.light-mode .login-subtitle {
+    color: var(--primary-color); /* Ljubičasta */
+}
+
+/* Input polja */
+body.light-mode .form-input-login {
+    background-color: #f1f5f9; /* Vrlo svijetlo siva */
+    border-color: #cbd5e1; /* Malo tamnije siva */
+    color: #1e293b; /* Vrlo tamna siva za tekst */
+}
+body.light-mode .form-input-login::placeholder {
+    color: #94a3b8; /* Srednje siva za placeholder */
+}
+body.light-mode .form-input-login:focus {
+    border-color: var(--primary-color); /* Ljubičasti obrub na fokus */
+    box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2);
+    background-color: #ffffff;
+}
+
+/* Labela iznad input polja */
+body.light-mode .login-label {
+    color: #475569; /* Tamno siva */
+}
+
+/* Gumb za prijavu */
+body.light-mode .login-submit-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+body.light-mode .login-submit-button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Checkbox */
+body.light-mode .checkbox-label-login {
+    color: #475569;
+}
+body.light-mode .form-checkbox-login {
+    border-color: #94a3b8;
+}
+body.light-mode .form-checkbox-login:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+}
+body.light-mode .form-checkbox-login:focus {
+    box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2);
+}
+
+/* Linkovi */
+body.light-mode .login-link {
+    color: var(--primary-color);
+}
+body.light-mode .login-link:hover {
+    color: var(--secondary-color);
+}
+body.light-mode .register-prompt-text {
+    color: #64748b;
+}
+body.light-mode .register-link {
+    color: var(--primary-color);
+}
+body.light-mode .register-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Horizontalna linija */
+body.light-mode hr {
+    border-color: #e2e8f0;
+}
+
+/* Gumb za zatvaranje */
+body.light-mode .login-close-btn {
+    color: var(--primary-color);
+}
+body.light-mode .login-close-btn:hover {
+    color: var(--secondary-color);
+}
+
+/*
+ * ==================================================
+ * NOVI I ISPRAVLJENI DODACI ZA LIGHT MODE NA REGISTER.HTML STRANICI
+ * Molimo zalijepite ovaj blok na sam KRAJ vašeg style.css fajla.
+ * ==================================================
+ */
+
+/* Opći stilovi za light mode */
+body.light-mode {
+    background-color: #f8fafc !important; /* Svijetla pozadina */
+    color: #334155 !important; /* Tamni tekst */
+}
+
+/* Navigacija u light modu */
+body.light-mode nav.fixed {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-bottom-color: var(--primary-color) !important; /* Glavna ljubičasta */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+body.light-mode .logo-nav .small-text,
+body.light-mode .logo-nav .text-logo-orange,
+body.light-mode .logo-nav .text-white {
+    color: var(--primary-color) !important; /* Logo tekst ljubičasti */
+}
+body.light-mode nav a.btn-primary.register-login-btn {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+body.light-mode nav a.btn-primary.register-login-btn:hover {
+    background-color: var(--secondary-color) !important;
+}
+body.light-mode nav a.btn-outline.register-register-btn {
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+body.light-mode nav a.btn-outline.register-register-btn:hover {
+    background-color: rgba(106, 27, 154, 0.1) !important;
+    color: var(--primary-color) !important;
+}
+body.light-mode nav .language-selector .language-trigger i,
+body.light-mode nav .mobile-language-selector .mobile-language-trigger i,
+body.light-mode #theme-toggle i,
+body.light-mode #theme-toggle-mobile i {
+    color: var(--primary-color) !important; /* Ikone globusa i teme */
+}
+body.light-mode .hamburger .bar {
+    background-color: var(--primary-color) !important; /* Boja hamburger linija */
+}
+
+/* Naslovi u light modu (vrlo specifični zbog globalnog h1-h6 pravila) */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
+body.light-mode h6,
+body.light-mode .registration-section h1,
+body.light-mode .glass-card h4 {
+    color: var(--primary-color) !important; /* Svi naslovi ljubičasti */
+}
+
+/* Tekst u light modu */
+body.light-mode p,
+body.light-mode span,
+body.light-mode div { /* Općenito za sav tekst */
+    color: #475569 !important; /* Tamno siva boja teksta za općenite elemente */
+}
+body.light-mode .text-gray-300 { /* Ciljamo Tailwind klasu koja se koristi za tekst */
+    color: #475569 !important;
+}
+body.light-mode .text-gray-400 { /* Ciljamo Tailwind klasu za sitniji tekst */
+    color: #64748b !important;
+}
+
+
+/* Kartice i kontejneri u light modu */
+body.light-mode .glass-card,
+body.light-mode .registration-form-container {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important; /* Svijetliji obrub */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+}
+body.light-mode .image-placeholder {
+    border-color: #cbd5e1 !important; /* Obrub slike */
+    background-color: #f8fafc !important; /* Pozadina slike */
+}
+
+/* Lista prednosti i ikone */
+body.light-mode .benefits-list li {
+    color: #334155 !important; /* Tekst liste */
+}
+body.light-mode .benefits-list i.fas.fa-check-circle {
+    color: var(--primary-color) !important; /* Boja ikona liste */
+}
+
+/* Gumbi za tip računa (Osobni/Poslovni) */
+body.light-mode .btn-account-type {
+    border-color: var(--primary-color) !important;
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+}
+body.light-mode .btn-account-type.active {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+body.light-mode .btn-account-type:not(.active):hover {
+    background-color: rgba(106, 27, 154, 0.1) !important;
+    color: var(--primary-color) !important;
+}
+body.light-mode .btn-account-type.active:hover {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+}
+
+/* Social media gumbi */
+body.light-mode .social-login-button {
+    border-color: #cbd5e1 !important;
+    background-color: #f8fafc !important;
+    color: #334155 !important;
+}
+body.light-mode .social-login-button:hover {
+    background-color: #f1f5f9 !important;
+}
+body.light-mode .social-login-button i.fab.fa-apple {
+    color: #334155 !important; /* Apple ikona */
+}
+body.light-mode .social-login-button:hover i.fab.fa-apple {
+    color: #334155 !important;
+}
+
+/* Forma za registraciju */
+body.light-mode .registration-form-container .border-gray-700 {
+    border-color: #e2e8f0 !important; /* Granica iznad teksta "...ili nastavite" */
+}
+body.light-mode .form-label-register {
+    color: #475569 !important; /* Boja labela */
+}
+body.light-mode .form-input-register,
+body.light-mode .custom-select-trigger,
+body.light-mode .phone-input-wrapper {
+    background-color: #f1f5f9 !important; /* Svijetla pozadina inputa */
+    border-color: #cbd5e1 !important; /* Svijetli obrub inputa */
+    color: #1e293b !important; /* Tamni tekst inputa */
+}
+body.light-mode .form-input-register::placeholder {
+    color: #94a3b8 !important; /* Placeholder tekst */
+}
+body.light-mode .form-input-register:focus,
+body.light-mode .custom-select-trigger:hover,
+body.light-mode .custom-select-trigger.active,
+body.light-mode .phone-input-wrapper:focus-within {
+    border-color: var(--primary-color) !important; /* Fokus obrub ljubičasti */
+    box-shadow: 0 0 0 2px rgba(106, 27, 154, 0.2) !important;
+}
+body.light-mode .custom-select-options {
+    background-color: #f1f5f9 !important; /* Pozadina dropdown opcija */
+    border-color: #cbd5e1 !important;
+}
+body.light-mode .custom-select-options .option {
+    color: #334155 !important; /* Tekst dropdown opcija */
+}
+body.light-mode .custom-select-options .option:hover {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+}
+body.light-mode .custom-select-trigger::after {
+    color: var(--primary-color) !important; /* Strelica dropdowna */
+}
+body.light-mode .country-code-select {
+    background-color: #e2e8f0 !important; /* Pozadina pozivnog broja */
+    border-right-color: #cbd5e1 !important;
+    color: #334155 !important;
+}
+
+/* Radio i Checkbox gumbi */
+body.light-mode .form-radio-register {
+    border-color: #94a3b8 !important;
+}
+body.light-mode .form-radio-register:checked {
+    border-color: var(--primary-color) !important;
+}
+body.light-mode .form-radio-register:checked::after {
+    background-color: var(--primary-color) !important;
+}
+body.light-mode .form-checkbox-register {
+    border-color: #94a3b8 !important;
+}
+body.light-mode .form-checkbox-register:checked {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+body.light-mode .form-checkbox-register:checked::after {
+    color: white !important; /* Kvačica unutar checkboxa */
+}
+body.light-mode .space-y-3 span.text-gray-300 {
+    color: #475569 !important; /* Tekst checkbox i radio buttona */
+}
+body.light-mode .text-fluorescent-green.underline { /* Specifičniji selektor */
+    color: var(--primary-color) !important; /* Linkovi u checkbox labelama */
+}
+body.light-mode .text-fluorescent-green.underline:hover {
+    color: var(--secondary-color) !important; /* Hover za linkove u checkboxu */
+}
+
+/* Gumb "Dalje" */
+body.light-mode #dalje-button {
+    background-color: var(--primary-color) !important; /* Promijeni boju gumba u light modu */
+    color: white !important;
+}
+body.light-mode #dalje-button:hover {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+}
+body.light-mode .registration-form-container .text-xs.text-gray-400.leading-relaxed {
+    color: #64748b !important; /* Tekst ispod forme */
+}
+
+/* Footer u light modu */
+body.light-mode footer.bg-gray-900 {
+    background-color: #1e293b !important; /* Tamniji footer u light modu */
+    border-top-color: #334155 !important;
+}
+body.light-mode footer h3,
+body.light-mode footer h4 {
+    color: white !important; /* Bijeli naslovi u footeru */
+}
+body.light-mode footer .text-gray-400 {
+    color: #a0aec0 !important; /* Svijetliji tekst u footeru */
+}
+body.light-mode footer a {
+    color: #a0aec0 !important;
+}
+body.light-mode footer a:hover {
+    color: white !important;
+}
+body.light-mode footer .fab {
+    color: #a0aec0 !important; /* Ikone društvenih mreža */
+}
+body.light-mode footer .border-t.border-gray-800 {
+    border-color: #334155 !important;
+}
+
+/* Popup za validaciju (ako se dinamički kreira i dodaje) */
+#validation-popup-overlay #validation-popup-content {
+    background-color: #ffffff !important; /* Bijela pozadina popupa */
+    border-color: var(--primary-color) !important;
+}
+#validation-popup-overlay #validation-popup-content h4 {
+    color: var(--primary-color) !important;
+}
+#validation-popup-overlay #validation-popup-content p {
+    color: #334155 !important;
+}
+#validation-popup-overlay #validation-popup-ok {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+#validation-popup-overlay #validation-popup-ok:hover {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+}
+
+
+/* ================================================== */
+/* === STILOVI ZA POPUP U LIGHT MODU === */
+/* ================================================== */
+
+/* Opći stil za popup kontenjer u light modu */
+body.light-mode .popup-content {
+    background: #ffffff; /* Bijela pozadina */
+    border: 1px solid var(--primary-color); /* Ljubičasti obrub */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Blaža sjena */
+}
+
+/* Stil za tekst unutar popupa (paragrafi, liste) */
+body.light-mode .popup-content p,
+body.light-mode .popup-content li {
+    color: #334155; /* Tamno siva boja teksta */
+}
+
+/* Naslov unutar popupa */
+body.light-mode .popup-content h4 {
+    color: var(--primary-color); /* Ljubičasta boja naslova */
+}
+
+/* Poseban ispravak za zeleni tekst u listi koji je definiran inline */
+body.light-mode #welcome-popup ul li span[style*="color: #39FF14"] {
+    color: #334155 !important; /* Postavlja boju na tamno sivu, !important je nužan da premosti inline stil */
+}
+
+/* Gumb za zatvaranje ('x') u light modu */
+body.light-mode .popup-close {
+    color: #64748b; /* Siva boja */
+}
+
+body.light-mode .popup-close:hover {
+    color: #1e293b; /* Tamnija siva na hover */
+}
+
+/* Gumb "NASTAVI" unutar popupa - koristi postojeće stilove za .btn-primary u light modu */
+body.light-mode #welcome-popup-continue.btn-primary {
+   background-color: var(--primary-color); /* Ljubičasta pozadina */
+   color: white; /* Bijeli tekst */
+}
+
+body.light-mode #welcome-popup-continue.btn-primary:hover {
+   background-color: var(--secondary-color); /* Svjetlija ljubičasta na hover */
+}
+
+/* ================================================== */
+/* === ISPRAVAK BOJE TEKSTA U INPUT POLJIMA ZA LIGHT MODE === */
+/* ================================================== */
+
+/* Stil za input polja i textarea u light modu */
+body.light-mode .form-input {
+    background-color: #f1f5f9; /* Vrlo svijetlo siva pozadina */
+    border-color: #cbd5e1;     /* Malo tamniji sivi obrub */
+    color: #1e293b;            /* Tamno siva boja teksta (za ono što korisnik upiše) */
+}
+
+/* Stil za placeholder tekst (npr. "Unesite vaše ime") u light modu */
+body.light-mode .form-input::placeholder {
+    color: #94a3b8; /* Srednje siva boja za placeholder */
+}
+
+/* Stil kada je korisnik kliknuo na polje (focus) u light modu */
+body.light-mode .form-input:focus {
+    border-color: var(--primary-color); /* Ljubičasti obrub kad je polje aktivno */
+    box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2); /* Blagi ljubičasti sjaj */
+    background-color: #ffffff; /* Opcionalno: pozadina postaje potpuno bijela na fokus */
+}
+
+/* ================================================== */
+/* === ISPRAVAK ZA INVESTMENT DETAILS POPUP U LIGHT MODU === */
+/* ================================================== */
+
+/* Glavne labele i općeniti tekst */
+body.light-mode #investment-details-popup label,
+body.light-mode #investment-details-popup .package-label,
+body.light-mode #investment-details-popup .text-gray-300, /* Cilja labele radio buttona */
+body.light-mode #investment-details-popup .text-lg.font-semibold, /* Tekst "Ukupno namjeravam uložiti:" */
+body.light-mode #investment-details-popup .text-gray-400 /* Pokriva tekst napomene i tekst zadanog preporučitelja */
+{
+    color: #475569 !important; /* Tamno siva boja */
+}
+
+/* Naslovi H4 i H5 unutar popupa */
+body.light-mode #investment-details-popup h4,
+body.light-mode #investment-details-popup h5 {
+    color: var(--primary-color) !important; /* Ljubičasta boja */
+}
+
+/* Sva tekstualna i numerička input polja unutar popupa */
+body.light-mode #investment-details-popup input[type="text"],
+body.light-mode #investment-details-popup input[type="email"],
+body.light-mode #investment-details-popup input[type="number"] {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #1e293b; /* Tamna boja teksta koji korisnik upisuje */
+}
+body.light-mode #investment-details-popup input::placeholder {
+    color: #94a3b8; /* Svjetlija siva za placeholder */
+}
+body.light-mode #investment-details-popup input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2);
+    background-color: #ffffff;
+}
+
+/* Kontejner s investicijskim paketima */
+body.light-mode #investment-details-popup .investment-package-field-container {
+    background-color: #f8fafc; /* Vrlo svijetla pozadina */
+    border-color: #e2e8f0;
+}
+
+/* Posebno stiliziranje za ukupan iznos i podebljani tekst napomene */
+body.light-mode #investment-details-popup #total-investment-amount-details {
+    color: var(--primary-color) !important; /* Iznos u ljubičastoj boji */
+}
+body.light-mode #investment-details-popup .text-sm.text-gray-400 strong {
+    color: #334155 !important; /* Podebljani tekst napomene */
+}
+
+/* Radio gumbi */
+body.light-mode #investment-details-popup .form-radio {
+    border-color: #94a3b8;
+}
+body.light-mode #investment-details-popup .form-radio:checked {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+}
+
+/* Checkbox gumbi za pakete */
+body.light-mode #investment-details-popup .package-item input[type="checkbox"] {
+     accent-color: var(--primary-color); /* Najjednostavniji način za bojanje modernih checkboxa */
+}
+
+/* ================================================== */
+/* === ISPRAVAK ZA DODATNE POPUPE/FORME U LIGHT MODU === */
+/* ================================================== */
+
+/* --- 1. Stilovi za "Veći iznos" (Kontakt) Popup --- */
+
+/* Naslov i labele unutar popupa */
+body.light-mode #contact-form-popup h4,
+body.light-mode #contact-form-popup label {
+    color: var(--primary-color) !important; /* Ljubičasta boja */
+}
+
+/* Opisni tekst unutar popupa */
+body.light-mode #contact-form-popup p {
+    color: #475569 !important; /* Tamno siva boja */
+}
+
+/* Tekstualna polja (Ime, Email, Telefon) */
+body.light-mode #contact-form-popup input[type="text"],
+body.light-mode #contact-form-popup input[type="email"],
+body.light-mode #contact-form-popup input[type="tel"] {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #1e293b; /* Tamna boja za upisani tekst */
+}
+body.light-mode #contact-form-popup input::placeholder {
+    color: #94a3b8; /* Siva boja za placeholder */
+}
+body.light-mode #contact-form-popup input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2);
+    background-color: #ffffff;
+}
+
+/* Gumb "Pošalji" */
+body.light-mode #contact-form-popup .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+
+/* --- 2. Stilovi za "Do 10.000 €" polje za unos --- */
+
+/* Labela iznad polja */
+body.light-mode .ip-wide-card .amount-input-container label {
+    color: #475569 !important;
+}
+
+/* Polje za unos iznosa */
+body.light-mode .ip-wide-card .amount-input {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #1e293b;
+}
+body.light-mode .ip-wide-card .amount-input::placeholder {
+    color: #94a3b8;
+}
+body.light-mode .ip-wide-card .amount-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2);
+    background-color: #ffffff;
+}
+
+/* Simbol valute (€) */
+body.light-mode .ip-wide-card .currency-symbol {
+    color: #475569 !important;
+}
+
+/* Gumbi "POTVRDI" i "OTKAŽI" */
+body.light-mode .ip-wide-card .input-buttons .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+body.light-mode .ip-wide-card .input-buttons .btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+body.light-mode .ip-wide-card .input-buttons .btn-outline {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+body.light-mode .ip-wide-card .input-buttons .btn-outline:hover {
+    background-color: rgba(106, 27, 154, 0.1);
+}
+
+/* Opći stilovi za desktop i mobilni padajući izbornik */
+body.light-mode .language-dropdown,
+body.light-mode .language-dropdown-mobile {
+    background-color: #ffffff; /* Bijela pozadina */
+    border-color: #e2e8f0; /* Svijetlo sivi obrub */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Stil za pojedinačne stavke (tekst jezika) */
+body.light-mode .language-item span {
+    color: #334155; /* Tamno siva boja teksta */
+}
+
+/* Stil za stavke kada se prijeđe mišem preko njih (hover) */
+body.light-mode .language-item:hover {
+    background-color: var(--primary-color); /* Ljubičasta pozadina na hover */
+}
+
+/* Stil za tekst unutar stavke kada se prijeđe mišem preko nje */
+body.light-mode .language-item:hover span {
+    color: #ffffff; /* Bijeli tekst na hover */
+}
+
+/* ======================================================= */
+/* === FIKSIRANJE BOJE TEKSTA U PULSIRAJUĆEM KRUGU === */
+/* ======================================================= */
+
+.pulsating-circle .circle-line {
+    color: white !important;
+}
+
+/* ======================================================= */
+/* === KONAČNI POPRAVAK ZA AI CHATBOT U SVIM MODovima === */
+/* ======================================================= */
+
+
+   /* Plutajuća ikona */
+body.light-mode .ai-chat-float-icon {
+    background-color: var(--primary-color) !important;
+    border-color: var(--fluorescent-green) !important;
+    color: white !important;
+}
+
+/* Glavni prozor popupa */
+body.light-mode .ai-chat-popup {
+    background-color: #1f2937 !important; /* Tamno plavo-siva */
+    border-color: var(--fluorescent-green) !important;
+}
+
+/* Header popupa */
+body.light-mode .ai-chat-popup-header {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color)) !important;
+    color: white !important;
+}
+body.light-mode .ai-chat-popup-header span {
+    color: white !important;
+}
+body.light-mode .ai-chat-close-btn {
+    color: white !important;
+}
+
+/* Tijelo popupa (gdje su poruke) */
+body.light-mode .ai-chat-popup-body {
+    background-color: #111827 !important; /* Vrlo tamna pozadina */
+}
+body.light-mode .ai-chat-popup-body p {
+    color: #9ca3af !important; /* Originalna siva boja teksta */
+}
+
+/* Kontejner za unos teksta na dnu popupa */
+body.light-mode .ai-chat-popup .ai-chat-input-container {
+    background-color: #1f2937 !important;
+    border-top-color: var(--fluorescent-green) !important;
+}
+
+/* Samo polje za unos teksta */
+body.light-mode .ai-chat-popup .ai-chat-input {
+    background-color: #374151 !important;
+    border-color: #4b5563 !important;
+    color: white !important;
+}
+body.light-mode .ai-chat-popup .ai-chat-input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Gumbi za slanje i dodavanje datoteke */
+body.light-mode .ai-chat-popup .ai-chat-button {
+    color: #9ca3af !important; /* Vraća sivu boju na spajalicu */
+}
+body.light-mode .ai-chat-popup .ai-chat-button:hover {
+    color: white !important;
+}
+/* Specifično ciljanje gumba za slanje (avion) */
+body.light-mode .ai-chat-popup .ai-chat-button.text-purple-400 {
+    color: #a78bfa !important; /* Originalna Tailwind purple-400 boja */
+}
+body.light-mode .ai-chat-popup .ai-chat-button.text-purple-400:hover {
+    color: #c4b5fd !important; /* Originalna Tailwind purple-300 boja */
+}
+
+/* ======================================================= */
+/* === FIKSIRANJE IZGLEDA BROJAČA KORISNIKA U SVIM MODovima === */
+/* ======================================================= */
+
+
+/* Glavni kontejner widgeta */
+body.light-mode .user-counter-widget {
+    background: rgba(13, 1, 24, 0.9) !important;
+    border-color: var(--fluorescent-green) !important;
+}
+
+/* Header widgeta */
+body.light-mode .user-counter-header {
+    border-bottom-color: rgba(128, 255, 0, 0.2) !important;
+}
+body.light-mode .user-counter-header h3 {
+    color: var(--fluorescent-green) !important;
+}
+/* Ikona korisnika u headeru */
+body.light-mode .user-counter-header h3 i {
+    color: var(--fluorescent-green) !important;
+}
+/* Gumbi za zatvaranje/skrivanje */
+body.light-mode .user-counter-actions button {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Tijelo widgeta */
+body.light-mode .user-counter-number {
+    color: var(--fluorescent-green) !important;
+    text-shadow: 0 0 8px rgba(128, 255, 0, 0.5) !important;
+}
+
+/* Lista korisnika */
+body.light-mode .user-counter-list {
+    scrollbar-color: var(--secondary-color) rgba(128, 255, 0, 0.1) !important;
+}
+
+/* Pojedinačna stavka u listi */
+body.light-mode .user-counter-item {
+    border-bottom-color: rgba(128, 255, 0, 0.1) !important;
+}
+body.light-mode .user-counter-name {
+    color: #e0e0e0 !important;
+}
+body.light-mode .user-counter-time {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+body.light-mode .user-counter-placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Gumb za prikaz skrivenog widgeta */
+body.light-mode .user-counter-show-btn {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--fluorescent-green) !important;
+}
+body.light-mode .user-counter-show-btn:hover {
+    background: var(--secondary-color) !important;
+}
+/* Ikona na gumbu za prikaz */
+body.light-mode .user-counter-show-btn i {
+    color: white !important;
+}
+
+
+/* ======================================================= */
+/* === KONAČNI POPRAVAK ZA REGISTER STRANICU LIGHT MODE === */
+/* ======================================================= */
+
+/* Ovo osigurava da se tekstualni dio loga ispravno boji */
+body.light-mode .logo-nav span, 
+body.light-mode .logo-nav div {
+    color: var(--primary-color) !important;
+}
+
+/* Ovo osigurava da specifični naslovi u lijevoj koloni ispravno mijenjaju boju */
+body:not(.light-mode) .glass-card h4[style*="font-family: 'Century Gothic'"] {
+    color: #80ff00 !important; /* Zelena za dark mode */
+}
+
+body.light-mode .glass-card h4[style*="font-family: 'Century Gothic'"] {
+    color: var(--primary-color) !important; /* Ljubičasta za light mode */
+}
+
+/* ======================================================= */
+/* === BOJA LINIJE ISPOD NASLOVA - SAMO ZA DARK MODE === */
+/* ======================================================= */
+body:not(.light-mode) .text-center > .bg-purple-500 {
+    background-color: var(--fluorescent-green);
+}
+
+/* POSEBAN STIL SAMO ZA GUMBE U HEADERU NA REGISTER STRANICI U LIGHT MODU */
+html.light-mode body.register-page nav a.btn-primary {
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+html.light-mode body.register-page nav a.btn-outline {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* ======================================= */
+/* KONAČNI I JEDINI KOD ZA HERO VIDEO      */
+/* ======================================= */
+.hero-video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Omjer 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px; /* Za zaobljene rubove videa */
+    
+    /* Opcionalno: dodaje isti "glass" efekt kao na karticama */
+    background: rgba(106, 27, 154, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--fluorescent-green);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.hero-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ======================================================= */
+/* NOVI KOD ZA NAVIGACIJSKU LINIJU (ACTIVE & HOVER)     */
+/* ======================================================= */
+
+/* Osnovna postavka za sve linkove u navigaciji */
+.nav-link {
+    position: relative;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+/* Linija ispod linka - osnovni stil (sakrivena) */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -8px; /* Udaljenost od teksta */
+    left: 0;
+    width: 0; /* Početna širina 0, pa je nevidljiva */
+    height: 2px;
+    background-color: var(--fluorescent-green);
+    transition: width 0.3s ease-in-out; /* Samo animacija širine */
+}
+
+/* Pravilo za HOVER: Kada pređemo mišem, linija se pojavi */
+.nav-link:hover::after {
+    width: 100%;
+}
+.nav-link:hover {
+    color: var(--fluorescent-green);
+}
+
+/* Pravilo za ACTIVE: Kada link ima klasu .active, linija je trajno vidljiva */
+.nav-link.active {
+    color: var(--fluorescent-green) !important; /* Pojačaj boju teksta */
+}
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* --- Prilagodbe za LIGHT MODE --- */
+body.light-mode .nav-link {
+    color: var(--primary-color);
+}
+body.light-mode .nav-link:hover,
+body.light-mode .nav-link.active {
+    color: var(--secondary-color) !important;
+}
+body.light-mode .nav-link::after {
+    background-color: var(--secondary-color);
+}
+
+/* ============================================ */
+/*      STIL ZA LINK ZA PREUZIMANJE UGOVORA     */
+/* ============================================ */
+
+/* Kontejner koji drži sve i centrira tekst */
+.ugovor-download-container {
+    text-align: center; /* Centrira sav tekst unutar kontejnera */
+    margin-top: 50px;   /* Stvara razmak od 50px od elemenata iznad (LP7 paketa) */
+    margin-bottom: 70px;/* Stvara veći razmak od elemenata ispod (naslova "Prednosti") */
+    padding: 0 20px;    /* Dodaje malo razmaka sa strane na mobilnim uređajima */
+}
+
+/* Stil za prvi red teksta koji sadrži link */
+.ugovor-download-container .ugovor-link {
+    font-size: 1.1em; /* Malo veći font da bude uočljiv */
+    font-weight: bold; /* Podebljan tekst */
+    margin-bottom: 15px; /* Razmak između prvog i drugog reda teksta */
+}
+
+/* Stil za sam link unutar prvog reda */
+.ugovor-download-container .ugovor-link a {
+    color:  #80ff00; /* Jarka zelena boja, ista kao na vašem sajtu */
+    text-decoration: none; /* Uklanja podcrtavanje linka */
+    transition: color 0.3s ease; /* Glatka tranzicija boje na prelazak mišem */
+}
+
+/* Efekt kada se mišem pređe preko linka */
+.ugovor-download-container .ugovor-link a:hover {
+    color: #ffffff; /* Link postaje bijel na prelazak mišem */
+    text-decoration: underline; /* Dodaje podcrtavanje za bolji feedback */
+}
+
+/* Stil za drugi, informativni red teksta */
+.ugovor-download-container .ugovor-info-text {
+    color: #cccccc; /* Svjetlo siva boja, da bude malo manje naglašena od linka */
+    font-size: 0.9em; /* Malo manji font */
+    max-width: 600px; /* Ograničava širinu teksta na većim ekranima radi čitljivosti */
+    margin-left: auto;  /* Ove dvije linije centriraju tekstni blok */
+    margin-right: auto; /* koji ima ograničenu širinu (max-width) */
+    line-height: 1.6; /* Povećava prored za bolju čitljivost */
+}
+
+/*      BOJE LINKA ZA UGOVOR U LIGHT MODU       */
+body.light-mode .ugovor-download-container .ugovor-link a {
+    color: var(--primary-color) !important; /* Postavlja boju na ljubičastu */
+}
+
+body.light-mode .ugovor-download-container .ugovor-link a:hover {
+    color: var(--secondary-color) !important; /* Postavlja boju na svjetliju ljubičastu na hover */
+}
+
+/* ======================================================= */
+/*      STILOVI ZA PRAVNE DOKUMENTE (UVJETI, PRIVATNOST...)  */
+/* ======================================================= */
+
+.legal-content-wrapper {
+    padding-top: 120px; /* Dovoljan odmak od fiksiranog headera */
+    padding-bottom: 80px;
+    padding-left: 1rem; /* Padding za mobilne uređaje */
+    padding-right: 1rem;
+    color: var(--text-color);
+}
+
+.legal-content {
+    max-width: 900px; /* Optimalna širina za čitanje teksta */
+    margin: 0 auto;
+    
+    /* Preuzima postojeći glass-card stil, ali dodajemo specifične prilagodbe */
+    padding: clamp(1.5rem, 4vw, 3rem); /* Više prostora unutar kartice */
+    text-align: justify;
+    
+    /* Dodatni sjaj za "magličasti" efekt */
+    box-shadow: 0 8px 32px 0 rgba(13, 1, 24, 0.37), 
+                0 0 40px rgba(128, 255, 0, 0.2); /* Neonski zeleni sjaj */
+}
+
+.legal-content h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responzivna veličina naslova */
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--fluorescent-green);
+    font-weight: 700;
+}
+
+.legal-content .last-updated {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin-bottom: 3rem;
+}
+
+.legal-content h2 {
+    font-size: clamp(1.3rem, 4vw, 1.6rem);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(128, 255, 0, 0.2);
+    color: white;
+    font-weight: 600;
+}
+
+.legal-content p, .legal-content li {
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    color: #d1d5db; /* Malo svjetliji tekst za bolju čitljivost */
+}
+
+.legal-content ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+}
+
+.legal-content a {
+    color: var(--fluorescent-green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.legal-content a:hover {
+    color: var(--fluorescent-orange);
+}
+
+/* Prilagodbe za Light Mode */
+body.light-mode .legal-content {
+    background-color: #ffffff;
+    border-color: var(--primary-color); 
+    color: #334155;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07),
+                0 0 40px rgba(106, 27, 154, 0.1); 
+}
+body.light-mode .legal-content h1 {
+    color: var(--primary-color);
+}
+body.light-mode .legal-content .last-updated {
+    color: #64748b;
+}
+body.light-mode .legal-content h2 {
+    color: #1e293b;
+    border-bottom-color: #cbd5e1;
+}
+body.light-mode .legal-content p, 
+body.light-mode .legal-content li {
+    color: #475569;
+}
+body.light-mode .legal-content a {
+    color: var(--primary-color);
+}
+body.light-mode .legal-content a:hover {
+    color: var(--secondary-color);
+}
+body.light-mode .glass-card,
+body.light-mode .info-box,
+body.light-mode .login-card,
+body.light-mode .faze-card,
+body.light-mode .feature-card,
+body.light-mode .legal-content,
+body.light-mode .ip-card,
+body.light-mode .ip-wide-card,
+body.light-mode .decision-content-box,
+body.light-mode .selection-box,
+body.light-mode .option-card,
+body.light-mode .card-main-content,
+body.light-mode .registration-form-container,
+body.light-mode .kyc-container,
+body.light-mode .username-selection-card,
+body.light-mode .info-card-register,       /* << NOVO: Za donji lijevi okvir */
+body.light-mode .recommendation-card {     /* << NOVO: Za gornji lijevi okvir */
+    border-color: var(--primary-color) !important;
+}
+
+body.light-mode .form-input-register,
+body.light-mode .custom-select-trigger,
+body.light-mode .phone-input-wrapper {
+    border-color: var(--primary-color) !important;
+}
+
+/* ======================================================= */
+/*      PROMJENA BOJE IKONA U KARTICAMA (LIGHT MODE)       */
+/* ======================================================= */
+
+body.light-mode .glass-card .fas,
+body.light-mode .glass-card .fab {
+    color: var(--accent-color) !important; /* Fluorescentno ljubičasta */
+}
+

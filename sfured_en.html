@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFoffice - SFT21 Business Concept </title>
+
+        <script>
+        // This script executes immediately to prevent flashing the wrong theme.
+        try {
+            // We use the SAME key 'sft21_theme' set on the index page
+            const theme = localStorage.getItem('sft21_theme') || 'dark';
+            if (theme === 'light') {
+                // We set the class on the <html> element for consistency
+                document.documentElement.classList.add('light-mode');
+            }
+        } catch (e) {
+            console.error('Could not access localStorage to set the theme.');
+        }
+    </script>
+
+    <!-- External CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+   
+    <!-- ============================================= -->
+    <!-- UNIVERSAL THEME INITIALIZATION SCRIPT -->
+    <!-- Solves the "flash" and back-forward cache issues -->
+    <!-- ============================================= -->
+    <script>
+        function applySft21Theme() {
+            try {
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+
+                if (theme === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                } else {
+                    document.documentElement.classList.remove('light-mode');
+                }
+            } catch (e) {
+                console.error('Error applying theme:', e);
+            }
+        }
+        applySft21Theme();
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                console.log('Page loaded from bfcache, re-checking theme.');
+                applySft21Theme();
+            }
+        });
+    </script>
+   
+   <style>
+        /* === KOMPLETAN CSS UGRAĐEN DIREKTNO U DATOTEKU === */
+
+        /* Custom CSS Variables */
+        :root {
+            --primary-color: #6a1b9a;
+            --primary-color-rgb: 106, 27, 154;
+            --secondary-color: #ab47bc;
+            --fluorescent-green: #80ff00;
+            --fluorescent-green-rgb: 128, 255, 0;
+            --success-green: #4caf50;
+            --text-color: #e5e7eb;
+            --background-color: #0f172a;
+            --glass-background: rgba(106, 27, 154, 0.15);
+            --glass-border: rgba(128, 255, 0, 0.3);
+            --glass-shadow: rgba(0, 0, 0, 0.3);
+            --fluorescent-orange: #d9ff00;
+            --disabled-color: rgba(229, 231, 235, 0.3);
+            --input-border-color: rgba(128, 255, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Arial Narrow', Arial, sans-serif !important;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .sfured-header {
+            position: fixed; top: 0; left: 0; width: 100%; height: 64px;
+            background-color: #1f2937; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem;
+        }
+        .sfured-header .logo-sfured { display: flex; align-items: center; }
+        .sfured-header .logo-nav { font-size: 1.5rem; line-height: 1; display: flex; flex-direction: column; align-items: flex-start; }
+        .sfured-header .logo-nav .small-text { font-size: 0.75rem; color: #d1d5db; font-weight: 400; margin-bottom: -0.1em; }
+        .sfured-header .logo-nav .text-logo-orange { color: var(--fluorescent-green); }
+        .sfured-header .logo-sfured img { width: 48px; height: auto; margin-right: 0.5rem; }
+        .sfured-header .status-timer { display: flex; flex-direction: column; align-items: center; text-align: center; font-size: 0.9rem; color: #d1d5db; }
+        .sfured-header .status-timer .status { font-weight: 600; color: var(--fluorescent-green); }
+        .sfured-header .status-timer .status.inactive { color: #ef4444; }
+        .sfured-header .status-timer .timer-display { font-size: 1rem; font-weight: 700; color: white; margin-top: 0.25rem; }
+        .sfured-header .user-info { display: flex; align-items: center; }
+        .sfured-header .user-info .user-details { display: flex; flex-direction: column; margin-right: 0.75rem; text-align: right; }
+        .sfured-header .user-info .user-name { font-size: 1rem; font-weight: 600; color: white; }
+        .sfured-header .user-info .user-username { font-size: 0.875rem; color: #d1d5db; }
+        .sfured-header .user-info .avatar-placeholder { width: 40px; height: 40px; background-color: #6b7280; border-radius: 0.375rem; margin-right: 0.75rem; flex-shrink: 0; cursor: pointer; transition: opacity 0.2s ease; }
+        .sfured-header .user-info .avatar-placeholder:hover { opacity: 0.8; }
+        .sfured-header .user-info .logout-icon { color: #d1d5db; font-size: 1.25rem; cursor: pointer; transition: color 0.2s ease; }
+        .sfured-header .user-info .logout-icon:hover { color: #ef4444; }
+
+        /* Vertical Navigation */
+        .sfured-nav-vertical {
+            position: fixed; top: 64px; left: 0; bottom: 0; width: 250px;
+            background-color: #111827; border-right: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 40; display: flex; flex-direction: column; padding: 0; overflow-y: auto;
+        }
+        .sfured-nav-vertical .nav-top-icons { display: flex; justify-content: space-around; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 0.75rem; }
+        .sfured-nav-vertical .video-player-icon-area, .sfured-nav-vertical .notification-icon-area { display: flex; flex: 1; justify-content: center; align-items: center; }
+        .sfured-nav-vertical .icon-link, .sfured-nav-vertical .notification-icon { font-size: 1.5rem; color: #d1d5db; transition: color 0.2s ease, transform 0.2s ease; cursor: pointer; }
+        .sfured-nav-vertical .icon-link:hover, .sfured-nav-vertical .notification-icon:hover { color: var(--fluorescent-green); transform: scale(1.1); }
+        .notification-icon { position: relative; }
+        .notification-counter { position: absolute; top: -8px; right: -8px; font-size: 0.75rem; font-weight: 700; border-radius: 9999px; padding: 0.1rem 0.4rem; background-color: #ef4444; color: white; }
+        .sfured-nav-vertical .sf-status-title { text-align: center; color: white; font-size: 1.1rem; font-weight: 700; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 0.75rem; }
+        .sfured-nav-vertical .sf-status-title .larger-sf { font-size: 1.3rem; }
+        .sfured-nav-vertical .nav-links-vertical { flex-grow: 1; list-style: none; padding: 0; margin: 0; }
+        .sfured-nav-vertical .nav-link-vertical { display: block; padding: 0.75rem 1.5rem; color: #d1d5db; text-decoration: none; font-weight: 500; }
+        .sfured-nav-vertical .nav-link-vertical:hover { background-color: rgba(106, 27, 154, 0.1); color: white; }
+        .sfured-nav-vertical .nav-link-vertical.active { background-color: var(--fluorescent-green); color: #0e076a; font-weight: 700; }
+
+        /* Main Content & Dashboard */
+        .sfured-main-content { margin-left: 250px; padding: 1.5rem; padding-top: calc(64px + 1.5rem); min-height: calc(100vh - 64px); }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+        .dashboard-panel {
+            background-color: var(--glass-background); border: 1px solid var(--glass-border); border-radius: 15px; padding: 1.5rem;
+            text-align: center; color: var(--text-color); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .dashboard-panel:hover { transform: translateY(-5px); box-shadow: 0 10px 25px var(--glass-shadow); border-color: var(--fluorescent-green); }
+        .dashboard-panel h4 { font-size: 1.1rem; font-weight: 600; color: white; margin-bottom: 0.5rem; }
+        .dashboard-panel .panel-value { font-size: 1.5rem; font-weight: 700; color: var(--fluorescent-green); margin-bottom: 0.25rem; }
+        .dashboard-panel .panel-secondary-text { font-size: 0.875rem; color: #d1d5db; line-height: 1.4; }
+        .dashboard-panel i { font-size: 2rem; color: var(--secondary-color); margin-bottom: 0.5rem; }
+        .panel-status-timer .panel-value { font-size: 0.875rem !important; }
+
+        /* My Account & SFTeam specific styles */
+        .personal-info-data-panel { background: rgba(106, 27, 154, 0.1); border: 1px solid var(--fluorescent-green); border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); padding: 1rem; display: flex; flex-direction: column; }
+        .sftim-top-info-container { background-color: var(--glass-background); border: 1px solid var(--glass-border); border-radius: 15px; padding: 2rem; margin-bottom: 2rem; }
+        .sftim-info-block .info-line { display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); flex-wrap: wrap; }
+        .sftim-info-block .info-line:last-child { border-bottom: none; }
+        .sftim-info-block .info-line span:first-child { color: #d1d5db; }
+        .sftim-info-block .info-line span.value-number { font-weight: 700; }
+        .sftim-info-block .info-line span.value-green { color: var(--fluorescent-green); }
+        .sftim-panel-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem; }
+        @media (min-width: 640px) { .sftim-panel-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 768px) { .sftim-panel-grid { grid-template-columns: repeat(4, 1fr); } .sftim-panel-grid .sftim-span-panel { grid-column: span 2 / span 2; } }
+        .sftim-panel-grid .dashboard-panel .panel-icon-sftim { font-size: 2rem; color: var(--secondary-color); margin-bottom: 0.75rem; }
+        .panel-link { color: var(--fluorescent-green); text-decoration: none; font-weight: 600; }
+        
+        /* Modal Styles */
+        .avatar-upload-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); z-index: 9999; display: none; justify-content: center; align-items: center; }
+        .avatar-upload-modal-content { background: #1f2937; border: 1px solid var(--fluorescent-green); border-radius: 15px; padding: 2rem; max-width: 400px; width: 90%; text-align: center; position: relative; }
+        .modal-close { position: absolute; top: 10px; right: 10px; font-size: 2rem; color: #d1d5db; cursor: pointer; }
+        
+        /* SFKOD Generator Styles */
+        .popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); z-index: 10000; display: none; justify-content: center; align-items: center; }
+        .popup-content { background: #1f2937; border: 2px solid var(--fluorescent-green); border-radius: 20px; padding: 2.5rem; width: 90%; max-width: 800px; position: relative; color: var(--text-color); max-height: 90vh; overflow-y: auto; text-align: left; }
+        .popup-content h4 { color: var(--fluorescent-green); margin-bottom: 1.5rem; font-size: 1.5rem; text-align: center; }
+        .popup-content p { margin-bottom: 1rem; line-height: 1.7; text-align: justify; }
+        .popup-content ul { list-style-type: decimal; padding-left: 2rem; }
+        .popup-content li { margin-bottom: 0.5rem; }
+        .popup-content .napomena-title { color: var(--fluorescent-green); font-weight: bold; margin-top: 1.5rem; }
+        .popup-button { background-color: rgba(128, 255, 0, 0.1); color: var(--fluorescent-green); border: 1px solid var(--fluorescent-green); border-radius: 8px; padding: 0.75rem 1.5rem; font-weight: 600; cursor: pointer; }
+        .popup-button:hover { background-color: var(--fluorescent-green); color: #0e076a; }
+        #ne-prikazuj-ponovo { width: 1rem; height: 1rem; accent-color: var(--fluorescent-green); }
+        .sfkod-generator-container { background-color: var(--glass-background); border: 1px solid var(--glass-border); border-radius: 15px; padding: 2rem; }
+        .sfkod-generator-container h1 { color: var(--fluorescent-green); text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 2.5rem; }
+        .sfkod-package-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .sfkod-package-button { background-color: var(--primary-color); color: white; border: 1px solid var(--primary-color); border-radius: 8px; padding: 0.6rem 1rem; cursor: pointer; font-weight: 600; min-width: 90px; text-align: center; }
+        .sfkod-package-button.selected, .sfkod-package-button:not(:disabled):hover { background-color: var(--fluorescent-green); color: #0f172a; border-color: var(--fluorescent-green); }
+        .sfkod-package-button:disabled { background-color: var(--disabled-color); color: rgba(229, 231, 235, 0.6); cursor: not-allowed; opacity: 0.5; }
+        .sfkod-generator-buttons { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .sfkod-number-inputs { display: flex; justify-content: center; gap: 5px; margin-bottom: 1.5rem; }
+        .sfkod-confirm-button { margin: 0 auto; display: block; margin-bottom: 1.5rem; }
+        .sfkod-generator-button, .sfkod-confirm-button { background-color: var(--fluorescent-green); color: #0f172a; border: 2px solid var(--fluorescent-green); border-radius: 8px; padding: 0.6rem 1.2rem; cursor: pointer; font-weight: 600; }
+        .sfkod-generator-button.active-mode, .sfkod-confirm-button:hover, .sfkod-generator-button:hover { background-color: transparent; color: var(--fluorescent-green); }
+        .sfkod-number-input-container { display: flex; flex-direction: column; align-items: center; }
+        .sfkod-arrow { cursor: pointer; color: var(--fluorescent-green); font-size: 1.25rem; }
+        .sfkod-number-input { width: 36px; height: 36px; text-align: center; border: 1px solid var(--input-border-color); border-radius: 6px; margin: 3px 0; background-color: rgba(106, 27, 154, 0.2); color: var(--text-color); font-weight: bold; }
+        .sfkod-codes-table-wrapper { background-color: rgba(0,0,0,0.2); padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem; }
+        .sfkod-codes-table { width: 100%; border-collapse: collapse; }
+        .sfkod-codes-table th, .sfkod-codes-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid rgba(229, 231, 235, 0.15); }
+        .sfkod-codes-table th { background-color: rgba(106, 27, 154, 0.5); color: white; }
+        .info-icon-cell { display: flex; justify-content: space-between; align-items: center; }
+        .info-icon { font-family: 'Lucida Calligraphy', 'Comic Sans MS', cursive; font-style: italic; color: var(--fluorescent-green); background-color: rgba(128, 255, 0, 0.1); border: 1px solid var(--fluorescent-green); border-radius: 50%; width: 24px; height: 24px; display: inline-flex; justify-content: center; align-items: center; cursor: pointer; }
+        .sfkod-index-cell { width: 50px; text-align: center; font-weight: bold; color: #0f172a; background-color: rgba(128, 255, 0, 0.2); border-radius: 4px; }
+        .sfkod-index-cell.clickable { background-color: var(--fluorescent-green); cursor: pointer; }
+        .sfkod-index-cell.active { background-color: transparent; border: 2px solid var(--fluorescent-green); color: var(--fluorescent-green); }
+        .sfkod-index-cell.completed { background-color: transparent !important; color: var(--fluorescent-orange) !important; cursor: default; }
+        .sfkod-code-cell-content { display: flex; align-items: center; justify-content: flex-start; gap: 1.5rem; }
+        .sfkod-code-cell-content span:first-child { font-family: 'Arial', sans-serif; font-size: 1.1rem; letter-spacing: 1px; color: var(--fluorescent-orange); font-weight: bold; }
+        .sfkod-code-suffix { font-size: 0.9rem; color: #a0aec0; margin-left: auto; padding-right: 1rem; }
+        tr.hidden-row { display: none; }
+        .sfkod-kyc-options { margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--glass-border); border-radius: 10px; background-color: rgba(106, 27, 154, 0.3); }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sfured-header { padding: 0 1rem; }
+            .sfured-header .status-timer, .sfured-header .user-info .user-details { display: none; }
+            .sfured-nav-vertical { width: 100%; top: 64px; left: 0; transform: translateY(-120%); transition: transform 0.3s ease-in-out; }
+            .sfured-nav-vertical.active { transform: translateY(0); }
+            .sfured-main-content { margin-left: 0; padding: 1.5rem 1rem; padding-top: calc(64px + 1.5rem); }
+            .hamburger { display: block; cursor: pointer; z-index: 60; }
+            .hamburger .bar { display: block; width: 25px; height: 3px; margin: 5px auto; transition: all 0.3s ease-in-out; background-color: #d1d5db; }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+
+        /* ============================================= */
+/* === STYLES FOR LIGHT MODE - START === */
+/* ============================================= */
+
+html.light-mode {
+    /* Redefine CSS variables for the light theme */
+    --primary-color: #6a1b9a; 
+    --secondary-color: #ab47bc; 
+    --fluorescent-green: #16a34a; /* Dark green for readability */
+    --fluorescent-yellow: #ca8a04; 
+    --text-color: #334155; /* Dark gray text */
+    --background-color: #f8fafc; /* Almost white background */
+    --glass-background: rgba(233, 213, 255, 0.6); 
+    --glass-border: rgba(168, 85, 247, 0.4); 
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+    --fluorescent-orange: #d97706; 
+}
+
+/* Base elements */
+html.light-mode body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Top fixed header */
+html.light-mode .sfured-header {
+    background-color: #ffffff;
+    border-bottom-color: #e2e8f0;
+}
+
+html.light-mode .sfured-header .logo-nav .small-text,
+html.light-mode .sfured-header .user-info .user-username {
+    color: #64748b;
+}
+
+html.light-mode .sfured-header .user-info .user-name {
+    color: #1e293b;
+}
+
+html.light-mode .sfured-header .user-info .logout-icon {
+    color: #64748b;
+}
+html.light-mode .sfured-header .user-info .logout-icon:hover {
+    color: #ef4444;
+}
+
+html.light-mode .hamburger .bar {
+    background-color: #4b5563;
+}
+
+/* Vertical navigation */
+html.light-mode .sfured-nav-vertical {
+    background-color: #f1f5f9;
+    border-right-color: #e2e8f0;
+}
+html.light-mode .sfured-nav-vertical .nav-top-icons,
+html.light-mode .sfured-nav-vertical .sf-status-title {
+    border-bottom-color: #e2e8f0;
+}
+html.light-mode .sfured-nav-vertical .nav-top-icons .icon-link,
+html.light-mode .sfured-nav-vertical .nav-top-icons .notification-icon i {
+    color: #4b5563;
+}
+html.light-mode .sfured-nav-vertical .nav-top-icons .icon-link:hover,
+html.light-mode .sfured-nav-vertical .nav-top-icons .notification-icon:hover i {
+    color: var(--primary-color);
+}
+html.light-mode .sfured-nav-vertical .sf-status-title {
+    color: var(--primary-color);
+}
+
+html.light-mode .sfured-nav-vertical .nav-link-vertical {
+    color: #4b5563;
+}
+html.light-mode .sfured-nav-vertical .nav-link-vertical:hover {
+    background-color: rgba(106, 27, 154, 0.1);
+    color: var(--primary-color);
+}
+html.light-mode .sfured-nav-vertical .nav-link-vertical.active {
+    background-color: var(--primary-color);
+    color: white !important;
+}
+
+/* Main content and panels */
+html.light-mode .dashboard-panel {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+html.light-mode .dashboard-panel:hover {
+     border-color: var(--primary-color);
+     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+html.light-mode .dashboard-panel h4 {
+    color: #334155;
+}
+html.light-mode .dashboard-panel .panel-secondary-text,
+html.light-mode .panel-value-subtext {
+    color: #64748b;
+}
+
+/* SFTIM section */
+html.light-mode .sftim-top-info-container {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+}
+html.light-mode .sftim-top-info-container .sftim-info-block .info-line {
+    border-bottom-color: #f1f5f9;
+}
+html.light-mode .sftim-top-info-container .sftim-info-block .info-line span:first-child,
+html.light-mode .sftim-top-info-container .sftim-info-block .info-line span.value-white {
+    color: #4b5563;
+}
+
+/* SFKOD Generator */
+html.light-mode .sfkod-generator-container {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+}
+html.light-mode .sfkod-package-button {
+    background-color: #e2e8f0;
+    color: #4b5563;
+    border-color: #cbd5e1;
+}
+html.light-mode .sfkod-package-button.selected,
+html.light-mode .sfkod-package-button:not(:disabled):hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+html.light-mode .sfkod-generator-button,
+html.light-mode .sfkod-confirm-button {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+html.light-mode .sfkod-generator-button:hover,
+html.light-mode .sfkod-confirm-button:hover,
+html.light-mode .sfkod-generator-button.active-mode {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+html.light-mode .sfkod-codes-table-wrapper {
+    background-color: #f8fafc;
+}
+html.light-mode .sfkod-codes-table th {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+html.light-mode .sfkod-codes-table td {
+    border-bottom-color: #e2e8f0;
+}
+html.light-mode .sfkod-kyc-options {
+    background-color: #f1f5f9;
+    border-color: #e2e8f0;
+}
+
+/* Popup/Modal windows */
+html.light-mode .popup-content {
+    background: #ffffff;
+    border-color: var(--primary-color);
+    color: #334155;
+}
+html.light-mode .popup-content p {
+    color: #4b5569;
+}
+html.light-mode .modal-close {
+    color: #9ca3af;
+}
+
+/* Footer */
+html.light-mode footer {
+    background-color: #e2e8f0;
+    color: #4b5563;
+}
+
+/* Promjena boje "SF" dijela logotipa u ljubičastu */
+html.light-mode .sfured-header .logo-nav .text-logo-orange {
+    color: var(--primary-color) !important; /* Koristimo ljubičastu varijablu */
+}
+
+/* Promjena boje ostatka teksta "ured"  */
+html.light-mode .sfured-header .logo-nav,
+html.light-mode .sfured-header .logo-nav .small-text {
+    color: #4b5563 !important; /* Tamno siva boja za bolji kontrast */
+}
+
+/* Promjena boje teksta statusa "ACTIVE" */
+html.light-mode .sfured-header .status-timer .status {
+    color: var(--primary-color) !important; /* Ljubičasta umjesto zelene */
+}
+
+/* Promjena boje brojeva tajmera */
+html.light-mode .sfured-header .status-timer .timer-display {
+    color: #4b5563 !important; /* Tamno siva boja */
+}
+
+html.light-mode .text-white {
+    color: #4b5563 !important; /* Tamno siva boja */
+}
+
+/* ============================================= */
+/* === STYLES FOR LIGHT MODE - END === */
+/* ============================================= */
+    </style>
+</head>
+<body class="bg-background-color text-text-color">
+
+    <!-- Top Fixed Header -->
+    <header class="sfured-header">
+<a href="index_en.html" class="flex items-center">
+    <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
+    <div class="flex flex-col logo-nav">
+         <div class="font-bold"> 
+            <span class="text-logo-orange">SF</span><span class="text-white">office</span>
+         </div>
+    </div>
+</a>
+        </div>
+        <div class="status-timer hidden md:flex">
+             <span id="account-status" class="status active">ACTIVE</span>
+             <span id="account-timer" class="timer-display">0_ 00:00:00</span>
+        </div>
+        <div class="user-info">
+            <div class="user-details hidden md:flex">
+                 <span id="user-name" class="user-name">Maja Novak</span>
+                 <span id="user-username" class="user-username">maja.novak@example.com</span>
+            </div>
+            <div id="avatar-placeholder" class="avatar-placeholder"></div>
+            <i class="fas fa-power-off logout-icon" title="Logout"></i>
+            <div class="hamburger md:hidden">
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+             </div>
+        </div>
+    </header>
+
+    <!-- Vertical Fixed Navigation Bar -->
+    <nav class="sfured-nav-vertical">
+        <div class="nav-top-icons">
+            <div class="video-player-icon-area"><a href="video_player_en.html?from=sfured_en.html" class="icon-link" title="Video Player"><i class="fas fa-play-circle"></i></a></div>
+            <div class="notification-icon-area">
+                <div class="notification-icon" title="Notifications">
+                     <i class="fas fa-bell"></i>
+                     <span class="notification-counter has-unread">1</span>
+                </div>
+            </div>
+        </div>
+        <div class="sf-status-title">
+             <span class="larger-sf">SF</span>Franchisee
+        </div>
+        <ul class="nav-links-vertical">
+             <li><a href="#" class="nav-link-vertical active" data-panel-target="kontrolna-ploca"><i class="fas fa-tachometer-alt mr-3"></i>DASHBOARD</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="moj-racun"><i class="fas fa-user-circle mr-3"></i>MY ACCOUNT</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="novcanik"><i class="fas fa-wallet mr-3"></i>WALLET</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="sftim"><i class="fas fa-users mr-3"></i>SFTEAM</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="sfkod"><i class="fas fa-ticket-alt mr-3"></i>SFCODE</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="sfnet"><i class="fas fa-share-nodes mr-3"></i>SFNET</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="sfshop"><i class="fas fa-shopping-bag mr-3"></i>SFSHOP</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="sfured-main-content">
+        <!-- Dashboard Grid (initially visible) -->
+        <div id="dashboard-grid" class="dashboard-grid">
+            <!-- All dashboard panels here -->
+            <div class="dashboard-panel"><i class="fas fa-box-open"></i><h4>Starter package</h4><span class="panel-value">SP7</span><span class="panel-secondary-text">Subscription period: <span style="color: var(--fluorescent-green); font-size: 1.1em;">1 / 21</span></span></div>
+            <div class="dashboard-panel"><i class="fas fa-coins"></i><h4>Earnings</h4><span class="panel-value">0.00 SFC</span><span class="panel-secondary-text">Blocked: 0.00 SFC</span></div>
+            <div class="dashboard-panel"><i class="fas fa-tasks"></i><h4>Work obligation</h4><span class="panel-value">Confirm</span><span class="panel-secondary-text">Weekly / monthly obligation</span></div>
+            <div class="dashboard-panel"><i class="fas fa-headset"></i><h4>SFsupport</h4><div style="white-space: nowrap;" class="panel-secondary-text">Unread emails: <span style="color: var(--fluorescent-green); font-size: 1.1em;">1</span></div></div>
+            <div class="dashboard-panel"><i class="fas fa-user-plus"></i><h4>Add new member</h4><span class="panel-secondary-text">Register a new user</span></div>
+            <div class="dashboard-panel"><i class="fas fa-chart-bar"></i><h4>Max. earnings limit</h4><span class="panel-value">2100 SFC</span></div>
+            <div class="dashboard-panel panel-status-timer"><i class="fas fa-calendar-alt"></i><h4>Status of active / inactive days</h4><div class="flex justify-center items-center text-sm"><span class="panel-secondary-text mr-1">Active days:</span><span class="panel-value text-sm" id="panel7-active-days">0</span></div><div class="flex justify-center items-center text-sm mt-1"><span class="panel-secondary-text mr-1">Inactive days:</span><span class="panel-value text-sm" id="panel7-inactive-days">0</span></div></div>
+            <div class="dashboard-panel"><i class="fas fa-book"></i><h4>SFglossary</h4><span class="panel-secondary-text">Explanation of terms</span></div>
+            <div class="dashboard-panel"><i class="fas fa-star"></i><h4>SFpoints</h4><span class="panel-value">1450</span></div>
+            <div class="dashboard-panel"><i class="fas fa-pencil-alt"></i><h4>SFcreator</h4><span class="panel-secondary-text">Create marketing material</span></div>
+            <div class="dashboard-panel"><i class="fas fa-rocket"></i><h4>SFT21 Business Concept</h4><span class="panel-secondary-text">Official presentation</span></div>
+            <div class="dashboard-panel"><i class="fas fa-file-download"></i><h4>Downloads</h4><span class="panel-secondary-text">Important documents and materials</span></div>
+        </div>
+
+        <!-- MY ACCOUNT CONTENT (Initially hidden) -->
+        <div id="moj-racun-content" style="display: none;">
+             <div class="glass-card mb-8">
+                 <h4 class="text-xl font-bold mb-6 text-center">My Details</h4>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-8">
+                     <div class="personal-info-data-panel"><div><span class="font-semibold text-gray-400">Document number:</span> <span>123456789</span></div><div><span class="font-semibold text-gray-400">Email:</span> <span>maja.novak@example.com</span></div><div><span class="font-semibold text-gray-400">Mobile:</span> <span>+385912345678</span></div></div>
+                     <div class="personal-info-data-panel"><div><span class="font-semibold text-gray-400">Address:</span> <span>My Street 7</span></div><div><span class="font-semibold text-gray-400">City / Town:</span> <span>Rovinj</span></div><div><span class="font-semibold text-gray-400">Postal code:</span> <span>52210</span></div><div><span class="font-semibold text-gray-400">Country:</span> <span>Croatia</span></div></div>
+                     <div class="personal-info-data-panel"><div><span class="font-semibold text-gray-400">User ID:</span> <span>fde3486b891fd8858c83b722938d6527</span></div><div><span class="font-semibold text-gray-400">Username:</span> <span>majanovak</span></div><div><span class="font-semibold text-gray-400">Referrer:</span> <span>dreamhacker</span></div><div><span class="font-semibold text-gray-400">Sponsor:</span> <span>dreamhacker</span></div></div>
+                 </div>
+             </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                 <div class="dashboard-panel"><i class="fas fa-layer-group"></i><h4>All accounts</h4></div>
+                 <div class="dashboard-panel"><i class="fas fa-link"></i><h4>My links</h4></div>
+                 <div class="dashboard-panel"><i class="fas fa-file-contract"></i><h4>Franchise agreement</h4></div>
+                 <div class="dashboard-panel"><i class="fas fa-id-card"></i><h4>User data</h4></div>
+                 <div class="dashboard-panel"><i class="fas fa-percent"></i><h4>License packages</h4></div>
+                 <div class="dashboard-panel"><i class="fas fa-user-tie"></i><h4>Second owner</h4></div>
+                 <div class="dashboard-panel"><i class="fas fa-user-check"></i><h4>KYC</h4></div>
+                 <div class="dashboard-panel" style="color: #ef4444; border-color: #ef4444;"><i class="fas fa-times-circle"></i><h4>DEACTIVATE ACCOUNT</h4></div>
+             </div>
+        </div>
+
+        <!-- SFTEAM CONTENT (Initially hidden) -->
+        <div id="sftim-content" style="display: none;">
+            <div class="sftim-top-info-container">
+                <h4 class="text-xl font-bold mb-4 text-center text-white">SFalgorithm Status</h4>
+                <div class="sftim-info-block">
+                    <div class="info-line"><span>Number of accounts in SFalgorithm:</span><span class="value-number value-white">277</span></div>
+                    <div class="info-line"><span>SFalgorithm line:</span><span class="value-number value-white">8</span></div>
+                    <div class="info-line"><span>Linked accounts in SFalgorithm:</span><span class="value-number value-green">0</span></div>
+                    <div class="info-line"><span>Last registered account in SFalgorithm:</span><span class="value-number value-green">1970</span></div>
+                    <div class="info-line"><span>Your next linked account in SFalgorithm:</span><span class="value-number value-green">2069</span></div>
+                </div>
+            </div>
+            <div class="sftim-panel-grid">
+                <div class="dashboard-panel"><i class="fas fa-user-tie panel-icon-sftim"></i><h4>Direct franchisees</h4><div class="mt-1"><span class="text-gray-300 text-xl">DF: </span><span class="font-bold text-2xl" style="color: var(--fluorescent-green);">0</span></div></div>
+                <div class="dashboard-panel"><i class="fas fa-rocket panel-icon-sftim"></i><h4>Direct starters</h4><div class="mt-1"><span class="text-gray-300 text-xl">DS: </span><span class="font-bold text-2xl" style="color: var(--fluorescent-green);">0</span></div></div>
+                <div class="dashboard-panel panel-sftim-status-clanova"><i class="fas fa-users-cog panel-icon-sftim"></i><div class="text-left w-full mt-1"><p class="panel-secondary-text flex justify-between"><span>SFusers:</span> <span>0</span></p><p class="panel-secondary-text flex justify-between"><span>BPR:</span> <span>0</span></p><p class="panel-secondary-text flex justify-between"><span>Pending members:</span> <span>0</span></p></div></div>
+                <div class="dashboard-panel"><i class="fas fa-link panel-icon-sftim"></i><h4>Linked accounts in SFalgorithm</h4><span class="panel-value">0</span></div>
+                <div class="dashboard-panel sftim-span-panel"><i class="fas fa-user-plus panel-icon-sftim"></i><h4>Add new member</h4><span class="panel-secondary-text mt-2"></span></div>
+                <div class="dashboard-panel sftim-span-panel"><i class="fas fa-briefcase panel-icon-sftim"></i><h4>SFcareer</h4><span class="panel-secondary-text mt-2"></span></div>
+            </div>
+        </div>
+
+        <!-- WALLET CONTENT (Initially hidden) -->
+        <div id="novcanik-content" style="display: none;">
+            <h2 class="text-2xl font-bold mb-6 text-center">Wallet</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="dashboard-panel"><i class="fas fa-coins"></i><h4>Earnings</h4><span class="panel-value">0.00 SFC</span><span class="panel-value-subtext">Blocked: 0.00 SFC</span></div>
+                <div class="dashboard-panel"><i class="fas fa-wallet"></i><h4>Wallet</h4><span class="panel-value">N: 0.00 SFC</span></div>
+                <div class="dashboard-panel"><i class="fas fa-shopping-cart"></i><h4>Webshop wallet</h4><span class="panel-value">WN: 0.00 SFC</span></div>
+                <div class="dashboard-panel"><i class="fas fa-piggy-bank"></i><h4>Reserve wallet</h4><span class="panel-value">RN: 0.00 SFC</span><span class="panel-value-subtext">Blocked: 0.00 SFC</span></div>
+                <div class="dashboard-panel"><i class="fas fa-exchange-alt"></i><h4>Deposit</h4><h4>Withdrawal</h4></div>
+                <div class="dashboard-panel"><i class="fas fa-paper-plane"></i><h4>Send SFC</h4></div>
+                <div class="dashboard-panel"><i class="fas fa-hand-holding-usd"></i><h4>Receive SFC</h4></div>
+                <div class="dashboard-panel"><i class="fas fa-history"></i><h4>All transactions</h4></div>
+                <div class="dashboard-panel col-span-1 sm:col-span-2 md:col-span-2"><i class="fas fa-money-check-alt"></i><h4>Send loans</h4><span class="panel-value-subtext">Send SFC with a return guarantee</span></div>
+                <div class="dashboard-panel col-span-1 sm:col-span-2 md:col-span-2"><i class="fas fa-handshake"></i><h4>Receive loans</h4><span class="panel-value-subtext">Receive SFC with a return guarantee</span></div>
+            </div>
+        </div>
+        
+        <!-- SFCODE CONTENT (Initially hidden) -->
+        <div id="sfkod-content" style="display: none;">
+            <div class="sfkod-generator-container">
+                <h1>SFcode Generator</h1>
+                <div class="sfkod-package-buttons" id="sfkod_packageButtons" style="display: none;"><button class="sfkod-package-button" id="sp1" disabled>SP1</button><button class="sfkod-package-button" id="sp2" disabled>SP2</button><button class="sfkod-package-button" id="sp3" disabled>SP3</button><button class="sfkod-package-button" id="sp4" disabled>SP4</button><button class="sfkod-package-button" id="sp5" disabled>SP5</button><button class="sfkod-package-button" id="sp6" disabled>SP6</button><button class="sfkod-package-button" id="sp7" disabled>SP7</button></div>
+                <div class="sfkod-generator-buttons" id="sfkod_generatorButtons" style="display: none;"><button class="sfkod-generator-button" id="sfkod_createManual">CREATE MANUALLY</button><button class="sfkod-generator-button" id="sfkod_createAuto">CREATE AUTOMATICALLY</button></div>
+                <div class="sfkod-number-inputs" id="sfkod_numberInputs" style="display: none;"></div>
+                <button class="sfkod-confirm-button" id="sfkod_confirmButton" style="display: none;">Confirm SFcode</button>
+                <div class="sfkod-codes-table-wrapper"><table class="sfkod-codes-table"><thead><tr><th style="width: 50px;">#</th><th><div class="info-icon-cell"><span>SFcode</span><i class="info-icon" id="sfkod-info-icon" title="Instructions">i</i></div></th></tr></thead><tbody id="sfkod_codesTableBody"></tbody></table></div>
+                <div class="sfkod-kyc-options" id="sfkod_kycOptions" style="display: none;"><h3>SFcodes obtained by registering new users with KYC.</h3><div class="sfkod-kyc-option"><input type="checkbox" id="sfkod_kyc10"><label for="sfkod_kyc10">I have registered 10 new users (KYC)</label></div><div class="sfkod-kyc-option"><input type="checkbox" id="sfkod_kyc21"><label for="sfkod_kyc21">I have registered 21 new users (KYC)</label></div></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 bg-gray-900 text-center text-gray-400 text-sm">
+        <div class="container mx-auto px-6">© 2025 SFT21 LLC - All rights reserved.</div>
+    </footer>
+
+    <!-- SFCODE POPUPS -->
+    <div id="sfkod-vrijednost-popup" class="popup">
+        <div class="popup-content">
+            <button class="modal-close" aria-label="Close">×</button>
+            <h4>Value of SFcodes</h4>
+            <p>As a freely registered user, the company gives you one permanent SFcode as a welcome gift, with which you can participate for free in almost every prize game organized by the company. Therefore, it is important to mention the value of SFcodes.<br><br>Specifically, the company will organize many prize games where the prizes will be, for example, starter packs, mobile phones, computers, or many other valuable rewards...<br><br>In addition to the prizes given by the company, every merchant, manufacturer, entrepreneur, or company, large or small, will have the opportunity to prepare their product or service, a package of products, or any type of prize to offer through our prize game system upon entering the company's SFshop. In return, they receive a form of advertising through our company and with the help of our franchisees.<br><br>You can choose the SFcode yourself (Create manually) or you can choose an automatically generated SFcode (Create automatically). By clicking on CONFIRM SFCODE, you will permanently save the SFcode, which cannot be changed afterward.<br><br>It is very important to note that an SFfranchisee can have a maximum of 25 SFcodes. (1 from free registration + 21 from a one-time payment for SP7 + 3 from registering 21 free users)<br><br>An SFuser / BPR (freely registered users) can have a maximum of 4 SFcodes. (1 from free registration + 3 from registering 21 free users)<br><br>If you start with SP1 or other smaller packages, you receive a certain number of SFcodes, which you can increase with upgrades or payments of subscription periods, provided your account has no inactive days between subscription periods.<br><br>With a larger number of SFcodes, your chances of winning a prize are greater, which does not mean you cannot win a prize with just one code. That is a matter of luck that no one can influence.<br><br>Regardless of how many codes you start with and how many you end up with, we sincerely wish you luck in the prize draws.</p>
+            <div class="flex flex-col items-center mt-6"><button class="popup-button">I understand the value of SFcodes</button><div class="flex items-center mt-4"><input type="checkbox" id="ne-prikazuj-ponovo"><label for="ne-prikazuj-ponovo" class="ml-2 text-sm text-gray-300 cursor-pointer">Do not show again</label></div></div>
+        </div>
+    </div>
+    <div id="sfkod-upute-popup" class="popup">
+        <div class="popup-content">
+            <button class="modal-close" aria-label="Close">×</button>
+            <h4>Instructions for generating an SFcode</h4>
+            <p>With your free registration, you have received one SFcode... (and so on)</p>
+        </div>
+    </div>
+
+    <!-- AVATAR MODAL -->
+    <div id="avatar-upload-modal-overlay" class="avatar-upload-modal-overlay">
+        <!-- Avatar modal content here -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const verticalNav = document.querySelector('.sfured-nav-vertical');
+            const navLinksVertical = document.querySelectorAll('.nav-link-vertical');
+            const logoutButton = document.querySelector('.logout-icon');
+            const dashboardGrid = document.getElementById('dashboard-grid');
+            const mojRacunContent = document.getElementById('moj-racun-content');
+            const novcanikContent = document.getElementById('novcanik-content');
+            const sftimContent = document.getElementById('sftim-content');
+            const sfkodContent = document.getElementById('sfkod-content');
+            const vrijednostPopup = document.getElementById('sfkod-vrijednost-popup');
+            const uputePopup = document.getElementById('sfkod-upute-popup');
+            const infoIcon = document.getElementById('sfkod-info-icon');
+            const tableBody = document.getElementById('sfkod_codesTableBody');
+            const generatorButtonsEl = document.getElementById('sfkod_generatorButtons');
+            const numberInputsEl = document.getElementById('sfkod_numberInputs');
+            const confirmButtonEl = document.getElementById('sfkod_confirmButton');
+            const createManualButton = document.getElementById('sfkod_createManual');
+            const createAutoButton = document.getElementById('sfkod_createAuto');
+            const packageButtonsContainer = document.getElementById('sfkod_packageButtons');
+            const kycOptionsEl = document.getElementById('sfkod_kycOptions');
+            const packageButtons = document.querySelectorAll('.sfkod-package-button');
+            const kyc10Checkbox = document.getElementById('sfkod_kyc10');
+            const kyc21Checkbox = document.getElementById('sfkod_kyc21');
+            let sfkodInitialized = false;
+            let sfkodPopupShown = false;
+
+            if (hamburger && verticalNav) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    verticalNav.classList.toggle('active');
+                });
+            }
+
+            const panelMap = {
+                'kontrolna-ploca': dashboardGrid,
+                'moj-racun': mojRacunContent,
+                'novcanik': novcanikContent,
+                'sftim': sftimContent,
+                'sfkod': sfkodContent
+            };
+
+            navLinksVertical.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    const targetPanelId = link.getAttribute('data-panel-target');
+                    if (href && href !== '#' && href.includes('.html')) return;
+                    e.preventDefault();
+                    navLinksVertical.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    Object.values(panelMap).forEach(panel => { if (panel) panel.style.display = 'none'; });
+                    const panelToShow = panelMap[targetPanelId];
+                    if (panelToShow) {
+                        panelToShow.style.display = (targetPanelId === 'kontrolna-ploca') ? 'grid' : 'block';
+                        if (targetPanelId === 'sfkod') {
+                            if (!sfkodInitialized) {
+                                initializeSfkodGenerator();
+                                sfkodInitialized = true;
+                            }
+                            if (!sfkodPopupShown) {
+                                setTimeout(() => {
+                                    if(vrijednostPopup) vrijednostPopup.style.display = 'flex';
+                                    sfkodPopupShown = true;
+                                }, 300);
+                            }
+                        }
+                    }
+                    if (hamburger.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        verticalNav.classList.remove('active');
+                    }
+                });
+            });
+
+            if (logoutButton) logoutButton.addEventListener('click', () => { window.location.href = 'index_en.html'; });
+
+            function initializeSfkodGenerator() {
+                const resetGeneratorButtons = () => {
+                    if (createManualButton) createManualButton.classList.remove('active-mode');
+                    if (createAutoButton) createAutoButton.classList.remove('active-mode');
+                };
+                const closeAllPopups = () => {
+                    if(vrijednostPopup) vrijednostPopup.style.display = 'none';
+                    if(uputePopup) uputePopup.style.display = 'none';
+                };
+                document.querySelectorAll('.popup .modal-close, .popup .popup-button').forEach(btn => btn.addEventListener('click', closeAllPopups));
+                if (infoIcon) infoIcon.addEventListener('click', () => uputePopup.style.display = 'flex');
+                let currentCode = Array(10).fill(0), activeRowIndex = null, nextAvailableRow = 2, completedRows = [], allConfirmedCodes = [];
+                const packageCodesCount = { sp1: 1, sp2: 4, sp3: 7, sp4: 10, sp5: 13, sp6: 17, sp7: 21 };
+                const initializeNumberInputs = () => {
+                    let html = '';
+                    for(let i=0; i<10; i++) html += `<div class="sfkod-number-input-container"><i class="fas fa-chevron-up sfkod-arrow" data-index="${i}"></i><input type="text" class="sfkod-number-input" value="0" readonly data-index="${i}"><i class="fas fa-chevron-down sfkod-arrow" data-index="${i}"></i></div>`;
+                    numberInputsEl.innerHTML = html;
+                    document.querySelectorAll('.sfkod-arrow').forEach(arrow => arrow.addEventListener('click', handleArrowClick));
+                };
+                const initializeTable = () => {
+                    tableBody.innerHTML = '';
+                    for (let i = 1; i <= 25; i++) {
+                        const row = document.createElement('tr'); row.classList.add('hidden-row');
+                        const indexCell = document.createElement('td'); indexCell.textContent = i; indexCell.classList.add('sfkod-index-cell'); indexCell.setAttribute('data-row', i); row.appendChild(indexCell);
+                        const codeCell = document.createElement('td'); codeCell.innerHTML = `<div class="sfkod-code-cell-content"><span>0000000000</span><span class="sfkod-code-suffix">${i === 1 ? 'Free registration' : '/'}</span></div>`; row.appendChild(codeCell);
+                        tableBody.appendChild(row);
+                    }
+                    const firstRow = tableBody.rows[0]; firstRow.classList.remove('hidden-row');
+                    const firstIndexCell = firstRow.querySelector('.sfkod-index-cell'); firstIndexCell.classList.add('clickable');
+                    addClickEventToIndexCell(firstIndexCell);
+                };
+                const addClickEventToIndexCell = (cell) => {
+                    if (!cell || cell.hasListener) return;
+                    cell.addEventListener('click', function() { if (this.classList.contains('clickable')) activateRowForEditing(parseInt(this.dataset.row)); });
+                    cell.hasListener = true;
+                };
+                const activateRowForEditing = (rowIndex) => {
+                    if (completedRows.includes(rowIndex)) return;
+                    resetGeneratorButtons();
+                    const activeCell = tableBody.querySelector(`.sfkod-index-cell.active`);
+                    if(activeCell) activeCell.classList.remove('active');
+                    activeRowIndex = rowIndex;
+                    const newActiveCell = tableBody.querySelector(`.sfkod-index-cell[data-row="${rowIndex}"]`);
+                    if(newActiveCell) newActiveCell.classList.add('active');
+                    currentCode = Array(10).fill(0); updateNumberInputs();
+                    generatorButtonsEl.style.display = 'flex'; numberInputsEl.style.display = 'flex'; confirmButtonEl.style.display = 'block';
+                };
+                const updateNumberInputs = () => document.querySelectorAll('.sfkod-number-input').forEach((input, i) => input.value = currentCode[i]);
+                const unlockNextRows = (count, suffixText) => {
+                    for(let i = 0; i < count; i++) {
+                        if(tableBody.rows[nextAvailableRow - 1]) {
+                            const row = tableBody.rows[nextAvailableRow - 1]; row.classList.remove('hidden-row');
+                            const indexCell = row.querySelector('.sfkod-index-cell'); indexCell.classList.add('clickable'); addClickEventToIndexCell(indexCell);
+                            if(suffixText) row.querySelector('.sfkod-code-suffix').textContent = suffixText;
+                            nextAvailableRow++;
+                        }
+                    }
+                };
+                const handleArrowClick = function() {
+                    const index = parseInt(this.dataset.index);
+                    currentCode[index] = (currentCode[index] + (this.classList.contains('fa-chevron-up') ? 1 : -1) + 10) % 10;
+                    updateNumberInputs(); createManualButton.classList.add('active-mode'); createAutoButton.classList.remove('active-mode');
+                };
+                confirmButtonEl.addEventListener('click', function() {
+                    if (activeRowIndex === null) return;
+                    if (!createManualButton.classList.contains('active-mode') && !createAutoButton.classList.contains('active-mode')) { alert("Please select 'Create Manually' or 'Create Automatically' first."); return; }
+                    const codeStr = currentCode.join('');
+                    if (allConfirmedCodes.includes(codeStr)) { alert("This code has already been used."); return; }
+                    allConfirmedCodes.push(codeStr); completedRows.push(activeRowIndex);
+                    const row = tableBody.rows[activeRowIndex - 1];
+                    row.querySelector('.sfkod-code-cell-content span:first-child').textContent = codeStr;
+                    const indexCell = row.querySelector('.sfkod-index-cell');
+                    indexCell.classList.remove('clickable', 'active'); indexCell.classList.add('completed');
+                    if (completedRows.length === 1) { packageButtonsContainer.style.display = 'flex'; kycOptionsEl.style.display = 'block'; packageButtons.forEach(btn => btn.disabled = false); }
+                    generatorButtonsEl.style.display = 'none'; numberInputsEl.style.display = 'none'; confirmButtonEl.style.display = 'none'; activeRowIndex = null;
+                });
+                packageButtons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        if (this.disabled) return;
+                        if (completedRows.length === 0) { alert('You must first confirm your free SFcode.'); return; }
+                        unlockNextRows(packageCodesCount[this.id], this.id.toUpperCase());
+                        packageButtons.forEach(b => { b.disabled = true; b.classList.remove('selected'); });
+                        this.classList.add('selected');
+                    });
+                });
+                kyc10Checkbox.addEventListener('change', function() { if(this.checked) { unlockNextRows(1, '10 KYC'); this.disabled = true; } });
+                kyc21Checkbox.addEventListener('change', function() { if(this.checked) { if(!kyc10Checkbox.checked) { kyc10Checkbox.checked = true; kyc10Checkbox.dispatchEvent(new Event('change')); } unlockNextRows(2, '21 KYC'); this.disabled = true; } });
+                [createManualButton, createAutoButton].forEach(btn => btn.addEventListener('click', function(){
+                    createManualButton.classList.remove('active-mode'); createAutoButton.classList.remove('active-mode');
+                    this.classList.add('active-mode');
+                    if(this.id === 'sfkod_createAuto') {
+                        let newCodeArr;
+                        do { newCodeArr = Array(10).fill(0).map(() => Math.floor(Math.random() * 10)); }
+                        while (allConfirmedCodes.includes(newCodeArr.join('')));
+                        currentCode = newCodeArr; updateNumberInputs();
+                    }
+                }));
+                initializeNumberInputs(); initializeTable();
+            }
+        });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeSwitcher = document.getElementById('theme-switcher'); // Gumb koji mijenja temu
+        const logoImg = document.getElementById('site-logo'); // ID logotipa
+        const lightModeLogo = 'img/IFIG-logo_purple.png'; // Putanja do ljubičastog logotipa
+        const darkModeLogo = 'img/IFIG-logo.png'; // Putanja do originalnog zelenog logotipa
+
+        // Funkcija koja provjerava temu i mijenja logo
+        function updateLogoBasedOnTheme() {
+            if (document.documentElement.classList.contains('light-mode')) {
+                if(logoImg) logoImg.src = lightModeLogo;
+            } else {
+                if(logoImg) logoImg.src = darkModeLogo;
+            }
+        }
+
+        // 1. Provjeri i postavi logo odmah pri učitavanju stranice
+        updateLogoBasedOnTheme();
+
+        // 2. Ako postoji gumb za promjenu teme na ovoj stranici, dodaj mu event listener
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener('click', () => {
+                // Malo pričekamo da se klasa na <html> promijeni
+                setTimeout(updateLogoBasedOnTheme, 50); 
+            });
+        }
+
+        // 3. (OPCIONALNO, ALI PREPORUČENO) Ako se tema mijenja globalno,
+        // slušaj promjene na localStorage
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'sft21_theme') {
+                 // Ponovno pozovi glavnu funkciju za primjenu teme, koja će sada pozvati i našu funkciju za logo
+                 if(typeof applySft21Theme === 'function') {
+                    applySft21Theme(); // Pretpostavka da ova funkcija postoji i mijenja klasu
+                    updateLogoBasedOnTheme(); // Dodatni poziv za sigurnost
+                 }
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>

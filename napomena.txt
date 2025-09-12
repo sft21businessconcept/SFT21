@@ -1,0 +1,2 @@
+Napomena: 
+- na pravoj stranici onemoguciti prilikom registracije unos email adrese koja vec postoji u sistemu

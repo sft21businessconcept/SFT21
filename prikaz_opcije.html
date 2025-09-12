@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFT21 - Prikaz opcije</title>
+
+    <script>
+        function applySft21Theme() {
+            try {
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+                if (theme === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                } else {
+                    document.documentElement.classList.remove('light-mode');
+                }
+                 if (window.setAnimationTheme) {
+                    window.setAnimationTheme(theme);
+                }
+            } catch (e) {
+                console.error('Error applying theme:', e);
+            }
+        }
+        applySft21Theme();
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                applySft21Theme();
+            }
+        });
+    </script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Arial+Narrow&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #6a1b9a; /* Purple */
+            --secondary-color: #ab47bc; /* Lighter Purple */
+            --accent-color: #ff00ff; /* Magenta */
+            --fluorescent-green: #80ff00; /* Fluorescent Green */
+            --text-color: #e5e7eb; /* Light gray for text */
+            --text-color-darker: #c7c1da; /* Darker gray for less important text */
+            --background-dark: #0d0118; /* Dark background */
+            --card-background: rgba(106, 27, 154, 0.1); 
+            --card-border: rgba(171, 71, 188, 0.3); 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto; 
+            background-color: var(--background-dark);
+            color: var(--text-color);
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px; 
+            padding-bottom: 40px; 
+            min-height: 100vh;
+            width: 100%;
+        }
+        
+        .fixed-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 500; 
+            background-color: var(--background-dark); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .fixed-header-container .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            position: relative;
+            height: 3.5rem; 
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            max-width: 1400px; 
+            margin: 0 auto; 
+        }
+        .fixed-header-container .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .fixed-header-container #site-logo { 
+            height: 2.8rem; 
+            width: auto; 
+            margin-right: 0.75rem;
+        }
+        .fixed-header-container .logo-text-wrapper {
+            display: flex;
+            flex-direction: column; 
+            line-height: 1.1; 
+        }
+        .fixed-header-container .logo-text-wrapper .company-name { 
+            font-size: 0.9rem; 
+            color: var(--text-color); 
+            font-weight: 500;
+        }
+        .fixed-header-container .logo-text-wrapper .product-name { 
+            font-size: 1.1rem; 
+            color: var(--fluorescent-green); 
+            font-weight: bold; 
+        }
+
+        .option-close-button {
+            position: fixed; 
+            top: 20px;
+            right: 25px;
+            font-size: 2.5rem;
+            color: rgba(229, 231, 235, 0.7);
+            background: none;
+            border: none;
+            cursor: pointer; 
+            transition: color 0.3s ease, transform 0.2s ease;
+            z-index: 501; 
+            line-height: 1;
+            padding: 5px;
+        }
+        .option-close-button:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .page-main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.0rem); 
+            color: var(--fluorescent-green);
+            text-align: center;
+            margin-top: 100px; 
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(128, 255, 0, 0.5);
+            padding: 0 15px;
+        }
+
+        .content-area {
+            width: 100%;
+            max-width: 1200px; 
+            padding: 20px;
+            margin-top: 0px; 
+        }
+
+        .initial-info ul {
+            list-style: none;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        .initial-info li {
+            margin-bottom: 10px;
+            font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+            line-height: 1.6; 
+            position: relative;
+            color: var(--text-color);
+        }
+        .initial-info li::before {
+            content: "–"; 
+            position: absolute;
+            left: -18px; 
+            color: var(--fluorescent-green);
+            font-weight: bold;
+        }
+        .initial-info strong, .note-text strong {
+            color: var(--fluorescent-green); 
+            font-weight: bold; 
+        }
+
+        .note-text {
+            font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+            margin-bottom: 20px;
+            color: var(--text-color-darker);
+            line-height: 1.6; 
+            text-align: justify;
+        }
+        .note-text strong { font-weight: bold; }
+
+        .veci-iznos-intro-text {
+            font-size: clamp(1rem, 1.9vw, 1.15rem);
+            margin-bottom: 20px;
+            line-height: 1.6; 
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        .options-title-separator { 
+            font-family: 'Orbitron', sans-serif;
+            color: var(--fluorescent-green);
+            font-size: clamp(1.4rem, 3.5vw, 1.8rem); 
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold; 
+            text-shadow: 0 0 8px rgba(128, 255, 0, 0.4);
+        }
+
+        .options-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: clamp(20px, 3vw, 30px); 
+        }
+
+        .option-card {
+            background: var(--card-background);
+            border: 1px solid var(--card-border);
+            border-radius: 15px; 
+            padding: clamp(20px, 2.5vw, 25px); 
+            flex-basis: clamp(300px, calc(33.333% - 30px), 370px); 
+            flex-grow: 0; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .option-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(106, 27, 154, 0.4); 
+        }
+        .option-card h2 { 
+            font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+            color: var(--fluorescent-green);
+            margin-bottom: 8px;
+            text-align: center;
+            font-weight: bold; 
+        }
+        .option-card h3 { 
+            font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+            color: var(--text-color);
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: normal; 
+        }
+        .option-card .choice-text { 
+            font-size: clamp(1rem, 1.9vw, 1.15rem);
+            color: var(--fluorescent-green);
+            margin-bottom: 18px;
+            font-weight: bold; 
+            text-align: center;
+        }
+        
+        .option-card .choice-text::before {
+            content: "↪ "; 
+            color: var(--fluorescent-green);
+        }
+
+        .option-card p, .option-card ul {
+            font-size: clamp(0.9rem, 1.7vw, 1rem); 
+            line-height: 1.55; 
+            color: var(--text-color-darker);
+            margin-bottom: 12px;
+            text-align: left;
+            width: 100%;
+        }
+        .option-card ul {
+            list-style: none;
+            padding-left: 15px; 
+        }
+        .option-card ul li::before {
+            content: "-";
+            position: absolute;
+            left: -12px;
+            color: var(--fluorescent-green);
+        }
+        .option-card ul li {
+            position: relative;
+            margin-bottom: 6px;
+        }
+        .option-card strong { 
+            color: var(--text-color); 
+            font-weight: bold; 
+        }
+        .hidden {
+            display: none !important;
+        }
+        .veci-iznos-card-specific-text {
+            font-style: italic;
+            color: var(--text-color-darker);
+            font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        
+        .deduction-info {
+            width: 100%;
+            text-align: center; 
+            margin-top: 10px; 
+            margin-bottom: 18px; 
+        }
+        .deduction-info .deduction-text { 
+            font-size: clamp(0.9rem, 1.7vw, 1.05rem); 
+            line-height: 1.5;
+            color: var(--text-color); 
+            font-weight: 500; 
+            margin-bottom: 0.4rem; 
+        }
+        .deduction-info .deduction-amount-display { 
+            font-size: clamp(1.1rem, 2.1vw, 1.3rem); 
+            color: var(--fluorescent-green); 
+            font-weight: bold;
+        }
+
+        @media (max-width: 1024px) { 
+            .option-card {
+                flex-basis: clamp(300px, calc(50% - 20px), 400px);
+            }
+        }
+        @media (max-width: 680px) { 
+            .option-card {
+                flex-basis: 100%;
+                max-width: 420px; 
+            }
+        }
+        
+        #network-canvas { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: #1d012e; 
+        }
+        
+        .fixed-header-container a.logo-container {
+            text-decoration: none !important;
+        }
+        .fixed-header-container a.logo-container::after {
+            display: none !important;
+            content: none !important;
+        }
+    </style>
+    <!-- Light Mode Styles -->
+    <style>
+        html.light-mode body { background-color: #f8fafc !important; color: #334155 !important; }
+        html.light-mode .fixed-header-container { background-color: white !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important; }
+        html.light-mode .logo-text-wrapper .company-name { color: var(--primary-color) !important; }
+        html.light-mode .logo-text-wrapper .product-name { color: var(--primary-color) !important; }
+        html.light-mode .option-close-button { color: #64748b !important; }
+        html.light-mode .option-close-button:hover { color: #1e293b !important; }
+        html.light-mode .page-main-title { color: var(--primary-color) !important; text-shadow: none !important; }
+        html.light-mode .initial-info li { color: #334155 !important; }
+        html.light-mode .initial-info li::before { color: var(--primary-color) !important; }
+        html.light-mode .initial-info strong, html.light-mode .note-text strong, html.light-mode .option-card strong { color: #1e293b !important; }
+        html.light-mode .note-text { color: #64748b !important; }
+        html.light-mode .options-title-separator { color: var(--primary-color) !important; text-shadow: none !important; }
+        html.light-mode .option-card { background-color: white !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
+        html.light-mode .option-card h2, html.light-mode .option-card .choice-text, html.light-mode .option-card .choice-text::before, html.light-mode .option-card .deduction-amount-display { color: var(--primary-color) !important; }
+        html.light-mode .option-card h3, html.light-mode .option-card .deduction-text { color: #475569 !important; }
+        html.light-mode .option-card p, html.light-mode .option-card ul { color: #475569 !important; }
+        html.light-mode .option-card ul li::before { color: var(--primary-color) !important; }
+        html.light-mode .option-card:hover { box-shadow: 0 8px 25px rgba(106, 27, 154, 0.15) !important; }
+        html.light-mode .animated-background { background-color: transparent !important; }
+        html.light-mode #network-canvas { background-color: transparent !important; }
+    </style>
+</head>
+<body>
+    <canvas id="network-canvas"></canvas>
+    
+    <div class="fixed-header-container">
+        <div class="header-content">
+                <a href="index.html" class="logo-container" title="Povratak na početnu stranicu">
+                <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo">
+                <div class="logo-text-wrapper">
+                    <span class="product-name">SFT21</span>
+                </div>
+            </a>
+            <div style="flex-grow: 1;"></div> 
+        </div>
+    </div>
+
+    <button class="option-close-button" id="closeOptionPageButton" title="Natrag na izbor iznosa">×</button>
+
+    <div class="page-wrapper">
+        <h1 class="page-main-title">Poslovanje ste započeli kupovinom Startnog paketa od <span id="dynamicPageHeaderAmount">30 $</span></h1>
+
+        <div class="content-area">
+            <div class="initial-info" id="initialInfoContent">
+                <ul id="standardInfoList">
+                    <li>dobivate <strong><span id="dynamicSfbPoints">60</span> SFbodova</strong> (SFb)</li>
+                    <li>plus bodovi na osnovi zarade iz rezervnog novčanika, ukoliko ste ostvarili nadogradnju računa (1 SFC = 1 SFb)</li>
+                    <li>plus bodovi na osnovi zarade iz novčanika, ukoliko ste imali istu u novčaniku (1 SFC = 2 SFb)</li>
+                    <li>plus 50% ukupnog zbroja osobnih SFb vaših direktnih članova</li>
+                    <li>plus 25% ukupnog zbroja osobnih SFb njihovih direktnih članova (vaši indirektni članovi)</li>
+                </ul>
+                <p class="note-text" id="standardNoteText"><strong>Napomena:</strong><br>
+                Broj SFbodova vaših direktnih i indirektnih članova, priznaje vam se isključivo od onih članova koji nastavljaju poslovanje.</p>
+            </div>
+
+            <h2 class="options-title-separator">VAŠE MOGUĆNOSTI</h2>
+
+            <div class="options-container">
+                <!-- Prva kartica -->
+                <div class="option-card" id="opcijaAktivniBezIP" data-interactive>
+                    <h2>Nastaviti poslovanje kao AKTIVAN član</h2>
+                    <h3 id="opcijaAktivniBezIP_sub">(SFstarter ili SFfranšizer)</h3>
+                    <p class="choice-text" id="opcijaAktivniBezIP_choice">ne želim uplatiti Licencni paket</p>
+                    <p id="opcijaAktivniBezIP_desc1">Poslovanje nastavljate otvaranjem <strong>osobnog ili poslovnog</strong> računa sa <strong>SPfree</strong>.</p>
+                    <p id="opcijaAktivniBezIP_desc2">Na osnovi ukupnog broja SFbodova iz starog sistema;</p>
+                    <ul id="opcijaAktivniBezIP_list">
+                        <li>zauzimate poziciju u SFalgoritmu</li>
+                        <li>određuje vam se LIMIT maksimalne zarade (do max. 2100 SFC)</li>
+                    </ul>
+                </div>
+
+                <!-- Druga kartica - ISPRAVLJENA -->
+                <div class="option-card" id="opcijaAktivniSaIP" data-interactive>
+                    <h2>Nastaviti poslovanje kao AKTIVAN član</h2>
+                    <h3>(SFAlicenca)</h3>
+                    <p class="choice-text">želim uplatiti Licencni paket</p>
+                    <div class="deduction-info">
+                        <p class="deduction-text">Iznos Licencnog paketa umanjuje vam se za</p>
+                        <p class="deduction-amount-display"><span class="dynamic-deduction-amount">30 €</span></p>
+                    </div>
+                    <p class="veci-iznos-card-specific-text hidden">(cijeli iznos investicije iz starog sistema pretvara vam se u Inicijalni paket)</p>
+                    <p>Poslovanje nastavljate otvaranjem <strong>Licencnog</strong> računa sa <strong>SPfree</strong>,</p>
+                    <p>Na osnovi zbroja SFbodova iz starog sistema sa brojem SFbodova dobivenih uplatom Licencnog paketa;</p>
+                    <ul>
+                        <li>zauzimate poziciju u SFalgoritmu</li>
+                        <li>određuje vam se LIMIT maksimalne zarade (do max. 2100 SFC)</li>
+                    </ul>
+                </div>
+
+                <!-- Treća kartica -->
+                <div class="option-card" id="opcijaPasivniSaIP" data-interactive>
+                    <h2>Nastaviti poslovanje kao PASIVAN član</h2>
+                    <h3>(SFPlicenca)</h3>
+                    <p class="choice-text">želim uplatiti Licencni paket</p>
+                    <div class="deduction-info">
+                        <p class="deduction-text">Iznos Licencnog paketa umanjuje vam se za</p>
+                        <p class="deduction-amount-display"><span class="dynamic-deduction-amount">30 €</span></p>
+                    </div>
+                    <p class="veci-iznos-card-specific-text hidden">(cijeli iznos investicije iz starog sistema pretvara vam se u Inicijalni paket)</p>
+                    <p>Poslovanje nastavljate otvaranjem <strong>Licencnog </strong> računa bez startnog paketa,</p>
+                    <p>Na osnovi zbroja SFbodova iz starog sistema sa brojem SFbodova dobivenih ulaganjem u Licencni paket, zauzimate poziciju u SFalgoritmu.</p>
+                </div>
+
+                <!-- Četvrta kartica -->
+                <div class="option-card" id="opcijaBPR" data-interactive>
+                    <h2>Nastaviti kao besplatno registrirani član</h2>
+                    <h3>(SFkorisnik / BPR)</h3>
+                    <p class="choice-text">uz zahtjev za povrat novca</p>
+                    <p>Pravo na povrat novca nemaju korisnici koji su zaradili veći iznos od iznosa uplaćenog za SP.</p>
+                    <p>Uz zahtjev je potrebno priložiti osobni dokument sa kojim ste potvrdili svoj identitet (KYC)</p>
+                </div>
+
+                <!-- Peta kartica - DOVRŠENA -->
+                <div class="option-card" id="opcijaOdustanak" data-interactive>
+                    <h2>Odustati od poslovanja</h2>
+                    <p class="choice-text">uz zahtjev za povrat novca</p>
+                    <p>Pravo na povrat novca nemaju korisnici koji su zaradili veći iznos od iznosa uplaćenog za SP.</p>
+                    <p>Uz zahtjev je potrebno priložiti osobni dokument sa kojim ste potvrdili svoj identitet (KYC)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoImage = document.getElementById('site-logo');
+
+            // --- Theme change logic ---
+            const applyTheme = () => {
+                const isLight = document.documentElement.classList.contains('light-mode');
+                if (logoImage) {
+                    logoImage.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
+                }
+                if (window.setAnimationTheme) {
+                    window.setAnimationTheme(isLight ? 'light' : 'dark');
+                }
+            };
+            
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    applyTheme();
+                }
+            });
+            applyTheme(); // Initial application
+
+            // --- Navigacija i dinamički sadržaj ---
+            const closeOptionPageButton = document.getElementById('closeOptionPageButton');
+            if (closeOptionPageButton) {
+                closeOptionPageButton.onclick = function() {
+                    window.location.href = 'izbor.html';
+                };
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramIznos = urlParams.get('iznos');
+            const paramValuta = urlParams.get('valuta');
+
+            const pageMainTitle = document.querySelector('.page-main-title');
+            const deductionAmountSpans = document.querySelectorAll('.dynamic-deduction-amount');
+            const sfbPointsSpan = document.getElementById('dynamicSfbPoints');
+            const initialInfoContentDiv = document.getElementById('initialInfoContent');
+            const standardInfoList = document.getElementById('standardInfoList');
+            const standardNoteText = document.getElementById('standardNoteText');
+            const deductionInfoDivs = document.querySelectorAll('.deduction-info'); 
+            const veciIznosCardTexts = document.querySelectorAll('.veci-iznos-card-specific-text');
+            const card1Sub = document.getElementById('opcijaAktivniBezIP_sub');
+            const card1Choice = document.getElementById('opcijaAktivniBezIP_choice');
+            const card1Desc1 = document.getElementById('opcijaAktivniBezIP_desc1');
+            const card1Desc2 = document.getElementById('opcijaAktivniBezIP_desc2');
+            const card1List = document.getElementById('opcijaAktivniBezIP_list');
+
+            let displayText = '30 $'; 
+            let calculatedSfbPoints = 60; 
+
+            // Zadani hrvatski tekstovi
+            if (card1Sub) card1Sub.innerHTML = '(SFstarter ili SFfranšizer)';
+            if (card1Choice) card1Choice.innerHTML = 'ne želim uplatiti Licencni paket';
+            if (card1Desc1) card1Desc1.innerHTML = 'Poslovanje nastavljate otvaranjem <strong>osobnog ili poslovnog</strong> računa sa <strong>SPfree</strong>.';
+            if (card1Desc2) {
+                card1Desc2.innerHTML = 'Na osnovi ukupnog broja SFbodova iz starog sistema;';
+                card1Desc2.classList.remove('hidden');
+            }
+            if (card1List) {
+                card1List.innerHTML = `
+                    <li>zauzimate poziciju u SFalgoritmu</li>
+                    <li>određuje vam se LIMIT maksimalne zarade (do max. 2100 SFC)</li>
+                `;
+                card1List.classList.remove('hidden');
+            }
+            if (standardInfoList) standardInfoList.classList.remove('hidden');
+            if (standardNoteText) standardNoteText.classList.remove('hidden');
+            if (initialInfoContentDiv && initialInfoContentDiv.querySelector('.veci-iznos-intro-text')) {
+                 initialInfoContentDiv.querySelector('.veci-iznos-intro-text').classList.add('hidden');
+            }
+            deductionInfoDivs.forEach(div => div.classList.remove('hidden'));
+            veciIznosCardTexts.forEach(txt => txt.classList.add('hidden'));
+
+            if (paramIznos && paramValuta) {
+                if (paramIznos === 'veci' && paramValuta === 'iznos') {
+                    if (pageMainTitle) pageMainTitle.innerHTML = 'Poslovanje ste započeli investicijom većeg iznosa';
+                    if (initialInfoContentDiv) {
+                        if (standardInfoList) standardInfoList.classList.add('hidden');
+                        if (standardNoteText) standardNoteText.classList.add('hidden');
+                        let veciIznosTextElement = initialInfoContentDiv.querySelector('.veci-iznos-intro-text');
+                        if (!veciIznosTextElement) {
+                            veciIznosTextElement = document.createElement('div');
+                            initialInfoContentDiv.insertBefore(veciIznosTextElement, initialInfoContentDiv.firstChild);
+                        }
+                        veciIznosTextElement.innerHTML = `
+                            <p class="veci-iznos-intro-text">Ukoliko ste kao član u starom sistemu uz startni paket uplatili poslovni račun sa radnim mjestima (BAWS) ili ste uplatili investiciju:</p>
+                            <ul>
+                                <li>dobivate broj <strong>SFbodova</strong> (SFb) na osnovi veličine ukupno investiranog iznosa (1 € = 2 SFb)</li>
+                                <li>plus bodovi na osnovi zarade iz rezervnog novčanika, ukoliko ste ostvarili nadogradnju računa (1 SFC = 1 SFb)</li>
+                                <li>plus bodovi na osnovi zarade iz novčanika, ukoliko ste imali istu u novčaniku (1 SFC = 2 SFb)</li>
+                                <li>plus 50% ukupnog zbroja osobnih SFb vaših direktnih članova</li>
+                                <li>plus 25% ukupnog zbroja osobnih SFb njihovih direktnih članova (vaši indirektni članovi)</li>
+                            </ul>
+                            <p class="note-text"><strong>Napomena:</strong> Broj SFbodova vaših direktnih i indirektnih članova, priznaje vam se isključivo od onih članova koji nastavljaju poslovanje.</p>
+                        `;
+                        veciIznosTextElement.classList.remove('hidden');
+                    }
+                    deductionInfoDivs.forEach(div => div.classList.add('hidden'));
+                    veciIznosCardTexts.forEach(txt => txt.classList.remove('hidden'));
+
+                    if (card1Sub) card1Sub.innerHTML = '(SFfranšizer)';
+                    if (card1Desc1) card1Desc1.innerHTML = 'Poslovanje nastavljate istovremenim otvaranjem, jednog ili više (max. 5) osobnih ili jednog poslovnog i više (max. 4) osobna računa sa SPfree, uz zahtjev za povrat preplaćenog iznosa.';
+                    if (card1Desc2) card1Desc2.classList.add('hidden');
+                    if (card1List) card1List.classList.add('hidden');
+                
+                } else if ((paramIznos === '1955' && paramValuta === 'usd') || (paramIznos === '2710' && paramValuta === 'eur') || (paramIznos === '2710' && paramValuta === 'usd')) {
+                    const numericVal = parseFloat(paramIznos);
+                    calculatedSfbPoints = numericVal * 2;
+                    const currencySymbolLarge = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
+                    displayText = `${paramIznos} ${currencySymbolLarge}`;
+                    
+                    if (pageMainTitle) pageMainTitle.innerHTML = `Poslovanje ste započeli kupovinom Startnog paketa od <span id="dynamicPageHeaderAmount">${displayText}</span>`;
+                    
+                    deductionAmountSpans.forEach(span => span.textContent = `${paramIznos} €`);
+
+                    if (card1Desc1) card1Desc1.innerHTML = 'Poslovanje nastavljate otvaranjem <strong>dva (2)</strong><br>osobna ili poslovna računa sa <strong>SPfree</strong>,';
+                    if (card1List) card1List.innerHTML = `
+                        <li>zauzimate dvije pozicije u SFalgoritmu</li>
+                        <li>određuje vam se LIMIT maksimalne zarade na<br>svakom računu posebno (do max. 2100 SFC)</li>
+                    `;
+                    if (paramIznos === '2710' && paramValuta === 'usd' && card1Choice) {
+                        card1Choice.innerHTML = 'ne želim ulagati u paket';
+                    }
+
+                } else { 
+                    const numericIznosLo = parseFloat(paramIznos);
+                    if (!isNaN(numericIznosLo)) {
+                        calculatedSfbPoints = numericIznosLo * 2;
+                    }
+                    const currencySymbolLo = paramValuta.toLowerCase() === 'usd' || paramValuta === '$' ? '$' : '€';
+                    displayText = `${paramIznos} ${currencySymbolLo}`;
+
+                    if (pageMainTitle) pageMainTitle.innerHTML = `Poslovanje ste započeli kupovinom Startnog paketa od <span id="dynamicPageHeaderAmount">${displayText}</span>`;
+                    deductionAmountSpans.forEach(span => span.textContent = `${paramIznos} €`);
+                }
+            } else { 
+                 if (pageMainTitle) pageMainTitle.innerHTML = `Poslovanje ste započeli kupovinom Startnog paketa od <span id="dynamicPageHeaderAmount">${displayText}</span>`;
+                 deductionAmountSpans.forEach(span => span.textContent = "30 €");
+            }
+
+            if (sfbPointsSpan) sfbPointsSpan.textContent = calculatedSfbPoints;
+
+            const allOptionCards = document.querySelectorAll('.option-card');
+            allOptionCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    let targetUrl = '';
+                    let finalIznos = paramIznos || '30';
+                    let finalValuta = paramValuta || 'usd';
+
+                    if (card.id === 'opcijaAktivniBezIP') {
+                        targetUrl = `prva_kartica.html?iznos=${encodeURIComponent(finalIznos)}&valuta=${encodeURIComponent(finalValuta)}`;
+                    } else if (card.id === 'opcijaAktivniSaIP') {
+                        targetUrl = `druga_kartica.html?iznos=${encodeURIComponent(finalIznos)}&valuta=${encodeURIComponent(finalValuta)}`;
+                    } else if (card.id === 'opcijaPasivniSaIP') {
+                        targetUrl = `treca_kartica.html?iznos=${encodeURIComponent(finalIznos)}&valuta=${encodeURIComponent(finalValuta)}`;
+                    } else if (card.id === 'opcijaBPR') {
+                        targetUrl = `cetvrta_kartica.html`;
+                    } else if (card.id === 'opcijaOdustanak') {
+                        targetUrl = `peta_kartica.html`;
+                    } else {
+                        return;
+                    }
+                    window.location.href = targetUrl;
+                });
+            });
+            
+            // --- GSAP Animations ---
+            if (typeof gsap !== 'undefined') {
+                gsap.from('.page-main-title', { duration: 0.8, y: -30, opacity: 0, ease: 'power2.out', delay: 0.2 });
+                gsap.from('.initial-info', { duration: 0.8, x: -50, opacity: 0, ease: 'power2.out', delay: 0.4 });
+                gsap.from('.options-title-separator', { duration: 0.8, y: 30, opacity: 0, ease: 'power2.out', delay: 0.6 });
+                gsap.from('.option-card', {
+                    duration: 0.7,
+                    opacity: 0,
+                    y: 40,
+                    scale: 0.95,
+                    stagger: 0.15,
+                    ease: 'power2.out',
+                    delay: 0.8
+                });
+            }
+        });
+    </script>
+    <!-- Background Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('network-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
+            const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
+            let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+
+            const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
+            window.addEventListener('resize', resizeCanvas);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                    this.radius = currentOptions.defaultRadius;
+                    this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                    this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                }
+                draw() {
+                    ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, 0.85)`; ctx.fill();
+                }
+                update() {
+                    this.x += this.vx; this.y += this.vy;
+                    if (this.x > canvas.width || this.x < 0) this.vx = -this.vx;
+                    if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
+                }
+            }
+
+            const initParticles = () => {
+                particles = [];
+                for (let i = 0; i < currentOptions.particleAmount; i++) {
+                    particles.push(new Particle());
+                }
+            };
+
+            const animate = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+                requestAnimationFrame(animate);
+            };
+
+            window.setAnimationTheme = (theme) => {
+                currentOptions = (theme === 'light') ? lightOptions : darkOptions;
+                if(canvas.width > 0) initParticles();
+            };
+            
+            resizeCanvas();
+            animate();
+        });
+    </script>
+</body>
+</html>

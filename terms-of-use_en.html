@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFT21 - Terms of Use</title>
+
+    <!-- Sve CSS i skripte kao na index.html stranici -->
+    <script>
+        function applySft21Theme() {
+            try {
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+                if (theme === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                } else {
+                    document.documentElement.classList.remove('light-mode');
+                }
+            } catch (e) { console.error('Greška pri primjeni teme:', e); }
+        }
+        applySft21Theme();
+        window.addEventListener('pageshow', (event) => { if (event.persisted) { applySft21Theme(); } });
+    </script>
+    
+     <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link na vanjsku CSS datoteku -->
+    <link rel="stylesheet" href="css/style.css?v=7">
+    <!-- Stilovi za Login Stranicu -->
+    <style>
+        /* Osnovni stilovi (mogu biti u style.css) */
+        :root {
+            --primary-color: #6a1b9a; /* Purple */
+            --secondary-color: #ab47bc; /* Lighter Purple */
+            --accent-color: #c55bd7; /* Even Lighter Purple */
+            --text-color: #e5e7eb;
+            --fluorescent-orange: #d9ff00;
+            --success-green: #4ade80;
+            --fluorescent-green: #80ff00;
+            --dark-color: #0e076a;
+            --error-red: #ff4d4d; /* Boja za greške */
+        }
+        body {
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            background-color: #0d0118;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+         /* == STILOVI ZA IZBORNIK JEZIKA (SAMO DESKTOP) == */
+         .language-dropdown { display: none; position: absolute; background-color: #1f2937; border: 1px solid var(--fluorescent-green); border-radius: 0.375rem; margin-top: 0.5rem; padding: 0.25rem 0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); right: 0; z-index: 60; min-width: 80px; }
+        .language-dropdown.active { display: block; }
+        .language-item { display: flex; align-items: center; padding: 0.5rem 0.75rem; font-size: 0.875rem; color: #d1d5db; white-space: nowrap; cursor: pointer; }
+        .language-item:hover { background-color: var(--primary-color); color: white; }
+        .language-item .flag-image, .language-item .flag-icon { width: 20px; height: auto; margin-right: 0.5rem; flex-shrink: 0; }
+        .language-item span:not(.flag-icon) { font-weight: 500; }
+        
+        .sft21-nav-item.dropdown .dropdown-menu:not(.language-dropdown) { position: absolute; display: none; }
+        .sft21-nav-item.dropdown:hover .dropdown-menu:not(.language-dropdown) { display: block; }
+
+        /* Stilovi specifični za login stranicu */
+        body.login-page {
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main.login-main {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px; /* Veći odmak od headera */
+            padding-bottom: 3rem;
+            padding-left: 1rem; /* Padding za manje ekrane */
+            padding-right: 1rem; /* Padding za manje ekrane */
+        }
+        .login-card {
+            position: relative;
+            background-color: rgba(13, 1, 24, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-color);
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 28rem;
+            width: 100%;
+            padding: 2rem 2.5rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .login-title { color: var(--fluorescent-green); }
+        .login-subtitle { color: var(--fluorescent-green); }
+        .form-input-login {
+            border: 1px solid var(--fluorescent-green);
+            background-color: rgba(13, 1, 24, 0.6);
+            color: white;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            width: 100%; padding: 0.75rem 1rem; border-radius: 0.375rem;
+        }
+        .form-input-login::placeholder { color: rgba(255, 255, 255, 0.4); }
+        .form-input-login:focus {
+            outline: none; border-color: var(--fluorescent-orange);
+            background-color: rgba(13, 1, 24, 0.8);
+            box-shadow: 0 0 0 3px rgba(128, 255, 0, 0.3);
+        }
+        .form-input-login.invalid {
+            border-color: var(--error-red) !important;
+            box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.4) !important;
+        }
+        .error-message {
+            color: var(--error-red); font-size: 0.875rem; margin-top: 0.5rem;
+            font-weight: 500; min-height: 1.25rem; line-height: 1.2;
+        }
+        .login-label {
+            color: var(--text-color); font-weight: 500; display: block;
+            margin-bottom: 0.25rem; font-size: 0.875rem;
+        }
+        .login-submit-button {
+            background-color: var(--fluorescent-green); color: #0e076a; border: none;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%; display: flex; justify-content: center;
+            padding: 0.75rem 1rem; border-radius: 0.375rem; cursor: pointer; font-size: 0.875rem;
+        }
+        .login-submit-button:hover {
+            background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%);
+            transform: translateY(-2px);
+        }
+        .form-checkbox-login {
+            color: var(--fluorescent-green); border-color: var(--fluorescent-green);
+            background-color: transparent; height: 1rem; width: 1rem;
+            border-radius: 0.25rem; margin-right: 0.5rem; flex-shrink: 0; cursor: pointer;
+        }
+        .form-checkbox-login:checked {
+             background-color: var(--fluorescent-green);
+             background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%230d0118' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+             background-size: 100% 100%; background-position: center; background-repeat: no-repeat;
+        }
+        .form-checkbox-login:focus { outline: none; box-shadow: 0 0 0 3px rgba(128, 255, 0, 0.3); }
+        .checkbox-label-login { display: block; font-size: 0.875rem; color: var(--text-color); cursor: pointer; line-height: 1rem; }
+        .login-link { color: var(--fluorescent-green); font-weight: 500; font-size: 0.875rem; }
+        .login-link:hover { color: var(--fluorescent-orange); text-decoration: underline; }
+        .register-prompt-text { font-size: 0.875rem; color: #9ca3af; margin-bottom: 0.5rem; }
+        .register-link { font-weight: 700; color: var(--fluorescent-green); text-transform: uppercase; font-size: 0.875rem; display: inline-block; }
+        .register-link:hover { color: var(--fluorescent-orange); text-decoration: underline; }
+        .checkbox-container { display: flex; align-items: center; }
+        form > div:not(.checkbox-container):not(.text-sm) { margin-bottom: 1rem; }
+        .flex.justify-between + div { margin-top: 1.5rem; }
+        hr { margin: 1.5rem 0; border-color: rgba(128, 255, 0, 0.2); border-top-width: 1px; border-style: dashed; }
+        .login-close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: var(--fluorescent-green); line-height: 1; text-decoration: none; opacity: 0.7; transition: opacity 0.2s ease, color 0.2s ease; }
+        .login-close-btn:hover { color: var(--fluorescent-orange); opacity: 1; }
+
+         /* Stilovi za Navigaciju */
+         .logo-nav { font-size: 1.75rem; line-height: 1; display: flex; flex-direction: column; align-items: center; }
+         .logo-nav .small-text { font-size: 0.75rem; color: #d1d5db; font-weight: normal; margin-bottom: -0.2em; }
+         .text-logo-orange { color: var(--fluorescent-green); }
+         nav.fixed { position: fixed; top: 0; left: 0; width: 100%; z-index: 50; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); background-color: rgba(13, 1, 24, 0.8); border-bottom: 1px solid var(--fluorescent-green); box-shadow: 0 2px 10px rgba(128, 255, 0, 0.3); }
+         nav a.btn-primary, nav button.btn-primary, nav a.btn-outline, nav button.btn-outline { padding: 6px 16px !important; font-size: 0.75rem !important; line-height: 1.4 !important; }
+         .hamburger { display: none; cursor: pointer; } .hamburger .bar { display: block; width: 25px; height: 3px; margin: 5px 0; background-color: white; transition: all 0.3s ease; }
+         .nav-menu { display: none; }
+         
+         @media (max-width: 768px) {
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); background-color: #0d0118; flex-direction: column; transition: all 0.5s ease; padding: 20px; z-index: 100; border-right: 1px solid var(--fluorescent-green); display: flex; }
+            .nav-menu.active { left: 0; }
+            .nav-menu a, .nav-menu button:not(#theme-toggle-mobile) {
+                display: block; padding: 0.75rem 1.5rem; text-align: center; transition: background-color 0.3s ease;
+            }
+            .nav-menu a:not(.btn-primary), .nav-menu button.btn-outline {
+                color: white;
+            }
+            .nav-menu a:hover, .nav-menu button:not(#theme-toggle-mobile):hover { color: var(--fluorescent-green); background-color: rgba(128, 255, 0, 0.1); }
+            .hamburger { display: block; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+         }
+
+        #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+
+        body:not(.light-mode) nav button.btn-outline[disabled] { color: var(--fluorescent-green) !important; border-color: var(--fluorescent-green) !important; opacity: 1 !important; }
+        body.light-mode nav button.btn-outline[disabled] { opacity: 1 !important; }
+        
+        /* ISPRAVCI ZA LIGHT MODE U MOBILNOM MENIJU */
+        body.light-mode .nav-menu {
+            background-color: #f9fafb;
+            border-right-color: rgba(106, 27, 154, 0.2);
+        }
+        body.light-mode .nav-menu a:not(.btn-primary), body.light-mode .nav-menu button:not(#theme-toggle-mobile), body.light-mode .nav-menu #theme-toggle-mobile {
+            color: var(--primary-color);
+        }
+        body.light-mode .nav-menu a:hover, body.light-mode .nav-menu button:not(#theme-toggle-mobile):hover, body.light-mode .nav-menu #theme-toggle-mobile:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* FINALNI ISPRAVAK ZA BOJU TEKSTA NA GUMBU U DARK MODU */
+        body:not(.light-mode) .nav-menu a.btn-primary { color: var(--dark-color); }
+
+    </style>
+
+    <style>
+    /* U tamnom (default) modu, sakrij ikonu mjeseca, prikaži sunce */
+    #theme-toggle-dark-icon, #theme-toggle-dark-icon-mobile { display: none !important; }
+    #theme-toggle-light-icon, #theme-toggle-light-icon-mobile { display: inline-block !important; }
+    /* Kada je light-mode aktivan */
+    body.light-mode #theme-toggle-dark-icon, body.light-mode #theme-toggle-dark-icon-mobile { display: inline-block !important; }
+    body.light-mode #theme-toggle-light-icon, body.light-mode #theme-toggle-light-icon-mobile { display: none !important; }
+    </style>
+</head>
+
+<body class="bg-gray-900">
+    <canvas id="network-canvas"></canvas>
+    <div class="custom-cursor"></div>
+
+    <!-- ZAGLAVLJE (ENGLESKA VERZIJA) -->
+    <nav class="fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
+                    <a href="index_en.html" class="flex flex-col logo-nav">
+                         <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="language-selector relative">
+                        <button id="theme-toggle" type="button" class="text-white hover:text-fluorescent-green transition-colors duration-300 text-xl p-2 rounded-full">
+                            <i id="theme-toggle-dark-icon" class="fas fa-moon"></i>
+                            <i id="theme-toggle-light-icon" class="fas fa-sun hidden"></i>
+                        </button>
+                        <button id="desktop-lang-trigger" class="language-trigger text-white hover:text-fluorescent-green transition-colors duration-300 text-xl">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                    <div id="desktop-lang-dropdown" class="language-dropdown">
+                     <a href="terms-of-use_en.html" class="language-item"> <img src="https://flagcdn.com/w20/gb.png" alt="English"> <span>ENG</span> </a>
+                     <a href="terms-of-use.html" class="language-item"> <img src="https://flagcdn.com/w20/hr.png" alt="Croatian"> <span>HRV</span> </a>
+                     </div>
+                    </div>
+                     <a href="login_en.html" class="btn-primary text-xs">Login</button>
+                     <a href="register_en.html" class="btn-primary text-xs">Register</a>
+                </div>
+                <div class="md:hidden">
+                    <div class="hamburger"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-menu md:hidden">
+            <div class="mb-4">
+                <button id="theme-toggle-mobile" type="button" class="text-white hover:text-fluorescent-green transition-colors duration-300 text-2xl p-2 rounded-full">
+                    <i id="theme-toggle-dark-icon-mobile" class="fas fa-moon"></i>
+                    <i id="theme-toggle-light-icon-mobile" class="fas fa-sun hidden"></i>
+                </button>
+            </div>
+             <div class="flex flex-col mt-5 px-6 pt-4 border-t border-gray-700">
+                <a href="login.html" class="btn-primary w-full text-center text-xs">Login</a>
+                <a href="register.html" class="btn-primary w-full text-center text-xs mt-3">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- GLAVNI SADRŽAJ STRANICE -->
+    <main class="legal-content-wrapper">
+        <div class="legal-content glass-card interactive-card">
+            
+            <h1>Terms of Use</h1>
+            <p class="last-updated">Last Updated: September 10, 2025</p>
+
+            <h2>Introduction</h2>
+            <p>Welcome to SFT21! These Terms of Use ("Terms") constitute a legally binding agreement between you, as a user ("you", "your", "User"), and **SFT21 LLC** ("Company", "we", "us", "our"), with its registered office at 2120 Carey Ave, Cheyenne, WY 82001, Wyoming, USA.</p>
+            <p>By accessing, registering, or using any part of the website [sft21.github.io/SFT21_Business_Concept/](https://sft21.github.io/SFT21_Business_Concept/) and its associated platforms within the SFT21 Ecosystem (including, but not limited to, SFured, SFnet, and SFshop), you acknowledge that you have read, understood, and agree to be bound by these Terms and our **Privacy Policy**. If you do not agree with these Terms, please do not use our Services.</p>
+
+            <h2>1. Definitions of Key Terms</h2>
+            <ul>
+                <li><strong>Services:</strong> All websites, platforms (including, but not limited to, SFured, SFnet, and SFshop), applications, content, and functionalities that the Company currently offers or may offer in the future within the SFT21 Ecosystem.</li>
+                <li><strong>User:</strong> Any person who accesses or uses the Services, whether registered or not.</li>
+                <li><strong>Registered User:</strong> A User who has successfully created a user account.</li>
+                <li><strong>License Holder:</strong> A Registered User who has purchased an SFT21 License Package.</li>
+                <li><strong>SFfranchisee:</strong> A License Holder or other buyer who has entered into a Franchise Agreement.</li>
+                <li><strong>Content:</strong> All text, graphics, images, software, video, audio, and other information available through the Services.</li>
+                <li><strong>User Content:</strong> All content that Users post, upload, or share through the Services (e.g., posts on SFnet, product reviews).</li>
+            </ul>
+
+            <h2>2. Eligibility and Account Registration</h2>
+            <ul>
+                <li><strong>Age Requirement and Consent:</strong> Use of our Services is permitted for individuals who are at least **16 years of age**.
+                    <ul>
+                        <li>If you are **18 years of age or older**, you accept these Terms on your own behalf.</li>
+                        <li>If you are **between 16 and 18 years of age** (considered a minor under applicable law), the consent of a parent or legal guardian ("Guardian") is required to create an account and use the Services. During registration, you will be asked to provide information about the Guardian and a consent form that the Guardian must sign. By accepting these Terms, you confirm that you have obtained valid consent. The Guardian providing consent also accepts these Terms on your behalf and assumes responsibility for your activities on the platform.</li>
+                    </ul>
+                </li>
+                <li><strong>Accuracy of Information:</strong> When registering, you agree to provide accurate, complete, and current information, including information about the Guardian if applicable. You are responsible for maintaining the accuracy of this information.</li>
+                <li><strong>Account Security:</strong> You are solely responsible for the security of your password and for all activities that occur under your user account. You agree to immediately notify the Company of any unauthorized use of your account.</li>
+                <li><strong>Identity Verification (KYC - Know Your Customer):</strong> The creation of a user account and access to functionalities within the SFT21 Ecosystem, including SFured, SFnet, and SFshop, is conditional upon the successful completion of a mandatory identity verification process (KYC). This process is necessary for the security of all users, fraud prevention, and regulatory compliance. As part of the KYC process, you will be required to submit accurate personal data and valid documentation, which may include, but is not limited to, a photograph of an identity document and a "selfie" photograph. Refusal or failure to pass the KYC procedure will result in the inability to use Services that require a registered account.</li>
+            </ul>
+            
+            <h2>3. User Conduct and Rules of Use</h2>
+            <p>By using our Services, you agree not to:</p>
+            <ul>
+                <li>Post false, misleading, illegal, defamatory, offensive, or discriminatory information.</li>
+                <li>Use the Services for any unlawful purpose or in violation of any local, state, national, or international law.</li>
+                <li>Impersonate any person or entity.</li>
+                <li>Distribute spam, unsolicited messages, chain letters, or pyramid schemes.</li>
+                <li>Upload viruses, malicious code, or anything that could harm the functionality of the Services.</li>
+                <li>Attempt to gain unauthorized access to our systems, other Users' accounts, or collect their personal information.</li>
+                <li>Infringe upon the intellectual property rights of the Company or third parties.</li>
+            </ul>
+
+            <h2>4. Proprietary Rights and Intellectual Property</h2>
+            <ul>
+                <li><strong>Company's Ownership:</strong> All Services, including the SFT21 brand, logos, software (including the SFalgorithm), design, and Content, are the exclusive property of the Company and its licensors, protected by copyright and other intellectual property laws.</li>
+                <li><strong>License to Use:</strong> We grant you a limited, non-exclusive, non-transferable, and revocable license to access and use the Services solely for your personal, non-commercial purposes (unless otherwise defined in a Franchise Agreement), in accordance with these Terms.</li>
+                <li><strong>User Content:</strong> You retain ownership of your User Content. However, by posting User Content, you grant the Company a worldwide, non-exclusive, royalty-free license to use, copy, modify, distribute, and display that content for the purpose of providing and promoting the Services.</li>
+            </ul>
+
+            <h2>5. Specific Product Terms</h2>
+            <ul>
+                <li><strong>Purchase of License Packages:</strong> The purchase of an SFT21 License is governed by a separate **License Purchase Agreement**. In the event of a conflict between these Terms and the License Purchase Agreement, the provisions of the License Purchase Agreement shall prevail.</li>
+                <li><strong>Franchise Business:</strong> Participation in the SFT21 Business Concept as an SFfranchisee is governed by a separate **Franchise Agreement**. In the event of a conflict, the provisions of the Franchise Agreement shall prevail.</li>
+            </ul>
+
+            <h2>6. Disclaimer of Warranties and Limitation of Liability</h2>
+            <ul>
+                <li><strong>"AS IS":</strong> The Services are provided "as is" and "as available", without any warranties, express or implied. The Company does not warrant that the Services will be uninterrupted, secure, or error-free.</li>
+                <li><strong>LIMITATION OF LIABILITY:</strong> To the fullest extent permitted by law, the Company, its directors, employees, and partners shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, goodwill, or other intangible losses, resulting from your access to or use of the Services.</li>
+                <li><strong>RISKS:</strong> As stated in the License Purchase Agreement, the realization of any financial benefits is not guaranteed and depends on a range of business and market risks.</li>
+            </ul>
+
+            <h2>7. Termination</h2>
+            <ul>
+                <li><strong>By You:</strong> You may stop using our Services at any time. For permanent deletion of your account, please follow the procedures outlined in the Privacy Policy.</li>
+                <li><strong>By Us:</strong> We reserve the right, at our sole discretion, to temporarily suspend or permanently terminate your user account and access to the Services if we determine that you have breached these Terms or other applicable agreements (such as the License Purchase Agreement or Franchise Agreement). In the event of such a decision, we will make reasonable efforts to notify you by email of the action taken. The notice will state the reason for the suspension or termination of the account, and where applicable and possible, you will be informed of your rights and the steps you can take, such as the right to appeal or seek clarification, in accordance with our internal procedures. The Company reserves the right to take immediate action without prior notice in cases of serious violations, such as illegal activities, or endangering the security of the platform or other Users.</li>
+            </ul>
+
+            <h2>8. Changes to the Terms</h2>
+            <p>The Company reserves the right, at its sole discretion, to modify or supplement these Terms at any time. We will notify you of any changes by posting the updated version of the Terms on this page, along with updating the "Last Updated" date at the top of the document. Additionally, we will make reasonable efforts to inform all **Registered Users** (including License Holders and SFfranchisees) of significant changes via a notification within their SFured user interface or by email. Your continued use of the Services after the changes take effect will be considered your acceptance of such modified Terms. If you do not agree with the new Terms, you must stop using the Services. We recommend that you regularly review these Terms to stay informed of any changes.</p>
+
+            <h2>9. Governing Law and Dispute Resolution</h2>
+            <p>These Terms of Use shall be governed by and construed in accordance with the substantive law of **Switzerland**, excluding the application of the United Nations Convention on Contracts for the International Sale of Goods (CISG).</p>
+            <p>All disputes, controversies, or claims arising out of or in connection with these Terms of Use, including the breach, termination, or validity thereof, shall be finally settled by **arbitration** in accordance with the Swiss Rules of International Arbitration of the Swiss Arbitration Centre.</p>
+            <p>The number of arbitrators shall be one.<br>The seat of the arbitration shall be Zurich, Switzerland.<br>The language of the arbitral proceedings shall be English.</p>
+
+            <h2>10. Contact</h2>
+            <p>If you have any questions about these Terms, please contact us at: legal@sft21.com.</p>
+
+        </div>
+    </main>
+
+    <!-- PODNOŽJE (ENGLESKA VERZIJA) -->
+    <footer class="py-16 bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-white">SFT21</h3>
+                    <p class="text-gray-400 mb-8">On strong local and regional foundations, we create a global online community that connects people in a new, more humane, and fairer way.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-x-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index_en.html#home" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Home</a></li>
+                        <li><a href="index_en.html#business-concept" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Business Concept</a></li>
+                        <li><a href="index_en.html#license-packages" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">License Packages</a></li>
+                        <li><a href="index_en.html#starter-packages" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Starter Packages</a></li>
+                        <li><a href="register_en.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Registration</a></li>
+                        <li><a href="login_en.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Login</a></li>
+                        <li><a href="index_en.html#contact" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Contact</h4>
+                        <ul class="space-y-3">
+                            <li class="text-gray-400">SFT21 LLC</li>
+                            <li class="text-gray-400">2120 Carey Ave, Cheyenne,</li>
+                            <li class="text-gray-400">WY 82001</li>
+                            <li class="text-gray-400">Wyoming, USA</li>
+                            <li><a href="mailto:info@sft21.com" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">info@sft21.com</a></li>
+                        </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Legal Information</h4>
+                    <ul class="space-y-3">
+                        <li><a href="terms-of-use_en.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Terms of Use</a></li>
+                        <li><a href="privacy-policy_en.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Privacy Policy</a></li>
+                        <li><a href="privacy-policy_en.html#gdpr-rights" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">GDPR</a></li>
+                        <li><a href="business-rules_en.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Business Rules</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© 2025 SFT21 LLC - All rights reserved.</p>
+            </div>
+        </div>
+        <a href="sfteam_en.html" title="Visit the SFteam page" class="pulsating-circle">
+            <div class="circle-content">
+                <span class="circle-line line-i">I</span>
+                <span class="circle-line heart-symbol">❤️</span>
+                <span class="circle-line line-sfteam">SFteam</span>
+            </div>
+        </a>
+    </footer>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const desktopLangTrigger = document.getElementById('desktop-lang-trigger');
+            const desktopLangDropdown = document.getElementById('desktop-lang-dropdown');
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            // Custom Cursor
+            const cursor = document.querySelector('.custom-cursor');
+            if (cursor && body) {
+                let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+                const speed = 0.1;
+                const updateCursorPosition = () => {
+                    cursorX += (mouseX - cursorX) * speed;
+                    cursorY += (mouseY - cursorY) * speed;
+                    cursor.style.left = `${cursorX}px`;
+                    cursor.style.top = `${cursorY}px`;
+                    requestAnimationFrame(updateCursorPosition);
+                };
+                requestAnimationFrame(updateCursorPosition);
+                window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+                document.addEventListener('mouseleave', () => { if (cursor) cursor.style.opacity = '0'; });
+                document.addEventListener('mouseenter', () => { if (cursor) cursor.style.opacity = '1'; });
+                document.querySelectorAll('a, button, input, .checkbox-label-login, .login-close-btn').forEach(el => {
+                    el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
+                    el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
+                });
+            }
+
+            const closeAllDropdowns = () => {
+                if (desktopLangDropdown?.classList.contains('active')) {
+                    desktopLangDropdown.classList.remove('active');
+                }
+            };
+            
+            // Desktop Language Dropdown
+            if (desktopLangTrigger && desktopLangDropdown) {
+                desktopLangTrigger.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    desktopLangDropdown.classList.toggle('active');
+                });
+                desktopLangDropdown.addEventListener('click', (event) => event.stopPropagation());
+            }
+            
+            // Hamburger Menu
+            if (hamburger && navMenu && body) {
+                hamburger.addEventListener('click', () => {
+                    const isActive = hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active', isActive);
+                    body.classList.toggle('overflow-hidden', isActive);
+                    closeAllDropdowns();
+                });
+                document.querySelectorAll('.nav-menu a, .nav-menu button').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (hamburger.classList.contains('active')) {
+                            hamburger.classList.remove('active');
+                            navMenu.classList.remove('active');
+                            body.classList.remove('overflow-hidden');
+                        }
+                    });
+                });
+            }
+
+            // Global listeners to close dropdowns
+            document.addEventListener('click', (event) => {
+                const isClickOnLangDesktopTrigger = desktopLangTrigger?.contains(event.target);
+                if (!isClickOnLangDesktopTrigger) {
+                    closeAllDropdowns();
+                }
+            });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    if (hamburger?.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body?.classList.remove('overflow-hidden');
+                    }
+                    closeAllDropdowns();
+                }
+            });
+
+            // Login Form Validation
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) {
+                const usernameInput = document.getElementById('username');
+                const passwordInput = document.getElementById('password');
+                const usernameError = document.getElementById('username-error');
+                const passwordError = document.getElementById('password-error');
+
+                const validateUsername = () => {
+                    const username = usernameInput.value.trim();
+                    const usernameRegex = /^[a-zA-Z0-9]+$/;
+                    usernameError.textContent = '';
+                    usernameInput.classList.remove('invalid');
+                    if (username.length < 4 || username.length > 21) {
+                        usernameError.textContent = 'Korisničko ime mora imati između 4 i 21 znaka.';
+                        usernameInput.classList.add('invalid'); return false;
+                    }
+                    if (!usernameRegex.test(username)) {
+                        usernameError.textContent = 'Dozvoljena su samo slova i brojevi.';
+                        usernameInput.classList.add('invalid'); return false;
+                    }
+                    return true;
+                };
+
+                const validatePassword = () => {
+                    const password = passwordInput.value;
+                    const allAllowedCharsRegex = /^[a-zA-Z0-9!"#$%&/_+~=?]+$/;
+                    const hasLowercase = /[a-z]/;
+                    const hasUppercase = /[A-Z]/;
+                    const hasNumber = /\d/;
+                    const hasSpecialChar = /[!"#$%&/_+~=?]/;
+                    passwordError.textContent = '';
+                    passwordInput.classList.remove('invalid');
+                    if (password.length < 7 || password.length > 21) {
+                        passwordError.textContent = 'Lozinka mora imati između 7 i 21 znaka.';
+                        passwordInput.classList.add('invalid'); return false;
+                    }
+                    if (!allAllowedCharsRegex.test(password)) {
+                        passwordError.textContent = 'Lozinka sadrži nedozvoljene znakove.';
+                        passwordInput.classList.add('invalid'); return false;
+                    }
+                    const missing = [];
+                    if (!hasLowercase.test(password)) missing.push('malo slovo');
+                    if (!hasUppercase.test(password)) missing.push('VELIKO slovo');
+                    if (!hasNumber.test(password)) missing.push('broj');
+                    if (!hasSpecialChar.test(password)) missing.push('poseban znak');
+                    if (missing.length > 0) {
+                        passwordError.textContent = `Lozinka mora sadržavati barem: ${missing.join(', ')}.`;
+                        passwordInput.classList.add('invalid'); return false;
+                    }
+                    return true;
+                };
+
+                loginForm.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    if (validateUsername() && validatePassword()) {
+                        console.log('Forma je ispravna. Preusmjeravam...');
+                        window.location.href = 'sfured.html';
+                    } else {
+                        console.log('Forma sadrži greške.');
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <!-- SKRIPTA ZA ANIMACIJU POZADINE -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('network-canvas');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null };
+
+        const darkOptions = {
+            particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120,
+            defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4,
+            mouseInteractionRadius: 150, mouseEffectStrength: 2,
+        };
+        const lightOptions = {
+            particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120,
+            defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4,
+            mouseInteractionRadius: 150, mouseEffectStrength: 2,
+        };
+        let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+
+        const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                this.z = Math.random() * 2 - 1; this.radius = currentOptions.defaultRadius * (1 + this.z * 0.5);
+                this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
+            }
+            draw() {
+                let finalRadius = this.radius; let opacity = 1;
+                if (mouse.x !== null) {
+                    const dist = Math.sqrt(Math.pow(this.x - mouse.x, 2) + Math.pow(this.y - mouse.y, 2));
+                    if (dist < currentOptions.mouseInteractionRadius) {
+                        const effect = (1 - dist / currentOptions.mouseInteractionRadius);
+                        finalRadius += effect * currentOptions.mouseEffectStrength; opacity += effect * 0.5;
+                    }
+                }
+                ctx.beginPath(); ctx.arc(this.x, this.y, finalRadius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, ${opacity * 0.85})`; ctx.fill();
+            }
+            update() {
+                this.x += this.vx * (1 + this.z * 0.5); this.y += this.vy * (1 + this.z * 0.5);
+                if (this.x > canvas.width + 5) this.x = -5; else if (this.x < -5) this.x = canvas.width + 5;
+                if (this.y > canvas.height + 5) this.y = -5; else if (this.y < -5) this.y = canvas.height + 5;
+            }
+        }
+        const initParticles = () => { particles = []; for (let i = 0; i < currentOptions.particleAmount; i++) { particles.push(new Particle()); } };
+        const drawLines = () => {
+            let pulse = Math.sin(Date.now() * 0.001) * 0.2 + 0.8;
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dist = Math.sqrt(Math.pow(particles[i].x - particles[j].x, 2) + Math.pow(particles[i].y - particles[j].y, 2));
+                    if (dist < currentOptions.linkRadius) {
+                        let opacity = (1 - (dist / currentOptions.linkRadius)) * pulse;
+                        if (mouse.x !== null) {
+                           const distToMouse1 = Math.sqrt(Math.pow(particles[i].x - mouse.x, 2) + Math.pow(particles[i].y - mouse.y, 2));
+                           const distToMouse2 = Math.sqrt(Math.pow(particles[j].x - mouse.x, 2) + Math.pow(particles[j].y - mouse.y, 2));
+                           if(distToMouse1 < currentOptions.mouseInteractionRadius || distToMouse2 < currentOptions.mouseInteractionRadius) { opacity = Math.min(1, opacity + 0.5); }
+                        }
+                        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(${currentOptions.lineColorRGB}, ${opacity * 0.5})`; ctx.lineWidth = currentOptions.lineWidth; ctx.stroke();
+                    }
+                }
+            }
+        };
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => p.update()); drawLines(); particles.forEach(p => p.draw());
+            requestAnimationFrame(animate);
+        };
+        window.setAnimationTheme = (theme) => { currentOptions = theme === 'light' ? lightOptions : darkOptions; initParticles(); };
+        initParticles(); animate();
+    });
+    </script>
+
+    <!-- SCRIPT ZA UPRAVLJANJE TEMAMA -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeToggleBtns = [ document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile') ];
+        const logoImg = document.getElementById('site-logo');
+
+        function updateThemeUI() {
+            const isLight = document.documentElement.classList.contains('light-mode');
+            document.body.classList.toggle('light-mode', isLight);
+            if(logoImg) logoImg.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
+            if (window.setAnimationTheme) { window.setAnimationTheme(isLight ? 'light' : 'dark'); }
+        }
+
+        function handleThemeToggle() {
+            document.documentElement.classList.toggle('light-mode');
+            const isNowLight = document.documentElement.classList.contains('light-mode');
+            localStorage.setItem('sft21_theme', isNowLight ? 'light' : 'dark');
+            updateThemeUI();
+        }
+
+        updateThemeUI();
+        themeToggleBtns.forEach(btn => { if (btn) { btn.addEventListener('click', handleThemeToggle); } });
+    });
+    </script>
+
+</body>
+</html>

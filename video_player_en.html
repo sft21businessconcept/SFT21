@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFT21 Video Player</title>
+
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
+
+    <!-- Main CSS (important for color variables and basic styles) -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Basic styles for the video player page */
+        html, body {
+            height: 100%; margin: 0; padding: 0; background-color: #000;
+            overflow: hidden; color: #e0e0e0; font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+        .video-player-page-container { position: relative; width: 100%; height: 100%; display: flex; }
+        #main-video-player { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+        /* Sidebar toggle button */
+        .sidebar-toggle-button {
+            position: fixed; top: 20px; right: 20px; width: 45px; height: 45px;
+            background-color: rgba(106, 27, 154, 0.5); border: 2px solid var(--fluorescent-green);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 1005; opacity: 0.4; transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(128, 255, 0, 0.3);
+        }
+        .sidebar-toggle-button:hover, .sidebar-toggle-button.active {
+            opacity: 1; transform: scale(1.1); background-color: rgba(106, 27, 154, 0.8);
+            box-shadow: 0 0 15px rgba(128, 255, 0, 0.5);
+        }
+        .sidebar-toggle-button i { color: white; font-size: 18px; transition: transform 0.3s ease; }
+        .sidebar-toggle-button.active i { transform: rotate(180deg); }
+
+        /* Sidebar (Library) */
+        .video-sidebar {
+            position: fixed; top: 0; right: -320px; width: 300px; height: 100%;
+            background-color: rgba(13, 1, 24, 0.9); backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px); border-left: 1px solid var(--fluorescent-green);
+            z-index: 1000; transition: right 0.4s ease-in-out; display: flex; flex-direction: column;
+        }
+        .video-sidebar.active { right: 0; }
+        .sidebar-header { padding: 1rem 1.25rem; border-bottom: 1px solid rgba(128, 255, 0, 0.2); flex-shrink: 0; }
+        .sidebar-header h3 { margin: 0; color: var(--fluorescent-green); font-size: 1.3rem; }
+        .sidebar-link-back {
+            display: flex; align-items: center; padding: 0.5rem 1.25rem; color: var(--fluorescent-green);
+            font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(128, 255, 0, 0.2);
+            transition: background-color 0.2s ease, color 0.2s ease; flex-shrink: 0;
+        }
+        .sidebar-link-back:hover { background-color: rgba(106, 27, 154, 0.3); color: var(--fluorescent-orange); }
+        .sidebar-link-back i { margin-right: 0.5rem; }
+        .sidebar-content { padding: 1rem 1.25rem; overflow-y: auto; flex-grow: 1; }
+        .sidebar-section { margin-bottom: 1.5rem; }
+        .sidebar-section-title {
+            font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--fluorescent-green);
+            border-bottom: 2px solid var(--fluorescent-orange);
+            padding-bottom: 0.4rem; display: inline-block;
+        }
+
+        .sidebar-social-links {
+            display: flex; gap: 1rem; padding: 0.5rem 1.25rem; flex-shrink: 0;
+            border-bottom: 1px solid rgba(128, 255, 0, 0.2);
+        }
+        .social-link {
+            color: var(--accent-color); font-size: 1.2rem; transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .social-link:hover { color: var(--fluorescent-orange); transform: scale(1.1); }
+
+        .video-list { list-style: none; padding: 0; margin: 0; }
+        .video-item {
+            padding: 0.75rem; border-radius: 5px; margin-bottom: 0.5rem; cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            background: rgba(106, 27, 154, 0.1); border: 1px solid transparent;
+            display: flex; gap: 0.75rem; align-items: center;
+        }
+        .video-item:hover { background: rgba(106, 27, 154, 0.3); }
+        .video-item.active { background: rgba(128, 255, 0, 0.15); border-color: var(--fluorescent-green); }
+        .video-thumbnail img { width: 60px; height: 40px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
+        .video-info { flex-grow: 1; }
+        .video-item-title { font-weight: 500; margin-bottom: 0.1rem; font-size: 0.9rem; color: #fff; }
+        .video-item-description { font-size: 0.75rem; color: #a0a0a0; }
+
+        .sidebar-tabs { display: flex; border-bottom: 1px solid rgba(128, 255, 0, 0.2); margin-bottom: 1rem; flex-shrink: 0; }
+        .sidebar-tab {
+            flex: 1; padding: 0.75rem 0.5rem; font-size: 0.9rem; font-weight: 600;
+            text-align: center; color: #a0a0a0; background: none; border: none;
+            border-bottom: 3px solid transparent; cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease; white-space: nowrap;
+        }
+        .sidebar-tab:hover { color: #e0e0e0; }
+        .sidebar-tab.active { color: var(--fluorescent-green); border-bottom-color: var(--fluorescent-orange); }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+        .folder-list, .category-list { list-style: none; padding: 0; margin: 0; }
+        .folder-item, .category-item { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1rem; margin-bottom: 0.6rem; background-color: rgba(55, 30, 80, 0.5); border-radius: 8px; color: #e0e0e0; font-size: 0.95rem; transition: background-color 0.2s ease; }
+        .folder-item { cursor: pointer; }
+        .folder-item:hover, .category-item:hover { background-color: rgba(75, 40, 100, 0.6); }
+        .folder-item > div > i, .category-item a > i { color: var(--fluorescent-orange); margin-right: 0.8rem; font-size: 1rem; }
+        .folder-item > div { flex-grow: 1; display: flex; align-items: center;}
+        .folder-action-buttons { display: flex; gap: 0.5rem; }
+        .folder-action-btn { background: none; border: none; color: #a0a0a0; cursor: pointer; padding: 0.3rem; font-size: 0.9rem; transition: color 0.2s ease; }
+        .folder-action-btn:hover { color: var(--fluorescent-orange); }
+        .category-item a { color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%; }
+        .sidebar-create-button { display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.8rem 1rem; margin-top: 1rem; background-color: transparent; border: 1px solid var(--fluorescent-orange); border-radius: 8px; color: var(--fluorescent-orange); font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; }
+        .sidebar-create-button:hover { background-color: rgba(217, 255, 0, 0.1); }
+        .sidebar-create-button i { margin-right: 0.5rem; }
+
+        @font-face {font-family: 'Century Gothic'; src: local('Century Gothic');}
+    </style>
+</head>
+<body>
+
+    <div class="video-player-page-container">
+        <button id="sidebar-toggle" class="sidebar-toggle-button active">
+            <i class="fas fa-bars"></i>
+        </button>
+        <aside id="video-sidebar" class="video-sidebar active">
+            <div class="sidebar-header">
+                <h3>Video Library</h3>
+            </div>
+            <a href="#" id="back-link" class="sidebar-link-back">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </a>
+            <div class="sidebar-social-links">
+                <a href="https://www.youtube.com/@sft21" target="_blank" class="social-link" title="SFT21 official YouTube channel">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="social-link" title="SFseeyou application">
+                    <i class="fas fa-video"></i>
+                </a>
+            </div>
+
+            <div class="sidebar-content">
+                 <div class="sidebar-tabs">
+                     <button class="sidebar-tab active" data-tab="tab-all">All Videos</button>
+                     <button class="sidebar-tab" data-tab="tab-folders">My Folders</button>
+                     <button class="sidebar-tab" data-tab="tab-categories">Categories</button>
+                 </div>
+
+                <div class="sidebar-tab-content">
+                    <div id="tab-all" class="tab-pane active">
+                        <div class="sidebar-section">
+                            <ul class="video-list" id="latest-videos">
+                                <li class="video-item" data-youtube-id="xDZNaDX58jg">
+                                    <div class="video-thumbnail"><img src="img/SFT21.jpg" alt="Thumbnail"></div>
+                                    <div class="video-info">
+                                        <div class="video-item-title">SFT21 Official Presentation</div>
+                                        <div class="video-item-description">Learn about the concept</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="tab-folders" class="tab-pane">
+                        <div class="sidebar-section">
+                            <h4 class="sidebar-section-title">My Folders</h4>
+                            <ul class="folder-list">
+                                <li class="folder-item">
+                                    <div><i class="fas fa-folder"></i> Education</div>
+                                    <div class="folder-action-buttons">
+                                        <button class="folder-action-btn" title="Edit"><i class="fas fa-pencil-alt"></i></button>
+                                        <button class="folder-action-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                                 <li class="folder-item">
+                                    <div><i class="fas fa-folder"></i> Marketing</div>
+                                    <div class="folder-action-buttons">
+                                        <button class="folder-action-btn" title="Edit"><i class="fas fa-pencil-alt"></i></button>
+                                        <button class="folder-action-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                                 <li class="folder-item">
+                                    <div><i class="fas fa-folder"></i> Webinars</div>
+                                    <div class="folder-action-buttons">
+                                        <button class="folder-action-btn" title="Edit"><i class="fas fa-pencil-alt"></i></button>
+                                        <button class="folder-action-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <button class="sidebar-create-button">
+                                <i class="fas fa-plus mr-2"></i> Create New Folder
+                            </button>
+                        </div>
+                    </div>
+                    <div id="tab-categories" class="tab-pane">
+                         <div class="sidebar-section">
+                            <h4 class="sidebar-section-title">Categories</h4>
+                            <ul class="category-list">
+                                <li class="category-item"><a href="#"><i class="fas fa-tag"></i> Education</a></li>
+                                <li class="category-item"><a href="#"><i class="fas fa-tag"></i> Marketing</a></li>
+                                <li class="category-item"><a href="#"><i class="fas fa-tag"></i> Webinars</a></li>
+                                <li class="category-item"><a href="#"><i class="fas fa-tag"></i> Tutorials</a></li>
+                                <li class="category-item"><a href="#"><i class="fas fa-tag"></i> Presentations</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div style="width: 100%; height: 100%; background-color: #000; display: flex; align-items: center; justify-content: center;">
+            <iframe 
+                id="main-video-player" 
+                style="width: 100%; height: 100%; border:0;"
+                src="" 
+                title="YouTube video player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const player = document.getElementById('main-video-player');
+        const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+        const sidebar = document.getElementById('video-sidebar');
+        const videoItems = document.querySelectorAll('.video-item');
+        const backLink = document.getElementById('back-link');
+        const sidebarTabs = document.querySelectorAll('.sidebar-tab');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        if (backLink) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromPage = urlParams.get('from');
+            if (fromPage) {
+                sessionStorage.setItem('returnToPage', fromPage);
+            }
+            const returnUrl = sessionStorage.getItem('returnToPage');
+            backLink.href = returnUrl || 'index_en.html'; // Fallback to English homepage
+        }
+
+        if (sidebarTabs.length > 0) {
+            sidebarTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    sidebarTabs.forEach(t => t.classList.remove('active'));
+                    tabPanes.forEach(p => p.classList.remove('active'));
+                    tab.classList.add('active');
+                    const targetPane = document.getElementById(tab.getAttribute('data-tab'));
+                    if (targetPane) targetPane.classList.add('active');
+                });
+            });
+        }
+        
+        if (sidebarToggleBtn && sidebar) {
+            sidebarToggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                sidebar.classList.toggle('active');
+                sidebarToggleBtn.classList.toggle('active');
+            });
+            document.addEventListener('click', (e) => {
+                if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && !sidebarToggleBtn.contains(e.target)) {
+                    sidebar.classList.remove('active');
+                    sidebarToggleBtn.classList.remove('active');
+                }
+            });
+        }
+
+        if (player && videoItems.length > 0) {
+            function changeVideo(youtubeId) {
+                if (youtubeId && youtubeId.toUpperCase().indexOf('YOUTUBE_ID') === -1) {
+                    player.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
+                } else {
+                    player.src = ''; 
+                }
+            }
+            
+            videoItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    videoItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    const youtubeId = item.getAttribute('data-youtube-id');
+                    changeVideo(youtubeId);
+                    if (sidebar.classList.contains('active')) {
+                        sidebar.classList.remove('active');
+                        sidebarToggleBtn.classList.remove('active');
+                    }
+                });
+            });
+        }
+    });
+    </script>
+</body>
+</html>

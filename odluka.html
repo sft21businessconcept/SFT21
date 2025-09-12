@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odluka - SFT21 Business Concept</title>
+
+    <!-- ============================================= -->
+    <!-- UNIVERSAL THEME INITIALIZATION SCRIPT -->
+    <!-- Solves the "flash" and back-forward cache issues -->
+    <!-- ============================================= -->
+    <script>
+        function applySft21Theme() {
+            try {
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+                if (theme === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                } else {
+                    document.documentElement.classList.remove('light-mode');
+                }
+                 if (window.setAnimationTheme) {
+                    window.setAnimationTheme(theme);
+                }
+            } catch (e) {
+                console.error('Error applying theme:', e);
+            }
+        }
+        applySft21Theme();
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                applySft21Theme();
+            }
+        });
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --primary-color: #6a1b9a; /* Purple */
+            --secondary-color: #ab47bc; /* Lighter Purple */
+            --accent-color: #ff00ff; /* Magenta */
+            --fluorescent-green: #80ff00; /* Fluorescent Green */
+            --text-color: #e5e7eb; /* Light gray for text */
+            --background-dark: #0d0118; /* Dark background */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-dark);
+        }
+
+        .animated-background {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; overflow: hidden; background-color: var(--background-dark);
+        }
+        #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: #1d012e; }
+
+        .custom-cursor {
+            position: fixed; width: 20px; height: 20px; border-radius: 50%;
+            background-color: rgba(106, 27, 154, 0.6); border: 2px solid var(--fluorescent-green);
+            pointer-events: none; z-index: 10000; transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, background-color 0.2s ease, width 0.2s ease, height 0.2s ease;
+            opacity: 0;
+        }
+
+        .header-title-text {
+            color: var(--fluorescent-green); font-size: 1.1rem;
+        }
+        @media (min-width: 640px) { .header-title-text { font-size: 1.25rem; } }
+        @media (min-width: 768px) { .header-title-text { font-size: 1.35rem; } }
+        @media (min-width: 1024px) { .header-title-text { font-size: 1.5rem; } }
+
+        .content-box-wrapper {
+            display: flex; justify-content: center; align-items: flex-start;
+            min-height: calc(100vh - 80px); padding-top: 120px; padding-bottom: 4rem;
+        }
+        .content-box {
+            background-color: rgba(106, 27, 154, 0.1); backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(171, 71, 188, 0.3);
+            border-radius: 20px; padding: 2rem 2.5rem; max-width: 900px; width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); position: relative;
+            color: var(--text-color); overflow-y: auto; max-height: calc(100vh - 140px);
+        }
+        .content-box-close {
+            position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem;
+            color: rgba(229, 231, 235, 0.7); cursor: pointer; transition: color 0.3s ease;
+            background: none; border: none; padding: 0; line-height: 1;
+        }
+        .content-box-close:hover { color: white; }
+
+        .content-box h2 {
+            font-family: 'Orbitron', sans-serif; font-size: 2rem; font-weight: 700;
+            color: var(--fluorescent-green); text-align: center; margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(128, 255, 0, 0.5);
+        }
+        .content-box .subtitle {
+            font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #b0a6d0;
+            text-align: center; margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .content-box p {
+            font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.25rem;
+            text-align: justify; color: #d1d5db;
+        }
+        .content-box ul {
+            list-style-type: none; padding-left: 1rem; margin-bottom: 1.25rem;
+            text-align: justify; color: #d1d5db;
+        }
+        .content-box ul li {
+            position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem;
+            font-size: 0.95rem; line-height: 1.8;
+        }
+        .content-box ul li::before {
+            content: "–"; position: absolute; left: 0;
+            color: var(--fluorescent-green); font-weight: bold;
+        }
+        .content-box p strong { color: #f3e5f5; font-weight: 600; }
+        .content-box p.signature-block {
+            text-align: right; margin-top: 2.5rem; margin-bottom: 1rem;
+            font-style: italic; color: #c7c1da;
+        }
+        .content-box p.signature-name {
+            text-align: right; margin-bottom: 0.25rem; font-weight: 500;
+            color: var(--fluorescent-green);
+        }
+        .content-box p.final-note {
+            margin-top: 2.5rem; font-style: italic; color: #b0a6d0; text-align: center;
+        }
+        .content-buttons {
+            display: flex; flex-direction: column; gap: 1rem;
+            margin-top: 2.5rem; align-items: center; 
+        }
+        .content-btn {
+            background-color: var(--primary-color); color: white; padding: 0.8rem 1.8rem;
+            border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 0.5px; border: 2px solid transparent;
+            transition: all 0.3s ease; display: inline-flex; align-items: center;
+            justify-content: center; min-width: 280px; text-align: center;
+        }
+        .content-btn:hover {
+            background-color: var(--secondary-color); transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(106, 27, 154, 0.3);
+        }
+        .content-btn .btn-main-text { display: block; }
+        .content-btn .btn-sub-text { display: block; font-size: 0.7rem; opacity: 0.8; margin-top: 0.1rem; }
+
+        .video-player-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); z-index: 1000;
+            display: none; justify-content: center; align-items: center;
+        }
+        .video-player-overlay.active { display: flex; }
+        .video-player-container {
+            position: relative; width: 80vw; max-width: 1100px; aspect-ratio: 16 / 9;
+            background-color: #000; border: 2px solid var(--fluorescent-green);
+            box-shadow: 0 0 30px rgba(128, 255, 0, 0.5);
+        }
+        .video-player-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .video-player-close-button {
+            position: absolute; top: 0; right: 0; transform: translate(40%, -40%);
+            width: 44px; height: 44px; font-size: 1.8rem; color: white; background: rgba(0,0,0,0.7);
+            border: 2px solid white; border-radius: 50%; cursor: pointer; transition: all 0.3s ease;
+            z-index: 1001; display: flex; align-items: center; justify-content: center; line-height: 1;
+        }
+        .video-player-close-button:hover {
+            color: var(--fluorescent-green); border-color: var(--fluorescent-green);
+            transform: translate(40%, -40%) scale(1.1);
+        }
+
+        /* === ISPRAVAK ZA NASLOV U HEADERU NA MOBILNIM UREĐAJIMA === */
+        @media (max-width: 768px) {
+            /* Povećavamo padding na kontejneru da sve stane */
+            nav .container {
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+            }
+
+            /* Glavni kontejner headera */
+            .header-container {
+                flex-direction: column; /* Elementi idu jedan ispod drugog */
+                align-items: center;    /* Centrirani su horizontalno */
+                height: auto;           /* Visina je automatska, više nije fiksna */
+                position: static;       /* Ignoriramo 'relative' da naslov ne ovisi o njemu */
+                gap: 0.25rem;           /* Mali razmak između loga i naslova */
+            }
+
+            /* Kontejner s naslovom */
+            .header-title-container {
+                position: static;       /* KLJUČNO: Vraćamo naslov u normalan tok stranice */
+                transform: none;        /* Poništavamo sve transformacije */
+                width: 100%;            /* Neka zauzme punu širinu */
+                padding: 0;
+                pointer-events: auto;
+            }
+
+            .header-title-text {
+                font-size: 0.95rem;     /* Malo smanjujemo font za bolji izgled */
+            }
+        }
+    </style>
+    <!-- ============================================= -->
+    <!-- STYLES FOR LIGHT MODE -->
+    <!-- ============================================= -->
+    <style>
+        html.light-mode body { background-color: #f8fafc !important; color: #4a0e6c !important; }
+        html.light-mode nav.fixed { background-color: rgba(255, 255, 255, 0.9) !important; border-bottom: 1px solid var(--primary-color) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;}
+        html.light-mode .logo-nav .small-text, html.light-mode .logo-nav .text-logo-orange, html.light-mode .logo-nav .text-white { color: var(--primary-color) !important; }
+        html.light-mode .header-title-text { color: var(--primary-color) !important; }
+        html.light-mode .animated-background { background-color: transparent !important; }
+        html.light-mode #network-canvas { background-color: transparent !important; }
+        html.light-mode .content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
+        html.light-mode .content-box-close { color: #64748b !important; }
+        html.light-mode .content-box-close:hover { color: #1e293b !important; }
+        html.light-mode h2, html.light-mode p.signature-name { color: var(--primary-color) !important; text-shadow: none !important; }
+        html.light-mode .subtitle, html.light-mode p.signature-block, html.light-mode p.final-note { color: #64748b !important; }
+        html.light-mode p, html.light-mode ul { color: #4a0e6c !important; }
+        html.light-mode p strong { color: #3b0a55 !important; }
+        html.light-mode ul li::before { color: var(--primary-color) !important; }
+        html.light-mode .content-btn { background-color: var(--primary-color) !important; color: white !important; }
+        html.light-mode .content-btn:hover { background-color: var(--secondary-color) !important; }
+        html.light-mode .video-player-container { border-color: var(--primary-color) !important; box-shadow: 0 0 20px rgba(106, 27, 154, 0.3) !important; }
+    </style>
+</head>
+
+<body class="bg-gray-900">
+    <div class="custom-cursor"></div>
+    <canvas id="network-canvas"></canvas>
+
+    <nav class="fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="header-container flex items-center relative h-12">
+                <a href="index.html" title="Return to the homepage" class="flex items-center">
+                    <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
+                    <div class="flex flex-col logo-nav">
+                        <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
+                    </div>
+                </a>
+                <div class="header-title-container absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full px-4 pointer-events-none">
+                    <span class="header-title-text font-semibold uppercase tracking-wider">Odluka o nastavku poslovanja</span>
+                </div>
+                 <div class="w-auto ml-auto"> </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="animated-background">
+            <div class="bg-dots"></div>
+            <div class="glow" style="top: 10%; left: 10%; width: 400px; height: 400px;"></div>
+            <div class="glow" style="top: 70%; left: 80%; width: 350px; height: 350px; opacity: 0.15;"></div>
+            <div class="glow" style="bottom: 5%; left: 45%; width: 300px; height: 300px; opacity: 0.1;"></div>
+        </div>
+
+      <div class="content-box-wrapper">
+        <div class="content-box">
+            <button class="content-box-close" onclick="sessionStorage.setItem('openPopupOnLoad', 'chooseInvestorType'); window.location.href='index.html';" title="Return to the homepage">×</button>
+            <p class="subtitle">
+                SFT21 BUSINESS CONCEPT<br>
+            </p>
+            <h2>Poštovanje</h2>
+            <p>Prije svega iskreno i od srca veliki pozdrav svima.</p>
+            <p>Evo nakon gotovo tri pune godine od privremenog prekida poslovanja ponovo se vraćamo sa nadom da ćemo nastaviti tamo gdje smo, ne našom krivnjom, bili prisiljeni stati.</p>
+            <p>Vrlo je važno podsjetiti se, da smo 2018. godine registrirali kompaniju InFace Invest Group LTD, sa kojom smo 2019. godine pokrenuli poslovni koncept časno, pošteno i transparentno sa najboljim namjerama stvaranja jedinstvene online zajednice kroz franšizni model poslovanja, u kojem je bilo zamišljeno da se razvoj kompanije i cjelokupne zajednice, što uključuje;</p>
+            <ul>
+                <li>razvoj softvera i aplikacija,</li>
+                <li>pokretanje franšiznog poslovnog modela pod nazivom SFT21 Business Concept,</li>
+                <li>operativne, administrativne i ostale tekuće troškove razvoja,</li>
+                <li>te marketinške i infrastrukturne potrebe vezane za projekt SFT21,</li>
+            </ul>
+            <p>...financira od zarade koja će dolaziti od prodaje franšize našim članovima i njihovim nadogradnjama, kao i od investitora, većih ili manjih.</p>
+            <p>Na žalost, spletom za nas neugodnih okolnosti, bili smo prisiljeni, zbog nemogućnosti plaćanja troškova održavanja razvoja i funkcioniranja kompanije, postepeno otkazivati započeti razvoj sve do nedavnog skidanja svih stranica našega portala sa interneta.</p>
+            <p>Nekvalitetan rad jednog dijela korisnika, zatim nadolazeća i dugotrajna Covid kriza, te ponajviše javno iznesene laži, klevete i uvrede od strane troje bivših korisnika, sa kojima smo prekinuli poslovnu suradnju zbog teških povreda pravila poslovanja i protiv kojih su podnesene kaznene prijave, stvarni su razlozi usporavanja razvoja i ovog privremenog prekida poslovanja.</p>
+            <p>O navedenim razlozima, detaljno smo informirali članstvo, snimanjem tridesetak videa sa dokazima, argumentima i činjenicama, koja smo objavili na stranicama kompanijskog YouTube kanala, tako da smo po tom pitanju uglavnom sve rekli.</p>
+            <p>Na žalost, navedena videa pogledana su prosječno 1.500 puta, rijetko koji video do kraja, neka videa su pogledana manje od 1.000 puta, mali broj videa pogledan je više od 2.000 puta dok ni jedan nije pogledan više od 3.000 puta.</p>
+            <p>Kada uzmemo u obzir da je u kompaniju registrirano više od 24.000 korisnika evidentno je da velika većina korisnika nije upoznata o stvarnim i pravim razlozima koji su utjecali na ovaj privremeni prekid poslovanja.</p>
+            <p>Međutim, upravo je to pokazatelj, krivog i pogrešnog rada velike većine naših članova kao i jasan dokaz neinformiranosti članova kako po pitanju navedenih dokaza tako i po pitanju općeg razvoja kompanije i cjelokupne zajednice.</p>
+            <p>Jer kako objasniti činjenicu da od 24.000 korisnika prilikom puštanja društvene mreže u rad gotovo 14.000 korisnika nisu <strong>NIKADA</strong> pristupili istoj?!</p>
+            <p>Kako objasniti činjenicu da od 24.000 korisnika imamo samo 2.800 pretplatnika na našem YouTube kanalu, koji bi trebao biti jedan od glavnih komunikacijsko-informacijskih kanala...</p>
+            <p>Gdje je ostalih 21.200 korisnika? Tko su ti ljudi? Tko ih je registrirao? Kako su se oni informirali o novostima, radnim obavezama i općenito o poslovanju?</p>
+            <p>Uglavnom, danas je mnogima jasno, da je kompanija privremeno prestala sa radom, ne svojm krivnjom, već zbog naprijed navedenih problema na koje nismo mogli nikako utjecati a nažalost nismo ih u startu mogli predvidjeti.</p>
+            <p>Kada smo problem primjetili, pokušali smo reagirati ali u nedostatku novca nismo mogli puno napraviti jer je za određene promjene u sistemu poslovanja jednostavno neophodan – novac.</p>
+            <p>Skidanjem stranica portala sa interneta, zbog nemogućnosti daljnjeg pokrivanja tekućih troškova, kompanija nije prestala sa radom niti smo odustali od same vizije stvaranja online zajednice, koju smo transparentno promovirali od samog početka poslovanja.</p>
+            <p>Kada pogledamo unatrag, danas možemo reći da smo možda pogriješili sa odabirom načina financiranja razvoja kompanije jer smo naivno vjerovali da ćemo uz pomoć članova bez većih problema doći bar do 50.000 korisnika, što je broj koji bi nam donio dovoljno sredstava da završimo potrebne softvere i aplikacije neophodne za daljni razvoj poslovnog koncepta i zajednice koju smo započeli stvarati.</p>
+            <p>Kao što je svima poznato, zbog navedenih problema, nismo uspjeli u tome.</p>
+            <p>Međutim, iako su neki od članova pomislili da je to definitivno kraj našeg poslovanja, mi ni u jednom trenutku nismo odustali od naše ideje i započetog poslovanja, već smo radili sve što je u našoj moći kako bi poslovanje nastavili.</p>
+            <p>Prije svega važno je napomenuti, da smo poslovanje pokrenuli uz 90 dnevnu garanciju povrata novca, što smo poštivali na način da je <strong>SVAKOME</strong> korisniku koji je u roku podnio zahtjev za povrat novca isti bio uredno i vraćen. Upravo je navedena garancija povrata novca dovela kompaniju do najvećeg problema, jer se pojavom javnih lažnih optužbi, kleveta i uvreda protiv kompanije i njenih vlasnika, sve veći broj članova odlučilo na podnošenje zahjeva za povrat novca. U sitauciji kada nam je za razvoj softvera i ostalih troškova bilo potrebno sve više novca mi smo bili prisiljeni vraćati novac kako bi ispoštovali datu garanciju, što je posljedično uzrokovalo usporavanje cjelokupnog razvoja te u konačnici i privremeni prekid poslovanja.</p>
+            <p>Isto tako, jasno je i nedvojbeno prezentirano da novac uplaćen za ”pune franšize” kao i za veće investicije nije pod garancijom povrata jer je taj novac odmah odlazio u raspodjelu, na plaćanje faktura programerima ili na ostale tekuće troškove razvoja.</p>
+            <p>Sukladno navedenom... sukladno franšiznom ugovoru kojega ste potpisali, kompanija SFT21 (ex InFace Invest Group LTD), <strong>NIJE DUŽNA VRATITI NOVAC KOJEGA STE UPLATILI KUPOVINOM STARTNOG PAKETA ILI UPLATOM VEĆE INVESTICIJE</strong>, međutim kako ne želimo da bilo tko smatra da je oštećen u našoj kompaniji, vaša će vam investicija biti vraćena!</p>
+            <p>S obzirom na činjenicu, da je novac korisnika utrošen na razvoj kompanije, novac namjenjen za povrat korisnicima koji odluče odustati od nastavka poslovanja ovoga trenutka jednostavno <strong>NE POSTOJI</strong>.</p>
+            <p>Rješenje problema, kako za članove koji odustaju od poslovanja tako i za članove koji žele nastaviti poslovanje nalazi se samo u osiguravanju sredstava potrebnih za određene izmjene u SFT21 softveru, kao i za završetak softvera i aplikacija za društvenu mrežu i webshop, što je u konačnici preduvjet nastavka poslovanja.</p>
+            <p>Sa tim u vezi, odlučili smo predstavit novi nadograđeni i u nekim segmentima izmijenjeni poslovni koncept nakon čega pokrećemo fazu prodaje Inicijalnih paketa.</p>
+            <p>Novac prikupljen podajom paketa, biti će pohranjen na računu kompanije i iskorišten prvenstveno za nadogradnju i završetak započetih sotvera i aplikacija. Prioritet kompanije je prikupiti sredstva koja će osigurati početak neometanog nastavka poslovanja nakon čega slijedi povrat novca korisnicima koji će odustati i podnijeti zahtjev za povrat.</p>
+            <p>Nakon što završi period prikupljanja sredstava a prije prvog popunjavanja pozicija u SF algoritmu, kompanija će pravovremeno obavijestiti sve korisnike iz starog sistema da donesu odluku o prekidu poslovanja uz zahtjev za povrat novca.</p>
+            <p><strong>POVRAT NOVCA ĆE SE ODVIJATI TRANSPARENTNO PREMA PRAVILIMA, KOJA ĆE OSIGURAVATI DA SE NOVAC VRAĆA U SKLADU SA MOGUĆNOSTIMA KOMPANIJE, PREMA DATUMU UPLATE STARTNOG PAKETA ILI INVESTICIJE.</strong></p>
+            <p><strong>SUKLADNO PRETHODNO NAVEDENOM, KOMPANIJA NASTAVLJA SA POSLOVANJEM TE SE OBAVEZUJE IZVRŠITI POVRAT NOVCA SVIMA KOJI BUDU PODNIJELI ZAHTJEV - KADA ZA TO BUDE U MOGUĆNOSTI.</strong></p>
+            <p>Pravo na povrat novca nemaju korisnici protiv kojih su podnesene kaznene prijave kao i oni korisnici koji su povukli zaradu iz starog sistema koja je veća ili ista njihovom uplaćenom startnom paketu ili investiciji.</p>
+            <p>Prilikom podnošenja zahtjeva za povrat novca biti će potrebno uz zahtjev priložiti fotografiju važećeg osobnog dokumenta sa kojim ste napravili Kej Vaj Si, potvrdu identiteta ili fotografiju novog dokumenta ukoliko vam je stari prestao važiti.</p>
+            <p>Novac će vam u tom slučaju biti vraćen putem platnog procesora sa kojim ste izvršili uplatu ili moguće i na drugi način, o čemu ćete biti pravovremeno obaviješteni.</p>
+            <p>S obzirom da će proći određeni vremenski period prije nego li kompanija bude u mogućnosti započeti sa povratom novca, naš vam je najiskreniji savjet da ne odbacujete olako članstvo u našoj zajednici, te da u tom periodu pratite naš razvoj i dešavanja u kompaniji, te da proučite sve pogodnosti novog SFT21 poslovnog koncepta, kako bi konačnu odluku o prekidu ili nastavku poslovanja donijeli na osnovi najnovijih informacija.</p>
+            <p>Jer jedna je činjenica neoboriva i nitko je do današnjeg dana nije pokušao demantirati... a to je činjenica da smo pokrenuli stvaranje zajednice u kojoj će korisnici imati mogućnost pokrenuti svoje internet poslovanje putem stranica našega portala, u kojem će razvijati vlastitu društvenu mrežu i webshop, uz mogućnost ostvarivaja zarade na više načina kao i mnoge druge pogodnosti.</p>
+            <p>Bez obzira na sve probleme, prepreke, izazove koji su doveli do trenutne situacije mi jednostavno idemo dalje. Jer mi znamo... kao i mnogi naši vjerni članovi da smo počeli stvarati projekt sa neograničenim potencijalom na dobrobit naših članova i da nas ništa neće zaustaviti.</p>
+            <p>Moramo priznati, da su nas ponajprije javne lažne optužbe, klevete i uvrede privremeno zaustavile, nanijevši nam ogromnu štetu, ali usprkos svemu, znajući da nismo krivi i znajući da u rukama držimo i više nego vrijedan poslovni projekt, poput feniksa vraćamo se iz pepela...</p>
+            <p><strong>LAŽIMA</strong> su nas zaustavili i bacili na dno... i to im je privremeno uspjelo.... Ali usprkos svemu, nisu pobijedili. Ponovo ustajemo i nastavljamo gdje smo stali, jer uz nas je <strong>ISTINA</strong>.</p>
+            <p>Vjerujemo da će nam se na tom putu pridružiti kako veliki broj naših starih članova tako i mnogi koji će tek čuti za našu zajednicu. Mi smo svjesni činjenice da među Vama, članovima iz staroga sistema, ima onih koji su izgubili povjerenje te nemaju namjeru nastaviti poslovanje ali smo isto tako svjesni da među Vama ima i onih koji znaju prave i stvarne razloge problema u kojima smo se našli i koji nikada nisu to povjerenje izgubili. Osim toga, znamo da među Vama ima mnogih koji su shvatili vrijednost, kvalitetu i mogućnosti koje donosi naš poslovni koncept i koji će sa zadovoljstvom nastaviti poslovanje.</p>
+            <p>Ispred nas je period u kojemu ćemo dati sve što je u našoj mogućnosti kako bi osigurali sredstva neophodna za završetak spomenutih softvera i aplikacija, kako bi isplatili sve one koji će odustati i riješili se dugovanja, te kako bi u konačnici nastavili poslovanje radeći na stvaranju zajednice u korist i u interesu naših vjernih članova.</p>
+            <p>Mi znamo svoj zacrtani put... istina nam je temeljna vrijednost dok su nam ciljevi jednostavno bolji i kvalitetniji život svim našim članovima. Svjesni smo kvalitete i društvene vrijednosti našeg poslovnog koncepta ali kako bi pokazali i dokazali njegovu pravu moć, na tom putu trebamo Vašu pomoć i povjerenje.</p>
+
+            <p class="signature-block">Semper Fidelis</p>
+            <p class="signature-name">Mladen Pejić</p>
+            <p class="signature-name">Zoran Lazarević</p>
+
+            <p class="final-note">Molimo Vas da prije donošenja odluke pogledate i proučite SFT21 Business Concept, prezentaciju novog, djelomično izmjenjenog i nadograđenog franšiznog poslovnog modela.<br>Kako bi okvirno vidjeli broj članova na koje možemo računati da će nastaviti poslovanje kao i broj onih koji će se odlučiti na ulaganje u Investicijske pakete, zamoliti ćemo vas da na kraju ovih stranica donesete Odluku o nastavku poslovanja.<br>Bez obzira na odluku koju donesete danas, po završetku spomentutih softvera i aplikacija odnosno neposredno prije prvog popunjavanja SFalgoritma, pravovremeno ćemo vas ponovo kontaktirati kako bi donijeli definitivnu odluku o prekidu ili nastavku poslovanja.</p>
+
+            <div class="content-buttons" id="odlukaGumbi">
+                <button type="button" id="openVideoPlayerButton" class="content-btn">
+                    <div>
+                        <span class="btn-main-text">SFT21 Business Concept</span>
+                        <span class="btn-sub-text">(prezentacija projekta)</span>
+                    </div>
+                </button>
+                <a href="izbor.html" class="content-btn">
+                     <div>
+                        <span class="btn-main-text">DONESI ODLUKU</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <div id="videoPlayerOverlay" class="video-player-overlay">
+        <div class="video-player-container">
+            <iframe id="youtubePlayer" 
+                    src="" 
+                    title="SFT21 Presentation" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+        <button id="closeVideoPlayerButton" class="video-player-close-button" title="Close video">×</button>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM ready for odluka_en.html, running basic scripts...");
+
+            const body = document.body;
+            const logoImage = document.getElementById('site-logo');
+
+            // --- Light/Dark Mode Logic ---
+            const applyTheme = () => {
+                const isLight = document.documentElement.classList.contains('light-mode');
+                if (logoImage) {
+                    logoImage.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
+                }
+                if (window.setAnimationTheme) {
+                    window.setAnimationTheme(isLight ? 'light' : 'dark');
+                }
+            };
+            
+            // Re-apply theme on pageshow for bfcache
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    applyTheme();
+                }
+            });
+
+            // Initial application
+            applyTheme();
+
+            // --- Custom Cursor ---
+            const cursor = document.querySelector('.custom-cursor');
+            if (cursor && body) {
+                let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+                const speed = 0.1;
+                const updateCursorPosition = () => {
+                    cursorX += (mouseX - cursorX) * speed;
+                    cursorY += (mouseY - cursorY) * speed;
+                    if (cursor) {
+                        cursor.style.left = `${cursorX}px`;
+                        cursor.style.top = `${cursorY}px`;
+                    }
+                    requestAnimationFrame(updateCursorPosition);
+                };
+                requestAnimationFrame(updateCursorPosition);
+                window.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    if (cursor && cursor.style.opacity === '0') {
+                        cursor.style.opacity = '1';
+                    }
+                });
+                document.addEventListener('mouseleave', () => { if (cursor) cursor.style.opacity = '0'; });
+                document.addEventListener('mouseenter', () => { if (cursor) cursor.style.opacity = '1'; });
+
+                document.querySelectorAll('a, button, input, textarea, select, label[for], .content-box-close').forEach(el => {
+                    el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, width: "30px", height: "30px", backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
+                    el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, width: "20px", height: "20px", backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
+                });
+            }
+
+            // --- GSAP Animations ---
+            const initializeGsapAnimations = () => {
+                if (typeof gsap !== 'undefined') {
+                    gsap.from('.content-box', { duration: 1, opacity: 0, y: 50, scale: 0.95, ease: "power3.out", delay: 0.3 });
+                }
+            };
+            initializeGsapAnimations();
+
+            // --- Scroll to anchor ---
+            if (window.location.hash === '#odlukaGumbi') {
+                const targetElement = document.getElementById('odlukaGumbi');
+                if (targetElement) {
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 600);
+                }
+            }
+
+            // === YouTube Video Player Logic ===
+            const openVideoPlayerButton = document.getElementById('openVideoPlayerButton');
+            const videoPlayerOverlay = document.getElementById('videoPlayerOverlay');
+            const closeVideoPlayerButton = document.getElementById('closeVideoPlayerButton');
+            const youtubePlayer = document.getElementById('youtubePlayer');
+            const youtubeEmbedUrl = "https://www.youtube.com/embed/xDZNaDX58jg?si=kH8MOv4NJbgzHasT"; 
+
+            if (openVideoPlayerButton && videoPlayerOverlay && closeVideoPlayerButton && youtubePlayer) {
+                const closeVideo = () => {
+                    videoPlayerOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                    youtubePlayer.src = "";
+                    const targetElement = document.getElementById('odlukaGumbi');
+                    if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                };
+                
+                openVideoPlayerButton.addEventListener('click', () => {
+                    youtubePlayer.src = youtubeEmbedUrl + "&autoplay=1&rel=0";
+                    videoPlayerOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden'; 
+                });
+
+                closeVideoPlayerButton.addEventListener('click', closeVideo);
+                videoPlayerOverlay.addEventListener('click', (event) => {
+                    if (event.target === videoPlayerOverlay) closeVideo();
+                });
+            }
+        });
+
+        // Background Animation Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('network-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
+            const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
+            let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+
+            const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
+            window.addEventListener('resize', resizeCanvas);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                    this.radius = currentOptions.defaultRadius;
+                    this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                    this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                }
+                draw() {
+                    ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, 0.85)`; ctx.fill();
+                }
+                update() {
+                    this.x += this.vx; this.y += this.vy;
+                    if (this.x > canvas.width || this.x < 0) this.vx = -this.vx;
+                    if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
+                }
+            }
+
+            const initParticles = () => {
+                particles = [];
+                for (let i = 0; i < currentOptions.particleAmount; i++) {
+                    particles.push(new Particle());
+                }
+            };
+
+            const animate = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+                requestAnimationFrame(animate);
+            };
+
+            window.setAnimationTheme = (theme) => {
+                currentOptions = (theme === 'light') ? lightOptions : darkOptions;
+                initParticles();
+            };
+            
+            resizeCanvas();
+            animate();
+        });
+    </script>
+</body>
+</html>
