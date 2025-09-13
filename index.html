@@ -611,7 +611,7 @@ body.light-mode .nav-menu .mobile-language-trigger i.fa-chevron-down {
         <a href="#" class="nav-link transition-colors duration-300 inline-flex items-center" id="desktop-platform-trigger">
             Platforme <i class="fas fa-chevron-down ml-1 text-xs"></i>
         </a>
-        <div class="dropdown-menu absolute hidden bg-gray-800 rounded shadow-lg py-1" id="desktop-platform-menu">
+            <div class="dropdown-menu absolute hidden bg-gray-800 rounded shadow-lg py-1" id="desktop-platform-menu">
             <a href="login.html?redirect=sfured.html" class="dropdown-item block px-4 py-2 text-sm text-gray-200 hover:bg-purple-700 hover:text-white">SFured</a>
             <a href="login.html?redirect=sfalgoritam.html" class="dropdown-item block px-4 py-2 text-sm text-gray-200 hover:bg-purple-700 hover:text-white">SFalgoritam</a>
             <a href="login.html?redirect=video_player.html%3Ffrom%3Dindex.html" class="dropdown-item block px-4 py-2 text-sm text-gray-200 hover:bg-purple-700 hover:text-white">Video Player</a>
@@ -2056,6 +2056,77 @@ body.light-mode .nav-menu .mobile-language-trigger i.fa-chevron-down {
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        // === NOVI KOD ZA PROVJERU STATUSA PRIJAVE ===
+
+function handleLoginState() {
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+    const isEnglish = window.location.pathname.includes('_en');
+
+    // Selektori za sve relevantne elemente menija
+    const loginButtons = document.querySelectorAll('a[href^="login"]'); // Cilja i login.html i login_en.html
+    const platformLinksDesktop = document.querySelectorAll('#desktop-platform-menu a');
+    const platformLinksMobile = document.querySelectorAll('#mobile-platform-menu a');
+
+    if (isLoggedIn) {
+        // === KORISNIK JE PRIJAVLJEN ===
+
+        // 1. Promijeni gumb "Prijava" u "Odjava"
+        loginButtons.forEach(btn => {
+            if (btn.textContent.toLowerCase().includes('prijava') || btn.textContent.toLowerCase().includes('login')) {
+                btn.textContent = isEnglish ? 'Logout' : 'Odjava';
+                btn.href = '#'; // Ukloni link da ne vodi nigdje
+                btn.id = 'logout-button'; // Dajemo mu ID za odjavu
+                // Ako je gumb "disabled" (kao na login stranici), ukloni to
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                btn.disabled = false;
+            }
+        });
+
+        // 2. Ažuriraj linkove pod "Platforme" da vode direktno
+        const updatePlatformLink = (link) => {
+            const originalHref = link.href;
+            if (originalHref.includes('login')) {
+                const url = new URL(originalHref);
+                const redirectTarget = url.searchParams.get('redirect');
+                if (redirectTarget) {
+                    link.href = redirectTarget;
+                }
+            }
+        };
+        platformLinksDesktop.forEach(updatePlatformLink);
+        platformLinksMobile.forEach(updatePlatformLink);
+
+        // 3. Dodaj event listener za odjavu
+        const logoutButton = document.getElementById('logout-button');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                sessionStorage.removeItem('isLoggedIn');
+                alert(isEnglish ? 'You have been logged out.' : 'Odjavljeni ste.');
+                // Preusmjeri na početnu stranicu nakon odjave
+                window.location.href = isEnglish ? 'index_en.html' : 'index.html';
+            });
+        }
+
+    } else {
+        // === KORISNIK NIJE PRIJAVLJEN (osiguraj da je sve vraćeno na početno stanje) ===
+        // Ovo je važno ako korisnik klikne back button u pregledniku
+        
+        const logoutButton = document.getElementById('logout-button');
+        if (logoutButton) {
+            logoutButton.textContent = isEnglish ? 'Login' : 'Prijava';
+            logoutButton.href = isEnglish ? 'login_en.html' : 'login.html';
+            logoutButton.id = ''; // Makni ID
+        }
+        
+        // (Opcionalno, ali dobro) Vrati linkove za platforme na login, ako je potrebno
+        // Obično nije potrebno jer se stranica ponovno učita.
+    }
+}
+
+handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
+
+// === KRAJ NOVOG KODA ===
             const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyhhosQJfFDf8-_jLkLeycTECYUWaUBiaEMuS7kSGKiDkTVHuaPIwWolBrgMJgl-zuS/exec';   
         const body = document.body;
 
