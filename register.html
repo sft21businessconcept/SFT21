@@ -1330,14 +1330,14 @@ html.light-mode #theme-toggle-dark-icon-mobile {
 <input class="form-input-register" id="reg-email" name="email" placeholder="Vaša e-mail adresa" required="" type="email"/>
 </div>
 <div class="space-y-3 pt-4">
-<label class="flex items-start cursor-pointer">
-<input class="form-checkbox-register mt-1" name="terms_oup" required="" type="checkbox"/>
-<span class="ml-2 text-sm text-gray-300">Pročitao/la sam i prihvaćam <a class="text-fluorescent-green underline hover:text-green-400" href="#">Opće uvjete poslovanja</a>.*</span>
-</label>
-<label class="flex items-start cursor-pointer">
-<input class="form-checkbox-register mt-1" name="terms_privacy" required="" type="checkbox"/>
-<span class="ml-2 text-sm text-gray-300">Pročitao/la sam i prihvaćam <a class="text-fluorescent-green underline hover:text-green-400" href="#">Izjavu o zaštiti podataka</a> i <a class="text-fluorescent-green underline hover:text-green-400" href="#">Suglasnost za prosljeđivanje i korištenje podataka</a>.*</span>
-</label>
+    <label class="flex items-start cursor-pointer">
+        <input class="form-checkbox-register mt-1" name="terms_oup" required="" type="checkbox"/>
+        <span class="ml-2 text-sm text-gray-300">Prihvaćam <a class="text-fluorescent-green underline hover:text-green-400" href="terms-of-use.html?from=register.html" target="_blank">Uvjete korištenja</a>.*</span>
+    </label>
+    <label class="flex items-start cursor-pointer">
+        <input class="form-checkbox-register mt-1" name="terms_privacy" required="" type="checkbox"/>
+        <span class="ml-2 text-sm text-gray-300">Prihvaćam <a class="text-fluorescent-green underline hover:text-green-400" href="privacy-policy.html?from=register.html" target="_blank">Politiku privatnosti</a>.*</span>
+    </label>
 <label class="flex items-start cursor-pointer">
 <input class="form-checkbox-register mt-1" name="terms_newsletter" type="checkbox"/>
 <span class="ml-2 text-sm text-gray-300">Da, želim primati obavijesti o najnovijim informacijama i posebnim ponudama, kao i o vaučerima, nagradnim igrama i akcijama putem emaila i telefona. Mogu se odjaviti u bilo kojem trenutku.</span>
@@ -1393,9 +1393,8 @@ html.light-mode #theme-toggle-dark-icon-mobile {
             <div>
                 <h4 class="text-lg font-bold mb-6 text-white">Pravne informacije</h4>
                 <ul class="space-y-3">
-                    <li><a href="terms-of-use.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Uvjeti korištenja</a></li>
-                    <li><a href="privacy-policy.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Politika privatnosti</a></li>
-                    <li><a href="privacy-policy.html#gdpr-rights" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">GDPR</a></li>
+                    <li><a href="terms-of-use.html?from=register.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Uvjeti korištenja</a></li>
+                    <li><a href="privacy-policy.html?from=register.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Politika privatnosti</a></li>                    <li><a href="privacy-policy.html#gdpr-rights" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">GDPR</a></li>
                     <li><a href="business-rules.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Pravila poslovanja</a></li>
                 </ul>
             </div>
@@ -1578,23 +1577,59 @@ html.light-mode #theme-toggle-dark-icon-mobile {
         const phonePrefixSpan = document.getElementById('phone-prefix');
         const phoneFlagImg = document.getElementById('phone-flag');
         
-        // Lista zemalja (možete je proširiti po potrebi)
+        // Lista zemalja 
         const countries = [
             { code: 'HR', name: 'Hrvatska', prefix: '+385' },
+            { code: 'RS', name: 'Srbija', prefix: '+381' },
+            { code: 'SI', name: 'Slovenija', prefix: '+386' },
+            { code: 'BA', name: 'Bosna i Hercegovina', prefix: '+387' },
+            { code: 'MK', name: 'Sjeverna Makedonija', prefix: '+389' },
+            { code: 'ME', name: 'Crna Gora', prefix: '+382' },
+            { code: 'GB', name: 'Velika Britanija', prefix: '+44' },
+            { code: 'IT', name: 'Italija', prefix: '+39' },
             { code: 'DE', name: 'Njemačka', prefix: '+49' },
             { code: 'AT', name: 'Austrija', prefix: '+43' },
+            { code: 'HU', name: 'Mađarska', prefix: '+36' },
+            { code: 'FR', name: 'Francuska', prefix: '+33' },
+            { code: 'RO', name: 'Rumunjska', prefix: '+40' },
+            { code: 'ES', name: 'Španjolska', prefix: '+34' },
+            { code: 'PT', name: 'Portugal', prefix: '+351' },
+            { code: 'PL', name: 'Poljska', prefix: '+48' },
+            { code: 'CZ', name: 'Češka', prefix: '+420' },
+            { code: 'SK', name: 'Slovačka', prefix: '+421' },
+            { code: 'RU', name: 'Rusija', prefix: '+7' },
+            { code: 'TR', name: 'Turska', prefix: '+90' },
+            { code: 'UA', name: 'Ukrajina', prefix: '+380' },
+            { code: 'NL', name: 'Nizozemska', prefix: '+31' },
+            { code: 'BE', name: 'Belgija', prefix: '+32' },
+            { code: 'GR', name: 'Grčka', prefix: '+30' },
+            { code: 'SE', name: 'Švedska', prefix: '+46' },
             { code: 'CH', name: 'Švicarska', prefix: '+41' },
-            { code: 'SI', name: 'Slovenija', prefix: '+386' },
-            { code: 'RS', name: 'Srbija', prefix: '+381' },
-            { code: 'BA', name: 'Bosna i Hercegovina', prefix: '+387' },
-            { code: 'GB', name: 'Velika Britanija', prefix: '+44' },
-            { code: 'US', name: 'Sjedinjene Države', prefix: '+1' },
+            { code: 'BY', name: 'Bjelorusija', prefix: '+375' },
+            { code: 'DK', name: 'Danska', prefix: '+45' },
+            { code: 'FI', name: 'Finska', prefix: '+358' },
+            { code: 'NO', name: 'Norveška', prefix: '+47' },
+            { code: 'IE', name: 'Irska', prefix: '+353' },
+            { code: 'BG', name: 'Bugarska', prefix: '+359' },
+            { code: 'MD', name: 'Moldavija', prefix: '+373' },
+            { code: 'AL', name: 'Albanija', prefix: '+355' },
+            { code: 'LT', name: 'Litva', prefix: '+370' },
+            { code: 'LV', name: 'Latvija', prefix: '+371' },
+            { code: 'EE', name: 'Estonija', prefix: '+372' },
+            { code: 'LU', name: 'Luksemburg', prefix: '+352' },
+            { code: 'MT', name: 'Malta', prefix: '+356' },
+            { code: 'IS', name: 'Island', prefix: '+354' },
+            { code: 'AD', name: 'Andora', prefix: '+376' },
+            { code: 'MC', name: 'Monako', prefix: '+377' },
+            { code: 'LI', name: 'Lihtenštajn', prefix: '+423' },
+            { code: 'SM', name: 'San Marino', prefix: '+378' },
+            { code: 'VA', name: 'Vatikan', prefix: '+379' },
         ];
 
         // Funkcija za popunjavanje liste
         function populateCountryOptions() {
             if (!countryOptionsContainer) return;
-            countryOptionsContainer.innerHTML = ''; // Očisti postojeće opcije
+            countryOptionsContainer.innerHTML = ''; 
             countries.forEach(country => {
                 const optionElement = document.createElement('div');
                 optionElement.classList.add('option');
@@ -1712,8 +1747,65 @@ html.light-mode #theme-toggle-dark-icon-mobile {
         if (themeToggleMobileBtn) { themeToggleMobileBtn.addEventListener('click', handleThemeToggle); }
         
         // === OSNOVNE FUNKCIJE STRANICE ===
-        if (cursor && body) { let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0; const speed = 0.1; const updateCursor = () => { cursorX += (mouseX - cursorX) * speed; cursorY += (mouseY - cursorY) * speed; cursor.style.left = `${cursorX}px`; cursor.style.top = `${cursorY}px`; requestAnimationFrame(updateCursor); }; requestAnimationFrame(updateCursor); window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; }); document.addEventListener('mouseleave', () => cursor.style.opacity = '0'); document.addEventListener('mouseenter', () => cursor.style.opacity = '1'); document.querySelectorAll('a, button, input, [role="button"], label[for]').forEach(el => { el.addEventListener('mouseenter', () => gsap.to(cursor, { duration: 0.3, scale: 1.5 })); el.addEventListener('mouseleave', () => gsap.to(cursor, { duration: 0.3, scale: 1 })); }); }
-        if (hamburger && navMenu) { hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); document.body.classList.toggle('no-scroll'); }); }
+// POSLIJE (ZAMIJENITE S OVIM)
+
+if (cursor && body) {
+    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+    const speed = 0.1;
+
+    const updateCursorPosition = () => {
+        cursorX += (mouseX - cursorX) * speed;
+        cursorY += (mouseY - cursorY) * speed;
+        cursor.style.left = `${cursorX}px`;
+        cursor.style.top = `${cursorY}px`;
+        requestAnimationFrame(updateCursorPosition);
+    };
+    requestAnimationFrame(updateCursorPosition);
+
+    // --- Događaji za MIŠ (za desktop) ---
+    window.addEventListener('mousemove', (e) => {
+        cursor.style.opacity = '1'; // Pokaži kursor čim se miš pomakne
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    document.addEventListener('mouseleave', () => {
+        if (cursor) cursor.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+        if (cursor) cursor.style.opacity = '1';
+    });
+
+    // --- NOVO: Događaji za DODIR (za mobilne uređaje) ---
+    window.addEventListener('touchstart', (e) => {
+        if (e.touches.length > 0) {
+            cursor.style.opacity = '1'; // Pokaži kursor na početku dodira
+            // Odmah postavi poziciju da izbjegne "skakanje"
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+            cursorX = e.touches[0].clientX;
+            cursorY = e.touches[0].clientY;
+        }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+            // Ažuriraj ciljanu poziciju dok se prst pomiče
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        }
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+        // Sakrij kursor kada se prst podigne
+        if (cursor) cursor.style.opacity = '0';
+    });
+    
+    // Hover efekti (ostaju isti)
+    document.querySelectorAll('a, button, .accordion-header, .hamburger, input, textarea, select, .language-trigger, .language-item, label[for], .kyc-placeholder-clickable, #camera-icon, .starter-package-select-btn, .trigger-choose-investor-type-popup, .open-investment-details-popup').forEach(el => {
+        el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
+        el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
+    });
+}        if (hamburger && navMenu) { hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); document.body.classList.toggle('no-scroll'); }); }
 
         const desktopLangTrigger = document.getElementById('desktop-lang-trigger');
         const desktopLangDropdown = document.getElementById('desktop-lang-dropdown');
