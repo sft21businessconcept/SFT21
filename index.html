@@ -171,6 +171,10 @@
         top: 150px; 
     }
 
+    #radio-float-icon {
+    top: 200px;
+    }
+
     /* Prilagodba za light mode za OBA gumba */
     body.light-mode .floating-action-btn {
         border-color: #ab47bc;
@@ -1986,6 +1990,11 @@ body.light-mode .nav-menu .mobile-language-trigger i.fa-chevron-down {
     <button id="ai-chat-float-icon" class="ai-chat-float-icon floating-action-btn" title="Open Chat">
         <i class="fas fa-comments"></i>
     </button>
+
+    <!-- Gumb za Radio -->
+    <a href="https://radio.garden/listen/smooth-jazz-24-7/1vlrqH6v" target="_blank" rel="noopener noreferrer" id="radio-float-icon" class="floating-action-btn" title="Slušaj Radio" aria-label="Slušaj Radio">
+    <i class="fas fa-music"></i>
+    </a>
 <!-- ============================================= -->
 <!-- STATISTIKA ZAJEDNICE - PRIVREMENO SKRIVENO -->
 <!-- ============================================= -->
@@ -2404,7 +2413,65 @@ body.light-mode .nav-menu .mobile-language-trigger i.fa-chevron-down {
             });
         });
 
-        if (cursor && body) { let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0; const speed = 0.1; const updateCursorPosition = () => { cursorX += (mouseX - cursorX) * speed; cursorY += (mouseY - cursorY) * speed; cursor.style.left = `${cursorX}px`; cursor.style.top = `${cursorY}px`; requestAnimationFrame(updateCursorPosition); }; requestAnimationFrame(updateCursorPosition); window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; }); document.addEventListener('mouseleave', () => { if (cursor) cursor.style.opacity = '0'; }); document.addEventListener('mouseenter', () => { if (cursor) cursor.style.opacity = '1'; }); document.querySelectorAll('a, button, .accordion-header, .hamburger, input, textarea, select, .language-trigger, .language-item, label[for], .kyc-placeholder-clickable, #camera-icon, .starter-package-select-btn, .trigger-choose-investor-type-popup, .open-investment-details-popup').forEach(el => { el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }); }); el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }); }); }); }
+// POSLIJE (ZAMIJENITE S OVIM)
+
+if (cursor && body) {
+    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+    const speed = 0.1;
+
+    const updateCursorPosition = () => {
+        cursorX += (mouseX - cursorX) * speed;
+        cursorY += (mouseY - cursorY) * speed;
+        cursor.style.left = `${cursorX}px`;
+        cursor.style.top = `${cursorY}px`;
+        requestAnimationFrame(updateCursorPosition);
+    };
+    requestAnimationFrame(updateCursorPosition);
+
+    // --- Događaji za MIŠ (za desktop) ---
+    window.addEventListener('mousemove', (e) => {
+        cursor.style.opacity = '1'; // Pokaži kursor čim se miš pomakne
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    document.addEventListener('mouseleave', () => {
+        if (cursor) cursor.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+        if (cursor) cursor.style.opacity = '1';
+    });
+
+    // --- NOVO: Događaji za DODIR (za mobilne uređaje) ---
+    window.addEventListener('touchstart', (e) => {
+        if (e.touches.length > 0) {
+            cursor.style.opacity = '1'; // Pokaži kursor na početku dodira
+            // Odmah postavi poziciju da izbjegne "skakanje"
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+            cursorX = e.touches[0].clientX;
+            cursorY = e.touches[0].clientY;
+        }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+            // Ažuriraj ciljanu poziciju dok se prst pomiče
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        }
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+        // Sakrij kursor kada se prst podigne
+        if (cursor) cursor.style.opacity = '0';
+    });
+    
+    // Hover efekti (ostaju isti)
+    document.querySelectorAll('a, button, .accordion-header, .hamburger, input, textarea, select, .language-trigger, .language-item, label[for], .kyc-placeholder-clickable, #camera-icon, .starter-package-select-btn, .trigger-choose-investor-type-popup, .open-investment-details-popup').forEach(el => {
+        el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
+        el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
+    });
+}
 
         if (popupOverlay) { popupOverlay.addEventListener('click', (e) => { if (e.target === popupOverlay) closeAllPopups(); }); }
         document.querySelectorAll('.popup-content').forEach(content => { if (content) content.addEventListener('click', (e) => e.stopPropagation()); });
