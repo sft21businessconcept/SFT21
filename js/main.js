@@ -1492,4 +1492,4 @@ document.addEventListener('DOMContentLoaded', () => {
         // Inicijalna boja
         resetCursorColor();
     }
-});
+}); 
