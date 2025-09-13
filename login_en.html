@@ -395,6 +395,77 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // === NOVI KOD ZA PROVJERU STATUSA PRIJAVE ===
+
+function handleLoginState() {
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+    const isEnglish = window.location.pathname.includes('_en');
+
+    // Selektori za sve relevantne elemente menija
+    const loginButtons = document.querySelectorAll('a[href^="login"]'); // Cilja i login.html i login_en.html
+    const platformLinksDesktop = document.querySelectorAll('#desktop-platform-menu a');
+    const platformLinksMobile = document.querySelectorAll('#mobile-platform-menu a');
+
+    if (isLoggedIn) {
+        // === KORISNIK JE PRIJAVLJEN ===
+
+        // 1. Promijeni gumb "Prijava" u "Odjava"
+        loginButtons.forEach(btn => {
+            if (btn.textContent.toLowerCase().includes('prijava') || btn.textContent.toLowerCase().includes('login')) {
+                btn.textContent = isEnglish ? 'Logout' : 'Odjava';
+                btn.href = '#'; // Ukloni link da ne vodi nigdje
+                btn.id = 'logout-button'; // Dajemo mu ID za odjavu
+                // Ako je gumb "disabled" (kao na login stranici), ukloni to
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                btn.disabled = false;
+            }
+        });
+
+        // 2. Ažuriraj linkove pod "Platforme" da vode direktno
+        const updatePlatformLink = (link) => {
+            const originalHref = link.href;
+            if (originalHref.includes('login')) {
+                const url = new URL(originalHref);
+                const redirectTarget = url.searchParams.get('redirect');
+                if (redirectTarget) {
+                    link.href = redirectTarget;
+                }
+            }
+        };
+        platformLinksDesktop.forEach(updatePlatformLink);
+        platformLinksMobile.forEach(updatePlatformLink);
+
+        // 3. Dodaj event listener za odjavu
+        const logoutButton = document.getElementById('logout-button');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                sessionStorage.removeItem('isLoggedIn');
+                alert(isEnglish ? 'You have been logged out.' : 'Odjavljeni ste.');
+                // Preusmjeri na početnu stranicu nakon odjave
+                window.location.href = isEnglish ? 'index_en.html' : 'index.html';
+            });
+        }
+
+    } else {
+        // === KORISNIK NIJE PRIJAVLJEN (osiguraj da je sve vraćeno na početno stanje) ===
+        // Ovo je važno ako korisnik klikne back button u pregledniku
+        
+        const logoutButton = document.getElementById('logout-button');
+        if (logoutButton) {
+            logoutButton.textContent = isEnglish ? 'Login' : 'Prijava';
+            logoutButton.href = isEnglish ? 'login_en.html' : 'login.html';
+            logoutButton.id = ''; // Makni ID
+        }
+        
+        // (Opcionalno, ali dobro) Vrati linkove za platforme na login, ako je potrebno
+        // Obično nije potrebno jer se stranica ponovno učita.
+    }
+}
+
+handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
+
+// === KRAJ NOVOG KODA ===
             const body = document.body;
             const desktopLangTrigger = document.getElementById('desktop-lang-trigger');
             const desktopLangDropdown = document.getElementById('desktop-lang-dropdown');
@@ -476,7 +547,7 @@
             });
 
             // Login Form Validation
-            const loginForm = document.getElementById('login-form');
+const loginForm = document.getElementById('login-form');
 if (loginForm) {
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
@@ -525,11 +596,12 @@ if (loginForm) {
         return true;
     };
 
-loginForm.addEventListener('submit', (event) => {
+    loginForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const isUsernameValid = validateUsername();
     const isPasswordValid = validatePassword();
     if (isUsernameValid && isPasswordValid) {
+        sessionStorage.setItem('isLoggedIn', 'true');
         console.log('Form is valid. Checking for redirect...');
 
         // New redirect code
@@ -546,7 +618,7 @@ loginForm.addEventListener('submit', (event) => {
     } else {
         console.log('Form contains errors.');
     }
-});
+    });
 
     // Opcionalno: live validacija dok korisnik tipka
     usernameInput.addEventListener('input', validateUsername);
