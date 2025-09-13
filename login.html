@@ -499,69 +499,71 @@
             });
 
             // Login Form Validation
-            const loginForm = document.getElementById('login-form');
-            if (loginForm) {
-                const usernameInput = document.getElementById('username');
-                const passwordInput = document.getElementById('password');
-                const usernameError = document.getElementById('username-error');
-                const passwordError = document.getElementById('password-error');
+const loginForm = document.getElementById('login-form');
+if (loginForm) {
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const usernameError = document.getElementById('username-error');
+    const passwordError = document.getElementById('password-error');
 
-                const validateUsername = () => {
-                    const username = usernameInput.value.trim();
-                    const usernameRegex = /^[a-zA-Z0-9]+$/;
-                    usernameError.textContent = '';
-                    usernameInput.classList.remove('invalid');
-                    if (username.length < 4 || username.length > 21) {
-                        usernameError.textContent = 'Korisničko ime mora imati između 4 i 21 znaka.';
-                        usernameInput.classList.add('invalid'); return false;
-                    }
-                    if (!usernameRegex.test(username)) {
-                        usernameError.textContent = 'Dozvoljena su samo slova i brojevi.';
-                        usernameInput.classList.add('invalid'); return false;
-                    }
-                    return true;
-                };
+    const validateUsername = () => {
+        const username = usernameInput.value.trim();
+        usernameError.textContent = '';
+        usernameInput.classList.remove('invalid');
+        if (username.length === 0) {
+            usernameError.textContent = 'Korisničko ime ili email su obavezni.';
+            usernameInput.classList.add('invalid'); return false;
+        }
+        return true;
+    };
 
-                const validatePassword = () => {
-                    const password = passwordInput.value;
-                    const allAllowedCharsRegex = /^[a-zA-Z0-9!"#$%&/_+~=?]+$/;
-                    const hasLowercase = /[a-z]/;
-                    const hasUppercase = /[A-Z]/;
-                    const hasNumber = /\d/;
-                    const hasSpecialChar = /[!"#$%&/_+~=?]/;
-                    passwordError.textContent = '';
-                    passwordInput.classList.remove('invalid');
-                    if (password.length < 7 || password.length > 21) {
-                        passwordError.textContent = 'Lozinka mora imati između 7 i 21 znaka.';
-                        passwordInput.classList.add('invalid'); return false;
-                    }
-                    if (!allAllowedCharsRegex.test(password)) {
-                        passwordError.textContent = 'Lozinka sadrži nedozvoljene znakove.';
-                        passwordInput.classList.add('invalid'); return false;
-                    }
-                    const missing = [];
-                    if (!hasLowercase.test(password)) missing.push('malo slovo');
-                    if (!hasUppercase.test(password)) missing.push('VELIKO slovo');
-                    if (!hasNumber.test(password)) missing.push('broj');
-                    if (!hasSpecialChar.test(password)) missing.push('poseban znak');
-                    if (missing.length > 0) {
-                        passwordError.textContent = `Lozinka mora sadržavati barem: ${missing.join(', ')}.`;
-                        passwordInput.classList.add('invalid'); return false;
-                    }
-                    return true;
-                };
+    const validatePassword = () => {
+        const password = passwordInput.value;
+        // OVDJE JE DODAN ZNAK @
+        const allAllowedCharsRegex = /^[a-zA-Z0-9!"#$%&/_+~=?@]+$/;
+        const hasLowercase = /[a-z]/;
+        const hasUppercase = /[A-Z]/;
+        const hasNumber = /\d/;
+        const hasSpecialChar = /[!"#$%&/_+~=?@]/;
+        passwordError.textContent = '';
+        passwordInput.classList.remove('invalid');
+        if (password.length < 7 || password.length > 21) {
+            passwordError.textContent = 'Lozinka mora imati između 7 i 21 znaka.';
+            passwordInput.classList.add('invalid'); return false;
+        }
+        if (!allAllowedCharsRegex.test(password)) {
+            passwordError.textContent = 'Lozinka sadrži nedozvoljene znakove.';
+            passwordInput.classList.add('invalid'); return false;
+        }
+        const missing = [];
+        if (!hasLowercase.test(password)) missing.push('malo slovo');
+        if (!hasUppercase.test(password)) missing.push('veliko slovo');
+        if (!hasNumber.test(password)) missing.push('broj');
+        if (!hasSpecialChar.test(password)) missing.push('poseban znak');
+        if (missing.length > 0) {
+            passwordError.textContent = `Lozinka mora sadržavati barem: ${missing.join(', ')}.`;
+            passwordInput.classList.add('invalid'); return false;
+        }
+        return true;
+    };
 
-                loginForm.addEventListener('submit', (event) => {
-                    event.preventDefault();
-                    if (validateUsername() && validatePassword()) {
-                        console.log('Forma je ispravna. Preusmjeravam...');
-                        window.location.href = 'sfured.html';
-                    } else {
-                        console.log('Forma sadrži greške.');
-                    }
-                });
-            }
-        });
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const isUsernameValid = validateUsername();
+        const isPasswordValid = validatePassword();
+        if (isUsernameValid && isPasswordValid) {
+            console.log('Forma je ispravna. Preusmjeravam...');
+            window.location.href = 'sfured.html';
+        } else {
+            console.log('Forma sadrži greške.');
+        }
+    });
+
+    // Live validacija
+    usernameInput.addEventListener('input', validateUsername);
+    passwordInput.addEventListener('input', validatePassword);
+    }
+    });
     </script>
     
     <!-- SKRIPTA ZA ANIMACIJU POZADINE -->
