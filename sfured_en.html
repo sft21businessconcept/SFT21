@@ -158,6 +158,73 @@
         .avatar-upload-modal-content { background: #1f2937; border: 1px solid var(--fluorescent-green); border-radius: 15px; padding: 2rem; max-width: 400px; width: 90%; text-align: center; position: relative; }
         .modal-close { position: absolute; top: 10px; right: 10px; font-size: 2rem; color: #d1d5db; cursor: pointer; }
         
+        /* === DODATNI STILOVI ZA SADRŽAJ AVATAR MODALA - POČETAK === */
+.avatar-upload-modal-content h4 {
+    color: var(--fluorescent-green);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+.avatar-upload-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.avatar-upload-button {
+    background-color: rgba(128, 255, 0, 0.1);
+    color: var(--fluorescent-green);
+    border: 1px solid var(--fluorescent-green);
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+.avatar-upload-button i {
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+    color: var(--fluorescent-green);
+}
+.avatar-upload-button:hover {
+    background-color: var(--fluorescent-green);
+    color: #0e076a;
+}
+.avatar-upload-button:hover i {
+    color: #0e076a;
+}
+.avatar-upload-input {
+    display: none; /* KLJUČNO: Ovo skriva "Choose file" polje */
+}
+
+/* Light mode stilovi za modal */
+html.light-mode .avatar-upload-modal-content {
+    background: #ffffff;
+    border-color: var(--primary-color);
+    color: #334155;
+}
+html.light-mode .avatar-upload-modal-content h4 {
+    color: var(--primary-color);
+}
+html.light-mode .avatar-upload-button {
+    background-color: rgba(106, 27, 154, 0.1);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+html.light-mode .avatar-upload-button i {
+    color: var(--primary-color);
+}
+html.light-mode .avatar-upload-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+html.light-mode .avatar-upload-button:hover i {
+    color: white;
+}
+/* === DODATNI STILOVI ZA SADRŽAJ AVATAR MODALA - KRAJ === */ 
+        
         /* SFKOD Generator Styles */
         .popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); z-index: 10000; display: none; justify-content: center; align-items: center; }
         .popup-content { background: #1f2937; border: 2px solid var(--fluorescent-green); border-radius: 20px; padding: 2.5rem; width: 90%; max-width: 800px; position: relative; color: var(--text-color); max-height: 90vh; overflow-y: auto; text-align: left; }
@@ -570,6 +637,25 @@ html.light-mode .text-white {
         </div>
     </main>
 
+            <!-- === MODAL ZA AVATAR UPLOAD/SLIKANJE - POČETAK === -->
+    <div id="avatar-upload-modal-overlay" class="avatar-upload-modal-overlay">
+        <div id="avatar-upload-modal-content" class="avatar-upload-modal-content">
+            <button class="modal-close" aria-label="Zatvori">×</button>
+            <h4>Change profile photo</h4>
+            <div class="avatar-upload-options">
+                <!-- Gumb za Učitavanje fotografije (aktivira skriveni file input) -->
+                <button id="upload-photo-button" class="avatar-upload-button">
+                    <i class="fas fa-upload"></i> Upload a photo
+                </button>
+                 <!-- Skriveni input za odabir datoteke -->
+                <input type="file" id="avatar-file-input" class="avatar-upload-input" accept="image/*">
+            </div>
+            <!-- Ovdje se može dodati <video> za preview kamere, <canvas> za snimanje slike, itd. -->
+            <!-- Za sada samo gumbi -->
+        </div>
+    </div>
+     <!-- === MODAL ZA AVATAR UPLOAD/SLIKANJE - KRAJ === -->
+
     <footer class="py-8 bg-gray-900 text-center text-gray-400 text-sm">
         <div class="container mx-auto px-6">© 2025 SFT21 LLC - All rights reserved.</div>
     </footer>
@@ -591,189 +677,241 @@ html.light-mode .text-white {
         </div>
     </div>
 
-    <!-- AVATAR MODAL -->
-    <div id="avatar-upload-modal-overlay" class="avatar-upload-modal-overlay">
-        <!-- Avatar modal content here -->
-    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // ===================================================
+        // === ELEMENTI (Postojeći i dodani)
+        // ===================================================
+        const hamburger = document.querySelector('.hamburger');
+        const verticalNav = document.querySelector('.sfured-nav-vertical');
+        const navLinksVertical = document.querySelectorAll('.nav-link-vertical');
+        const logoutButton = document.querySelector('.logout-icon');
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const hamburger = document.querySelector('.hamburger');
-            const verticalNav = document.querySelector('.sfured-nav-vertical');
-            const navLinksVertical = document.querySelectorAll('.nav-link-vertical');
-            const logoutButton = document.querySelector('.logout-icon');
-            const dashboardGrid = document.getElementById('dashboard-grid');
-            const mojRacunContent = document.getElementById('moj-racun-content');
-            const novcanikContent = document.getElementById('novcanik-content');
-            const sftimContent = document.getElementById('sftim-content');
-            const sfkodContent = document.getElementById('sfkod-content');
-            const vrijednostPopup = document.getElementById('sfkod-vrijednost-popup');
-            const uputePopup = document.getElementById('sfkod-upute-popup');
-            const infoIcon = document.getElementById('sfkod-info-icon');
-            const tableBody = document.getElementById('sfkod_codesTableBody');
-            const generatorButtonsEl = document.getElementById('sfkod_generatorButtons');
-            const numberInputsEl = document.getElementById('sfkod_numberInputs');
-            const confirmButtonEl = document.getElementById('sfkod_confirmButton');
-            const createManualButton = document.getElementById('sfkod_createManual');
-            const createAutoButton = document.getElementById('sfkod_createAuto');
-            const packageButtonsContainer = document.getElementById('sfkod_packageButtons');
-            const kycOptionsEl = document.getElementById('sfkod_kycOptions');
-            const packageButtons = document.querySelectorAll('.sfkod-package-button');
-            const kyc10Checkbox = document.getElementById('sfkod_kyc10');
-            const kyc21Checkbox = document.getElementById('sfkod_kyc21');
-            let sfkodInitialized = false;
-            let sfkodPopupShown = false;
+        // Paneli
+        const panelMap = {
+            'kontrolna-ploca': document.getElementById('dashboard-grid'),
+            'moj-racun': document.getElementById('moj-racun-content'),
+            'novcanik': document.getElementById('novcanik-content'),
+            'sftim': document.getElementById('sftim-content'),
+            'sfkod': document.getElementById('sfkod-content')
+        };
 
-            if (hamburger && verticalNav) {
-                hamburger.addEventListener('click', () => {
-                    hamburger.classList.toggle('active');
-                    verticalNav.classList.toggle('active');
+        // *** DODANO: Elementi za Avatar Modal ***
+        const avatarPlaceholder = document.getElementById('avatar-placeholder');
+        const avatarModalOverlay = document.getElementById('avatar-upload-modal-overlay');
+        const avatarModalClose = avatarModalOverlay ? avatarModalOverlay.querySelector('.modal-close') : null;
+        const uploadPhotoButton = document.getElementById('upload-photo-button');
+        const avatarFileInput = document.getElementById('avatar-file-input');
+        
+        // Varijable za SFKOD
+        const vrijednostPopup = document.getElementById('sfkod-vrijednost-popup');
+        const uputePopup = document.getElementById('sfkod-upute-popup');
+        const infoIcon = document.getElementById('sfkod-info-icon');
+        const tableBody = document.getElementById('sfkod_codesTableBody');
+        const generatorButtonsEl = document.getElementById('sfkod_generatorButtons');
+        const numberInputsEl = document.getElementById('sfkod_numberInputs');
+        const confirmButtonEl = document.getElementById('sfkod_confirmButton');
+        const createManualButton = document.getElementById('sfkod_createManual');
+        const createAutoButton = document.getElementById('sfkod_createAuto');
+        const packageButtonsContainer = document.getElementById('sfkod_packageButtons');
+        const kycOptionsEl = document.getElementById('sfkod_kycOptions');
+        const packageButtons = document.querySelectorAll('.sfkod-package-button');
+        const kyc10Checkbox = document.getElementById('sfkod_kyc10');
+        const kyc21Checkbox = document.getElementById('sfkod_kyc21');
+        let sfkodInitialized = false;
+
+        // ===================================================
+        // === LOGIKA
+        // ===================================================
+
+        // --- Mobile Menu Toggle ---
+        if (hamburger && verticalNav) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                verticalNav.classList.toggle('active');
+            });
+        }
+
+        // --- Navigacija i Prikaz Panela ---
+        navLinksVertical.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPanelId = link.getAttribute('data-panel-target');
+
+                navLinksVertical.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                Object.values(panelMap).forEach(panel => {
+                    if (panel) panel.style.display = 'none';
+                });
+
+                const panelToShow = panelMap[targetPanelId];
+                if (panelToShow) {
+                    panelToShow.style.display = (targetPanelId === 'kontrolna-ploca') ? 'grid' : 'block';
+
+                    if (targetPanelId === 'sfkod' && !sfkodInitialized) {
+                        initializeSfkodGenerator();
+                        sfkodInitialized = true;
+                    }
+                }
+
+                if (hamburger.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    verticalNav.classList.remove('active');
+                }
+            });
+        });
+
+        // --- Odjava ---
+        if (logoutButton) {
+            logoutButton.addEventListener('click', () => { window.location.href = 'index_en.html'; });
+        }
+
+        // *** DODANO: Logika za Avatar Modal ***
+        if (avatarPlaceholder) {
+            avatarPlaceholder.addEventListener('click', () => {
+                if (avatarModalOverlay) avatarModalOverlay.style.display = 'flex';
+            });
+        }
+
+        function closeAvatarModal() {
+            if (avatarModalOverlay) avatarModalOverlay.style.display = 'none';
+        }
+
+        if (avatarModalClose) avatarModalClose.addEventListener('click', closeAvatarModal);
+        
+        if (avatarModalOverlay) {
+            avatarModalOverlay.addEventListener('click', (e) => {
+                if (e.target === avatarModalOverlay) closeAvatarModal();
+            });
+        }
+
+        if (uploadPhotoButton) {
+            uploadPhotoButton.addEventListener('click', () => {
+                if (avatarFileInput) avatarFileInput.click();
+            });
+        }
+        
+        // Ostatak koda za SFKod generator... (ostaje nepromijenjen)
+        
+        function initializeSfkodGenerator() {
+             // Provjera je li pop-up za SFKod već prikazan
+            if (!localStorage.getItem('sfkod_vrijednost_popup_seen')) {
+                setTimeout(() => {
+                    if(vrijednostPopup) vrijednostPopup.style.display = 'flex';
+                }, 300);
+            }
+        
+            const closeAllPopups = () => {
+                if(vrijednostPopup) vrijednostPopup.style.display = 'none';
+                if(uputePopup) uputePopup.style.display = 'none';
+            };
+            
+            document.querySelectorAll('.popup .modal-close').forEach(btn => btn.addEventListener('click', closeAllPopups));
+            
+            const razumijemButton = vrijednostPopup.querySelector('.popup-button');
+            if (razumijemButton) {
+                razumijemButton.addEventListener('click', () => {
+                    const nePrikazujCheckbox = document.getElementById('ne-prikazuj-ponovo');
+                    if (nePrikazujCheckbox && nePrikazujCheckbox.checked) {
+                        localStorage.setItem('sfkod_vrijednost_popup_seen', 'true');
+                    }
+                    closeAllPopups();
                 });
             }
+        
+            if (infoIcon) infoIcon.addEventListener('click', () => uputePopup.style.display = 'flex');
 
-            const panelMap = {
-                'kontrolna-ploca': dashboardGrid,
-                'moj-racun': mojRacunContent,
-                'novcanik': novcanikContent,
-                'sftim': sftimContent,
-                'sfkod': sfkodContent
+            let currentCode = Array(10).fill(0), activeRowIndex = null, nextAvailableRow = 2, completedRows = [], allConfirmedCodes = [];
+            const packageCodesCount = { sp1: 1, sp2: 4, sp3: 7, sp4: 10, sp5: 13, sp6: 17, sp7: 21 };
+            const initializeNumberInputs = () => {
+                let html = '';
+                for(let i=0; i<10; i++) html += `<div class="sfkod-number-input-container"><i class="fas fa-chevron-up sfkod-arrow" data-index="${i}"></i><input type="text" class="sfkod-number-input" value="0" readonly data-index="${i}"><i class="fas fa-chevron-down sfkod-arrow" data-index="${i}"></i></div>`;
+                numberInputsEl.innerHTML = html;
+                document.querySelectorAll('.sfkod-arrow').forEach(arrow => arrow.addEventListener('click', handleArrowClick));
             };
-
-            navLinksVertical.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const href = link.getAttribute('href');
-                    const targetPanelId = link.getAttribute('data-panel-target');
-                    if (href && href !== '#' && href.includes('.html')) return;
-                    e.preventDefault();
-                    navLinksVertical.forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
-                    Object.values(panelMap).forEach(panel => { if (panel) panel.style.display = 'none'; });
-                    const panelToShow = panelMap[targetPanelId];
-                    if (panelToShow) {
-                        panelToShow.style.display = (targetPanelId === 'kontrolna-ploca') ? 'grid' : 'block';
-                        if (targetPanelId === 'sfkod') {
-                            if (!sfkodInitialized) {
-                                initializeSfkodGenerator();
-                                sfkodInitialized = true;
-                            }
-                            if (!sfkodPopupShown) {
-                                setTimeout(() => {
-                                    if(vrijednostPopup) vrijednostPopup.style.display = 'flex';
-                                    sfkodPopupShown = true;
-                                }, 300);
-                            }
-                        }
+            const initializeTable = () => {
+                tableBody.innerHTML = '';
+                for (let i = 1; i <= 25; i++) {
+                    const row = document.createElement('tr'); row.classList.add('hidden-row');
+                    const indexCell = document.createElement('td'); indexCell.textContent = i; indexCell.classList.add('sfkod-index-cell'); indexCell.setAttribute('data-row', i); row.appendChild(indexCell);
+                    const codeCell = document.createElement('td'); codeCell.innerHTML = `<div class="sfkod-code-cell-content"><span>0000000000</span><span class="sfkod-code-suffix">${i === 1 ? 'Free registration' : '/'}</span></div>`; row.appendChild(codeCell);
+                    tableBody.appendChild(row);
+                }
+                const firstRow = tableBody.rows[0]; firstRow.classList.remove('hidden-row');
+                const firstIndexCell = firstRow.querySelector('.sfkod-index-cell'); firstIndexCell.classList.add('clickable');
+                addClickEventToIndexCell(firstIndexCell);
+            };
+            const addClickEventToIndexCell = (cell) => {
+                if (!cell || cell.hasListener) return;
+                cell.addEventListener('click', function() { if (this.classList.contains('clickable')) activateRowForEditing(parseInt(this.dataset.row)); });
+                cell.hasListener = true;
+            };
+            const activateRowForEditing = (rowIndex) => {
+                if (completedRows.includes(rowIndex)) return;
+                [createManualButton, createAutoButton].forEach(b => b.classList.remove('active-mode'));
+                const activeCell = tableBody.querySelector(`.sfkod-index-cell.active`);
+                if(activeCell) activeCell.classList.remove('active');
+                activeRowIndex = rowIndex;
+                const newActiveCell = tableBody.querySelector(`.sfkod-index-cell[data-row="${rowIndex}"]`);
+                if(newActiveCell) newActiveCell.classList.add('active');
+                currentCode = Array(10).fill(0); updateNumberInputs();
+                generatorButtonsEl.style.display = 'flex'; numberInputsEl.style.display = 'flex'; confirmButtonEl.style.display = 'block';
+            };
+            const updateNumberInputs = () => document.querySelectorAll('.sfkod-number-input').forEach((input, i) => input.value = currentCode[i]);
+            const unlockNextRows = (count, suffixText) => {
+                for(let i = 0; i < count; i++) {
+                    if(tableBody.rows[nextAvailableRow - 1]) {
+                        const row = tableBody.rows[nextAvailableRow - 1]; row.classList.remove('hidden-row');
+                        const indexCell = row.querySelector('.sfkod-index-cell'); indexCell.classList.add('clickable'); addClickEventToIndexCell(indexCell);
+                        if(suffixText) row.querySelector('.sfkod-code-suffix').textContent = suffixText;
+                        nextAvailableRow++;
                     }
-                    if (hamburger.classList.contains('active')) {
-                        hamburger.classList.remove('active');
-                        verticalNav.classList.remove('active');
-                    }
+                }
+            };
+            const handleArrowClick = function() {
+                const index = parseInt(this.dataset.index);
+                currentCode[index] = (currentCode[index] + (this.classList.contains('fa-chevron-up') ? 1 : -1) + 10) % 10;
+                updateNumberInputs(); createManualButton.classList.add('active-mode'); createAutoButton.classList.remove('active-mode');
+            };
+            confirmButtonEl.addEventListener('click', function() {
+                if (activeRowIndex === null) return;
+                if (!createManualButton.classList.contains('active-mode') && !createAutoButton.classList.contains('active-mode')) { alert("Please select 'Create Manually' or 'Create Automatically' first."); return; }
+                const codeStr = currentCode.join('');
+                if (allConfirmedCodes.includes(codeStr)) { alert("This code has already been used."); return; }
+                allConfirmedCodes.push(codeStr); completedRows.push(activeRowIndex);
+                const row = tableBody.rows[activeRowIndex - 1];
+                row.querySelector('.sfkod-code-cell-content span:first-child').textContent = codeStr;
+                const indexCell = row.querySelector('.sfkod-index-cell');
+                indexCell.classList.remove('clickable', 'active'); indexCell.classList.add('completed');
+                if (completedRows.length === 1) { packageButtonsContainer.style.display = 'flex'; kycOptionsEl.style.display = 'block'; packageButtons.forEach(btn => btn.disabled = false); }
+                generatorButtonsEl.style.display = 'none'; numberInputsEl.style.display = 'none'; confirmButtonEl.style.display = 'none'; activeRowIndex = null;
+            });
+            packageButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.disabled) return;
+                    if (completedRows.length === 0) { alert('You must first confirm your free SFcode.'); return; }
+                    unlockNextRows(packageCodesCount[this.id], this.id.toUpperCase());
+                    packageButtons.forEach(b => { b.disabled = true; b.classList.remove('selected'); });
+                    this.classList.add('selected');
                 });
             });
-
-            if (logoutButton) logoutButton.addEventListener('click', () => { window.location.href = 'index_en.html'; });
-
-            function initializeSfkodGenerator() {
-                const resetGeneratorButtons = () => {
-                    if (createManualButton) createManualButton.classList.remove('active-mode');
-                    if (createAutoButton) createAutoButton.classList.remove('active-mode');
-                };
-                const closeAllPopups = () => {
-                    if(vrijednostPopup) vrijednostPopup.style.display = 'none';
-                    if(uputePopup) uputePopup.style.display = 'none';
-                };
-                document.querySelectorAll('.popup .modal-close, .popup .popup-button').forEach(btn => btn.addEventListener('click', closeAllPopups));
-                if (infoIcon) infoIcon.addEventListener('click', () => uputePopup.style.display = 'flex');
-                let currentCode = Array(10).fill(0), activeRowIndex = null, nextAvailableRow = 2, completedRows = [], allConfirmedCodes = [];
-                const packageCodesCount = { sp1: 1, sp2: 4, sp3: 7, sp4: 10, sp5: 13, sp6: 17, sp7: 21 };
-                const initializeNumberInputs = () => {
-                    let html = '';
-                    for(let i=0; i<10; i++) html += `<div class="sfkod-number-input-container"><i class="fas fa-chevron-up sfkod-arrow" data-index="${i}"></i><input type="text" class="sfkod-number-input" value="0" readonly data-index="${i}"><i class="fas fa-chevron-down sfkod-arrow" data-index="${i}"></i></div>`;
-                    numberInputsEl.innerHTML = html;
-                    document.querySelectorAll('.sfkod-arrow').forEach(arrow => arrow.addEventListener('click', handleArrowClick));
-                };
-                const initializeTable = () => {
-                    tableBody.innerHTML = '';
-                    for (let i = 1; i <= 25; i++) {
-                        const row = document.createElement('tr'); row.classList.add('hidden-row');
-                        const indexCell = document.createElement('td'); indexCell.textContent = i; indexCell.classList.add('sfkod-index-cell'); indexCell.setAttribute('data-row', i); row.appendChild(indexCell);
-                        const codeCell = document.createElement('td'); codeCell.innerHTML = `<div class="sfkod-code-cell-content"><span>0000000000</span><span class="sfkod-code-suffix">${i === 1 ? 'Free registration' : '/'}</span></div>`; row.appendChild(codeCell);
-                        tableBody.appendChild(row);
-                    }
-                    const firstRow = tableBody.rows[0]; firstRow.classList.remove('hidden-row');
-                    const firstIndexCell = firstRow.querySelector('.sfkod-index-cell'); firstIndexCell.classList.add('clickable');
-                    addClickEventToIndexCell(firstIndexCell);
-                };
-                const addClickEventToIndexCell = (cell) => {
-                    if (!cell || cell.hasListener) return;
-                    cell.addEventListener('click', function() { if (this.classList.contains('clickable')) activateRowForEditing(parseInt(this.dataset.row)); });
-                    cell.hasListener = true;
-                };
-                const activateRowForEditing = (rowIndex) => {
-                    if (completedRows.includes(rowIndex)) return;
-                    resetGeneratorButtons();
-                    const activeCell = tableBody.querySelector(`.sfkod-index-cell.active`);
-                    if(activeCell) activeCell.classList.remove('active');
-                    activeRowIndex = rowIndex;
-                    const newActiveCell = tableBody.querySelector(`.sfkod-index-cell[data-row="${rowIndex}"]`);
-                    if(newActiveCell) newActiveCell.classList.add('active');
-                    currentCode = Array(10).fill(0); updateNumberInputs();
-                    generatorButtonsEl.style.display = 'flex'; numberInputsEl.style.display = 'flex'; confirmButtonEl.style.display = 'block';
-                };
-                const updateNumberInputs = () => document.querySelectorAll('.sfkod-number-input').forEach((input, i) => input.value = currentCode[i]);
-                const unlockNextRows = (count, suffixText) => {
-                    for(let i = 0; i < count; i++) {
-                        if(tableBody.rows[nextAvailableRow - 1]) {
-                            const row = tableBody.rows[nextAvailableRow - 1]; row.classList.remove('hidden-row');
-                            const indexCell = row.querySelector('.sfkod-index-cell'); indexCell.classList.add('clickable'); addClickEventToIndexCell(indexCell);
-                            if(suffixText) row.querySelector('.sfkod-code-suffix').textContent = suffixText;
-                            nextAvailableRow++;
-                        }
-                    }
-                };
-                const handleArrowClick = function() {
-                    const index = parseInt(this.dataset.index);
-                    currentCode[index] = (currentCode[index] + (this.classList.contains('fa-chevron-up') ? 1 : -1) + 10) % 10;
-                    updateNumberInputs(); createManualButton.classList.add('active-mode'); createAutoButton.classList.remove('active-mode');
-                };
-                confirmButtonEl.addEventListener('click', function() {
-                    if (activeRowIndex === null) return;
-                    if (!createManualButton.classList.contains('active-mode') && !createAutoButton.classList.contains('active-mode')) { alert("Please select 'Create Manually' or 'Create Automatically' first."); return; }
-                    const codeStr = currentCode.join('');
-                    if (allConfirmedCodes.includes(codeStr)) { alert("This code has already been used."); return; }
-                    allConfirmedCodes.push(codeStr); completedRows.push(activeRowIndex);
-                    const row = tableBody.rows[activeRowIndex - 1];
-                    row.querySelector('.sfkod-code-cell-content span:first-child').textContent = codeStr;
-                    const indexCell = row.querySelector('.sfkod-index-cell');
-                    indexCell.classList.remove('clickable', 'active'); indexCell.classList.add('completed');
-                    if (completedRows.length === 1) { packageButtonsContainer.style.display = 'flex'; kycOptionsEl.style.display = 'block'; packageButtons.forEach(btn => btn.disabled = false); }
-                    generatorButtonsEl.style.display = 'none'; numberInputsEl.style.display = 'none'; confirmButtonEl.style.display = 'none'; activeRowIndex = null;
-                });
-                packageButtons.forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        if (this.disabled) return;
-                        if (completedRows.length === 0) { alert('You must first confirm your free SFcode.'); return; }
-                        unlockNextRows(packageCodesCount[this.id], this.id.toUpperCase());
-                        packageButtons.forEach(b => { b.disabled = true; b.classList.remove('selected'); });
-                        this.classList.add('selected');
-                    });
-                });
-                kyc10Checkbox.addEventListener('change', function() { if(this.checked) { unlockNextRows(1, '10 KYC'); this.disabled = true; } });
-                kyc21Checkbox.addEventListener('change', function() { if(this.checked) { if(!kyc10Checkbox.checked) { kyc10Checkbox.checked = true; kyc10Checkbox.dispatchEvent(new Event('change')); } unlockNextRows(2, '21 KYC'); this.disabled = true; } });
-                [createManualButton, createAutoButton].forEach(btn => btn.addEventListener('click', function(){
-                    createManualButton.classList.remove('active-mode'); createAutoButton.classList.remove('active-mode');
-                    this.classList.add('active-mode');
-                    if(this.id === 'sfkod_createAuto') {
-                        let newCodeArr;
-                        do { newCodeArr = Array(10).fill(0).map(() => Math.floor(Math.random() * 10)); }
-                        while (allConfirmedCodes.includes(newCodeArr.join('')));
-                        currentCode = newCodeArr; updateNumberInputs();
-                    }
-                }));
-                initializeNumberInputs(); initializeTable();
-            }
-        });
-    </script>
+            kyc10Checkbox.addEventListener('change', function() { if(this.checked) { unlockNextRows(1, '10 KYC'); this.disabled = true; } });
+            kyc21Checkbox.addEventListener('change', function() { if(this.checked) { if(!kyc10Checkbox.checked) { kyc10Checkbox.checked = true; kyc10Checkbox.dispatchEvent(new Event('change')); } unlockNextRows(2, '21 KYC'); this.disabled = true; } });
+            [createManualButton, createAutoButton].forEach(btn => btn.addEventListener('click', function(){
+                createManualButton.classList.remove('active-mode'); createAutoButton.classList.remove('active-mode');
+                this.classList.add('active-mode');
+                if(this.id === 'sfkod_createAuto') {
+                    let newCodeArr;
+                    do { newCodeArr = Array(10).fill(0).map(() => Math.floor(Math.random() * 10)); }
+                    while (allConfirmedCodes.includes(newCodeArr.join('')));
+                    currentCode = newCodeArr; updateNumberInputs();
+                }
+            }));
+            initializeNumberInputs(); initializeTable();
+        }
+    });
+</script>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
