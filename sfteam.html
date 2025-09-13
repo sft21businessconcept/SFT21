@@ -9,8 +9,8 @@
     <meta name="description" content="Upoznajte SFteam, ponosnu zajednicu dobrih ljudi koja stoji iza SFT21 koncepta. Pogledajte naš menadžment, članove s karijernim statusima i njihova iskustva.">
     <meta property="og:title" content="SFteam - Srce SFT21 Zajednice">
     <meta property="og:description" content="Otkrijte lica i priče koje čine našu zajednicu. Od menadžmenta do najuspješnijih članova, ovo je SFteam.">
-    <meta property="og:image" content="https://sft21.github.io/SFT21_Business_Concept/img/sfteam_og.png">
-    <meta property="og:url" content="https://sft21.github.io/SFT21_Business_Concept/sfteam.html">
+    <meta property="og:image" content="https://sft21businessconcept.github.io/SFT21/img/sfteam_og.png">
+    <meta property="og:url" content="https://sft21businessconcept.github.io/SFT21/sfteam.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -642,25 +642,65 @@
         const body = document.body;
         const cursor = document.querySelector('.custom-cursor');
 
-        if (cursor && body) { 
-            let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0; 
-            const speed = 0.1; 
-            const updateCursorPosition = () => { 
-                cursorX += (mouseX - cursorX) * speed; 
-                cursorY += (mouseY - cursorY) * speed; 
-                cursor.style.left = `${cursorX}px`; 
-                cursor.style.top = `${cursorY}px`; 
-                requestAnimationFrame(updateCursorPosition); 
-            }; 
-            requestAnimationFrame(updateCursorPosition); 
-            window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; }); 
-            document.addEventListener('mouseleave', () => { if (cursor) cursor.style.opacity = '0'; }); 
-            document.addEventListener('mouseenter', () => { if (cursor) cursor.style.opacity = '1'; }); 
-            document.querySelectorAll('a, button, .member-card, .career-member-avatar, .swiper-button-next, .swiper-button-prev').forEach(el => { 
-                el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }); }); 
-                el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }); }); 
-            }); 
+ // POSLIJE (ZAMIJENITE S OVIM)
+
+if (cursor && body) {
+    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+    const speed = 0.1;
+
+    const updateCursorPosition = () => {
+        cursorX += (mouseX - cursorX) * speed;
+        cursorY += (mouseY - cursorY) * speed;
+        cursor.style.left = `${cursorX}px`;
+        cursor.style.top = `${cursorY}px`;
+        requestAnimationFrame(updateCursorPosition);
+    };
+    requestAnimationFrame(updateCursorPosition);
+
+    // --- Događaji za MIŠ (za desktop) ---
+    window.addEventListener('mousemove', (e) => {
+        cursor.style.opacity = '1'; // Pokaži kursor čim se miš pomakne
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    document.addEventListener('mouseleave', () => {
+        if (cursor) cursor.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+        if (cursor) cursor.style.opacity = '1';
+    });
+
+    // --- NOVO: Događaji za DODIR (za mobilne uređaje) ---
+    window.addEventListener('touchstart', (e) => {
+        if (e.touches.length > 0) {
+            cursor.style.opacity = '1'; // Pokaži kursor na početku dodira
+            // Odmah postavi poziciju da izbjegne "skakanje"
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+            cursorX = e.touches[0].clientX;
+            cursorY = e.touches[0].clientY;
         }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+            // Ažuriraj ciljanu poziciju dok se prst pomiče
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        }
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+        // Sakrij kursor kada se prst podigne
+        if (cursor) cursor.style.opacity = '0';
+    });
+    
+    // Hover efekti (ostaju isti)
+    document.querySelectorAll('a, button, .accordion-header, .hamburger, input, textarea, select, .language-trigger, .language-item, label[for], .kyc-placeholder-clickable, #camera-icon, .starter-package-select-btn, .trigger-choose-investor-type-popup, .open-investment-details-popup').forEach(el => {
+        el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
+        el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
+    });
+}
 
         const applyThemeToLogo = () => {
             const isLightMode = document.documentElement.classList.contains('light-mode');
