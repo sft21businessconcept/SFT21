@@ -454,7 +454,7 @@
                     <div class="requirement">- lowercase letter: a - z,</div>
                     <div class="requirement">- uppercase letter: A - Z,</div>
                     <div class="requirement">- number: 0 - 9,</div>
-                    <div class="requirement">- special character: ! " # $ % & / _ + ~ = ?</div>
+                    <div class="requirement">- special character: ! " # $ % & / _ + ~ = ? @</div>
                  </div>
             </div>
         </div>
@@ -550,7 +550,7 @@
             }
 
             function isPasswordValid(password) {
-                return !/\s/.test(password) && password.length >= 7 && password.length <= 21 && /[a-z]/.test(password) && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[!\"#$%&\/_+~=?]/.test(password);
+                return !/\s/.test(password) && password.length >= 7 && password.length <= 21 && /[a-z]/.test(password) && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[!\"#$%&\/_+~=?@]/.test(password);
             }
 
             if (usernameInput && usernameSave) {
