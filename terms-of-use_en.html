@@ -346,8 +346,74 @@
 
             <h2>10. Contact</h2>
             <p>If you have any questions about these Terms, please contact us at: legal@sft21.com.</p>
-
         </div>
+
+        <!-- NOVI KOD ZA PAMETNI GUMB ZA POVRATAK -->
+<div class="container mx-auto px-6 pt-12 pb-4 text-center"> 
+    <div id="back-button-container">
+    </div>
+</div>
+
+<style>
+    /* Osnovni stilovi za gumb */
+    .btn-primary-legal {
+        background-color: var(--fluorescent-green) !important;
+        color: #0e076a !important;
+        padding: 12px 30px !important;
+        border-radius: 50px !important;
+        font-weight: 600 !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        border: none !important;
+        display: inline-block;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+    }
+    .btn-primary-legal:hover {
+        background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%) !important;
+        transform: translateY(-2px);
+    }
+
+    /* NOVO: Stilovi za Light Mode */
+    html.light-mode .btn-primary-legal {
+        background-color: var(--primary-color) !important; /* Ljubičasta pozadina */
+        color: white !important; /* Bijeli tekst */
+    }
+    html.light-mode .btn-primary-legal:hover {
+        background-color: var(--secondary-color) !important; /* Svjetlija ljubičasta na hover */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const backButtonContainer = document.getElementById('back-button-container');
+        if (backButtonContainer) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sourcePage = urlParams.get('from');
+
+            let backLink = 'index.html'; 
+            let backText = 'Natrag na početnu';
+
+            const isEnglish = window.location.pathname.includes('_en.html');
+
+            if (sourcePage) {
+                backLink = sourcePage;
+                backText = isEnglish ? 'Back to Registration' : 'Natrag na registraciju';
+            } else {
+                backLink = isEnglish ? 'index_en.html' : 'index.html';
+                backText = isEnglish ? 'Back to Home' : 'Natrag na početnu';
+            }
+
+            const backButton = document.createElement('a');
+            backButton.href = backLink;
+            backButton.className = 'btn-primary-legal'; 
+            backButton.textContent = backText;
+            
+            backButtonContainer.appendChild(backButton);
+        }
+    });
+</script>
+
     </main>
 
     <!-- PODNOŽJE (ENGLESKA VERZIJA) -->
@@ -558,7 +624,7 @@
     </script>
     
     <!-- SKRIPTA ZA ANIMACIJU POZADINE -->
-    <script>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
         const canvas = document.getElementById('network-canvas');
         if (!canvas) return;
@@ -663,7 +729,7 @@
         updateThemeUI();
         themeToggleBtns.forEach(btn => { if (btn) { btn.addEventListener('click', handleThemeToggle); } });
     });
-    </script>
+</script>
 
 </body>
 </html>
