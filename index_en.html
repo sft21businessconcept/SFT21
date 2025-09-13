@@ -3129,55 +3129,76 @@ if (userCounterWidget && userCounterHeader && userCounterShowBtn && userCounterC
     setTimeout(simulateNewUser, 5000);
 }
 
+// POSLIJE (ZALIJEPITE OVAJ KOD)
 const aiChatHeader = document.querySelector('.ai-chat-popup-header');
 let isDraggingChat = false, dragChatOffsetX = 0, dragChatOffsetY = 0;
 
-if (aiChatHeader && aiChatPopup) {
-    // Kada se pritisne miš na header prozora
-    aiChatHeader.addEventListener('mousedown', (e) => {
-        isDraggingChat = true;
-        aiChatPopup.classList.add('dragging');
-        dragChatOffsetX = e.clientX - aiChatPopup.offsetLeft;
-        dragChatOffsetY = e.clientY - aiChatPopup.offsetTop;
-        e.preventDefault(); // Spriječi selekciju teksta
+if (userCounterHeader && userCounterWidget) {
+    // Pomicanje za brojač (miš)
+    userCounterHeader.addEventListener('mousedown', (e) => {
+        if (e.target === userCounterHeader || (userCounterHeader.contains(e.target) && !e.target.closest('button'))) {
+            isDraggingCounter = true; userCounterWidget.classList.add('dragging');
+            dragCounterOffsetX = e.clientX - userCounterWidget.offsetLeft;
+            dragCounterOffsetY = e.clientY - userCounterWidget.offsetTop;
+            e.preventDefault();
+        }
     });
+
+    // NOVO: Pomicanje za brojač (dodir)
+    userCounterHeader.addEventListener('touchstart', (e) => {
+        if (e.target === userCounterHeader || (userCounterHeader.contains(e.target) && !e.target.closest('button'))) {
+            isDraggingCounter = true; userCounterWidget.classList.add('dragging');
+            dragCounterOffsetX = e.touches[0].clientX - userCounterWidget.offsetLeft;
+            dragCounterOffsetY = e.touches[0].clientY - userCounterWidget.offsetTop;
+            e.preventDefault();
+        }
+    }, { passive: false });
 }
 
-// Globalni listener za pomicanje miša, dodajemo ga samo jednom
-document.addEventListener('mousemove', (e) => {
-    // Pomicanje za brojač (postojeći kod, ali ga premještamo ovdje)
-    if (isDraggingCounter) {
-        if (!userCounterWidget) return;
-        let newLeft = e.clientX - dragCounterOffsetX;
-        let newTop = e.clientY - dragCounterOffsetY;
+if (aiChatHeader && aiChatPopup) {
+    // Pomicanje za chat (miš)
+    aiChatHeader.addEventListener('mousedown', (e) => {
+        isDraggingChat = true; aiChatPopup.classList.add('dragging');
+        dragChatOffsetX = e.clientX - aiChatPopup.offsetLeft;
+        dragChatOffsetY = e.clientY - aiChatPopup.offsetTop;
+        e.preventDefault();
+    });
+
+    // NOVO: Pomicanje za chat (dodir)
+    aiChatHeader.addEventListener('touchstart', (e) => {
+        isDraggingChat = true; aiChatPopup.classList.add('dragging');
+        dragChatOffsetX = e.touches[0].clientX - aiChatPopup.offsetLeft;
+        dragChatOffsetY = e.touches[0].clientY - aiChatPopup.offsetTop;
+        e.preventDefault();
+    }, { passive: false });
+}
+
+// Funkcija za pomicanje koja radi i za miš i za dodir
+function handleMove(clientX, clientY) {
+    if (isDraggingCounter && userCounterWidget) {
+        let newLeft = clientX - dragCounterOffsetX;
+        let newTop = clientY - dragCounterOffsetY;
         const rect = userCounterWidget.getBoundingClientRect();
-        const maxX = window.innerWidth - rect.width;
-        const maxY = window.innerHeight - rect.height;
-        newLeft = Math.max(0, Math.min(newLeft, maxX));
-        newTop = Math.max(0, Math.min(newTop, maxY));
+        newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - rect.width));
+        newTop = Math.max(0, Math.min(newTop, window.innerHeight - rect.height));
         userCounterWidget.style.left = `${newLeft}px`;
         userCounterWidget.style.top = `${newTop}px`;
         userCounterWidget.style.right = 'auto';
     }
-    
-    // Pomicanje za chat (novi kod)
-    if (isDraggingChat) {
-        if (!aiChatPopup) return;
-        let newLeft = e.clientX - dragChatOffsetX;
-        let newTop = e.clientY - dragChatOffsetY;
+    if (isDraggingChat && aiChatPopup) {
+        let newLeft = clientX - dragChatOffsetX;
+        let newTop = clientY - dragChatOffsetY;
         const rect = aiChatPopup.getBoundingClientRect();
-        const maxX = window.innerWidth - rect.width;
-        const maxY = window.innerHeight - rect.height;
-        newLeft = Math.max(0, Math.min(newLeft, maxX));
-        newTop = Math.max(0, Math.min(newTop, maxY));
+        newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - rect.width));
+        newTop = Math.max(0, Math.min(newTop, window.innerHeight - rect.height));
         aiChatPopup.style.left = `${newLeft}px`;
         aiChatPopup.style.top = `${newTop}px`;
         aiChatPopup.style.right = 'auto';
     }
-});
+}
 
-// Globalni listener za otpuštanje miša
-document.addEventListener('mouseup', () => {
+// Funkcija za prekid pomicanja
+function handleEnd() {
     if (isDraggingCounter) {
         isDraggingCounter = false;
         if(userCounterWidget) userCounterWidget.classList.remove('dragging');
@@ -3186,7 +3207,20 @@ document.addEventListener('mouseup', () => {
         isDraggingChat = false;
         if(aiChatPopup) aiChatPopup.classList.remove('dragging');
     }
-});
+}
+
+// Listeneri za pomicanje (miš i dodir)
+document.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+document.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+        handleMove(e.touches[0].clientX, e.touches[0].clientY);
+    }
+}, { passive: false });
+
+// Listeneri za prekid (miš i dodir)
+document.addEventListener('mouseup', handleEnd);
+document.addEventListener('touchend', handleEnd);
+
             document.addEventListener('click', (event) => {
                 const isClickInsideLangDesktop = desktopLangDropdown?.contains(event.target); const isClickInsideLangMobile = mobileLangDropdown?.contains(event.target); const isClickOnLangDesktopTrigger = desktopLangTrigger?.contains(event.target); const isClickOnLangMobileTrigger = mobileLangTrigger?.contains(event.target); const isClickInsideAIChat = aiChatPopup?.contains(event.target); const isClickOnAIIcon = aiChatIcon?.contains(event.target);
                 if (!isClickInsideLangDesktop && !isClickInsideLangMobile && !isClickOnLangDesktopTrigger && !isClickOnLangMobileTrigger) { closeAllLanguageDropdowns(); }
