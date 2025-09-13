@@ -7,89 +7,63 @@
 
     <!-- Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
-
-    <!-- Main CSS (important for color variables and basic styles) -->
+    <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <style>
-        /* Basic styles for the video player page */
-        html, body {
-            height: 100%; margin: 0; padding: 0; background-color: #000;
-            overflow: hidden; color: #e0e0e0; font-family: 'Arial Narrow', Arial, sans-serif;
+    <!-- ============================================= -->
+    <!-- === CODE FOR LIGHT/DARK THEME SUPPORT === -->
+    <!-- ============================================= -->
+    <script>
+        function applySft21Theme() {
+            try {
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+                if (theme === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                } else {
+                    document.documentElement.classList.remove('light-mode');
+                }
+            } catch (e) { console.error('Error applying theme:', e); }
         }
+        applySft21Theme();
+        window.addEventListener('pageshow', (event) => { if (event.persisted) { applySft21Theme(); } });
+    </script>
+
+    <style>
+        /* Basic styles */
+        html, body { height: 100%; margin: 0; padding: 0; background-color: #000; overflow: hidden; color: #e0e0e0; font-family: 'Arial Narrow', Arial, sans-serif; }
         .video-player-page-container { position: relative; width: 100%; height: 100%; display: flex; }
         #main-video-player { width: 100%; height: 100%; object-fit: contain; display: block; }
 
-        /* Sidebar toggle button */
-        .sidebar-toggle-button {
-            position: fixed; top: 20px; right: 20px; width: 45px; height: 45px;
-            background-color: rgba(106, 27, 154, 0.5); border: 2px solid var(--fluorescent-green);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 1005; opacity: 0.4; transition: all 0.3s ease;
-            box-shadow: 0 0 8px rgba(128, 255, 0, 0.3);
-        }
-        .sidebar-toggle-button:hover, .sidebar-toggle-button.active {
-            opacity: 1; transform: scale(1.1); background-color: rgba(106, 27, 154, 0.8);
-            box-shadow: 0 0 15px rgba(128, 255, 0, 0.5);
-        }
+        /* Sidebar Button */
+        .sidebar-toggle-button { position: fixed; top: 20px; right: 20px; width: 45px; height: 45px; background-color: rgba(106, 27, 154, 0.5); border: 2px solid var(--fluorescent-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1005; opacity: 0.4; transition: all 0.3s ease; box-shadow: 0 0 8px rgba(128, 255, 0, 0.3); }
+        .sidebar-toggle-button:hover, .sidebar-toggle-button.active { opacity: 1; transform: scale(1.1); background-color: rgba(106, 27, 154, 0.8); box-shadow: 0 0 15px rgba(128, 255, 0, 0.5); }
         .sidebar-toggle-button i { color: white; font-size: 18px; transition: transform 0.3s ease; }
         .sidebar-toggle-button.active i { transform: rotate(180deg); }
 
-        /* Sidebar (Library) */
-        .video-sidebar {
-            position: fixed; top: 0; right: -320px; width: 300px; height: 100%;
-            background-color: rgba(13, 1, 24, 0.9); backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px); border-left: 1px solid var(--fluorescent-green);
-            z-index: 1000; transition: right 0.4s ease-in-out; display: flex; flex-direction: column;
-        }
+        /* Sidebar */
+        .video-sidebar { position: fixed; top: 0; right: -320px; width: 300px; height: 100%; background-color: rgba(13, 1, 24, 0.9); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-left: 1px solid var(--fluorescent-green); z-index: 1000; transition: right 0.4s ease-in-out; display: flex; flex-direction: column; }
         .video-sidebar.active { right: 0; }
         .sidebar-header { padding: 1rem 1.25rem; border-bottom: 1px solid rgba(128, 255, 0, 0.2); flex-shrink: 0; }
         .sidebar-header h3 { margin: 0; color: var(--fluorescent-green); font-size: 1.3rem; }
-        .sidebar-link-back {
-            display: flex; align-items: center; padding: 0.5rem 1.25rem; color: var(--fluorescent-green);
-            font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(128, 255, 0, 0.2);
-            transition: background-color 0.2s ease, color 0.2s ease; flex-shrink: 0;
-        }
+        .sidebar-link-back { display: flex; align-items: center; padding: 0.5rem 1.25rem; color: var(--fluorescent-green); font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(128, 255, 0, 0.2); transition: background-color 0.2s ease, color 0.2s ease; flex-shrink: 0; }
         .sidebar-link-back:hover { background-color: rgba(106, 27, 154, 0.3); color: var(--fluorescent-orange); }
         .sidebar-link-back i { margin-right: 0.5rem; }
         .sidebar-content { padding: 1rem 1.25rem; overflow-y: auto; flex-grow: 1; }
         .sidebar-section { margin-bottom: 1.5rem; }
-        .sidebar-section-title {
-            font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--fluorescent-green);
-            border-bottom: 2px solid var(--fluorescent-orange);
-            padding-bottom: 0.4rem; display: inline-block;
-        }
-
-        .sidebar-social-links {
-            display: flex; gap: 1rem; padding: 0.5rem 1.25rem; flex-shrink: 0;
-            border-bottom: 1px solid rgba(128, 255, 0, 0.2);
-        }
-        .social-link {
-            color: var(--accent-color); font-size: 1.2rem; transition: color 0.2s ease, transform 0.2s ease;
-        }
+        .sidebar-section-title { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--fluorescent-green); border-bottom: 2px solid var(--fluorescent-orange); padding-bottom: 0.4rem; display: inline-block; }
+        .sidebar-social-links { display: flex; gap: 1rem; padding: 0.5rem 1.25rem; flex-shrink: 0; border-bottom: 1px solid rgba(128, 255, 0, 0.2); }
+        .social-link { color: var(--accent-color); font-size: 1.2rem; transition: color 0.2s ease, transform 0.2s ease; cursor: pointer; }
         .social-link:hover { color: var(--fluorescent-orange); transform: scale(1.1); }
-
         .video-list { list-style: none; padding: 0; margin: 0; }
-        .video-item {
-            padding: 0.75rem; border-radius: 5px; margin-bottom: 0.5rem; cursor: pointer;
-            transition: background-color 0.2s ease, border-color 0.2s ease;
-            background: rgba(106, 27, 154, 0.1); border: 1px solid transparent;
-            display: flex; gap: 0.75rem; align-items: center;
-        }
+        .video-item { padding: 0.75rem; border-radius: 5px; margin-bottom: 0.5rem; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease; background: rgba(106, 27, 154, 0.1); border: 1px solid transparent; display: flex; gap: 0.75rem; align-items: center; }
         .video-item:hover { background: rgba(106, 27, 154, 0.3); }
         .video-item.active { background: rgba(128, 255, 0, 0.15); border-color: var(--fluorescent-green); }
         .video-thumbnail img { width: 60px; height: 40px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
         .video-info { flex-grow: 1; }
         .video-item-title { font-weight: 500; margin-bottom: 0.1rem; font-size: 0.9rem; color: #fff; }
         .video-item-description { font-size: 0.75rem; color: #a0a0a0; }
-
         .sidebar-tabs { display: flex; border-bottom: 1px solid rgba(128, 255, 0, 0.2); margin-bottom: 1rem; flex-shrink: 0; }
-        .sidebar-tab {
-            flex: 1; padding: 0.75rem 0.5rem; font-size: 0.9rem; font-weight: 600;
-            text-align: center; color: #a0a0a0; background: none; border: none;
-            border-bottom: 3px solid transparent; cursor: pointer;
-            transition: color 0.2s ease, border-color 0.2s ease; white-space: nowrap;
-        }
+        .sidebar-tab { flex: 1; padding: 0.75rem 0.5rem; font-size: 0.9rem; font-weight: 600; text-align: center; color: #a0a0a0; background: none; border: none; border-bottom: 3px solid transparent; cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease; white-space: nowrap; }
         .sidebar-tab:hover { color: #e0e0e0; }
         .sidebar-tab.active { color: var(--fluorescent-green); border-bottom-color: var(--fluorescent-orange); }
         .tab-pane { display: none; }
@@ -108,38 +82,97 @@
         .sidebar-create-button:hover { background-color: rgba(217, 255, 0, 0.1); }
         .sidebar-create-button i { margin-right: 0.5rem; }
 
-        @font-face {font-family: 'Century Gothic'; src: local('Century Gothic');}
+        /* Light Mode Styles */
+        html.light-mode body { background-color: #f1f5f9; }
+        html.light-mode .sidebar-toggle-button { background-color: rgba(255, 255, 255, 0.8); border-color: var(--primary-color); }
+        html.light-mode .sidebar-toggle-button i { color: var(--primary-color); }
+        html.light-mode .sidebar-toggle-button:hover, html.light-mode .sidebar-toggle-button.active { background-color: white; }
+        html.light-mode .video-sidebar { background-color: rgba(255, 255, 255, 0.95); border-left-color: #e2e8f0; }
+        html.light-mode .sidebar-header, html.light-mode .sidebar-link-back, html.light-mode .sidebar-social-links, html.light-mode .sidebar-tabs { border-bottom-color: #e2e8f0; }
+        html.light-mode .sidebar-header h3, html.light-mode .sidebar-link-back, html.light-mode .sidebar-section-title, html.light-mode .sidebar-tab.active { color: var(--primary-color); border-bottom-color: var(--secondary-color); }
+        html.light-mode .sidebar-link-back:hover { background-color: rgba(106, 27, 154, 0.1); color: var(--secondary-color); }
+        html.light-mode .sidebar-social-links .social-link { color: #94a3b8; }
+        html.light-mode .sidebar-social-links .social-link:hover { color: var(--primary-color); }
+        html.light-mode .sidebar-tab { color: #64748b; }
+        html.light-mode .video-item { background: #f8fafc; }
+        html.light-mode .video-item:hover { background: #f1f5f9; }
+        html.light-mode .video-item.active { background: rgba(106, 27, 154, 0.05); border-color: var(--primary-color); }
+        html.light-mode .video-item-title { color: #1e293b; }
+        html.light-mode .video-item-description { color: #64748b; }
+        html.light-mode .folder-item, html.light-mode .category-item { background-color: #e2e8f0; }
+        html.light-mode .folder-item:hover, html.light-mode .category-item:hover { background-color: #cbd5e1; }
+        html.light-mode .folder-item > div, html.light-mode .category-item a { color: #1e293b !important; }
+        html.light-mode .folder-item > div > i, html.light-mode .category-item a > i { color: var(--accent-color); }
+        html.light-mode .folder-action-btn { color: #64748b !important; }
+        html.light-mode .folder-action-btn:hover { color: var(--primary-color); }
+        html.light-mode .sidebar-create-button { border-color: var(--primary-color); color: var(--primary-color); }
+        html.light-mode .sidebar-create-button:hover { background-color: rgba(106, 27, 154, 0.1); }
+        
+        /* SFseeyou Styles */
+        .sfseeyou-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 1010; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+        .sfseeyou-overlay.active { opacity: 1; visibility: visible; }
+        .sfseeyou-popup { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.95); background: #0d0118; border: 1px solid var(--fluorescent-green); border-radius: 12px; box-shadow: 0 8px 32px 0 rgba(128, 255, 0, 0.3); z-index: 1011; opacity: 0; visibility: hidden; transition: opacity 0.3s, transform 0.3s; }
+        .sfseeyou-popup.active { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+        .sfseeyou-popup-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid rgba(128, 255, 0, 0.2); }
+        .sfseeyou-popup-header h3 { color: var(--fluorescent-green); margin: 0; font-size: 1.2rem; }
+        .sfseeyou-popup-header h3 i { margin-right: 0.5rem; }
+        .sfseeyou-popup-close { background: none; border: none; font-size: 2rem; color: #aaa; cursor: pointer; line-height: 1; transition: color 0.2s; }
+        .sfseeyou-popup-close:hover { color: white; }
+        .sfseeyou-popup-content { padding: 1.5rem; max-height: 70vh; overflow-y: auto; }
+        .sfseeyou-contact-list { list-style: none; padding: 0; margin: 0; }
+        .sfseeyou-contact-item { display: flex; align-items: center; padding: 0.75rem; border-radius: 8px; margin-bottom: 0.5rem; transition: background-color 0.2s; }
+        .sfseeyou-contact-item[data-status="online"] { cursor: pointer; }
+        .sfseeyou-contact-item[data-status="online"]:hover { background-color: rgba(106, 27, 154, 0.3); }
+        .contact-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--secondary-color); display: flex; align-items: center; justify-content: center; margin-right: 1rem; }
+        .contact-info { flex-grow: 1; }
+        .contact-name { display: block; font-weight: 500; color: #fff; }
+        .contact-status { font-size: 0.8rem; }
+        .contact-status.online { color: var(--success-green); }
+        .contact-status.offline { color: #888; }
+        .contact-call-btn { background: none; border: none; color: var(--fluorescent-green); font-size: 1.5rem; cursor: pointer; transition: color 0.2s; }
+        .contact-call-btn:hover { color: var(--fluorescent-orange); }
+        .contact-call-btn:disabled { color: #555; cursor: not-allowed; }
+        .sfseeyou-call-window { width: 90vw; height: 80vh; max-width: 1200px; max-height: 800px; padding: 0; background: #111; overflow: hidden; display: flex; flex-direction: column; }
+        .caller-video-view { flex-grow: 1; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .caller-placeholder i { font-size: 8rem; color: #444; }
+        #caller-name-display { display: block; font-size: 2rem; color: #fff; margin-top: 1rem; }
+        #call-status-display { display: block; font-size: 1rem; color: #ccc; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+        .my-video-view { position: absolute; bottom: 90px; right: 20px; width: 150px; height: 110px; background: #000; border: 2px solid #555; border-radius: 8px; cursor: move; display: flex; align-items: center; justify-content: center; }
+        .my-video-view i { font-size: 3rem; color: #444; }
+        .call-controls { display: flex; justify-content: center; align-items: center; gap: 2rem; padding: 1rem; background: rgba(0,0,0,0.5); }
+        .call-control-btn { font-size: 1.5rem; color: #fff; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; transition: background-color 0.2s; }
+        .call-control-btn:hover { background: rgba(255,255,255,0.3); }
+        .call-control-btn.hang-up { background: #e53e3e; }
+        .call-control-btn.hang-up:hover { background: #c53030; }
+        /* Light Mode for SFseeyou */
+        html.light-mode .sfseeyou-popup { background: #fff; border-color: #e2e8f0; }
+        html.light-mode .sfseeyou-popup-header { border-bottom-color: #e2e8f0; }
+        html.light-mode .sfseeyou-popup-header h3 { color: var(--primary-color); }
+        html.light-mode .sfseeyou-popup-close, html.light-mode .contact-name { color: #1e293b; }
+        html.light-mode .sfseeyou-contact-item[data-status="online"]:hover { background-color: #f1f5f9; }
+        html.light-mode .contact-call-btn { color: var(--primary-color); }
+        html.light-mode .contact-call-btn:hover { color: var(--secondary-color); }
     </style>
 </head>
 <body>
-
     <div class="video-player-page-container">
         <button id="sidebar-toggle" class="sidebar-toggle-button active">
             <i class="fas fa-bars"></i>
         </button>
         <aside id="video-sidebar" class="video-sidebar active">
-            <div class="sidebar-header">
-                <h3>Video Library</h3>
-            </div>
-            <a href="#" id="back-link" class="sidebar-link-back">
-                <i class="fas fa-arrow-left"></i> Go Back
-            </a>
+            <div class="sidebar-header"><h3>Video Library</h3></div>
+            <a href="#" id="back-link" class="sidebar-link-back"><i class="fas fa-arrow-left"></i> Go Back</a>
             <div class="sidebar-social-links">
-                <a href="https://www.youtube.com/@sft21" target="_blank" class="social-link" title="SFT21 official YouTube channel">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="#" class="social-link" title="SFseeyou application">
-                    <i class="fas fa-video"></i>
-                </a>
+                <a href="https://www.youtube.com/channel/UC7GLsBctsEaLzJQwVqfqhBQ" target="_blank" class="social-link" title="SFT21 official YouTube kanal"><i class="fab fa-youtube"></i></a>
+                <a class="social-link" title="SFseeyou application"><i class="fas fa-video"></i></a>
             </div>
-
             <div class="sidebar-content">
                  <div class="sidebar-tabs">
                      <button class="sidebar-tab active" data-tab="tab-all">All Videos</button>
                      <button class="sidebar-tab" data-tab="tab-folders">My Folders</button>
                      <button class="sidebar-tab" data-tab="tab-categories">Categories</button>
                  </div>
-
                 <div class="sidebar-tab-content">
                     <div id="tab-all" class="tab-pane active">
                         <div class="sidebar-section">
@@ -165,24 +198,8 @@
                                         <button class="folder-action-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>
                                     </div>
                                 </li>
-                                 <li class="folder-item">
-                                    <div><i class="fas fa-folder"></i> Marketing</div>
-                                    <div class="folder-action-buttons">
-                                        <button class="folder-action-btn" title="Edit"><i class="fas fa-pencil-alt"></i></button>
-                                        <button class="folder-action-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </div>
-                                </li>
-                                 <li class="folder-item">
-                                    <div><i class="fas fa-folder"></i> Webinars</div>
-                                    <div class="folder-action-buttons">
-                                        <button class="folder-action-btn" title="Edit"><i class="fas fa-pencil-alt"></i></button>
-                                        <button class="folder-action-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                                    </div>
-                                </li>
                             </ul>
-                            <button class="sidebar-create-button">
-                                <i class="fas fa-plus mr-2"></i> Create New Folder
-                            </button>
+                            <button class="sidebar-create-button"><i class="fas fa-plus mr-2"></i> Create New Folder</button>
                         </div>
                     </div>
                     <div id="tab-categories" class="tab-pane">
@@ -190,31 +207,69 @@
                             <h4 class="sidebar-section-title">Categories</h4>
                             <ul class="category-list">
                                 <li class="category-item"><a href="#"><i class="fas fa-tag"></i> Education</a></li>
-                                <li class="category-item"><a href="#"><i class="fas fa-tag"></i> Marketing</a></li>
-                                <li class="category-item"><a href="#"><i class="fas fa-tag"></i> Webinars</a></li>
-                                <li class="category-item"><a href="#"><i class="fas fa-tag"></i> Tutorials</a></li>
-                                <li class="category-item"><a href="#"><i class="fas fa-tag"></i> Presentations</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </aside>
-
         <div style="width: 100%; height: 100%; background-color: #000; display: flex; align-items: center; justify-content: center;">
-            <iframe 
-                id="main-video-player" 
-                style="width: 100%; height: 100%; border:0;"
-                src="" 
-                title="YouTube video player" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
+            <iframe id="main-video-player" style="width: 100%; height: 100%; border:0;" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
 
+    <!-- HTML for SFseeyou Popups -->
+    <div id="sfseeyou-overlay" class="sfseeyou-overlay"></div>
+    <div id="sfseeyou-contacts-popup" class="sfseeyou-popup">
+        <div class="sfseeyou-popup-header">
+            <h3><i class="fas fa-users"></i> SFseeyou Contacts</h3>
+            <button id="sfseeyou-contacts-close-btn" class="sfseeyou-popup-close">&times;</button>
+        </div>
+        <div class="sfseeyou-popup-content">
+            <ul id="sfseeyou-contact-list" class="sfseeyou-contact-list">
+                <li class="sfseeyou-contact-item" data-contact-name="Mladen Pejic" data-status="online">
+                    <div class="contact-avatar"><i class="fas fa-user"></i></div>
+                    <div class="contact-info"><span class="contact-name">Mladen Pejic</span><span class="contact-status online">Online</span></div>
+                    <button class="contact-call-btn" title="Call"><i class="fas fa-video"></i></button>
+                </li>
+                <li class="sfseeyou-contact-item" data-contact-name="Zoran Lazarevic" data-status="online">
+                    <div class="contact-avatar"><i class="fas fa-user"></i></div>
+                    <div class="contact-info"><span class="contact-name">Zoran Lazarevic</span><span class="contact-status online">Online</span></div>
+                    <button class="contact-call-btn" title="Call"><i class="fas fa-video"></i></button>
+                </li>
+                <li class="sfseeyou-contact-item" data-contact-name="Tihomir Sanader" data-status="offline">
+                    <div class="contact-avatar"><i class="fas fa-user"></i></div>
+                    <div class="contact-info"><span class="contact-name">Tihomir Sanader</span><span class="contact-status offline">Offline</span></div>
+                    <button class="contact-call-btn" title="User not available" disabled><i class="fas fa-video"></i></button>
+                </li>
+                    <li class="sfseeyou-contact-item" data-contact-name="Maja Novak" data-status="offline">
+                    <div class="contact-avatar"><i class="fas fa-user"></i></div>
+                    <div class="contact-info"><span class="contact-name">Maja Novak</span><span class="contact-status offline">Offline</span></div>
+                    <button class="contact-call-btn" title="Korisnik nije dostupan" disabled><i class="fas fa-video"></i></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="sfseeyou-call-popup" class="sfseeyou-popup sfseeyou-call-window">
+        <div class="caller-video-view">
+            <div class="caller-placeholder">
+                <i class="fas fa-user"></i>
+                <span id="caller-name-display"></span>
+                <span id="call-status-display">Connecting...</span>
+            </div>
+        </div>
+        <div id="my-video-view" class="my-video-view"><i class="fas fa-user-tie"></i></div>
+        <div class="call-controls">
+            <button class="call-control-btn" title="Mute microphone"><i class="fas fa-microphone-slash"></i></button>
+            <button class="call-control-btn hang-up" id="sfseeyou-hang-up-btn" title="Hang up"><i class="fas fa-phone-slash"></i></button>
+            <button class="call-control-btn" title="Turn off camera"><i class="fas fa-video-slash"></i></button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Existing code
         const player = document.getElementById('main-video-player');
         const sidebarToggleBtn = document.getElementById('sidebar-toggle');
         const sidebar = document.getElementById('video-sidebar');
@@ -224,13 +279,8 @@
         const tabPanes = document.querySelectorAll('.tab-pane');
 
         if (backLink) {
-            const urlParams = new URLSearchParams(window.location.search);
-            const fromPage = urlParams.get('from');
-            if (fromPage) {
-                sessionStorage.setItem('returnToPage', fromPage);
-            }
-            const returnUrl = sessionStorage.getItem('returnToPage');
-            backLink.href = returnUrl || 'index_en.html'; // Fallback to English homepage
+            const returnUrl = sessionStorage.getItem('returnToPage') || 'index_en.html';
+            backLink.href = returnUrl;
         }
 
         if (sidebarTabs.length > 0) {
@@ -239,8 +289,7 @@
                     sidebarTabs.forEach(t => t.classList.remove('active'));
                     tabPanes.forEach(p => p.classList.remove('active'));
                     tab.classList.add('active');
-                    const targetPane = document.getElementById(tab.getAttribute('data-tab'));
-                    if (targetPane) targetPane.classList.add('active');
+                    document.getElementById(tab.dataset.tab).classList.add('active');
                 });
             });
         }
@@ -261,27 +310,76 @@
 
         if (player && videoItems.length > 0) {
             function changeVideo(youtubeId) {
-                if (youtubeId && youtubeId.toUpperCase().indexOf('YOUTUBE_ID') === -1) {
+                if (youtubeId) {
                     player.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
-                } else {
-                    player.src = ''; 
                 }
             }
-            
             videoItems.forEach(item => {
                 item.addEventListener('click', () => {
                     videoItems.forEach(i => i.classList.remove('active'));
                     item.classList.add('active');
-                    const youtubeId = item.getAttribute('data-youtube-id');
-                    changeVideo(youtubeId);
-                    if (sidebar.classList.contains('active')) {
+                    changeVideo(item.dataset.youtubeId);
+                    if (window.innerWidth <= 768) {
                         sidebar.classList.remove('active');
                         sidebarToggleBtn.classList.remove('active');
                     }
                 });
             });
         }
+
+        // SFseeyou Simulation Logic
+        const sfseeyouIcon = document.querySelector('.social-link[title*="SFseeyou"]');
+        const overlay = document.getElementById('sfseeyou-overlay');
+        const contactsPopup = document.getElementById('sfseeyou-contacts-popup');
+        const contactsCloseBtn = document.getElementById('sfseeyou-contacts-close-btn');
+        const contactList = document.getElementById('sfseeyou-contact-list');
+        const callPopup = document.getElementById('sfseeyou-call-popup');
+        const hangUpBtn = document.getElementById('sfseeyou-hang-up-btn');
+        const callerNameDisplay = document.getElementById('caller-name-display');
+
+        function showPopup(popupElement) {
+            if (overlay) { overlay.style.display = 'block'; setTimeout(() => overlay.classList.add('active'), 10); }
+            if (popupElement) { popupElement.style.display = 'block'; setTimeout(() => popupElement.classList.add('active'), 10); }
+        }
+
+        function closeAllSfSeeYouPopups() {
+            if (overlay) { overlay.classList.remove('active'); }
+            if (contactsPopup) { contactsPopup.classList.remove('active'); }
+            if (callPopup) { callPopup.classList.remove('active'); }
+            setTimeout(() => {
+                if (overlay) overlay.style.display = 'none';
+                if (contactsPopup) contactsPopup.style.display = 'none';
+                if (callPopup) callPopup.style.display = 'none';
+            }, 300);
+        }
+
+        if (sfseeyouIcon) {
+            sfseeyouIcon.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPopup(contactsPopup);
+            });
+        }
+
+        if (contactList) {
+            contactList.addEventListener('click', (e) => {
+                const contactItem = e.target.closest('.sfseeyou-contact-item[data-status="online"]');
+                if (contactItem) {
+                    const contactName = contactItem.dataset.contactName;
+                    contactsPopup.classList.remove('active');
+                    setTimeout(() => {
+                        contactsPopup.style.display = 'none';
+                        if (callerNameDisplay) callerNameDisplay.textContent = contactName;
+                        showPopup(callPopup);
+                    }, 300);
+                }
+            });
+        }
+
+        if (overlay) overlay.addEventListener('click', closeAllSfSeeYouPopups);
+        if (contactsCloseBtn) contactsCloseBtn.addEventListener('click', closeAllSfSeeYouPopups);
+        if (hangUpBtn) hangUpBtn.addEventListener('click', closeAllSfSeeYouPopups);
     });
     </script>
+
 </body>
 </html>
