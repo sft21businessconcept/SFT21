@@ -525,18 +525,28 @@ if (loginForm) {
         return true;
     };
 
-    loginForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        // Validacija se poziva tek na submit da ne smeta korisniku dok tipka
-        const isUsernameValid = validateUsername();
-        const isPasswordValid = validatePassword();
-        if (isUsernameValid && isPasswordValid) {
-            console.log('Form is valid. Redirecting...');
-            window.location.href = 'sfured_en.html'; // Preusmjeri na engleski SFured
+loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const isUsernameValid = validateUsername();
+    const isPasswordValid = validatePassword();
+    if (isUsernameValid && isPasswordValid) {
+        console.log('Form is valid. Checking for redirect...');
+
+        // New redirect code
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectUrl = urlParams.get('redirect');
+
+        if (redirectUrl) {
+            console.log('Redirecting to:', redirectUrl);
+            window.location.href = redirectUrl;
         } else {
-            console.log('Form contains errors.');
+            console.log('No redirect, going to sfured_en.html');
+            window.location.href = 'sfured_en.html';
         }
-    });
+    } else {
+        console.log('Form contains errors.');
+    }
+});
 
     // Opcionalno: live validacija dok korisnik tipka
     usernameInput.addEventListener('input', validateUsername);
