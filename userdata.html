@@ -477,11 +477,11 @@
                 </div>
 
                 <div class="input-requirements">
-                    <div class="requirement">Lozinka mora imati najmanje 7 i najviše 21 znak te moa sadržavati minimalno jedno;</div>
+                    <div class="requirement">Lozinka mora imati najmanje 7 i najviše 21 znak te mora sadržavati minimalno jedno;</div>
                     <div class="requirement">- malo slovo: a - z,</div>
                     <div class="requirement">- veliko slovo: A - Z,</div>
                     <div class="requirement">- broj: 0 - 9,</div>
-                    <div class="requirement">- poseban znak:! " # $ % & / _ + ~ = ?</div>
+                    <div class="requirement">- poseban znak:! " # $ % & / _ + ~ = ? @</div>
                  </div>
             </div>
         </div>
@@ -579,7 +579,7 @@
             }
 
             function isPasswordValid(password) {
-                return !/\s/.test(password) && password.length >= 7 && password.length <= 21 && /[a-z]/.test(password) && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[!\"#$%&\/_+~=?]/.test(password);
+                return !/\s/.test(password) && password.length >= 7 && password.length <= 21 && /[a-z]/.test(password) && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[!\"#$%&\/_+~=?@]/.test(password);
             }
 
             if (usernameInput && usernameSave) {
