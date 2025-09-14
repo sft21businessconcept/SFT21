@@ -188,12 +188,6 @@
     color: #0e076a !important; /* Duboko ljubičasta boja, ista kao na desktop gumbima */
 }
 
-
-
-/* ========================================================= */
-/* NOVO RJEŠENJE: Responzivni stil za IP7 polje (bez izmjene HTML-a) */
-/* ========================================================= */
-
 /* Na svim veličinama ekrana, tretiraj ip7-item kao flex kontejner */
 .ip7-item {
     display: flex;
@@ -228,10 +222,6 @@
         width: calc(100% - 90px); /* Računamo širinu (100% - širina teksta i razmaka) */
     }
 }
-
-/* ======================================================= */
-/* NOVO: Stilovi za uljepšavanje polja "Poslovni koncept" */
-/* ======================================================= */
 
 /* Glavni stil za kutiju s ikonom */
 .icon-box {
@@ -277,9 +267,7 @@ body.light-mode .icon-box:hover .icon-glow i {
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
 }
 
-/* ======================================================= */
-/* NOVO JEDNOSTAVNO RJEŠENJE: Samo sjaj na hover (bez pomaka) */
-/* ======================================================= */
+
 .hover-card-stable {
     /* Uklanjamo originalni border da se ne vidi ispod outline-a */
     border-color: transparent !important;
@@ -313,9 +301,6 @@ body.light-mode .hover-card-stable:hover {
     box-shadow: 0 0 30px rgba(106, 27, 154, 0.3);
 }
 
-/* ======================================================= */
-/* NOVO: Stilovi za pozadinu mobilnog izbornika (Light Mode) */
-/* ======================================================= */
 body.light-mode .nav-menu {
     background-color: #ffffff !important; /* Bijela pozadina */
     border-right-color: #e2e8f0 !important; /* Svijetlo siva granica, da se uklopi */
@@ -367,9 +352,6 @@ body.light-mode .nav-menu .mobile-language-trigger i.fa-chevron-down {
             }
         }
 
-        /* ======================================================= */
-/* NOVO: Stilovi za skrivanje i prikaz FAQ sekcije         */
-/* ======================================================= */
 #faq-accordion-container {
     max-height: 0;
     opacity: 0;
@@ -388,9 +370,6 @@ body.light-mode .nav-menu .mobile-language-trigger i.fa-chevron-down {
     transform: rotate(180deg);
 }
 
-/* ======================================================= */
-/* NOVO: Stilovi za skrivanje i prikaz Startnih Paketa     */
-/* ======================================================= */
 #starter-packages-content-container {
     max-height: 0;
     opacity: 0;
@@ -410,11 +389,11 @@ body.light-mode .nav-menu .mobile-language-trigger i.fa-chevron-down {
     transform: rotate(180deg);
 }
 
-/* ======================================================= */
-/* NOVO: Ispravak boje ikone unutar .btn-primary gumba   */
-/* ======================================================= */
 .btn-primary i {
     color: inherit !important; /* !important osigurava da ikona UVIJEK naslijedi boju teksta gumba */
+}
+body.light-mode .nav-link i {
+    color: inherit !important; /* Nasljeđuje boju od linka (ljubičastu) */
 }
 </style>
 </head>
