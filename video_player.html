@@ -91,8 +91,8 @@
         html.light-mode .sidebar-header, html.light-mode .sidebar-link-back, html.light-mode .sidebar-social-links, html.light-mode .sidebar-tabs { border-bottom-color: #e2e8f0; }
         html.light-mode .sidebar-header h3, html.light-mode .sidebar-link-back, html.light-mode .sidebar-section-title, html.light-mode .sidebar-tab.active { color: var(--primary-color); border-bottom-color: var(--secondary-color); }
         html.light-mode .sidebar-link-back:hover { background-color: rgba(106, 27, 154, 0.1); color: var(--secondary-color); }
-        html.light-mode .sidebar-social-links .social-link { color: #94a3b8; }
-        html.light-mode .sidebar-social-links .social-link:hover { color: var(--primary-color); }
+        html.light-mode .sidebar-social-links .social-link { color: #711194; }
+        html.light-mode .sidebar-social-links .social-link:hover { color: var(--fluorescent-purple); }
         html.light-mode .sidebar-tab { color: #64748b; }
         html.light-mode .video-item { background: #f8fafc; }
         html.light-mode .video-item:hover { background: #f1f5f9; }
@@ -153,6 +153,14 @@
         html.light-mode .sfseeyou-contact-item[data-status="online"]:hover { background-color: #f1f5f9; }
         html.light-mode .contact-call-btn { color: var(--primary-color); }
         html.light-mode .contact-call-btn:hover { color: var(--secondary-color); }
+
+
+        /* Sakrij gumb za otvaranje/zatvaranje kada je izbornik vidljiv na mobitelu */
+        @media (max-width: 767px) {
+       .video-sidebar.active ~ .sidebar-toggle-button {
+        display: none;
+        }
+        }
     </style>
 </head>
 <body>
@@ -214,7 +222,7 @@
             </div>
         </aside>
         <div style="width: 100%; height: 100%; background-color: #000; display: flex; align-items: center; justify-content: center;">
-            <iframe id="main-video-player" style="width: 100%; height: 100%; border:0;" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div id="youtube-player-container"></div>
         </div>
     </div>
 
@@ -267,119 +275,160 @@
     </div>
 
     <!-- JavaScript -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Postojeći kod
-        const player = document.getElementById('main-video-player');
-        const sidebarToggleBtn = document.getElementById('sidebar-toggle');
-        const sidebar = document.getElementById('video-sidebar');
-        const videoItems = document.querySelectorAll('.video-item');
-        const backLink = document.getElementById('back-link');
-        const sidebarTabs = document.querySelectorAll('.sidebar-tab');
-        const tabPanes = document.querySelectorAll('.tab-pane');
+<script>
+    // 1. Učitavanje YouTube IFrame Player API koda
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        if (backLink) {
-            const returnUrl = sessionStorage.getItem('returnToPage') || 'index.html';
-            backLink.href = returnUrl;
-        }
-
-        if (sidebarTabs.length > 0) {
-            sidebarTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    sidebarTabs.forEach(t => t.classList.remove('active'));
-                    tabPanes.forEach(p => p.classList.remove('active'));
-                    tab.classList.add('active');
-                    document.getElementById(tab.dataset.tab).classList.add('active');
-                });
-            });
-        }
-        
-        if (sidebarToggleBtn && sidebar) {
-            sidebarToggleBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                sidebar.classList.toggle('active');
-                sidebarToggleBtn.classList.toggle('active');
-            });
-            document.addEventListener('click', (e) => {
-                if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && !sidebarToggleBtn.contains(e.target)) {
-                    sidebar.classList.remove('active');
-                    sidebarToggleBtn.classList.remove('active');
-                }
-            });
-        }
-
-        if (player && videoItems.length > 0) {
-            function changeVideo(youtubeId) {
-                if (youtubeId) {
-                    player.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
-                }
+    // Globalne varijable
+    var player;
+    const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('video-sidebar');
+    const videoItems = document.querySelectorAll('.video-item');
+    const backLink = document.getElementById('back-link');
+    const firstVideoId = videoItems.length > 0 ? videoItems[0].dataset.youtubeId : 'xDZNaDX58jg';
+    
+    // --- FUNKCIJE ZA KONTROLU IZBORNIKA ---
+    function showSidebar() {
+        sidebar.classList.add('active');
+        sidebarToggleBtn.classList.add('active');
+    }
+    
+    function hideSidebar() {
+        sidebar.classList.remove('active');
+        sidebarToggleBtn.classList.remove('active');
+    }
+    
+    // --- YOUTUBE API FUNKCIJE ---
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtube-player-container', {
+            height: '100%',
+            width: '100%',
+            videoId: firstVideoId,
+            playerVars: { 'playsinline': 1, 'rel': 0, 'autoplay': 1 },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
             }
-            videoItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    videoItems.forEach(i => i.classList.remove('active'));
-                    item.classList.add('active');
-                    changeVideo(item.dataset.youtubeId);
-                    if (window.innerWidth <= 768) {
-                        sidebar.classList.remove('active');
-                        sidebarToggleBtn.classList.remove('active');
-                    }
-                });
-            });
+        });
+    }
+
+    function onPlayerReady(event) {
+        // Označi prvi video kao aktivan
+        document.querySelector('.video-item[data-youtube-id="' + firstVideoId + '"]')?.classList.add('active');
+        // Početno stanje: izbornik je SAKRIVEN
+        hideSidebar();
+    }
+
+    function onPlayerStateChange(event) {
+        // Kada video završi, prikaži izbornik
+        if (event.data === YT.PlayerState.ENDED) {
+            showSidebar();
         }
+    }
 
-        // === LOGIKA ZA SFseeyou SIMULACIJU ===
-        const sfseeyouIcon = document.querySelector('.social-link[title*="SFseeyou"]');
-        const overlay = document.getElementById('sfseeyou-overlay');
-        const contactsPopup = document.getElementById('sfseeyou-contacts-popup');
-        const contactsCloseBtn = document.getElementById('sfseeyou-contacts-close-btn');
-        const contactList = document.getElementById('sfseeyou-contact-list');
-        const callPopup = document.getElementById('sfseeyou-call-popup');
-        const hangUpBtn = document.getElementById('sfseeyou-hang-up-btn');
-        const callerNameDisplay = document.getElementById('caller-name-display');
+    // --- EVENT LISTENERS (DOGAĐAJI) ---
 
-        function showPopup(popupElement) {
-            if (overlay) { overlay.style.display = 'block'; setTimeout(() => overlay.classList.add('active'), 10); }
-            if (popupElement) { popupElement.style.display = 'block'; setTimeout(() => popupElement.classList.add('active'), 10); }
-        }
-
-        function closeAllSfSeeYouPopups() {
-            if (overlay) { overlay.classList.remove('active'); }
-            if (contactsPopup) { contactsPopup.classList.remove('active'); }
-            if (callPopup) { callPopup.classList.remove('active'); }
-            setTimeout(() => {
-                if (overlay) overlay.style.display = 'none';
-                if (contactsPopup) contactsPopup.style.display = 'none';
-                if (callPopup) callPopup.style.display = 'none';
-            }, 300); // Čekaj da završi animacija
-        }
-
-        if (sfseeyouIcon) {
-            sfseeyouIcon.addEventListener('click', (e) => {
-                e.preventDefault();
-                showPopup(contactsPopup);
-            });
-        }
-
-        if (contactList) {
-            contactList.addEventListener('click', (e) => {
-                const contactItem = e.target.closest('.sfseeyou-contact-item[data-status="online"]');
-                if (contactItem) {
-                    const contactName = contactItem.dataset.contactName;
-                    contactsPopup.classList.remove('active');
-                    setTimeout(() => {
-                        contactsPopup.style.display = 'none';
-                        if (callerNameDisplay) callerNameDisplay.textContent = contactName;
-                        showPopup(callPopup);
-                    }, 300);
-                }
-            });
-        }
-
-        if (overlay) overlay.addEventListener('click', closeAllSfSeeYouPopups);
-        if (contactsCloseBtn) contactsCloseBtn.addEventListener('click', closeAllSfSeeYouPopups);
-        if (hangUpBtn) hangUpBtn.addEventListener('click', closeAllSfSeeYouPopups);
+    // Klik na gumb za otvaranje/zatvaranje izbornika
+    sidebarToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sidebar.classList.toggle('active');
+        sidebarToggleBtn.classList.toggle('active');
     });
-    </script>
 
+    // Klik na video u listi
+    videoItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const videoId = item.dataset.youtubeId;
+            if (player && videoId) {
+                // Ukloni 'active' sa starog i dodaj na novi
+                videoItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Pokreni novi video
+                player.loadVideoById(videoId);
+
+                // SAKRIJ IZBORNIK - ovo je ključno
+                hideSidebar();
+            }
+        });
+    });
+
+    // Povratak na prethodnu stranicu
+    if (backLink) {
+        const returnUrl = sessionStorage.getItem('returnToPage') || 'index.html';
+        backLink.href = returnUrl;
+    }
+
+    // Ovdje ostaje Vaš postojeći kod za tabove i SFseeyou simulaciju,
+    // pošto on ne smeta i radi neovisno.
+    const sidebarTabs = document.querySelectorAll('.sidebar-tab');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    if (sidebarTabs.length > 0) {
+        sidebarTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                sidebarTabs.forEach(t => t.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+    }
+
+    // === Ovdje je ostatak Vašeg koda za SFseeyou... ===
+    const sfseeyouIcon = document.querySelector('.social-link[title*="SFseeyou"]');
+    const overlay = document.getElementById('sfseeyou-overlay');
+    const contactsPopup = document.getElementById('sfseeyou-contacts-popup');
+    const contactsCloseBtn = document.getElementById('sfseeyou-contacts-close-btn');
+    const contactList = document.getElementById('sfseeyou-contact-list');
+    const callPopup = document.getElementById('sfseeyou-call-popup');
+    const hangUpBtn = document.getElementById('sfseeyou-hang-up-btn');
+    const callerNameDisplay = document.getElementById('caller-name-display');
+
+    function showPopup(popupElement) {
+        if (overlay) { overlay.style.display = 'block'; setTimeout(() => overlay.classList.add('active'), 10); }
+        if (popupElement) { popupElement.style.display = 'block'; setTimeout(() => popupElement.classList.add('active'), 10); }
+    }
+
+    function closeAllSfSeeYouPopups() {
+        if (overlay) { overlay.classList.remove('active'); }
+        if (contactsPopup) { contactsPopup.classList.remove('active'); }
+        if (callPopup) { callPopup.classList.remove('active'); }
+        setTimeout(() => {
+            if (overlay) overlay.style.display = 'none';
+            if (contactsPopup) contactsPopup.style.display = 'none';
+            if (callPopup) callPopup.style.display = 'none';
+        }, 300);
+    }
+
+    if (sfseeyouIcon) {
+        sfseeyouIcon.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPopup(contactsPopup);
+        });
+    }
+
+    if (contactList) {
+        contactList.addEventListener('click', (e) => {
+            const contactItem = e.target.closest('.sfseeyou-contact-item[data-status="online"]');
+            if (contactItem) {
+                const contactName = contactItem.dataset.contactName;
+                contactsPopup.classList.remove('active');
+                setTimeout(() => {
+                    contactsPopup.style.display = 'none';
+                    if (callerNameDisplay) callerNameDisplay.textContent = contactName;
+                    showPopup(callPopup);
+                }, 300);
+            }
+        });
+    }
+
+    if (overlay) overlay.addEventListener('click', closeAllSfSeeYouPopups);
+    if (contactsCloseBtn) contactsCloseBtn.addEventListener('click', closeAllSfSeeYouPopups);
+    if (hangUpBtn) hangUpBtn.addEventListener('click', closeAllSfSeeYouPopups);
+</script>    
 </body>
 </html>
