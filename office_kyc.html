@@ -932,14 +932,21 @@
             isCameraOpening = true;
 
             if (cameraModal) cameraModal.dataset.targetPlaceholder = placeholderId;
-            if (cameraPromptText && cameraOverlay && cameraFeedContainer) {
-                cameraOverlay.className = 'camera-overlay';
+             if (cameraPromptText && cameraOverlay && cameraFeedContainer) {
+                cameraOverlay.classList.remove('camera-overlay-oval', 'camera-overlay-rectangle-vertical', 'camera-overlay-rectangle-horizontal');
                 cameraFeedContainer.classList.remove('is-horizontal');
+
                 if (placeholderId === 'selfie-placeholder') {
-                    cameraPromptText.textContent = 'glavu unutar ovala';
+                    cameraPromptText.textContent = 'glavu';
                     cameraOverlay.classList.add('camera-overlay-oval');
-                } else {
-                    cameraPromptText.textContent = 'dokument unutar okvira';
+                } else if (placeholderId === 'passport-placeholder') {
+                    cameraPromptText.textContent = 'putovnicu';
+                    cameraOverlay.classList.add('camera-overlay-rectangle-vertical');
+                } else { // Ovo se odnosi na 'id-card-placeholder' i 'driver-license-placeholder'
+                    if (placeholderId === 'driver-license-placeholder') cameraPromptText.textContent = 'vozačku dozvolu';
+                    else if (placeholderId === 'id-card-placeholder') cameraPromptText.textContent = 'osobnu iskaznicu';
+                    else cameraPromptText.textContent = 'dokument'; // Fallback
+                    
                     cameraOverlay.classList.add('camera-overlay-rectangle-horizontal');
                     cameraFeedContainer.classList.add('is-horizontal');
                 }
