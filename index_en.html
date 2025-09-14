@@ -57,10 +57,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- FINAL FIX FOR CTA SECTION - DIRECT STYLE -->
 <style>
-    /* This rule ensures that elements within the CTA section
-       RETAIN their original appearance even in light mode. */
 
     body.light-mode #cta-section h2 {
         color: var(--fluorescent-green) !important;
@@ -79,68 +76,55 @@
         background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%) !important;
     }
 
+    .back-to-top-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 999; /* Da bude iznad svega osim možda popupa */
+        
+        /* Izgled */
+        background-color: var(--fluorescent-green);
+        color: #0e076a;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 50%; /* Okrugli gumb */
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        
+        /* Centriranje ikone */
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
+        /* Animacija pojavljivanja/nestajanja */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.2s;
+    }
 
-    /* ================================== */
-/* NOVO: Stilovi za Back to Top gumb */
-/* ================================== */
-.back-to-top-btn {
-    /* ... sav stil za back-to-top ... */
-}
-body.light-mode .back-to-top-btn:hover {
-    background-color: #4a148c; /* Tamnija ljubičasta na hover */
-}
+    .back-to-top-btn.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
 
-/* ========================================================== */
-/* KONAČNA ISPRAVLJENA VERZIJA: Manji i funkcionalni gumbi    */
-/* ========================================================== */
-.floating-action-btn {
-   /* ... sav stil za floating-action-btn ... */
-}
+    .back-to-top-btn:hover {
+        background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%);
+        transform: scale(1.05); /* Lagano povećanje na hover */
+    }
 
-#user-counter-widget,
-#ai-chat-popup {
-    right: 50px;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-#user-counter-widget.hidden,
-#ai-chat-popup:not(.active) {
-    opacity: 0;
-    transform: translateX(20px);
-    pointer-events: none; /* Da se ne može kliknuti na nevidljivi prozor */
-}
-
-    /* ================================== */
-/* Stilovi za Back to Top gumb */
-/* ================================== */
-.back-to-top-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 999;
-    background-color: var(--fluorescent-green);
-    color: #0e076a;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.2s;
-}
-.back-to-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
-.back-to-top-btn:hover { background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%); transform: scale(1.05); }
-body.light-mode .back-to-top-btn { background-color: #6a1b9a; color: #ffffff; }
-body.light-mode .back-to-top-btn:hover { background-color: #4a148c; }
+    /* Prilagodba za light mode */
+    body.light-mode .back-to-top-btn {
+        background-color: #6a1b9a; /* Glavna ljubičasta boja */
+        color: #ffffff; /* Bijela ikona */
+    }
+    body.light-mode .back-to-top-btn:hover {
+        background-color: #4a148c; /* Tamnija ljubičasta na hover */
+    }
 
     /* ========================================================== */
     /* ZAJEDNIČKI STILOVI ZA SVE PLUTAJUĆE GUMBE DESNO           */
@@ -182,22 +166,23 @@ body.light-mode .back-to-top-btn:hover { background-color: #4a148c; }
         color: #ffffff; /* Bijela ikona */
     }
 
-/* Pozicioniranje otvorenih prozora */
-#user-counter-widget,
-#ai-chat-popup {
-    right: 50px;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-#user-counter-widget.hidden,
-#ai-chat-popup:not(.active) {
-    opacity: 0;
-    transform: translateX(20px);
-    pointer-events: none;
-}
+    #user-counter-widget,
+    #ai-chat-popup {
+        right: 50px;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
 
-.nav-menu .btn-primary {
+    #user-counter-widget.hidden,
+    #ai-chat-popup:not(.active) {
+        opacity: 0;
+        transform: translateX(20px);
+        pointer-events: none; /* Da se ne može kliknuti na nevidljivi prozor */
+    }
+
+    .nav-menu .btn-primary {
     color: #0e076a !important; /* Duboko ljubičasta boja, ista kao na desktop gumbima */
 }
+
 /* Na svim veličinama ekrana, tretiraj ip7-item kao flex kontejner */
 .ip7-item {
     display: flex;
@@ -225,29 +210,13 @@ body.light-mode .back-to-top-btn:hover { background-color: #4a148c; }
         width: auto; /* Vratimo širinu na auto da stane pored inputa */
         margin-left: 8px; /* Mali razmak od inputa */
     }
+
+    /* Grupirajmo input i span u istu liniju na mobilnom */
+    /* Ovo postiže cilj bez dodatnog div-a */
     .ip7-item .form-input-ip7 {
         width: calc(100% - 90px); /* Računamo širinu (100% - širina teksta i razmaka) */
     }
 }
-
-nav .logo-nav, /* Ciljamo omotač loga */
-        nav .flex.items-center > a { /* Ciljamo <a> tag ako postoji */
-            text-decoration: none ;
-        }
-
-        /* KLJUČNO: Ovo uklanja naslijeđenu liniju ispod linka */
-        nav .flex.items-center > a::after {
-            display: none ;
-            content: none ;
-        }
-
-        /* Dodajemo i hover efekt za bolji doživljaj */
-        nav .flex.items-center > a {
-             transition: transform 0.2s ease-in-out;
-        }
-        nav .flex.items-center > a:hover {
-            transform: scale(1.03);
-        }
 
 /* Glavni stil za kutiju s ikonom */
 .icon-box {
@@ -292,6 +261,7 @@ body.light-mode .icon-glow i {
 body.light-mode .icon-box:hover .icon-glow i {
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
 }
+
 
 .hover-card-stable {
     /* Uklanjamo originalni border da se ne vidi ispod outline-a */
@@ -367,16 +337,16 @@ body.light-mode .nav-menu .mobile-language-trigger i.fa-chevron-down {
     color: #475569 !important;
 }
 
-/* === FIX FOR ALL MOBILE MENU BUTTONS ALIGNMENT === */
+/* === FINAL FIX FOR MOBILE MENU BUTTON TEXT ALIGNMENT === */
         @media (max-width: 768px) {
-            .nav-menu .btn-primary,
-            .nav-menu .btn-outline {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            .nav-menu a.btn-primary,
+            .nav-menu a.btn-outline {
+                text-align: center !important;
+                display: block !important;
+                width: 100% !important;
             }
         }
+
 #faq-accordion-container {
     max-height: 0;
     opacity: 0;
