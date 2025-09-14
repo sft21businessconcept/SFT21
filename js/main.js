@@ -3,40 +3,73 @@
 // ====================================================================
 
 /**
+ * Provjerava status prijave i ažurira UI (gumb Prijava/Odjava i Registracija).
+ */
+function handleLoginState() {
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+    const isEnglish = window.location.pathname.includes('_en');
+
+    // Pronađi sve gumbe za prijavu i registraciju
+    const loginButtons = document.querySelectorAll('a[href^="login.html"]');
+    const registerButtons = document.querySelectorAll('a[href^="register.html"]');
+
+    if (isLoggedIn) {
+        // === KORISNIK JE PRIJAVLJEN ===
+        loginButtons.forEach(btn => {
+            btn.textContent = isEnglish ? 'Logout' : 'Odjava';
+            btn.href = '#';
+            btn.id = 'logout-button';
+            
+            if (!btn.dataset.logoutListener) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    sessionStorage.removeItem('isLoggedIn');
+                    alert(isEnglish ? 'You have been successfully logged out.' : 'Uspješno ste odjavljeni.');
+                    window.location.href = isEnglish ? 'index_en.html' : 'index.html';
+                });
+                btn.dataset.logoutListener = 'true';
+            }
+        });
+
+        registerButtons.forEach(btn => {
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            btn.onclick = (e) => e.preventDefault();
+        });
+
+    } else {
+        // === KORISNIK NIJE PRIJAVLJEN ===
+        const logoutButton = document.getElementById('logout-button');
+        if(logoutButton) {
+            logoutButton.textContent = isEnglish ? 'Login' : 'Prijava';
+            logoutButton.href = isEnglish ? 'login_en.html' : 'login.html';
+            logoutButton.id = '';
+            delete logoutButton.dataset.logoutListener;
+        }
+
+        registerButtons.forEach(btn => {
+            btn.classList.remove('opacity-50', 'cursor-not-allowed');
+            btn.onclick = null;
+        });
+    }
+}
+
+/**
  * Glavna funkcija za inicijalizaciju i prevođenje.
- * Pokreće se nakon što se učita DOM.
  */
 async function i18n_init() {
-    // Određujemo jezik, ali ga nećemo odmah koristiti.
     const savedLang = localStorage.getItem('sft21_lang') || 'hr';
-
-    // ===============================================================
-    // #### DIJAGNOSTIČKI BLOK - SVE VEZANO ZA PRIJEVODE JE ISKLJUČENO ####
-    // Sljedeći dio koda koji učitava prijevode je namjerno stavljen
-    // u komentar kako bismo testirali ostatak aplikacije.
-    // ===============================================================
     
-    // Inicijaliziraj i18next instancu
     await i18next.use(i18nextHttpBackend).init({
         lng: savedLang,
         fallbackLng: 'hr',
         debug: false,
         backend: {
-        loadPath: 'locales/{{lng}}.json',        },
+            loadPath: 'locales/{{lng}}.json',
+        },
     });
 
-    // Ažuriraj sadržaj na stranici s učitanim prijevodima
     updateContent(savedLang);
     
-   
-
-
-    // ===============================================================
-    // #### EVENT LISTENERI ZA JEZIK - TAKOĐER ISKLJUČENI ####
-    // Gumbi za promjenu jezika se također isključuju jer ovise o i18next.
-    // ===============================================================
-   
-    // Dodaj event listenere na gumbe za promjenu jezika
     document.querySelectorAll('[data-lang]').forEach(el => {
         el.addEventListener('click', (e) => {
             e.preventDefault();
@@ -48,19 +81,18 @@ async function i18n_init() {
             });
         });
     });
-  
+
+    // Pokreni ostatak logike NAKON što su prijevodi učitani
+    initializeAppLogic();
 }
 
 
 /**
- * Funkcija koja pronalazi sve elemente s `data-i18n` atributom i prevodi ih.
- * Također ažurira atribute poput 'placeholder' i 'title'.
- * @param {string} lang - Kod trenutnog jezika (npr. 'hr' ili 'en').
+ * Funkcija koja ažurira sav sadržaj na stranici na temelju prijevoda.
  */
 const updateContent = (lang) => {
-    document.documentElement.lang = lang; // Postavi lang atribut na <html> element
+    document.documentElement.lang = lang; 
 
-    // Prevedi sav tekstualni sadržaj
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (key && i18next.exists(key)) {
@@ -68,15 +100,13 @@ const updateContent = (lang) => {
         }
     });
 
-    // Funkcija za ažuriranje atributa elemenata
     const updateAttribute = (selector, attribute, key) => {
         const element = document.querySelector(selector);
         if (element && i18next.exists(key)) {
             element[attribute] = i18next.t(key);
         }
     };
-
-    // Ažuriraj sve potrebne atribute
+    
     updateAttribute('#name', 'placeholder', 'contact.placeholderName');
     updateAttribute('#email', 'placeholder', 'contact.placeholderEmail');
     updateAttribute('#subject', 'placeholder', 'contact.placeholderSubject');
@@ -98,13 +128,12 @@ const updateContent = (lang) => {
 
 /**
  * Funkcija koja sadrži svu ostalu logiku aplikacije.
- * Inicijalizira sve event listenere i funkcionalnosti stranice.
  */
 function initializeAppLogic() {
     console.log("DOM spreman, pokrećem skripte...");
     const body = document.body;
-    // Pokreni logiku nakon što je definirana
-initializeAppLogic();
+    handleLoginState();
+
 
     // --- Deklaracija svih varijabli ---
     const desktopLangDropdown = document.getElementById('desktop-lang-dropdown');
@@ -1492,4 +1521,4 @@ document.addEventListener('DOMContentLoaded', () => {
         // Inicijalna boja
         resetCursorColor();
     }
-}); 
+});
