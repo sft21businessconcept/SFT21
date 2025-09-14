@@ -1022,11 +1022,15 @@
             });
         }
 
-        if (reviewPopupNastaviBtn) {
-            reviewPopupNastaviBtn.addEventListener('click', () => {
-                window.location.href = 'index.html';
-            });
-        }
+if (reviewPopupNastaviBtn) {
+    reviewPopupNastaviBtn.addEventListener('click', () => {
+        // NOVO: Postavi status da je korisnik prijavljen
+        sessionStorage.setItem('isLoggedIn', 'true');
+        
+        // Preusmjeri na početnu stranicu
+        window.location.href = 'index.html';
+    });
+}
     });
     </script>
 
