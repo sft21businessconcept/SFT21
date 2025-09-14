@@ -132,59 +132,46 @@
     }
 
     /* ========================================================== */
-    /* NOVO: Zajednički stilovi za sve plutajuće gumbe desno      */
+    /* ZAJEDNIČKI STILOVI ZA SVE PLUTAJUĆE GUMBE DESNO           */
     /* ========================================================== */
-.floating-action-btn {
+    .floating-action-btn {
         position: fixed;
         right: 0; 
         z-index: 1000;
         width: 40px;  
         height: 33px; 
-        background-color: #6a1b9a;
-        border: 2px solid var(--fluorescent-green);
+        border: 2px solid var(--fluorescent-green); /* Zeleni okvir u dark modu */
         border-right: none;
-        color: var(--fluorescent-green);
+        color: var(--fluorescent-green); /* Zelena ikona u dark modu */
+        background-color: var(--primary-color); /* Ljubičasta pozadina u oba moda */
         font-size: 16px; 
         cursor: pointer;
         border-radius: 8px 0 0 8px; 
-        
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: transform 0.2s, background-color 0.2s;
-        
+        transition: all 0.2s ease-in-out;
         opacity: 1 !important;
         visibility: visible !important;
     }
 
     .floating-action-btn:hover {
         transform: scale(1.05);
-        background-color: #4a148c;
+        background-color: #4a148c; /* Tamnija ljubičasta na hover u oba moda */
     }
 
     /* Pozicije specifične za svaki gumb */
-    #user-counter-show-btn {
-        top: 100px;
-    }
+    #user-counter-show-btn { top: 100px; }
+    #ai-chat-float-icon { top: 150px; }
+    #radio-float-icon { top: 200px; }
 
-    #ai-chat-float-icon {
-        top: 150px; 
-    }
-
-    #radio-float-icon {
-    top: 200px;
-    }
-
-    /* Prilagodba za light mode za OBA gumba */
+    /* Prilagodba za LIGHT MODE */
     body.light-mode .floating-action-btn {
-        border-color: #ab47bc;
-        color: #ffffff;
-    }
-    body.light-mode .floating-action-btn:hover {
-        background-color: #4a148c;
+        border-color: var(--accent-color) !important;
+        color: #ffffff; /* Bijela ikona */
     }
 
-        #user-counter-widget,
+    #user-counter-widget,
     #ai-chat-popup {
         right: 50px;
         transition: opacity 0.3s ease, transform 0.3s ease;
