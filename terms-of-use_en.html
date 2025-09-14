@@ -384,107 +384,96 @@
     }
 </style>
 
+<!-- ZAMIJENITE GA S OVIM NOVIM BLOKOM KODA -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // === NOVI KOD ZA PROVJERU STATUSA PRIJAVE ===
+        // === KOD ZA PROVJERU STATUSA PRIJAVE (ostaje isti) ===
+        function handleLoginState() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+            const isEnglish = window.location.pathname.includes('_en');
+            const loginButtons = document.querySelectorAll('a[href^="login"]');
+            const platformLinksDesktop = document.querySelectorAll('#desktop-platform-menu a');
+            const platformLinksMobile = document.querySelectorAll('#mobile-platform-menu a');
 
-function handleLoginState() {
-    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-    const isEnglish = window.location.pathname.includes('_en');
-
-    // Selektori za sve relevantne elemente menija
-    const loginButtons = document.querySelectorAll('a[href^="login"]'); // Cilja i login.html i login_en.html
-    const platformLinksDesktop = document.querySelectorAll('#desktop-platform-menu a');
-    const platformLinksMobile = document.querySelectorAll('#mobile-platform-menu a');
-
-    if (isLoggedIn) {
-        // === KORISNIK JE PRIJAVLJEN ===
-
-        // 1. Promijeni gumb "Prijava" u "Odjava"
-        loginButtons.forEach(btn => {
-            if (btn.textContent.toLowerCase().includes('prijava') || btn.textContent.toLowerCase().includes('login')) {
-                btn.textContent = isEnglish ? 'Logout' : 'Odjava';
-                btn.href = '#'; // Ukloni link da ne vodi nigdje
-                btn.id = 'logout-button'; // Dajemo mu ID za odjavu
-                // Ako je gumb "disabled" (kao na login stranici), ukloni to
-                btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                btn.disabled = false;
-            }
-        });
-
-        // 2. Ažuriraj linkove pod "Platforme" da vode direktno
-        const updatePlatformLink = (link) => {
-            const originalHref = link.href;
-            if (originalHref.includes('login')) {
-                const url = new URL(originalHref);
-                const redirectTarget = url.searchParams.get('redirect');
-                if (redirectTarget) {
-                    link.href = redirectTarget;
+            if (isLoggedIn) {
+                loginButtons.forEach(btn => {
+                    if (btn.textContent.toLowerCase().includes('prijava') || btn.textContent.toLowerCase().includes('login')) {
+                        btn.textContent = isEnglish ? 'Logout' : 'Odjava';
+                        btn.href = '#';
+                        btn.id = 'logout-button';
+                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        btn.disabled = false;
+                    }
+                });
+                const updatePlatformLink = (link) => {
+                    const originalHref = link.href;
+                    if (originalHref.includes('login')) {
+                        const url = new URL(originalHref);
+                        const redirectTarget = url.searchParams.get('redirect');
+                        if (redirectTarget) { link.href = redirectTarget; }
+                    }
+                };
+                platformLinksDesktop.forEach(updatePlatformLink);
+                platformLinksMobile.forEach(updatePlatformLink);
+                const logoutButton = document.getElementById('logout-button');
+                if (logoutButton) {
+                    logoutButton.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        sessionStorage.removeItem('isLoggedIn');
+                        alert(isEnglish ? 'You have been logged out.' : 'Odjavljeni ste.');
+                        window.location.href = isEnglish ? 'index_en.html' : 'index.html';
+                    });
+                }
+            } else {
+                const logoutButton = document.getElementById('logout-button');
+                if (logoutButton) {
+                    logoutButton.textContent = isEnglish ? 'Login' : 'Prijava';
+                    logoutButton.href = isEnglish ? 'login_en.html' : 'login.html';
+                    logoutButton.id = '';
                 }
             }
-        };
-        platformLinksDesktop.forEach(updatePlatformLink);
-        platformLinksMobile.forEach(updatePlatformLink);
-
-        // 3. Dodaj event listener za odjavu
-        const logoutButton = document.getElementById('logout-button');
-        if (logoutButton) {
-            logoutButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                sessionStorage.removeItem('isLoggedIn');
-                alert(isEnglish ? 'You have been logged out.' : 'Odjavljeni ste.');
-                // Preusmjeri na početnu stranicu nakon odjave
-                window.location.href = isEnglish ? 'index_en.html' : 'index.html';
-            });
         }
+        handleLoginState();
+        // === KRAJ KODA ZA PROVJERU STATUSA PRIJAVE ===
 
-    } else {
-        // === KORISNIK NIJE PRIJAVLJEN (osiguraj da je sve vraćeno na početno stanje) ===
-        // Ovo je važno ako korisnik klikne back button u pregledniku
-        
-        const logoutButton = document.getElementById('logout-button');
-        if (logoutButton) {
-            logoutButton.textContent = isEnglish ? 'Login' : 'Prijava';
-            logoutButton.href = isEnglish ? 'login_en.html' : 'login.html';
-            logoutButton.id = ''; // Makni ID
-        }
-        
-        // (Opcionalno, ali dobro) Vrati linkove za platforme na login, ako je potrebno
-        // Obično nije potrebno jer se stranica ponovno učita.
-    }
-}
-
-handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
-
-// === KRAJ NOVOG KODA ===
+        // === POBOLJŠANA LOGIKA ZA PAMETNI GUMB ===
         const backButtonContainer = document.getElementById('back-button-container');
         if (backButtonContainer) {
             const urlParams = new URLSearchParams(window.location.search);
             const sourcePage = urlParams.get('from');
-
-            let backLink = 'index.html'; 
-            let backText = 'Natrag na početnu';
-
             const isEnglish = window.location.pathname.includes('_en.html');
 
+            let backLink = '';
+            let backText = '';
+
             if (sourcePage) {
-                backLink = sourcePage;
-                backText = isEnglish ? 'Back to Registration' : 'Natrag na registraciju';
+                backLink = sourcePage; // Link je uvijek stranica s koje smo došli
+
+                // Odredi tekst gumba na temelju stranice s koje smo došli
+                if (sourcePage.includes('register')) {
+                    backText = isEnglish ? 'Back to Registration' : 'Natrag na registraciju';
+                } else if (sourcePage.includes('login')) {
+                    backText = isEnglish ? 'Back to Login' : 'Natrag na prijavu';
+                } else {
+                    // Ako 'from' postoji, ali nije ni login ni register, vrati na početnu kao sigurna opcija
+                    backLink = isEnglish ? 'index_en.html' : 'index.html';
+                    backText = isEnglish ? 'Back to Home' : 'Natrag na početnu';
+                }
             } else {
+                // Zadano ponašanje ako 'from' parametar ne postoji
                 backLink = isEnglish ? 'index_en.html' : 'index.html';
                 backText = isEnglish ? 'Back to Home' : 'Natrag na početnu';
             }
 
             const backButton = document.createElement('a');
             backButton.href = backLink;
-            backButton.className = 'btn-primary-legal'; 
+            backButton.className = 'btn-primary-legal';
             backButton.textContent = backText;
-            
+
             backButtonContainer.appendChild(backButton);
         }
     });
 </script>
-
     </main>
 
     <!-- PODNOŽJE (ENGLESKA VERZIJA) -->
