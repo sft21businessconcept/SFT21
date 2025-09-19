@@ -226,7 +226,7 @@ html.light-mode .popup-button:hover {
 }
 
 /* Promjena boje checkboxa */
-html.light-mode #ne-prikazuj-ponovo {
+html.light-mode #ne-prikazuj-ponovno {
     accent-color: var(--primary-color);
 }
 
@@ -247,7 +247,7 @@ html.light-mode .popup-content label {
 .modal-close { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #d1d5db; cursor: pointer; }
 .popup-button { background-color: rgba(var(--fluorescent-green-rgb), 0.1); color: var(--fluorescent-green); border: 1px solid var(--fluorescent-green); border-radius: 8px; padding: 0.75rem 1.5rem; font-weight: 600; cursor: pointer; }
 .popup-button:hover { background-color: var(--fluorescent-green); color: #0e076a; }
-#ne-prikazuj-ponovo { width: 1rem; height: 1rem; accent-color: var(--fluorescent-green); }
+#ne-prikazuj-ponovno { width: 1rem; height: 1rem; accent-color: var(--fluorescent-green); }
 
 .sfkod-generator-container { background-color: var(--glass-background); border: 1px solid var(--glass-border); border-radius: 15px; padding: 2rem; }
 .sfkod-generator-container h1 { color: var(--fluorescent-green); text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 2.5rem; }
@@ -804,7 +804,7 @@ html.light-mode .avatar-upload-button:hover i {
                         <span class="value-number value-green">1970</span>
                     </div>
                     <div class="info-line">
-                        <span>Vaš slijedeći povezani račun u SFalgoritmu:</span>
+                        <span>Vaš sljedeći povezani račun u SFalgoritmu:</span>
                         <span class="value-number value-green">2069</span>
                     </div>
                 </div>
@@ -992,8 +992,8 @@ html.light-mode .avatar-upload-button:hover i {
             <div class="flex flex-col items-center mt-6">
                 <button class="popup-button">Razumijem vrijednost SFkodova</button>
                 <div class="flex items-center mt-4">
-                    <input type="checkbox" id="ne-prikazuj-ponovo">
-                    <label for="ne-prikazuj-ponovo" class="ml-2 text-sm text-gray-300 cursor-pointer">Ne prikazuj ponovo</label>
+                    <input type="checkbox" id="ne-prikazuj-ponovno">
+                    <label for="ne-prikazuj-ponovno" class="ml-2 text-sm text-gray-300 cursor-pointer">Ne prikazuj ponovno</label>
                 </div>
             </div>
             <!-- ====== KRAJ IZMJENE ====== -->
@@ -1004,7 +1004,7 @@ html.light-mode .avatar-upload-button:hover i {
         <div class="popup-content">
             <button class="modal-close" aria-label="Zatvori">×</button>
             <h4>Upute za generiranje SFkoda</h4>
-            <p>Besplatnom registracijom dobili ste jedan SFkod, sa kojim imate pravo sudjelovanja u nagradnim igrama koje organizira kompanija. Prije svega potrebno je generirati odnosno izabrati brojeve svog SFkoda.</p>
+            <p>Besplatnom registracijom dobili ste jedan SFkod, s kojim imate pravo sudjelovanja u nagradnim igrama koje organizira kompanija. Prije svega potrebno je generirati odnosno izabrati brojeve svog SFkoda.</p>
             <ul>
                 <li>Kliknite na polje sa rednim brojem SFkoda, što će aktivirati generator kodova.</li>
                 <li>Ukoliko želite sami odabrati brojeve svog koda kliknite na <strong>KREIRAJ RUČNO</strong> ili na bilo koju strelicu „gore / dole“ što će vam omogućiti da kreirate SFkod sa vlastito odabranim brojevima.</li>
@@ -1122,7 +1122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 reader.onload = (e) => {
                     const imageUrl = e.target.result;
                     localStorage.setItem('sft21_avatar', imageUrl); // Spremi u localStorage
-                    loadAvatar(); // Ponovo učitaj avatar da se prikaže
+                    loadAvatar(); // ponovno učitaj avatar da se prikaže
                     closeAvatarModal();
                 };
                 reader.readAsDataURL(file);
@@ -1214,7 +1214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const razumijemButton = document.querySelector('.popup-button');
         if (razumijemButton) {
             razumijemButton.addEventListener('click', () => {
-                const nePrikazujCheckbox = document.getElementById('ne-prikazuj-ponovo');
+                const nePrikazujCheckbox = document.getElementById('ne-prikazuj-ponovno');
                 if (nePrikazujCheckbox && nePrikazujCheckbox.checked) {
                     localStorage.setItem('sfkod_vrijednost_popup_seen', 'true');
                 }
