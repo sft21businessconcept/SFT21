@@ -320,6 +320,21 @@ body.light-mode .hover-card-stable:hover {
     box-shadow: 0 0 30px rgba(106, 27, 154, 0.3);
 }
 
+body.light-mode .dropdown-menu {
+    background-color: #f1f5f9 !important; /* Svijetlo siva boja pozadine */
+    border-color: #e2e8f0 !important; /* Opcionalno: prilagodba boje okvira */
+}
+
+/* Stil za tekst linkova unutar padajućeg izbornika u light modu */
+body.light-mode .dropdown-menu a {
+    color: var(--primary-color) !important; /* Postavlja tekst na primarnu ljubičastu boju */
+}
+
+/* Opcionalno: Stil za hover efekt (kada pređete mišem preko linka) */
+body.light-mode .dropdown-menu a:hover {
+    background-color: rgba(106, 27, 154, 0.1) !important; /* Svijetlo ljubičasta pozadina na hover */
+}
+
 body.light-mode .nav-menu {
     background-color: #ffffff !important; /* Bijela pozadina */
     border-right-color: #e2e8f0 !important; /* Svijetlo siva granica, da se uklopi */
@@ -3664,65 +3679,6 @@ document.addEventListener('touchend', handleEnd);
         // --- KRAJ KODA ZA MOBILE DROPDOWN IZBORNIK ---
 </script>
 
-<!-- SCRIPT BLOK ZA WELCOME POPUP -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Selektori za elemente
-        const welcomePopup = document.getElementById('welcome-popup');
-        const popupOverlay = document.getElementById('popup-overlay');
-        const continueBtn = document.getElementById('welcome-popup-continue');
-        const closeBtn = welcomePopup.querySelector('.popup-close');
-        const body = document.body;
-
-        // Funkcija za zatvaranje
-        const closeWelcomePopup = () => {
-            if (welcomePopup) welcomePopup.style.display = 'none';
-            if (popupOverlay) popupOverlay.style.display = 'none';
-            if (body) body.classList.remove('overflow-hidden');
-        };
-
-        // Funkcija za otvaranje
-        const showWelcomePopup = () => {
-            if (welcomePopup && popupOverlay && body) {
-                popupOverlay.style.display = 'flex';
-                welcomePopup.style.display = 'block';
-                body.classList.add('overflow-hidden');
-            }
-        };
-
-        // Glavna logika
-        // Provjeri sessionStorage da li je popup već prikazan
-        if (!sessionStorage.getItem('sft21_welcome_shown')) {
-            showWelcomePopup();
-            // Postavi oznaku da je prikazan
-            sessionStorage.setItem('sft21_welcome_shown', 'true');
-        }
-
-        // Dodaj listenere za zatvaranje
-        if (continueBtn) {
-            continueBtn.addEventListener('click', closeWelcomePopup);
-        }
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeWelcomePopup);
-        }
-        // Zatvaranje klikom na pozadinu
-        if (popupOverlay) {
-            popupOverlay.addEventListener('click', (e) => {
-                if (e.target === popupOverlay) {
-                    // Pozovi globalnu funkciju za zatvaranje svih popupa
-                    // da bi se resetirale i druge forme ako su bile otvorene
-                    if (typeof window.closeAllPopups === 'function') {
-                        window.closeAllPopups();
-                    } else {
-                        // Fallback ako globalna funkcija ne postoji
-                        closeWelcomePopup();
-                    }
-                }
-            });
-        }
-    });
-</script>
-
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const mobileDropdownToggle = document.querySelector('.nav-menu .mobile-dropdown-toggle');
@@ -3755,9 +3711,7 @@ document.addEventListener('touchend', handleEnd);
 <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@2.5.2/dist/umd/i18nextHttpBackend.min.js"></script>
 <script src="js/main.js"></script>
 
-<!-- ======================================================= -->
-<!-- KOD ZA SCROLLSPY 
-<!-- ======================================================= -->
+<!-- KOD ZA SCROLLSPY -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -3902,97 +3856,152 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 <!--End of Tawk.to Script-->   
 
-<!-- SKRIPTA ZA PROMJENU JEZIKA U POPUPU -->
+<!-- ======================================================= -->
+<!-- ISPRAVLJENI I OBJEDINJENI SCRIPT ZA WELCOME POPUP I JEZIK -->
+<!-- ======================================================= -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Selektori za sve elemente popupa
+    const welcomePopup = document.getElementById('welcome-popup');
+    const popupOverlay = document.getElementById('popup-overlay');
+    const closeBtn = welcomePopup.querySelector('.popup-close');
+    const body = document.body;
     const langSwitcher = document.getElementById('popup-lang-switcher');
-    if (!langSwitcher) return;
-
     const popupTitle = document.getElementById('popup-title');
     const popupP1 = document.getElementById('popup-p1');
     const popupListContainer = document.getElementById('popup-list-container');
-    const continueBtn = document.getElementById('welcome-popup-continue');
-    
-    // Svi tekstovi za oba jezika
-    const texts = {
-        hr: {
-            title: '<strong>Poštovani korisnici…</strong>',
-            p1: 'S obzirom na činjenicu da nastavljamo poslovanje nakon prekida koji je trajao tri godine, svjesni da će se u toj situaciji pratiti svaki naš korak i sve što činimo, te kako bismo održali transparentnost uz iznošenje istine, pravih i relevantnih informacija, želimo napomenuti sljedeće;',
-            listHTML: `<ul style="list-style-type: disc; text-align: justify; padding-left: 20px; margin-bottom: 1rem;">
-                <li><span style="color: #39FF14;">Ovo je STATIČKA LINEARNA DEMO WEB STRANICA... dizajnirana je kao vizualni i informativni temelj za SFT21 poslovni koncept kompanije SFT21. Svrha stranice je na jasan i vizualno privlačan način informirati prvenstveno postojeće, ali i nove potencijalne članove o trenutnoj fazi razvoja, o pravilima novog poslovnog modela, kako bismo prikupili podatke o interesu za nastavak poslovanja i kupnji Licencnih paketa.</span></li>
-                <li><span style="color: #39FF14;">Stranica je razvijena koristeći moderne front-end tehnologije, s naglaskom na responzivnost i korisničko iskustvo. Izgrađena je na modernim tehnologijama kako bi se osiguralo da radi brzo i pouzdano na svim uređajima – od mobilnih telefona do stolnih računala. Iako nema tradicionalni backend i bazu podataka, funkcionalnost za obradu formi implementirana je putem Google Apps Scripta, koji služi kao jednostavan serverless backend za sigurno prikupljanje podataka.</span></li>
-                <li><span style="color: #39FF14;">Sve kontakt forme i forme za prijavu interesa sigurno su povezane sa sustavom za prikupljanje podataka, osiguravajući da se svaka prijava uredno zabilježi. Međutim, sustav za prikupljanje podataka putem KYC forme aktivan je, što znači da možete koristiti istoga kako biste vidjeli kako funkcionira, ali unos podataka (slika dokumenta i vlastita fotografija) u ovoj fazi, na ovim stranicama niti se sprema niti se bilježe u bazu podataka.</span></li>
-            </ul>
-            <p>S obzirom da nam je primarni cilj osigurati sredstva potrebna za izradu odnosno nadogradnju stranica kontrolne ploče (SFured), u ovoj fazi razvoja nije moguće uplatiti Startne pakete, već je moguće iskazati interes za kupnju Licencnih paketa.</p>
-            <p>Osim toga na stranici "Odluka o nastavku poslovanja" imate mogućnost vidjeti i proučiti opcije prema kojim ćete se izjasniti da li odustajete ili nastavljate poslovanje uz kupnju Licencnog paketa ili nastavljate bez kupnje Licencnog paketa. Odluka o nastavku poslovanja koju donesete na ovim stranicama informativne je prirode, dok ćete pravu odluku imati mogućnost donijeti neposredno prije početka poslovanja sukladno novom poslovnom modelu.</p>
-            <p>Važno je napomenuti, da vašom trenutnom odlukom na ovim stranicama, ukoliko se odlučite imate mogućnost odabrati Licencni paket, ali ga trenutno ne možete uplatiti. Po završetku stranice koja će biti povezana s platnim procesorima o mogućnosti uplate biti ćete pravovremeno obaviješteni.</p>
-            <p>Vaša odluka o nastavku poslovanja i kupnji Licencnog paketa na ovim stranicama, trebala bi nam biti pokazatelj s kojim brojem korisnika iz starog sistema možemo računati da nastavljaju dalje sa nama, kao i s iznosom sredstava na koji bismo mogli računati na osnovi iskazanog interesa za Licencne pakete.</p>
-            <p>Ova stranica treba poslužiti kako starim članovima da se izjasne o nastavku i kupnji Licencnih paketa, tako i novim potencijalnim partnerima ili novim članovima da iskažu svoj interes ukoliko žele kupiti Licencne pakete i/ili započeti poslovanje. Osim toga ista je pokazatelj u kojem smjeru idemo i kako bi u konačnici moglo sve izgledati.</p>
-            <p>Da li ćemo nastaviti sa dizajnom iz staroga sistema pa se prilagođavati istome, što nam je trenutno najjeftinija varijanta s obzirom na situaciju u kojom se nalazimo ili ćemo nastaviti sa novim predloženim dizajnom ili možda sa još boljim i naprednijim dizajnom i tehnologijama, pitanje je naših financijskih mogućnosti u datom trenutku.</p>
-            <p>Uglavnom, kao snažan temelj za SFT21 digitalnu platformu, ova demo stranica predstavlja kompletan vizualni dizajn i funkcionalnu strukturu. Služi kao prototip i predložak (front-end templating), optimiziran za buduću implementaciju novog i čistog skalabilnog JavaScript koda i integraciju s backendom.</p>
-            <p>Međutim, složit ćete se s nama, bez obzira na dizajn i “kozmetičke” promjene, najvažnije je da osiguramo sredstva neophodna za završetak i nadogradnju potrebnih softvera i aplikacija, kako bismo nastavili poslovanje.</p>
-            <p>Sukladno navedenom, vjerujemo da će mnogi među Vama prepoznati vrijednost, kvalitetu i moć poslovnog koncepta kojega smo započeli stvarati te da ćete nam se pridružiti u nastavku razvoja.</p>
-            <p><strong># VAŽNA NAPOMENA #</strong></p>
-            <p>S obzirom da se radi o demo stranici, prilikom upisivanja korisničkog imena i lozinke, možete upisati što god želite samo morate paziti da uneseni podaci zadovoljavaju slijedeća pravila;</p>
-            <p>•	KORISNIČKO IME: mora imati minimalno 4 znaka. Možete koristiti mala slova ili velika slova ili brojeve ili kombinaciju slova i brojeva.</p>
-            <p>•	LOZINKA: mora imati minimalno 7 ili maksimalno 21 znak. Lozinka mora sadržavati minimalno jedno malo slovo, jedno veliko slovo,  jedan broj i jedan poseban znak.</p>
-            <p><strong>Sukladno navedenom, možete upisati što god želite i izvršiti registraciju ili prijavu na demo stranicu, jer se ti podaci trenutno NE BILJEŽE i NE ULAZE U BAZU PODATAKA.</strong></p>`,
-            continueBtn: 'N A S T A V I'
-        },
-        en: {
-            title: '<strong>Dear Users…</strong>',
-            p1: 'Given that we are resuming business after a three-year hiatus, aware that our every step will be monitored, and to maintain transparency while providing truthful and relevant information, we wish to state the following:',
-            listHTML: `<ul style="list-style-type: disc; text-align: justify; padding-left: 20px; margin-bottom: 1rem;">
-                <li><span style="color: #39FF14;">This is a STATIC LINEAR DEMO WEBSITE... designed as a visual and informational foundation for the SFT21 Business Concept by SFT21 company. The site's purpose is to inform, in a clear and visually appealing way, primarily existing as well as new potential members about the current development phase and the rules of the new business model, in order to gather data on the interest in continuing the business and purchasing License Packages.</span></li>            
-                <li><span style="color: #39FF14;">The site is developed using modern front-end technologies, with an emphasis on responsiveness and user experience. It is built to ensure it runs quickly and reliably on all devices. Although it lacks a traditional backend and database, form processing functionality is implemented via Google Apps Script, serving as a simple serverless backend for secure data collection.</span></li>
-                <li><span style="color: #39FF14;">All contact and interest forms are securely linked to a data collection system, ensuring every submission is recorded. However, while the KYC form system is active for demonstration, data entered (document images and personal photos) on this site at this stage is not saved or recorded in any database.</span></li>
-            </ul>
-            <p>Since our primary goal is to secure the necessary funds to develop and upgrade the user dashboard (SFoffice), it is not possible to purchase Starter Packages at this stage; however, you can express interest in purchasing License Packages.</p>
-            <p>Furthermore, on the "Decision to Continue Business" page, you can review options to declare whether you wish to discontinue or continue business with or without the purchase of a License Package. The decision you make on this site is for informational purposes, while the final binding decision can be made just before the official business launch under the new model.</p>
-            <p>It is important to note that with your current decision on this site, you have the option to select a License Package, but you cannot pay for it at this time. Once the website is finalized and integrated with payment processors, you will be notified in a timely manner when payment is possible.</p>
-            <p>Your decision on this site to continue the business and purchase a License Package will serve as an indicator for us of how many users from the old system we can expect to continue with us, as well as the amount of funds we could anticipate based on the expressed interest in the License Packages.</p>
-            <p>This site serves both old members to declare their intentions and new potential partners or members to express their interest in purchasing License Packages and/or starting a business. It also demonstrates our future direction and the final look of the project.</p>
-            <p>Whether we will continue with the old design, adopt the new proposed design, or implement an even better one depends on our financial capabilities at the given moment.</p>
-            <p>"Overall, as a strong foundation for the SFT21 digital platform, this demo page presents a complete visual design and functional structure. It serves as a prototype and template (front-end templating), optimized for the future implementation of new and clean scalable JavaScript code and integration with the backend."</p>
-            <p>However, you will agree that regardless of design, the most important thing is to secure the necessary funds to complete the required software and applications to resume business.</p>
-            <p>Accordingly, we believe many of you will recognize the value, quality, and power of the business concept we have started creating and will join us in its continued development.</p>
-            <p><strong># IMPORTANT NOTE #</strong></p>
-            <p>Since this is a demo site, when entering your username and password, you can enter whatever you want, but you must make sure that the entered data meets the following rules;</p>
-            <p>• USERNAME: must have a minimum of 4 lowercase letters or a maximum of 21 characters. Which means that in addition to lowercase letters, you can also use uppercase letters, numbers or a combination of lowercase and uppercase letters and numbers.</p>
-            <p>• PASSWORD: must have a minimum of 7 or a maximum of 21 characters. The password must contain at least one lowercase letter, one uppercase letter, one number and one special character.</p>
-            <p><strong>Accordingly, you can enter whatever you want and register or log in to the demo site, because this data is currently NOT RECORDED and NOT ENTERED INTO THE DATABASE.</strong></p>`,
-            continueBtn: 'C O N T I N U E'
-        }
+    // Koristimo 'let' jer će se referenca na gumb mijenjati
+    let continueBtn = document.getElementById('welcome-popup-continue');
+
+    // 2. Funkcija za zatvaranje popupa
+    const closeWelcomePopup = () => {
+        if (welcomePopup) welcomePopup.style.display = 'none';
+        if (popupOverlay) popupOverlay.style.display = 'none';
+        if (body) body.classList.remove('overflow-hidden');
     };
 
-    let currentLang = 'hr'; // Početni jezik je hrvatski
-
-    langSwitcher.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        // Promijeni jezik
-        currentLang = (currentLang === 'hr') ? 'en' : 'hr';
-        
-        // Ažuriraj tekstove
-        popupTitle.innerHTML = texts[currentLang].title;
-        popupP1.innerHTML = texts[currentLang].p1;
-        popupListContainer.innerHTML = texts[currentLang].listHTML;
-        continueBtn.textContent = texts[currentLang].continueBtn;
-        
-        // Ažuriraj izgled switchera
-        const flagImg = langSwitcher.querySelector('img');
-        const langSpan = langSwitcher.querySelector('span');
-        
-        if (currentLang === 'en') {
-            flagImg.src = 'https://flagcdn.com/w20/hr.png';
-            flagImg.alt = 'Croatian Flag';
-            langSpan.textContent = 'HRV';
-        } else {
-            flagImg.src = 'https://flagcdn.com/w20/gb.png';
-            flagImg.alt = 'English Flag';
-            langSpan.textContent = 'ENG';
+    // 3. Glavna logika za prikaz popupa pri prvoj posjeti
+    if (!sessionStorage.getItem('sft21_welcome_shown')) {
+        if (welcomePopup && popupOverlay && body) {
+            popupOverlay.style.display = 'flex';
+            welcomePopup.style.display = 'block';
+            body.classList.add('overflow-hidden');
+            sessionStorage.setItem('sft21_welcome_shown', 'true');
         }
-    });
+    }
+
+    // 4. Listeneri za zatvaranje (na 'x', pozadinu i originalno na 'Nastavi')
+    if (closeBtn) closeBtn.addEventListener('click', closeWelcomePopup);
+    if (popupOverlay) {
+        popupOverlay.addEventListener('click', (e) => {
+            if (e.target === popupOverlay) closeWelcomePopup();
+        });
+    }
+    if (continueBtn) {
+        continueBtn.addEventListener('click', closeWelcomePopup);
+    }
+
+    // 5. Logika za promjenu jezika unutar popupa
+    if (langSwitcher && popupTitle && popupP1 && popupListContainer && continueBtn) {
+        const texts = {
+            hr: {
+                title: '<strong>Poštovani korisnici…</strong>',
+                p1: 'S obzirom na činjenicu da nastavljamo poslovanje nakon prekida koji je trajao tri godine, svjesni da će se u toj situaciji pratiti svaki naš korak i sve što činimo, te kako bismo održali transparentnost uz iznošenje istine, pravih i relevantnih informacija, želimo napomenuti sljedeće;',
+                listHTML: `<ul style="list-style-type: disc; text-align: justify; padding-left: 20px; margin-bottom: 1rem;">
+                    <li><span style="color: #39FF14;">Ovo je STATIČKA LINEARNA DEMO WEB STRANICA... dizajnirana je kao vizualni i informativni temelj za SFT21 poslovni koncept kompanije SFT21. Svrha stranice je na jasan i vizualno privlačan način informirati prvenstveno postojeće, ali i nove potencijalne članove o trenutnoj fazi razvoja, o pravilima novog poslovnog modela, kako bismo prikupili podatke o interesu za nastavak poslovanja i kupnji Licencnih paketa.</span></li>
+                    <li><span style="color: #39FF14;">Stranica je razvijena koristeći moderne front-end tehnologije, s naglaskom na responzivnost i korisničko iskustvo. Izgrađena je na modernim tehnologijama kako bi se osiguralo da radi brzo i pouzdano na svim uređajima – od mobilnih telefona do stolnih računala. Iako nema tradicionalni backend i bazu podataka, funkcionalnost za obradu formi implementirana je putem Google Apps Scripta, koji služi kao jednostavan serverless backend za sigurno prikupljanje podataka.</span></li>
+                    <li><span style="color: #39FF14;">Sve kontakt forme i forme za prijavu interesa sigurno su povezane sa sustavom za prikupljanje podataka, osiguravajući da se svaka prijava uredno zabilježi. Međutim, sustav za prikupljanje podataka putem KYC forme aktivan je, što znači da možete koristiti istoga kako biste vidjeli kako funkcionira, ali unos podataka (slika dokumenta i vlastita fotografija) u ovoj fazi, na ovim stranicama niti se sprema niti se bilježe u bazu podataka.</span></li>
+                </ul>
+                <p>S obzirom da nam je primarni cilj osigurati sredstva potrebna za izradu odnosno nadogradnju stranica kontrolne ploče (SFured), u ovoj fazi razvoja nije moguće uplatiti Startne pakete, već je moguće iskazati interes za kupnju Licencnih paketa.</p>
+                <p>Osim toga na stranici "Odluka o nastavku poslovanja" imate mogućnost vidjeti i proučiti opcije prema kojim ćete se izjasniti da li odustajete ili nastavljate poslovanje uz kupnju Licencnog paketa ili nastavljate bez kupnje Licencnog paketa. Odluka o nastavku poslovanja koju donesete na ovim stranicama informativne je prirode, dok ćete pravu odluku imati mogućnost donijeti neposredno prije početka poslovanja sukladno novom poslovnom modelu.</p>
+                <p>Važno je napomenuti, da vašom trenutnom odlukom na ovim stranicama, ukoliko se odlučite imate mogućnost odabrati Licencni paket, ali ga trenutno ne možete uplatiti. Po završetku stranice koja će biti povezana s platnim procesorima o mogućnosti uplate biti ćete pravovremeno obaviješteni.</p>
+                <p>Vaša odluka o nastavku poslovanja i kupnji Licencnog paketa na ovim stranicama, trebala bi nam biti pokazatelj s kojim brojem korisnika iz starog sistema možemo računati da nastavljaju dalje sa nama, kao i s iznosom sredstava na koji bismo mogli računati na osnovi iskazanog interesa za Licencne pakete.</p>
+                <p>Ova stranica treba poslužiti kako starim članovima da se izjasne o nastavku i kupnji Licencnih paketa, tako i novim potencijalnim partnerima ili novim članovima da iskažu svoj interes ukoliko žele kupiti Licencne pakete i/ili započeti poslovanje. Osim toga ista je pokazatelj u kojem smjeru idemo i kako bi u konačnici moglo sve izgledati.</p>
+                <p>Da li ćemo nastaviti sa dizajnom iz staroga sistema pa se prilagođavati istome, što nam je trenutno najjeftinija varijanta s obzirom na situaciju u kojom se nalazimo ili ćemo nastaviti sa novim predloženim dizajnom ili možda sa još boljim i naprednijim dizajnom i tehnologijama, pitanje je naših financijskih mogućnosti u datom trenutku.</p>
+                <p>Uglavnom, kao snažan temelj za SFT21 digitalnu platformu, ova demo stranica predstavlja kompletan vizualni dizajn i funkcionalnu strukturu. Služi kao prototip i predložak (front-end templating), optimiziran za buduću implementaciju novog i čistog skalabilnog JavaScript koda i integraciju s backendom.</p>
+                <p>Međutim, složit ćete se s nama, bez obzira na dizajn i “kozmetičke” promjene, najvažnije je da osiguramo sredstva neophodna za završetak i nadogradnju potrebnih softvera i aplikacija, kako bismo nastavili poslovanje.</p>
+                <p>Sukladno navedenom, vjerujemo da će mnogi među Vama prepoznati vrijednost, kvalitetu i moć poslovnog koncepta kojega smo započeli stvarati te da ćete nam se pridružiti u nastavku razvoja.</p>
+                <p><strong># VAŽNA NAPOMENA #</strong></p>
+                <p>S obzirom da se radi o demo stranici, prilikom upisivanja korisničkog imena i lozinke, možete upisati što god želite samo morate paziti da uneseni podaci zadovoljavaju slijedeća pravila;</p>
+                <p>•	KORISNIČKO IME: mora imati minimalno 4 znaka. Možete koristiti mala slova ili velika slova ili brojeve ili kombinaciju slova i brojeva.</p>
+                <p>•	LOZINKA: mora imati minimalno 7 ili maksimalno 21 znak. Lozinka mora sadržavati minimalno jedno malo slovo, jedno veliko slovo,  jedan broj i jedan poseban znak.</p>
+                <p><strong>Sukladno navedenom, možete upisati što god želite i izvršiti registraciju ili prijavu na demo stranicu, jer se ti podaci trenutno NE BILJEŽE i NE ULAZE U BAZU PODATAKA.</strong></p>`,
+                continueBtn: 'N A S T A V I'
+            },
+            en: {
+                title: '<strong>Dear Users…</strong>',
+                p1: 'Given that we are resuming business after a three-year hiatus, aware that our every step will be monitored, and to maintain transparency while providing truthful and relevant information, we wish to state the following:',
+                listHTML: `<ul style="list-style-type: disc; text-align: justify; padding-left: 20px; margin-bottom: 1rem;">
+                    <li><span style="color: #39FF14;">This is a STATIC LINEAR DEMO WEBSITE... designed as a visual and informational foundation for the SFT21 Business Concept by SFT21 company. The site's purpose is to inform, in a clear and visually appealing way, primarily existing as well as new potential members about the current development phase and the rules of the new business model, in order to gather data on the interest in continuing the business and purchasing License Packages.</span></li>            
+                    <li><span style="color: #39FF14;">The site is developed using modern front-end technologies, with an emphasis on responsiveness and user experience. It is built to ensure it runs quickly and reliably on all devices. Although it lacks a traditional backend and database, form processing functionality is implemented via Google Apps Script, serving as a simple serverless backend for secure data collection.</span></li>
+                    <li><span style="color: #39FF14;">All contact and interest forms are securely linked to a data collection system, ensuring every submission is recorded. However, while the KYC form system is active for demonstration, data entered (document images and personal photos) on this site at this stage is not saved or recorded in any database.</span></li>
+                </ul>
+                <p>Since our primary goal is to secure the necessary funds to develop and upgrade the user dashboard (SFoffice), it is not possible to purchase Starter Packages at this stage; however, you can express interest in purchasing License Packages.</p>
+                <p>Furthermore, on the "Decision to Continue Business" page, you can review options to declare whether you wish to discontinue or continue business with or without the purchase of a License Package. The decision you make on this site is for informational purposes, while the final binding decision can be made just before the official business launch under the new model.</p>
+                <p>It is important to note that with your current decision on this site, you have the option to select a License Package, but you cannot pay for it at this time. Once the website is finalized and integrated with payment processors, you will be notified in a timely manner when payment is possible.</p>
+                <p>Your decision on this site to continue the business and purchase a License Package will serve as an indicator for us of how many users from the old system we can expect to continue with us, as well as the amount of funds we could anticipate based on the expressed interest in the License Packages.</p>
+                <p>This site serves both old members to declare their intentions and new potential partners or members to express their interest in purchasing License Packages and/or starting a business. It also demonstrates our future direction and the final look of the project.</p>
+                <p>Whether we will continue with the old design, adopt the new proposed design, or implement an even better one depends on our financial capabilities at the given moment.</p>
+                <p>"Overall, as a strong foundation for the SFT21 digital platform, this demo page presents a complete visual design and functional structure. It serves as a prototype and template (front-end templating), optimized for the future implementation of new and clean scalable JavaScript code and integration with the backend."</p>
+                <p>However, you will agree that regardless of design, the most important thing is to secure the necessary funds to complete the required software and applications to resume business.</p>
+                <p>Accordingly, we believe many of you will recognize the value, quality, and power of the business concept we have started creating and will join us in its continued development.</p>
+                <p><strong># IMPORTANT NOTE #</strong></p>
+                <p>Since this is a demo site, when entering your username and password, you can enter whatever you want, but you must make sure that the entered data meets the following rules;</p>
+                <p>• USERNAME: must have a minimum of 4 lowercase letters or a maximum of 21 characters. Which means that in addition to lowercase letters, you can also use uppercase letters, numbers or a combination of lowercase and uppercase letters and numbers.</p>
+                <p>• PASSWORD: must have a minimum of 7 or a maximum of 21 characters. The password must contain at least one lowercase letter, one uppercase letter, one number and one special character.</p>
+                <p><strong>Accordingly, you can enter whatever you want and register or log in to the demo site, because this data is currently NOT RECORDED and NOT ENTERED INTO THE DATABASE.</strong></p>`,
+                continueBtn: 'C O N T I N U E'
+            }
+        };
+        
+        let currentLang = 'hr'; 
+
+        langSwitcher.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            currentLang = (currentLang === 'hr') ? 'en' : 'hr';
+            
+            // Ažuriranje tekstualnog sadržaja
+            popupTitle.innerHTML = texts[currentLang].title;
+            popupP1.innerHTML = texts[currentLang].p1;
+            popupListContainer.innerHTML = texts[currentLang].listHTML;
+
+            // --- ISPRAVLJENA LOGIKA ZA GUMB "NASTAVI" ---
+            // 1. Kloniraj gumb kako bi se uklonili svi prethodni listeneri
+            const newContinueBtn = continueBtn.cloneNode(true);
+            newContinueBtn.textContent = texts[currentLang].continueBtn; // Ažuriraj tekst na gumbu
+            
+            // 2. Zamijeni stari gumb novim u strukturi stranice
+            continueBtn.parentNode.replaceChild(newContinueBtn, continueBtn);
+            
+            // 3. AŽURIRAJ VARIJABLU da pokazuje na novi gumb! Ovo je ključan korak.
+            continueBtn = newContinueBtn;
+
+            // 4. Dodaj ispravnu funkcionalnost ovisno o jeziku
+            if (currentLang === 'en') {
+                continueBtn.addEventListener('click', () => {
+                    window.location.href = 'index_en.html';
+                });
+            } else {
+                continueBtn.addEventListener('click', closeWelcomePopup);
+            }
+            // ---------------------------------------------
+            
+            // Ažuriranje izgleda prebacivača jezika
+            const flagImg = langSwitcher.querySelector('img');
+            const langSpan = langSwitcher.querySelector('span');
+            
+            if (currentLang === 'en') {
+                flagImg.src = 'https://flagcdn.com/w20/hr.png';
+                flagImg.alt = 'Croatian Flag';
+                langSpan.textContent = 'HRV';
+            } else {
+                flagImg.src = 'https://flagcdn.com/w20/gb.png';
+                flagImg.alt = 'English Flag';
+                langSpan.textContent = 'ENG';
+            }
+        });
+    }
 });
 </script>
 
