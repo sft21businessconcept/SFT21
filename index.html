@@ -3854,7 +3854,36 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<!--End of Tawk.to Script-->   
+<!--End of Tawk.to Script-->  
+
+<!-- =================================================================== -->
+<!-- NOVI SCRIPT ZA AUTOMATSKO OTVARANJE FAQ PITANJA PREKO LINKA -->
+<!-- =================================================================== -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Čekamo da se stranica učita, a zatim provjeravamo URL
+    if (window.location.hash) {
+        // Uzimamo hash iz URL-a (npr. #faq-item-1)
+        const hash = window.location.hash;
+
+        // Pronalazimo točno taj accordion element po njegovom ID-u
+        const targetAccordionItem = document.querySelector(hash);
+
+        // Provjeravamo da li element postoji i da li već nije otvoren
+        if (targetAccordionItem && !targetAccordionItem.classList.contains('active')) {
+            // Pronalazimo zaglavlje (header) unutar tog elementa na koje treba kliknuti
+            const headerToClick = targetAccordionItem.querySelector('.accordion-header');
+            
+            if (headerToClick) {
+                console.log('Pronađen link za FAQ. Otvaram pitanje:', hash);
+                // Simuliramo klik na zaglavlje. Ovo će pokrenuti VAŠU postojeću
+                // animaciju otvaranja i skrolanja.
+                headerToClick.click();
+            }
+        }
+    }
+});
+</script>
 
 <!-- ======================================================= -->
 <!-- ISPRAVLJENI I OBJEDINJENI SCRIPT ZA WELCOME POPUP I JEZIK -->
