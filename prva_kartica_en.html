@@ -74,8 +74,7 @@
 
         .decision-content-box .highlighted-choice-title { font-size: clamp(1rem, 2vw, 1.3rem); color: var(--fluorescent-yellow); margin-top: 30px; margin-bottom: 20px; font-weight: bold; text-align: center; }
         .decision-content-box .highlighted-choice-title::before { content: "↪ "; color: var(--fluorescent-yellow); }
-        .decision-content-box .highlighted-choice-title::before { content: "↪ "; color: var(--fluorescent-yellow); }
-        .decision-content-box .highlighted-choice-title .arrow-span { color: var(--fluorescent-yellow);  margin-right: 8px; }       .decision-content-box .detailed-text p { margin-bottom: 15px; text-align: justify; color: white; }
+        .decision-content-box .detailed-text p { margin-bottom: 15px; text-align: justify; color: white; }
         .decision-content-box .detailed-text strong { color: var(--fluorescent-green); font-weight: bold; }
         .decision-content-box .detailed-text ul { list-style: none; padding-left: 0; margin-bottom: 15px; color: white; }
         .decision-content-box .detailed-text ul li { position: relative; margin-bottom: 10px; padding-left: 20px; text-align: justify;}
@@ -193,7 +192,7 @@
             <div class="intro-section">
                 <p>Given the changes in the business model and the distribution of funds,</p>
                 <p class="important">The franchise agreement you signed in the old system remains in effect until further notice.</p>
-                <p>However, before paying for the new Starter Package, you will sign the Annex to the Franchise Agreement.</p>
+                <p>However, before activating the "SPfree" starter package, you will sign the Annex to the Franchise Agreement.</p>
                 <p id="initialInvestmentInfo">Considering you started your business in the old system with 30 $ and have decided that;</p>
             </div>
             
@@ -201,14 +200,29 @@
                 YOU DO NOT WISH to purchase a License Package...
             </h2>
             <div class="detailed-text">
-                <p>... you will continue your business as an <strong>ACTIVE</strong> member, (<strong>SFstarter</strong> - if you have less than 1450 SFpoints, or <strong>SFfranchisee</strong> - if you have more than 1450 SFpoints), by opening a <strong>personal (PA) or business (BA)</strong> user account with the <strong>"SPfree"</strong> starter package.</p>
-                <p>During the first filling of positions in the SFalgorithm, your account will take a position according to the number of your <strong>personal</strong> or <strong>group SFpoints</strong> from the old system. Based on the payment of <span id="startAmountDisplay">30 $</span> for the Starter Package from the old system, you will receive <strong>60 personal SFpoints</strong> which will be transferred to the new system.</p>
-                <ul>
-                    <li><strong>Group SFpoints</strong> are obtained by adding the sum of the personal points of your direct and indirect members who are also continuing their business to your personal SFpoints. Accordingly, 50% of the total personal SFpoints of your direct members and 25% of the total personal SFpoints of their direct members (your indirect members) are added to your SFpoints. If you upgraded your account in the old system, the earnings from the reserve wallet are added to your SFpoints, such that for every 1 SFC, you get 1 SFb. If you had a certain amount of SFC in your wallet, that amount is also counted towards your SFpoints, with 1 SFC equaling 2 SFb.</li>
-                    <li>The <strong>Maximum Earnings Limit (MEL)</strong> that you can receive in one accounting period will be determined based on the number of your SFpoints.</li>
-                </ul>
-                <p>After your account takes its position in the SFalgorithm, you will continue according to the new business rules with the "SPfree" starter package and a newly determined MEL, which you can increase (up to a max of 2100 SFC) by paying for new subscription periods or by building your career through registering new members – SFfranchisees (up to a max of 100,000 SFC).</p>
-                <p>It is important to note that you have the RIGHT AND OPPORTUNITY to recommend the business opportunity of purchasing a License Package to others, and thus you are entitled to a 10% Referral Bonus, which in this case can be a maximum amount up to ten times the value of your starter package payment from the old system.</p>
+                <!-- ================== STANDARD TEXT ================== -->
+                <div id="standard-text-block">
+                    <p>... you will continue your business as an <strong>ACTIVE</strong> member, (<strong>SFstarter</strong> - if you have less than 1450 SFpoints, or <strong>SFfranchisee</strong> - if you have more than 1450 SFpoints), by opening a <strong>personal (PA) or business (BA)</strong> user account with the <strong>"SPfree"</strong> starter package.</p>
+                    <p>During the first filling of positions in the SFalgorithm, your account will take a position according to the number of your <strong>personal</strong> or <strong>group SFpoints</strong> from the old system. Based on the payment of <strong><span id="startAmountDisplay">30 $</span></strong> for the Starter Package from the old system, you will receive <strong><span id="sfPointsValue">60</span> personal SFpoints</strong> which will be transferred to the new system.</p>
+                    <ul>
+                        <li><strong>Group SFpoints</strong> are obtained by adding the sum of the personal points of your direct and indirect members who are also continuing their business to your personal SFpoints. Accordingly, 50% of the total personal SFpoints of your direct members and 25% of the total personal SFpoints of their direct members (your indirect members) are added to your SFpoints. If you upgraded your account in the old system, the earnings from the reserve wallet are added to your SFpoints, such that for every 1 SFC, you get 1 SFb. If you had a certain amount of SFC in your wallet, that amount is also counted towards your SFpoints, with 1 SFC equaling 2 SFb.</li>
+                        <li>The <strong>Maximum Earnings Limit (MEL)</strong> that you can receive in one accounting period will be determined based on the number of your SFpoints.</li>
+                    </ul>
+                    <p>After your account takes its position in the SFalgorithm, you will continue according to the new business rules with the "SPfree" starter package and a newly determined MEL, which you can increase (up to a max of 2100 SFC) by paying for new subscription periods or by building your career through registering new members – SFfranchisees (up to a max of 100,000 SFC).</p>
+                    <p>It is important to note that you have the RIGHT AND OPPORTUNITY to recommend the business opportunity of purchasing a License Package to others, and thus you are entitled to a 10% Referral Bonus, which in this case can be a maximum amount up to ten times the value of your starter package payment from the old system.</p>
+                </div>
+
+                <!-- ================== NEW TEXT FOR "LARGER AMOUNT" (HIDDEN BY DEFAULT) ================== -->
+                <div id="veci-iznos-text-block" style="display: none;">
+                    <p>... you will continue your business as an <strong>ACTIVE member - SFfranchisee</strong>, by simultaneously opening up to a maximum of 7 personal accounts or 6 personal and one business account with SPfree starter packages... upon prior agreement with the company.</p>
+                    <p>Based on the total amount invested from the old system, the number of SFpoints transferred to the new system will be determined.</p>
+                    <ul>
+                        <li><strong>Group SFpoints</strong> are obtained by adding the SFpoints from your direct and indirect members, who are also continuing their business, to your personal SFpoints. If you upgraded your account in the old system, the earnings from the reserve wallet are added to your SFpoints, such that for every 1 SFC, you get 1 SFb. If you had a certain amount of SFC in your wallet, that amount is also counted towards your SFpoints, with 1 SFC equaling 2 SFb.</li>
+                        <li>The <strong>Maximum Earnings Limit (MEL)</strong> that you can receive in one accounting period is <strong>2100 SFC on each opened account</strong>.</li>
+                    </ul>
+                    <p>After your accounts take their positions in the SFalgorithm, which are then <strong>permanently locked</strong>, you will continue according to the new business rules with the "SPfree" starter package, with a 2100 SFC MEL, which you can increase by building your career through registering new members – SFfranchisees (up to a max of 100,000 SFC).</p>
+                    <p>It is important to note that you have the RIGHT AND OPPORTUNITY to recommend the business opportunity of purchasing a License Package to others, and thus you are entitled to a 10% Referral Bonus, which in this case can be a maximum amount up to ten times the value of your starter package payment from the old system.</p>
+                </div>
             </div>
 
             <div class="confirm-button-container">
@@ -349,25 +363,39 @@
             const initialInvestmentInfo = document.getElementById('initialInvestmentInfo');
             const startAmountDisplay = document.getElementById('startAmountDisplay');
             let displayText = "30 $"; 
+
             if (paramIznos && paramValuta) {
                 if (paramIznos === 'veci' && paramValuta === 'iznos') {
-                     displayText = "a larger investment amount"; 
+                    displayText = "a larger investment amount";
+
+                    // Hide standard text and show text for "Larger Amount"
+                    const standardTextBlock = document.getElementById('standard-text-block');
+                    const veciIznosTextBlock = document.getElementById('veci-iznos-text-block');
+
+                    if (standardTextBlock) standardTextBlock.style.display = 'none';
+                    if (veciIznosTextBlock) veciIznosTextBlock.style.display = 'block';
+
                 } else {
+                    // Standard logic for other amounts
                     const currencySymbol = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
                     displayText = `${paramIznos} ${currencySymbol}`;
+                    
+                    if (startAmountDisplay) {
+                        startAmountDisplay.textContent = displayText;
+                        const investmentAmount = parseFloat(paramIznos) || 30;
+                        const sfPoints = investmentAmount * 2;
+                        const sfPointsSpan = document.getElementById('sfPointsValue');
+                        if (sfPointsSpan) {
+                            sfPointsSpan.textContent = sfPoints;
+                        }
+                    }
                 }
             }
+
             if (initialInvestmentInfo) {
                 initialInvestmentInfo.innerHTML = `Considering you started your business in the old system with <strong>${displayText}</strong> and have decided that;`;
             }
-            if (startAmountDisplay) {
-                if (paramIznos === 'veci' && paramValuta === 'iznos') {
-                    const parentParagraph = startAmountDisplay.closest('p');
-                    if (parentParagraph) parentParagraph.innerHTML = "Based on the total amount invested from the old system, the number of SFpoints transferred to the new system will be determined.";
-                } else {
-                     startAmountDisplay.textContent = displayText;
-                }
-            }
+            
             if (typeof gsap !== 'undefined') {
                 gsap.from('.decision-content-box', { duration: 1, y: 50, opacity: 0, ease: 'power3.out', delay: 0.3 });
                 gsap.from(['.main-congrats-title', '.intro-section > *', '.highlighted-choice-title', '.detailed-text > *', '.confirm-button-container'], 
