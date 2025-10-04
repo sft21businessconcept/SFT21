@@ -388,8 +388,8 @@
                     <li>dobivate <strong><span id="dynamicSfbPoints">60</span> SFbodova</strong> (SFb)</li>
                     <li>plus bodovi na osnovi zarade iz rezervnog novčanika, ukoliko ste ostvarili nadogradnju računa (1 SFC = 1 SFb)</li>
                     <li>plus bodovi na osnovi zarade iz novčanika, ukoliko ste imali istu u novčaniku (1 SFC = 2 SFb)</li>
-                    <li>plus 50% ukupnog zbroja osobnih SFb vaših direktnih članova</li>
-                    <li>plus 25% ukupnog zbroja osobnih SFb njihovih direktnih članova (vaši indirektni članovi)</li>
+                    <li>plus 50% iznosa uplaćenog startnog paketa od strane vaših direktnih članova (1 € = 1 SFb)</li>
+                    <li>plus 25% iznosa uplaćenog startnog paketa od strane vaših indirektnih članova (1 € = 1 SFb)</li>
                 </ul>
                 <p class="note-text" id="standardNoteText"><strong>Napomena:</strong><br>
                 Broj SFbodova vaših direktnih i indirektnih članova, priznaje vam se isključivo od onih članova koji nastavljaju poslovanje.</p>
@@ -416,15 +416,10 @@
                     <h2>Nastaviti poslovanje kao AKTIVAN član</h2>
                     <h3>(SFAlicenca)</h3>
                     <p class="choice-text">želim uplatiti Licencni paket</p>
-                    <div class="deduction-info">
-                        <p class="deduction-text">Iznos Licencnog paketa umanjuje vam se za</p>
-                        <p class="deduction-amount-display"><span class="dynamic-deduction-amount">30 €</span></p>
-                    </div>
-                    <p class="veci-iznos-card-specific-text hidden">(cijeli iznos investicije iz starog sistema pretvara vam se u Inicijalni paket)</p>
                     <p>Poslovanje nastavljate otvaranjem <strong>Licencnog</strong> računa sa <strong>SPfree</strong>,</p>
                     <p>Na osnovi zbroja SFbodova iz starog sistema sa brojem SFbodova dobivenih uplatom Licencnog paketa;</p>
                     <ul>
-                        <li>zauzimate poziciju u SFalgoritmu</li>
+                        <li>zauzimate zaključanu poziciju u SFalgoritmu</li>
                         <li>određuje vam se LIMIT maksimalne zarade (do max. 2100 SFC)</li>
                     </ul>
                 </div>
@@ -434,13 +429,8 @@
                     <h2>Nastaviti poslovanje kao PASIVAN član</h2>
                     <h3>(SFPlicenca)</h3>
                     <p class="choice-text">želim uplatiti Licencni paket</p>
-                    <div class="deduction-info">
-                        <p class="deduction-text">Iznos Licencnog paketa umanjuje vam se za</p>
-                        <p class="deduction-amount-display"><span class="dynamic-deduction-amount">30 €</span></p>
-                    </div>
-                    <p class="veci-iznos-card-specific-text hidden">(cijeli iznos investicije iz starog sistema pretvara vam se u Inicijalni paket)</p>
                     <p>Poslovanje nastavljate otvaranjem <strong>Licencnog </strong> računa bez startnog paketa,</p>
-                    <p>Na osnovi zbroja SFbodova iz starog sistema sa brojem SFbodova dobivenih ulaganjem u Licencni paket, zauzimate poziciju u SFalgoritmu.</p>
+                    <p>Na osnovi zbroja SFbodova iz starog sistema sa brojem SFbodova dobivenih ulaganjem u Licencni paket, zauzimate zaključanu poziciju u SFalgoritmu.</p>
                 </div>
 
                 <!-- Četvrta kartica -->
@@ -555,8 +545,8 @@
                                 <li>dobivate broj <strong>SFbodova</strong> (SFb) na osnovi veličine ukupno investiranog iznosa (1 € = 2 SFb)</li>
                                 <li>plus bodovi na osnovi zarade iz rezervnog novčanika, ukoliko ste ostvarili nadogradnju računa (1 SFC = 1 SFb)</li>
                                 <li>plus bodovi na osnovi zarade iz novčanika, ukoliko ste imali istu u novčaniku (1 SFC = 2 SFb)</li>
-                                <li>plus 50% ukupnog zbroja osobnih SFb vaših direktnih članova</li>
-                                <li>plus 25% ukupnog zbroja osobnih SFb njihovih direktnih članova (vaši indirektni članovi)</li>
+                                <li>plus 50% iznosa uplaćenog startnog paketa od strane vaših direktnih članova (1 € = 1 SFb)</li>
+                                <li>plus 25% iznosa uplaćenog startnog paketa od strane vaših indirektnih članova (1 € = 1 SFb)</li>
                             </ul>
                             <p class="note-text"><strong>Napomena:</strong> Broj SFbodova vaših direktnih i indirektnih članova, priznaje vam se isključivo od onih članova koji nastavljaju poslovanje.</p>
                         `;
@@ -566,7 +556,7 @@
                     veciIznosCardTexts.forEach(txt => txt.classList.remove('hidden'));
 
                     if (card1Sub) card1Sub.innerHTML = '(SFfranšizer)';
-                    if (card1Desc1) card1Desc1.innerHTML = 'Poslovanje nastavljate istovremenim otvaranjem, jednog ili više (max. 5) osobnih ili jednog poslovnog i više (max. 4) osobna računa sa SPfree, uz zahtjev za povrat preplaćenog iznosa.';
+                    if (card1Desc1) card1Desc1.innerHTML = 'Poslovanje nastavljate istovremenim otvaranjem, do maksimalno 7 osobnih ili 6 osobnih i jedan poslovni račun sa SPfree... uz prethodni dogovor sa kompanijom.';
                     if (card1Desc2) card1Desc2.classList.add('hidden');
                     if (card1List) card1List.classList.add('hidden');
                 
