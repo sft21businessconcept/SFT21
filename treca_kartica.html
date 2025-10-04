@@ -267,16 +267,13 @@
             </div>
             
             <h2 class="highlighted-choice-title">ŽELITE nastaviti kao PASIVAN član – SFPlicenca</h2>
-            
-            <div class="intro-section">
-                 <p id="dynamicInvestmentReductionInfo" class="important" style="font-size: 1.1em; margin-top: -10px; margin-bottom: 25px;"></p>
-            </div>
-            
+
             <div class="detailed-text">
                 <p>Poslovanje nastavljate kao <strong>PASIVAN</strong> član – <strong>SFPlicenca</strong>, otvaranjem <strong>Licencnog korisničkog računa bez startnog paketa</strong>, koji će kod prvog popunjavanja pozicija u SFalgoritmu zauzeti poziciju sukladno broju vaših <strong>osobnih</strong> odnosno <strong>grupnih SFbodova</strong> iz starog sistema.</p>
-                <p>Na osnovi uplate <strong><span class="dynamic-old-system-payment-amount"></span></strong> za Startni paket iz starog sistema dobivate <strong><span class="dynamic-old-system-sf-points"></span> osobnih SFbodova</strong> koji vam se prenose u novi sistem plus osobni bodovi koje dobivate ulaganjem u Licencni paket, s time da za svaki <strong>1 <span class="dynamic-investment-currency">€</span> dobivate 2 SFb</strong>.</p>
-                <p><span class="sf-bodovi-star">❖</span> <strong>Grupne SFbodove</strong> dobivate tako što će se Vašem broju osobnih SFbodova pridodati zbroj osobnih SFbodova vaših direktnih i indirektnih članova, koji isto tako nastavljaju poslovanje. Sukladno tome, vašem broju SFbodova dodaje se 50% ukupnog zbroja osobnih SFbodova vaših direktnih članova i 25% ukupnog zbroja osobnih SFbodova njihovih direktnih članova (vaši indirektni članovi). Ukoliko ste u starom sistemu ostvarili nadogradnju računa, ostvarena zarada iz rezervnog novčanika pridodaje se vašem broju SFbodova, na način da za svaki 1 SFC dobivate 1 SFb. Ako ste imali određeni iznos SFC u novčaniku taj vam se iznos također ubraja u broj vaših SFbodova, s time da za svaki 1 SFC dobivate 2 SFb.</p>
-                <p><span class="sf-bodovi-star">❖</span> <strong>Zaradu</strong> ostvarujete sukladno pravilima <strong>Licencnog ugovora</strong>, bez ikakvih radnih obaveza prema kompaniji, uz mogućnost da vlastitom odlukom kada poželite nadogradite svoj korisnički račun uplatom odabranog startnog paketa (SFAlicenca/starter ili SFAlicenca/franšizer) čime stičete mogućnost ostvarivanja dodatne zarade sukladno pravilima Franšiznog ugovora.</p>
+                <p>Na osnovi uplate <strong><span class="dynamic-old-system-payment-amount"></span></strong> za Startni paket iz starog sistema dobivate <strong><span class="dynamic-old-system-sf-points"></span> osobnih SFbodova</strong> koji vam se prenose u novi sistem plus osobni bodovi koje dobivate ulaganjem u Licencni paket, s time da za svaki <strong>1 € dobivate 2 SFb</strong>.</p>               
+                <p><span class="sf-bodovi-star">❖</span><strong>Grupne SFbodove</strong> dobivate tako što će se vašem broju osobnih SFbodova pridodati SFbodovi dobiveni od strane vaših direktnih i indirektnih članova, koji isto tako nastavljaju poslovanje.  Ukoliko ste u starom sistemu ostvarili nadogradnju računa, ostvarena zarada iz rezervnog novčanika pridodaje se vašem broju SFbodova, na način da za svaki 1 SFC dobivate 1 SFb. Ako ste imali određeni iznos SFC u novčaniku taj vam se iznos također ubraja u broj vaših SFbodova, s time da za svaki 1 SFC dobivate 2 SFb.</p>
+                <p><span class="sf-bodovi-star">❖</span> <strong>Zaključana pozicija</strong> u SFalgoritmu osigurava vaš korisnički račun, tako da ne može biti pomaknu od strane računa drugih korisnika, prilikom njihovog reseta računa.</p>
+                <p><span class="sf-bodovi-star">❖</span> <strong>Zaradu</strong> ostvarujete sukladno pravilima <strong>Licencnog ugovora</strong>, bez ikakvih radnih obaveza prema kompaniji, uz mogućnost da vlastitom odlukom kada poželite, besplatno nadogradite svoj korisnički račun čime stičete mogućnost ostvarivanja dodatne zarade sukladno pravilima Franšiznog ugovora.</p>
             </div>
             
             <div class="confirm-button-container">
@@ -493,7 +490,6 @@
             const sfbPoints = reductionAmount * 2;
             
             document.getElementById('dynamicStartPackageInfo').textContent = `${paramIznos} ${currencySymbol}`;
-            document.getElementById('dynamicInvestmentReductionInfo').textContent = `Iznos Licencnog paketa umanjuje vam se za ${reductionAmount} €.`;
             document.querySelectorAll('.dynamic-old-system-payment-amount').forEach(span => span.textContent = `${paramIznos} ${currencySymbol}`);
             document.querySelector('.dynamic-old-system-sf-points').textContent = sfbPoints;
             
