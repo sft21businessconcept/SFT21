@@ -197,7 +197,7 @@
             <div class="intro-section">
                 <p>S obzirom na promjene u načinu poslovanja i raspodjeli sredstava,</p>
                 <p class="important">Franšizni ugovor kojega ste potpisali u starom sistemu ostaje na snazi do daljnjega.</p>
-                <p>Međutim,  prije uplate novog Startnog paketa potpisati ćete Aneks Franšiznog ugovora.</p>
+                <p>Međutim, prije aktivacije "SPfree" startnog paketa potpisati ćete Aneks Franšiznog ugovora.</p>
                 <p id="initialInvestmentInfo">S obzirom da ste u starom sistemu započeli poslovanje sa 30 $ te kako ste odlučili da;</p>
             </div>
             
@@ -206,14 +206,29 @@
             </h2>
 
             <div class="detailed-text">
-                <p>... poslovanje nastavljate kao <strong>AKTIVAN</strong> član, (<strong>SFstarter</strong> - ako imate manje od 1450 SFbodova odnosno <strong>SFfranšizer</strong> - ako imate više od 1450 SFbodova), otvaranjem <strong>osobnog (OR) ili poslovnog (PR)</strong> korisničkog računa sa <strong>"SPfree"</strong> startnim paketom.</p>
-                <p>Kod prvog popunjavanja pozicija u SFalgoritmu vaš će račun zauzeti poziciju sukladno broju vaših <strong>osobnih</strong> odnosno <strong>grupnih SFbodova</strong> iz starog sistema. Na osnovi uplate <span id="startAmountDisplay">30 $</span> za Startni paket iz starog sistema dobivate <strong>60 osobnih SFbodova</strong> koji vam se prenose u novi sistem.</p>
-                <ul>
-                    <li><strong>Grupne SFbodove</strong> dobivate tako što će se Vašem broju osobnih SFbodova pridodati zbroj osobnih bodova vaših direktnih i indirektnih članova, koji isto tako nastavljaju poslovanje. Sukladno tome, vašem broju SFbodova dodaje se 50% ukupnog zbroja osobnih SFbodova vaših direktnih članova i 25% ukupnog zbroja osobnih SFbodova njihovih direktnih članova (vaši indirektni članovi). Ukoliko ste u starom sistemu ostvarili nadogradnju računa, ostvarena zarada iz rezervnog novčanika pridodaje se vašem broju SFbodova, na način da za svaki 1 SFC dobivate 1 SFb. Ako ste imali određeni iznos SFC u novčaniku taj vam se iznos također ubraja u broj vaših SFbodova, s time da za svaki 1 SFC dobivate 2 SFb.</li>
-                    <li><strong>Limit maksimalne zarade (LMZ)</strong> koji možete dobiti u jednom obračunskom periodu biti će vam određen prema broju SFbodova.</li>
-                </ul>
-                <p>Nakon zauzimanja pozicije vašeg računa u SFalgoritmu, nastavljate sukladno novim pravilima poslovanja sa "SPfree" startnim paketom uz novo određeni LMZ, koji možete povećavati (do max. 2100 SFC) uplatom novih pretplatničkih perioda ili izgradnjom karijere registracijom novih članova – SFfranšizera (do max. 100.000 SFC).</p>
-                <p>Važno je napomenuti da imate PRAVO I MOGUĆNOST preporučiti drugome poslovnu priliku kupovine Licencnog paketa, a samim time imate i pravo na 10% Bonus preporuke, koji u tom slučaju može biti maksimalno do iznosa koji je deset puta veći od iznosa vaše uplate startnog paketa iz starog sitema. </p>
+                <!-- ================== STANDARDNI TEKST ================== -->
+                <div id="standard-text-block">
+                    <p>... poslovanje nastavljate kao <strong>AKTIVAN</strong> član, (<strong>SFstarter</strong> - ako imate manje od 1450 SFbodova odnosno <strong>SFfranšizer</strong> - ako imate više od 1450 SFbodova), otvaranjem <strong>osobnog (OR) ili poslovnog (PR)</strong> korisničkog računa sa <strong>"SPfree"</strong> startnim paketom.</p>
+                    <p>Kod prvog popunjavanja pozicija u SFalgoritmu vaš će račun zauzeti poziciju sukladno broju vaših <strong>osobnih</strong> odnosno <strong>grupnih SFbodova</strong> iz starog sistema. Na osnovi uplate <strong><span id="startAmountDisplay">30 $</span></strong> za Startni paket iz starog sistema dobivate <strong><span id="sfPointsValue">60</span> osobnih SFbodova</strong> koji vam se prenose u novi sistem.</p>
+                    <ul>
+                        <li><strong>Grupne SFbodove</strong> dobivate tako što će se Vašem broju osobnih SFbodova pridodati zbroj osobnih bodova vaših direktnih i indirektnih članova, koji isto tako nastavljaju poslovanje. Sukladno tome, vašem broju SFbodova dodaje se 50% ukupnog zbroja osobnih SFbodova vaših direktnih članova i 25% ukupnog zbroja osobnih SFbodova njihovih direktnih članova (vaši indirektni članovi). Ukoliko ste u starom sistemu ostvarili nadogradnju računa, ostvarena zarada iz rezervnog novčanika pridodaje se vašem broju SFbodova, na način da za svaki 1 SFC dobivate 1 SFb. Ako ste imali određeni iznos SFC u novčaniku taj vam se iznos također ubraja u broj vaših SFbodova, s time da za svaki 1 SFC dobivate 2 SFb.</li>
+                        <li><strong>Limit maksimalne zarade (LMZ)</strong> koji možete dobiti u jednom obračunskom periodu biti će vam određen prema broju SFbodova.</li>
+                    </ul>
+                    <p>Nakon zauzimanja pozicije vašeg računa u SFalgoritmu, nastavljate sukladno novim pravilima poslovanja sa "SPfree" startnim paketom uz novo određeni LMZ, koji možete povećavati (do max. 2100 SFC) uplatom novih pretplatničkih perioda ili izgradnjom karijere registracijom novih članova – SFfranšizera (do max. 100.000 SFC).</p>
+                    <p>Važno je napomenuti da imate PRAVO I MOGUĆNOST preporučiti drugome poslovnu priliku kupovine Licencnog paketa, a samim time imate i pravo na 10% Bonus preporuke, koji u tom slučaju može biti maksimalno do iznosa koji je deset puta veći od iznosa vaše uplate startnog paketa iz starog sitema.</p>
+                </div>
+
+                <!-- ================== NOVI TEKST ZA "VEĆI IZNOS" (SKRIVEN PO DEFAULTU) ================== -->
+                <div id="veci-iznos-text-block" style="display: none;">
+                    <p>... poslovanje nastavljate kao <strong>AKTIVAN član - SFfranšizer</strong>, istovremenim otvaranjem do maksimalno 7 osobnih ili 6 osobnih i jedan poslovni račun sa SPfree startnim paketima... uz prethodni dogovor sa kompanijom.</p>
+                    <p>Na osnovi ukupno uloženog iznosa iz starog sistema određuje se broj SFbodova koji vam se prenose u novi sistem.</p>
+                    <ul>
+                        <li><strong>Grupne SFbodove</strong> dobivate tako što će se vašem broju osobnih SFbodova pridodati SFbodovi dobiveni od strane vaših direktnih i indirektnih članova, koji isto tako nastavljaju poslovanje. Ukoliko ste u starom sistemu ostvarili nadogradnju računa, ostvarena zarada iz rezervnog novčanika pridodaje se vašem broju SFbodova, na način da za svaki 1 SFC dobivate 1 SFb. Ako ste imali određeni iznos SFC u novčaniku taj vam se iznos također ubraja u broj vaših SFbodova, s time da za svaki 1 SFC dobivate 2 SFb.</li>
+                        <li><strong>Limit maksimalne zarade (LMZ)</strong> koji možete dobiti u jednom obračunskom periodu iznosi <strong>2100 SFC na svakom otvorenom računu</strong>.</li>
+                    </ul>
+                    <p>Nakon zauzimanja pozicija vaših računa u SFalgoritmu, koji se <strong>trajno zaključavaju</strong>, nastavljate sukladno novim pravilima poslovanja sa "SPfree" startnim paketom, uz 2100 SFC LMZ, koji možete povećavati izgradnjom karijere registracijom novih članova – SFfranšizera (do max. 100.000 SFC).</p>
+                    <p>Važno je napomenuti da imate PRAVO I MOGUĆNOST preporučiti drugome poslovnu priliku kupovine Licencnog paketa, a samim time imate i pravo na 10% Bonus preporuke, koji u tom slučaju može biti maksimalno do iznosa koji je deset puta veći od iznosa vaše uplate startnog paketa iz starog sitema.</p>
+                </div>
             </div>
 
             <div class="confirm-button-container">
@@ -354,33 +369,44 @@
             const initialInvestmentInfo = document.getElementById('initialInvestmentInfo');
             const startAmountDisplay = document.getElementById('startAmountDisplay');
             let displayText = "30 $"; 
+
             if (paramIznos && paramValuta) {
                 if (paramIznos === 'veci' && paramValuta === 'iznos') {
-                     displayText = "investicijom većeg iznosa"; 
+                    displayText = "investicijom većeg iznosa";
+                    
+                    // Sakrij standardni tekst i prikaži tekst za "Veći iznos"
+                    const standardTextBlock = document.getElementById('standard-text-block');
+                    const veciIznosTextBlock = document.getElementById('veci-iznos-text-block');
+                    
+                    if (standardTextBlock) standardTextBlock.style.display = 'none';
+                    if (veciIznosTextBlock) veciIznosTextBlock.style.display = 'block';
+
                 } else {
+                    // Standardna logika za ostale iznose
                     const currencySymbol = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
                     displayText = `${paramIznos} ${currencySymbol}`;
+                    
+                    if (startAmountDisplay) {
+                        startAmountDisplay.textContent = displayText;
+                        const investmentAmount = parseFloat(paramIznos) || 30;
+                        const sfPoints = investmentAmount * 2;
+                        const sfPointsSpan = document.getElementById('sfPointsValue');
+                        if (sfPointsSpan) {
+                            sfPointsSpan.textContent = sfPoints;
+                        }
+                    }
                 }
             }
+
             if (initialInvestmentInfo) {
                 initialInvestmentInfo.innerHTML = `S obzirom da ste u starom sistemu započeli poslovanje sa <strong>${displayText}</strong> te kako ste odlučili da;`;
             }
-            if (startAmountDisplay) {
-                if (paramIznos === 'veci' && paramValuta === 'iznos') {
-                    const parentParagraph = startAmountDisplay.closest('p');
-                    if (parentParagraph) parentParagraph.innerHTML = "Na osnovi ukupno uloženog iznosa iz starog sistema određuje se broj SFbodova koji vam se prenose u novi sistem.";
-                } else {
-                     startAmountDisplay.textContent = displayText;
-                }
-            }
+
             if (typeof gsap !== 'undefined') {
                 gsap.from('.decision-content-box', { duration: 1, y: 50, opacity: 0, ease: 'power3.out', delay: 0.3 });
                 gsap.from(['.main-congrats-title', '.intro-section > *', '.highlighted-choice-title', '.detailed-text > *', '.confirm-button-container'], 
                     { duration: 0.7, opacity: 0, y: 20, stagger: 0.1, ease: 'power2.out', delay: 0.6 }
                 );
-                gsap.utils.toArray(".glow").forEach((glow) => {
-                    gsap.to(glow, { opacity: gsap.utils.random(0.15, 0.4), scale: gsap.utils.random(0.8, 1.3), duration: gsap.utils.random(6, 12), ease: "sine.inOut", repeat: -1, yoyo: true, delay: gsap.utils.random(0, 4) });
-                });
             }
         });
     </script>
