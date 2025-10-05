@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SFT21 - Option Details</title>
 
-    <!-- ============================================= -->
-    <!-- UNIVERSAL THEME INITIALIZATION SCRIPT -->
-    <!-- ============================================= -->
     <script>
         function applySft21Theme() {
             try {
@@ -329,36 +326,47 @@
             }
         }
 
-        .animated-background {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; background-color: var(--background-dark);
-        }
-        #network-canvas {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-        }
-        .bg-dots {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px; opacity: 0.5;
-        }
-        .glow {
-            position: absolute; border-radius: 50%;
-            background: radial-gradient(circle, rgba(171, 71, 188, 0.2) 0%, rgba(171, 71, 188, 0) 70%);
-            filter: blur(50px); pointer-events: none;
+        #network-canvas { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: #1d012e; 
         }
 
         .fixed-header-container a.logo-container {
-    text-decoration: none ; 
-}
+            text-decoration: none !important;
+        }
+        .fixed-header-container a.logo-container::after {
+            display: none !important;
+            content: none !important;
+        }
 
-.fixed-header-container a.logo-container::after {
-    display: none ;
-    content: none ;
-}
-
+        /* --- STILOVI ZA GUMB - DODANO --- */
+        .calculator-button-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+        .calculator-button {
+            font-family: 'Orbitron', sans-serif;
+            background-color: transparent;
+            border: 2px solid var(--fluorescent-green);
+            color: var(--fluorescent-green);
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 10px 0 rgba(128, 255, 0, 0.3);
+        }
+        .calculator-button:hover {
+            background-color: var(--fluorescent-green);
+            color: var(--background-dark);
+            box-shadow: 0 0 20px 0 rgba(128, 255, 0, 0.6);
+            transform: scale(1.05);
+        }
     </style>
-    <!-- ============================================= -->
-    <!-- STYLES FOR LIGHT MODE -->
-    <!-- ============================================= -->
     <style>
         html.light-mode body { background-color: #f8fafc !important; color: #334155 !important; }
         html.light-mode .fixed-header-container { background-color: white !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important; }
@@ -378,8 +386,17 @@
         html.light-mode .option-card p, html.light-mode .option-card ul { color: #475569 !important; }
         html.light-mode .option-card ul li::before { color: var(--primary-color) !important; }
         html.light-mode .option-card:hover { box-shadow: 0 8px 25px rgba(106, 27, 154, 0.15) !important; }
-        html.light-mode .animated-background { background-color: transparent !important; }
         html.light-mode #network-canvas { background-color: transparent !important; }
+        /* --- LIGHT MODE STILOVI ZA GUMB - DODANO --- */
+        html.light-mode .calculator-button {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: none;
+        }
+        html.light-mode .calculator-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -398,8 +415,9 @@
     </div>
 
     <button class="option-close-button" id="closeOptionPageButton" title="Back to amount selection">×</button>
-
-    <h1 class="page-main-title">You started your business by <br>purchasing a Starter Package of <span id="dynamicPageHeaderAmount">30 $</span></h1>
+    
+    <div class="page-wrapper">
+        <h1 class="page-main-title">You started your business by purchasing a Starter Package of <span id="dynamicPageHeaderAmount">30 $</span></h1>
 
         <div class="content-area">
             <div class="initial-info" id="initialInfoContent">
@@ -412,8 +430,14 @@
                 </ul>
                 <p class="note-text" id="standardNoteText"><strong>Note:</strong><br>
                 The number of SFpoints from your direct and indirect members is only credited from those members who continue their business.</p>
-                <h2 class="options-title-separator">YOUR OPTIONS</h2>
             </div>
+            
+            <!-- === HTML ZA GUMB - DODANO OVDJE === -->
+            <div class="calculator-button-container">
+                <a href="izracun_bodova_en.html" class="calculator-button">SFpoints Calculator</a>
+            </div>
+            
+            <h2 class="options-title-separator">YOUR OPTIONS</h2>
 
             <div class="options-container">
                 <!-- First card -->
@@ -584,7 +608,7 @@
                     const currencySymbolLarge = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
                     displayText = `${paramIznos} ${currencySymbolLarge}`;
                     
-                    if (pageMainTitle) pageMainTitle.innerHTML = `You started your business by <br>purchasing a Starter Package of <span id="dynamicPageHeaderAmount">${displayText}</span>`;
+                    if (pageMainTitle) pageMainTitle.innerHTML = `You started your business by purchasing a Starter Package of <span id="dynamicPageHeaderAmount">${displayText}</span>`;
                     
                     deductionAmountSpans.forEach(span => span.textContent = `${paramIznos} €`);
 
@@ -605,11 +629,11 @@
                     const currencySymbolLo = paramValuta.toLowerCase() === 'usd' || paramValuta === '$' ? '$' : '€';
                     displayText = `${paramIznos} ${currencySymbolLo}`;
 
-                    if (pageMainTitle) pageMainTitle.innerHTML = `You started your business by <br>purchasing a Starter Package of <span id="dynamicPageHeaderAmount">${displayText}</span>`;
+                    if (pageMainTitle) pageMainTitle.innerHTML = `You started your business by purchasing a Starter Package of <span id="dynamicPageHeaderAmount">${displayText}</span>`;
                     deductionAmountSpans.forEach(span => span.textContent = `${paramIznos} €`);
                 }
             } else { 
-                 if (pageMainTitle) pageMainTitle.innerHTML = `You started your business by <br>purchasing a Starter Package of <span id="dynamicPageHeaderAmount">${displayText}</span>`;
+                 if (pageMainTitle) pageMainTitle.innerHTML = `You started your business by purchasing a Starter Package of <span id="dynamicPageHeaderAmount">${displayText}</span>`;
                  deductionAmountSpans.forEach(span => span.textContent = "30 €");
             }
 
@@ -703,7 +727,7 @@
 
         window.setAnimationTheme = (theme) => {
             currentOptions = (theme === 'light') ? lightOptions : darkOptions;
-            initParticles();
+            if(canvas.width > 0) initParticles();
         };
         
         resizeCanvas();
