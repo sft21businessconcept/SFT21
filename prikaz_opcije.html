@@ -360,6 +360,42 @@
         html.light-mode .option-card:hover { box-shadow: 0 8px 25px rgba(106, 27, 154, 0.15) !important; }
         html.light-mode .animated-background { background-color: transparent !important; }
         html.light-mode #network-canvas { background-color: transparent !important; }
+        .calculator-button-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+        .calculator-button {
+            font-family: 'Orbitron', sans-serif;
+            background-color: transparent;
+            border: 2px solid var(--fluorescent-green);
+            color: var(--fluorescent-green);
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 10px 0 rgba(128, 255, 0, 0.3);
+        }
+        .calculator-button:hover {
+            background-color: var(--fluorescent-green);
+            color: var(--background-dark);
+            box-shadow: 0 0 20px 0 rgba(128, 255, 0, 0.6);
+            transform: scale(1.05);
+        }
+        html.light-mode .calculator-button {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: none;
+        }
+        html.light-mode .calculator-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -393,6 +429,9 @@
                 </ul>
                 <p class="note-text" id="standardNoteText"><strong>Napomena:</strong><br>
                 Broj SFbodova vaših direktnih i indirektnih članova, priznaje vam se isključivo od onih članova koji nastavljaju poslovanje.</p>
+            </div>
+            <div class="calculator-button-container">
+                <a href="izracun_bodova.html" class="calculator-button">Izračun SFbodova</a>
             </div>
 
             <h2 class="options-title-separator">VAŠE MOGUĆNOSTI</h2>
