@@ -202,20 +202,20 @@
                     </div>
                 </div>
                 <div class="button-group">
-                    <button class="calc-button" data-value="55">55 $</button>
-                    <button class="calc-button" data-value="105">105 $</button>
-                    <button class="calc-button" data-value="205">205 $</button>
-                    <button class="calc-button" data-value="455">455 $</button>
-                    <button class="calc-button" data-value="955">955 $</button>
-                    <button class="calc-button" data-value="1955">1955 $</button>
+                    <button class="calc-button" data-value="55">25 $</button>
+                    <button class="calc-button" data-value="105">50 $</button>
+                    <button class="calc-button" data-value="205">100 $</button>
+                    <button class="calc-button" data-value="455">250 $</button>
+                    <button class="calc-button" data-value="955">500 $</button>
+                    <button class="calc-button" data-value="1955">1000 $</button>
                 </div>
                 <div class="button-group">
-                    <button class="calc-button" data-value="77">77 €</button>
-                    <button class="calc-button" data-value="145">145 €</button>
-                    <button class="calc-button" data-value="285">285 €</button>
-                    <button class="calc-button" data-value="630">630 €</button>
-                    <button class="calc-button" data-value="1325">1325 €</button>
-                    <button class="calc-button" data-value="2710">2710 €</button>
+                    <button class="calc-button" data-value="77">35 €</button>
+                    <button class="calc-button" data-value="145">70 €</button>
+                    <button class="calc-button" data-value="285">139 €</button>
+                    <button class="calc-button" data-value="630">346 €</button>
+                    <button class="calc-button" data-value="1325">693 €</button>
+                    <button class="calc-button" data-value="2710">1386 €</button>
                 </div>
             </div>
 
@@ -440,7 +440,17 @@
 
             if (firstVisibleButton) {
                 const firstButtonValue = parseFloat(firstVisibleButton.dataset.value);
-                const maxValue = firstButtonValue - startValue - 1;
+                
+                let maxValue;
+                const initialEuroMaxValues = {
+                    '77': 69, '145': 138, '285': 345, '630': 692, '1325': 1385
+                };
+
+                if (startCurrency === '€' && initialEuroMaxValues[startValue]) {
+                    maxValue = initialEuroMaxValues[startValue];
+                } else {
+                    maxValue = firstButtonValue - startValue - 1;
+                }
                 
                 if (maxValue < 0) return;
 
@@ -546,8 +556,11 @@
                 const isLastButton = !nextButton || !nextButton.classList.contains('calc-button');
 
                 if (!isLastButton) {
-                    const nextValue = parseFloat(nextButton.dataset.value);
-                    if (!isNaN(nextValue)) { maxValue = (nextValue - reserveBaseValue) - 1; }
+                    const nextValue = parseFloat(nextButton.textContent);
+                    
+                    if (!isNaN(nextValue)) { 
+                        maxValue = nextValue - 1; 
+                    }
                 
                     const inputContainer = document.createElement('span');
                     inputContainer.className = 'manual-reserve-input-container';
