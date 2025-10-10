@@ -202,20 +202,20 @@
                     </div>
                 </div>
                 <div class="button-group">
-                    <button class="calc-button" data-value="55">55 $</button>
-                    <button class="calc-button" data-value="105">105 $</button>
-                    <button class="calc-button" data-value="205">205 $</button>
-                    <button class="calc-button" data-value="455">455 $</button>
-                    <button class="calc-button" data-value="955">955 $</button>
-                    <button class="calc-button" data-value="1955">1955 $</button>
+                    <button class="calc-button" data-value="55">25 $</button>
+                    <button class="calc-button" data-value="105">50 $</button>
+                    <button class="calc-button" data-value="205">100 $</button>
+                    <button class="calc-button" data-value="455">250 $</button>
+                    <button class="calc-button" data-value="955">500 $</button>
+                    <button class="calc-button" data-value="1955">1000 $</button>
                 </div>
                 <div class="button-group">
-                    <button class="calc-button" data-value="77">77 €</button>
-                    <button class="calc-button" data-value="145">145 €</button>
-                    <button class="calc-button" data-value="285">285 €</button>
-                    <button class="calc-button" data-value="630">630 €</button>
-                    <button class="calc-button" data-value="1325">1325 €</button>
-                    <button class="calc-button" data-value="2710">2710 €</button>
+                    <button class="calc-button" data-value="77">35 €</button>
+                    <button class="calc-button" data-value="145">70 €</button>
+                    <button class="calc-button" data-value="285">139 €</button>
+                    <button class="calc-button" data-value="630">346 €</button>
+                    <button class="calc-button" data-value="1325">693 €</button>
+                    <button class="calc-button" data-value="2710">1386 €</button>
                 </div>
             </div>
 
@@ -381,8 +381,6 @@
             document.getElementById('limitSfc').value = finalLimit;
         };
 
-        // --- KONAČNI ISPRAVAK JE OVDJE ---
-        // Ova funkcija sada ispravno računa SFbodove kao razliku ili kao direktan unos.
         const calculateReserveSfb = () => {
             const activeManualInput = document.querySelector('.manual-reserve-input, .initial-reserve-input-container input');
             const manualValue = activeManualInput ? (parseFloat(activeManualInput.value) || 0) : 0;
@@ -390,16 +388,11 @@
             let sfbPoints = 0;
 
             if (reserveBaseValue > 0) {
-                // Slučaj 1: Odabran je osnovni gumb (npr. 55$, 105$).
-                // SFbodovi su razlika između te vrijednosti i startnog paketa, plus eventualna ručna doplata.
                 sfbPoints = (reserveBaseValue - currentStartPackageValue) + manualValue;
             } else {
-                // Slučaj 2: Nije odabran osnovni gumb.
-                // Korisnik unosi iznos u početno polje. SFbodovi su jednaki tom iznosu.
                 sfbPoints = manualValue;
             }
             
-            // Osiguravamo da bodovi ne budu negativni i upisujemo ih u polje.
             document.getElementById('reserveWalletSfb').value = Math.max(0, sfbPoints).toFixed(2);
             calculateTotal();
         };
@@ -448,7 +441,17 @@
 
             if (firstVisibleButton) {
                 const firstButtonValue = parseFloat(firstVisibleButton.dataset.value);
-                const maxValue = firstButtonValue - startValue - 1;
+                
+                let maxValue;
+                const initialEuroMaxValues = {
+                    '77': 69, '145': 138, '285': 345, '630': 692, '1325': 1385
+                };
+
+                if (startCurrency === '€' && initialEuroMaxValues[startValue]) {
+                    maxValue = initialEuroMaxValues[startValue];
+                } else {
+                    maxValue = firstButtonValue - startValue - 1;
+                }
                 
                 if (maxValue < 0) return;
 
@@ -468,7 +471,7 @@
                         enteredValue = maxValue;
                         manualReserveInput.value = maxValue;
                     }
-                    reserveBaseValue = 0; // Resetiramo bazu jer se koristi samo ručni unos
+                    reserveBaseValue = 0;
                     calculateReserveSfb(); 
                 });
                 
@@ -529,7 +532,6 @@
                 }
 
                 updateReserveWalletVisibility(currentStartPackageValue, currency);
-                // Ponovno izračunaj rezervu u slučaju da je već nešto bilo odabrano
                 calculateReserveSfb();
                 calculateTotal();
             });
@@ -539,7 +541,6 @@
             currentStartPackageValue = value;
             startPackageSection.querySelector('.sfb-output').value = (value * 2).toFixed(2);
             updateReserveWalletVisibility(currentStartPackageValue, '€');
-            // Ponovno izračunaj rezervu u slučaju da je već nešto bilo odabrano
             calculateReserveSfb();
             calculateTotal();
         });
@@ -556,8 +557,14 @@
                 const isLastButton = !nextButton || !nextButton.classList.contains('calc-button');
 
                 if (!isLastButton) {
-                    const nextValue = parseFloat(nextButton.dataset.value);
-                    if (!isNaN(nextValue)) { maxValue = (nextValue - reserveBaseValue) - 1; }
+                    // === POČETAK KONAČNOG ISPRAVKA ===
+                    // Čitamo VIDLJIVI TEKST sa sljedećeg gumba, a ne njegov 'data-value'.
+                    const nextValue = parseFloat(nextButton.textContent); 
+                    
+                    if (!isNaN(nextValue)) { 
+                        maxValue = nextValue - 1; 
+                    }
+                    // === KRAJ KONAČNOG ISPRAVKA ===
                 
                     const inputContainer = document.createElement('span');
                     inputContainer.className = 'manual-reserve-input-container';
