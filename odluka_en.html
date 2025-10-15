@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFT21 - Decision: Passive Member with Investment</title>
-    
+    <title>Decision - SFT21 Business Concept</title>
+
     <!-- ============================================= -->
     <!-- UNIVERSAL THEME INITIALIZATION SCRIPT -->
     <!-- ============================================= -->
@@ -32,532 +32,372 @@
         });
     </script>
 
-    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Arial+Narrow&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 
     <style>
         :root {
-            --primary-color: #6a1b9a; 
-            --secondary-color: #ab47bc; 
-            --accent-color: #ff00ff; 
-            --fluorescent-green: #80ff00; 
-            --fluorescent-yellow: #ccff00;
-            --text-color: #e5e7eb; 
-            --background-dark: #0d0118; 
-            --card-background: rgba(106, 27, 154, 0.1); 
-            --card-border: rgba(171, 71, 188, 0.3); 
-            --button-confirm-bg: #c0392b; 
-            --button-confirm-hover-bg: #e74c3c;
-            --warning-red: #c0392b;
+            --primary-color: #6a1b9a;
+            --secondary-color: #ab47bc;
+            --accent-color: #ff00ff;
+            --fluorescent-green: #80ff00;
+            --text-color: #e5e7eb;
+            --background-dark: #0d0118;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body {
-            width: 100%; min-height: 100vh; overflow-x: hidden; overflow-y: auto;
-            background-color: var(--background-dark); color: var(--text-color);
-            font-family: 'Arial Narrow', Arial, sans-serif; 
-        }
-
-        .page-wrapper { display: flex; flex-direction: column; align-items: center; padding-bottom: 40px; min-height: 100vh; width: 100%; }
-        .fixed-header-container { position: fixed; top: 0; left: 0; width: 100%; z-index: 500; background-color: var(--primary-color); box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .fixed-header-container .header-content { display: flex; align-items: center; justify-content: center; position: relative; height: 3.5rem; padding-left: 1.5rem; padding-right: 4rem; max-width: 100%; margin: 0 auto; }
-        .fixed-header-container .header-title { font-family: 'Arial Narrow', Arial, sans-serif; font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--fluorescent-green); font-weight: bold; text-align: center; text-transform: uppercase; }
-        .page-close-button { position: absolute; top: 50%; right: 1rem; transform: translateY(-50%); font-size: 2.2rem; color: var(--fluorescent-green); background: none; border: none; cursor: pointer; transition: color 0.3s ease, transform 0.2s ease; line-height: 1; padding: 5px; }
-        .page-close-button:hover { color: white; transform: scale(1.1) translateY(-50%); }
-
-        .decision-content-box {
-            background-color: var(--card-background); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border); color: var(--text-color); width: 90%; max-width: 900px; 
-            margin-top: calc(3.5rem + 30px); padding: clamp(20px, 4vw, 40px); border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); font-size: clamp(0.9rem, 1.8vw, 1.05rem); line-height: 1.65;
-        }
-        .decision-content-box .main-greeting {
-            font-family: 'Arial Narrow', Arial, sans-serif;
-            font-size: clamp(1.1rem, 2.2vw, 1.4rem);
-            color: white; text-align: center; margin-bottom: 25px; font-weight: bold; text-transform: uppercase;
-        }
-        .intro-section { text-align: center; } 
-        .intro-section p { color: var(--fluorescent-yellow); margin-bottom: 12px; font-size: 1em; }
-        .intro-section p.important, .intro-section p strong { font-weight: bold; color: var(--fluorescent-yellow); }
-        .decision-content-box .highlighted-choice-title { font-size: clamp(1rem, 2vw, 1.3rem); color: var(--fluorescent-yellow); margin-top: 30px; margin-bottom: 20px; font-weight: bold; text-align: center; }
-        .decision-content-box .highlighted-choice-title::before { content: "↪ "; color: var(--fluorescent-yellow); }
-        .decision-content-box .detailed-text p { margin-bottom: 15px; text-align: justify; color: white; }
-        .decision-content-box .detailed-text strong, .decision-content-box .detailed-text b { color: var(--fluorescent-green); font-weight: bold; }
-        .decision-content-box .detailed-text .sf-bodovi-star { color:  white; font-weight: bold; font-size: 1.1em; margin-right: 5px; }
-        .confirm-button-container { text-align: center; margin-top: 35px; }
-        .confirm-main-page-button { background-color: var(--button-confirm-bg); color: white; padding: 12px 30px; border: none; border-radius: 5px; font-family: 'Arial Narrow', Arial, sans-serif; font-size: clamp(1rem, 2vw, 1.2rem); font-weight: bold; text-transform: uppercase; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2), 0 0 15px rgba(194, 0, 0, 0.2); }
-        .confirm-main-page-button:hover { background-color: var(--button-confirm-hover-bg); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 25px rgba(194, 0, 0, 0.4); }
-        
-        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center; padding: 20px; }
-        .modal-content {
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
             background-color: var(--background-dark);
-            color: var(--text-color);
-            padding: clamp(20px, 4vw, 40px);
-            border: 2px solid var(--fluorescent-green);
-            border-radius: 15px;
-            width: 100%;
-            max-width: 600px;
-            position: relative;
-            box-shadow: 0 0 25px rgba(128, 255, 0, 0.3);
-            animation: fadeIn 0.3s ease-out;
-            display: flex;
-            flex-direction: column;
-            max-height: calc(100vh - 40px);
         }
-        .modal-scrollable-content { overflow-y: auto; padding-right: 15px; margin-right: -15px; padding-left: 15px; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        .modal-close-button {
-            color: var(--fluorescent-green);
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 2.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 10;
-            transition: color 0.3s, transform 0.3s;
+        #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .header-title-text {
+            color: var(--fluorescent-green); font-size: 1.1rem;
         }
-        .modal-close-button:hover, .modal-close-button:focus { color: #fff; transform: scale(1.1); }
-        .modal-content .popup-title {
-            color: var(--fluorescent-green);
-            text-align: center;
-            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            padding-top: 10px;
+        .content-box-wrapper {
+            display: flex; justify-content: center; align-items: flex-start;
+            min-height: calc(100vh - 80px); 
+            padding-top: 140px; /* Increased padding for taller mobile header */
+            padding-bottom: 4rem;
         }
-        .modal-content .form-group { margin-bottom: 15px; }
-        .modal-content .form-group label {
-            display: block;
-            color: var(--fluorescent-green);
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            font-weight: bold;
+        .content-box {
+            background-color: rgba(106, 27, 154, 0.1); backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(171, 71, 188, 0.3);
+            border-radius: 20px; padding: 2rem 2.5rem; max-width: 900px; width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); position: relative;
+            color: var(--text-color); overflow-y: auto; max-height: calc(100vh - 180px);
         }
-        .modal-content input[type="text"], .modal-content input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--fluorescent-green);
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            background-color: rgba(0,0,0,0.2);
-            color: var(--text-color);
-            text-align: center;
+        .content-box-close {
+            position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem;
+            color: rgba(229, 231, 235, 0.7); cursor: pointer; transition: color 0.3s ease;
+            background: none; border: none; padding: 0; line-height: 1;
         }
-        .modal-content input::placeholder { color: #888; }
-        .modal-content .email-subtitle { margin-top: 5px; margin-bottom: 8px; font-size: 0.85rem; color: #ccc; text-align: center; }
-        .modal-content .napomena {
-            margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--card-border);
-            font-size: 0.85rem; line-height: 1.5; color: #bbb; text-align: left;
+        .content-box-close:hover { color: white; }
+        .content-box h2 {
+            font-family: 'Orbitron', sans-serif; font-size: 2rem; font-weight: 700;
+            color: var(--fluorescent-green); text-align: center; margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(128, 255, 0, 0.5);
         }
-        .modal-content .napomena p { color: #bbb; margin-bottom: 0.3em; text-align: justify; }
-        .modal-content .napomena strong { color: var(--fluorescent-yellow); }
-        .error-message { color: #ff4d4d; font-size: 0.85rem; height: 1.2em; margin-top: 5px; text-align: center; }
-        .input-error { border-color: #ff4d4d !important; box-shadow: 0 0 8px rgba(255, 77, 77, 0.7); }
-
-        .modal-content .investment-title {
-            color: var(--fluorescent-green); text-align: center; text-transform: uppercase;
-            font-weight: bold; margin-top: 30px; margin-bottom: 15px; font-size: 1rem;
+        .content-box .subtitle {
+            font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #b0a6d0;
+            text-align: center; margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 1px;
         }
-        .investment-package-field-container {
-            width: 100%; padding: 15px; border: 1px solid var(--fluorescent-green); border-radius: 8px;
-            background-color: rgba(106, 27, 154, 0.1); box-sizing: border-box; margin-top: 0.5rem; margin-bottom: 1rem; 
-        }
-        .package-item { display: flex; align-items: center; padding: 0.4rem 0.25rem; }
-        .package-item input[type="checkbox"] { margin-right: 0.75rem; transform: scale(1.2); accent-color: var(--fluorescent-green); flex-shrink: 0; cursor: pointer; }
-        .package-label { color: #e0e0e0; cursor: pointer; font-size: 0.9rem; line-height: 1.4; flex-grow: 1; }
-        .form-input-ip7 {
-            width: 100px; padding: 6px 8px; border: 1px solid var(--fluorescent-green); border-radius: 5px;
-            background-color: rgba(106, 27, 154, 0.15); color: white; font-size: 0.9rem; text-align: right; margin-left: auto;
-        }
-        .form-input-ip7:disabled { background-color: rgba(106, 27, 154, 0.05); cursor: not-allowed; border-color: rgba(128, 255, 0, 0.2); }
-        .total-investment-display { font-size: 1.1rem; font-weight: bold; text-align: center; color: var(--fluorescent-yellow); margin: 20px 0 10px 0; }
-        #investmentErrorPopup { color: #ff4d4d; text-align: center; height: 1.2em; margin-top: -10px; }
-
-        .modal-confirm-button {
-            display: block; margin: 20px auto 0; padding: 12px 35px; font-size: 1.1rem; font-weight: bold;
-            text-transform: uppercase; color: var(--background-dark); background-color: var(--fluorescent-green);
-            border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
-        }
-        .modal-confirm-button:hover:not(:disabled) { background-color: #fff; transform: translateY(-2px); }
-        .modal-confirm-button:disabled { background-color: #586351; color: #999; opacity: 0.7; cursor: not-allowed; transform: none; }
+        .content-box p { font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.25rem; text-align: justify; color: #d1d5db; }
+        .content-box ul { list-style-type: none; padding-left: 1rem; margin-bottom: 1.25rem; text-align: justify; color: #d1d5db; }
+        .content-box ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem; font-size: 0.95rem; line-height: 1.8; }
+        .content-box ul li::before { content: "–"; position: absolute; left: 0; color: var(--fluorescent-green); font-weight: bold; }
+        .content-box p strong { color: #f3e5f5; font-weight: 600; }
+        .content-box p.signature-block { text-align: right; margin-top: 2.5rem; margin-bottom: 1rem; font-style: italic; color: #c7c1da; }
+        .content-box p.signature-name { text-align: right; margin-bottom: 0.25rem; font-weight: 500; color: var(--fluorescent-green); }
+        .content-box p.final-note { margin-top: 2.5rem; font-style: italic; color: #b0a6d0; text-align: center; }
         
-        .final-popup-title { font-size: clamp(1.4rem, 3vw, 1.8rem) !important; }
-        #final-confirmation-message { text-align: center; line-height: 1.6; font-size: 1.1rem; }
-        #final-confirmation-message b { color: var(--fluorescent-yellow); }
-
-        #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
-    </style>
-    <!-- ============================================= -->
-    <!-- STYLES FOR LIGHT MODE (KONAČNA VERZIJA) -->
-    <!-- ============================================= -->
-    <style>
-        html.light-mode body { background-color: #f8fafc !important; color: #334155 !important; }
-        html.light-mode .fixed-header-container { background-color: var(--primary-color) !important; }
-        html.light-mode .header-title, html.light-mode .page-close-button { color: var(--fluorescent-green) !important; }
-        html.light-mode .page-close-button:hover { color: white !important; }
+        .content-buttons { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; align-items: center; }
+        .content-btn {
+            background-color: var(--primary-color); color: white; padding: 0.8rem 1.8rem;
+            border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 0.5px; border: 2px solid transparent;
+            transition: all 0.3s ease; display: inline-flex; align-items: center;
+            justify-content: center; min-width: 280px; text-align: center;
+        }
+        .content-btn:hover { background-color: var(--secondary-color); transform: translateY(-3px); box-shadow: 0 8px 15px rgba(106, 27, 154, 0.3); }
+        .content-btn .btn-main-text { display: block; }
+        .content-btn .btn-sub-text { display: block; font-size: 0.7rem; opacity: 0.8; margin-top: 0.1rem; }
         
-        /* Glavni kontenjer */
-        html.light-mode .decision-content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
-        
-        /* Općeniti tekst */
-        html.light-mode .main-greeting, html.light-mode .detailed-text p, html.light-mode .detailed-text ul, html.light-mode .intro-section p { 
-            color: #334155 !important; 
+        .video-player-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: 1000; display: none; justify-content: center; align-items: center; }
+        .video-player-overlay.active { display: flex; }
+        .video-player-container { position: relative; width: 80vw; max-width: 1100px; aspect-ratio: 16 / 9; background-color: #000; border: 2px solid var(--fluorescent-green); box-shadow: 0 0 30px rgba(128, 255, 0, 0.5); }
+        .video-player-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .video-player-close-button { position: absolute; top: 0; right: 0; transform: translate(40%, -40%); width: 44px; height: 44px; font-size: 1.8rem; color: white; background: rgba(0,0,0,0.7); border: 2px solid white; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; z-index: 1001; display: flex; align-items: center; justify-content: center; line-height: 1; }
+        .video-player-close-button:hover { color: var(--fluorescent-green); border-color: var(--fluorescent-green); transform: translate(40%, -40%) scale(1.1); }
+
+        /* === FIX FOR HEADER TITLE ON MOBILE DEVICES === */
+        @media (max-width: 768px) {
+            nav.fixed { height: auto; }
+            .header-container {
+                flex-direction: column; align-items: center; height: auto;
+                padding: 0.5rem 0; gap: 0.25rem;
+            }
+            .header-title-container {
+                position: static; transform: none; width: 100%;
+                padding: 0; pointer-events: auto;
+            }
+            .header-title-text { font-size: 0.95rem; }
         }
 
-        /* Podebljani tekst (zeleni u dark modu) */
-        html.light-mode .detailed-text strong, html.light-mode .detailed-text b { 
-            color: var(--primary-color) !important; 
-        }
-        
-        /* Istaknuti tekst (žuti u dark modu) */
-        html.light-mode .intro-section p.important,
-        html.light-mode .intro-section p strong,
-        html.light-mode .highlighted-choice-title {
-             color: #842a9d !important; 
-        }
-
-        /* Strelica */
-        html.light-mode .highlighted-choice-title::before { 
-            color: #842a9d !important;
-        }
-
-        /* Ikone u listama */
-        html.light-mode .detailed-text .sf-bodovi-star { 
-            color: var(--primary-color) !important; 
-        }
-
-        /* Gumbi i popup */
-        html.light-mode .confirm-main-page-button { background-color: #dc2626 !important; }
-        html.light-mode .confirm-main-page-button:hover { background-color: #ef4444 !important; }
-        html.light-mode .modal-content { background-color: #ffffff; border-color: var(--primary-color); }
-        html.light-mode .modal-close-button, html.light-mode .popup-title, html.light-mode .form-group label, html.light-mode .investment-title { color: var(--primary-color); }
-        html.light-mode .modal-close-button:hover { color: #333; }
-        html.light-mode input[type="text"], html.light-mode input[type="email"], html.light-mode input[type="number"] { background-color: #f1f5f9; border-color: #cbd5e1; color: #1e293b; }
-        html.light-mode input::placeholder { color: #94a3b8; }
-        html.light-mode .email-subtitle, html.light-mode .napomena p { color: #475569; }
-        html.light-mode .napomena strong, html.light-mode #final-confirmation-message b { color: var(--primary-color); }
-        html.light-mode .modal-confirm-button { background-color: var(--primary-color); color: white; }
-        html.light-mode .modal-confirm-button:hover:not(:disabled) { background-color: var(--secondary-color); }
+        /* Styles for Light Mode */
+        html.light-mode body { background-color: #f8fafc !important; color: #4a0e6c !important; }
+        html.light-mode nav.fixed { background-color: rgba(255, 255, 255, 0.9) !important; border-bottom: 1px solid var(--primary-color) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;}
+        html.light-mode .logo-nav .small-text, html.light-mode .logo-nav .text-logo-orange, html.light-mode .logo-nav .text-white { color: var(--primary-color) !important; }
+        html.light-mode .header-title-text { color: var(--primary-color) !important; }
         html.light-mode #network-canvas { background-color: transparent !important; }
-        html.light-mode .investment-package-field-container { background-color: #f8fafc; border-color: #e2e8f0; }
-        html.light-mode .package-label { color: #334155; }
-        html.light-mode .total-investment-display { color: #842a9d; }
+        html.light-mode .content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
+        html.light-mode .content-box-close { color: #64748b !important; }
+        html.light-mode .content-box-close:hover { color: #1e293b !important; }
+        html.light-mode h2, html.light-mode p.signature-name { color: var(--primary-color) !important; text-shadow: none !important; }
+        html.light-mode .subtitle, html.light-mode p.signature-block, html.light-mode p.final-note { color: #64748b !important; }
+        html.light-mode p, html.light-mode ul { color: #4a0e6c !important; }
+        html.light-mode p strong { color: #3b0a55 !important; }
+        html.light-mode ul li::before { color: var(--primary-color) !important; }
+        html.light-mode .content-btn { background-color: var(--primary-color) !important; color: white !important; }
+        html.light-mode .content-btn:hover { background-color: var(--secondary-color) !important; }
+        html.light-mode .video-player-container { border-color: var(--primary-color) !important; box-shadow: 0 0 20px rgba(106, 27, 154, 0.3) !important; }
     </style>
 </head>
-<body>
+
+<body class="bg-gray-900">
+    <div class="custom-cursor"></div>
     <canvas id="network-canvas"></canvas>
 
-    <div class="fixed-header-container">
-        <div class="header-content">
-            <span class="header-title">SFT21 - Decision on Business Continuation</span>
-            <button class="page-close-button" id="closePageButton" title="Back to previous page">×</button>
-        </div>
-    </div>
-
-    <div class="page-wrapper">
-        <div class="decision-content-box">
-            <p class="main-greeting">CONGRATULATIONS AND THANK YOU FOR YOUR DECISION TO JOIN US IN CONTINUING BUSINESS ACCORDING TO THE RULES OF THE NEW BUSINESS SYSTEM</p>
-            
-            <div class="intro-section">
-                <p>Given the changes in the business model and the distribution of funds, <br><strong class="important">The franchise agreement you signed in the old system remains in effect until further notice.</strong></p>
-                <p>You will sign a new <strong>LICENSE AGREEMENT</strong> before paying for the License Package, which makes the Franchise Agreement no longer valid..</p>
-                <p>Considering you started your business in the old system with <strong><span id="dynamicStartPackageInfo"></span></strong> and have decided that;</p>
-            </div>
-            
-            <h2 class="highlighted-choice-title">YOU WISH to continue as a PASSIVE member – SFPlicensee</h2>
-
-            <div class="detailed-text">
-                <p>You continue your business as a <strong>PASSIVE</strong> member – <strong>SFPlicensee</strong>, by opening a <strong>License user account without a starter package</strong>, which will take a position in the SFalgorithm during the first filling of positions according to the number of your <strong>personal</strong> or <strong>group SFpoints</strong> from the old system.</p>
-                <p>Based on the payment of <strong><span class="dynamic-old-system-payment-amount"></span></strong> for the Starter Package from the old system, you receive <strong><span class="dynamic-old-system-sf-points"></span> personal SFpoints</strong> which are transferred to the new system, plus personal points you gain by investing in the License Package, where for every <strong>1 € you get 2 SFb</strong>.</p>             
-                <p><span class="sf-bodovi-star">❖</span> <strong>Group SFpoints</strong> are obtained by adding the SFpoints from your direct and indirect members, who are also continuing their business, to your personal SFpoints. If you upgraded your account in the old system, the earnings from the reserve wallet are added to your SFpoints, such that for every 1 SFC, you get 1 SFb. If you had a certain amount of SFC in your wallet, that amount is also counted towards your SFpoints, with 1 SFC equaling 2 SFb.</p>
-                <p><span class="sf-bodovi-star">❖</span> <strong>A locked position</strong> in SFalgorithm secures your account, so that it cannot be moved by other users' accounts when they reset their accounts. </p>
-                <p><span class="sf-bodovi-star">❖</span> You earn <strong>income</strong> according to the rules of the <strong>License Agreement</strong>, without any work obligations towards the company, with the possibility to upgrade your user account for free by your own decision when you want, which gives you the possibility of making additional income according to the rules of the Franchise Agreement.</p>
-            </div>
-            
-            <div class="confirm-button-container">
-                <button class="confirm-main-page-button" id="openPopupForConfirmation">CONFIRM SELECTION</button>
+    <nav class="fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="header-container flex items-center relative h-12">
+                <a href="index_en.html" title="Return to the homepage" class="flex items-center">
+                    <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
+                    <div class="flex flex-col logo-nav">
+                        <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
+                    </div>
+                </a>
+                <div class="header-title-container absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full px-4 pointer-events-none">
+                    <span class="header-title-text font-semibold uppercase tracking-wider">Decision on Business Continuation</span>
+                </div>
+                 <div class="w-auto ml-auto"> </div>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- MAIN POPUP HTML STRUCTURE -->
-    <div id="confirmationUserDetailsPopup" class="modal-overlay">
-        <div class="modal-content">
-             <span id="closeUserDetailsPopupButton" class="modal-close-button" title="Close">×</span>
-            <h2 class="popup-title">CONFIRM YOUR DATA</h2>
-            <div class="modal-scrollable-content">
-                <div class="form-group">
-                    <label for="usernameInputPopup">Username</label>
-                    <input type="text" id="usernameInputPopup" maxlength="21" placeholder="Your username from the old system">
-                </div>
-                <div class="form-group">
-                    <label for="oldEmailInputPopup">Email Address</label>
-                     <p class="email-subtitle">(the one you registered with in the old system)</p>
-                    <input type="email" id="oldEmailInputPopup" placeholder="Old email address">
-                    <div id="oldEmailErrorPopup" class="error-message"></div>
-                </div>
-                <div class="form-group">
-                     <label for="newEmailInputPopup">New Email Address (optional)</label>
-                    <p class="email-subtitle">If you no longer use or have access to your old address, please enter a new one.</p>
-                    <input type="email" id="newEmailInputPopup" placeholder="New email address">
-                    <div id="newEmailErrorPopup" class="error-message"></div>
-                </div>
-                <h5 class="investment-title">CHOOSE A LICENSE PACKAGE (OR MORE) / INVESTMENT AMOUNT</h5>
-                <div class="investment-package-field-container">
-                    <div class="package-item"><input type="checkbox" id="ip1-details" name="ip_package_details" value="100"><label for="ip1-details" class="package-label">First License Package (LP1): 100 €</label></div>
-                    <div class="package-item"><input type="checkbox" id="ip2-details" name="ip_package_details" value="200"><label for="ip2-details" class="package-label">Second License Package (LP2): 200 €</label></div>
-                    <div class="package-item"><input type="checkbox" id="ip3-details" name="ip_package_details" value="500"><label for="ip3-details" class="package-label">Third License Package (LP3): 500 €</label></div>
-                    <div class="package-item"><input type="checkbox" id="ip4-details" name="ip_package_details" value="1000"><label for="ip4-details" class="package-label">Fourth License Package (LP4): 1000 €</label></div>
-                    <div class="package-item"><input type="checkbox" id="ip5-details" name="ip_package_details" value="1500"><label for="ip5-details" class="package-label">Fifth License Package (LP5): 1500 €</label></div>
-                    <div class="package-item"><input type="checkbox" id="ip6-details" name="ip_package_details" value="2100"><label for="ip6-details" class="package-label">Sixth License Package (LP6): 2100 €</label></div>
-                    <div class="package-item"><input type="checkbox" id="ip7-checkbox-details" name="ip_package_cb_7_details"><label for="ip7-checkbox-details" class="package-label">Seventh License Package (LP7):</label><input type="number" id="ip7-custom-amount-details" name="ip7_amount_details" placeholder="Min. 5000" class="form-input-ip7" min="5000" step="100" disabled></div>
-                </div>
-                <p class="total-investment-display">I intend to invest a total of: <span id="total-investment-amount-details">0</span> €</p>
-                <div id="investmentErrorPopup" class="error-message"></div>
-                <div class="napomena">
-                    <strong>Note:</strong>
-                    <p>This step is for the preliminary collection of data regarding members' interest. After confirmation, you will receive further instructions via email regarding the method and timing of the investment payment. Your decision here is not financially binding until you make the payment according to the official instructions.</p>
-                    <p>The continuation of business operations will begin with the first filling of the SFalgorithm, about which you will be timely notified via email.</p>
+    <main>
+        <div class="content-box-wrapper">
+            <div class="content-box">
+                <button class="content-box-close" onclick="sessionStorage.setItem('openPopupOnLoad', 'chooseInvestorType'); window.location.href='index_en.html';" title="Return to the homepage">×</button>
+                <p class="subtitle">
+                    SFT21 BUSINESS CONCEPT<br>
+                </p>
+                <h2>Greetings</h2>
+                <p>First and foremost, a sincere and heartfelt greeting to everyone.</p>
+                <p>Here we are, after almost three full years since the temporary suspension of our business operations, returning with the hope of continuing where we were forced to stop, through no fault of our own.</p>
+                <p>It is very important to recall that in 2018, we registered the company InFace Invest Group LTD, with which we launched our business concept in 2019 honorably, honestly, and transparently, with the best intentions of creating a unique online community through a franchise business model. The plan was for the development of the company and the entire community, which includes:</p>
+                <ul>
+                    <li>development of software and applications,</li>
+                    <li>launching the franchise business model called the SFT21 Business Concept,</li>
+                    <li>operational, administrative, and other ongoing development costs,</li>
+                    <li>and marketing and infrastructure needs related to the SFT21 project,</li>
+                </ul>
+                <p>...to be financed from the earnings generated from the sale of franchises to our members and their upgrades, as well as from investors, both large and small.</p>
+                <p>Unfortunately, due to a series of unfavorable circumstances, we were forced, due to the inability to pay for the maintenance, development, and operational costs of the company, to gradually cancel the initiated development until the recent removal of all our portal pages from the internet.</p>
+                <p>The poor quality of work of some users, then primarily the upcoming and long-lasting Covid crisis, combined with publicly stated lies, slander and insults by three former users, with whom we terminated business cooperation due to serious violations of business rules (against whom criminal charges were filed), are the real reasons for the slowdown in development and this temporary suspension of business.</p>
+                <p>We have informed our members in detail about these reasons by recording about thirty videos with evidence, arguments, and facts, which we published on the company's YouTube channel (@SFT21_SFteam), so we have said mostly everything on that matter.</p>
+                <p>Unfortunately, these videos were viewed on average 1,500 times, rarely watched to the end, some videos were viewed less than 1,000 times, a small number more than 2,000 times, and none more than 3,000 times.</p>
+                <p>When we consider that more than 24,000 users were registered with the company, it is evident that a large majority of users are not aware of the real and true reasons that led to this temporary business suspension.</p>
+                <p>However, this is precisely an indicator of the wrong and incorrect work of the vast majority of our members, as well as clear proof of the members' lack of information regarding both the mentioned evidence and the general development of the company and the entire community.</p>
+                <p>For how else can one explain the fact that out of 24,000 users, nearly 14,000 of them <strong>NEVER</strong> accessed the social network upon its launch?!</p>
+                <p>How can one explain the fact that out of 24,000 users, we have only 2,800 subscribers on our YouTube channel, which should be one of the main communication and information channels...</p>
+                <p>Where are the other 21,200 users? Who are these people? Who registered them? How did they stay informed about news, work obligations, and business operations in general?</p>
+                <p>In short, it is clear to many today that the company temporarily ceased operations, not due to its own fault, but because of the aforementioned problems which we could not influence and, unfortunately, could not foresee at the start.</p>
+                <p>When we noticed the problem, we tried to react, but with a lack of funds, we could not do much, as certain changes in the business system simply require money.</p>
+                <p>By taking the portal pages offline due to the inability to cover ongoing costs, the company did not cease its operations, nor did we abandon the vision of creating an online community, which we have transparently promoted from the very beginning.</p>
+                <p>Looking back, we can now say that perhaps we made a mistake in choosing the method of financing the company's development, as we naively believed that with the help of our members, we would reach at least 50,000 users without major problems, a number that would have provided us with enough funds to complete the necessary software and applications essential for the further development of the business concept and the community we began to create.</p>
+                <p>As everyone knows, due to the mentioned problems, we did not succeed in this.</p>
+                <p>However, although some members thought this was the definitive end of our business, we never for a moment gave up on our idea and the business we started. Instead, we did everything in our power to continue our operations.</p>
+                <p>First of all, it is important to note that we launched our business with a 90-day money-back guarantee, which we honored by ensuring that <strong>EVERY</strong> user who submitted a refund request within the deadline received their money back. It was this money-back guarantee that led the company to its biggest problem, because with the appearance of public false accusations, slander, and insults against the company and its owners, an increasing number of members decided to request a refund. In a situation where we needed more and more money for software development and other costs, we were forced to return money to honor the given guarantee, which consequently slowed down the entire development and ultimately led to the temporary suspension of business.</p>
+                <p>Likewise, it has been clearly and unequivocally stated that the money paid for "full franchises" and for larger investments is not under a money-back guarantee, as that money was immediately distributed, used to pay developers' invoices, or to cover other ongoing development costs.</p>
+                <p>Accordingly... in line with the franchise agreement you signed, SFT21 LLC company (ex InFace Invest Group LTD) is <strong>NOT OBLIGATED TO RETURN THE MONEY YOU PAID FOR A STARTER PACKAGE OR A LARGER INVESTMENT</strong>. However, as we do not want anyone to feel they have been wronged by our company, your investment will be returned to you!</p>
+                <p>Given the fact that users' money was spent on the company's development, the money intended for refunds to users who decide to discontinue their business simply <strong>DOES NOT EXIST</strong> at this moment.</p>
+                <p>The solution to the problem, both for members who are discontinuing their business and for members who wish to continue, lies only in securing the necessary funds for certain changes in the SFT21 software, as well as for the completion of the software and applications for the social network and webshop, which is ultimately a prerequisite for continuing operations.</p>
+                <p>In this regard, we have decided to present a new, upgraded, and in some segments, modified business concept, after which we will launch a phase of selling License Packages.</p>
+                <p>The money raised from the sale of these packages will be stored in the company's account and used primarily for the upgrade and completion of the initiated software and applications. The company's priority is to raise funds that will ensure the start of an uninterrupted continuation of business, after which refunds will be issued to users who withdraw and submit a refund request.</p>
+                <p>After the fundraising period ends and before the first positions in the SF algorithm are filled, the company will timely notify all users from the old system to make a decision about discontinuing their business and requesting a refund.</p>
+                <p><strong>REFUNDS WILL BE PROCESSED TRANSPARENTLY ACCORDING TO THE RULES, WHICH WILL ENSURE THAT MONEY IS RETURNED IN ACCORDANCE WITH THE COMPANY'S ABILITIES, BASED ON THE DATE OF PAYMENT FOR THE STARTER PACKAGE OR INVESTMENT.</strong></p>
+                <p><strong>IN ACCORDANCE WITH THE AFOREMENTIONED, THE COMPANY IS CONTINUING ITS OPERATIONS AND COMMITS TO REFUNDING ALL WHO SUBMIT A REQUEST - WHEN IT IS ABLE TO DO SO.</strong></p>
+                <p>Users against whom criminal charges have been filed, as well as those users who have withdrawn earnings from the old system that are greater than or equal to their paid starter package or investment, are not entitled to a refund.</p>
+                <p>When submitting a refund request, it will be necessary to attach a photo of a valid personal identification document with which you completed the KYC identity verification, or a photo of a new document if your old one has expired.</p>
+                <p>The money will then be returned to you via the payment processor you used for the payment, or possibly by other means, about which you will be timely informed.</p>
+                <p>Given that a certain period of time will pass before the company is able to start issuing refunds, our most sincere advice is not to discard your membership in our community lightly. We suggest you follow our development and events within the company during this period and study all the benefits of the new SFT21 business concept, so that you can make your final decision about continuing or discontinuing your business based on the latest information.</p>
+                <p>Because one fact is irrefutable and no one has tried to deny it to this day... and that is the fact that we have started creating a community where users will have the opportunity to launch their own internet business through our portal's pages, where they will develop their own social network and webshop, with the possibility of earning in multiple ways, along with many other benefits.</p>
+                <p>Regardless of all the problems, obstacles, and challenges that have led to the current situation, we are simply moving forward. Because we know... as do many of our loyal members, that we have started creating a project with unlimited potential for the benefit of our members, and that nothing will stop us.</p>
+                <p>We must admit that the public false accusations, slander, and insults have temporarily stopped us, causing us enormous damage. But despite everything, knowing that we are not at fault and knowing that we hold a more than valuable business project in our hands, we are rising from the ashes like a phoenix...</p>
+                <p>They stopped us with <strong>LIES</strong> and threw us to the bottom... and they temporarily succeeded.... But despite everything, they did not win. We are rising again and continuing where we left off, because the <strong>TRUTH</strong> is on our side.</p>
+                <p>We believe that a large number of our old members will join us on this path, as well as many who will just be hearing about our community. We are aware of the fact that among you, the members from the old system, there are those who have lost trust and have no intention of continuing the business, but we are also aware that there are those among you who know the real reasons for the problems we found ourselves in and who have never lost that trust. Moreover, we know that there are many among you who have realized the value, quality, and opportunities that our business concept brings and who will gladly continue doing business.</p>
+                <p>Ahead of us is a period in which we will give everything in our power to secure the funds necessary to complete the mentioned software and applications, to pay off all those who will withdraw and settle our debts, and ultimately to continue our business by working on creating a community for the benefit and interest of our loyal members.</p>
+                <p>We know our set path... truth is our fundamental value, while our goals are simply a better and higher quality of life for all our members. We are aware of the quality and social value of our business concept, but to show and prove its true power, we need your help and trust on this journey.</p>
+
+                <p class="signature-block">Semper Fidelis</p>
+                <p class="signature-name">Mladen Pejić</p>
+                <p class="signature-name">Zoran Lazarević</p>
+
+                <p class="final-note">Please, before making a decision, watch and study the SFT21 Business Concept, the presentation of the new, partially modified, and upgraded franchise business model.<br>To get an approximate idea of the number of members we can count on to continue their business, as well as the number of those who will decide to invest in License Packages, we will ask you to make a Decision on Business Continuation at the end of these pages.<br>Regardless of the decision you make today, upon completion of the aforementioned software and applications, i.e., just before the first filling of the SFalgorithm, we will contact you again in a timely manner so you can make a final decision on discontinuing or continuing your business.</p>
+
+                <div class="content-buttons" id="odlukaGumbi">
+                    <button type="button" id="openVideoPlayerButton" class="content-btn">
+                        <div>
+                            <span class="btn-main-text">SFT21 Business Concept</span>
+                            <span class="btn-sub-text">(project presentation)</span>
+                        </div>
+                    </button>
+                    <a href="izbor_en.html" class="content-btn">
+                         <div>
+                            <span class="btn-main-text">MAKE A DECISION</span>
+                        </div>
+                    </a>
                 </div>
             </div>
-            <button id="confirmUserDetailsButton" class="modal-confirm-button">Confirm</button>
         </div>
+    </main>
+
+    <div id="videoPlayerOverlay" class="video-player-overlay">
+        <div class="video-player-container">
+            <iframe id="youtubePlayer" src="" title="SFT21 Presentation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <button id="closeVideoPlayerButton" class="video-player-close-button" title="Close video">×</button>
     </div>
     
-    <!-- FINAL CONFIRMATION POPUP HTML STRUCTURE -->
-    <div id="finalConfirmationPopup" class="modal-overlay">
-        <div class="modal-content">
-            <span id="closeFinalConfirmationPopup" class="modal-close-button" title="Close">×</span>
-            <h2 class="popup-title final-popup-title">Information</h2>
-            <p id="final-confirmation-message"></p>
-        </div>
-    </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyhhosQJfFDf8-_jLkLeycTECYUWaUBiaEMuS7kSGKiDkTVHuaPIwWolBrgMJgl-zuS/exec';   
-            const mainPopup = document.getElementById('confirmationUserDetailsPopup');
-            const openMainPopupButton = document.getElementById('openPopupForConfirmation');
-            const closeMainPopupButton = document.getElementById('closeUserDetailsPopupButton');
-            const finalPopup = document.getElementById('finalConfirmationPopup');
-            const closeFinalPopupButton = document.getElementById('closeFinalConfirmationPopup');
-            const finalMessageP = document.getElementById('final-confirmation-message');
-            const usernameInput = document.getElementById('usernameInputPopup');
-            const oldEmailInput = document.getElementById('oldEmailInputPopup');
-            const newEmailInput = document.getElementById('newEmailInputPopup');
-            const confirmButton = document.getElementById('confirmUserDetailsButton');
-            const investmentCheckboxes = document.querySelectorAll('input[name="ip_package_details"]');
-            const ip7Checkbox = document.getElementById('ip7-checkbox-details');
-            const ip7Input = document.getElementById('ip7-custom-amount-details');
-            const totalDisplaySpan = document.getElementById('total-investment-amount-details');
-            const investmentError = document.getElementById('investmentErrorPopup');
+            const body = document.body;
+            const logoImage = document.getElementById('site-logo');
 
-            // --- HELPER FUNCTIONS ---
-            const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).toLowerCase());
-            const closeMainPopup = () => { if (mainPopup) mainPopup.style.display = 'none'; document.body.style.overflow = 'auto'; };
-            const closeFinalPopup = () => { if (finalPopup) finalPopup.style.display = 'none'; document.body.style.overflow = 'auto'; };
-
-            // --- FORM UPDATE AND VALIDATION LOGIC ---
-            const updateTotalInvestment = () => {
-                let checkboxTotal = 0;
-                investmentCheckboxes.forEach(cb => {
-                    if (cb.checked) checkboxTotal += parseFloat(cb.value);
-                });
-                if (checkboxTotal >= 5000 && !ip7Checkbox.checked) {
-                    investmentCheckboxes.forEach(cb => cb.checked = false); 
-                    ip7Checkbox.checked = true;
-                    ip7Input.value = checkboxTotal; 
+            const applyTheme = () => {
+                const isLight = document.documentElement.classList.contains('light-mode');
+                if (logoImage) {
+                    logoImage.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
                 }
-                let finalTotal = 0;
-                if (ip7Checkbox.checked) {
-                    ip7Input.disabled = false;
-                    const currentValue = parseFloat(ip7Input.value);
-                    if (isNaN(currentValue) || currentValue < 5000) ip7Input.value = 5000;
-                    investmentCheckboxes.forEach(cb => cb.checked = false);
-                    const ip7Value = parseFloat(ip7Input.value);
-                    if (!isNaN(ip7Value)) finalTotal = ip7Value;
-                } else {
-                    ip7Input.disabled = true;
-                    ip7Input.value = '';
-                    finalTotal = checkboxTotal;
+                if (window.setAnimationTheme) {
+                    window.setAnimationTheme(isLight ? 'light' : 'dark');
                 }
-                totalDisplaySpan.textContent = finalTotal;
-                validateForm();
             };
             
-            const validateForm = () => {
-                let isFormValid = true;
-                if (investmentError) investmentError.textContent = '';
-                if (usernameInput.value.trim() === '') isFormValid = false;
-                if (!isEmailValid(oldEmailInput.value.trim())) isFormValid = false;
-                const newEmailValue = newEmailInput.value.trim();
-                if (newEmailValue !== '' && !isEmailValid(newEmailValue)) isFormValid = false;
-                const totalInvestment = parseFloat(totalDisplaySpan.textContent);
-                if (isNaN(totalInvestment) || totalInvestment <= 0) isFormValid = false;
-                if (ip7Checkbox.checked) {
-                    const ip7Value = parseFloat(ip7Input.value);
-                    if (isNaN(ip7Value) || ip7Value < 5000) {
-                        isFormValid = false;
-                        if (investmentError) investmentError.textContent = 'For LP7, the amount must be at least 5000 €.';
-                    }
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    applyTheme();
                 }
-                confirmButton.disabled = !isFormValid;
-            };
-            
-            // --- EVENT LISTENERS ---
-            document.getElementById('closePageButton')?.addEventListener('click', () => { window.location.href = 'prikaz_opcije_en.html' + window.location.search; });
-            openMainPopupButton.addEventListener('click', () => { mainPopup.style.display = 'flex'; document.body.style.overflow = 'hidden'; validateForm(); });
-            closeMainPopupButton.addEventListener('click', closeMainPopup);
-            mainPopup.addEventListener('click', (event) => { if (event.target === mainPopup) closeMainPopup(); });
-            closeFinalPopupButton.addEventListener('click', closeFinalPopup);
-            finalPopup.addEventListener('click', (event) => { if (event.target === finalPopup) closeFinalPopup(); });
-            [usernameInput, oldEmailInput, newEmailInput].forEach(input => input.addEventListener('input', validateForm));
-            [...investmentCheckboxes, ip7Checkbox, ip7Input].forEach(el => el.addEventListener('input', updateTotalInvestment));
-            document.querySelectorAll('.package-label').forEach(label => {
-                label.addEventListener('click', (e) => {
-                    const checkbox = document.getElementById(e.currentTarget.getAttribute('for'));
-                    if (checkbox) {
-                        checkbox.checked = !checkbox.checked;
-                        const changeEvent = new Event('change', { bubbles: true });
-                        const inputEvent = new Event('input', { bubbles: true });
-                        checkbox.dispatchEvent(changeEvent);
-                        checkbox.dispatchEvent(inputEvent);
-                    }
-                });
             });
 
-            // --- MAIN LOGIC FOR DATA SUBMISSION ---
-            confirmButton.addEventListener('click', () => {
-                if(confirmButton.disabled) return;
-                
-                closeMainPopup();
-                finalMessageP.innerHTML = `<h4>Sending...</h4><p>Please wait.</p>`;
-                finalPopup.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
+            applyTheme();
 
-                let selectedPackages = [];
-                document.querySelectorAll('input[name="ip_package_details"]:checked').forEach(cb => {
-                    const packageName = cb.nextElementSibling.textContent;
-                    const match = packageName.match(/\(LP\d+\)/);
-                    selectedPackages.push(match ? match[0].replace(/[()]/g, '') : packageName.split(':')[0]);
-                });
-                if (document.getElementById('ip7-checkbox-details').checked) {
-                    selectedPackages.push(`LP7 (${document.getElementById('ip7-custom-amount-details').value} €)`);
-                }
-
-                const dataToSend = new FormData();
-                dataToSend.append('requestType', 'passiveWithInvest');
-                dataToSend.append('username', usernameInput.value.trim());
-                dataToSend.append('oldEmail', oldEmailInput.value.trim());
-                dataToSend.append('newEmail', newEmailInput.value.trim());
-                dataToSend.append('selectedPackages', selectedPackages.length > 0 ? selectedPackages.join(', ') : "No package selected");
-                dataToSend.append('totalAmount', totalDisplaySpan.textContent);
-                
-                fetch(WEBAPP_URL, {
-                    method: 'POST',
-                    body: dataToSend
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        finalMessageP.innerHTML = 'Your decision has been recorded. We will contact you in a timely manner. Thank you.';
-                    } else {
-                        finalMessageP.innerHTML = 'An error occurred. Please try again.';
+            const cursor = document.querySelector('.custom-cursor');
+            if (cursor && body) {
+                let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+                const speed = 0.1;
+                const updateCursorPosition = () => {
+                    cursorX += (mouseX - cursorX) * speed;
+                    cursorY += (mouseY - cursorY) * speed;
+                    if (cursor) {
+                        cursor.style.left = `${cursorX}px`;
+                        cursor.style.top = `${cursorY}px`;
                     }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    finalMessageP.innerHTML = 'A network error occurred. Please check your connection and try again.';
-                })
-                .finally(() => {
-                setTimeout(() => {
-                closeFinalPopup();
-                window.location.href = 'index_en.html'; 
-                }, 5000);
+                    requestAnimationFrame(updateCursorPosition);
+                };
+                requestAnimationFrame(updateCursorPosition);
+                window.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    if (cursor && cursor.style.opacity === '0') {
+                        cursor.style.opacity = '1';
+                    }
                 });
-            });
+                document.addEventListener('mouseleave', () => { if (cursor) cursor.style.opacity = '0'; });
+                document.addEventListener('mouseenter', () => { if (cursor) cursor.style.opacity = '1'; });
 
-            // --- DYNAMIC TEXT AND ANIMATIONS ---
-            const urlParams = new URLSearchParams(window.location.search);
-            const paramIznos = urlParams.get('iznos') || '30';
-            const paramValuta = urlParams.get('valuta') || 'usd';
-            const currencySymbol = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
-            const reductionAmount = parseFloat(paramIznos) || 30;
-            const sfbPoints = reductionAmount * 2;
-            
-            document.getElementById('dynamicStartPackageInfo').textContent = `${paramIznos} ${currencySymbol}`;
-            document.querySelectorAll('.dynamic-old-system-payment-amount').forEach(span => span.textContent = `${paramIznos} ${currencySymbol}`);
-            document.querySelector('.dynamic-old-system-sf-points').textContent = sfbPoints;
-            
+                document.querySelectorAll('a, button, input, textarea, select, label[for], .content-box-close').forEach(el => {
+                    el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, width: "30px", height: "30px", backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
+                    el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, width: "20px", height: "20px", backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
+                });
+            }
+
             if (typeof gsap !== 'undefined') {
-                gsap.from('.decision-content-box', { duration: 1, y: 50, opacity: 0, ease: 'power3.out', delay: 0.3 });
-                gsap.from(['.main-greeting', '.intro-section > *', '.highlighted-choice-title', '.detailed-text > *', '.confirm-button-container'], 
-                    { duration: 0.7, opacity: 0, y: 20, stagger: 0.1, ease: 'power2.out', delay: 0.6 }
-                );
+                gsap.from('.content-box', { duration: 1, opacity: 0, y: 50, scale: 0.95, ease: "power3.out", delay: 0.3 });
+            }
+
+            if (window.location.hash === '#odlukaGumbi') {
+                const targetElement = document.getElementById('odlukaGumbi');
+                if (targetElement) {
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 600);
+                }
+            }
+
+            const openVideoPlayerButton = document.getElementById('openVideoPlayerButton');
+            const videoPlayerOverlay = document.getElementById('videoPlayerOverlay');
+            const closeVideoPlayerButton = document.getElementById('closeVideoPlayerButton');
+            const youtubePlayer = document.getElementById('youtubePlayer');
+            const youtubeEmbedUrl = "https://www.youtube.com/embed/xDZNaDX58jg?si=kH8MOv4NJbgzHasT"; 
+
+            if (openVideoPlayerButton && videoPlayerOverlay && closeVideoPlayerButton && youtubePlayer) {
+                const closeVideo = () => {
+                    videoPlayerOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                    youtubePlayer.src = "";
+                    const targetElement = document.getElementById('odlukaGumbi');
+                    if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                };
+                
+                openVideoPlayerButton.addEventListener('click', () => {
+                    youtubePlayer.src = youtubeEmbedUrl + "&autoplay=1&rel=0";
+                    videoPlayerOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden'; 
+                });
+
+                closeVideoPlayerButton.addEventListener('click', closeVideo);
+                videoPlayerOverlay.addEventListener('click', (event) => {
+                    if (event.target === videoPlayerOverlay) closeVideo();
+                });
             }
         });
-    </script>
-    <!-- Background Animation Script -->
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const canvas = document.getElementById('network-canvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
-        const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
-        let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
 
-        const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
-        window.addEventListener('resize', resizeCanvas);
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('network-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const darkOptions = { particleColorRGB: '128, 255, 0', particleAmount: 120, defaultRadius: 1.3, particleSpeed: 0.25 };
+            const lightOptions = { particleColorRGB: '106, 27, 154', particleAmount: 120, defaultRadius: 1.3, particleSpeed: 0.25 };
+            let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-                this.radius = currentOptions.defaultRadius;
-                this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
-                this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
+            const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
+            window.addEventListener('resize', resizeCanvas);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                    this.radius = currentOptions.defaultRadius;
+                    this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                    this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                }
+                draw() {
+                    ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, 0.85)`; ctx.fill();
+                }
+                update() {
+                    this.x += this.vx; this.y += this.vy;
+                    if (this.x > canvas.width || this.x < 0) this.vx = -this.vx;
+                    if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
+                }
             }
-            draw() {
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, 0.85)`; ctx.fill();
-            }
-            update() {
-                this.x += this.vx; this.y += this.vy;
-                if (this.x > canvas.width || this.x < 0) this.vx = -this.vx;
-                if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
-            }
-        }
 
-        const initParticles = () => {
-            particles = [];
-            for (let i = 0; i < currentOptions.particleAmount; i++) {
-                particles.push(new Particle());
-            }
-        };
+            const initParticles = () => {
+                particles = [];
+                let amount = (window.innerWidth < 768) ? 70 : currentOptions.particleAmount;
+                for (let i = 0; i < amount; i++) {
+                    particles.push(new Particle());
+                }
+            };
 
-        const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animate);
-        };
+            const animate = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+                requestAnimationFrame(animate);
+            };
 
-        window.setAnimationTheme = (theme) => {
-            currentOptions = (theme === 'light') ? lightOptions : darkOptions;
-            if(canvas.width > 0) initParticles();
-        };
-        
-        resizeCanvas();
-        animate();
-    });
+            window.setAnimationTheme = (theme) => {
+                currentOptions = (theme === 'light') ? lightOptions : darkOptions;
+                initParticles();
+            };
+            
+            resizeCanvas();
+            animate();
+        });
     </script>
 </body>
 </html>
