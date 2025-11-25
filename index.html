@@ -528,7 +528,86 @@ body.light-mode .nav-link i {
             </div>
         </div>
 
-       <nav class="fixed top-0 left-0 w-full z-50">
+            <div id="investment-details-popup" class="popup-content" style="display: none;">
+                <button class="popup-close" aria-label="Zatvori popup">×</button>
+                <h4 style="font-size: 1.5rem !important; margin-bottom: 1.5rem !important;">Odluka o kupnji Licence</h4>
+                <form id="investment-details-form">
+                    <div class="form-group">
+                        <label for="investor-name-details">IME I PREZIME</label>
+                        <input type="text" id="investor-name-details" name="investor-name-details" required placeholder="Vaše ime i prezime">
+                    </div>
+                    <div class="form-group">
+                        <label for="investor-email-details">EMAIL</label>
+                        <input type="email" id="investor-email-details" name="investor-email-details" required placeholder="Vaša email adresa">
+                    </div>
+    
+                    <div class="form-group mt-6">
+                        <label class="block text-gray-300 mb-2">Kako ste saznali za našu poslovnu priliku?</label>
+                        <div class="flex items-center mb-2">
+                            <input type="radio" id="referrer-yes" name="referrer-choice" value="yes" class="form-radio text-fluorescent-green h-5 w-5 mr-2 focus:ring-fluorescent-green">
+                            <label for="referrer-yes" class="text-gray-300 cursor-pointer">Imam preporučitelja</label>
+                        </div>
+                        <div id="referrer-input-container" class="ml-6 hidden">
+                            <input type="text" id="referrer-name-email" name="referrer-name-email" placeholder="Upiši korisničko ime ili ime i prezime ili email preporučitelja" class="form-input">
+                        </div>
+                        <div class="flex items-center mt-2">
+                            <input type="radio" id="referrer-no" name="referrer-choice" value="no" checked class="form-radio text-fluorescent-green h-5 w-5 mr-2 focus:ring-fluorescent-green">
+                            <label for="referrer-no" class="text-gray-300 cursor-pointer">Nemam preporučitelja</label>
+                        </div>
+                        <div id="default-referrer-display" class="ml-6 mt-2 hidden text-sm text-gray-400">
+                            Preporučitelj: <span id="default-referrer-name">SFTxxxxxx (država korisnika)</span>
+                        </div>
+                    </div>
+    
+    
+                    <h5 class="text-white font-semibold mt-6 mb-3 text-center">IZABERI LICENCNI PAKET (ILI VIŠE NJIH)</h5>
+                    <div class="investment-package-field-container">
+    <div class="package-item">
+        <input type="checkbox" id="ip1-details" name="ip_package_details" value="100" data-package-name="IP1">
+        <label for="ip1-details" class="package-label">Prvi licencni paket (LP1): 100 €</label>
+    </div>
+    <div class="package-item">
+        <input type="checkbox" id="ip2-details" name="ip_package_details" value="200" data-package-name="IP2">
+        <label for="ip2-details" class="package-label">Drugi licencni paket (LP2): 200 €</label>
+    </div>
+    <div class="package-item">
+        <input type="checkbox" id="ip3-details" name="ip_package_details" value="500" data-package-name="IP3">
+        <label for="ip3-details" class="package-label">Treći licencni paket (LP3): 500 €</label>
+    </div>
+    <div class="package-item">
+        <input type="checkbox" id="ip4-details" name="ip_package_details" value="1000" data-package-name="IP4">
+        <label for="ip4-details" class="package-label">Četvrti licencni paket (LP4): 1000 €</label>
+    </div>
+    <div class="package-item">
+        <input type="checkbox" id="ip5-details" name="ip_package_details" value="1500" data-package-name="IP5">
+        <label for="ip5-details" class="package-label">Peti licencni paket (LP5): 1500 €</label>
+    </div>
+    <div class="package-item">
+        <input type="checkbox" id="ip6-details" name="ip_package_details" value="2100" data-package-name="IP6">
+        <label for="ip6-details" class="package-label">Šesti licencni paket (LP6): 2100 €</label>
+    </div>
+    <div class="package-item ip7-item">
+        <input type="checkbox" id="ip7-checkbox-details" name="ip_package_cb_7_details">
+        <label for="ip7-checkbox-details" class="package-label mr-2">Sedmi licencni paket (LP7):</label>
+        <input type="number" id="ip7-custom-amount-details" name="ip7_amount_details" placeholder="Min. 5000" class="form-input-ip7" min="5000" step="100" disabled>
+        <span class="text-gray-300 ml-2">€ ili više</span>
+    </div>
+</div>
+    
+                    <p class="text-lg font-semibold text-center text-fluorescent-green my-4">Ukupna cijena odabranih licenci: <span id="total-investment-amount-details">0</span> €</p>
+    
+                    <div class="text-sm text-gray-400 italic mt-6 space-y-2">
+                        <p><strong>Napomena:</strong></p>
+                        <p>Po završetku web stranice o Licencnim paketima bit ćete obaviješteni kako bi joj pristupili. Putem stranice izvršit ćete uplatu odabranog Licencnog paketa ili iznosa te potpisati Ugovor o kupnji licence.</p>
+                        <p>Sa prvim popunjavanjem SFalgoritma započet će nastavak poslovanja o čemu ćete biti pravovremeno obaviješteni putem email adrese.</p>
+                    </div>
+    
+                    <button type="button" id="submit-investment-btn" class="btn-primary mt-6 w-full">POTVRDI</button>
+                </form>
+            </div>
+    </div>
+
+     <nav class="fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
@@ -1221,8 +1300,19 @@ body.light-mode .nav-link i {
         <div class="p-8 md:p-12">
             <p class="text-gray-300 text-center leading-relaxed mb-6"> Odaberite opciju kupnje licence koja vam najviše odgovara. </p>
             <div class="btn-group flex justify-center gap-4"> 
-                <a href="https://buy.stripe.com/6oU3co61427C1CY0GH4c807" target="_blank" class="btn-primary">5.000 €</a>
+                <button id="ip7-do-10k" class="btn-primary">Do 10.000 €</button>
                 <button id="ip7-veci-iznos" class="btn-primary">Veći iznos</button>
+            </div>
+            <div id="ip7-amount-input-container" class="amount-input-container">
+               <label for="ip7-amount-input">Unesite iznos za kupnju licence:</label>
+                <div class="amount-input-wrapper">
+                   <input type="number" id="ip7-amount-input" class="amount-input" placeholder="Min. 5000 €" step="1" min="5000" max="10000">
+                    <span class="currency-symbol">€</span>
+                </div>
+                 <div class="input-buttons flex justify-center gap-4 mt-4">
+                   <button id="ip7-amount-confirm" class="btn-primary">POTVRDI</button>
+                   <button id="ip7-amount-cancel" class="btn-outline">OTKAŽI</button>
+                </div>
             </div>
             <div class="text-gray-300 text-center mt-6 leading-relaxed">
                 <p>Potencijalni bonus u periodu od 2 god: <strong class="text-white">100% na cijenu licence</strong></p>
@@ -2172,10 +2262,19 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
         const userCounterCloseBtn = document.getElementById('user-counter-close-btn');
         const userCounterShowBtn = document.getElementById('user-counter-show-btn');
         const chooseInvestorTypePopup = document.getElementById('choose-investor-type-popup');
+        const investmentDetailsPopup = document.getElementById('investment-details-popup');
         const triggerChooseInvestorTypeBtns = document.querySelectorAll('.trigger-choose-investor-type-popup');
+        const openInvestmentDetailsFromCardBtns = document.querySelectorAll('.open-investment-details-popup');
         const btnRegistriraniKorisnikChoice = document.getElementById('btn-registrirani-korisnik-choice');
         const btnNoviInvestitorChoice = document.getElementById('btn-novi-investitor-choice');
-       
+        const investmentDetailsForm = document.getElementById('investment-details-form');
+        const investorNameDetailsInput = document.getElementById('investor-name-details');
+        const investorEmailDetailsInput = document.getElementById('investor-email-details');
+        const investmentPackageDetailsCheckboxes = document.querySelectorAll('#investment-details-form input[name="ip_package_details"]');
+        const ip7CheckboxDetails = document.getElementById('ip7-checkbox-details');
+        const ip7CustomAmountDetailsInput = document.getElementById('ip7-custom-amount-details');
+        const totalInvestmentAmountDetailsSpan = document.getElementById('total-investment-amount-details');
+
         let isDraggingCounter = false;
         let dragCounterOffsetX = 0;
         let dragCounterOffsetY = 0;
@@ -2672,6 +2771,20 @@ if (starterPackageEmailForm && starterPackageEmailInput && validationPopup) {
     console.warn("Forma ili input za Starter Package email nisu pronađeni.");
 }
 
+        if (chooseInvestorTypePopup && investmentDetailsPopup && validationPopup && investmentDetailsForm) {
+            
+            const resetInvestmentDetailsForm = () => {
+                if (investmentDetailsForm) investmentDetailsForm.reset();
+                investmentPackageDetailsCheckboxes.forEach(cb => cb.checked = false);
+                if (ip7CheckboxDetails) ip7CheckboxDetails.checked = false;
+                
+                if (ip7CustomAmountDetailsInput) {
+                    ip7CustomAmountDetailsInput.value = '';
+                    ip7CustomAmountDetailsInput.disabled = true;
+                }
+                if (totalInvestmentAmountDetailsSpan) totalInvestmentAmountDetailsSpan.textContent = '0';
+            };
+
             triggerChooseInvestorTypeBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -2682,6 +2795,15 @@ if (starterPackageEmailForm && starterPackageEmailInput && validationPopup) {
                 });
             });
 
+            openInvestmentDetailsFromCardBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    sessionStorage.setItem('preselectedPackageName', btn.dataset.packageName);
+                    resetInvestmentDetailsForm(); 
+                    showPopup(chooseInvestorTypePopup); 
+                });
+            });
+            
             if (btnRegistriraniKorisnikChoice) {
                 btnRegistriraniKorisnikChoice.addEventListener('click', () => {
                     sessionStorage.removeItem('preselectedPackageName'); 
