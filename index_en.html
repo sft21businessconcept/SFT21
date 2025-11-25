@@ -527,6 +527,84 @@ body.light-mode .nav-link i {
             </div>
         </div>
 
+            <div id="investment-details-popup" class="popup-content" style="display: none;">
+                <button class="popup-close" aria-label="Close popup">×</button>
+                <h4 style="font-size: 1.5rem !important; margin-bottom: 1.5rem !important;">Decision on License Purchase</h4>
+                <form id="investment-details-form">
+                    <div class="form-group">
+                        <label for="investor-name-details">FULL NAME</label>
+                        <input type="text" id="investor-name-details" name="investor-name-details" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="investor-email-details">EMAIL</label>
+                        <input type="email" id="investor-email-details" name="investor-email-details" required placeholder="Your email address">
+                    </div>
+    
+                    <div class="form-group mt-6">
+                        <label class="block text-gray-300 mb-2">How did you hear about our business opportunity?</label>
+                        <div class="flex items-center mb-2">
+                            <input type="radio" id="referrer-yes" name="referrer-choice" value="yes" class="form-radio text-fluorescent-green h-5 w-5 mr-2 focus:ring-fluorescent-green">
+                            <label for="referrer-yes" class="text-gray-300 cursor-pointer">I have a referrer</label>
+                        </div>
+                        <div id="referrer-input-container" class="ml-6 hidden">
+                            <input type="text" id="referrer-name-email" name="referrer-name-email" placeholder="Enter referrer's username, full name, or email" class="form-input">
+                        </div>
+                        <div class="flex items-center mt-2">
+                            <input type="radio" id="referrer-no" name="referrer-choice" value="no" checked class="form-radio text-fluorescent-green h-5 w-5 mr-2 focus:ring-fluorescent-green">
+                            <label for="referrer-no" class="text-gray-300 cursor-pointer">I do not have a referrer</label>
+                        </div>
+                        <div id="default-referrer-display" class="ml-6 mt-2 hidden text-sm text-gray-400">
+                            Referrer: <span id="default-referrer-name">SFTxxxxxx (user's country)</span>
+                        </div>
+                    </div>
+    
+    
+                    <h5 class="text-white font-semibold mt-6 mb-3 text-center">CHOOSE A LICENSE PACKAGE (OR MORE)</h5>
+<div class="investment-package-field-container">
+    <div class="package-item">
+        <input type="checkbox" id="ip1-details" name="ip_package_details" value="100" data-package-name="IP1">
+        <label for="ip1-details" class="package-label">First License Package (LP1): 100 €</label>
+    </div>
+    <div class="package-item">
+        <input type="checkbox" id="ip2-details" name="ip_package_details" value="200" data-package-name="IP2">
+        <label for="ip2-details" class="package-label">Second License Package (LP2): 200 €</label>
+    </div>
+    <div class="package-item">
+        <input type="checkbox" id="ip3-details" name="ip_package_details" value="500" data-package-name="IP3">
+        <label for="ip3-details" class="package-label">Third License Package (LP3): 500 €</label>
+    </div>
+    <div class="package-item">
+        <input type="checkbox" id="ip4-details" name="ip_package_details" value="1000" data-package-name="IP4">
+        <label for="ip4-details" class="package-label">Fourth License Package (LP4): 1000 €</label>
+    </div>
+    <div class="package-item">
+        <input type="checkbox" id="ip5-details" name="ip_package_details" value="1500" data-package-name="IP5">
+        <label for="ip5-details" class="package-label">Fifth License Package (LP5): 1500 €</label>
+    </div>
+    <div class="package-item">
+        <input type="checkbox" id="ip6-details" name="ip_package_details" value="2100" data-package-name="IP6">
+        <label for="ip6-details" class="package-label">Sixth License Package (LP6): 2100 €</label>
+    </div>
+    <div class="package-item ip7-item">
+        <input type="checkbox" id="ip7-checkbox-details" name="ip_package_cb_7_details">
+        <label for="ip7-checkbox-details" class="package-label mr-2">Seventh License Package (LP7):</label>
+        <input type="number" id="ip7-custom-amount-details" name="ip7_amount_details" placeholder="Min. 5000" class="form-input-ip7" min="5000" step="100" disabled>
+        <span class="text-gray-300 ml-2">€ or more</span>
+    </div>
+</div>    
+                    <p class="text-lg font-semibold text-center text-fluorescent-green my-4">Total price of selected licenses: <span id="total-investment-amount-details">0</span> €</p>
+    
+                    <div class="text-sm text-gray-400 italic mt-6 space-y-2">
+                        <p><strong>Note:</strong></p>
+                        <p>Upon completion of the License Packages webpage, you will be notified to access it. Through the site, you will make the payment for the selected License Package or amount and sign the License Purchase Agreement.</p>
+                        <p>Business operations will commence with the first filling of the SFalgorithm, and you will be informed in a timely manner via email.</p>
+                    </div>
+    
+                    <button type="button" id="submit-investment-btn" class="btn-primary mt-6 w-full">CONFIRM</button>
+                </form>
+            </div>
+    </div>
+
      <nav class="fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
@@ -1218,8 +1296,19 @@ body.light-mode .nav-link i {
         <div class="p-8 md:p-12">
             <p class="text-gray-300 text-center leading-relaxed mb-6"> Choose the license purchase option that suits you best. </p>
             <div class="btn-group flex justify-center gap-4"> 
-                <a href="https://buy.stripe.com/6oU3co61427C1CY0GH4c807" target="_blank" class="btn-primary">5.000 €</a>
+                <button id="ip7-do-10k" class="btn-primary">Up to €10,000</button>
                 <button id="ip7-veci-iznos" class="btn-primary">Larger Amount</button>
+            </div>
+            <div id="ip7-amount-input-container" class="amount-input-container">
+               <label for="ip7-amount-input">Enter the license purchase amount:</label>
+                <div class="amount-input-wrapper">
+                   <input type="number" id="ip7-amount-input" class="amount-input" placeholder="Min. 5000 €" step="1" min="5000" max="10000">
+                    <span class="currency-symbol">€</span>
+                </div>
+                 <div class="input-buttons flex justify-center gap-4 mt-4">
+                   <button id="ip7-amount-confirm" class="btn-primary">CONFIRM</button>
+                   <button id="ip7-amount-cancel" class="btn-outline">CANCEL</button>
+                </div>
             </div>
             <div class="text-gray-300 text-center mt-6 leading-relaxed">
                 <p>Potential bonus within 2 years: <strong class="text-white">100% of the license price</strong></p>
@@ -2102,10 +2191,19 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
         const userCounterCloseBtn = document.getElementById('user-counter-close-btn');
         const userCounterShowBtn = document.getElementById('user-counter-show-btn');
         const chooseInvestorTypePopup = document.getElementById('choose-investor-type-popup');
+        const investmentDetailsPopup = document.getElementById('investment-details-popup');
         const triggerChooseInvestorTypeBtns = document.querySelectorAll('.trigger-choose-investor-type-popup');
+        const openInvestmentDetailsFromCardBtns = document.querySelectorAll('.open-investment-details-popup');
         const btnRegistriraniKorisnikChoice = document.getElementById('btn-registrirani-korisnik-choice');
         const btnNoviInvestitorChoice = document.getElementById('btn-novi-investitor-choice');
-      
+        const investmentDetailsForm = document.getElementById('investment-details-form');
+        const investorNameDetailsInput = document.getElementById('investor-name-details');
+        const investorEmailDetailsInput = document.getElementById('investor-email-details');
+        const investmentPackageDetailsCheckboxes = document.querySelectorAll('#investment-details-form input[name="ip_package_details"]');
+        const ip7CheckboxDetails = document.getElementById('ip7-checkbox-details');
+        const ip7CustomAmountDetailsInput = document.getElementById('ip7-custom-amount-details');
+        const totalInvestmentAmountDetailsSpan = document.getElementById('total-investment-amount-details');
+
         let isDraggingCounter = false;
         let dragCounterOffsetX = 0;
         let dragCounterOffsetY = 0;
@@ -2544,6 +2642,20 @@ if (starterPackageEmailForm && starterPackageEmailInput && validationPopup) {
     console.warn("Forma ili input za Starter Package email nisu pronađeni.");
 }
 
+        if (chooseInvestorTypePopup && investmentDetailsPopup && validationPopup && investmentDetailsForm) {
+            
+            const resetInvestmentDetailsForm = () => {
+                if (investmentDetailsForm) investmentDetailsForm.reset();
+                investmentPackageDetailsCheckboxes.forEach(cb => cb.checked = false);
+                if (ip7CheckboxDetails) ip7CheckboxDetails.checked = false;
+                
+                if (ip7CustomAmountDetailsInput) {
+                    ip7CustomAmountDetailsInput.value = '';
+                    ip7CustomAmountDetailsInput.disabled = true;
+                }
+                if (totalInvestmentAmountDetailsSpan) totalInvestmentAmountDetailsSpan.textContent = '0';
+            };
+
             triggerChooseInvestorTypeBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -2554,6 +2666,15 @@ if (starterPackageEmailForm && starterPackageEmailInput && validationPopup) {
                 });
             });
 
+            openInvestmentDetailsFromCardBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    sessionStorage.setItem('preselectedPackageName', btn.dataset.packageName);
+                    resetInvestmentDetailsForm(); 
+                    showPopup(chooseInvestorTypePopup); 
+                });
+            });
+            
             if (btnRegistriraniKorisnikChoice) {
                 btnRegistriraniKorisnikChoice.addEventListener('click', () => {
                     sessionStorage.removeItem('preselectedPackageName'); 
