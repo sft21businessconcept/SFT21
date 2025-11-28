@@ -102,24 +102,25 @@ function updateSlider(totalNews) {
 
 // FUNKCIJE ZA MODAL/UVEĆANJE SLIKE
 
-function openModal(imageSrc, imageAlt) {
-    if (!imageModal || !modalImageContent) return; 
-    modalImageContent.src = imageSrc;
-    modalImageContent.alt = imageAlt;
+function openModal(src, alt) {
+    modalImageContent.src = src;
+    modalImageContent.alt = alt;
     imageModal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+
     setTimeout(() => {
-        imageModal.classList.remove('opacity-0');
-    }, 10); 
+        imageModal.classList.add('opacity-100');
+    }, 10);
 }
 
 function closeModal() {
-    if (!imageModal) return; 
-    imageModal.classList.add('opacity-0');
+    imageModal.classList.remove('opacity-100');
+    document.body.classList.remove('overflow-hidden');
+
     setTimeout(() => {
         imageModal.classList.add('hidden');
-    }, 300); 
+    }, 300);
 }
-
 // Povezivanje modala (sada kad su definirani na vrhu)
 if(closeModalBtn && imageModal) {
     closeModalBtn.addEventListener('click', closeModal);
@@ -164,3 +165,4 @@ window.onload = () => {
         loadNews(initialIndex); 
     }
 };
+
