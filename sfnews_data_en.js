@@ -4,7 +4,7 @@ const sfNews = [
         title: "SFT21 is NOW OFFICIALLY “SFT21, LLC“, a company registered in the United States!",
         date: "November 21, 2025",
         imageSrc: "img/sft21_1news.png",
-        shortTitle: "Step 1: US Registration",
+        shortTitle: "US Registration",
         contentHTML: `
             <p class="font-semibold text-white">Dear loyal friends, members, and business partners… dear SFT21 community,</p>
             <p>Today, with immense pride and excitement, we share news that represents the foundation of our vision! Despite all the problems we faced in the last three years, despite the issues caused by the Covid crisis, despite the lies, deceptions, and slander publicly expressed against us, after months of dedicated work, strategic planning, and overcoming numerous challenges, we honorably and proudly announce with joy:</p>
@@ -216,4 +216,5 @@ const sfNews = [
             </footer>
         `
     }
+
 ];
