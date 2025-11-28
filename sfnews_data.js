@@ -13,10 +13,13 @@ const sfNews = [
                 <p class="text-2xl font-bold text-white italic">SFT21 je sada i službeno “SFT21, LLC“ kompanija registrirana u Sjedinjenim Američkim Državama, u poslovno najprestižnijoj državi – Delaware! 🎉🇺🇸</p>
             </blockquote>
 
-            <figure class="my-10 text-center">
-                <img src="img/certificateofformation.png" id="certificate-thumbnail" alt="Certifikat o osnivanju SFT21 LLC" class="max-w-md w-full mx-auto rounded-lg shadow-lg certificate-thumbnail">
-                <figcaption class="text-sm text-gray-400 mt-2 italic">Kliknite na sliku za uvećani prikaz</figcaption>
-            </figure>
+<figure class="my-10 text-center">
+    <img src="img/certificateofformation.png" 
+         id="certificate-thumbnail" 
+         data-full-src="img/certificateofformation_FULL.png"  alt="Certifikat o osnivanju SFT21 LLC" 
+         class="max-w-md w-full mx-auto rounded-lg shadow-lg certificate-thumbnail">
+    <figcaption class="text-sm text-gray-400 mt-2 italic">Kliknite na sliku za uvećani prikaz</figcaption>
+</figure>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-4">Što to znači za nas i, što je još važnije, što to znači za Vas?</h3>
             <p>Ovo nije samo komad papira. Ovo je naša čvrsta posvećenost izgradnji sigurne, pouzdane i globalno konkurentne tehnološke kompanije i online platforme. Put nije bio jednostavan, ali svaki korak je bio ključan u izgradnji temelja za neometano međunarodno poslovanje:</p>
@@ -216,4 +219,5 @@ const sfNews = [
             </footer>
         `
     }
+
 ];
