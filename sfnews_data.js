@@ -4,7 +4,7 @@ const sfNews = [
         title: "SFT21 je SADA i SLUŽBENO “SFT21, LLC“ kompanija registrirana u Sjedinjenim Američkim Državama!",
         date: "21. Studeni 2025.",
         imageSrc: "img/sft21_1news.png",
-        shortTitle: "Korak 1: Registracija u SAD",
+        shortTitle: "Registracija u SAD",
         contentHTML: `
             <p class="font-semibold text-white">Dragi vjerni prijatelji, članovi i poslovni partneri… draga SFT21 zajednico,</p>
             <p>Danas s ogromnim ponosom i uzbuđenjem dijelimo vijest koja predstavlja temelj naše vizije! Usprkos svim problemima sa kojima smo se suočili u posljednje tri godine, usprkos problemima nastalim zbog Covid krize, usprkos lažima, obmanama i klevetama javno iznesenima protiv nas, nakon više mjeseci predanog rada, strateškog planiranja i savladavanja brojnih izazova, časno i ponosno s veseljem objavljujemo:</p>
@@ -221,3 +221,4 @@ const sfNews = [
     }
 
 ];
+
