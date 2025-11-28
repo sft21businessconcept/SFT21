@@ -213,15 +213,20 @@
         }
 
         /* === KLJUČNA PROMJENA ZA SLIKU === */
-       .lightbox-content img {
+.lightbox-content img {
     display: block;
-    max-width: 100%;
-    max-height: 100%;
+    
+    /* 1. Prisiljavamo ga da koristi do 95% visine i širine ekrana (viewport) */
+    max-width: 95vw !important;
+    max-height: 95vh !important;
+    
+    /* 2. Uklanjamo marginu koja smanjuje sliku (bila je 20px) */
+    margin: 0 !important;
+    
     width: auto;
     height: auto;
     object-fit: contain;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    margin: 20px;
     box-sizing: border-box;
 }
 
@@ -989,5 +994,6 @@
 </body>
 
 </html>
+
 
 
