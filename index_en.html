@@ -185,10 +185,10 @@
         background-color: #4a148c; /* Tamnija ljubičasta na hover u oba moda */
     }
 
-    /* Pozicije specifične za svaki gumb */
+/* Pozicije specifične za svaki gumb */
     #user-counter-show-btn { top: 100px; }
-    #ai-chat-float-icon { top: 150px; }
-    #radio-float-icon { top: 200px; }
+    /* #ai-chat-float-icon { top: 150px; }  <-- OVO JE SAKRIVENO */
+    #radio-float-icon { top: 150px; } /* <-- RADIO POMAKNUT GORE */
 
     /* Prilagodba za LIGHT MODE */
     body.light-mode .floating-action-btn {
@@ -2021,7 +2021,7 @@ body.light-mode .nav-link i {
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Popup za chat (OVO JE PROZOR KOJI SE OTVARA) -->
+<!-- SAKRIVENO: Popup za chat (OVO JE PROZOR KOJI SE OTVARA)
     <div id="ai-chat-popup" class="ai-chat-popup">
         <div class="ai-chat-popup-header"> <span>SemFi Assistant</span> <button id="ai-chat-close-btn" class="ai-chat-close-btn">×</button> </div>
         <div class="ai-chat-popup-body"> <p class="text-center text-gray-400 text-sm mt-4">Start a conversation by typing a message below.</p> </div>
@@ -2031,6 +2031,7 @@ body.light-mode .nav-link i {
              <button class="ai-chat-button text-purple-400 hover:text-purple-300 text-lg flex-shrink-0"> <i class="fas fa-paper-plane"></i> </button>
         </div>
     </div>
+    -->
 
     <!-- Widget za brojač korisnika -->
     <div id="user-counter-widget" class="user-counter-widget hidden">
@@ -2051,10 +2052,11 @@ body.light-mode .nav-link i {
         <i class="fas fa-users"></i>
     </button>
 
-    <!-- Gumb za otvaranje chata -->
+    <!-- SAKRIVENO: Gumb za otvaranje chata
     <button id="ai-chat-float-icon" class="ai-chat-float-icon floating-action-btn" title="Open Chat">
         <i class="fas fa-comments"></i>
     </button>
+    -->
 
     <!-- Gumb za Radio -->
     <a href="https://radio.garden/listen/smooth-jazz-24-7/1vlrqH6v" target="_blank" rel="noopener noreferrer" id="radio-float-icon" class="floating-action-btn" title="Listen to Radio" aria-label="Listen to Radio">
@@ -3055,6 +3057,7 @@ if (mainContactForm) {
                 });
             });
         }                     
+/*
 if (aiChatIcon && aiChatPopup && aiChatCloseBtn && body) {
     // Klik na ikonu sada otvara I ZATVARA prozor
     aiChatIcon.addEventListener('click', (event) => {
@@ -3072,6 +3075,7 @@ if (aiChatIcon && aiChatPopup && aiChatCloseBtn && body) {
         body.classList.remove('overflow-hidden');
     });
 }
+*/
 
 if (userCounterWidget && userCounterHeader && userCounterShowBtn && userCounterCloseBtn) {
     
@@ -3184,6 +3188,7 @@ if (userCounterHeader && userCounterWidget) {
     }, { passive: false });
 }
 
+/*
 if (aiChatHeader && aiChatPopup) {
     // Pomicanje za chat (miš)
     aiChatHeader.addEventListener('mousedown', (e) => {
@@ -3201,7 +3206,7 @@ if (aiChatHeader && aiChatPopup) {
         e.preventDefault();
     }, { passive: false });
 }
-
+*/
 // Funkcija za pomicanje koja radi i za miš i za dodir
 function handleMove(clientX, clientY) {
     if (isDraggingCounter && userCounterWidget) {
