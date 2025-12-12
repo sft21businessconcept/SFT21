@@ -710,7 +710,7 @@ body.light-mode .nav-link i {
     </nav>
 
 <main class="pt-12">
-    <section id="pocetna" class="relative min-h-screen flex items-center justify-center pt-8">
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-8">
     <div class="container mx-auto px-6 relative z-10">
         <div class="flex flex-col md:flex-row items-center">
             <div class="md:w-2/5">
@@ -2503,16 +2503,6 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
             });
         }
 
-        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const hrefAttribute = this.getAttribute('href'); const targetElement = document.querySelector(hrefAttribute);
-                if (targetElement) {
-                    e.preventDefault(); const targetAbsOffsetTop = getAbsoluteOffsetTop(targetElement); const targetPosition = targetAbsOffsetTop - navHeight - 10; window.scrollTo({ top: Math.max(0, targetPosition), behavior: 'smooth' });
-                    if (hamburger?.classList.contains('active')) { hamburger.classList.remove('active'); navMenu.classList.remove('active'); body?.classList.remove('overflow-hidden'); }
-                }
-            });
-        });
-
         if (cursor && body) { let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0; const speed = 0.1; const updateCursorPosition = () => { cursorX += (mouseX - cursorX) * speed; cursorY += (mouseY - cursorY) * speed; cursor.style.left = `${cursorX}px`; cursor.style.top = `${cursorY}px`; requestAnimationFrame(updateCursorPosition); }; requestAnimationFrame(updateCursorPosition); window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; }); document.addEventListener('mouseleave', () => { if (cursor) cursor.style.opacity = '0'; }); document.addEventListener('mouseenter', () => { if (cursor) cursor.style.opacity = '1'; }); document.querySelectorAll('a, button, .accordion-header, .hamburger, input, textarea, select, .language-trigger, .language-item, label[for], .kyc-placeholder-clickable, #camera-icon, .starter-package-select-btn, .trigger-choose-investor-type-popup, .open-investment-details-popup').forEach(el => { el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }); }); el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }); }); }); }
 
         if (popupOverlay) { popupOverlay.addEventListener('click', (e) => { if (e.target === popupOverlay) closeAllPopups(); }); }
@@ -3664,31 +3654,32 @@ document.addEventListener('click', (event) => {
 <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@2.5.2/dist/umd/i18nextHttpBackend.min.js"></script>
 
 <!-- ======================================================= -->
-<!-- ISPRAVLJENI KOD ZA SCROLLSPY - VERZIJA 4 -->
+<!-- KOD ZA SCROLLSPY I KLIKOVE -->
 <!-- ======================================================= -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-
-    const navLinks = document.querySelectorAll('nav a.nav-link[href^="#"]');
-    // Ciljamo sve elemente s ID-jem unutar main taga koji odgovaraju linkovima.
-    const scrollTargets = Array.from(navLinks).map(link => {
-        const id = link.getAttribute('href').substring(1);
-        return document.getElementById(id);
-    }).filter(el => el !== null); // Filtriramo ako neki link nema odgovarajući element
+    const navLinks = document.querySelectorAll('nav a.nav-link[href^="#"], .nav-menu a[href^="#"]');
+    const scrollTargets = Array.from(navLinks)
+        .map(link => {
+            const id = link.getAttribute('href').substring(1);
+            // U engleskoj verziji ID je 'home', ne 'pocetna'
+            const targetId = id === 'pocetna' ? 'home' : id; 
+            return document.getElementById(targetId);
+        })
+        .filter(el => el !== null);
 
     const nav = document.querySelector('nav.fixed');
-    // Dodajemo mali buffer na visinu navigacije za bolju preciznost
-    const navHeight = nav ? nav.offsetHeight + 10 : 90;
+    const navHeight = nav ? nav.offsetHeight + 20 : 100;
 
     if (navLinks.length === 0 || scrollTargets.length === 0) {
         console.warn("Scrollspy nije inicijaliziran: nedostaju linkovi ili sekcije.");
         return;
     }
 
-    // Funkcija za postavljanje aktivnog linka ostaje ista
     const setActiveLink = (id) => {
         navLinks.forEach(link => {
-            if (link.getAttribute('href') === `#${id}`) {
+            // Provjeravamo href atribut bez #
+            if (link.getAttribute('href').substring(1) === id) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
@@ -3696,36 +3687,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Postavljamo početno stanje (za englesku verziju je 'home')
-    setActiveLink('home');
-
-    // Kreiramo Intersection Observer s korigiranim opcijama
+    // Intersection Observer za praćenje skrolanja
     const observer = new IntersectionObserver((entries) => {
-        let lastIntersectingEntry = null;
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                lastIntersectingEntry = entry;
+                const id = entry.target.getAttribute('id');
+                setActiveLink(id);
             }
         });
-
-        // Ažuriramo samo za posljednju sekciju koja je ušla u vidno polje
-        // Ovo rješava problem kada su dvije sekcije vidljive istovremeno
-        if (lastIntersectingEntry) {
-            const id = lastIntersectingEntry.target.getAttribute('id');
-            setActiveLink(id);
-        }
     }, {
         rootMargin: `-${navHeight}px 0px -50% 0px`,
         threshold: 0
     });
 
-    // Povezujemo observer sa svim ciljanim sekcijama
     scrollTargets.forEach(target => {
         observer.observe(target);
     });
+
+    // Event listener za klikove na linkove
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            const targetElement = document.querySelector(href);
+
+            if (targetElement) {
+                e.preventDefault();
+                
+                const targetId = targetElement.getAttribute('id');
+                
+                // 1. Odmah postavi aktivni link (OVO JE KLJUČAN POPRAVAK)
+                setActiveLink(targetId);
+
+                // 2. Izračunaj poziciju za skrolanje
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - (navHeight - 20);
+
+                // 3. Pokreni glatko skrolanje
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+
+                // 4. Zatvori mobilni meni ako je otvoren
+                const hamburger = document.querySelector('.hamburger');
+                const navMenu = document.querySelector('.nav-menu');
+                if (hamburger?.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            }
+        });
+    });
 });
 </script>
-
 <!-- ======================================================= -->
 <!-- NOVO: Skripta za prikaz/skrivanje FAQ sekcije         -->
 <!-- ======================================================= -->
