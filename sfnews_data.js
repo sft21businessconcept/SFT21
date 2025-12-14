@@ -169,7 +169,7 @@ const sfNews = [
                         <tr class="border-t border-gray-700 hover:bg-gray-700/50">
                             <td class="py-3 px-4 font-semibold">Limit Zarade (Maksimalni)</td>
                             <td class="py-3 px-4 text-center text-yellow-300">1.200 €</td>
-                            <td class="py-3 px-4 text-center text-red-300">1.050 €</td>
+                            <td class="py-3 px-4 text-center text-red-300">1.100 €</td>
                         </tr>
                         <tr class="border-t border-gray-700 hover:bg-gray-700/50">
                             <td class="py-3 px-4 font-semibold">SF Bodovi</td>
@@ -221,4 +221,5 @@ const sfNews = [
     }
 
 ];
+
 
