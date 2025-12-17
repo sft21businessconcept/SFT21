@@ -211,14 +211,6 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
         .swiper-pagination-bullet-active { background: var(--fluorescent-green) !important; }
         body.light-mode .swiper-pagination-bullet-active { background: var(--primary-color) !important; }
 
-        /* Prilagođeno pravilo za kartice u SLIDERU */
-        .swiper-slide .testimonial-card { 
-            height: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-        }
-        
         /* NOVO: Zajednička pravila za SVE testimonial kartice (i u slideru i ispod) */
         .testimonial-card {
             background-color: rgba(13, 1, 24, 0.4); /* Tamna, polu-prozirna pozadina */
@@ -522,8 +514,9 @@ body.light-mode .nav-menu {
             <p class="text-lg text-gray-400 max-w-3xl mx-auto">The experiences of our members are our greatest strength!</p>
         </div>
 
+        <div class="swiper-container testimonial-slider my-12">
         <!-- Slider with the first testimonials -->
-        <div class="swiper testimonials-slider">
+        <div class="swiper">
             <div class="swiper-wrapper">
                 
                 <!-- Slide 1: Ana Marković -->
