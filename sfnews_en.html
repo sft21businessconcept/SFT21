@@ -406,25 +406,20 @@
     <div class="custom-cursor"></div>
 
     <div id="popup-overlay" class="popup-overlay">
-   <!-- CONTRACT POPUP -->
-        <div id="contract-popup" class="popup-content" style="display: none; max-width: 900px; width: 90%; text-align: justify; height: 90vh; display: flex; flex-direction: column;">
-            <button class="popup-close" aria-label="Close popup">×</button>
-            <h4 class="text-center text-xl md:text-2xl font-bold mb-4 text-white flex-shrink-0">AGREEMENT ON THE PURCHASE OF AN SFLICENSE AND PARTICIPATION IN THE SFT21 BUSINESS MODEL</h4>
-            
-            <!-- PDF VIEWER -->
-            <div id="pdf-viewer-container" class="bg-gray-700 rounded-md overflow-hidden flex-grow border border-gray-600">
-                <iframe src="dokumenti/ugovor-sft21.pdf" width="100%" height="100%" type="application/pdf">
-                    <p>Your browser does not support PDF viewing. You can download it <a href="dokumenti/ugovor-sft21.pdf" download>here</a>.</p>
-                </iframe>
-            </div>
-
-            <!-- DOWNLOAD BUTTON -->
-            <div class="text-center mt-4 flex-shrink-0">
-                <a href="dokumenti/license-agreement-sft21.pdf" download="SFT21-Agreement.pdf" class="btn-primary inline-block text-lg px-8 py-3">
-                    <i class="fas fa-download mr-2"></i> Download Agreement
-                </a>
+        <!-- POPUP ZA UGOVOR -->
+        <div id="contract-popup" class="popup-content" style="display: none; max-width: 800px; text-align: justify; height: 80vh; display: flex; flex-direction: column;">
+            <button class="popup-close" aria-label="Zatvori popup">×</button>
+            <h4 class="text-center text-xl md:text-2xl font-bold mb-6 text-white flex-shrink-0">SFLICENSE PURCHASE AGREEMENT AND PARTICIPATION IN THE SFT21 BUSINESS MODEL</h4>
+            <div id="contract-text-placeholder" class="text-gray-300 space-y-4 overflow-y-auto flex-grow pr-4">
+                <!-- Tekst ugovora će se ubaciti ovdje -->
+                <p>Učitavanje teksta ugovora...</p>
+                <p>Ovdje će biti kompletan tekst ugovora kada ga pripremite.</p>
+                <!-- Primjer teksta -->
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
         </div>
+    </div>
 
     <!-- Lightbox for certificate -->
     <div id="certificate-lightbox" class="lightbox-overlay">
@@ -991,4 +986,3 @@
 </body>
 
 </html>
-
