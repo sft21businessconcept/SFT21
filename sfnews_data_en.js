@@ -216,26 +216,30 @@ const sfNews = [
             </footer>
         `
     },
-    {
+     {
         id: 3,
         title: "Agreement on the Purchase of an SFLicense and Participation in the SFT21 Business Model",
         date: "January 10, 2026",
-        <figure class="my-8">
-        <img src="img/agreement.png" alt="Prikaz ugovora" class="rounded-lg shadow-lg news-image-small">
-        </figure>
+        imageSrc: "", // Ostavljamo prazno, sliku ćemo staviti unutar HTML-a
+        shortTitle: "Contract Analysis",
+        contentHTML: `
+            <figure class="my-8">
+                <img src="img/ugovor.png" alt="Contract Preview" class="rounded-lg shadow-lg news-image-small">
+            </figure>
+
             <div class="hero-video-wrapper my-8">
-        <iframe 
-            src="https://www.youtube.com/embed/_VccQEe9sFw" 
-            title="Analysis of the SFLicense Purchase Agreement" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-        </iframe>
+                <iframe 
+                    src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" 
+                    title="Analysis of the SFLicense Purchase Agreement" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
             </div>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-4 mb-4">DETAILED ANALYSIS OF THE AGREEMENT WITH EXPLANATIONS</h3>
-            <p>In this video, we review each article of the agreement and its key provisions, providing clear explanations of legal terms and practical implications with specific examples.</p>
+            <p>In this video, we review each article of the agreement and its key provisions, providing clear explanations of legal terms, practical implications with specific examples.</p>
             
             <p class="font-semibold text-white mt-6">The purpose of the video is to transparently cover the key provisions of the Agreement:</p>
             <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 my-4">
@@ -258,6 +262,7 @@ const sfNews = [
         `
     }
 ];
+
 
 
 
