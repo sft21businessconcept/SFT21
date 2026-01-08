@@ -225,7 +225,7 @@ const sfNews = [
         contentHTML: `
             <div class="hero-video-wrapper my-8">
         <iframe 
-            src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" 
+            src="https://www.youtube.com/embed/ksB5h2sQnzU" 
             title="Analiza Ugovora o kupovini SFlicence" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -258,4 +258,5 @@ const sfNews = [
         `
     }
 ];
+
 
