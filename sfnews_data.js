@@ -220,18 +220,22 @@ const sfNews = [
         id: 3,
         title: "Ugovor o kupovini SFlicence i sudjelovanju u SFT21 poslovnom modelu",
         date: "10. Siječanj 2026.",
-        <figure class="my-8">
-        <img src="img/ugovor.png" alt="Prikaz ugovora" class="rounded-lg shadow-lg news-image-small">
-        </figure>
+        imageSrc: "", // Ostavljamo prazno, sliku ćemo staviti unutar HTML-a
+        shortTitle: "Analiza Ugovora",
+        contentHTML: `
+            <figure class="my-8">
+                <img src="img/ugovor.png" alt="Prikaz ugovora" class="rounded-lg shadow-lg news-image-small">
+            </figure>
+
             <div class="hero-video-wrapper my-8">
-        <iframe 
-            src="https://www.youtube.com/embed/ksB5h2sQnzU" 
-            title="Analiza Ugovora o kupovini SFlicence" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-        </iframe>
+                <iframe 
+                    src="https://www.youtube.com/embed/_VccQEe9sFw" 
+                    title="Analiza Ugovora o kupovini SFlicence" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
             </div>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-4 mb-4">DETALJNA ANALIZA UGOVORA UZ OBJAŠNJENJE</h3>
@@ -258,6 +262,7 @@ const sfNews = [
         `
     }
 ];
+
 
 
 
