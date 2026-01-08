@@ -229,7 +229,7 @@ const sfNews = [
 
             <div class="hero-video-wrapper my-8">
                 <iframe 
-                    src="https://www.youtube.com/embed/_VccQEe9sFw" 
+                    src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" 
                     title="Analysis of the SFLicense Purchase Agreement" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -262,8 +262,6 @@ const sfNews = [
         `
     }
 ];
-
-
 
 
 
