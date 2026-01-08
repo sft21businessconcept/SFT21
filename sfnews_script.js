@@ -44,8 +44,9 @@ function loadNews(index) {
 
     // 1. Ažuriranje glavnih elemenata
     document.getElementById('news-title').textContent = newsItem.title;
-    document.getElementById('news-info').textContent = `Objavljeno: ${newsItem.date}`;
-
+    const lang = document.documentElement.lang || 'hr'; // Provjeri jezik stranice
+    const publishedText = lang === 'en' ? 'Published:' : 'Objavljeno:';
+    document.getElementById('news-info').textContent = `${publishedText} ${newsItem.date}`;
     // Ažuriranje glavne slike (iznad teksta)
     document.getElementById('news-image').src = newsItem.imageSrc;
     document.getElementById('news-image').alt = newsItem.title;
@@ -198,3 +199,4 @@ if (popupOverlay) {
         });
     });
 }
+
