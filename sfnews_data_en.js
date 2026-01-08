@@ -220,9 +220,9 @@ const sfNews = [
         id: 3,
         title: "Agreement on the Purchase of an SFLicense and Participation in the SFT21 Business Model",
         date: "January 10, 2026",
-        imageSrc: "img/agreement.png", 
-        shortTitle: "Contract Analysis",
-        contentHTML: `
+        <figure class="my-8">
+        <img src="img/agreement.png" alt="Prikaz ugovora" class="rounded-lg shadow-lg news-image-small">
+        </figure>
             <div class="hero-video-wrapper my-8">
         <iframe 
             src="https://www.youtube.com/embed/_VccQEe9sFw" 
@@ -258,6 +258,7 @@ const sfNews = [
         `
     }
 ];
+
 
 
 
