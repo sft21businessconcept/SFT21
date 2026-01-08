@@ -227,6 +227,12 @@ const sfNews = [
                 <img src="img/ugovor.png" alt="Prikaz ugovora" class="rounded-lg shadow-lg news-image-small">
             </figure>
 
+            <div class="text-center my-10">
+            <a href="dokumenti/ugovor-sft21.pdf" target="_blank" class="btn-primary text-lg px-8 py-4">
+            <i class="fas fa-file-pdf mr-2"></i> PROČITAJ ili PREUZMI UGOVOR
+            </a>
+            </div>
+
             <div class="hero-video-wrapper my-8">
                 <iframe 
                     src="https://www.youtube.com/embed/ksB5h2sQnzU" 
@@ -259,6 +265,7 @@ const sfNews = [
         `
     }
 ];
+
 
 
 
