@@ -10,7 +10,13 @@ const modalImageContent = document.getElementById('modal-image-content'); // MOR
 const closeModalBtn = document.getElementById('close-modal-btn'); // MORA BITI DEFINIRANO
 const popupOverlay = document.getElementById('popup-overlay');
 const contractPopup = document.getElementById('contract-popup');
-
+// NOVE VARIJABLE ZA PDF PREGLEDNIK
+const pdfCanvas = document.getElementById('pdf-canvas');
+const prevPageBtn = document.getElementById('prev-page');
+const nextPageBtn = document.getElementById('next-page');
+const pageNumDisplay = document.getElementById('page-num-display');
+const downloadPdfBtn = document.getElementById('download-pdf-btn');
+const pdfLoader = document.getElementById('pdf-loader');
 // --- FUNKCIJE ZA DEEP LINKING ---
 function getNewsIdFromHash() {
     const hash = window.location.hash;
@@ -145,20 +151,6 @@ if (closeModalBtn && imageModal) {
     });
 }
 
-
-// Funkcija koja veže click događaj na Certifikat nakon učitavanja vijesti
-function attachImageModalListeners() {
-    const certificateThumbnail = document.getElementById('certificate-thumbnail');
-
-    if (certificateThumbnail) {
-        certificateThumbnail.classList.add('cursor-pointer', 'hover:opacity-90', 'transition-opacity');
-        certificateThumbnail.onclick = () => {
-            openModal(certificateThumbnail.src, certificateThumbnail.alt);
-        };
-    }
-}
-
-
 // Povezivanje funkcija na klik strelica
 if (prevBtn) {
     prevBtn.addEventListener('click', () => {
@@ -199,5 +191,117 @@ if (popupOverlay) {
             document.body.classList.remove('overflow-hidden');
         });
     });
+}
+// =============================================
+//          LOGIKA ZA PDF PREGLEDNIK
+// =============================================
+let pdfDoc = null;
+let pageNum = 1;
+let pageRendering = false;
+let pageNumPending = null;
+
+// Funkcija za renderiranje stranice
+function renderPage(num) {
+    pageRendering = true;
+    pdfLoader.style.display = 'block';
+
+    // Get page
+    pdfDoc.getPage(num).then(page => {
+        const viewport = page.getViewport({ scale: 1.5 });
+        const container = document.getElementById('pdf-viewer-container');
+        const scale = container.clientWidth / viewport.width;
+        const scaledViewport = page.getViewport({ scale: scale });
+
+        pdfCanvas.height = scaledViewport.height;
+        pdfCanvas.width = scaledViewport.width;
+
+        const renderContext = {
+            canvasContext: pdfCanvas.getContext('2d'),
+            viewport: scaledViewport
+        };
+
+        const renderTask = page.render(renderContext);
+        renderTask.promise.then(() => {
+            pageRendering = false;
+            pdfLoader.style.display = 'none';
+            if (pageNumPending !== null) {
+                renderPage(pageNumPending);
+                pageNumPending = null;
+            }
+        });
+    });
+
+    // Update page counters
+    pageNumDisplay.textContent = `Stranica ${num} / ${pdfDoc.numPages}`;
+}
+
+// Provjera da li se stranica renderira
+function queueRenderPage(num) {
+    if (pageRendering) {
+        pageNumPending = num;
+    } else {
+        renderPage(num);
+    }
+}
+
+// Događaji za prethodnu/sljedeću stranicu
+function onPrevPage() {
+    if (pageNum <= 1) {
+        return;
+    }
+    pageNum--;
+    queueRenderPage(pageNum);
+}
+prevPageBtn.addEventListener('click', onPrevPage);
+
+function onNextPage() {
+    if (pageNum >= pdfDoc.numPages) {
+        return;
+    }
+    pageNum++;
+    queueRenderPage(pageNum);
+}
+nextPageBtn.addEventListener('click', onNextPage);
+
+// Funkcija za učitavanje PDF dokumenta
+function loadPdf(url) {
+    pdfLoader.style.display = 'block';
+    const loadingTask = pdfjsLib.getDocument(url);
+    loadingTask.promise.then(pdfDoc_ => {
+        pdfDoc = pdfDoc_;
+        pageNum = 1; // Resetiraj na prvu stranicu
+        renderPage(pageNum);
+        
+        // Postavi link za preuzimanje
+        downloadPdfBtn.href = url;
+    }, reason => {
+        console.error(reason);
+        pdfLoader.textContent = "Greška pri učitavanju PDF-a.";
+    });
+}
+
+// Nadogradnja event listenera za gumb "PROČITAJ UGOVOR"
+// Ova funkcija se mora nalaziti unutar `attachDynamicEventListeners` da bi se ispravno povezala
+function attachDynamicEventListeners() {
+    const certificateThumbnail = document.getElementById('certificate-thumbnail');
+    if (certificateThumbnail) {
+        certificateThumbnail.onclick = () => openModal(certificateThumbnail.src, certificateThumbnail.alt);
+    }
+
+    const openContractBtn = document.getElementById('open-contract-popup-btn');
+    if (openContractBtn) {
+        openContractBtn.addEventListener('click', () => {
+            // Provjeri jezik stranice da bi se učitao ispravan PDF
+            const isEnglish = document.documentElement.lang === 'en';
+            const pdfUrl = isEnglish ? 'dokumenti/license-agreement-sft21.pdf' : 'dokumenti/ugovor-sft21.pdf';
+
+            popupOverlay.style.display = 'flex';
+            contractPopup.style.display = 'flex';
+            document.body.classList.add('overflow-hidden');
+
+            // Učitaj PDF
+            loadPdf(pdfUrl);
+        });
+    }
 }
 
