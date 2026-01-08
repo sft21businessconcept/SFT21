@@ -9,7 +9,6 @@ const imageModal = document.getElementById('image-modal'); // MORA BITI DEFINIRA
 const modalImageContent = document.getElementById('modal-image-content'); // MORA BITI DEFINIRANO
 const closeModalBtn = document.getElementById('close-modal-btn'); // MORA BITI DEFINIRANO
 const popupOverlay = document.getElementById('popup-overlay');
-const contractPopup = document.getElementById('contract-popup');
 
 // --- FUNKCIJE ZA DEEP LINKING ---
 function getNewsIdFromHash() {
@@ -60,16 +59,6 @@ function loadNews(index) {
 
     // 3. Povezivanje click događaja za Certifikat (mora biti nakon što se HTML učita)
     setTimeout(attachImageModalListeners, 100);
-
-    // Povezivanje gumba za otvaranje ugovora nakon što se sadržaj učita
-    const openContractBtn = document.getElementById('open-contract-popup-btn');
-    if (openContractBtn && contractPopup && popupOverlay) {
-        openContractBtn.addEventListener('click', () => {
-            popupOverlay.style.display = 'flex';
-            contractPopup.style.display = 'flex';
-            document.body.classList.add('overflow-hidden');
-        });
-    }
 
     // Pomakni korisnika na vrh članka
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -180,23 +169,3 @@ window.onload = () => {
     }
 };
 
-// --- NOVI KOD ZA ZATVARANJE POPUPA ---
-if (popupOverlay) {
-    // Zatvara klikom na pozadinu
-    popupOverlay.addEventListener('click', (e) => {
-        if (e.target === popupOverlay) {
-            popupOverlay.style.display = 'none';
-            if (contractPopup) contractPopup.style.display = 'none';
-            document.body.classList.remove('overflow-hidden');
-        }
-    });
-
-    // Pronalazi SVE gumbe za zatvaranje unutar overlay-a i dodaje im funkcionalnost
-    popupOverlay.querySelectorAll('.popup-close').forEach(btn => {
-        btn.addEventListener('click', () => {
-            popupOverlay.style.display = 'none';
-            if (contractPopup) contractPopup.style.display = 'none';
-            document.body.classList.remove('overflow-hidden');
-        });
-    });
-}
