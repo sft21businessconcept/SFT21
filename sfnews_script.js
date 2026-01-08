@@ -58,17 +58,7 @@ function loadNews(index) {
     updateSlider(sfNews.length);
 
     // 3. Povezivanje click događaja za Certifikat (mora biti nakon što se HTML učita)
-    setTimeout(attachImageModalListeners, 100);
-
-    // Povezivanje gumba za otvaranje ugovora nakon što se sadržaj učita
-    const openContractBtn = document.getElementById('open-contract-popup-btn');
-    if (openContractBtn && contractPopup && popupOverlay) {
-        openContractBtn.addEventListener('click', () => {
-            popupOverlay.style.display = 'flex';
-            contractPopup.style.display = 'flex';
-            document.body.classList.add('overflow-hidden');
-        });
-    }
+    setTimeout(attachDynamicEventListeners, 100);
 
     // Pomakni korisnika na vrh članka
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -145,18 +135,20 @@ if (closeModalBtn && imageModal) {
 }
 
 
-// Funkcija koja veže click događaj na Certifikat nakon učitavanja vijesti
-function attachImageModalListeners() {
+// Funkcija koja veže click događaje na dinamičke elemente
+function attachDynamicEventListeners() {
+    // Povezivanje za thumbnail certifikata (ako postoji)
     const certificateThumbnail = document.getElementById('certificate-thumbnail');
-
     if (certificateThumbnail) {
-        certificateThumbnail.classList.add('cursor-pointer', 'hover:opacity-90', 'transition-opacity');
-        certificateThumbnail.onclick = () => {
-            openModal(certificateThumbnail.src, certificateThumbnail.alt);
-        };
+        certificateThumbnail.onclick = () => openModal(certificateThumbnail.src, certificateThumbnail.alt);
+    }
+
+    // Povezivanje za gumb za otvaranje ugovora (ako postoji)
+    const openContractBtn = document.getElementById('open-contract-popup-btn');
+    if (openContractBtn) {
+        openContractBtn.addEventListener('click', openContractPopup);
     }
 }
-
 
 // Povezivanje funkcija na klik strelica
 if (prevBtn) {
@@ -179,16 +171,45 @@ window.onload = () => {
     }
 };
 
-// --- NOVI KOD ZA ZATVARANJE POPUPA ---
+// FUNKCIJE ZA POPUP UGOVORA
+const pdfPath = "dokumenti/ugovor-sft21.pdf"; 
+
+function openContractPopup() {
+    if (contractPopup && popupOverlay && pdfIframe) {
+        // Postavi izvor PDF-a TEK KAD se otvara
+        pdfIframe.setAttribute('src', pdfPath);
+        
+        popupOverlay.style.display = 'flex';
+        contractPopup.style.display = 'flex';
+        document.body.classList.add('overflow-hidden');
+    }
+}
+function closeContractPopup() {
+    if (contractPopup && popupOverlay && pdfIframe) {
+        popupOverlay.style.display = 'none';
+        contractPopup.style.display = 'none';
+        document.body.classList.remove('overflow-hidden');
+        
+        // Obriši izvor PDF-a KAD se zatvori
+        pdfIframe.removeAttribute('src');
+    }
+}
+
+// Povezivanje zatvaranja za SVE popupe
 if (popupOverlay) {
-    // Zatvara klikom na pozadinu
     popupOverlay.addEventListener('click', (e) => {
         if (e.target === popupOverlay) {
-            popupOverlay.style.display = 'none';
-            if (contractPopup) contractPopup.style.display = 'none';
-            document.body.classList.remove('overflow-hidden');
+            closeContractPopup(); // Zatvara popup ugovora
+            closeModal(); // Zatvara popup za slike
         }
     });
+
+    // Povezivanje 'x' gumba za zatvaranje ugovora
+    const contractCloseBtn = contractPopup.querySelector('.popup-close');
+    if (contractCloseBtn) {
+        contractCloseBtn.addEventListener('click', closeContractPopup);
+    }
+}
 
     // Pronalazi SVE gumbe za zatvaranje unutar overlay-a i dodaje im funkcionalnost
     popupOverlay.querySelectorAll('.popup-close').forEach(btn => {
@@ -199,3 +220,4 @@ if (popupOverlay) {
         });
     });
 }
+
