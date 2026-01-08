@@ -609,43 +609,37 @@
         </div>
     </nav>
 
-    <main class="pt-24">
-        <main class="pt-24">
-            <section class="relative overflow-hidden">
-                <div class="container mx-auto px-6 relative z-10">
-
-                    <div id="news-slider-container"
-                        class="flex justify-center items-center py-6 bg-gray-800 bg-opacity-50 rounded-lg mx-auto max-w-4xl mb-4">
-                        <span id="prev-news-btn"
-                            class="text-purple-400 cursor-pointer text-2xl px-4 hover:text-white transition-colors">&lt;</span>
-                        <div id="news-navigation" class="flex items-center space-x-2">
-                        </div>
-                        <span id="next-news-btn"
-                            class="text-purple-400 cursor-pointer text-2xl px-4 hover:text-white transition-colors">&gt;</span>
+<main class="pt-24">
+        <section class="py-16 relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <!-- Slider za navigaciju -->
+                <div id="news-slider-container" class="flex justify-center items-center py-4 bg-gray-800 bg-opacity-50 rounded-lg mx-auto max-w-4xl mb-8">
+                    <span id="prev-news-btn" class="text-purple-400 cursor-pointer text-3xl px-4 hover:text-white transition-colors">&lt;</span>
+                    <div id="news-navigation" class="flex items-center space-x-2 overflow-x-auto">
+                        <!-- Gumbi za navigaciju se generiraju dinamički -->
                     </div>
-
-                    <div
-                        class="main-article-container mx-auto max-w-4xl p-4 md:p-8 bg-gray-800 bg-opacity-40 rounded-lg shadow-xl glass-card">
-                        <header class="text-center mb-10">
-                            <h1 id="news-title"
-                                class="text-3xl md:text-5xl font-bold mb-4 leading-tight text-fluorescent-green"></h1>
-                            <p id="news-info" class="text-gray-400 mt-4 text-sm"></p>
-                        </header>
-
-                        <div class="news-visuals text-center mb-8">
-                            <img id="news-image" src="" alt="Naslov vijesti"
-                                class="w-full h-auto rounded-lg shadow-lg mx-auto">
-                        </div>
-
-                        <div id="news-text" class="text-lg text-gray-300 leading-relaxed space-y-6 text-justify">
-                        </div>
-                    </div>
+                    <span id="next-news-btn" class="text-purple-400 cursor-pointer text-3xl px-4 hover:text-white transition-colors">&gt;</span>
                 </div>
-            </section>
-        </main>
 
+                <!-- Glavni kontejner za članak -->
+                <article class="max-w-4xl mx-auto glass-card p-8 md:p-12">
+                    <header class="text-center mb-10">
+                        <h1 id="news-title" class="text-3xl md:text-5xl font-bold mb-4 leading-tight text-fluorescent-green"></h1>
+                        <p id="news-info" class="text-gray-400 mt-4 text-sm"></p>
+                    </header>
+                    
+                    <figure id="news-image-container" class="my-8">
+                        <img id="news-image" src="" alt="Naslovna slika vijesti" class="w-full h-auto rounded-lg shadow-2xl" style="display: none;">
+                    </figure>
+
+                    <div id="news-text" class="text-gray-300 text-lg leading-relaxed space-y-6 text-justify">
+                        <!-- Sadržaj vijesti se učitava ovdje -->
+                    </div>
+                </article>
+            </div>
+        </section>
     </main>
-
+    
     <!-- SEKCIJA ZA PARTNER SLIDER -->
     <section class="py-16 partner-slider-section">
         <div class="container mx-auto px-6 text-center">
@@ -1015,6 +1009,7 @@
 </body>
 
 </html>
+
 
 
 
