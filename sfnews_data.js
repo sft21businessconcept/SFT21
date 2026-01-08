@@ -4,7 +4,7 @@ const sfNews = [
         title: "SFT21 je SADA i SLUŽBENO “SFT21, LLC“ kompanija registrirana u Sjedinjenim Američkim Državama!",
         date: "21. Studeni 2025.",
         imageSrc: "img/sft21_1news.png",
-        shortTitle: "Registracija u SAD",
+        shortTitle: "Korak 1: Registracija u SAD",
         contentHTML: `
             <p class="font-semibold text-white">Dragi vjerni prijatelji, članovi i poslovni partneri… draga SFT21 zajednico,</p>
             <p>Danas s ogromnim ponosom i uzbuđenjem dijelimo vijest koja predstavlja temelj naše vizije! Usprkos svim problemima sa kojima smo se suočili u posljednje tri godine, usprkos problemima nastalim zbog Covid krize, usprkos lažima, obmanama i klevetama javno iznesenima protiv nas, nakon više mjeseci predanog rada, strateškog planiranja i savladavanja brojnih izazova, časno i ponosno s veseljem objavljujemo:</p>
@@ -13,13 +13,10 @@ const sfNews = [
                 <p class="text-2xl font-bold text-white italic">SFT21 je sada i službeno “SFT21, LLC“ kompanija registrirana u Sjedinjenim Američkim Državama, u poslovno najprestižnijoj državi – Delaware! 🎉🇺🇸</p>
             </blockquote>
 
-<figure class="my-10 text-center">
-    <img src="img/certificateofformation.png" 
-         id="certificate-thumbnail" 
-         data-full-src="img/certificateofformation_FULL.png"  alt="Certifikat o osnivanju SFT21 LLC" 
-         class="max-w-md w-full mx-auto rounded-lg shadow-lg certificate-thumbnail">
-    <figcaption class="text-sm text-gray-400 mt-2 italic">Kliknite na sliku za uvećani prikaz</figcaption>
-</figure>
+            <figure class="my-10 text-center">
+                <img src="img/certificateofformation.png" id="certificate-thumbnail" alt="Certifikat o osnivanju SFT21 LLC" class="max-w-md w-full mx-auto rounded-lg shadow-lg certificate-thumbnail">
+                <figcaption class="text-sm text-gray-400 mt-2 italic">Kliknite na sliku za uvećani prikaz</figcaption>
+            </figure>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-4">Što to znači za nas i, što je još važnije, što to znači za Vas?</h3>
             <p>Ovo nije samo komad papira. Ovo je naša čvrsta posvećenost izgradnji sigurne, pouzdane i globalno konkurentne tehnološke kompanije i online platforme. Put nije bio jednostavan, ali svaki korak je bio ključan u izgradnji temelja za neometano međunarodno poslovanje:</p>
@@ -91,7 +88,7 @@ const sfNews = [
         id: 2,
         title: "Ključni Potez za Budućnost: Licencni Paketi vs. Startni Paketi",
         date: "14. Studeni 2025.",
-        imageSrc: "img/image_883718.jpg", // ISPRAVLJENA PUTANJA ZA SLIKU DRUGE VIJESTI
+        imageSrc: "img/image_883718.jpg", 
         shortTitle: "Licenca vs Franšiza",
         contentHTML: `
             <p class="font-semibold text-white">Koja je razlika između Licencnih i Startnih paketa?</p>
@@ -169,7 +166,7 @@ const sfNews = [
                         <tr class="border-t border-gray-700 hover:bg-gray-700/50">
                             <td class="py-3 px-4 font-semibold">Limit Zarade (Maksimalni)</td>
                             <td class="py-3 px-4 text-center text-yellow-300">1.200 €</td>
-                            <td class="py-3 px-4 text-center text-red-300">1.100 €</td>
+                            <td class="py-3 px-4 text-center text-red-300">1.050 €</td>
                         </tr>
                         <tr class="border-t border-gray-700 hover:bg-gray-700/50">
                             <td class="py-3 px-4 font-semibold">SF Bodovi</td>
@@ -218,8 +215,46 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 3,
+        title: "Ugovor o kupovini SFlicence i sudjelovanju u SFT21 poslovnom modelu",
+        date: "10. Siječanj 2026.",
+        imageSrc: "", // Nema glavne slike, samo video
+        shortTitle: "Analiza Ugovora",
+        contentHTML: `
+            <div class="hero-video-wrapper my-8">
+                <iframe 
+                    src="https://www.youtube.com/embed/<iframe width="788" height="443" src="https://www.youtube.com/embed/ksB5h2sQnzU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" 
+                    title="Analiza Ugovora o kupovini SFlicence" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-4 mb-4">DETALJNA ANALIZA UGOVORA UZ OBJAŠNJENJE</h3>
+            <p>U ovom videu razmatramo svaki članak ugovora i njegove ključne odredbe, pružajući jasno objašnjenje pravnih termina, praktičnih implikacija uz pojedine primjere.</p>
+            
+            <p class="font-semibold text-white mt-6">Svrha videa je transparentno obraditi ključne odredbe Ugovora:</p>
+            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 my-4">
+                <li><strong>Članak po članak:</strong> Detaljna razrada svake stavke, uključujući definicije, obveze i prava ugovornih strana.</li>
+                <li><strong>Pravni i praktični aspekt:</strong> Utjecaj odredbi na konkretne situacije (npr. rokove, plaćanja, raskid ugovora).</li>
+                <li><strong>Ključne odredbe:</strong> Poseban naglasak na sporne ili često previđene dijelove ugovora.</li>
+                <li><strong>Primjeri i tumačenja:</strong> Konkretni scenariji koji objašnjavaju primjenu odredbi u praksi.</li>
+            </ul>
+
+            <p>Ovaj video je neophodan za sve koji žele potpuno razumjeti ugovor prije potpisivanja – bilo da ste fizička osoba, poduzetnik ili pravna osoba.</p>
+            <p>Za cjelovitu analizu i detaljna pojašnjenja, preporučujemo gledanje cijelog videa.</p>
+
+            <h4 class="text-xl font-bold text-purple-400 mt-8">Pitanja ili nedoumice?</h4>
+            <p>U slučaju da imate pitanja ili nedoumice u pogledu odredbi Ugovora, slobodno nam se obratite na email adresu:</p>
+            <p class="text-center my-4"><a href="mailto:licenca@sft21.com" class="text-fluorescent-green font-bold hover:underline">licenca@sft21.com</a></p>
+
+            <div class="text-center mt-10">
+                <button id="open-contract-popup-btn" class="btn-primary text-lg px-8 py-4">PROČITAJ ili PREUZMI UGOVOR</button>
+            </div>
+        `
     }
-
 ];
-
-
