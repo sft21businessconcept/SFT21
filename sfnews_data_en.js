@@ -256,14 +256,9 @@ const sfNews = [
             <p>If you have any questions or concerns regarding the provisions of the Agreement, feel free to contact us at the email address:</p>
             <p class="text-center my-4"><a href="mailto:licenca@sft21.com" class="text-fluorescent-green font-bold hover:underline">licenca@sft21.com</a></p>
 
-            <div class="text-center mt-10">
-                <button id="open-contract-popup-btn" class="btn-primary text-lg px-8 py-4">READ or DOWNLOAD THE AGREEMENT</button>
-            </div>
         `
     }
 ];
-
-
 
 
 
