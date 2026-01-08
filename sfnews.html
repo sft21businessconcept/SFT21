@@ -422,7 +422,66 @@
                margin-left: auto;  /* Automatski centrira sliku horizontalno */
                margin-right: auto; /* Automatski centrira sliku horizontalno */
            }
+         /* === NOVI STILOVI ZA PDF PREGLEDNIK U POPUPU === */
+        #contract-popup {
+            max-width: 900px; /* Malo širi popup za bolji prikaz */
+            width: 90vw;
+            height: 90vh;
+        }
+        #pdf-viewer-container {
+            flex-grow: 1; /* Omogućuje da zauzme sav dostupan prostor */
+            background-color: #555; /* Tamnija pozadina dok se PDF učitava */
+            overflow-y: auto; /* Omogućuje skrolanje ako stranica ne stane */
+            position: relative;
+        }
+        #pdf-canvas {
+            display: block;
+            margin: 0 auto; /* Centriranje stranice PDF-a */
+        }
+        #pdf-navigation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        #pdf-navigation button, #pdf-navigation a.btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        #pdf-navigation button:disabled {
+            background-color: #444;
+            cursor: not-allowed;
+        }
+        #pdf-navigation button:not(:disabled):hover {
+            background-color: var(--secondary-color);
+        }
+        #page-num-display {
+            color: white;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+        #pdf-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+        }
     </style>
+<!-- PDF.js biblioteka -->
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.worker.js"></script>
+    
 </head>
 
 <body class="bg-gray-900">
@@ -430,21 +489,25 @@
     <div class="custom-cursor"></div>
 
     <div id="popup-overlay" class="popup-overlay">
-        <!-- POPUP ZA UGOVOR -->
-        <div id="contract-popup" class="popup-content" style="display: none; max-width: 800px; text-align: justify; height: 80vh; display: flex; flex-direction: column;">
+        
+        <!-- POPUP ZA UGOVOR SA PDF PREGLEDNIKOM -->
+        <div id="contract-popup" class="popup-content" style="display: none; display: flex; flex-direction: column;">
             <button class="popup-close" aria-label="Zatvori popup">×</button>
-            <h4 class="text-center text-xl md:text-2xl font-bold mb-6 text-white flex-shrink-0">UGOVOR O KUPOVINI SFLICENCE I SUDJELOVANJU U SFT21 POSLOVNOM MODELU</h4>
-            <div id="contract-text-placeholder" class="text-gray-300 space-y-4 overflow-y-auto flex-grow pr-4">
-                <!-- Tekst ugovora će se ubaciti ovdje -->
-                <p>Učitavanje teksta ugovora...</p>
-                <p>Ovdje će biti kompletan tekst ugovora kada ga pripremite.</p>
-                <!-- Primjer teksta -->
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            
+            <div id="pdf-viewer-container">
+                <canvas id="pdf-canvas"></canvas>
+                <div id="pdf-loader" style="display: none;">Učitavanje dokumenta...</div>
+            </div>
+            
+            <div id="pdf-navigation">
+                <button id="prev-page"><i class="fas fa-arrow-left"></i> Prethodna</button>
+                <span id="page-num-display"></span>
+                <button id="next-page">Sljedeća <i class="fas fa-arrow-right"></i></button>
+                <a id="download-pdf-btn" href="" download class="btn-primary" style="margin-left: 20px;">
+                    <i class="fas fa-download"></i> Preuzmi
+                </a>
             </div>
         </div>
-    </div>
-
     <!-- Lightbox za prikaz certifikata -->
     <div id="certificate-lightbox" class="lightbox-overlay">
         <span class="lightbox-close">&times;</span>
@@ -1011,6 +1074,7 @@
 </body>
 
 </html>
+
 
 
 
