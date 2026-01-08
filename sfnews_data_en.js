@@ -4,7 +4,7 @@ const sfNews = [
         title: "SFT21 is NOW OFFICIALLY “SFT21, LLC“, a company registered in the United States!",
         date: "November 21, 2025",
         imageSrc: "img/sft21_1news.png",
-        shortTitle: "US Registration",
+        shortTitle: "Step 1: US Registration",
         contentHTML: `
             <p class="font-semibold text-white">Dear loyal friends, members, and business partners… dear SFT21 community,</p>
             <p>Today, with immense pride and excitement, we share news that represents the foundation of our vision! Despite all the problems we faced in the last three years, despite the issues caused by the Covid crisis, despite the lies, deceptions, and slander publicly expressed against us, after months of dedicated work, strategic planning, and overcoming numerous challenges, we honorably and proudly announce with joy:</p>
@@ -166,7 +166,7 @@ const sfNews = [
                         <tr class="border-t border-gray-700 hover:bg-gray-700/50">
                             <td class="py-3 px-4 font-semibold">Earning Limit (Maximum)</td>
                             <td class="py-3 px-4 text-center text-yellow-300">1.200 €</td>
-                            <td class="py-3 px-4 text-center text-red-300">1.100 €</td>
+                            <td class="py-3 px-4 text-center text-red-300">1.050 €</td>
                         </tr>
                         <tr class="border-t border-gray-700 hover:bg-gray-700/50">
                             <td class="py-3 px-4 font-semibold">SF Points</td>
@@ -215,7 +215,46 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 3,
+        title: "Agreement on the Purchase of an SFLicense and Participation in the SFT21 Business Model",
+        date: "January 10, 2026",
+        imageSrc: "", // No main image, only video
+        shortTitle: "Contract Analysis",
+        contentHTML: `
+            <div class="hero-video-wrapper my-8">
+                <iframe 
+                    src="https://www.youtube.com/embed/<iframe width="788" height="443" src="https://www.youtube.com/embed/ksB5h2sQnzU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" 
+                    title="Analysis of the SFLicense Purchase Agreement" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-4 mb-4">DETAILED ANALYSIS OF THE AGREEMENT WITH EXPLANATIONS</h3>
+            <p>In this video, we review each article of the agreement and its key provisions, providing clear explanations of legal terms and practical implications with specific examples.</p>
+            
+            <p class="font-semibold text-white mt-6">The purpose of the video is to transparently cover the key provisions of the Agreement:</p>
+            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 my-4">
+                <li><strong>Article by Article:</strong> Detailed breakdown of each item, including definitions, obligations, and rights of the contracting parties.</li>
+                <li><strong>Legal and Practical Aspects:</strong> The impact of the provisions on specific situations (e.g., deadlines, payments, termination of the agreement).</li>
+                <li><strong>Key Provisions:</strong> Special emphasis on controversial or often overlooked parts of the agreement.</li>
+                <li><strong>Examples and Interpretations:</strong> Concrete scenarios that explain the application of the provisions in practice.</li>
+            </ul>
+
+            <p>This video is essential for anyone who wants to fully understand the agreement before signing – whether you are an individual, an entrepreneur, or a legal entity.</p>
+            <p>For a complete analysis and detailed explanations, we recommend watching the entire video.</p>
+
+            <h4 class="text-xl font-bold text-purple-400 mt-8">Questions or concerns?</h4>
+            <p>If you have any questions or concerns regarding the provisions of the Agreement, feel free to contact us at the email address:</p>
+            <p class="text-center my-4"><a href="mailto:licenca@sft21.com" class="text-fluorescent-green font-bold hover:underline">licenca@sft21.com</a></p>
+
+            <div class="text-center mt-10">
+                <button id="open-contract-popup-btn" class="btn-primary text-lg px-8 py-4">READ or DOWNLOAD THE AGREEMENT</button>
+            </div>
+        `
     }
-
 ];
-
