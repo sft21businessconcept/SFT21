@@ -224,14 +224,14 @@ const sfNews = [
         shortTitle: "Analiza Ugovora",
         contentHTML: `
             <div class="hero-video-wrapper my-8">
-                <iframe 
-                    src="https://www.youtube.com/embed/<iframe width="788" height="443" src="https://www.youtube.com/embed/ksB5h2sQnzU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" 
-                    title="Analiza Ugovora o kupovini SFlicence" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin" 
-                    allowfullscreen>
-                </iframe>
+        <iframe 
+            src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" 
+            title="Analiza Ugovora o kupovini SFlicence" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
             </div>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-4 mb-4">DETALJNA ANALIZA UGOVORA UZ OBJAŠNJENJE</h3>
@@ -258,3 +258,4 @@ const sfNews = [
         `
     }
 ];
+
