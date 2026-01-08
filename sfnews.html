@@ -187,21 +187,22 @@
         /* ======================================= */
 
         /* Lightbox za sliku certifikata */
-.lightbox-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Pokriva cijeli ekran */
-    background-color: rgba(0, 0, 0, 0.85);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    /* Uklonili smo padding: 40px; odavde */
-    box-sizing: border-box;
-}
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Pokriva cijeli ekran, uključujući i ispod UI elemenata */
+            background-color: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 40px;
+            /* Povećavamo razmak za bolji "okvir" */
+            box-sizing: border-box;
+        }
 
         .lightbox-content {
             position: relative;
@@ -213,22 +214,18 @@
         }
 
         /* === KLJUČNA PROMJENA ZA SLIKU === */
-.lightbox-content img {
-    display: block;
-    
-    /* 1. Prisiljavamo ga da koristi do 95% visine i širine ekrana (viewport) */
-    max-width: 95vw !important;
-    max-height: 95vh !important;
-    
-    /* 2. Uklanjamo marginu koja smanjuje sliku (bila je 20px) */
-    margin: 0 !important;
-    
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    box-sizing: border-box;
-}
+        .lightbox-content img {
+            display: block;
+            /* Osigurava da slika nikada ne bude veća od dostupnog prostora UNUTAR paddinga */
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            /* Osigurava da se cijela slika vidi, čuvajući omjer */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            /* Dodaje lijepi efekt sjene */
+        }
 
         /* === KLJUČNA PROMJENA ZA GUMB ZA ZATVARANJE === */
         .lightbox-close {
@@ -428,6 +425,22 @@
     <canvas id="network-canvas" style="pointer-events: none;"></canvas>
     <div class="custom-cursor"></div>
 
+    <div id="popup-overlay" class="popup-overlay">
+        <!-- POPUP ZA UGOVOR -->
+        <div id="contract-popup" class="popup-content" style="display: none; max-width: 800px; text-align: justify; height: 80vh; display: flex; flex-direction: column;">
+            <button class="popup-close" aria-label="Zatvori popup">×</button>
+            <h4 class="text-center text-xl md:text-2xl font-bold mb-6 text-white flex-shrink-0">UGOVOR O KUPOVINI SFLICENCE I SUDJELOVANJU U SFT21 POSLOVNOM MODELU</h4>
+            <div id="contract-text-placeholder" class="text-gray-300 space-y-4 overflow-y-auto flex-grow pr-4">
+                <!-- Tekst ugovora će se ubaciti ovdje -->
+                <p>Učitavanje teksta ugovora...</p>
+                <p>Ovdje će biti kompletan tekst ugovora kada ga pripremite.</p>
+                <!-- Primjer teksta -->
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Lightbox za prikaz certifikata -->
     <div id="certificate-lightbox" class="lightbox-overlay">
         <span class="lightbox-close">&times;</span>
@@ -587,9 +600,9 @@
             </div>
         </div>
     </nav>
-    
-<main class="pt-12">
-       <main class="pt-12">
+
+    <main class="pt-24">
+        <main class="pt-24">
             <section class="relative overflow-hidden">
                 <div class="container mx-auto px-6 relative z-10">
 
@@ -982,23 +995,15 @@
     </script>
     <script src="sfnews_data.js"></script>
     <script src="sfnews_script.js"></script>
-<div id="image-modal"
-    class="fixed inset-0 bg-black bg-opacity-90 z-50 flex justify-center items-center transition-opacity duration-300 hidden opacity-0">
-    <div class="relative max-w-7xl mx-auto p-4 h-full flex items-center"> 
-        <button id="close-modal-btn"
-            class="absolute top-4 right-4 text-white text-3xl z-50 hover:text-purple-400">&times;</button>
-        <img id="modal-image-content" src="" alt="Uvećana slika" 
-             class="rounded-lg shadow-2xl w-auto h-auto max-w-full max-h-[90vh] object-contain">
+    <div id="image-modal"
+        class="fixed inset-0 bg-black bg-opacity-90 z-50 flex justify-center items-center transition-opacity duration-300 hidden opacity-0">
+        <div class="relative max-w-7xl mx-auto p-4 h-full flex items-center">
+            <button id="close-modal-btn"
+                class="absolute top-4 right-4 text-white text-3xl z-50 hover:text-purple-400">&times;</button>
+            <img id="modal-image-content" src="" alt="Uvećana slika"
+                class="rounded-lg shadow-2xl w-auto h-auto max-w-full max-h-[90vh] object-contain">
+        </div>
     </div>
-</div>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
