@@ -256,13 +256,9 @@ const sfNews = [
             <p>U slučaju da imate pitanja ili nedoumice u pogledu odredbi Ugovora, slobodno nam se obratite na email adresu:</p>
             <p class="text-center my-4"><a href="mailto:licenca@sft21.com" class="text-fluorescent-green font-bold hover:underline">licenca@sft21.com</a></p>
 
-            <div class="text-center mt-10">
-                <button id="open-contract-popup-btn" class="btn-primary text-lg px-8 py-4">PROČITAJ ili PREUZMI UGOVOR</button>
-            </div>
         `
     }
 ];
-
 
 
 
