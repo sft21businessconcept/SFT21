@@ -220,7 +220,7 @@ const sfNews = [
         id: 3,
         title: "Ugovor o kupovini SFlicence i sudjelovanju u SFT21 poslovnom modelu",
         date: "10. Siječanj 2026.",
-       `
+       `contentHTML: 
             <figure class="my-8">
                 <img src="img/ugovor.png" alt="Prikaz ugovora" class="rounded-lg shadow-lg news-image-small">
             </figure>
@@ -241,7 +241,7 @@ const sfNews = [
                     allowfullscreen>
                 </iframe>
             </div>
-            contentHTML: 
+    
             <h3 class="text-2xl font-bold text-fluorescent-green pt-4 mb-4">DETALJNA ANALIZA UGOVORA UZ OBJAŠNJENJE</h3>
             <p>U ovom videu razmatramo svaki članak ugovora i njegove ključne odredbe, pružajući jasno objašnjenje pravnih termina, praktičnih implikacija uz pojedine primjere.</p>
             
@@ -263,6 +263,7 @@ const sfNews = [
         `
     }
 ];
+
 
 
 
