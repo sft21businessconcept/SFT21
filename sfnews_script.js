@@ -48,8 +48,14 @@ function loadNews(index) {
     document.getElementById('news-info').textContent = `${publishedText} ${newsItem.date}`;
     
     // Ažuriranje glavne slike (iznad teksta)
-    document.getElementById('news-image').src = newsItem.imageSrc;
-    document.getElementById('news-image').alt = newsItem.title;
+    const newsImage = document.getElementById('news-image');
+    if (newsItem.imageSrc && newsItem.imageSrc.trim() !== "") {
+        newsImage.src = newsItem.imageSrc;
+        newsImage.alt = newsItem.title;
+        newsImage.style.display = 'block'; // Prikaži sliku ako postoji link
+    } else {
+        newsImage.style.display = 'none'; // Sakrij sliku ako je link prazan
+    }
 
     // Ažuriranje teksta
     document.getElementById('news-text').innerHTML = newsItem.contentHTML;
@@ -168,4 +174,5 @@ window.onload = () => {
         loadNews(initialIndex);
     }
 };
+
 
