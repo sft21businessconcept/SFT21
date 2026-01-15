@@ -435,6 +435,13 @@ body.light-mode .nav-menu .mobile-language-trigger i.fa-chevron-down {
 body.light-mode .nav-link i {
     color: inherit !important; /* Nasljeđuje boju od linka (ljubičastu) */
 }
+@keyframes pulse-horizontal {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+.animate-pulse-horizontal {
+    animation: pulse-horizontal 1s ease-in-out infinite;
+}
 </style>
 </head>
 
@@ -1152,8 +1159,14 @@ body.light-mode .nav-link i {
 
 <p><strong>Ključni komunikacijski kanal: Facebook grupa “SFteam (SFT21)“</strong></p>
 <p>S obzirom na to da je SFT21 ekosistem u trenutnoj fazi razvoja, pa sve do javnog puštanja kompanijske društvene mreže SFnet i kreiranja SFteam grupa, primarni komunikacijski kanal Kompanije s članovima je Facebook grupa <strong>“SFteam (SFT21)“</strong>. Stoga je <strong>obaveza</strong> Vlasnika Licence pristupiti navedenoj grupi kako bi ostao informiran:</p>
-<p><a href="https://www.facebook.com/groups/sft21.sfteam" target="_blank">https://www.facebook.com/groups/sft21.sfteam</a></p>
-                <p>Uz Vlasnike Licence i članove iz starog sustava koji odluče nastaviti poslovanje, kojima je pridruživanje Facebook grupi SFteam (SFT21) <strong>OBAVEZNO</strong>, pristupiti grupi može i svaka druga zainteresirana osoba koja podnese zahtjev, pri čemu je potrebno napisati ime i prezime, email adresu, klikom označiti je li "Registrirani član" ili "Novi potencijalni" te <strong>OBAVEZNO</strong> označiti da se SLAŽE SA PRAVILIMA GRUPE.</p>
+<p class="mb-6">
+    <a href="https://www.facebook.com/groups/sft21.sfteam" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors duration-300 break-all">
+        https://www.facebook.com/groups/sft21.sfteam
+    </a>
+    <span class="inline-flex items-center ml-2 text-fluorescent-green font-bold animate-pulse-horizontal">
+        <i class="fas fa-hand-point-left mr-2"></i> Klikni
+    </span>
+</p>                <p>Uz Vlasnike Licence i članove iz starog sustava koji odluče nastaviti poslovanje, kojima je pridruživanje Facebook grupi SFteam (SFT21) <strong>OBAVEZNO</strong>, pristupiti grupi može i svaka druga zainteresirana osoba koja podnese zahtjev, pri čemu je potrebno napisati ime i prezime, email adresu, klikom označiti je li "Registrirani član" ili "Novi potencijalni" te <strong>OBAVEZNO</strong> označiti da se SLAŽE SA PRAVILIMA GRUPE.</p>
 <!-- Dodana slika s poveznicom na PDF -->
 <div class="flex justify-center mt-10 mb-4 fade-in" style="animation-delay: 0.4s;">
     <a href="dokumenti/facebook-sfteam.pdf" target="_blank" class="block transition-transform duration-300 transform hover:scale-105 shadow-2xl rounded-lg overflow-hidden">
