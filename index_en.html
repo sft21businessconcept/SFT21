@@ -1295,34 +1295,44 @@ body.light-mode .nav-link i {
      <div class="ip-card-footer"><a href="https://buy.stripe.com/9B6fZa2OS7rWdlGcpp4c806" target="_blank" class="btn-primary">PAYMENT BY CARD</a></div>
  </div>
 </div>
-<div id="individual-package" class="container mx-auto px-6 relative z-10 mt-12 fade-in" style="animation-delay: 0.7s;">
-<div class="glass-card mx-auto ip-wide-card overflow-hidden interactive-card" style="max-width: 500px;">
-        <div class="ip-wide-card-header"> <h3 class="ip-wide-card-header-title">LP7: Individual Package</h3> </div>
-        <div class="p-8 md:p-12">
-            <p class="text-gray-300 text-center leading-relaxed mb-6"> Choose the license purchase option that suits you best. </p>
-            <div class="btn-group flex flex-col sm:flex-row justify-center items-center gap-4 px-4"> 
-            <button id="ip7-do-10k" class="btn-primary w-full sm:w-auto">Do 10.000 €</button>
-            <button id="ip7-veci-iznos" class="btn-primary w-full sm:w-auto">Veći iznos</button>
+<div id="individual-package" class="container mx-auto px-4 sm:px-6 relative z-10 mt-12 fade-in" style="animation-delay: 0.7s;">
+    <!-- Card: w-full rasteže polje na mobitelu, max-width: 500px ga drži elegantnim na desktopu -->
+    <div class="glass-card mx-auto ip-wide-card overflow-hidden interactive-card w-full" style="max-width: 500px;">
+        <div class="ip-wide-card-header"> 
+            <h3 class="ip-wide-card-header-title text-center uppercase">LP7: Individual Package</h3> 
         </div>
-            <div id="ip7-amount-input-container" class="amount-input-container">
-               <label for="ip7-amount-input">Enter the license purchase amount:</label>
+        <!-- p-4 osigurava da gumbi na mobitelu imaju više mjesta do ruba kartice -->
+        <div class="p-4 md:p-12 text-center">
+            <p class="text-gray-300 leading-relaxed mb-8"> Choose the license purchase option that suits you best. </p>
+            
+            <!-- Buttons: flex-col (stacked) on mobile, flex-row (side-by-side) on tablets/PC -->
+            <div class="btn-group flex flex-col sm:flex-row justify-center items-center gap-4 px-2"> 
+                <button id="ip7-do-10k" class="btn-primary w-full sm:w-auto px-6 whitespace-nowrap">Up to €10,000</button>
+                <button id="ip7-veci-iznos" class="btn-primary w-full sm:w-auto px-6 whitespace-nowrap">Larger Amount</button>
+            </div>
+
+            <!-- Amount Input Container (Hidden by default, triggered by JS) -->
+            <div id="ip7-amount-input-container" class="amount-input-container mt-6">
+               <label for="ip7-amount-input" class="block mb-2 text-gray-200">Enter the license purchase amount:</label>
                 <div class="amount-input-wrapper">
                    <input type="number" id="ip7-amount-input" class="amount-input" placeholder="Min. 5000 €" step="1" min="5000" max="10000">
                     <span class="currency-symbol">€</span>
                 </div>
-                 <div class="input-buttons flex justify-center gap-4 mt-4">
-                   <button id="ip7-amount-confirm" class="btn-primary">CONFIRM</button>
-                   <button id="ip7-amount-cancel" class="btn-outline">CANCEL</button>
+                 <div class="input-buttons flex flex-col sm:flex-row justify-center gap-4 mt-4">
+                   <button id="ip7-amount-confirm" class="btn-primary w-full sm:w-auto">CONFIRM</button>
+                   <button id="ip7-amount-cancel" class="btn-outline w-full sm:w-auto">CANCEL</button>
                 </div>
             </div>
-            <div class="text-gray-300 text-center mt-6 leading-relaxed">
+
+            <!-- English Package Information -->
+            <div class="text-gray-300 mt-8 leading-relaxed text-sm md:text-base">
                 <p>Potential bonus within 2 years: <strong class="text-white">100% of the license price</strong></p>
                 <p>Maximum Total Bonus: your price x7, over an indefinite period</p>
-                <p><span class="value"><strong>UPGRADE</strong></span></p>
-                <p><span class="label">Earnings Limit:</span> <span class="value"><strong>2100 €</strong></span></p>
-                <p><span class="label">SFpoints:</span> <span class="value"><strong>License Price x 2</strong> </span></p>
-                <p><span class="value"><strong>21 SFcodes</strong></span></p>
-                <p><span class="label">Maximum number of accounts:</span> <span class="value">10</span></p>
+                <p class="mt-2"><span class="text-fluorescent-green font-bold">UPGRADE</span></p>
+                <p>Earnings Limit: <strong class="text-white">2100 €</strong></p>
+                <p>SFpoints: <strong class="text-white">License Price x 2</strong></p>
+                <p><strong class="text-white">21 SFcodes</strong></p>
+                <p>Maximum number of accounts: <strong class="text-white">10</strong></p>
            </div>
         </div>
     </div>
