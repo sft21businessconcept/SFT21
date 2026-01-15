@@ -1290,23 +1290,23 @@ body.light-mode .nav-link i {
            <div class="ip-card-footer"><a href="https://buy.stripe.com/9B6fZa2OS7rWdlGcpp4c806" target="_blank" class="btn-primary">PLATI KARTICOM</a></div>
          </div>
      </div>
-<div id="individual-package" class="container mx-auto px-4 sm:px-6 relative z-10 mt-12 fade-in" style="animation-delay: 0.7s;">
-    <!-- Dodano w-full (puna širina na mobitelu) i mx-auto za centriranje -->
-    <div class="glass-card mx-auto ip-wide-card overflow-hidden interactive-card w-full" style="max-width: 500px;">
+<div id="individual-package" class="container mx-auto px-6 relative z-10 mt-12 fade-in" style="animation-delay: 0.7s;">
+    <!-- Kartica: w-full na mobitelu (puna širina), md:max-w-[500px] na desktopu -->
+    <div class="glass-card mx-auto ip-wide-card overflow-hidden interactive-card w-full md:max-w-[500px]">
         <div class="ip-wide-card-header"> 
             <h3 class="ip-wide-card-header-title text-center">LP7: Individualni paket</h3> 
         </div>
-        <!-- p-4 za mobitele osigurava više mjesta sa strana, md:p-12 ostaje za računala -->
-        <div class="p-4 md:p-12 text-center">
+        <!-- p-6 osigurava da sadržaj na mobitelu ima prostora, md:p-12 za desktop -->
+        <div class="p-6 md:p-12 text-center">
             <p class="text-gray-300 leading-relaxed mb-8"> Odaberite opciju kupnje licence koja vam najviše odgovara. </p>
             
-            <!-- Gumbi: flex-col (jedan ispod drugog na mobitelu), w-full (puna širina gumba) -->
+            <!-- Gumbi: flex-col za mobitel (jedan ispod drugog), w-full (da popune širinu) -->
             <div class="btn-group flex flex-col sm:flex-row justify-center items-center gap-4"> 
                 <button id="ip7-do-10k" class="btn-primary w-full sm:w-auto px-6 whitespace-nowrap">Do 10.000 €</button>
                 <button id="ip7-veci-iznos" class="btn-primary w-full sm:w-auto px-6 whitespace-nowrap">Veći iznos</button>
             </div>
 
-            <!-- Polje za unos iznosa (prikazuje se nakon klika) -->
+            <!-- Polje za unos iznosa -->
             <div id="ip7-amount-input-container" class="amount-input-container mt-6">
                <label for="ip7-amount-input" class="block mb-2 text-gray-200">Unesite iznos kupnje licence:</label>
                 <div class="amount-input-wrapper">
@@ -1319,7 +1319,7 @@ body.light-mode .nav-link i {
                 </div>
             </div>
 
-            <!-- Tekstualne informacije o paketu na hrvatskom -->
+            <!-- Informacije o paketu na hrvatskom -->
             <div class="text-gray-300 mt-8 leading-relaxed text-sm md:text-base">
                 <p>Potencijalni bonus u periodu od 2 god: <strong class="text-white">100% na cijenu licence</strong></p>
                 <p>Maksimalni ukupni bonus: vaša cijena x7, u neodređenom periodu</p>
