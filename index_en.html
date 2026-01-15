@@ -1295,23 +1295,23 @@ body.light-mode .nav-link i {
      <div class="ip-card-footer"><a href="https://buy.stripe.com/9B6fZa2OS7rWdlGcpp4c806" target="_blank" class="btn-primary">PAYMENT BY CARD</a></div>
  </div>
 </div>
-<div id="individual-package" class="container mx-auto px-4 sm:px-6 relative z-10 mt-12 fade-in" style="animation-delay: 0.7s;">
-    <!-- Card: w-full rasteže polje na mobitelu, max-width: 500px ga drži elegantnim na desktopu -->
-    <div class="glass-card mx-auto ip-wide-card overflow-hidden interactive-card w-full" style="max-width: 500px;">
+<div id="individual-package" class="container mx-auto px-6 relative z-10 mt-12 fade-in" style="animation-delay: 0.7s;">
+    <!-- Uklonjen fiksni style, dodano w-full i md:max-w-[500px] -->
+    <div class="glass-card mx-auto ip-wide-card overflow-hidden interactive-card w-full md:max-w-[500px]">
         <div class="ip-wide-card-header"> 
             <h3 class="ip-wide-card-header-title text-center uppercase">LP7: Individual Package</h3> 
         </div>
-        <!-- p-4 osigurava da gumbi na mobitelu imaju više mjesta do ruba kartice -->
-        <div class="p-4 md:p-12 text-center">
+        <!-- p-6 osigurava balans prostora na mobitelu, md:p-12 za desktop -->
+        <div class="p-6 md:p-12 text-center">
             <p class="text-gray-300 leading-relaxed mb-8"> Choose the license purchase option that suits you best. </p>
             
-            <!-- Buttons: flex-col (stacked) on mobile, flex-row (side-by-side) on tablets/PC -->
-            <div class="btn-group flex flex-col sm:flex-row justify-center items-center gap-4 px-2"> 
+            <!-- Gumbi: rastežu se do ruba novog, šireg polja -->
+            <div class="btn-group flex flex-col sm:flex-row justify-center items-center gap-4"> 
                 <button id="ip7-do-10k" class="btn-primary w-full sm:w-auto px-6 whitespace-nowrap">Up to €10,000</button>
                 <button id="ip7-veci-iznos" class="btn-primary w-full sm:w-auto px-6 whitespace-nowrap">Larger Amount</button>
             </div>
 
-            <!-- Amount Input Container (Hidden by default, triggered by JS) -->
+            <!-- Amount Input Container -->
             <div id="ip7-amount-input-container" class="amount-input-container mt-6">
                <label for="ip7-amount-input" class="block mb-2 text-gray-200">Enter the license purchase amount:</label>
                 <div class="amount-input-wrapper">
