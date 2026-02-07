@@ -442,6 +442,23 @@ body.light-mode .nav-link i {
 .animate-pulse-horizontal {
     animation: pulse-horizontal 1s ease-in-out infinite;
 }
+/* Stil za video slajder */
+.video-slider-container:hover #prevVideo, 
+.video-slider-container:hover #nextVideo {
+    opacity: 1;
+}
+
+#prevVideo, #nextVideo {
+    opacity: 0; /* Gumbi su skriveni dok se ne dođe mišem */
+    transition: all 0.3s ease;
+}
+
+/* Za mobilne uređaje da gumbi ipak budu malo vidljivi */
+@media (max-width: 768px) {
+    #prevVideo, #nextVideo {
+        opacity: 0.6;
+    }
+}
 </style>
 </head>
 
@@ -725,17 +742,50 @@ body.light-mode .nav-link i {
                             <a href="sfnews_en.html" class="btn-primary text-center text-base px-6 py-3">BIG NEWS: SFT21 IS NOW A U.S. COMPANY!</a>
                 </div>
             </div>
-            <div class="w-full md:w-3/5 md:pl-8">
-                <div class="hero-video-wrapper relative h-0 overflow-hidden rounded-lg mt-6 mb-8 md:mt-0 md:mb-0" style="padding-bottom: 56.25%;">
-             <iframe width="692" height="389" src="https://www.youtube.com/embed/869JpBb5KVU" title="SFT21 Business Concept -službena prezentacija (stara verzija, nova izlazi uskoro)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>    </div>
-            </div>
-        </div>
-    </div>
-    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-        <a href="#o-nama" class="inline-block p-2 text-white opacity-75 hover:opacity-100 transition-opacity duration-300 cursor-pointer"> <i class="fas fa-chevron-down text-2xl"></i> </a>
-    </div>
-</section>
+           <!-- DESNA STRANA: VIDEO SLAJDER -->
+                    <div class="w-full md:w-3/5 md:pl-8 mt-12 md:mt-0">
+                        <div class="video-slider-container relative overflow-hidden rounded-lg shadow-2xl border border-purple-500/30 group">
+                            
+                            <!-- Kontejner za slajdove -->
+                            <div id="videoSlides" class="flex transition-transform duration-500 ease-in-out">
+                                
+                                <!-- Slajd 1 (Originalni video) -->
+                                <div class="min-w-full">
+                                    <div class="relative h-0 overflow-hidden" style="padding-bottom: 56.25%;">
+                                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/869JpBb5KVU" title="SFT21 Business Concept" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    </div>
+                                </div>
 
+                                <!-- Slajd 2 (Drugi video - ovdje zamijenite link po potrebi) -->
+                                <div class="min-w-full">
+                                    <div class="relative h-0 overflow-hidden" style="padding-bottom: 56.25%;">
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/UOKD6PV5XOI" title="SFalgoritam: bonusi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Kontrole (Strelice) -->
+                            <button id="prevVideo" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-purple-600 text-white p-3 rounded-full z-20 transition-all opacity-0 group-hover:opacity-100">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button id="nextVideo" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-purple-600 text-white p-3 rounded-full z-20 transition-all opacity-0 group-hover:opacity-100">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+
+                            <!-- Indikatori (Točkice) -->
+                            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+                                <div class="video-dot w-3 h-3 rounded-full bg-white cursor-pointer" style="opacity:1"></div>
+                                <div class="video-dot w-3 h-3 rounded-full bg-white cursor-pointer" style="opacity:0.5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bounce strelica za skrolanje dolje -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+                <a href="#o-nama" class="inline-block p-2 text-white opacity-75 hover:opacity-100 transition-opacity duration-300 cursor-pointer"> <i class="fas fa-chevron-down text-2xl"></i> </a>
+            </div>
+        </section>
         <section id="about-us" class="py-16 relative overflow-hidden">
              <div class="container mx-auto px-6 relative z-10">
                  <div class="text-center mb-16 fade-in">
@@ -3285,6 +3335,48 @@ document.addEventListener('click', (event) => {
         });
 
         initializeGsapAnimations();
+        // === VIDEO SLAJDER LOGIKA ===
+        const slides = document.getElementById('videoSlides');
+        const dots = document.querySelectorAll('.video-dot');
+        const prevBtn = document.getElementById('prevVideo');
+        const nextBtn = document.getElementById('nextVideo');
+        
+        let currentVideoIdx = 0;
+        const totalVideos = dots.length;
+
+        if (slides && dots.length > 0) {
+            function updateVideoSlider(index) {
+                // Pomakni slides kontejner
+                slides.style.transform = `translateX(-${index * 100}%)`;
+                
+                // Ažuriraj točkice (indikatore)
+                dots.forEach((dot, i) => {
+                    dot.style.opacity = i === index ? '1' : '0.5';
+                });
+                currentVideoIdx = index;
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    let index = (currentVideoIdx + 1) % totalVideos;
+                    updateVideoSlider(index);
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    let index = (currentVideoIdx - 1 + totalVideos) % totalVideos;
+                    updateVideoSlider(index);
+                });
+            }
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => updateVideoSlider(i));
+            });
+        }
+        // === KRAJ VIDEO SLAJDER LOGIKE ===
         console.log("Sve JS skripte unutar DOMContentLoaded su postavljene.");
 
         const referrerYesRadio = document.getElementById('referrer-yes');
