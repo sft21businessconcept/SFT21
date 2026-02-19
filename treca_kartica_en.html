@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFT21 - Decision: Termination with Donation</title>
+    <title>SFT21 - Decision: Termination of Business</title>
 
     <!-- ============================================= -->
     <!-- UNIVERSAL THEME INITIALIZATION SCRIPT -->
@@ -170,7 +170,7 @@
 
     <div class="fixed-header-container">
         <div class="header-content">
-            <span class="header-title">SFT21 – Decision: Termination with Donation</span>
+            <span class="header-title">SFT21 – Decision to Terminate Business</span>
             <button class="page-close-button" id="closePageButton" title="Back to previous page">×</button>
         </div>
     </div>
@@ -181,24 +181,28 @@
             <div class="intro-section">
                 <p>
                     YOU HAVE CHOSEN TO TERMINATE BUSINESS COOPERATION WITH OUR COMPANY,<br>
-                    WITH A REQUEST THAT THE AMOUNT OF YOUR STARTING PACKAGE PAYMENT BE USED FOR CHARITABLE PURPOSES,<br>
+                    WITH A REQUEST FOR A REFUND<br>
                     AND PERMANENT DELETION OF YOUR DATA FROM OUR DATABASES.
                 </p>
             </div>
             
             <div class="detailed-text">
                 <div class="important-note-dark">
-                    <p>Since you are withdrawing from the business, it is important to note that the company, in accordance with the franchise agreement you signed, <strong>IS NOT OBLIGED TO REFUND THE MONEY YOU PAID FOR THE STARTING PACKAGE,</strong> however, as the company owners do not want anyone to feel damaged within our company, <strong>your funds will be used for charitable purposes, in accordance with your request!</strong></p>
+                    <p>Since you are withdrawing from the business, it is important to note that the company, in accordance with the franchise agreement you signed, <strong>IS NOT OBLIGED TO REFUND THE MONEY YOU PAID FOR THE STARTING PACKAGE,</strong> however, as the company owners do not want anyone to feel damaged within our company, <strong>your funds will be returned to you!</strong></p>
                 </div>
                 <p>
-                    By your decision not to continue business, the company commits to permanently deleting your data from all our databases.
+                    Users who have earned and withdrawn an amount equal to or greater than the amount paid for the starting package are not eligible for a refund. Along with the refund request, it is necessary to attach a <strong>valid personal document</strong> (ID card, passport, or driver's license) <strong>used for KYC</strong> <span class="kyc-info">(or a new one if the old document has expired)</span>. You will submit the request after the company notifies you that it has started the refund process.
+                </p>
+                <p>
+                    The money will be returned to the payment processor through which you paid for the starting package or in another way, about which you will be informed in a timely manner.
+                </p>
+                <p>
+                    By your decision not to continue business along with the refund request, the company commits to permanently deleting your data from all our databases.
                 </p>
 
                 <div class="final-note-section">
                      <p>
                         Our sincerest advice is to follow our development and return to our community as soon as possible.
-                     </p>
-                     <p>
                         By registering for free, you become a member of our community without any obligations, with the possibility of reactivation if you decide to join us later. In that case, you continue business by taking the first available position in the SFalgorithm.
                      </p>
                      <p style="margin-top: 20px; font-weight: bold; color: var(--fluorescent-green);">
@@ -217,13 +221,13 @@
     <!-- HTML STRUCTURE FOR MAIN POPUP -->
     <div id="confirmationUserDetailsPopup" class="modal-overlay">
         <div class="modal-content">
-             <span id="closeUserDetailsPopupButton" class="modal-close-button" title="Close">×</span>
+            <span id="closeUserDetailsPopupButton" class="modal-close-button" title="Close">×</span>
             <h2 class="popup-title">DATA CONFIRMATION</h2>
             <div class="modal-scrollable-content">
-                <!-- Field for Full Name -->
+                <!-- Added new field for Full Name -->
                 <div class="form-group">
                     <label for="fullNameInputPopup">FULL NAME</label>
-                    <input type="text" id="fullNameInputPopup" placeholder="Enter full name">
+                    <input type="text" id="fullNameInputPopup" name="fullName" placeholder="Enter full name">
                 </div>
                 
                 <div class="form-group">
@@ -267,7 +271,7 @@
             const closeFinalPopupButton = document.getElementById('closeFinalConfirmationPopup');
             const finalMessageP = document.getElementById('final-confirmation-message');
             
-            // Form fields
+            // Selector for name and surname
             const fullNameInput = document.getElementById('fullNameInputPopup');
             const usernameInput = document.getElementById('usernameInputPopup');
             const oldEmailInput = document.getElementById('oldEmailInputPopup');
@@ -281,7 +285,9 @@
 
             const validateForm = () => {
                 let isFormValid = true;
+                // Validation for full name
                 if (fullNameInput.value.trim() === '') isFormValid = false;
+
                 if (usernameInput.value.trim() === '') isFormValid = false;
                 if (!isEmailValid(oldEmailInput.value.trim())) isFormValid = false;
                 const newEmailValue = newEmailInput.value.trim();
@@ -297,6 +303,7 @@
             closeFinalPopupButton.addEventListener('click', closeFinalPopup);
             finalPopup.addEventListener('click', (event) => { if (event.target === finalPopup) closeFinalPopup(); });
             
+            // Listener for input
             [fullNameInput, usernameInput, oldEmailInput, newEmailInput].forEach(input => input.addEventListener('input', validateForm));
 
             // --- MAIN LOGIC FOR SENDING DATA ---
@@ -309,7 +316,7 @@
                 document.body.style.overflow = 'hidden';
 
                 const dataToSend = new FormData();
-                dataToSend.append('requestType', 'discontinueWithCharity'); 
+                dataToSend.append('requestType', 'discontinue');
                 dataToSend.append('fullName', fullNameInput.value.trim()); 
                 dataToSend.append('username', usernameInput.value.trim());
                 dataToSend.append('oldEmail', oldEmailInput.value.trim());
@@ -323,7 +330,7 @@
                 .then(data => {
                     if (data.success) {
                         const finalEmail = newEmailInput.value.trim() || oldEmailInput.value.trim();
-                        finalMessageP.innerHTML = `Your data and email address (<b>${finalEmail}</b>) have been recorded with the request for donation to charity and permanent deletion. We will contact you in due time. Thank you.`;
+                        finalMessageP.innerHTML = `Your data and email address (<b>${finalEmail}</b>) have been recorded with the request for a refund and permanent deletion. We will contact you in due time. Thank you.`;
                     } else {
                         finalMessageP.innerHTML = 'An error occurred. Please try again.';
                     }

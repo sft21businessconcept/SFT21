@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFT21 - Decision: Termination with Donation</title>
+    <title>SFT21 - Decision: Business Continuation</title>
 
     <!-- ============================================= -->
     <!-- UNIVERSAL THEME INITIALIZATION SCRIPT -->
@@ -50,16 +50,10 @@
             --card-border: rgba(171, 71, 188, 0.3); 
             --button-confirm-bg: #c0392b; 
             --button-confirm-hover-bg: #e74c3c;
-            --warning-red: #ff4d4d;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body {
-            width: 100%; min-height: 100vh; overflow-x: hidden; overflow-y: auto;
-            background-color: var(--background-dark); color: var(--text-color);
-            font-family: 'Arial Narrow', Arial, sans-serif; 
-        }
-
+        html, body { width: 100%; min-height: 100vh; overflow-x: hidden; overflow-y: auto; background-color: var(--background-dark); color: var(--text-color); font-family: 'Arial Narrow', Arial, sans-serif; }
         .page-wrapper { display: flex; flex-direction: column; align-items: center; padding-bottom: 40px; min-height: 100vh; width: 100%; }
         .fixed-header-container { position: fixed; top: 0; left: 0; width: 100%; z-index: 500; background-color: var(--primary-color); box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .fixed-header-container .header-content { display: flex; align-items: center; justify-content: center; position: relative; height: 3.5rem; padding-left: 1.5rem; padding-right: 4rem; max-width: 100%; margin: 0 auto; }
@@ -69,41 +63,44 @@
 
         .decision-content-box {
             background-color: var(--card-background); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border); color: var(--text-color); width: 90%; max-width: 900px; 
+            border: 1px solid var(--card-border); color: white; width: 90%; max-width: 900px; 
             margin-top: calc(3.5rem + 30px); padding: clamp(20px, 4vw, 40px); border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); font-size: clamp(0.9rem, 1.8vw, 1.05rem); line-height: 1.65;
         }
-        .decision-content-box .main-greeting {
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem); color: white;
-            text-align: center; margin-bottom: 25px; font-weight: bold;
-        }
-        .intro-section { text-align: center; } 
-        .intro-section p { color: var(--warning-red); margin-bottom: 12px; font-size: 1.05em; font-weight: bold; line-height: 1.5; }
-        .detailed-text { margin-top: 25px; }
-        .detailed-text p { margin-bottom: 15px; text-align: justify; color: white; }
-        .detailed-text strong, .detailed-text b { color: var(--fluorescent-green); font-weight: bold; }
-        .detailed-text .kyc-info { font-style: italic; color: #c7c1da; }
-        .important-note-dark { margin: 20px 0; padding: 15px; background-color: rgba(128, 255, 0, 0.05); border-left: 4px solid var(--fluorescent-green); color: #e5e7eb; }
-        .important-note-dark strong { color: var(--fluorescent-green); }
-        .final-note-section { margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--card-border); text-align: center; }
+        .decision-content-box .main-congrats-title { font-family: 'Arial Narrow', Arial, sans-serif; font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: white; text-align: center; margin-bottom: 25px; font-weight: bold; text-transform: uppercase; }
+        
+        .intro-section p { color: var(--fluorescent-yellow); margin-bottom: 12px; font-size: 1em; text-align: center; }
+        .intro-section p.important { font-weight: bold; }
+
+
+        .decision-content-box .highlighted-choice-title { font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: var(--fluorescent-green); margin-top: 30px; margin-bottom: 20px; font-weight: bold; text-align: center; text-transform: uppercase; }
+        
+        .decision-content-box .detailed-text p { margin-bottom: 15px; text-align: justify; color: white; }
+        .decision-content-box .detailed-text strong { color: var(--fluorescent-green); font-weight: bold; }
+        .decision-content-box .detailed-text ul { list-style: none; padding-left: 0; margin-bottom: 15px; color: white; }
+        .decision-content-box .detailed-text ul li { position: relative; margin-bottom: 10px; padding-left: 25px; text-align: justify;}
+        .decision-content-box .detailed-text ul li::before { content: "❖ "; color: white; font-size: 0.9em; position: absolute; left: 0; }
         .confirm-button-container { text-align: center; margin-top: 35px; }
-        .confirm-main-page-button { background-color: var(--button-confirm-bg); color: white; padding: 12px 30px; border: none; border-radius: 5px; font-family: 'Arial Narrow', Arial, sans-serif; font-size: clamp(1rem, 2vw, 1.2rem); font-weight: bold; text-transform: uppercase; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2), 0 0 15px rgba(194, 0, 0, 0.2); }
-        .confirm-main-page-button:hover { background-color: var(--button-confirm-hover-bg); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 25px rgba(194, 0, 0, 0.4); }
+        .confirm-button { background-color: var(--button-confirm-bg); color: white; padding: 12px 30px; border: none; border-radius: 5px; font-family: 'Arial Narrow', Arial, sans-serif; font-size: clamp(1rem, 2vw, 1.2rem); font-weight: bold; text-transform: uppercase; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .confirm-button:hover { background-color: var(--button-confirm-hover-bg); transform: translateY(-2px); }
 
         .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center; padding: 20px; }
+        
         .modal-content {
             background-color: var(--background-dark); color: var(--text-color); padding: clamp(20px, 4vw, 40px);
             border: 2px solid var(--fluorescent-green); border-radius: 15px; width: 100%; max-width: 600px;
             position: relative; box-shadow: 0 0 25px rgba(128, 255, 0, 0.3); animation: fadeIn 0.3s ease-out;
             display: flex; flex-direction: column; max-height: calc(100vh - 40px);
         }
-        .modal-scrollable-content { overflow-y: auto; padding-right: 15px; margin-right: -15px; }
+        .modal-scrollable-content { overflow-y: auto; padding-right: 15px; margin-right: -15px; padding-left: 15px; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        
         .modal-close-button {
             color: var(--fluorescent-green); position: absolute; top: 10px; right: 15px;
             font-size: 2.5rem; font-weight: bold; cursor: pointer; z-index: 10; transition: color 0.3s, transform 0.3s;
         }
         .modal-close-button:hover, .modal-close-button:focus { color: #fff; transform: scale(1.1); }
+        
         .modal-content .popup-title {
             color: var(--fluorescent-green); text-align: center; font-size: clamp(1.2rem, 2.5vw, 1.6rem);
             font-weight: bold; text-transform: uppercase; margin-bottom: 20px; padding-top: 10px;
@@ -119,9 +116,16 @@
         }
         .modal-content input::placeholder { color: #888; }
         .modal-content .email-subtitle { margin-top: 5px; margin-bottom: 8px; font-size: 0.85rem; color: #ccc; text-align: center; }
-        .error-message { color: var(--warning-red); font-size: 0.85rem; height: 1.2em; margin-top: 5px; text-align: center; }
-        .input-error { border-color: var(--warning-red) !important; box-shadow: 0 0 8px rgba(255, 77, 77, 0.7); }
-        
+        .modal-content .napomena {
+            margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--card-border);
+            font-size: 0.85rem; line-height: 1.5; color: #bbb; text-align: left;
+        }
+        .modal-content .napomena p { color: #bbb; margin-bottom: 0.3em; text-align: justify; }
+        .modal-content .napomena strong { color: var(--fluorescent-yellow); }
+
+        .error-message { color: #ff4d4d; font-size: 0.85rem; height: 1.2em; margin-top: 5px; text-align: center; }
+        .input-error { border-color: #ff4d4d !important; box-shadow: 0 0 8px rgba(255, 77, 77, 0.7); }
+
         .modal-confirm-button {
             display: block; margin: 20px auto 0; padding: 12px 35px; font-size: 1.1rem; font-weight: bold;
             text-transform: uppercase; color: var(--background-dark); background-color: var(--fluorescent-green);
@@ -129,12 +133,15 @@
         }
         .modal-confirm-button:hover:not(:disabled) { background-color: #fff; transform: translateY(-2px); }
         .modal-confirm-button:disabled { background-color: #586351; color: #999; opacity: 0.7; cursor: not-allowed; transform: none; }
-        
+
         .final-popup-title { font-size: clamp(1.4rem, 3vw, 1.8rem) !important; }
         #final-confirmation-message { text-align: center; line-height: 1.6; font-size: 1.1rem; }
         #final-confirmation-message b { color: var(--fluorescent-yellow); }
 
+        .animated-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; background-color: var(--background-dark); }
         #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
+        .bg-dots { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.5; }
+        .glow { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(171, 71, 188, 0.2) 0%, rgba(171, 71, 188, 0) 70%); filter: blur(50px); pointer-events: none; }
     </style>
     <!-- ============================================= -->
     <!-- STYLES FOR LIGHT MODE -->
@@ -145,84 +152,111 @@
         html.light-mode .header-title, html.light-mode .page-close-button { color: var(--fluorescent-green) !important; }
         html.light-mode .page-close-button:hover { color: white !important; }
         html.light-mode .decision-content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
-        html.light-mode .main-greeting, html.light-mode .detailed-text p { color: #334155 !important; }
-        html.light-mode .intro-section p { color: #c0392b !important; }
-        html.light-mode .detailed-text strong, html.light-mode .detailed-text b { color: var(--primary-color) !important; }
-        html.light-mode .kyc-info { color: #64748b !important; }
-        html.light-mode .important-note-dark { background-color: rgba(106, 27, 154, 0.05); border-left-color: var(--primary-color); color: #334155; }
-        html.light-mode .important-note-dark strong { color: var(--primary-color); }
-        html.light-mode .confirm-main-page-button { background-color: #dc2626 !important; }
-        html.light-mode .confirm-main-page-button:hover { background-color: #ef4444 !important; }
+        html.light-mode .main-congrats-title, html.light-mode .detailed-text p, html.light-mode .detailed-text ul { color: #334155 !important; }
+        html.light-mode .detailed-text ul li::before { color: #334155 !important; }
+        html.light-mode .intro-section p, 
+        html.light-mode .highlighted-choice-title, 
+        html.light-mode .highlighted-choice-title::before { color: #842a9d !important;}
+        html.light-mode .detailed-text strong { color: var(--primary-color) !important; }
+        html.light-mode .confirm-button { background-color: #dc2626 !important; }
+        html.light-mode .confirm-button:hover { background-color: #ef4444 !important; }
         html.light-mode .modal-content { background-color: #ffffff; border-color: var(--primary-color); }
         html.light-mode .modal-close-button, html.light-mode .popup-title, html.light-mode .form-group label { color: var(--primary-color); }
         html.light-mode .modal-close-button:hover { color: #333; }
         html.light-mode input[type="text"], html.light-mode input[type="email"] { background-color: #f1f5f9; border-color: #cbd5e1; color: #1e293b; }
         html.light-mode input::placeholder { color: #94a3b8; }
-        html.light-mode .email-subtitle { color: #475569; }
-        html.light-mode #final-confirmation-message b { color: var(--primary-color); }
+        html.light-mode .email-subtitle, html.light-mode .napomena p { color: #475569; }
+        html.light-mode .napomena strong { color: var(--primary-color); }
         html.light-mode .modal-confirm-button { background-color: var(--primary-color); color: white; }
         html.light-mode .modal-confirm-button:hover:not(:disabled) { background-color: var(--secondary-color); }
+        html.light-mode #final-confirmation-message b { color: var(--primary-color); }
+        html.light-mode .animated-background { background-color: transparent !important; }
         html.light-mode #network-canvas { background-color: transparent !important; }
     </style>
 </head>
 <body>
     <canvas id="network-canvas"></canvas>
+    <div class="animated-background">
+        <div class="bg-dots"></div>
+        <div class="glow" style="top: 10%; left: 10%; width: 400px; height: 400px;"></div>
+        <div class="glow" style="top: 70%; left: 80%; width: 350px; height: 350px; opacity: 0.15;"></div>
+    </div>
 
     <div class="fixed-header-container">
         <div class="header-content">
-            <span class="header-title">SFT21 – Decision: Termination with Donation</span>
-            <button class="page-close-button" id="closePageButton" title="Back to previous page">×</button>
+            <span class="header-title">SFT21 - Decision on Business Continuation</span>
+            <button class="page-close-button" id="closePageButton" title="Close">×</button>
         </div>
     </div>
 
     <div class="page-wrapper">
         <div class="decision-content-box">
-            <h2 class="main-greeting">Greetings</h2>
+            <h1 class="main-congrats-title">CONGRATULATIONS AND THANK YOU FOR YOUR DECISION TO JOIN US IN CONTINUING BUSINESS ACCORDING TO THE RULES OF THE NEW BUSINESS SYSTEM</h1>
+            
             <div class="intro-section">
-                <p>
-                    YOU HAVE CHOSEN TO TERMINATE BUSINESS COOPERATION WITH OUR COMPANY,<br>
-                    WITH A REQUEST THAT THE AMOUNT OF YOUR STARTING PACKAGE PAYMENT BE USED FOR CHARITABLE PURPOSES,<br>
-                    AND PERMANENT DELETION OF YOUR DATA FROM OUR DATABASES.
-                </p>
+                <p>Given the changes in the business model and the distribution of funds,</p>
+                <p class="important">The Franchise Agreement you signed in the old system remains in effect until further notice.</p>
+                <p>However, before activating the "SPfree" starter package, you will sign an Annex to the Franchise Agreement.</p>
+                <!-- Dynamically inserted amount here -->
+                <p id="initialInvestmentInfo">Considering that you started in the old system with a starter package payment of <strong><span id="startAmountDisplayIntro">30 $</span></strong>, and that you have decided that;</p>
             </div>
             
-            <div class="detailed-text">
-                <div class="important-note-dark">
-                    <p>Since you are withdrawing from the business, it is important to note that the company, in accordance with the franchise agreement you signed, <strong>IS NOT OBLIGED TO REFUND THE MONEY YOU PAID FOR THE STARTING PACKAGE,</strong> however, as the company owners do not want anyone to feel damaged within our company, <strong>your funds will be used for charitable purposes, in accordance with your request!</strong></p>
-                </div>
-                <p>
-                    By your decision not to continue business, the company commits to permanently deleting your data from all our databases.
-                </p>
+            <h2 class="highlighted-choice-title">
+            YOU ARE CONTINUING BUSINESS
+            </h2>
 
-                <div class="final-note-section">
-                     <p>
-                        Our sincerest advice is to follow our development and return to our community as soon as possible.
-                     </p>
-                     <p>
-                        By registering for free, you become a member of our community without any obligations, with the possibility of reactivation if you decide to join us later. In that case, you continue business by taking the first available position in the SFalgorithm.
-                     </p>
-                     <p style="margin-top: 20px; font-weight: bold; color: var(--fluorescent-green);">
-                        We are sorry that you have decided to leave our community, but we respect your decision.<br>
-                        We wish you all the best both personally and professionally.
-                     </p>
+            <div class="detailed-text">
+                <!-- ================== STANDARD TEXT ================== -->
+                <div id="standard-text-block">
+                    <p>... if you have less than 1450 SFpoints your status is <strong>SFstarter</strong>, or <strong>SFfranchisee</strong> - if you have more than 1450 SFpoints, by opening a <strong>personal (PA) or business (BA)</strong> user account with the <strong>"SPfree"</strong> starter package.</p>
+                    
+                    <p>During the first filling of positions in the SFalgorithm, your account will take a position according to the number of your <strong>personal</strong> or <strong>group SFpoints</strong> from the old system. Based on the payment of <strong><span id="startAmountDisplay">30 $</span></strong> for the Starter Package from the old system, you receive <strong><span id="sfPointsValue">60</span> personal SFpoints</strong> which are transferred to the new system.</p>
+                    
+                    <ul>
+                        <li><strong>Group SFpoints</strong> are obtained by adding the sum of the personal points of your direct and indirect members who are also continuing their business to your personal SFpoints.<br>
+                        Accordingly, 50% of the total personal SFpoints of your direct members and 25% of the total personal SFpoints of their direct members (your indirect members) are added to your SFpoints.<br>
+                        If you upgraded your account in the old system, the earnings obtained from the reserve wallet are added to your SFpoints, such that for every <strong>1 €</strong> you get <strong>1 SFpoint</strong>.<br>
+                        If you had a certain amount in your wallet, that amount is also added to your SFpoints, with <strong>1 €</strong> equaling <strong>2 SFpoints</strong>.</li>
+                        
+                        <li>For every <strong>100 SFpoints</strong> you receive <strong>1 SFcode</strong> (up to a maximum of 21 SFpoints, if you transfer 2100 or more SFpoints).</li>
+                        
+                        <li>The <strong>Maximum Earnings Limit (MEL)</strong> that you can receive in one accounting period will be determined according to the number of <strong>group SFpoints</strong>.</li>
+                    </ul>
+                    
+                    <p>After your account takes its position in the SFalgorithm, you continue according to the new business rules with the "SPfree" starter package with the newly determined MEL, which you can increase (up to max. 2100 €) by paying for License Packages, paying for new subscription periods, or by building your career through registering new members – SFfranchisees (up to max. 100,000 €).</p>
+                    
+                    <p>It is important to note that you have the <strong>RIGHT AND OPPORTUNITY</strong> to purchase a License Package, with which, along with bonus earnings benefits, you receive additional SFpoints and SFcodes (more details on the homepage).<br>
+                    By purchasing a License Package for another person based on your recommendation (your direct member), you are entitled to a 10% Referral Bonus, which in that case can be a maximum amount up to ten times the amount of your starter package payment from the old system.</p>
+                </div>
+
+                <!-- ================== NEW TEXT FOR "LARGER AMOUNT" (HIDDEN BY DEFAULT) ================== -->
+                <div id="veci-iznos-text-block" style="display: none;">
+                    <p>... you continue business as an <strong>ACTIVE member - SFfranchisee</strong>, by simultaneously opening up to a maximum of 7 personal or 6 personal and one business account with SPfree starter packages... upon prior agreement with the company.</p>
+                    <p>Based on the total amount invested from the old system, the number of SFpoints transferred to the new system is determined.</p>
+                    <ul>
+                        <li><strong>Group SFpoints</strong> are obtained by adding the SFpoints received from your direct and indirect members, who are also continuing their business, to your personal SFpoints. If you upgraded your account in the old system, the earnings obtained from the reserve wallet are added to your SFpoints, such that for every <strong>1 €</strong> you get <strong>1 SFpoint</strong>. If you had a certain amount in your wallet, that amount is also included in your SFpoints, with <strong>1 €</strong> equaling <strong>2 SFpoints</strong>.</li>
+                        <li>The <strong>Maximum Earnings Limit (MEL)</strong> that you can receive in one accounting period is <strong>2100 € on each opened account</strong>.</li>
+                    </ul>
+                    <p>After your accounts take their positions in the SFalgorithm, which are <strong>permanently locked</strong>, you continue according to the new business rules with the "SPfree" starter package, with a 2100 € MEL, which you can increase by building your career through registering new members – SFfranchisees (up to max. 100,000 €).</p>
+                    <p>It is important to note that you have the <strong>RIGHT AND OPPORTUNITY</strong> to recommend the business opportunity of purchasing a License Package to others, and thus you are entitled to a 10% Referral Bonus, which in that case can be a maximum amount up to ten times the amount of your starter package payment from the old system.</p>
                 </div>
             </div>
 
             <div class="confirm-button-container">
-                <button class="confirm-main-page-button" id="openPopupForConfirmation">CONFIRM SELECTION</button>
+                <button class="confirm-button" id="openPopupForConfirmation">CONFIRM SELECTION</button>
             </div>
         </div>
     </div>
-
+    
     <!-- HTML STRUCTURE FOR MAIN POPUP -->
     <div id="confirmationUserDetailsPopup" class="modal-overlay">
         <div class="modal-content">
              <span id="closeUserDetailsPopupButton" class="modal-close-button" title="Close">×</span>
-            <h2 class="popup-title">DATA CONFIRMATION</h2>
+            <h2 class="popup-title">CONFIRM DATA</h2>
             <div class="modal-scrollable-content">
-                <!-- Field for Full Name -->
+                <!-- NEW FIELD: FULL NAME -->
                 <div class="form-group">
-                    <label for="fullNameInputPopup">FULL NAME</label>
+                    <label for="fullNameInputPopup">Full Name</label>
                     <input type="text" id="fullNameInputPopup" placeholder="Enter full name">
                 </div>
                 
@@ -238,36 +272,40 @@
                 </div>
                 <div class="form-group">
                      <label for="newEmailInputPopup">New Email Address (optional)</label>
-                    <p class="email-subtitle">If you no longer use the same address or do not have access, enter a new one.</p>
+                    <p class="email-subtitle">If you no longer use or have access to the old address, enter a new one.</p>
                     <input type="email" id="newEmailInputPopup" placeholder="New email address">
                     <div id="newEmailErrorPopup" class="error-message"></div>
+                </div>
+                <!-- UPDATED NOTE TEXT -->
+                <div class="napomena">
+                    <strong>Note:</strong>
+                    <p>Business operations will continue with the first filling of the SFalgorithm, about which you will be timely notified via email and/or the control panel. If you later decide to take the additional opportunity to profit by investing in the development of the SFT21 Business Concept by purchasing a License Package (company recommendation), you can always do so on the License Packages page, as long as the offer lasts.</p>
                 </div>
             </div>
             <button id="confirmUserDetailsButton" class="modal-confirm-button">Confirm</button>
         </div>
     </div>
-    
-    <!-- HTML STRUCTURE FOR FINAL POPUP -->
+
+    <!-- HTML STRUCTURE FOR FINAL CONFIRMATION POPUP -->
     <div id="finalConfirmationPopup" class="modal-overlay">
         <div class="modal-content">
-            <span id="closeFinalConfirmationPopup" class="modal-close-button" title="Close">×</span>
             <h2 class="popup-title final-popup-title">Information</h2>
             <p id="final-confirmation-message"></p>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyXvVom7kEX18qpB8k9xJ8LzBquCg6qL0_nHP9y_G67weOkpo4tRC_r6JPOJz3JPzNj/exec';   
+            const closePageButton = document.getElementById('closePageButton');
             const mainPopup = document.getElementById('confirmationUserDetailsPopup');
             const openMainPopupButton = document.getElementById('openPopupForConfirmation');
             const closeMainPopupButton = document.getElementById('closeUserDetailsPopupButton');
             const finalPopup = document.getElementById('finalConfirmationPopup');
-            const closeFinalPopupButton = document.getElementById('closeFinalConfirmationPopup');
             const finalMessageP = document.getElementById('final-confirmation-message');
             
-            // Form fields
+            // Added new field
             const fullNameInput = document.getElementById('fullNameInputPopup');
             const usernameInput = document.getElementById('usernameInputPopup');
             const oldEmailInput = document.getElementById('oldEmailInputPopup');
@@ -276,27 +314,38 @@
 
             // --- HELPER FUNCTIONS ---
             const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).toLowerCase());
-            const closeMainPopup = () => { if (mainPopup) mainPopup.style.display = 'none'; document.body.style.overflow = 'auto'; };
-            const closeFinalPopup = () => { if (finalPopup) finalPopup.style.display = 'none'; document.body.style.overflow = 'auto'; };
+            const closeMainPopup = () => { if(mainPopup) mainPopup.style.display = 'none'; document.body.style.overflow = 'auto'; };
+            const closeFinalPopup = () => { if(finalPopup) finalPopup.style.display = 'none'; document.body.style.overflow = 'auto'; };
 
             const validateForm = () => {
-                let isFormValid = true;
-                if (fullNameInput.value.trim() === '') isFormValid = false;
-                if (usernameInput.value.trim() === '') isFormValid = false;
-                if (!isEmailValid(oldEmailInput.value.trim())) isFormValid = false;
+                const isFullNameValid = fullNameInput.value.trim() !== ''; // Check Full Name
+                const isUsernameValid = usernameInput.value.trim() !== '';
+                const isOldEmailValid = isEmailValid(oldEmailInput.value.trim());
                 const newEmailValue = newEmailInput.value.trim();
-                if (newEmailValue !== '' && !isEmailValid(newEmailValue)) isFormValid = false;
-                confirmButton.disabled = !isFormValid;
+                const isNewEmailValidOrEmpty = newEmailValue === '' || isEmailValid(newEmailValue);
+                
+                // Button active only if all mandatory fields are valid
+                confirmButton.disabled = !(isFullNameValid && isUsernameValid && isOldEmailValid && isNewEmailValidOrEmpty);
             };
-
+            
             // --- EVENT LISTENERS ---
-            document.getElementById('closePageButton')?.addEventListener('click', () => { window.history.back(); });
-            openMainPopupButton.addEventListener('click', () => { mainPopup.style.display = 'flex'; document.body.style.overflow = 'hidden'; validateForm(); });
+            if (closePageButton) {
+                closePageButton.onclick = function() {
+                    window.location.href = 'prikaz_opcije_en.html' + window.location.search; 
+                };
+            }
+
+            openMainPopupButton.addEventListener('click', () => {
+                mainPopup.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                validateForm();
+            });
+
             closeMainPopupButton.addEventListener('click', closeMainPopup);
             mainPopup.addEventListener('click', (event) => { if (event.target === mainPopup) closeMainPopup(); });
-            closeFinalPopupButton.addEventListener('click', closeFinalPopup);
             finalPopup.addEventListener('click', (event) => { if (event.target === finalPopup) closeFinalPopup(); });
             
+            // Added listener for new field as well
             [fullNameInput, usernameInput, oldEmailInput, newEmailInput].forEach(input => input.addEventListener('input', validateForm));
 
             // --- MAIN LOGIC FOR SENDING DATA ---
@@ -309,12 +358,12 @@
                 document.body.style.overflow = 'hidden';
 
                 const dataToSend = new FormData();
-                dataToSend.append('requestType', 'discontinueWithCharity'); 
-                dataToSend.append('fullName', fullNameInput.value.trim()); 
+                dataToSend.append('requestType', 'activeNoInvest');
+                dataToSend.append('fullName', fullNameInput.value.trim()); // Sending name as well
                 dataToSend.append('username', usernameInput.value.trim());
                 dataToSend.append('oldEmail', oldEmailInput.value.trim());
                 dataToSend.append('newEmail', newEmailInput.value.trim());
-                
+
                 fetch(WEBAPP_URL, {
                     method: 'POST',
                     body: dataToSend
@@ -322,8 +371,7 @@
                 .then(res => res.json())
                 .then(data => {
                     if (data.success) {
-                        const finalEmail = newEmailInput.value.trim() || oldEmailInput.value.trim();
-                        finalMessageP.innerHTML = `Your data and email address (<b>${finalEmail}</b>) have been recorded with the request for donation to charity and permanent deletion. We will contact you in due time. Thank you.`;
+                        finalMessageP.innerHTML = 'Your decision has been recorded. We will contact you in a timely manner. Thank you.';
                     } else {
                         finalMessageP.innerHTML = 'An error occurred. Please try again.';
                     }
@@ -340,21 +388,59 @@
                 });
             });
 
-            // --- ANIMATIONS ---
+            // --- DYNAMIC TEXT AND ANIMATIONS ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramIznos = urlParams.get('iznos');
+            const paramValuta = urlParams.get('valuta');
+            const initialInvestmentInfo = document.getElementById('initialInvestmentInfo');
+            const startAmountDisplay = document.getElementById('startAmountDisplay');
+            const startAmountDisplayIntro = document.getElementById('startAmountDisplayIntro');
+            
+            let displayText = "30 $"; 
+
+            if (paramIznos && paramValuta) {
+                if (paramIznos === 'veci' && paramValuta === 'iznos') {
+                    displayText = "a larger investment amount";
+                    
+                    // Hide standard text and show text for "Larger Amount"
+                    const standardTextBlock = document.getElementById('standard-text-block');
+                    const veciIznosTextBlock = document.getElementById('veci-iznos-text-block');
+                    
+                    if (standardTextBlock) standardTextBlock.style.display = 'none';
+                    if (veciIznosTextBlock) veciIznosTextBlock.style.display = 'block';
+
+                } else {
+                    // Standard logic for other amounts
+                    const currencySymbol = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
+                    displayText = `${paramIznos} ${currencySymbol}`;
+                    
+                    if (startAmountDisplay) {
+                        startAmountDisplay.textContent = displayText;
+                        const investmentAmount = parseFloat(paramIznos) || 30;
+                        const sfPoints = investmentAmount * 2;
+                        const sfPointsSpan = document.getElementById('sfPointsValue');
+                        if (sfPointsSpan) {
+                            sfPointsSpan.textContent = sfPoints;
+                        }
+                    }
+                }
+            }
+
+            if (initialInvestmentInfo) {
+                // Update text in intro section (before <h2>)
+                initialInvestmentInfo.innerHTML = `Considering that you started in the old system with a starter package payment of <strong><span id="startAmountDisplayIntro">${displayText}</span></strong>, and that you have decided that;`;
+            }
+
             if (typeof gsap !== 'undefined') {
                 gsap.from('.decision-content-box', { duration: 1, y: 50, opacity: 0, ease: 'power3.out', delay: 0.3 });
-                gsap.utils.toArray(".glow").forEach((glow) => {
-                    gsap.to(glow, {
-                        opacity: gsap.utils.random(0.15, 0.4), scale: gsap.utils.random(0.8, 1.3),
-                        duration: gsap.utils.random(6, 12), ease: "sine.inOut",
-                        repeat: -1, yoyo: true, delay: gsap.utils.random(0, 4)
-                    });
-                });
+                gsap.from(['.main-congrats-title', '.intro-section > *', '.highlighted-choice-title', '.detailed-text > *', '.confirm-button-container'], 
+                    { duration: 0.7, opacity: 0, y: 20, stagger: 0.1, ease: 'power2.out', delay: 0.6 }
+                );
             }
         });
     </script>
-     <!-- Background Animation Script -->
-     <script>
+    <!-- Background Animation Script -->
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('network-canvas');
             if (!canvas) return;
@@ -363,10 +449,10 @@
             const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
             const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
             let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
-    
+
             const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
             window.addEventListener('resize', resizeCanvas);
-    
+
             class Particle {
                 constructor() {
                     this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
@@ -384,20 +470,20 @@
                     if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
                 }
             }
-    
+
             const initParticles = () => {
                 particles = [];
                 for (let i = 0; i < currentOptions.particleAmount; i++) {
                     particles.push(new Particle());
                 }
             };
-    
+
             const animate = () => {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 particles.forEach(p => { p.update(); p.draw(); });
                 requestAnimationFrame(animate);
             };
-    
+
             window.setAnimationTheme = (theme) => {
                 currentOptions = (theme === 'light') ? lightOptions : darkOptions;
                 if(canvas.width > 0) initParticles();
@@ -406,6 +492,6 @@
             resizeCanvas();
             animate();
         });
-        </script>
+    </script>
 </body>
 </html>

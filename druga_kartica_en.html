@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFT21 - Decision: Termination with Donation</title>
+    <title>SFT21 - Decision: Free Member with Refund</title>
 
     <!-- ============================================= -->
     <!-- UNIVERSAL THEME INITIALIZATION SCRIPT -->
@@ -73,19 +73,24 @@
             margin-top: calc(3.5rem + 30px); padding: clamp(20px, 4vw, 40px); border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); font-size: clamp(0.9rem, 1.8vw, 1.05rem); line-height: 1.65;
         }
+
         .decision-content-box .main-greeting {
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem); color: white;
-            text-align: center; margin-bottom: 25px; font-weight: bold;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem); color: white; text-align: center;
+            margin-bottom: 25px; font-weight: bold;
         }
+        
         .intro-section { text-align: center; } 
-        .intro-section p { color: var(--warning-red); margin-bottom: 12px; font-size: 1.05em; font-weight: bold; line-height: 1.5; }
+        .intro-section p { color: var(--fluorescent-yellow); margin-bottom: 12px; font-size: 1.05em; font-weight: bold; line-height: 1.5; }
+        
         .detailed-text { margin-top: 25px; }
         .detailed-text p { margin-bottom: 15px; text-align: justify; color: white; }
         .detailed-text strong, .detailed-text b { color: var(--fluorescent-green); font-weight: bold; }
         .detailed-text .kyc-info { font-style: italic; color: #c7c1da; }
+        .detailed-text .action-info { border-top: 1px dashed var(--card-border); padding-top: 15px; margin-top: 20px; }
+        
         .important-note-dark { margin: 20px 0; padding: 15px; background-color: rgba(128, 255, 0, 0.05); border-left: 4px solid var(--fluorescent-green); color: #e5e7eb; }
         .important-note-dark strong { color: var(--fluorescent-green); }
-        .final-note-section { margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--card-border); text-align: center; }
+        
         .confirm-button-container { text-align: center; margin-top: 35px; }
         .confirm-main-page-button { background-color: var(--button-confirm-bg); color: white; padding: 12px 30px; border: none; border-radius: 5px; font-family: 'Arial Narrow', Arial, sans-serif; font-size: clamp(1rem, 2vw, 1.2rem); font-weight: bold; text-transform: uppercase; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2), 0 0 15px rgba(194, 0, 0, 0.2); }
         .confirm-main-page-button:hover { background-color: var(--button-confirm-hover-bg); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 25px rgba(194, 0, 0, 0.4); }
@@ -145,8 +150,8 @@
         html.light-mode .header-title, html.light-mode .page-close-button { color: var(--fluorescent-green) !important; }
         html.light-mode .page-close-button:hover { color: white !important; }
         html.light-mode .decision-content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
-        html.light-mode .main-greeting, html.light-mode .detailed-text p { color: #334155 !important; }
-        html.light-mode .intro-section p { color: #c0392b !important; }
+        html.light-mode .main-greeting, html.light-mode .detailed-text p, html.light-mode .detailed-text ul { color: #334155 !important; }
+        html.light-mode .intro-section p { color: #842a9d !important; }
         html.light-mode .detailed-text strong, html.light-mode .detailed-text b { color: var(--primary-color) !important; }
         html.light-mode .kyc-info { color: #64748b !important; }
         html.light-mode .important-note-dark { background-color: rgba(106, 27, 154, 0.05); border-left-color: var(--primary-color); color: #334155; }
@@ -170,7 +175,7 @@
 
     <div class="fixed-header-container">
         <div class="header-content">
-            <span class="header-title">SFT21 – Decision: Termination with Donation</span>
+            <span class="header-title">SFT21 – Decision to continue as SFuser / FBA</span>
             <button class="page-close-button" id="closePageButton" title="Back to previous page">×</button>
         </div>
     </div>
@@ -180,30 +185,27 @@
             <h2 class="main-greeting">Greetings</h2>
             <div class="intro-section">
                 <p>
-                    YOU HAVE CHOSEN TO TERMINATE BUSINESS COOPERATION WITH OUR COMPANY,<br>
-                    WITH A REQUEST THAT THE AMOUNT OF YOUR STARTING PACKAGE PAYMENT BE USED FOR CHARITABLE PURPOSES,<br>
-                    AND PERMANENT DELETION OF YOUR DATA FROM OUR DATABASES.
+                    YOU HAVE CHOSEN TO TERMINATE BUSINESS COOPERATION, WITH A REQUEST FOR A REFUND OF THE MONEY PAID FOR THE STARTING PACKAGE, WHILE RETAINING THE USER ACCOUNT AS A FREE REGISTERED USER, (SFUSER OR FREE BUSINESS ACCOUNT),<br>
+                    IN ACCORDANCE WITH THE RULES OF CONDUCT AND BUSINESS WITHIN OUR COMMUNITY.
                 </p>
             </div>
             
             <div class="detailed-text">
                 <div class="important-note-dark">
-                    <p>Since you are withdrawing from the business, it is important to note that the company, in accordance with the franchise agreement you signed, <strong>IS NOT OBLIGED TO REFUND THE MONEY YOU PAID FOR THE STARTING PACKAGE,</strong> however, as the company owners do not want anyone to feel damaged within our company, <strong>your funds will be used for charitable purposes, in accordance with your request!</strong></p>
+                    <p>Since you are withdrawing from the business, it is important to note that the company, in accordance with the franchise agreement you signed, <strong>IS NOT OBLIGED TO REFUND THE MONEY YOU PAID FOR THE STARTING PACKAGE,</strong> however, as the company owners do not want anyone to feel damaged within our company, <strong>your funds will be returned to you!</strong></p>
                 </div>
                 <p>
-                    By your decision not to continue business, the company commits to permanently deleting your data from all our databases.
+                    Users who have earned and withdrawn an amount equal to or greater than the amount paid for the starting package are not eligible for a refund. Along with the refund request, it is necessary to attach a <strong>valid personal document</strong> (ID card, passport, or driver's license) <strong>used for KYC</strong> <span class="kyc-info">(or a new one if the old document has expired)</span>. You will submit the request after the company notifies you that it has started the refund process. The money will be returned to your user account wallet, from where you can withdraw it to your card, bank account, or spend it in the company webshop.
                 </p>
-
-                <div class="final-note-section">
+                <p>
+                    By deciding to continue as a free registered user, you retain the SFT21 user account with the right to use the social network, blog, webshop, payment system, participate in sweepstakes, and our other projects and applications, but without the right to participate in the distribution of funds according to the SFalgorithm rules and the new Franchise Agreement, without any obligations to the company.
+                </p>
+                <p>
+                    Your user account remains in our company's main database but is deleted from its position in the SFalgorithm fund distribution.
+                </p>
+                <div class="action-info">
                      <p>
-                        Our sincerest advice is to follow our development and return to our community as soon as possible.
-                     </p>
-                     <p>
-                        By registering for free, you become a member of our community without any obligations, with the possibility of reactivation if you decide to join us later. In that case, you continue business by taking the first available position in the SFalgorithm.
-                     </p>
-                     <p style="margin-top: 20px; font-weight: bold; color: var(--fluorescent-green);">
-                        We are sorry that you have decided to leave our community, but we respect your decision.<br>
-                        We wish you all the best both personally and professionally.
+                        By clicking the <strong>"ACTIVATE ACCOUNT"</strong> button in your new SFoffice, you will have the option to reactivate your user account and continue business as an SFfranchisee, should you decide to do so later. In that case, you continue business by taking the first available position in the SFalgorithm.
                      </p>
                 </div>
             </div>
@@ -220,7 +222,7 @@
              <span id="closeUserDetailsPopupButton" class="modal-close-button" title="Close">×</span>
             <h2 class="popup-title">DATA CONFIRMATION</h2>
             <div class="modal-scrollable-content">
-                <!-- Field for Full Name -->
+                <!-- Added new field for Full Name -->
                 <div class="form-group">
                     <label for="fullNameInputPopup">FULL NAME</label>
                     <input type="text" id="fullNameInputPopup" placeholder="Enter full name">
@@ -238,7 +240,7 @@
                 </div>
                 <div class="form-group">
                      <label for="newEmailInputPopup">New Email Address (optional)</label>
-                    <p class="email-subtitle">If you no longer use the same address or do not have access, enter a new one.</p>
+                    <p class="email-subtitle">If you no longer use the old address or don't have access, enter a new one.</p>
                     <input type="email" id="newEmailInputPopup" placeholder="New email address">
                     <div id="newEmailErrorPopup" class="error-message"></div>
                 </div>
@@ -247,7 +249,7 @@
         </div>
     </div>
     
-    <!-- HTML STRUCTURE FOR FINAL POPUP -->
+    <!-- HTML STRUCTURE FOR FINAL CONFIRMATION POPUP -->
     <div id="finalConfirmationPopup" class="modal-overlay">
         <div class="modal-content">
             <span id="closeFinalConfirmationPopup" class="modal-close-button" title="Close">×</span>
@@ -267,7 +269,7 @@
             const closeFinalPopupButton = document.getElementById('closeFinalConfirmationPopup');
             const finalMessageP = document.getElementById('final-confirmation-message');
             
-            // Form fields
+            // Selector for name and surname
             const fullNameInput = document.getElementById('fullNameInputPopup');
             const usernameInput = document.getElementById('usernameInputPopup');
             const oldEmailInput = document.getElementById('oldEmailInputPopup');
@@ -281,7 +283,9 @@
 
             const validateForm = () => {
                 let isFormValid = true;
+                // Validation for name and surname
                 if (fullNameInput.value.trim() === '') isFormValid = false;
+                
                 if (usernameInput.value.trim() === '') isFormValid = false;
                 if (!isEmailValid(oldEmailInput.value.trim())) isFormValid = false;
                 const newEmailValue = newEmailInput.value.trim();
@@ -297,6 +301,7 @@
             closeFinalPopupButton.addEventListener('click', closeFinalPopup);
             finalPopup.addEventListener('click', (event) => { if (event.target === finalPopup) closeFinalPopup(); });
             
+            // Listener for inputs
             [fullNameInput, usernameInput, oldEmailInput, newEmailInput].forEach(input => input.addEventListener('input', validateForm));
 
             // --- MAIN LOGIC FOR SENDING DATA ---
@@ -309,8 +314,8 @@
                 document.body.style.overflow = 'hidden';
 
                 const dataToSend = new FormData();
-                dataToSend.append('requestType', 'discontinueWithCharity'); 
-                dataToSend.append('fullName', fullNameInput.value.trim()); 
+                dataToSend.append('requestType', 'stay_free');
+                dataToSend.append('fullName', fullNameInput.value.trim());
                 dataToSend.append('username', usernameInput.value.trim());
                 dataToSend.append('oldEmail', oldEmailInput.value.trim());
                 dataToSend.append('newEmail', newEmailInput.value.trim());
@@ -323,7 +328,7 @@
                 .then(data => {
                     if (data.success) {
                         const finalEmail = newEmailInput.value.trim() || oldEmailInput.value.trim();
-                        finalMessageP.innerHTML = `Your data and email address (<b>${finalEmail}</b>) have been recorded with the request for donation to charity and permanent deletion. We will contact you in due time. Thank you.`;
+                        finalMessageP.innerHTML = `Your data and email address (<b>${finalEmail}</b>) have been recorded with the refund request. We will contact you in due time. Thank you.`;
                     } else {
                         finalMessageP.innerHTML = 'An error occurred. Please try again.';
                     }

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFT21 - Option View</title>
+
+    <script>
+        function applySft21Theme() {
+            try {
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+                if (theme === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                } else {
+                    document.documentElement.classList.remove('light-mode');
+                }
+                 if (window.setAnimationTheme) {
+                    window.setAnimationTheme(theme);
+                }
+            } catch (e) {
+                console.error('Error applying theme:', e);
+            }
+        }
+        applySft21Theme();
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                applySft21Theme();
+            }
+        });
+    </script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Arial+Narrow&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #6a1b9a; /* Purple */
+            --secondary-color: #ab47bc; /* Lighter Purple */
+            --accent-color: #ff00ff; /* Magenta */
+            --fluorescent-green: #80ff00; /* Fluorescent Green */
+            --text-color: #e5e7eb; /* Light gray for text */
+            --text-color-darker: #c7c1da; /* Darker gray for less important text */
+            --background-dark: #0d0118; /* Dark background */
+            --card-background: rgba(106, 27, 154, 0.1); 
+            --card-border: rgba(171, 71, 188, 0.3); 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* === UNIFORM FONT STYLE === */
+        html, body, h1, h2, h3, h4, h5, h6, p, span, div, a, li, button, strong {
+            font-family: 'Arial Narrow', Arial, sans-serif !important;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto; 
+            background-color: var(--background-dark);
+            color: var(--text-color);
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 130px;
+            padding-bottom: 40px; 
+            min-height: 100vh;
+            width: 100%;
+        }
+        
+        /* Intro Section */
+        .intro-container {
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        .intro-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: bold;
+            color: var(--fluorescent-green);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .intro-text {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-color);
+            margin-bottom: 25px;
+        }
+
+        .green-separator {
+            width: 100%;
+            height: 2px;
+            background-color: var(--fluorescent-green);
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px var(--fluorescent-green);
+        }
+
+        /* Header */
+        .fixed-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 500; 
+            background-color: var(--background-dark); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .fixed-header-container .header-content {
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            position: relative;
+            height: 7rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            width: 100%;
+        }
+        .fixed-header-container .logo-container {
+            display: flex;          
+            align-items: center;  
+            text-decoration: none;  
+            gap: 15px;              
+        }
+        .fixed-header-container #site-logo { 
+            height: 3.5rem; 
+            width: auto; 
+            display: block;
+        }
+        .fixed-header-container .product-name { 
+            font-size: 2.5rem; 
+            color: var(--fluorescent-green); 
+            font-weight: bold; 
+            line-height: 1;
+        }
+        .fixed-header-container .header-content > div[style*="flex-grow"] {
+            display: none !important; 
+        }
+
+        .option-close-button {
+            position: fixed; top: 20px; right: 25px;
+            font-size: 2.5rem; color: rgba(229, 231, 235, 0.7);
+            background: none; border: none; cursor: pointer; 
+            transition: color 0.3s ease, transform 0.2s ease;
+            z-index: 501; line-height: 1; padding: 5px;
+        }
+        .option-close-button:hover { color: white; transform: scale(1.1); }
+
+        /* Content */
+        .page-main-title {
+            font-size: clamp(1.3rem, 3vw, 1.8rem); 
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 0 15px;
+            font-weight: normal;
+        }
+        .page-main-title span { color: var(--fluorescent-green); font-weight: bold; }
+
+        .content-area {
+            width: 100%; max-width: 1200px; padding: 20px;
+        }
+
+        .initial-info ul { list-style: none; padding-left: 20px; margin-bottom: 15px; }
+        .initial-info li {
+            margin-bottom: 10px; font-size: clamp(1rem, 1.8vw, 1.15rem);
+            line-height: 1.6; position: relative; color: var(--text-color);
+        }
+        .initial-info li::before {
+            content: "–"; position: absolute; left: -18px; 
+            color: var(--fluorescent-green); font-weight: bold;
+        }
+        .initial-info strong, .note-text strong { color: var(--fluorescent-green); font-weight: bold; }
+
+        .note-text {
+            font-size: clamp(0.95rem, 1.8vw, 1.1rem); margin-bottom: 20px;
+            color: var(--text-color-darker); line-height: 1.6; text-align: justify;
+        }
+
+        .options-title-separator { 
+            color: var(--fluorescent-green); font-size: clamp(1.4rem, 3.5vw, 1.8rem); 
+            text-align: center; margin-bottom: 30px; margin-top: 20px;
+            font-weight: bold; text-shadow: 0 0 8px rgba(128, 255, 0, 0.4);
+            text-transform: uppercase;
+        }
+
+        /* --- 2x2 GRID --- */
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 30px;
+            justify-content: center;
+            max-width: 1000px; 
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CARD STYLES */
+        .option-card {
+            background: var(--card-background);
+            border: 1px solid var(--card-border);
+            border-radius: 15px; 
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            display: flex; flex-direction: column; align-items: flex-start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; position: relative;
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            height: 100%;
+        }
+        .option-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(106, 27, 154, 0.4); 
+        }
+        
+        .option-card h2 { 
+            font-size: 1.3rem; color: var(--fluorescent-green);
+            margin-bottom: 5px; text-align: left; font-weight: bold;
+            width: 100%;
+        }
+        .option-card h3 {
+            font-size: 1rem; color: var(--text-color);
+            margin-bottom: 15px; text-align: left; font-weight: normal;
+            font-style: italic; width: 100%;
+        }
+
+        /* Thin green line */
+        .card-separator {
+            width: 100%; height: 1px;
+            background-color: var(--fluorescent-green);
+            margin-bottom: 15px; opacity: 0.7;
+        }
+
+        .option-card p {
+            font-size: 1rem; line-height: 1.5; color: var(--text-color);
+            margin-bottom: 10px; text-align: left; width: 100%;
+        }
+        
+        /* Special list for card 1 */
+        .option-card ul.special-list { list-style: none; padding-left: 20px; width: 100%; }
+        .option-card ul.special-list li { position: relative; margin-bottom: 5px; color: var(--text-color); }
+        .option-card ul.special-list li::before {
+            content: ""; 
+            position: absolute; left: -20px; color: var(--fluorescent-green); font-size: 0.8rem; top: 2px;
+        }
+
+        /* Click indicator */
+        .click-indicator {
+            position: absolute; bottom: 15px; right: 15px;
+            color: var(--fluorescent-green); font-size: 1.2rem;
+            animation: pulse-click 2s infinite;
+        }
+        @keyframes pulse-click {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+
+        #network-canvas { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: #1d012e; 
+        }
+        
+        .fixed-header-container a.logo-container { text-decoration: none !important; }
+
+        /* Light Mode Styles */
+        html.light-mode body { background-color: #f8fafc !important; color: #334155 !important; }
+        html.light-mode .fixed-header-container { background-color: white !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important; }
+        html.light-mode .product-name { color: var(--primary-color) !important; }
+        html.light-mode .option-close-button { color: #64748b !important; }
+        html.light-mode .option-close-button:hover { color: #1e293b !important; }
+        html.light-mode .intro-title { color: var(--primary-color) !important; }
+        html.light-mode .green-separator { background-color: var(--primary-color) !important; box-shadow: 0 0 10px var(--primary-color) !important; }
+        html.light-mode .page-main-title span { color: var(--primary-color) !important; }
+        html.light-mode .initial-info li, html.light-mode .option-card p, html.light-mode .option-card li { color: #334155 !important; }
+        html.light-mode .initial-info li::before, html.light-mode .option-card ul.special-list li::before { color: var(--primary-color) !important; }
+        html.light-mode .initial-info strong, html.light-mode .note-text strong { color: #1e293b !important; }
+        html.light-mode .note-text { color: #64748b !important; }
+        html.light-mode .options-title-separator { color: var(--primary-color) !important; text-shadow: none !important; }
+        html.light-mode .option-card { background-color: white !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
+        html.light-mode .option-card h2, html.light-mode .click-indicator { color: var(--primary-color) !important; }
+        html.light-mode .card-separator { background-color: var(--primary-color) !important; }
+        html.light-mode .option-card h3 { color: #475569 !important; }
+        html.light-mode .option-card:hover { box-shadow: 0 8px 25px rgba(106, 27, 154, 0.15) !important; }
+        html.light-mode #network-canvas { background-color: transparent !important; }
+    </style>
+</head>
+<body>
+    <canvas id="network-canvas"></canvas>
+    
+    <div class="fixed-header-container">
+        <div class="header-content">
+                <a href="index_en.html" class="logo-container" title="Return to Home">
+                <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo">
+                <div class="logo-text-wrapper">
+                    <span class="product-name">SFT21</span>
+                </div>
+            </a>
+            <div style="flex-grow: 1;"></div> 
+        </div>
+    </div>
+
+    <button class="option-close-button" id="closeOptionPageButton" title="Back to Amount Selection">×</button>
+
+    <div class="page-wrapper">
+        
+        <!-- INTRO SECTION -->
+        <div class="intro-container">
+            <h1 class="intro-title">DECISION ON CONTINUATION</h1>
+            <p class="intro-text">Please select the option that suits you best so we can update your status in the system.</p>
+            <div class="green-separator"></div>
+        </div>
+
+        <h2 class="page-main-title">You started your business by purchasing a Starter Package of <span id="dynamicPageHeaderAmount">30 $</span></h2>
+
+        <div class="content-area">
+            <div class="initial-info" id="initialInfoContent">
+                <ul id="standardInfoList">
+                    <li>you receive <strong><span id="dynamicSfbPoints">60</span> SFpoints</strong> (SFb)</li>
+                    <li>plus points based on earnings from the reserve wallet, if you achieved an account upgrade (1 SFC = 1 SFb)</li>
+                    <li>plus points based on earnings from the wallet, if you had them in the wallet (1 SFC = 2 SFb)</li>
+                    <li>plus 50% of the starter package amount paid by your direct members (1 € = 1 SFb)</li>
+                    <li>plus 25% of the starter package amount paid by your indirect members (1 € = 1 SFb)</li>
+                </ul>
+                <p class="note-text" id="standardNoteText"><strong>Note:</strong><br>
+                The number of SFpoints from your direct and indirect members is recognized exclusively from those members who continue the business.</p>
+            </div>
+
+            <h2 class="options-title-separator">YOUR OPTIONS</h2>
+
+            <div class="options-container">
+                
+                <!-- CARD 1 -->
+                <div class="option-card" id="opcijaNastavak" data-interactive>
+                    <h2>I CONTINUE THE BUSINESS</h2>
+                    <div class="card-separator"></div>
+                    <p>You continue business with SPfree (free personal or business account).</p>
+                    <p>Based on the total number of SFpoints you transfer from the old system;</p>
+                    <ul class="special-list">
+                        <li>you take a position in the SFalgorithm</li>
+                        <li>you receive a certain number of SFcodes</li>
+                        <li>your maximum earning LIMIT is determined</li>
+                    </ul>
+                    <i class="fas fa-mouse-pointer click-indicator"></i>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="option-card" id="opcijaPovratOstajem" data-interactive>
+                    <h2>I QUIT THE BUSINESS</h2>
+                    <h3>With a refund request but I remain a user of the social network and webshop</h3>
+                    <div class="card-separator"></div>
+                    <p>You retain access to the control panel (SFured), with the right to use the social network (SFnet) and webshop (SFshop).</p>
+                    <p>Money will be returned to you in accordance with the company's rules on Starter Package refunds.</p>
+                    <i class="fas fa-mouse-pointer click-indicator"></i>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="option-card" id="opcijaPovratOdlazim" data-interactive>
+                    <h2>I QUIT THE BUSINESS</h2>
+                    <h3>With a refund request</h3>
+                    <div class="card-separator"></div>
+                    <p>Your data is deleted from our databases.</p>
+                    <p>Money will be returned to you in accordance with the company's rules on Starter Package refunds.</p>
+                    <i class="fas fa-mouse-pointer click-indicator"></i>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="option-card" id="opcijaHumanitarno" data-interactive>
+                    <h2>I QUIT THE BUSINESS</h2>
+                    <h3>With a request that my Starter Package payment amount be used for humanitarian purposes</h3>
+                    <div class="card-separator"></div>
+                    <p>Your data is deleted from our databases.</p>
+                    <p>Your money will be forwarded to a humanitarian position from which it will be spent for humanitarian purposes.</p>
+                    <i class="fas fa-mouse-pointer click-indicator"></i>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoImage = document.getElementById('site-logo');
+
+            // --- Theme change logic ---
+            const applyTheme = () => {
+                const isLight = document.documentElement.classList.contains('light-mode');
+                if (logoImage) {
+                    logoImage.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
+                }
+                if (window.setAnimationTheme) {
+                    window.setAnimationTheme(isLight ? 'light' : 'dark');
+                }
+            };
+            
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    applyTheme();
+                }
+            });
+            applyTheme();
+
+            // --- Navigation ---
+            const closeOptionPageButton = document.getElementById('closeOptionPageButton');
+            if (closeOptionPageButton) {
+                closeOptionPageButton.onclick = function() {
+                    window.location.href = 'izbor_en.html';
+                };
+            }
+
+            // --- URL Params Logic ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramIznos = urlParams.get('iznos');
+            const paramValuta = urlParams.get('valuta');
+
+            const pageMainTitle = document.querySelector('.page-main-title');
+            const sfbPointsSpan = document.getElementById('dynamicSfbPoints');
+            const initialInfoContentDiv = document.getElementById('initialInfoContent');
+            const standardInfoList = document.getElementById('standardInfoList');
+            const standardNoteText = document.getElementById('standardNoteText');
+
+            let displayText = '30 $'; 
+            let calculatedSfbPoints = 60; 
+
+            if (standardInfoList) standardInfoList.classList.remove('hidden');
+            if (standardNoteText) standardNoteText.classList.remove('hidden');
+            if (initialInfoContentDiv && initialInfoContentDiv.querySelector('.veci-iznos-intro-text')) {
+                 initialInfoContentDiv.querySelector('.veci-iznos-intro-text').classList.add('hidden');
+            }
+
+            if (paramIznos && paramValuta) {
+                if (paramIznos === 'veci' && paramValuta === 'iznos') {
+                    if (pageMainTitle) pageMainTitle.innerHTML = 'You started the business with a larger investment amount';
+                    if (initialInfoContentDiv) {
+                        if (standardInfoList) standardInfoList.classList.add('hidden');
+                        if (standardNoteText) standardNoteText.classList.add('hidden');
+                        let veciIznosTextElement = initialInfoContentDiv.querySelector('.veci-iznos-intro-text');
+                        if (!veciIznosTextElement) {
+                            veciIznosTextElement = document.createElement('div');
+                            initialInfoContentDiv.insertBefore(veciIznosTextElement, initialInfoContentDiv.firstChild);
+                        }
+                        veciIznosTextElement.innerHTML = `
+                            <p class="veci-iznos-intro-text">If, as a member in the old system, you paid for a business account with workstations (BAWS) along with a starter package or made an investment:</p>
+                            <ul>
+                                <li>you receive a number of <strong>SFpoints</strong> (SFb) based on the total invested amount (1 € = 2 SFb)</li>
+                                <li>plus points based on earnings from the reserve wallet, if you achieved an account upgrade (1 SFC = 1 SFb)</li>
+                                <li>plus points based on earnings from the wallet, if you had them in the wallet (1 SFC = 2 SFb)</li>
+                                <li>plus 50% of the starter package amount paid by your direct members (1 € = 1 SFb)</li>
+                                <li>plus 25% of the starter package amount paid by your indirect members (1 € = 1 SFb)</li>
+                            </ul>
+                            <p class="note-text"><strong>Note:</strong> The number of SFpoints from your direct and indirect members is recognized exclusively from those members who continue the business.</p>
+                        `;
+                        veciIznosTextElement.classList.remove('hidden');
+                    }
+                } else { 
+                    const numericIznosLo = parseFloat(paramIznos);
+                    if (!isNaN(numericIznosLo)) {
+                        calculatedSfbPoints = numericIznosLo * 2;
+                    }
+                    const currencySymbolLo = paramValuta.toLowerCase() === 'usd' || paramValuta === '$' ? '$' : '€';
+                    displayText = `${paramIznos} ${currencySymbolLo}`;
+
+                    if (pageMainTitle) pageMainTitle.innerHTML = `You started your business by purchasing a Starter Package of <span id="dynamicPageHeaderAmount">${displayText}</span>`;
+                }
+            } else { 
+                 if (pageMainTitle) pageMainTitle.innerHTML = `You started your business by purchasing a Starter Package of <span id="dynamicPageHeaderAmount">${displayText}</span>`;
+            }
+
+            if (sfbPointsSpan) sfbPointsSpan.textContent = calculatedSfbPoints;
+
+            // --- Card Clicks ---
+            const allOptionCards = document.querySelectorAll('.option-card');
+            allOptionCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    let targetUrl = '';
+                    let finalIznos = paramIznos || '30';
+                    let finalValuta = paramValuta || 'usd';
+                    
+                    const queryParams = `?iznos=${encodeURIComponent(finalIznos)}&valuta=${encodeURIComponent(finalValuta)}`;
+
+                    if (card.id === 'opcijaNastavak') {
+                        targetUrl = `prva_kartica_en.html${queryParams}`;
+                    } else if (card.id === 'opcijaPovratOstajem') {
+                        targetUrl = `druga_kartica_en.html${queryParams}`;
+                    } else if (card.id === 'opcijaPovratOdlazim') {
+                        targetUrl = `treca_kartica_en.html${queryParams}`;
+                    } else if (card.id === 'opcijaHumanitarno') {
+                        targetUrl = `cetvrta_kartica_en.html${queryParams}`;
+                    } else {
+                        return;
+                    }
+                    window.location.href = targetUrl;
+                });
+            });
+            
+            // --- GSAP Animations ---
+            if (typeof gsap !== 'undefined') {
+                gsap.from('.intro-container', { duration: 0.8, y: -20, opacity: 0, ease: 'power2.out' });
+                gsap.from('.page-main-title', { duration: 0.8, y: -20, opacity: 0, ease: 'power2.out', delay: 0.2 });
+                gsap.from('.initial-info', { duration: 0.8, x: -50, opacity: 0, ease: 'power2.out', delay: 0.4 });
+                gsap.from('.options-title-separator', { duration: 0.8, y: 30, opacity: 0, ease: 'power2.out', delay: 0.5 });
+                gsap.from('.option-card', {
+                    duration: 0.7,
+                    opacity: 0,
+                    y: 40,
+                    scale: 0.95,
+                    stagger: 0.15,
+                    ease: 'power2.out',
+                    delay: 0.6
+                });
+            }
+        });
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('network-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
+            const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
+            let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+
+            const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
+            window.addEventListener('resize', resizeCanvas);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                    this.radius = currentOptions.defaultRadius;
+                    this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                    this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                }
+                draw() {
+                    ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, 0.85)`; ctx.fill();
+                }
+                update() {
+                    this.x += this.vx; this.y += this.vy;
+                    if (this.x > canvas.width || this.x < 0) this.vx = -this.vx;
+                    if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
+                }
+            }
+
+            const initParticles = () => {
+                particles = [];
+                for (let i = 0; i < currentOptions.particleAmount; i++) {
+                    particles.push(new Particle());
+                }
+            };
+
+            const animate = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+                requestAnimationFrame(animate);
+            };
+
+            window.setAnimationTheme = (theme) => {
+                currentOptions = (theme === 'light') ? lightOptions : darkOptions;
+                if(canvas.width > 0) initParticles();
+            };
+            
+            resizeCanvas();
+            animate();
+        });
+    </script>
+</body>
+</html>
