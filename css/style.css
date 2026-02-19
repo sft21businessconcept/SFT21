@@ -792,7 +792,7 @@ body.overflow-hidden {
      color: var(--fluorescent-green)
 }
 #kontakt .glass-card .social-icons a i {
-     color: #a3ff12 !important;
+     color: #d1d5db !important;
 }
 #kontakt .glass-card .social-icons a:hover i {
      color: var(--accent-color) !important;
@@ -1178,97 +1178,8 @@ canvas#network-canvas {
         #starter-package-info-popup #starter-package-email-input::placeholder { color: rgba(255, 255, 255, 0.5); }
         #starter-package-info-popup #starter-package-submit-email { display: inline-block; }
 
-        #choose-investor-type-popup h4 {
-            font-size: 1.5rem !important; 
-            margin-bottom: 1.5rem !important;
-        }
-        #choose-investor-type-popup #btn-novi-investitor-choice.btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-        #choose-investor-type-popup #btn-novi-investitor-choice.btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-        }
-         #choose-investor-type-popup .flex {
-            justify-content: center;
-        }
-
-        #investment-details-popup h4 {
-            font-size: 1.5rem !important; 
-            margin-bottom: 1.5rem !important; 
-        }
+ 
         
-        .investment-package-field-container {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid var(--fluorescent-green);
-            border-radius: 8px;
-            background-color: rgba(106, 27, 154, 0.1);
-            box-sizing: border-box;
-            margin-top: 0.5rem;
-            margin-bottom: 1rem; 
-
-        }
-
-        .package-item { 
-            display: flex; 
-            align-items: center; 
-            padding: 0.4rem 0.25rem;
-        }
-        .package-item.ip7-item {
-             align-items: center; 
-        }
-
-        .package-item input[type="checkbox"] { 
-            margin-right: 0.75rem; 
-            transform: scale(1.2); 
-            accent-color: var(--fluorescent-green); 
-            flex-shrink: 0; 
-            margin-top: 0.05em;
-        }
-        .package-label { 
-            color: #e0e0e0; 
-            cursor: pointer; 
-            font-size: 0.9rem; 
-            line-height: 1.4; 
-            flex-shrink: 0; 
-        }
-        #investment-package-selection .package-item.ip7-item .package-label {
-             margin-right: 0.5rem; 
-        }
-        
-        #investment-details-popup .form-input-ip7 {
-            width: 100px; 
-            padding: 6px 8px; 
-            border: 1px solid var(--fluorescent-green);
-            border-radius: 5px;
-            background-color: rgba(106, 27, 154, 0.15); 
-            color: white;
-            box-sizing: border-box;
-            font-size: 0.9rem; 
-            text-align: right;
-            margin-left: 0; 
-        }
-        #investment-details-popup .form-input-ip7:focus {
-            outline: none; 
-            border-color: var(--fluorescent-green); 
-            box-shadow: 0 0 0 2px rgba(128, 255, 0, 0.3);
-        }
-        #investment-details-popup .form-input-ip7::placeholder { 
-            color: rgba(255, 255, 255, 0.4); 
-        }
-        #investment-details-popup #ip7-custom-amount-details:disabled { 
-            background-color: rgba(106, 27, 154, 0.05); 
-            cursor: not-allowed; 
-            border-color: rgba(128, 255, 0, 0.2); 
-        }
-        #investment-details-popup #total-investment-amount-details { 
-            font-weight: bold; 
-            color: var(--fluorescent-green);
-        }
-
         .ai-chat-float-icon { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background-color: var(--primary-color); border-radius: 50%; border: 3px solid var(--fluorescent-green); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; cursor: pointer; z-index: 1000; opacity: 0.6; transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
         .ai-chat-float-icon:hover { opacity: 1; transform: scale(1.1); box-shadow: 0 8px 25px rgba(128, 255, 0, 0.4); }
         .ai-chat-popup { position: fixed; bottom: calc(2rem + 60px + 1rem); right: 2rem; width: 320px; height: 450px; background-color: #1f2937; border: 1px solid var(--fluorescent-green); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); z-index: 999; display: none; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(20px); transition: opacity 0.3s ease, transform 0.3s ease; }
@@ -2279,70 +2190,6 @@ body.light-mode .form-input:focus {
     background-color: #ffffff; /* Opcionalno: pozadina postaje potpuno bijela na fokus */
 }
 
-/* ================================================== */
-/* === ISPRAVAK ZA INVESTMENT DETAILS POPUP U LIGHT MODU === */
-/* ================================================== */
-
-/* Glavne labele i općeniti tekst */
-body.light-mode #investment-details-popup label,
-body.light-mode #investment-details-popup .package-label,
-body.light-mode #investment-details-popup .text-gray-300, /* Cilja labele radio buttona */
-body.light-mode #investment-details-popup .text-lg.font-semibold, /* Tekst "Ukupno namjeravam uložiti:" */
-body.light-mode #investment-details-popup .text-gray-400 /* Pokriva tekst napomene i tekst zadanog preporučitelja */
-{
-    color: #475569 !important; /* Tamno siva boja */
-}
-
-/* Naslovi H4 i H5 unutar popupa */
-body.light-mode #investment-details-popup h4,
-body.light-mode #investment-details-popup h5 {
-    color: var(--primary-color) !important; /* Ljubičasta boja */
-}
-
-/* Sva tekstualna i numerička input polja unutar popupa */
-body.light-mode #investment-details-popup input[type="text"],
-body.light-mode #investment-details-popup input[type="email"],
-body.light-mode #investment-details-popup input[type="number"] {
-    background-color: #f1f5f9;
-    border-color: #cbd5e1;
-    color: #1e293b; /* Tamna boja teksta koji korisnik upisuje */
-}
-body.light-mode #investment-details-popup input::placeholder {
-    color: #94a3b8; /* Svjetlija siva za placeholder */
-}
-body.light-mode #investment-details-popup input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2);
-    background-color: #ffffff;
-}
-
-/* Kontejner s investicijskim paketima */
-body.light-mode #investment-details-popup .investment-package-field-container {
-    background-color: #f8fafc; /* Vrlo svijetla pozadina */
-    border-color: #e2e8f0;
-}
-
-/* Posebno stiliziranje za ukupan iznos i podebljani tekst napomene */
-body.light-mode #investment-details-popup #total-investment-amount-details {
-    color: var(--primary-color) !important; /* Iznos u ljubičastoj boji */
-}
-body.light-mode #investment-details-popup .text-sm.text-gray-400 strong {
-    color: #334155 !important; /* Podebljani tekst napomene */
-}
-
-/* Radio gumbi */
-body.light-mode #investment-details-popup .form-radio {
-    border-color: #94a3b8;
-}
-body.light-mode #investment-details-popup .form-radio:checked {
-    border-color: var(--primary-color);
-    background-color: var(--primary-color);
-}
-
-/* Checkbox gumbi za pakete */
-body.light-mode #investment-details-popup .package-item input[type="checkbox"] {
-     accent-color: var(--primary-color); /* Najjednostavniji način za bojanje modernih checkboxa */
-}
 
 /* ================================================== */
 /* === ISPRAVAK ZA DODATNE POPUPE/FORME U LIGHT MODU === */
@@ -2896,4 +2743,27 @@ body.light-mode .glass-card .fas,
 body.light-mode .glass-card .fab {
     color: var(--accent-color) !important; /* Fluorescentno ljubičasta */
 }
+/* --- POČETAK: Prilagodba za pulsirajući krug u headeru --- */
 
+/* Prilagodba za krug kada se nalazi u gornjem dijelu stranice */
+.pulsating-circle.relative-circle {
+    position: relative !important; /* Poništava fiksnu poziciju s dna */
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    display: inline-flex; /* Ponaša se kao element u tekstu, ali zadržava flex svojstva */
+    margin-top: -40px;     /* Razmak od teksta iznad */
+    margin-bottom: 0px;  /* Razmak od gumba ispod */
+    z-index: 20;
+}
+
+/* Opcionalno: Ako želite da krug bude malo manji u headeru nego što je bio u footeru */
+/* 
+.pulsating-circle.relative-circle {
+    width: 70px;
+    height: 70px;
+    font-size: 0.8em; 
+}
+*/
+
+/* --- KRAJ: Prilagodba za pulsirajući krug --- */
