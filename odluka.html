@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odluka - SFT21 Business Concept</title>
+
+    <!-- ============================================= -->
+    <!-- UNIVERZALNA SKRIPTA ZA INICIJALIZACIJU TEME -->
+    <!-- ============================================= -->
+    <script>
+        function applySft21Theme() {
+            try {
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+                if (theme === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                } else {
+                    document.documentElement.classList.remove('light-mode');
+                }
+                 if (window.setAnimationTheme) {
+                    window.setAnimationTheme(theme);
+                }
+            } catch (e) {
+                console.error('Error applying theme:', e);
+            }
+        }
+        applySft21Theme();
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                applySft21Theme();
+            }
+        });
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --primary-color: #6a1b9a;
+            --secondary-color: #ab47bc;
+            --fluorescent-green: #80ff00;
+            --text-color: #e5e7eb;
+            --background-dark: #0d0118;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-dark);
+            overflow-x: hidden; /* Sprječava horizontalni scroll */
+        }
+
+        /* Canvas za pozadinu (mreža čestica) */
+        #network-canvas { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: -1; 
+            background-color: #1d012e; 
+        }
+
+        .custom-cursor {
+            position: fixed; width: 20px; height: 20px; border-radius: 50%;
+            background-color: rgba(106, 27, 154, 0.6); border: 2px solid var(--fluorescent-green);
+            pointer-events: none; z-index: 10000; transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, background-color 0.2s ease;
+            opacity: 0;
+        }
+
+        .header-title-text {
+            color: var(--fluorescent-green); font-size: 1.1rem;
+        }
+        @media (min-width: 640px) { .header-title-text { font-size: 1.25rem; } }
+        @media (min-width: 768px) { .header-title-text { font-size: 1.35rem; } }
+
+        /* Wrapper za centriranje sadržaja */
+        .content-box-wrapper {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; /* Centrirano i vertikalno */
+            min-height: calc(100vh - 80px); 
+            padding-top: 100px; 
+            padding-bottom: 4rem;
+        }
+
+        /* Glavni okvir sadržaja */
+        .content-box {
+            background-color: rgba(106, 27, 154, 0.1); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); 
+            border: 1px solid rgba(171, 71, 188, 0.3);
+            border-radius: 20px; 
+            padding: 2rem; 
+            max-width: 800px; 
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+            position: relative;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content-box-close {
+            position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem;
+            color: rgba(229, 231, 235, 0.7); cursor: pointer; transition: color 0.3s ease;
+            background: none; border: none; padding: 0; line-height: 1; z-index: 10;
+        }
+        .content-box-close:hover { color: white; }
+
+        .content-buttons {
+            display: flex; flex-direction: column; gap: 1rem;
+            margin-top: 2rem; align-items: center; width: 100%;
+        }
+
+        .content-btn {
+            background-color: var(--primary-color); color: white; padding: 0.8rem 1.8rem;
+            border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 0.5px; border: 2px solid transparent;
+            transition: all 0.3s ease; display: inline-flex; align-items: center;
+            justify-content: center; width: 100%; max-width: 400px; text-align: center;
+        }
+        
+        .content-btn:hover {
+            background-color: var(--secondary-color); transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(106, 27, 154, 0.3);
+        }
+
+        .content-btn .btn-main-text { display: block; }
+        .content-btn .btn-sub-text { display: block; font-size: 0.7rem; opacity: 0.8; margin-top: 0.1rem; }
+
+        /* Stil za wrapper videa unutar kartice */
+        .page-video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid var(--fluorescent-green);
+            box-shadow: 0 0 15px rgba(128, 255, 0, 0.2);
+            margin-bottom: 1.5rem;
+            background-color: #000;
+        }
+
+        .page-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Overlay za prezentaciju (popup video) */
+        .video-player-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); z-index: 2000;
+            display: none; justify-content: center; align-items: center;
+        }
+        .video-player-overlay.active { display: flex; }
+        .video-player-container {
+            position: relative; width: 80vw; max-width: 1100px; aspect-ratio: 16 / 9;
+            background-color: #000; border: 2px solid var(--fluorescent-green);
+            box-shadow: 0 0 30px rgba(128, 255, 0, 0.5);
+        }
+        .video-player-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .video-player-close-button {
+            position: absolute; top: 0; right: 0; transform: translate(40%, -40%);
+            width: 44px; height: 44px; font-size: 1.8rem; color: white; background: rgba(0,0,0,0.7);
+            border: 2px solid white; border-radius: 50%; cursor: pointer; transition: all 0.3s ease;
+            z-index: 2001; display: flex; align-items: center; justify-content: center; line-height: 1;
+        }
+        .video-player-close-button:hover {
+            color: var(--fluorescent-green); border-color: var(--fluorescent-green);
+            transform: translate(40%, -40%) scale(1.1);
+        }
+
+        /* Light mode prilagodbe */
+        html.light-mode body { background-color: #f8fafc !important; color: #4a0e6c !important; }
+        html.light-mode #network-canvas { background-color: transparent !important; }
+        html.light-mode nav.fixed { background-color: rgba(255, 255, 255, 0.9) !important; border-bottom: 1px solid var(--primary-color) !important; }
+        html.light-mode .content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
+        html.light-mode .content-box-close { color: #64748b !important; }
+        html.light-mode .header-title-text { color: var(--primary-color) !important; }
+        html.light-mode .logo-nav .text-white { color: var(--primary-color) !important; }
+        html.light-mode .logo-nav .text-logo-orange { color: var(--primary-color) !important; }
+        html.light-mode .page-video-wrapper { border-color: var(--primary-color) !important; }
+    </style>
+</head>
+
+<body class="bg-gray-900">
+    <div class="custom-cursor"></div>
+    
+    <!-- Canvas pozadina (ista kao index.html) -->
+    <canvas id="network-canvas"></canvas>
+
+    <!-- Navigacija -->
+    <nav class="fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="header-container flex items-center relative h-12">
+                <a href="index.html" title="Return to the homepage" class="flex items-center">
+                    <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
+                    <div class="flex flex-col logo-nav">
+                        <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
+                    </div>
+                </a>
+                <div class="header-title-container absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full px-4 pointer-events-none">
+                    <span class="header-title-text font-semibold uppercase tracking-wider">Odluka o nastavku poslovanja</span>
+                </div>
+                 <div class="w-auto ml-auto"> </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="content-box-wrapper">
+            <div class="content-box">
+                <!-- Close button (x) -->
+                <button class="content-box-close" onclick="window.location.href='index.html';" title="Povratak na naslovnu">×</button>
+                
+                <!-- VIDEO PLAYER (Obraćanje vlasnika) -->
+                <div class="page-video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/PLACEHOLDER_VIDEO_ID" 
+                        title="Obraćanje vlasnika" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- Gumbi -->
+                <div class="content-buttons" id="odlukaGumbi">
+                    
+                    <!-- 1. SFT21 Business Concept (Prezentacija - otvara popup) -->
+                    <button type="button" id="openVideoPlayerButton" class="content-btn">
+                        <div>
+                            <span class="btn-main-text">SFT21 Business Concept</span>
+                            <span class="btn-sub-text">(prezentacija projekta)</span>
+                        </div>
+                    </button>
+
+                    <!-- 2. Istina o SFT21 -->
+                    <a href="https://scam.sft21.com/hr/" target="_blank" class="content-btn">
+                        Istina o SFT21
+                    </a>
+
+                    <!-- 3. YouTube kanal -->
+                    <a href="https://www.youtube.com/@SFT21_SFteam" target="_blank" class="content-btn">
+                        <i class="fab fa-youtube mr-2"></i> YouTube kanal @SFT21_SFteam
+                    </a>
+
+                    <!-- 4. DONESI ODLUKU -->
+                    <a href="izbor.html" class="content-btn" style="margin-top: 10px; background-color: var(--fluorescent-green); color: #0e076a;">
+                         <div>
+                            <span class="btn-main-text">DONESI ODLUKU</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Overlay za Video Prezentaciju (Popup) -->
+    <div id="videoPlayerOverlay" class="video-player-overlay">
+        <div class="video-player-container">
+            <iframe id="youtubePlayer" 
+                    src="" 
+                    title="SFT21 Presentation" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+        <button id="closeVideoPlayerButton" class="video-player-close-button" title="Close video">×</button>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const logoImage = document.getElementById('site-logo');
+
+            // --- Light/Dark Mode Logic ---
+            const applyTheme = () => {
+                const isLight = document.documentElement.classList.contains('light-mode');
+                if (logoImage) {
+                    logoImage.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
+                }
+                if (window.setAnimationTheme) {
+                    window.setAnimationTheme(isLight ? 'light' : 'dark');
+                }
+            };
+            
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    applyTheme();
+                }
+            });
+            applyTheme();
+
+            // --- Custom Cursor ---
+            const cursor = document.querySelector('.custom-cursor');
+            if (cursor && body) {
+                let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+                const speed = 0.1;
+                const updateCursorPosition = () => {
+                    cursorX += (mouseX - cursorX) * speed;
+                    cursorY += (mouseY - cursorY) * speed;
+                    if (cursor) {
+                        cursor.style.left = `${cursorX}px`;
+                        cursor.style.top = `${cursorY}px`;
+                    }
+                    requestAnimationFrame(updateCursorPosition);
+                };
+                requestAnimationFrame(updateCursorPosition);
+                window.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    if (cursor && cursor.style.opacity === '0') {
+                        cursor.style.opacity = '1';
+                    }
+                });
+                document.addEventListener('mouseleave', () => { if (cursor) cursor.style.opacity = '0'; });
+                document.addEventListener('mouseenter', () => { if (cursor) cursor.style.opacity = '1'; });
+
+                document.querySelectorAll('a, button, iframe').forEach(el => {
+                    el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, width: "30px", height: "30px", backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
+                    el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, width: "20px", height: "20px", backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
+                });
+            }
+
+            // --- GSAP Animations ---
+            if (typeof gsap !== 'undefined') {
+                gsap.from('.content-box', { duration: 1, opacity: 0, y: 30, ease: "power3.out", delay: 0.2 });
+            }
+
+            // === YouTube Video Player Popup Logic (Prezentacija) ===
+            const openVideoPlayerButton = document.getElementById('openVideoPlayerButton');
+            const videoPlayerOverlay = document.getElementById('videoPlayerOverlay');
+            const closeVideoPlayerButton = document.getElementById('closeVideoPlayerButton');
+            const youtubePlayer = document.getElementById('youtubePlayer');
+            const youtubeEmbedUrl = "https://www.youtube.com/embed/869JpBb5KVU";
+
+            if (openVideoPlayerButton && videoPlayerOverlay && closeVideoPlayerButton && youtubePlayer) {
+                const closeVideo = () => {
+                    videoPlayerOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                    youtubePlayer.src = "";
+                };
+                
+                openVideoPlayerButton.addEventListener('click', () => {
+                    youtubePlayer.src = youtubeEmbedUrl + "&autoplay=1&rel=0";
+                    videoPlayerOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden'; 
+                });
+
+                closeVideoPlayerButton.addEventListener('click', closeVideo);
+                videoPlayerOverlay.addEventListener('click', (event) => {
+                    if (event.target === videoPlayerOverlay) closeVideo();
+                });
+            }
+        });
+
+        // Background Animation Script (Network Particles)
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('network-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            
+            // Postavke za DARK temu
+            const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 100, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
+            // Postavke za LIGHT temu
+            const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 100, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
+            
+            let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+
+            const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
+            window.addEventListener('resize', resizeCanvas);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                    this.radius = currentOptions.defaultRadius;
+                    this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                    this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                }
+                draw() {
+                    ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, 0.85)`; ctx.fill();
+                }
+                update() {
+                    this.x += this.vx; this.y += this.vy;
+                    if (this.x > canvas.width || this.x < 0) this.vx = -this.vx;
+                    if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
+                }
+            }
+
+            const initParticles = () => {
+                particles = [];
+                for (let i = 0; i < currentOptions.particleAmount; i++) {
+                    particles.push(new Particle());
+                }
+            };
+
+            const drawLines = () => {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dist = Math.sqrt(Math.pow(particles[i].x - particles[j].x, 2) + Math.pow(particles[i].y - particles[j].y, 2));
+                        if (dist < currentOptions.linkRadius) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(${currentOptions.lineColorRGB}, ${1 - dist / currentOptions.linkRadius})`;
+                            ctx.lineWidth = currentOptions.lineWidth;
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            };
+
+            const animate = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+                drawLines();
+                requestAnimationFrame(animate);
+            };
+
+            window.setAnimationTheme = (theme) => {
+                currentOptions = (theme === 'light') ? lightOptions : darkOptions;
+                initParticles();
+            };
+            
+            resizeCanvas();
+            animate();
+        });
+    </script>
+</body>
+</html>
