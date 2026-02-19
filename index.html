@@ -535,93 +535,9 @@ body.light-mode .video-dot {
 </a>
 
 </div>
-        <div id="choose-investor-type-popup" class="popup-content" style="display: none;">
-            <h4 style="font-size: 1.5rem !important; margin-bottom: 1.5rem !important;"><strong>Odluka o nastavku poslovanja i kupnji Licencnih paketa</strong></h4>
-            <p>Ukoliko ste registrirani korisnik iz staroga sistema koji želi nastaviti poslovanje <strong>bez kupnje ili uz kupnju</strong> Licencnog paketa, odaberite “Registrirani korisnik“.</p>
-            <p>Ukoliko želite započeti poslovanje u novom sistemu kao novi član (SFstarter / SFfranšizer) ili želite iskoristiti priliku i kupiti Licencni paket kao pasivni sudionik, odaberite “Novi korisnik“</p>
-            <div class="flex justify-center space-x-4 mt-6 mb-4">
-                <button id="btn-registrirani-korisnik-choice" class="btn-primary">REGISTRIRANI KORISNIK</button>
-                <button id="btn-novi-investitor-choice" class="btn-primary">NOVI KORISNIK</button>
-            </div>
-        </div>
 
-            <div id="investment-details-popup" class="popup-content" style="display: none;">
-                <button class="popup-close" aria-label="Zatvori popup">×</button>
-                <h4 style="font-size: 1.5rem !important; margin-bottom: 1.5rem !important;">Odluka o kupnji Licence</h4>
-                <form id="investment-details-form">
-                    <div class="form-group">
-                        <label for="investor-name-details">IME I PREZIME</label>
-                        <input type="text" id="investor-name-details" name="investor-name-details" required placeholder="Vaše ime i prezime">
-                    </div>
-                    <div class="form-group">
-                        <label for="investor-email-details">EMAIL</label>
-                        <input type="email" id="investor-email-details" name="investor-email-details" required placeholder="Vaša email adresa">
-                    </div>
-    
-                    <div class="form-group mt-6">
-                        <label class="block text-gray-300 mb-2">Kako ste saznali za našu poslovnu priliku?</label>
-                        <div class="flex items-center mb-2">
-                            <input type="radio" id="referrer-yes" name="referrer-choice" value="yes" class="form-radio text-fluorescent-green h-5 w-5 mr-2 focus:ring-fluorescent-green">
-                            <label for="referrer-yes" class="text-gray-300 cursor-pointer">Imam preporučitelja</label>
-                        </div>
-                        <div id="referrer-input-container" class="ml-6 hidden">
-                            <input type="text" id="referrer-name-email" name="referrer-name-email" placeholder="Upiši korisničko ime ili ime i prezime ili email preporučitelja" class="form-input">
-                        </div>
-                        <div class="flex items-center mt-2">
-                            <input type="radio" id="referrer-no" name="referrer-choice" value="no" checked class="form-radio text-fluorescent-green h-5 w-5 mr-2 focus:ring-fluorescent-green">
-                            <label for="referrer-no" class="text-gray-300 cursor-pointer">Nemam preporučitelja</label>
-                        </div>
-                        <div id="default-referrer-display" class="ml-6 mt-2 hidden text-sm text-gray-400">
-                            Preporučitelj: <span id="default-referrer-name">SFTxxxxxx (država korisnika)</span>
-                        </div>
-                    </div>
-    
-    
-                    <h5 class="text-white font-semibold mt-6 mb-3 text-center">IZABERI LICENCNI PAKET (ILI VIŠE NJIH)</h5>
-                    <div class="investment-package-field-container">
-    <div class="package-item">
-        <input type="checkbox" id="ip1-details" name="ip_package_details" value="100" data-package-name="IP1">
-        <label for="ip1-details" class="package-label">Prvi licencni paket (LP1): 100 €</label>
-    </div>
-    <div class="package-item">
-        <input type="checkbox" id="ip2-details" name="ip_package_details" value="200" data-package-name="IP2">
-        <label for="ip2-details" class="package-label">Drugi licencni paket (LP2): 200 €</label>
-    </div>
-    <div class="package-item">
-        <input type="checkbox" id="ip3-details" name="ip_package_details" value="500" data-package-name="IP3">
-        <label for="ip3-details" class="package-label">Treći licencni paket (LP3): 500 €</label>
-    </div>
-    <div class="package-item">
-        <input type="checkbox" id="ip4-details" name="ip_package_details" value="1000" data-package-name="IP4">
-        <label for="ip4-details" class="package-label">Četvrti licencni paket (LP4): 1000 €</label>
-    </div>
-    <div class="package-item">
-        <input type="checkbox" id="ip5-details" name="ip_package_details" value="1500" data-package-name="IP5">
-        <label for="ip5-details" class="package-label">Peti licencni paket (LP5): 1500 €</label>
-    </div>
-    <div class="package-item">
-        <input type="checkbox" id="ip6-details" name="ip_package_details" value="2100" data-package-name="IP6">
-        <label for="ip6-details" class="package-label">Šesti licencni paket (LP6): 2100 €</label>
-    </div>
-    <div class="package-item ip7-item">
-        <input type="checkbox" id="ip7-checkbox-details" name="ip_package_cb_7_details">
-        <label for="ip7-checkbox-details" class="package-label mr-2">Sedmi licencni paket (LP7):</label>
-        <input type="number" id="ip7-custom-amount-details" name="ip7_amount_details" placeholder="Min. 5000" class="form-input-ip7" min="5000" step="100" disabled>
-        <span class="text-gray-300 ml-2">€ ili više</span>
-    </div>
-</div>
-    
-                    <p class="text-lg font-semibold text-center text-fluorescent-green my-4">Ukupna cijena odabranih licenci: <span id="total-investment-amount-details">0</span> €</p>
-    
-                    <div class="text-sm text-gray-400 italic mt-6 space-y-2">
-                        <p><strong>Napomena:</strong></p>
-                        <p>Po završetku web stranice o Licencnim paketima bit ćete obaviješteni kako bi joj pristupili. Putem stranice izvršit ćete uplatu odabranog Licencnog paketa ili iznosa te potpisati Ugovor o kupnji licence.</p>
-                        <p>Sa prvim popunjavanjem SFalgoritma započet će nastavak poslovanja o čemu ćete biti pravovremeno obaviješteni putem email adrese.</p>
-                    </div>
-    
-                    <button type="button" id="submit-investment-btn" class="btn-primary mt-6 w-full">POTVRDI</button>
-                </form>
-            </div>
+
+
     </div>
 
      <nav class="fixed top-0 left-0 w-full z-50">
@@ -734,8 +650,19 @@ body.light-mode .video-dot {
         <section id="pocetna" class="relative min-h-screen flex items-center justify-center pt-8">
             <div class="container mx-auto px-6 relative z-10">
                 <div class="flex flex-col md:flex-row items-center">
+
+
                     <!-- LIJEVA STRANA: TEKST -->
                     <div class="md:w-2/5">
+                        <div class="mb-2"> 
+                            <a href="sfteam.html" title="Posjetite SFteam stranicu" class="pulsating-circle relative-circle">
+                                <div class="circle-content">
+                                    <span class="circle-line line-i">I</span>
+                                    <span class="circle-line heart-symbol">❤️</span>
+                                    <span class="circle-line line-sfteam">SFteam</span>
+                                </div>
+                            </a>
+                        </div>
                         <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight"> Dobrodošli u SFT21 zajednicu </h1>
                         <p class="text-xl text-gray-300 mb-8 max-w-xl text-justify md:pr-8"><strong> Jedinstvena online zajednica koja promovira lokalni i regionalni razvoj, domaću proizvodnju, kvalitetnije proizvode i usluge, zajedništvo i sinergijsko stvaranje uz jedinstveni online franšizni poslovni model. </strong></p>
                         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
@@ -1905,7 +1832,7 @@ body.light-mode .video-dot {
                     <p class="text-xl text-gray-300 mb-10 leading-relaxed">  
                         Sa Vama želimo podijeliti našu viziju kako biste i Vi prepoznali priliku koja se pruža jednom u životu – priliku da zajedno izgradimo <strong class="text-white">TEHNOLOŠKU KOMPANIJU</strong> i <strong class="text-white">ONLINE ZAJEDNICU</strong> u vlasništvu njenih investitora, članova korisnika i franšizera.
                     </p>
-                    <a href="#" class="btn-primary inline-block text-2xl px-12 py-6 mb-12 trigger-choose-investor-type-popup"> 
+                    <a href="odluka.html" class="btn-primary inline-block text-2xl px-12 py-6 mb-12"> 
                         DONESI ODLUKU
                     </a>
                     <h3 class="text-2xl md:text-7xl font-bold text-fluorescent-green mt-12"> 
@@ -2090,14 +2017,7 @@ body.light-mode .video-dot {
             <p class="text-gray-400">© 2026 SFT21 LLC - Sva prava pridržana.</p>
         </div>
     </div>
-<!-- ZAMIJENJENO: Pulsirajući krug je sada link -->
-    <a href="sfteam.html" title="Posjetite SFteam stranicu" class="pulsating-circle">
-        <div class="circle-content">
-            <span class="circle-line line-i">I</span>
-            <span class="circle-line heart-symbol">❤️</span>
-            <span class="circle-line line-sfteam">SFteam</span>
-        </div>
-    </a>
+
 </footer>
 <!-- Gumb za povratak na vrh -->
     <button id="back-to-top-btn" title="Go to top" class="back-to-top-btn">
@@ -2206,86 +2126,68 @@ body.light-mode .video-dot {
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // === NOVI KOD ZA PROVJERU STATUSA PRIJAVE ===
+        // === KOD ZA PROVJERU STATUSA PRIJAVE ===
+        function handleLoginState() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+            const isEnglish = window.location.pathname.includes('_en');
 
-function handleLoginState() {
-    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-    const isEnglish = window.location.pathname.includes('_en');
+            const loginButtons = document.querySelectorAll('a[href^="login"]');
+            const platformLinksDesktop = document.querySelectorAll('#desktop-platform-menu a');
+            const platformLinksMobile = document.querySelectorAll('#mobile-platform-menu a');
 
-    // Selektori za sve relevantne elemente menija
-    const loginButtons = document.querySelectorAll('a[href^="login"]'); // Cilja i login.html i login_en.html
-    const platformLinksDesktop = document.querySelectorAll('#desktop-platform-menu a');
-    const platformLinksMobile = document.querySelectorAll('#mobile-platform-menu a');
+            if (isLoggedIn) {
+                loginButtons.forEach(btn => {
+                    if (btn.textContent.toLowerCase().includes('prijava') || btn.textContent.toLowerCase().includes('login')) {
+                        btn.textContent = isEnglish ? 'Logout' : 'Odjava';
+                        btn.href = '#';
+                        btn.id = 'logout-button';
+                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        btn.disabled = false;
+                    }
+                });
 
-    if (isLoggedIn) {
-        // === KORISNIK JE PRIJAVLJEN ===
+                const updatePlatformLink = (link) => {
+                    const originalHref = link.href;
+                    if (originalHref.includes('login')) {
+                        const url = new URL(originalHref);
+                        const redirectTarget = url.searchParams.get('redirect');
+                        if (redirectTarget) {
+                            link.href = redirectTarget;
+                        }
+                    }
+                };
+                platformLinksDesktop.forEach(updatePlatformLink);
+                platformLinksMobile.forEach(updatePlatformLink);
 
-        // 1. Promijeni gumb "Prijava" u "Odjava"
-        loginButtons.forEach(btn => {
-            if (btn.textContent.toLowerCase().includes('prijava') || btn.textContent.toLowerCase().includes('login')) {
-                btn.textContent = isEnglish ? 'Logout' : 'Odjava';
-                btn.href = '#'; // Ukloni link da ne vodi nigdje
-                btn.id = 'logout-button'; // Dajemo mu ID za odjavu
-                // Ako je gumb "disabled" (kao na login stranici), ukloni to
-                btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                btn.disabled = false;
-            }
-        });
+                const logoutButton = document.getElementById('logout-button');
+                if (logoutButton) {
+                    logoutButton.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        sessionStorage.removeItem('isLoggedIn');
+                        alert(isEnglish ? 'You have been logged out.' : 'Odjavljeni ste.');
+                        window.location.href = isEnglish ? 'index_en.html' : 'index.html';
+                    });
+                }
 
-        // 2. Ažuriraj linkove pod "Platforme" da vode direktno
-        const updatePlatformLink = (link) => {
-            const originalHref = link.href;
-            if (originalHref.includes('login')) {
-                const url = new URL(originalHref);
-                const redirectTarget = url.searchParams.get('redirect');
-                if (redirectTarget) {
-                    link.href = redirectTarget;
+            } else {
+                const logoutButton = document.getElementById('logout-button');
+                if (logoutButton) {
+                    logoutButton.textContent = isEnglish ? 'Login' : 'Prijava';
+                    logoutButton.href = isEnglish ? 'login_en.html' : 'login.html';
+                    logoutButton.id = '';
                 }
             }
-        };
-        platformLinksDesktop.forEach(updatePlatformLink);
-        platformLinksMobile.forEach(updatePlatformLink);
-
-        // 3. Dodaj event listener za odjavu
-        const logoutButton = document.getElementById('logout-button');
-        if (logoutButton) {
-            logoutButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                sessionStorage.removeItem('isLoggedIn');
-                alert(isEnglish ? 'You have been logged out.' : 'Odjavljeni ste.');
-                // Preusmjeri na početnu stranicu nakon odjave
-                window.location.href = isEnglish ? 'index_en.html' : 'index.html';
-            });
         }
 
-    } else {
-        // === KORISNIK NIJE PRIJAVLJEN (osiguraj da je sve vraćeno na početno stanje) ===
-        // Ovo je važno ako korisnik klikne back button u pregledniku
-        
-        const logoutButton = document.getElementById('logout-button');
-        if (logoutButton) {
-            logoutButton.textContent = isEnglish ? 'Login' : 'Prijava';
-            logoutButton.href = isEnglish ? 'login_en.html' : 'login.html';
-            logoutButton.id = ''; // Makni ID
-        }
-        
-        // (Opcionalno, ali dobro) Vrati linkove za platforme na login, ako je potrebno
-        // Obično nije potrebno jer se stranica ponovno učita.
-    }
-}
+        handleLoginState();
 
-handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
-
-// === KRAJ NOVOG KODA ===
-            const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyhhosQJfFDf8-_jLkLeycTECYUWaUBiaEMuS7kSGKiDkTVHuaPIwWolBrgMJgl-zuS/exec';   
+        const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyhhosQJfFDf8-_jLkLeycTECYUWaUBiaEMuS7kSGKiDkTVHuaPIwWolBrgMJgl-zuS/exec';
         const body = document.body;
 
         const backToTopButton = document.getElementById('back-to-top-btn');
 
         if (backToTopButton) {
-            const scrollThreshold = 400; // Pokaži gumb nakon 400px skrolanja
-
-            // Funkcija za prikaz/skrivanje gumba
+            const scrollThreshold = 400;
             const toggleBackToTopButton = () => {
                 if (window.scrollY > scrollThreshold) {
                     backToTopButton.classList.add('show');
@@ -2293,19 +2195,16 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
                     backToTopButton.classList.remove('show');
                 }
             };
-
-            // Funkcija za skrolanje na vrh
             const scrollToTop = () => {
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
             };
-
-            // Dodajemo event listenere
             window.addEventListener('scroll', toggleBackToTopButton);
             backToTopButton.addEventListener('click', scrollToTop);
         }
+
         const desktopLangTrigger = document.getElementById('desktop-lang-trigger');
         const desktopLangDropdown = document.getElementById('desktop-lang-dropdown');
         const mobileLangTrigger = document.getElementById('mobile-lang-trigger');
@@ -2313,40 +2212,47 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
         const mobileLangIcon = mobileLangTrigger?.querySelector('i.fas.fa-chevron-down');
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
-        const mobileDropdownToggles = document.querySelectorAll('.nav-menu .mobile-dropdown-toggle:not(.mobile-language-trigger)');
         const fixedNav = document.querySelector('nav.fixed');
         const navHeight = fixedNav ? fixedNav.offsetHeight : 80;
         const accordionItems = document.querySelectorAll('.accordion-item');
         const extraScrollMarginAccordion = 10;
         const navLinks = document.querySelectorAll('nav .nav-link:not(.mobile-dropdown-toggle)');
         const cursor = document.querySelector('.custom-cursor');
+        
+        // Popupi
         const popupOverlay = document.getElementById('popup-overlay');
         const validationPopup = document.getElementById('validation-popup');
         const contactFormPopup = document.getElementById('contact-form-popup');
         const starterPackageInfoPopup = document.getElementById('starter-package-info-popup');
         const starterInfoCloseLink = document.getElementById('starter-info-close-link');
+        
         if (starterInfoCloseLink) {
             starterInfoCloseLink.addEventListener('click', (event) => {
-                event.preventDefault(); 
+                event.preventDefault();
                 closeAllPopups();
             });
         }
+
         const starterPackageSelectBtns = document.querySelectorAll('.starter-package-select-btn');
         const starterPackageEmailForm = document.getElementById('starter-package-email-form');
         const starterPackageEmailInput = document.getElementById('starter-package-email-input');
-        const ip7AmountInputContainer = document.getElementById('ip7-amount-input-container'); 
-        const ip7AmountInput = document.getElementById('ip7-amount-input'); 
+        
+        // IP7 input logika (zadržavamo elemente ako postoje na stranici, ali bez povezivanja na obrisani popup)
+        const ip7AmountInputContainer = document.getElementById('ip7-amount-input-container');
+        const ip7AmountInput = document.getElementById('ip7-amount-input');
         const ip7Do10kBtn = document.getElementById('ip7-do-10k');
         const ip7VećiIznosBtn = document.getElementById('ip7-veci-iznos');
         const ip7AmountConfirmBtn = ip7AmountInputContainer?.querySelector('#ip7-amount-confirm');
         const ip7AmountCancelBtn = ip7AmountInputContainer?.querySelector('#ip7-amount-cancel');
         const minAmountDo10k = 5000;
         const maxAmountDo10k = 10000;
+
         const contactForm = document.querySelector('#contact-form-popup form');
         const contactNameInput = document.getElementById('contact-name-popup');
-        
         const contactEmailInput = document.getElementById('contact-email-popup');
         const contactPhoneInput = document.getElementById('contact-phone-popup');
+        
+        // Chat i Counter
         const aiChatIcon = document.getElementById('ai-chat-float-icon');
         const aiChatPopup = document.getElementById('ai-chat-popup');
         const aiChatCloseBtn = document.getElementById('ai-chat-close-btn');
@@ -2357,31 +2263,35 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
         const userCounterHideBtn = document.getElementById('user-counter-hide-btn');
         const userCounterCloseBtn = document.getElementById('user-counter-close-btn');
         const userCounterShowBtn = document.getElementById('user-counter-show-btn');
-        const chooseInvestorTypePopup = document.getElementById('choose-investor-type-popup');
-        const investmentDetailsPopup = document.getElementById('investment-details-popup');
-        const triggerChooseInvestorTypeBtns = document.querySelectorAll('.trigger-choose-investor-type-popup');
-        const openInvestmentDetailsFromCardBtns = document.querySelectorAll('.open-investment-details-popup');
-        const btnRegistriraniKorisnikChoice = document.getElementById('btn-registrirani-korisnik-choice');
-        const btnNoviInvestitorChoice = document.getElementById('btn-novi-investitor-choice');
-        const investmentDetailsForm = document.getElementById('investment-details-form');
-        const investorNameDetailsInput = document.getElementById('investor-name-details');
-        const investorEmailDetailsInput = document.getElementById('investor-email-details');
-        const investmentPackageDetailsCheckboxes = document.querySelectorAll('#investment-details-form input[name="ip_package_details"]');
-        const ip7CheckboxDetails = document.getElementById('ip7-checkbox-details');
-        const ip7CustomAmountDetailsInput = document.getElementById('ip7-custom-amount-details');
-        const totalInvestmentAmountDetailsSpan = document.getElementById('total-investment-amount-details');
+
+        // Referrer
+        const referrerYesRadio = document.getElementById('referrer-yes');
+        const referrerNoRadio = document.getElementById('referrer-no');
+        const referrerInputContainer = document.getElementById('referrer-input-container');
+        const defaultReferrerDisplay = document.getElementById('default-referrer-display');
+        const referrerNameEmailInput = document.getElementById('referrer-name-email');
 
         let isDraggingCounter = false;
         let dragCounterOffsetX = 0;
         let dragCounterOffsetY = 0;
         let counterWidgetVisible = true;
         let submittedEmails = new Set();
-        let submittedInvestmentEmails = new Set();
+        // submittedInvestmentEmails više nije potrebno jer je forma obrisana, ali ostavljamo deklaraciju da ne pukne ako se negdje referencira
+        let submittedInvestmentEmails = new Set(); 
 
         const closeAllLanguageDropdowns = () => {
-            if (desktopLangDropdown?.classList.contains('active')) { desktopLangDropdown.classList.remove('active'); }
-            if (mobileLangDropdown?.classList.contains('active')) { mobileLangDropdown.classList.remove('active'); if (mobileLangIcon) { mobileLangIcon.classList.remove('fa-chevron-up'); mobileLangIcon.classList.add('fa-chevron-down'); } }
+            if (desktopLangDropdown?.classList.contains('active')) {
+                desktopLangDropdown.classList.remove('active');
+            }
+            if (mobileLangDropdown?.classList.contains('active')) {
+                mobileLangDropdown.classList.remove('active');
+                if (mobileLangIcon) {
+                    mobileLangIcon.classList.remove('fa-chevron-up');
+                    mobileLangIcon.classList.add('fa-chevron-down');
+                }
+            }
         };
+
         const toggleLanguageDropdown = (dropdownElement, otherDropdownElement, triggerIcon = null) => {
             if (!dropdownElement) return;
             const isActive = dropdownElement.classList.contains('active');
@@ -2398,100 +2308,76 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
                 triggerIcon.classList.toggle('fa-chevron-up', isActive);
             }
         };
-        const resetInvestmentDetailsForm = () => { 
-            if (investmentDetailsForm) investmentDetailsForm.reset(); 
-            investmentPackageDetailsCheckboxes.forEach(cb => cb.checked = false); 
-            if (ip7CheckboxDetails) ip7CheckboxDetails.checked = false; 
-            if (ip7CustomAmountDetailsInput) {
-                ip7CustomAmountDetailsInput.value = ''; 
-                ip7CustomAmountDetailsInput.disabled = true;
-            }
-            if (totalInvestmentAmountDetailsSpan) totalInvestmentAmountDetailsSpan.textContent = '0';
-        };
 
         const closeAllPopups = () => {
             if (validationPopup) validationPopup.style.display = 'none';
             if (contactFormPopup) contactFormPopup.style.display = 'none';
             if (starterPackageInfoPopup) starterPackageInfoPopup.style.display = 'none';
-            if (chooseInvestorTypePopup) chooseInvestorTypePopup.style.display = 'none';
-            if (investmentDetailsPopup) investmentDetailsPopup.style.display = 'none';
+            // Uklonjeni chooseInvestorTypePopup i investmentDetailsPopup
             if (popupOverlay) popupOverlay.style.display = 'none';
             if (body) body.classList.remove('overflow-hidden');
             if (ip7AmountInputContainer) ip7AmountInputContainer.style.display = 'none';
             if (ip7AmountInput) ip7AmountInput.value = '';
-            if(starterPackageEmailInput) starterPackageEmailInput.value = '';
-            resetInvestmentDetailsForm(); 
+            if (starterPackageEmailInput) starterPackageEmailInput.value = '';
         };
 
         const showPopup = (popupContentElement, isErrorPopup = false, returnToPopupId = null) => {
-    closeAllPopups(); // Važno je da se prvo sve zatvori
-    if (popupContentElement && popupOverlay && body) {
-        popupOverlay.style.display = 'flex';
-        popupContentElement.style.display = 'block';
-        body.classList.add('overflow-hidden');
+            closeAllPopups();
+            if (popupContentElement && popupOverlay && body) {
+                popupOverlay.style.display = 'flex';
+                popupContentElement.style.display = 'block';
+                body.classList.add('overflow-hidden');
 
-        // ISPRAVAK: Timeout se stavlja ovdje, s malom odgodom.
-        // On osigurava da se skrolanje na vrh izvrši NAKON što preglednik
-        // pokuša automatski fokusirati na input polje.
-        setTimeout(() => {
-            popupContentElement.scrollTop = 0; // Vrati skrol na vrh
-            
-            // Dodatna sigurnosna mjera: makni fokus s email polja ako postoji
-            const emailInput = popupContentElement.querySelector('input[type="email"]');
-            if (emailInput) {
-                emailInput.blur(); 
+                setTimeout(() => {
+                    popupContentElement.scrollTop = 0;
+                    const emailInput = popupContentElement.querySelector('input[type="email"]');
+                    if (emailInput) {
+                        emailInput.blur();
+                    }
+                    popupContentElement.focus({ preventScroll: true });
+                }, 50);
+
+                popupContentElement.querySelectorAll('button.popup-close, button[data-action^="return-to-"]').forEach(clickable => {
+                    const newClickable = clickable.cloneNode(true);
+                    clickable.parentNode.replaceChild(newClickable, clickable);
+
+                    newClickable.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        if (newClickable.classList.contains('popup-close') && !newClickable.hasAttribute('data-action')) {
+                            closeAllPopups();
+                            return;
+                        }
+
+                        const action = newClickable.getAttribute('data-action');
+
+                        if (action) {
+                            if (validationPopup) validationPopup.style.display = 'none';
+
+                            let targetPopupForReturn = null;
+                            if (returnToPopupId) {
+                                targetPopupForReturn = document.getElementById(returnToPopupId);
+                            } else if (action === 'return-to-starter-info') {
+                                targetPopupForReturn = starterPackageInfoPopup;
+                            } else if (action === 'return-to-contact') {
+                                targetPopupForReturn = contactFormPopup;
+                            } 
+                            // Uklonjeni return-to-choose-investor-type i return-to-investment-details
+
+                            if (targetPopupForReturn) {
+                                showPopup(targetPopupForReturn);
+                            } else {
+                                closeAllPopups();
+                            }
+                        }
+                    }, { once: true });
+                });
+
+            } else {
+                console.warn("Nije moguće prikazati popup. Element nije pronađen:", popupContentElement);
             }
-            // Općenito, fokusiraj sam popup, a ne neki element unutar njega
-            popupContentElement.focus({ preventScroll: true });
-
-        }, 50); // 50 milisekundi je sigurna i neprimjetna odgoda.
-
-        // Logika za gumbe za zatvaranje ostaje ista i ide NAKON timeouta
-        popupContentElement.querySelectorAll('button.popup-close, button[data-action^="return-to-"]').forEach(clickable => {
-            const newClickable = clickable.cloneNode(true);
-            clickable.parentNode.replaceChild(newClickable, clickable);
-            
-            newClickable.addEventListener('click', (e) => {
-                e.preventDefault(); 
-                e.stopPropagation();
-
-                // Ako je gumb obični 'popup-close' bez akcije, samo zatvori sve.
-                if (newClickable.classList.contains('popup-close') && !newClickable.hasAttribute('data-action')) {
-                    closeAllPopups();
-                    return;
-                }
-
-                const action = newClickable.getAttribute('data-action');
-
-                if (action) { 
-                    if (validationPopup) validationPopup.style.display = 'none';
-
-                    let targetPopupForReturn = null;
-                    if (returnToPopupId) { 
-                        targetPopupForReturn = document.getElementById(returnToPopupId);
-                    } else if (action === 'return-to-starter-info') {
-                        targetPopupForReturn = starterPackageInfoPopup;
-                    } else if (action === 'return-to-contact') {
-                        targetPopupForReturn = contactFormPopup;
-                    } else if (action === 'return-to-choose-investor-type') { 
-                        targetPopupForReturn = chooseInvestorTypePopup;
-                    } else if (action === 'return-to-investment-details') { 
-                        targetPopupForReturn = investmentDetailsPopup;
-                    }
-
-                    if (targetPopupForReturn) {
-                        showPopup(targetPopupForReturn);
-                    } else {
-                        closeAllPopups();
-                    }
-                }
-            }, { once: true });
-        });
-
-    } else {
-        console.warn("Nije moguće prikazati popup. Element nije pronađen:", popupContentElement);
-    }
-};
+        };
 
         const hideWidget = () => {
             if (userCounterWidget && userCounterShowBtn) {
@@ -2500,6 +2386,7 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
                 counterWidgetVisible = false;
             }
         };
+
         const initializeGsapAnimations = () => {
             if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                 try {
@@ -2517,7 +2404,6 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
                         });
                         element.style.animationDelay = '';
                     });
-
                 } catch (error) {
                     console.error("GSAP Error:", error);
                 }
@@ -2537,18 +2423,13 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
         }
 
         if (mobileLangTrigger && mobileLangDropdown) {
-    mobileLangTrigger.addEventListener('click', (event) => {
-        event.preventDefault(); // Sprječava skakanje stranice
-        event.stopPropagation(); // Sprječava da se klik proširi dalje
-        
-        // Pronađi ikonu strelice
-        const icon = mobileLangTrigger.querySelector('i.fa-chevron-down, i.fa-chevron-up');
-        
-        // Pozovi postojeću funkciju koja otvara/zatvara izbornik
-        toggleLanguageDropdown(mobileLangDropdown, desktopLangDropdown, icon);
-    });
-}
-
+            mobileLangTrigger.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                const icon = mobileLangTrigger.querySelector('i.fa-chevron-down, i.fa-chevron-up');
+                toggleLanguageDropdown(mobileLangDropdown, desktopLangDropdown, icon);
+            });
+        }
 
         if (hamburger && navMenu && body) {
             hamburger.addEventListener('click', () => {
@@ -2565,47 +2446,45 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
                 });
             });
         }
-    // =======================================================
-    // KONAČNA I UNIVERZALNA LOGIKA ZA SVE MOBILNE DROPDOWNOVE
-    // =======================================================
-    const allMobileDropdowns = document.querySelectorAll('.nav-menu .sft21-nav-item.dropdown');
 
-    allMobileDropdowns.forEach(dropdown => {
-        const trigger = dropdown.querySelector('a'); // Link koji otvara meni
-        const menu = dropdown.querySelector('.dropdown-menu, .language-dropdown-mobile'); // Meni koji se otvara
-        const icon = trigger.querySelector('i.fa-chevron-down');
+        // KONAČNA I UNIVERZALNA LOGIKA ZA SVE MOBILNE DROPDOWNOVE
+        const allMobileDropdowns = document.querySelectorAll('.nav-menu .sft21-nav-item.dropdown');
 
-        if (trigger && menu) {
-            trigger.addEventListener('click', function(event) {
-                event.preventDefault();
-                event.stopPropagation();
+        allMobileDropdowns.forEach(dropdown => {
+            const trigger = dropdown.querySelector('a');
+            const menu = dropdown.querySelector('.dropdown-menu, .language-dropdown-mobile');
+            const icon = trigger.querySelector('i.fa-chevron-down');
 
-                const isCurrentlyOpen = dropdown.classList.contains('open');
+            if (trigger && menu) {
+                trigger.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
 
-                // 1. Prvo zatvori SVE ostale otvorene dropdownove
-                allMobileDropdowns.forEach(otherDropdown => {
-                    if (otherDropdown !== dropdown) {
-                        otherDropdown.classList.remove('open');
-                        const otherMenu = otherDropdown.querySelector('.dropdown-menu, .language-dropdown-mobile');
-                        if (otherMenu) otherMenu.style.display = 'none';
-                        const otherIcon = otherDropdown.querySelector('i.fa-chevron-down');
-                        if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                    const isCurrentlyOpen = dropdown.classList.contains('open');
+
+                    allMobileDropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('open');
+                            const otherMenu = otherDropdown.querySelector('.dropdown-menu, .language-dropdown-mobile');
+                            if (otherMenu) otherMenu.style.display = 'none';
+                            const otherIcon = otherDropdown.querySelector('i.fa-chevron-down');
+                            if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+
+                    if (isCurrentlyOpen) {
+                        dropdown.classList.remove('open');
+                        menu.style.display = 'none';
+                        if (icon) icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        dropdown.classList.add('open');
+                        menu.style.display = 'block';
+                        if (icon) icon.style.transform = 'rotate(180deg)';
                     }
                 });
+            }
+        });
 
-                // 2. Sada otvori ili zatvori TRENUTNI dropdown
-                if (isCurrentlyOpen) {
-                    dropdown.classList.remove('open');
-                    menu.style.display = 'none';
-                    if (icon) icon.style.transform = 'rotate(0deg)';
-                } else {
-                    dropdown.classList.add('open');
-                    menu.style.display = 'block';
-                    if (icon) icon.style.transform = 'rotate(180deg)';
-                }
-            });
-        }
-    });
         if (accordionItems.length > 0) {
             accordionItems.forEach(item => {
                 const header = item.querySelector('.accordion-header');
@@ -2624,70 +2503,63 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
             });
         }
 
-// POSLIJE (ZAMIJENITE S OVIM)
+        if (cursor && body) {
+            let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+            const speed = 0.1;
 
-if (cursor && body) {
-    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-    const speed = 0.1;
+            const updateCursorPosition = () => {
+                cursorX += (mouseX - cursorX) * speed;
+                cursorY += (mouseY - cursorY) * speed;
+                cursor.style.left = `${cursorX}px`;
+                cursor.style.top = `${cursorY}px`;
+                requestAnimationFrame(updateCursorPosition);
+            };
+            requestAnimationFrame(updateCursorPosition);
 
-    const updateCursorPosition = () => {
-        cursorX += (mouseX - cursorX) * speed;
-        cursorY += (mouseY - cursorY) * speed;
-        cursor.style.left = `${cursorX}px`;
-        cursor.style.top = `${cursorY}px`;
-        requestAnimationFrame(updateCursorPosition);
-    };
-    requestAnimationFrame(updateCursorPosition);
+            window.addEventListener('mousemove', (e) => {
+                cursor.style.opacity = '1';
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            document.addEventListener('mouseleave', () => {
+                if (cursor) cursor.style.opacity = '0';
+            });
+            document.addEventListener('mouseenter', () => {
+                if (cursor) cursor.style.opacity = '1';
+            });
 
-    // --- Događaji za MIŠ (za desktop) ---
-    window.addEventListener('mousemove', (e) => {
-        cursor.style.opacity = '1'; // Pokaži kursor čim se miš pomakne
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-    document.addEventListener('mouseleave', () => {
-        if (cursor) cursor.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', () => {
-        if (cursor) cursor.style.opacity = '1';
-    });
+            window.addEventListener('touchstart', (e) => {
+                if (e.touches.length > 0) {
+                    cursor.style.opacity = '1';
+                    mouseX = e.touches[0].clientX;
+                    mouseY = e.touches[0].clientY;
+                    cursorX = e.touches[0].clientX;
+                    cursorY = e.touches[0].clientY;
+                }
+            }, { passive: true });
 
-    // --- NOVO: Događaji za DODIR (za mobilne uređaje) ---
-    window.addEventListener('touchstart', (e) => {
-        if (e.touches.length > 0) {
-            cursor.style.opacity = '1'; // Pokaži kursor na početku dodira
-            // Odmah postavi poziciju da izbjegne "skakanje"
-            mouseX = e.touches[0].clientX;
-            mouseY = e.touches[0].clientY;
-            cursorX = e.touches[0].clientX;
-            cursorY = e.touches[0].clientY;
+            window.addEventListener('touchmove', (e) => {
+                if (e.touches.length > 0) {
+                    mouseX = e.touches[0].clientX;
+                    mouseY = e.touches[0].clientY;
+                }
+            }, { passive: true });
+
+            window.addEventListener('touchend', () => {
+                if (cursor) cursor.style.opacity = '0';
+            });
+
+            document.querySelectorAll('a, button, .accordion-header, .hamburger, input, textarea, select, .language-trigger, .language-item, label[for], .kyc-placeholder-clickable, #camera-icon, .starter-package-select-btn, .open-investment-details-popup').forEach(el => {
+                el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
+                el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
+            });
         }
-    }, { passive: true });
-
-    window.addEventListener('touchmove', (e) => {
-        if (e.touches.length > 0) {
-            // Ažuriraj ciljanu poziciju dok se prst pomiče
-            mouseX = e.touches[0].clientX;
-            mouseY = e.touches[0].clientY;
-        }
-    }, { passive: true });
-
-    window.addEventListener('touchend', () => {
-        // Sakrij kursor kada se prst podigne
-        if (cursor) cursor.style.opacity = '0';
-    });
-    
-    // Hover efekti (ostaju isti)
-    document.querySelectorAll('a, button, .accordion-header, .hamburger, input, textarea, select, .language-trigger, .language-item, label[for], .kyc-placeholder-clickable, #camera-icon, .starter-package-select-btn, .trigger-choose-investor-type-popup, .open-investment-details-popup').forEach(el => {
-        el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
-        el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
-    });
-}
 
         if (popupOverlay) { popupOverlay.addEventListener('click', (e) => { if (e.target === popupOverlay) closeAllPopups(); }); }
         document.querySelectorAll('.popup-content').forEach(content => { if (content) content.addEventListener('click', (e) => e.stopPropagation()); });
 
-        if (ip7Do10kBtn && ip7AmountInputContainer && ip7AmountInput && ip7AmountConfirmBtn && ip7AmountCancelBtn && validationPopup && investmentDetailsPopup) {
+        // IP7 LOGIKA - Ažurirana da ne otvara obrisane popupe
+        if (ip7Do10kBtn && ip7AmountInputContainer && ip7AmountInput && ip7AmountConfirmBtn && ip7AmountCancelBtn && validationPopup) {
             ip7Do10kBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 if (ip7AmountInputContainer) ip7AmountInputContainer.style.display = 'block';
@@ -2701,48 +2573,38 @@ if (cursor && body) {
                 if (inputValue === '' || isNaN(value) || value < minAmountDo10k || value > maxAmountDo10k) {
                     if (validationPopup) {
                         validationPopup.innerHTML = `<button class="popup-close" data-action="return-to-ip7-input">×</button><h4>Neispravan iznos</h4><p>Molimo unesite iznos između ${minAmountDo10k} € i ${maxAmountDo10k} €.</p>`;
-                        showPopup(validationPopup, true, null); 
+                        showPopup(validationPopup, true, null);
                     }
                     if (ip7AmountInput) ip7AmountInput.value = '';
                 } else {
-                    if (investmentDetailsPopup && ip7CheckboxDetails && ip7CustomAmountDetailsInput && investorNameDetailsInput && totalInvestmentAmountDetailsSpan) {
-                        resetInvestmentDetailsForm(); 
-                        showPopup(investmentDetailsPopup); 
-                        
-                        if (ip7CheckboxDetails) ip7CheckboxDetails.checked = true;
-                        if (ip7CustomAmountDetailsInput) {
-                            ip7CustomAmountDetailsInput.disabled = false;
-                            ip7CustomAmountDetailsInput.value = value;
-                        }
-                        updateTotalInvestmentDetails(); 
-                        if (investorNameDetailsInput) investorNameDetailsInput.focus();
-                    }
+                    // OVDJE JE BILA LOGIKA ZA OTVARANJE INVESTMENT POPUPA - SADA JE UKLONJENA
+                    // Možete dodati kod za otvaranje kontakt forme ili preusmjeravanje ako je potrebno.
+                    // Za sada samo zatvaramo input container
                     if (ip7AmountInputContainer) ip7AmountInputContainer.style.display = 'none';
                 }
             });
-            if(ip7VećiIznosBtn && contactFormPopup) {
+            if (ip7VećiIznosBtn && contactFormPopup) {
                 ip7VećiIznosBtn.addEventListener('click', (e) => { e.preventDefault(); showPopup(contactFormPopup); });
             }
-            if(ip7AmountCancelBtn && ip7AmountInputContainer){
+            if (ip7AmountCancelBtn && ip7AmountInputContainer) {
                 ip7AmountCancelBtn.addEventListener('click', (e) => { e.preventDefault(); ip7AmountInputContainer.style.display = 'none'; });
             }
             if (ip7AmountInput) { ip7AmountInput.addEventListener('keypress', (e) => { const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter']; if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey) return; if (e.key === '.') { if (ip7AmountInput.value.includes('.')) e.preventDefault(); } else if (!/\d/.test(e.key)) { e.preventDefault(); } }); ip7AmountInput.addEventListener('blur', () => { const value = parseFloat(ip7AmountInput.value); const inputValue = ip7AmountInput.value.trim(); if (inputValue !== '' && (isNaN(value) || value < minAmountDo10k || value > maxAmountDo10k)) { if (validationPopup) { validationPopup.innerHTML = `<button class="popup-close" data-action="return-to-ip7-input">×</button><h4>Neispravan iznos</h4><p>Molimo unesite iznos između ${minAmountDo10k} € i ${maxAmountDo10k} €.</p>`; showPopup(validationPopup, true, null); } if (ip7AmountInput) ip7AmountInput.value = ''; } }); }
-        } else { console.warn("Neki elementi za IP7 paket (stari) nisu pronađeni u DOM-u."); }
+        }
 
-
- if (contactForm) {
+        if (contactForm) {
             contactForm.addEventListener('submit', function(event) {
                 event.preventDefault();
-                
+
                 const nameInput = document.getElementById('contact-name-popup');
                 const emailInput = document.getElementById('contact-email-popup');
                 const phoneInput = document.getElementById('contact-phone-popup');
-                
+
                 const nameValue = nameInput ? nameInput.value.trim() : '';
                 const emailValue = emailInput ? emailInput.value.trim() : '';
                 const phoneValue = phoneInput ? phoneInput.value.trim() : '';
                 let errorMessage = null;
-                
+
                 if (!nameValue) {
                     errorMessage = "Molimo unesite vaše ime i prezime.";
                 } else if (!emailValue || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
@@ -2756,39 +2618,37 @@ if (cursor && body) {
                     showPopup(validationPopup, true, 'contact-form-popup');
                     return;
                 }
-                
+
                 showPopup(validationPopup);
                 validationPopup.innerHTML = `<h4>Slanje...</h4><p>Molimo pričekajte.</p>`;
-                
+
                 const dataToSend = new FormData();
                 dataToSend.append('requestType', 'largeInvestmentContact');
                 dataToSend.append('name', nameValue);
                 dataToSend.append('email', emailValue);
                 dataToSend.append('phone', phoneValue);
-                
+
                 fetch(WEBAPP_URL, {
                     method: 'POST',
                     body: dataToSend
                 })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Poslano!</h4><p>Hvala Vam na interesu. Kontaktirat ćemo Vas uskoro.</p>`;
-                        showPopup(validationPopup);
-                        contactForm.reset();
-                        setTimeout(closeAllPopups, 5000);
-                    } else {
-                        throw new Error(data.message || 'Greška na serveru.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Fetch greška:', error);
-                    validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Greška</h4><p>Došlo je do pogreške prilikom slanja.</p>`;
-                    showPopup(validationPopup, true, 'contact-form-popup');
-                });
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Poslano!</h4><p>Hvala Vam na interesu. Kontaktirat ćemo Vas uskoro.</p>`;
+                            showPopup(validationPopup);
+                            contactForm.reset();
+                            setTimeout(closeAllPopups, 5000);
+                        } else {
+                            throw new Error(data.message || 'Greška na serveru.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Fetch greška:', error);
+                        validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Greška</h4><p>Došlo je do pogreške prilikom slanja.</p>`;
+                        showPopup(validationPopup, true, 'contact-form-popup');
+                    });
             });
-        } else {
-            console.warn("Elementi za popup kontakt formu ('Veći iznos') nisu pronađeni.");
         }
 
         if (starterPackageSelectBtns.length > 0 && starterPackageInfoPopup) {
@@ -2801,661 +2661,301 @@ if (cursor && body) {
                     }
                 });
             });
-        } else {
-            console.warn("Elementi za Starter Package popup (gumbi 'Odaberi') nisu pronađeni.");
         }
 
-if (starterPackageEmailForm && starterPackageEmailInput && validationPopup) {
+        if (starterPackageEmailForm && starterPackageEmailInput && validationPopup) {
+            starterPackageEmailForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = starterPackageEmailInput.value.trim().toLowerCase();
 
-    starterPackageEmailForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = starterPackageEmailInput.value.trim().toLowerCase();
-
-        // Validacija emaila
-        if (email === '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            validationPopup.innerHTML = `<button class="popup-close" data-action="return-to-starter-info">×</button><h4>Greška</h4><p>Molimo unesite ispravnu email adresu.</p>`;
-            showPopup(validationPopup, true, 'starter-package-info-popup');
-            return;
-        }
-
-        // Prikaz poruke o slanju
-        if (popupOverlay) popupOverlay.style.display = 'flex';
-        validationPopup.style.display = 'block';
-        validationPopup.innerHTML = `<h4>Slanje...</h4><p>Molimo pričekajte.</p>`;
-        showPopup(validationPopup);
-
-        // Priprema podataka za slanje
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('requestType', 'starterInterest'); // Važno za Google skriptu
-
-        // Slanje podataka na vašu ispravnu Google skriptu
-        fetch(WEBAPP_URL, {
-                method: 'POST',
-                body: formData
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    // Poruka o uspjehu NAKON što je Google potvrdio primitak
-                    validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Hvala!</h4><p>Vaš interes za startne pakete je uspješno zabilježen.</p>`;
-                    starterPackageEmailInput.value = ''; // Očisti polje
-                    setTimeout(closeAllPopups, 4000); 
-                } else {
-                    // Ako Google javi grešku
-                    throw new Error(data.message || 'Nepoznata greška sa servera.');
-                }
-            })
-            .catch(error => {
-                // Ako dođe do greške u mreži
-                console.error('Greška:', error);
-                validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Greška</h4><p>Došlo je do pogreške prilikom slanja.</p>`;
-            });
-    });
-
-} else {
-    console.warn("Forma ili input za Starter Package email nisu pronađeni.");
-}
-
-        if (chooseInvestorTypePopup && investmentDetailsPopup && validationPopup && investmentDetailsForm) {
-            
-            const resetInvestmentDetailsForm = () => {
-                if (investmentDetailsForm) investmentDetailsForm.reset();
-                investmentPackageDetailsCheckboxes.forEach(cb => cb.checked = false);
-                if (ip7CheckboxDetails) ip7CheckboxDetails.checked = false;
-                
-                if (ip7CustomAmountDetailsInput) {
-                    ip7CustomAmountDetailsInput.value = '';
-                    ip7CustomAmountDetailsInput.disabled = true;
-                }
-                if (totalInvestmentAmountDetailsSpan) totalInvestmentAmountDetailsSpan.textContent = '0';
-            };
-
-            triggerChooseInvestorTypeBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    sessionStorage.removeItem('preselectedPackageName'); 
-                    sessionStorage.removeItem('preselectedPackageValue');
-                    resetInvestmentDetailsForm(); 
-                    showPopup(chooseInvestorTypePopup);
-                });
-            });
-
-            openInvestmentDetailsFromCardBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    sessionStorage.setItem('preselectedPackageName', btn.dataset.packageName);
-                    resetInvestmentDetailsForm(); 
-                    showPopup(chooseInvestorTypePopup); 
-                });
-            });
-            
-            if (btnRegistriraniKorisnikChoice) {
-                btnRegistriraniKorisnikChoice.addEventListener('click', () => {
-                    sessionStorage.removeItem('preselectedPackageName'); 
-                    window.location.href = 'odluka.html';
-                });
-            }
-
-            if (btnNoviInvestitorChoice) {
-                btnNoviInvestitorChoice.addEventListener('click', () => {
-                    if(chooseInvestorTypePopup) chooseInvestorTypePopup.style.display = 'none';
-                    
-                    const preselectedNameFromStorage = sessionStorage.getItem('preselectedPackageName');
-                    resetAndPrepareInvestmentDetailsForm(preselectedNameFromStorage); // Pozovi novu funkciju
-                                            
-                    showPopup(investmentDetailsPopup); 
-                    if (investorNameDetailsInput) investorNameDetailsInput.focus();
-                    
-                    if (preselectedNameFromStorage) { 
-                        sessionStorage.removeItem('preselectedPackageName');
-                    }
-                });
-            }
-            
-            const resetAndPrepareInvestmentDetailsForm = (preselectedPackageName = null) => {
-                if (investmentDetailsForm) investmentDetailsForm.reset();
-                investmentPackageDetailsCheckboxes.forEach(cb => cb.checked = false);
-                if (ip7CheckboxDetails) ip7CheckboxDetails.checked = false;
-                
-                if (ip7CustomAmountDetailsInput) {
-                    ip7CustomAmountDetailsInput.value = '';
-                    ip7CustomAmountDetailsInput.disabled = true;
-                }
-                
-                if (preselectedPackageName) {
-                    const targetCheckbox = document.getElementById(preselectedPackageName.toLowerCase() + "-details");
-                    if (targetCheckbox) {
-                        targetCheckbox.checked = true;
-                    }
-                }
-                updateTotalInvestmentDetails(); 
-            };
-
-const updateTotalInvestmentDetails = () => {
-                let initialTotal = 0;
-                investmentPackageDetailsCheckboxes.forEach(cb => {
-                    if (cb.checked) {
-                        initialTotal += parseFloat(cb.value);
-                    }
-                });
-
-                if (initialTotal >= 5000) {
-                    investmentPackageDetailsCheckboxes.forEach(cb => {
-                        cb.checked = false;
-                    });
-                    if (ip7CheckboxDetails) ip7CheckboxDetails.checked = true;
-                    if (ip7CustomAmountDetailsInput) {
-                        ip7CustomAmountDetailsInput.disabled = false;
-                        ip7CustomAmountDetailsInput.value = initialTotal;
-                    }
-                }
-
-                let finalTotal = 0;
-                investmentPackageDetailsCheckboxes.forEach(cb => {
-                    if (cb.checked) {
-                        finalTotal += parseFloat(cb.value);
-                    }
-                });
-
-                if (ip7CheckboxDetails && ip7CustomAmountDetailsInput) {
-                    ip7CustomAmountDetailsInput.disabled = !ip7CheckboxDetails.checked;
-
-                    // << NOVI DIO KODA POČINJE OVDJE >>
-                    if (ip7CheckboxDetails.checked) {
-                        // Ako je polje prazno, upiši 5000
-                        if (ip7CustomAmountDetailsInput.value.trim() === '') {
-                            ip7CustomAmountDetailsInput.value = 5000;
-                        }
-                        const ip7Value = parseFloat(ip7CustomAmountDetailsInput.value);
-                        if (!isNaN(ip7Value)) {
-                            finalTotal += ip7Value;
-                        }
-                    } else {
-                        // Ako nije označeno, obriši vrijednost
-                        ip7CustomAmountDetailsInput.value = '';
-                    }
-                    // << NOVI DIO KODA ZAVRŠAVA OVDJE >>
-                }
-
-                if (totalInvestmentAmountDetailsSpan) {
-                    totalInvestmentAmountDetailsSpan.textContent = finalTotal.toString();
-                }
-            };
-                        
-const packageContainer = document.querySelector('.investment-package-field-container');
-if (packageContainer) {
-    // Dodajemo listener na cijeli kontejner
-    packageContainer.addEventListener('click', (event) => {
-        // Provjeravamo je li klik bio na checkboxu ili labeli unutar kontejnera
-        if (event.target.closest('.package-item')) {
-             // Koristimo mali timeout kako bismo osigurali da je preglednik 
-             // već ažurirao "checked" stanje checkboxa prije nego naša funkcija krene računati.
-             // Ovo je ključno za pouzdanost na svim uređajima.
-            setTimeout(() => {
-                updateTotalInvestmentDetails();
-            }, 10); 
-        }
-    });
-}
-            
-            if (ip7CustomAmountDetailsInput && !ip7CustomAmountDetailsInput.hasAttribute('data-listener-attached')) {
-                ip7CustomAmountDetailsInput.addEventListener('input', updateTotalInvestmentDetails);
-                ip7CustomAmountDetailsInput.addEventListener('blur', () => { 
-                    updateTotalInvestmentDetails(); 
-                    const val = parseFloat(ip7CustomAmountDetailsInput.value);
-                    if (ip7CheckboxDetails && ip7CheckboxDetails.checked && ip7CustomAmountDetailsInput.value !== '' && (isNaN(val) || val < 5000)) {
-                        console.warn("IP7 iznos mora biti minimalno 5000 € ako je unesen i odabran.");
-                    }
-                });
-                ip7CustomAmountDetailsInput.setAttribute('data-listener-attached', 'true');
-            }
-
-            if (investmentDetailsForm) {
-                investmentDetailsForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const name = investorNameDetailsInput.value.trim();
-                    const email = investorEmailDetailsInput.value.trim().toLowerCase();
-                    let errorMessage = null;
-                    const nameParts = name.split(' ').filter(part => part.length > 0);
-
-                    if (name === '' || nameParts.length < 2) {
-                        errorMessage = "Molimo unesite vaše ime i prezime.";
-                    } else if (email === '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                        errorMessage = "Molimo unesite ispravnu email adresu.";
-                    }
-
-                    const selectedPackagesData = [];
-                    let finalTotalFromSpan = 0;
-                    if(totalInvestmentAmountDetailsSpan && totalInvestmentAmountDetailsSpan.textContent) {
-                        finalTotalFromSpan = parseFloat(totalInvestmentAmountDetailsSpan.textContent);
-                    }
-                    
-                    investmentPackageDetailsCheckboxes.forEach(cb => {
-                        if (cb.checked) {
-                            selectedPackagesData.push({ name: cb.dataset.packageName, value: cb.value });
-                        }
-                    });
-                        if (ip7CheckboxDetails && ip7CheckboxDetails.checked) {
-                        const customAmount = parseFloat(ip7CustomAmountDetailsInput.value);
-                        if (!isNaN(customAmount) && customAmount >= 5000) {
-                            if (!selectedPackagesData.find(p => p.name === "IP7")) {
-                                selectedPackagesData.push({ name: "IP7", value: customAmount });
-                            }
-                        } else if (ip7CustomAmountDetailsInput.value === '' && finalTotalFromSpan >= 5000) {
-                            if (!selectedPackagesData.find(p => p.name === "IP7")) {
-                                    selectedPackagesData.push({ name: "IP7", value: "Automatski (suma ostalih >= 5000)" });
-                            }
-                        } else if (ip7CustomAmountDetailsInput.value !== '') { 
-                                if(!errorMessage) errorMessage = "Molimo unesite ispravan iznos za IP7 (minimalno 5000 €) ako je Sedmi paket odabran i popunjen.";
-                        }
-                    }
-
-                    if (finalTotalFromSpan === 0 && selectedPackagesData.length === 0 && !errorMessage ) {
-                            errorMessage = "Molimo odaberite barem jedan investicijski paket.";
-                    }
-                    
-                    if (ip7CheckboxDetails && ip7CheckboxDetails.checked && finalTotalFromSpan < 5000 && (ip7CustomAmountDetailsInput.value === '' || parseFloat(ip7CustomAmountDetailsInput.value) < 5000) && !errorMessage){
-                            errorMessage = "Ako je odabran Sedmi paket (IP7), ukupna investicija ili sam IP7 iznos mora biti minimalno 5000 €.";
-                    }
-
-
-                    if (errorMessage) {
-                        validationPopup.innerHTML = `<button class="popup-close" data-action="return-to-investment-details">×</button><h4>Greška u unosu</h4><p>${errorMessage}</p>`;
-                        showPopup(validationPopup, true, 'investment-details-popup');
-                        return;
-                    }
-
-                    if (submittedInvestmentEmails.has(email) && selectedPackagesData.length > 0) {
-                            validationPopup.innerHTML = `<button class="popup-close" data-action="return-to-investment-details">×</button><h4>Informacija</h4><p>Vaša email adresa (${email}) je već zabilježena za investiciju s odabranim paketima. Kontaktirat ćemo Vas.</p>`;
-                            showPopup(validationPopup, true, 'investment-details-popup');
-                            return;
-                    }
-
-                    submittedInvestmentEmails.add(email); 
-                    const totalAmountToSubmit = totalInvestmentAmountDetailsSpan ? totalInvestmentAmountDetailsSpan.textContent : 'N/A';
-                    console.log("Prijava za investiciju (Novi investitor - detalji):", { name, email, selectedPackages: selectedPackagesData, totalAmount: totalAmountToSubmit });
-
-                    closeAllPopups();
-                    validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup">×</button><h4>Hvala!</h4><p>Vaš interes za investiciju je zabilježen. Uskoro ćemo Vas kontaktirati na email: ${email} u vezi daljnjih koraka. Odabrani paketi/iznos: ${totalAmountToSubmit} €.</p>`;
-                    showPopup(validationPopup);
-                    setTimeout(closeAllPopups, 5000);
-                });
-            }
-        } else {
-            console.warn("Elementi za Choose Investor Type ili Investment Details popup nisu pronađeni.");
-        }
-
-const mainContactForm = document.querySelector('#kontakt form');
-if (mainContactForm) {
-    mainContactForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // === POČETAK VALIDACIJE ===
-        const nameInput = mainContactForm.querySelector('#name');
-        const emailInput = mainContactForm.querySelector('#email');
-        const subjectInput = mainContactForm.querySelector('#subject');
-        const messageInput = mainContactForm.querySelector('#message');
-        
-        const nameValue = nameInput ? nameInput.value.trim() : '';
-        const emailValue = emailInput ? emailInput.value.trim() : '';
-        const subjectValue = subjectInput ? subjectInput.value.trim() : '';
-        const messageValue = messageInput ? messageInput.value.trim() : '';
-        
-        let errorMessage = null;
-
-        if (!nameValue || nameValue.split(' ').filter(n => n).length < 2) {
-            errorMessage = "Molimo unesite vaše puno ime i prezime.";
-        } else if (!emailValue || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
-            errorMessage = "Molimo unesite ispravnu email adresu.";
-        } else if (!subjectValue) {
-            errorMessage = "Molimo unesite predmet poruke.";
-        } else if (!messageValue) {
-            errorMessage = "Molimo unesite vašu poruku.";
-        }
-
-        if (errorMessage) {
-            if(validationPopup && popupOverlay) {
-                popupOverlay.style.display = 'flex';
-                validationPopup.style.display = 'block';
-                // Prikazujemo popup s greškom i gumbom za zatvaranje
-                validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Greška u unosu</h4><p>${errorMessage}</p>`;
-            }
-            return; // Prekida izvršavanje ako postoji greška
-        }
-        // === KRAJ VALIDACIJE ===
-
-        const formData = new FormData(mainContactForm);
-        formData.append('requestType', 'contact');
-        
-        if(validationPopup && popupOverlay) {
-            popupOverlay.style.display = 'flex';
-            validationPopup.style.display = 'block';
-            validationPopup.innerHTML = `<h4>Slanje...</h4><p>Molimo pričekajte.</p>`;
-        }
-        
-        fetch(WEBAPP_URL, {
-            method: 'POST', 
-            body: formData 
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Poslano!</h4><p>Hvala Vam na poruci.</p>`;
-                mainContactForm.reset();
-                setTimeout(closeAllPopups, 4000);
-            } else {
-                throw new Error(data.message || 'Nepoznata greška.');
-            }
-        })
-        .catch(error => {
-            console.error('Greška:', error);
-            validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Greška</h4><p>Došlo je do pogreške prilikom slanja.</p>`;
-        });
-    });
-}
-
-        // ======================================================================
-        // KONAČNA LOGIKA - RUČNO PRIKUPLJANJE I KALKULACIJA SVIH PODATAKA
-        // ======================================================================
-        const submitBtn = document.getElementById('submit-investment-btn');
-        if (submitBtn) {
-            submitBtn.addEventListener('click', function() {
-                console.log("Gumb 'POTVRDI' je kliknut. Počinjem prikupljanje i kalkulaciju.");
-
-                // --- Ručno prikupljanje osnovnih podataka ---
-                const fullName = document.getElementById('investor-name-details').value;
-                const email = document.getElementById('investor-email-details').value;
-
-                if (!fullName || !email) {
-                    alert("Molimo unesite Ime i Prezime te Email adresu.");
+                // Validacija emaila
+                if (email === '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    validationPopup.innerHTML = `<button class="popup-close" data-action="return-to-starter-info">×</button><h4>Greška</h4><p>Molimo unesite ispravnu email adresu.</p>`;
+                    showPopup(validationPopup, true, 'starter-package-info-popup');
                     return;
                 }
-                
-                let referrerInfo = "Nemam preporučitelja";
-                if (document.getElementById('referrer-yes').checked) {
-                    referrerInfo = document.getElementById('referrer-name-email').value.trim() || 'Preporučitelj nije upisan';
+
+                // Prikaz poruke o slanju
+                if (popupOverlay) popupOverlay.style.display = 'flex';
+                validationPopup.style.display = 'block';
+                validationPopup.innerHTML = `<h4>Slanje...</h4><p>Molimo pričekajte.</p>`;
+                showPopup(validationPopup);
+
+                // Priprema podataka za slanje
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('requestType', 'starterInterest');
+
+                // Slanje podataka
+                fetch(WEBAPP_URL, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Hvala!</h4><p>Vaš interes za startne pakete je uspješno zabilježen.</p>`;
+                            starterPackageEmailInput.value = '';
+                            setTimeout(closeAllPopups, 4000);
+                        } else {
+                            throw new Error(data.message || 'Nepoznata greška sa servera.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Greška:', error);
+                        validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Greška</h4><p>Došlo je do pogreške prilikom slanja.</p>`;
+                    });
+            });
+        }
+
+        const mainContactForm = document.querySelector('#kontakt form');
+        if (mainContactForm) {
+            mainContactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // === POČETAK VALIDACIJE ===
+                const nameInput = mainContactForm.querySelector('#name');
+                const emailInput = mainContactForm.querySelector('#email');
+                const subjectInput = mainContactForm.querySelector('#subject');
+                const messageInput = mainContactForm.querySelector('#message');
+
+                const nameValue = nameInput ? nameInput.value.trim() : '';
+                const emailValue = emailInput ? emailInput.value.trim() : '';
+                const subjectValue = subjectInput ? subjectInput.value.trim() : '';
+                const messageValue = messageInput ? messageInput.value.trim() : '';
+
+                let errorMessage = null;
+
+                if (!nameValue || nameValue.split(' ').filter(n => n).length < 2) {
+                    errorMessage = "Molimo unesite vaše puno ime i prezime.";
+                } else if (!emailValue || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+                    errorMessage = "Molimo unesite ispravnu email adresu.";
+                } else if (!subjectValue) {
+                    errorMessage = "Molimo unesite predmet poruke.";
+                } else if (!messageValue) {
+                    errorMessage = "Molimo unesite vašu poruku.";
                 }
 
-                // --- Ručno prikupljanje i kalkulacija paketa i iznosa ---
-                let selectedPackages = [];
-                let calculatedTotal = 0;
-
-                // Prolazi kroz LP1-LP6
-                document.querySelectorAll('input[name="ip_package_details"]:checked').forEach(cb => {
-                    selectedPackages.push(cb.dataset.packageName);
-                    calculatedTotal += parseFloat(cb.value);
-                });
-                
-                // Provjerava IP7
-                if (document.getElementById('ip7-checkbox-details').checked) {
-                    const customAmountValue = document.getElementById('ip7-custom-amount-details').value;
-                    const customAmount = parseFloat(customAmountValue);
-                    if (!isNaN(customAmount) && customAmount >= 5000) {
-                        selectedPackages.push(`IP7 (${customAmountValue} €)`);
-                        calculatedTotal += customAmount;
+                if (errorMessage) {
+                    if (validationPopup && popupOverlay) {
+                        popupOverlay.style.display = 'flex';
+                        validationPopup.style.display = 'block';
+                        validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Greška u unosu</h4><p>${errorMessage}</p>`;
                     }
+                    return;
                 }
-                const packagesString = selectedPackages.length > 0 ? selectedPackages.join(', ') : "Nije odabran paket";
+                // === KRAJ VALIDACIJE ===
 
-                // --- Prikaz poruke o slanju ---
-                if(validationPopup && popupOverlay) {
-                    showPopup(validationPopup);
+                const formData = new FormData(mainContactForm);
+                formData.append('requestType', 'contact');
+
+                if (validationPopup && popupOverlay) {
+                    popupOverlay.style.display = 'flex';
+                    validationPopup.style.display = 'block';
                     validationPopup.innerHTML = `<h4>Slanje...</h4><p>Molimo pričekajte.</p>`;
                 }
-                
-                // --- Kreiranje FormData za slanje ---
-                const dataToSend = new FormData();
-                dataToSend.append('requestType', 'investmentDecision');
-                dataToSend.append('fullName', fullName);
-                dataToSend.append('email', email);
-                dataToSend.append('referrerInfo', referrerInfo);
-                dataToSend.append('selectedPackages', packagesString);
-                // Šaljemo svježe izračunati iznos
-                dataToSend.append('totalAmount', calculatedTotal.toString());
 
                 fetch(WEBAPP_URL, {
-                    method: 'POST', 
-                    body: dataToSend
+                    method: 'POST',
+                    body: formData
                 })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Hvala!</h4><p>Vaša odluka o investiranju je uspješno zabilježena.</p>`;
-                        showPopup(validationPopup);
-                        document.getElementById('investment-details-form').reset();
-                        if(typeof updateTotalInvestmentDetails === 'function') updateTotalInvestmentDetails();
-                        setTimeout(closeAllPopups, 5000);
-                    } else {
-                        throw new Error(data.message || 'Greška na serveru.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Fetch greška:', error);
-                    validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Greška</h4><p>Došlo je do pogreške prilikom slanja.</p>`;
-                    showPopup(validationPopup, true);
-                });
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Poslano!</h4><p>Hvala Vam na poruci.</p>`;
+                            mainContactForm.reset();
+                            setTimeout(closeAllPopups, 4000);
+                        } else {
+                            throw new Error(data.message || 'Nepoznata greška.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Greška:', error);
+                        validationPopup.innerHTML = `<button class="popup-close" aria-label="Zatvori popup" onclick="document.getElementById('popup-overlay').style.display='none'">×</button><h4>Greška</h4><p>Došlo je do pogreške prilikom slanja.</p>`;
+                    });
             });
-        }                     
-/*
-if (aiChatIcon && aiChatPopup && aiChatCloseBtn && body) {
-    // Klik na ikonu sada otvara I ZATVARA prozor
-    aiChatIcon.addEventListener('click', (event) => {
-        event.stopPropagation();
-        const isActive = aiChatPopup.classList.toggle('active');
-        aiChatIcon.classList.toggle('active', isActive);
-        body.classList.toggle('overflow-hidden', isActive);
-    });
-
-    // Klik na 'x' gumb unutar prozora ga zatvara
-    aiChatCloseBtn.addEventListener('click', (event) => {
-        event.stopPropagation();
-        aiChatPopup.classList.remove('active');
-        aiChatIcon.classList.remove('active');
-        body.classList.remove('overflow-hidden');
-    });
-}
-*/
-        
-if (userCounterWidget && userCounterHeader && userCounterShowBtn && userCounterCloseBtn) {
-    
-    // Funkcija za otvaranje/zatvaranje
-    userCounterShowBtn.addEventListener('click', () => {
-        userCounterWidget.classList.toggle('hidden');
-    });
-
-    // Funkcija za zatvaranje na 'x'
-    userCounterCloseBtn.addEventListener('click', () => {
-        userCounterWidget.classList.add('hidden');
-    });
-
-    // Postojeća funkcija za pomicanje (draggable)
-    userCounterHeader.addEventListener('mousedown', (e) => {
-        if (e.target === userCounterHeader || (userCounterHeader.contains(e.target) && !e.target.closest('button'))) {
-            isDraggingCounter = true;
-            userCounterWidget.classList.add('dragging');
-            dragCounterOffsetX = e.clientX - userCounterWidget.offsetLeft;
-            dragCounterOffsetY = e.clientY - userCounterWidget.offsetTop;
-            e.preventDefault();
         }
-    });
-    document.addEventListener('mousemove', (e) => {
-        if (!isDraggingCounter) return;
-        let newLeft = e.clientX - dragCounterOffsetX;
-        let newTop = e.clientY - dragCounterOffsetY;
-        const widgetRect = userCounterWidget.getBoundingClientRect();
-        const maxX = window.innerWidth - widgetRect.width;
-        const maxY = window.innerHeight - widgetRect.height;
-        newLeft = Math.max(0, Math.min(newLeft, maxX));
-        newTop = Math.max(0, Math.min(newTop, maxY));
-        userCounterWidget.style.left = `${newLeft}px`;
-        userCounterWidget.style.top = `${newTop}px`;
-        userCounterWidget.style.right = 'auto';
-    });
-    document.addEventListener('mouseup', () => {
-        if (isDraggingCounter) {
-            isDraggingCounter = false;
-            userCounterWidget.classList.remove('dragging');
-        }
-    });
 
-    // Postojeća funkcija za simulaciju novih korisnika
-    let currentUsers = parseInt(userCounterNumberEl?.textContent?.replace(/,/g, '') || '12345');
-    function simulateNewUser() {
-        if (userCounterWidget.classList.contains('hidden') || !userCounterList || !userCounterNumberEl) {
-            setTimeout(simulateNewUser, 20000 + Math.random() * 15000);
-            return;
-        }
-        const countries = [ { code: 'hr', name: 'Croatia' }, { code: 'rs', name: 'Serbia' }, { code: 'ba', name: 'Bosnia' }, { code: 'si', name: 'Slovenia' }, { code: 'de', name: 'Germany' }, { code: 'at', name: 'Austria' }, { code: 'it', name: 'Italy' }, { code: 'hu', name: 'Hungary' }, { code: 'cz', name: 'Czech Republic' }, { code: 'sk', name: 'Slovakia' } ]; 
-        const firstNames = ['Ivan', 'Marko', 'Ana', 'Petra', 'Nikola', 'Luka', 'Maja', 'Sara', 'Josip', 'Tomislav', 'Milan', 'Stefan', 'Amina', 'Jan', 'Matej', 'Zoran', 'Goran']; 
-        const lastNames = ['Horvat', 'Novak', 'Kovačević', 'Petrović', 'Jurić', 'Marić', 'Pavlović', 'Knežević', 'Babić', 'Vuković', 'Marković', 'Popović']; 
-        const randomCountry = countries[Math.floor(Math.random() * countries.length)]; 
-        const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)]; 
-        const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)]; 
-        const username = `${randomFirstName}_${randomLastName.substring(0,3)}`.toLowerCase(); 
-        const placeholder = userCounterList.querySelector('.user-counter-placeholder'); 
-        if (placeholder) placeholder.remove(); 
-        const newUserItem = document.createElement('div'); 
-        newUserItem.className = 'user-counter-item'; 
-        newUserItem.innerHTML = `<img src="https://flagcdn.com/w40/${randomCountry.code}.png" alt="${randomCountry.name}" class="user-counter-flag"><div class="user-counter-name">${username}</div><div class="user-counter-time">upravo sada</div>`; 
-        userCounterList.insertBefore(newUserItem, userCounterList.firstChild); 
-        const times = userCounterList.querySelectorAll('.user-counter-time'); 
-        times.forEach((time, index) => { 
-            if (index > 0) { 
-                if (time.textContent === 'upravo sada') { 
-                    time.textContent = 'prije 1 min'; 
-                } else if (time.textContent.includes('min')) { 
-                    const minutes = parseInt(time.textContent.match(/\d+/)?.[0] || '0'); 
-                    if (minutes < 59) { 
-                        time.textContent = `prije ${minutes + 1} min`; 
-                    } 
-                } 
-            } 
-        }); 
-        while (userCounterList.children.length > 6) { 
-            userCounterList.removeChild(userCounterList.lastChild); 
-        } 
-        currentUsers++; 
-        userCounterNumberEl.textContent = currentUsers.toLocaleString(); 
-        setTimeout(simulateNewUser, 10000 + Math.random() * 25000); 
-    }
-    setTimeout(simulateNewUser, 5000);
-}
+        if (userCounterWidget && userCounterHeader && userCounterShowBtn && userCounterCloseBtn) {
+            // Funkcija za otvaranje/zatvaranje
+            userCounterShowBtn.addEventListener('click', () => {
+                userCounterWidget.classList.toggle('hidden');
+            });
 
-// POSLIJE (ZALIJEPITE OVAJ KOD)
-const aiChatHeader = document.querySelector('.ai-chat-popup-header');
-let isDraggingChat = false, dragChatOffsetX = 0, dragChatOffsetY = 0;
+            // Funkcija za zatvaranje na 'x'
+            userCounterCloseBtn.addEventListener('click', () => {
+                userCounterWidget.classList.add('hidden');
+            });
 
-if (userCounterHeader && userCounterWidget) {
-    // Pomicanje za brojač (miš)
-    userCounterHeader.addEventListener('mousedown', (e) => {
-        if (e.target === userCounterHeader || (userCounterHeader.contains(e.target) && !e.target.closest('button'))) {
-            isDraggingCounter = true; userCounterWidget.classList.add('dragging');
-            dragCounterOffsetX = e.clientX - userCounterWidget.offsetLeft;
-            dragCounterOffsetY = e.clientY - userCounterWidget.offsetTop;
-            e.preventDefault();
-        }
-    });
-
-    // NOVO: Pomicanje za brojač (dodir)
-    userCounterHeader.addEventListener('touchstart', (e) => {
-        if (e.target === userCounterHeader || (userCounterHeader.contains(e.target) && !e.target.closest('button'))) {
-            isDraggingCounter = true; userCounterWidget.classList.add('dragging');
-            dragCounterOffsetX = e.touches[0].clientX - userCounterWidget.offsetLeft;
-            dragCounterOffsetY = e.touches[0].clientY - userCounterWidget.offsetTop;
-            e.preventDefault();
-        }
-    }, { passive: false });
-}
-
-/*
-if (aiChatHeader && aiChatPopup) {
-    // Pomicanje za chat (miš)
-    aiChatHeader.addEventListener('mousedown', (e) => {
-        isDraggingChat = true; aiChatPopup.classList.add('dragging');
-        dragChatOffsetX = e.clientX - aiChatPopup.offsetLeft;
-        dragChatOffsetY = e.clientY - aiChatPopup.offsetTop;
-        e.preventDefault();
-    });
-
-    // NOVO: Pomicanje za chat (dodir)
-    aiChatHeader.addEventListener('touchstart', (e) => {
-        isDraggingChat = true; aiChatPopup.classList.add('dragging');
-        dragChatOffsetX = e.touches[0].clientX - aiChatPopup.offsetLeft;
-        dragChatOffsetY = e.touches[0].clientY - aiChatPopup.offsetTop;
-        e.preventDefault();
-    }, { passive: false });
-}
-*/
-// Funkcija za pomicanje koja radi i za miš i za dodir
-function handleMove(clientX, clientY) {
-    if (isDraggingCounter && userCounterWidget) {
-        let newLeft = clientX - dragCounterOffsetX;
-        let newTop = clientY - dragCounterOffsetY;
-        const rect = userCounterWidget.getBoundingClientRect();
-        newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - rect.width));
-        newTop = Math.max(0, Math.min(newTop, window.innerHeight - rect.height));
-        userCounterWidget.style.left = `${newLeft}px`;
-        userCounterWidget.style.top = `${newTop}px`;
-        userCounterWidget.style.right = 'auto';
-    }
-    if (isDraggingChat && aiChatPopup) {
-        let newLeft = clientX - dragChatOffsetX;
-        let newTop = clientY - dragChatOffsetY;
-        const rect = aiChatPopup.getBoundingClientRect();
-        newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - rect.width));
-        newTop = Math.max(0, Math.min(newTop, window.innerHeight - rect.height));
-        aiChatPopup.style.left = `${newLeft}px`;
-        aiChatPopup.style.top = `${newTop}px`;
-        aiChatPopup.style.right = 'auto';
-    }
-}
-
-// Funkcija za prekid pomicanja
-function handleEnd() {
-    if (isDraggingCounter) {
-        isDraggingCounter = false;
-        if(userCounterWidget) userCounterWidget.classList.remove('dragging');
-    }
-    if (isDraggingChat) {
-        isDraggingChat = false;
-        if(aiChatPopup) aiChatPopup.classList.remove('dragging');
-    }
-}
-
-// Listeneri za pomicanje (miš i dodir)
-document.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
-document.addEventListener('touchmove', (e) => {
-    if (e.touches.length > 0) {
-        handleMove(e.touches[0].clientX, e.touches[0].clientY);
-    }
-}, { passive: false });
-
-// Listeneri za prekid (miš i dodir)
-document.addEventListener('mouseup', handleEnd);
-document.addEventListener('touchend', handleEnd);
-
-            document.addEventListener('click', (event) => {
-                const isClickInsideLangDesktop = desktopLangDropdown?.contains(event.target); const isClickInsideLangMobile = mobileLangDropdown?.contains(event.target); const isClickOnLangDesktopTrigger = desktopLangTrigger?.contains(event.target); const isClickOnLangMobileTrigger = mobileLangTrigger?.contains(event.target); const isClickInsideAIChat = aiChatPopup?.contains(event.target); const isClickOnAIIcon = aiChatIcon?.contains(event.target);
-                if (!isClickInsideLangDesktop && !isClickInsideLangMobile && !isClickOnLangDesktopTrigger && !isClickOnLangMobileTrigger) { closeAllLanguageDropdowns(); }
-                if (aiChatPopup?.classList.contains('active') && !isClickInsideAIChat && !isClickOnAIIcon) { aiChatPopup.classList.remove('active'); if (aiChatIcon) aiChatIcon.style.display = 'flex'; if (body) body.classList.remove('overflow-hidden'); }
-        });
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape') {
-                    if (hamburger?.classList.contains('active')) { hamburger.classList.remove('active'); navMenu.classList.remove('active'); body?.classList.remove('overflow-hidden'); }
-                    closeAllLanguageDropdowns();
-                    if (aiChatPopup?.classList.contains('active')) { aiChatPopup.classList.remove('active'); if (aiChatIcon) aiChatIcon.style.display = 'flex'; if (body) body.classList.remove('overflow-hidden'); }
-                    closeAllPopups();
+            // Postojeća funkcija za pomicanje (draggable)
+            userCounterHeader.addEventListener('mousedown', (e) => {
+                if (e.target === userCounterHeader || (userCounterHeader.contains(e.target) && !e.target.closest('button'))) {
+                    isDraggingCounter = true;
+                    userCounterWidget.classList.add('dragging');
+                    dragCounterOffsetX = e.clientX - userCounterWidget.offsetLeft;
+                    dragCounterOffsetY = e.clientY - userCounterWidget.offsetTop;
+                    e.preventDefault();
                 }
+            });
+            document.addEventListener('mousemove', (e) => {
+                if (!isDraggingCounter) return;
+                let newLeft = e.clientX - dragCounterOffsetX;
+                let newTop = e.clientY - dragCounterOffsetY;
+                const widgetRect = userCounterWidget.getBoundingClientRect();
+                const maxX = window.innerWidth - widgetRect.width;
+                const maxY = window.innerHeight - widgetRect.height;
+                newLeft = Math.max(0, Math.min(newLeft, maxX));
+                newTop = Math.max(0, Math.min(newTop, maxY));
+                userCounterWidget.style.left = `${newLeft}px`;
+                userCounterWidget.style.top = `${newTop}px`;
+                userCounterWidget.style.right = 'auto';
+            });
+            document.addEventListener('mouseup', () => {
+                if (isDraggingCounter) {
+                    isDraggingCounter = false;
+                    userCounterWidget.classList.remove('dragging');
+                }
+            });
+
+            // Postojeća funkcija za simulaciju novih korisnika
+            let currentUsers = parseInt(userCounterNumberEl?.textContent?.replace(/,/g, '') || '12345');
+            function simulateNewUser() {
+                if (userCounterWidget.classList.contains('hidden') || !userCounterList || !userCounterNumberEl) {
+                    setTimeout(simulateNewUser, 20000 + Math.random() * 15000);
+                    return;
+                }
+                const countries = [{ code: 'hr', name: 'Croatia' }, { code: 'rs', name: 'Serbia' }, { code: 'ba', name: 'Bosnia' }, { code: 'si', name: 'Slovenia' }, { code: 'de', name: 'Germany' }, { code: 'at', name: 'Austria' }, { code: 'it', name: 'Italy' }, { code: 'hu', name: 'Hungary' }, { code: 'cz', name: 'Czech Republic' }, { code: 'sk', name: 'Slovakia' }];
+                const firstNames = ['Ivan', 'Marko', 'Ana', 'Petra', 'Nikola', 'Luka', 'Maja', 'Sara', 'Josip', 'Tomislav', 'Milan', 'Stefan', 'Amina', 'Jan', 'Matej', 'Zoran', 'Goran'];
+                const lastNames = ['Horvat', 'Novak', 'Kovačević', 'Petrović', 'Jurić', 'Marić', 'Pavlović', 'Knežević', 'Babić', 'Vuković', 'Marković', 'Popović'];
+                const randomCountry = countries[Math.floor(Math.random() * countries.length)];
+                const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+                const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+                const username = `${randomFirstName}_${randomLastName.substring(0, 3)}`.toLowerCase();
+                const placeholder = userCounterList.querySelector('.user-counter-placeholder');
+                if (placeholder) placeholder.remove();
+                const newUserItem = document.createElement('div');
+                newUserItem.className = 'user-counter-item';
+                newUserItem.innerHTML = `<img src="https://flagcdn.com/w40/${randomCountry.code}.png" alt="${randomCountry.name}" class="user-counter-flag"><div class="user-counter-name">${username}</div><div class="user-counter-time">upravo sada</div>`;
+                userCounterList.insertBefore(newUserItem, userCounterList.firstChild);
+                const times = userCounterList.querySelectorAll('.user-counter-time');
+                times.forEach((time, index) => {
+                    if (index > 0) {
+                        if (time.textContent === 'upravo sada') {
+                            time.textContent = 'prije 1 min';
+                        } else if (time.textContent.includes('min')) {
+                            const minutes = parseInt(time.textContent.match(/\d+/)?.[0] || '0');
+                            if (minutes < 59) {
+                                time.textContent = `prije ${minutes + 1} min`;
+                            }
+                        }
+                    }
+                });
+                while (userCounterList.children.length > 6) {
+                    userCounterList.removeChild(userCounterList.lastChild);
+                }
+                currentUsers++;
+                userCounterNumberEl.textContent = currentUsers.toLocaleString();
+                setTimeout(simulateNewUser, 10000 + Math.random() * 25000);
+            }
+            setTimeout(simulateNewUser, 5000);
+        }
+
+        // Pomicanje chata i countera (touch i mouse)
+        const aiChatHeader = document.querySelector('.ai-chat-popup-header');
+        let isDraggingChat = false, dragChatOffsetX = 0, dragChatOffsetY = 0;
+
+        if (userCounterHeader && userCounterWidget) {
+            // Pomicanje za brojač (miš)
+            userCounterHeader.addEventListener('mousedown', (e) => {
+                if (e.target === userCounterHeader || (userCounterHeader.contains(e.target) && !e.target.closest('button'))) {
+                    isDraggingCounter = true; userCounterWidget.classList.add('dragging');
+                    dragCounterOffsetX = e.clientX - userCounterWidget.offsetLeft;
+                    dragCounterOffsetY = e.clientY - userCounterWidget.offsetTop;
+                    e.preventDefault();
+                }
+            });
+
+            // NOVO: Pomicanje za brojač (dodir)
+            userCounterHeader.addEventListener('touchstart', (e) => {
+                if (e.target === userCounterHeader || (userCounterHeader.contains(e.target) && !e.target.closest('button'))) {
+                    isDraggingCounter = true; userCounterWidget.classList.add('dragging');
+                    dragCounterOffsetX = e.touches[0].clientX - userCounterWidget.offsetLeft;
+                    dragCounterOffsetY = e.touches[0].clientY - userCounterWidget.offsetTop;
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        }
+
+        // Funkcija za pomicanje koja radi i za miš i za dodir
+        function handleMove(clientX, clientY) {
+            if (isDraggingCounter && userCounterWidget) {
+                let newLeft = clientX - dragCounterOffsetX;
+                let newTop = clientY - dragCounterOffsetY;
+                const rect = userCounterWidget.getBoundingClientRect();
+                newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - rect.width));
+                newTop = Math.max(0, Math.min(newTop, window.innerHeight - rect.height));
+                userCounterWidget.style.left = `${newLeft}px`;
+                userCounterWidget.style.top = `${newTop}px`;
+                userCounterWidget.style.right = 'auto';
+            }
+            if (isDraggingChat && aiChatPopup) {
+                let newLeft = clientX - dragChatOffsetX;
+                let newTop = clientY - dragChatOffsetY;
+                const rect = aiChatPopup.getBoundingClientRect();
+                newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - rect.width));
+                newTop = Math.max(0, Math.min(newTop, window.innerHeight - rect.height));
+                aiChatPopup.style.left = `${newLeft}px`;
+                aiChatPopup.style.top = `${newTop}px`;
+                aiChatPopup.style.right = 'auto';
+            }
+        }
+
+        // Funkcija za prekid pomicanja
+        function handleEnd() {
+            if (isDraggingCounter) {
+                isDraggingCounter = false;
+                if (userCounterWidget) userCounterWidget.classList.remove('dragging');
+            }
+            if (isDraggingChat) {
+                isDraggingChat = false;
+                if (aiChatPopup) aiChatPopup.classList.remove('dragging');
+            }
+        }
+
+        // Listeneri za pomicanje (miš i dodir)
+        document.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+        document.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                handleMove(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: false });
+
+        // Listeneri za prekid (miš i dodir)
+        document.addEventListener('mouseup', handleEnd);
+        document.addEventListener('touchend', handleEnd);
+
+        document.addEventListener('click', (event) => {
+            const isClickInsideLangDesktop = desktopLangDropdown?.contains(event.target); const isClickInsideLangMobile = mobileLangDropdown?.contains(event.target); const isClickOnLangDesktopTrigger = desktopLangTrigger?.contains(event.target); const isClickOnLangMobileTrigger = mobileLangTrigger?.contains(event.target); const isClickInsideAIChat = aiChatPopup?.contains(event.target); const isClickOnAIIcon = aiChatIcon?.contains(event.target);
+            if (!isClickInsideLangDesktop && !isClickInsideLangMobile && !isClickOnLangDesktopTrigger && !isClickOnLangMobileTrigger) { closeAllLanguageDropdowns(); }
+            if (aiChatPopup?.classList.contains('active') && !isClickInsideAIChat && !isClickOnAIIcon) { aiChatPopup.classList.remove('active'); if (aiChatIcon) aiChatIcon.style.display = 'flex'; if (body) body.classList.remove('overflow-hidden'); }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                if (hamburger?.classList.contains('active')) { hamburger.classList.remove('active'); navMenu.classList.remove('active'); body?.classList.remove('overflow-hidden'); }
+                closeAllLanguageDropdowns();
+                if (aiChatPopup?.classList.contains('active')) { aiChatPopup.classList.remove('active'); if (aiChatIcon) aiChatIcon.style.display = 'flex'; if (body) body.classList.remove('overflow-hidden'); }
+                closeAllPopups();
+            }
         });
 
         initializeGsapAnimations();
+        
         // === VIDEO SLAJDER LOGIKA ===
         const slides = document.getElementById('videoSlides');
         const dots = document.querySelectorAll('.video-dot');
         const prevBtn = document.getElementById('prevVideo');
         const nextBtn = document.getElementById('nextVideo');
-        
+
         let currentVideoIdx = 0;
         const totalVideos = dots.length;
 
@@ -3463,7 +2963,7 @@ document.addEventListener('touchend', handleEnd);
             function updateVideoSlider(index) {
                 // Pomakni slides kontejner
                 slides.style.transform = `translateX(-${index * 100}%)`;
-                
+
                 // Ažuriraj točkice (indikatore)
                 dots.forEach((dot, i) => {
                     dot.style.opacity = i === index ? '1' : '0.5';
@@ -3491,26 +2991,19 @@ document.addEventListener('touchend', handleEnd);
                 dot.addEventListener('click', () => updateVideoSlider(i));
             });
         }
-        // === KRAJ VIDEO SLAJDER LOGIKE ===
+        
         console.log("Sve JS skripte unutar DOMContentLoaded su postavljene.");
-
-        const referrerYesRadio = document.getElementById('referrer-yes');
-        const referrerNoRadio = document.getElementById('referrer-no');
-        const referrerInputContainer = document.getElementById('referrer-input-container');
-        const defaultReferrerDisplay = document.getElementById('default-referrer-display');
-        const defaultReferrerNameSpan = document.getElementById('default-referrer-name');
-        const referrerNameEmailInput = document.getElementById('referrer-name-email');
 
         const toggleReferrerInputVisibility = () => {
             if (referrerYesRadio && referrerNoRadio && referrerInputContainer && defaultReferrerDisplay && referrerNameEmailInput) {
                 if (referrerYesRadio.checked) {
                     referrerInputContainer.classList.remove('hidden');
                     defaultReferrerDisplay.classList.add('hidden');
-                    referrerNameEmailInput.focus(); 
+                    referrerNameEmailInput.focus();
                 } else {
                     referrerInputContainer.classList.add('hidden');
                     defaultReferrerDisplay.classList.remove('hidden');
-                    referrerNameEmailInput.value = ''; 
+                    referrerNameEmailInput.value = '';
                 }
             }
         };
@@ -3522,20 +3015,20 @@ document.addEventListener('touchend', handleEnd);
             referrerNoRadio.addEventListener('change', toggleReferrerInputVisibility);
         }
 
-            const initializeReferrerFields = () => {
-                if (referrerYesRadio && referrerNoRadio && referrerInputContainer && defaultReferrerDisplay && referrerNameEmailInput) {
-                    if (referrerYesRadio.checked) {
-                        referrerInputContainer.classList.remove('hidden');
-                        defaultReferrerDisplay.classList.add('hidden');
-                    } else {
-                        referrerInputContainer.classList.add('hidden');
-                        defaultReferrerDisplay.classList.remove('hidden');
-                    }
+        const initializeReferrerFields = () => {
+            if (referrerYesRadio && referrerNoRadio && referrerInputContainer && defaultReferrerDisplay && referrerNameEmailInput) {
+                if (referrerYesRadio.checked) {
+                    referrerInputContainer.classList.remove('hidden');
+                    defaultReferrerDisplay.classList.add('hidden');
+                } else {
+                    referrerInputContainer.classList.add('hidden');
+                    defaultReferrerDisplay.classList.remove('hidden');
                 }
-            };
+            }
+        };
         initializeReferrerFields();
     });
-    
+
 </script>
   
 <script>
