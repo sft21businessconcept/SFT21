@@ -47,7 +47,7 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Arial', sans-serif;
             color: var(--text-color);
             background-color: var(--background-dark);
             overflow-x: hidden;
@@ -102,6 +102,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            font-family: 'Arial', sans-serif; 
         }
 
         .content-box-close {
@@ -110,11 +111,6 @@
             background: none; border: none; padding: 0; line-height: 1; z-index: 10;
         }
         .content-box-close:hover { color: white; }
-
-        .content-buttons {
-            display: flex; flex-direction: column; gap: 1rem;
-            margin-top: 2rem; align-items: center; width: 100%;
-        }
 
         .content-btn {
             background-color: var(--primary-color); color: white; padding: 0.8rem 1.8rem;
@@ -146,15 +142,61 @@
         }
 
         .page-video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
 
-        /* Video Player Overlay (Popup) */
+        /* Vertical List Styles */
+        .info-vertical-list {
+            display: flex; flex-direction: column; gap: 2rem;
+            margin-top: 2rem; width: 100%;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(171, 71, 188, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-align: left; 
+        }
+
+        .info-card:hover {
+            border-color: var(--fluorescent-green);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .info-card h3 {
+            color: var(--fluorescent-green);
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: bold;
+        }
+
+        .info-card h3 i {
+            font-size: 1.6rem; 
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .info-card p {
+            font-size: 1.05rem; 
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            color: #e5e7eb;
+        }
+
+        .card-footer-btns {
+            display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; 
+        }
+
+        .card-btn {
+            max-width: 350px !important; flex: 1 1 300px; 
+        }
+
+        /* Overlay Styles */
         .video-player-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.9); z-index: 2000;
@@ -167,45 +209,32 @@
             box-shadow: 0 0 30px rgba(128, 255, 0, 0.5);
         }
         .video-player-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        
-        /* Fixed Close Button position */
         .video-player-close-button {
-            position: absolute; 
-            top: 15px; 
-            right: 15px; 
-            transform: none; /* Applied fix */
+            position: absolute; top: 15px; right: 15px;
             width: 44px; height: 44px; font-size: 1.8rem; color: white; background: rgba(0,0,0,0.7);
-            border: 2px solid white; border-radius: 50%; cursor: pointer; transition: all 0.3s ease;
-            z-index: 2001; display: flex; align-items: center; justify-content: center; line-height: 1;
-        }
-        .video-player-close-button:hover {
-            color: var(--fluorescent-green); border-color: var(--fluorescent-green);
-            scale: 1.1;
+            border: 2px solid white; border-radius: 50%; cursor: pointer; z-index: 2001;
+            display: flex; align-items: center; justify-content: center;
         }
 
-        /* Light mode styles */
+        /* Light mode adjustments */
         html.light-mode body { background-color: #f8fafc !important; color: #4a0e6c !important; }
         html.light-mode #network-canvas { background-color: transparent !important; }
-        html.light-mode nav.fixed { background-color: rgba(255, 255, 255, 0.9) !important; border-bottom: 1px solid var(--primary-color) !important; }
-        html.light-mode .content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
-        html.light-mode .content-box-close { color: #64748b !important; }
+        html.light-mode .content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; }
+        html.light-mode .info-card { background: rgba(106, 27, 154, 0.05); border-color: rgba(106, 27, 154, 0.2); }
+        html.light-mode .info-card p { color: #1a1a1a; }
+        html.light-mode .info-card h3 { color: var(--primary-color); }
         html.light-mode .header-title-text { color: var(--primary-color) !important; }
-        html.light-mode .logo-nav .text-white { color: var(--primary-color) !important; }
-        html.light-mode .logo-nav .text-logo-orange { color: var(--primary-color) !important; }
-        html.light-mode .page-video-wrapper { border-color: var(--primary-color) !important; }
     </style>
 </head>
 
 <body class="bg-gray-900">
     <div class="custom-cursor"></div>
-    
     <canvas id="network-canvas"></canvas>
 
-    <!-- Navigation -->
     <nav class="fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="header-container flex items-center relative h-12">
-                <a href="index_en.html" title="Return to homepage" class="flex items-center">
+                <a href="index_en.html" title="Return to home" class="flex items-center">
                     <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
                     <div class="flex flex-col logo-nav">
                         <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
@@ -221,10 +250,17 @@
     <main>
         <div class="content-box-wrapper">
             <div class="content-box">
-                <!-- Close button -->
-                <button class="content-box-close" onclick="window.location.href='index_en.html';" title="Return to homepage">×</button>
+                <button class="content-box-close" onclick="window.location.href='index_en.html';" title="Return to home">×</button>
                 
-                <!-- MAIN VIDEO -->
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h2 style="color: white; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem;">
+                        More than 3 years have passed. It's time for a new chapter.
+                    </h2>
+                    <p style="color: var(--fluorescent-green); font-size: 1.2rem; opacity: 0.9;">
+                        Your position is saved, but we need your decision.
+                    </p>
+                </div>
+
                 <div class="page-video-wrapper">
                     <iframe 
                         src="https://www.youtube-nocookie.com/embed/869JpBb5KVU" 
@@ -234,52 +270,77 @@
                     </iframe>
                 </div>
 
-                <!-- Buttons -->
-                <div class="content-buttons" id="odlukaGumbi">
+                <h2 class="text-center mt-10 mb-6 font-bold uppercase tracking-widest" style="color: white; font-size: 1.2rem; border-bottom: 1px solid rgba(128, 255, 0, 0.3); padding-bottom: 10px; display: inline-block; width: 100%;">
+                    Where have we been and where are we going?
+                </h2>
+
+                <div class="info-vertical-list">
                     
-                    <!-- 1. Presentation Popup Button -->
-                    <button type="button" id="openVideoPlayerButton" class="content-btn">
-                        <div>
-                            <span class="btn-main-text">SFT21 Business Concept</span>
-                            <span class="btn-sub-text">(project presentation)</span>
+                    <!-- 1. TRANSPARENCY -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-shield-halved"></i> TRANSPARENCY ABOVE ALL</h3>
+                        <p>
+                            We are aware of the slanders, deceptions, and false rumors that have circulated. Instead of hiding, we have decided to document everything publicly. 
+                            You can read all the details about the past period and the challenges on our transparency portal "The Truth about SFT21 company" (by clicking the button below).
+                        </p>
+                        <div class="card-footer-btns">
+                            <a href="https://scam.sft21.com/en/index.html" target="_blank" class="content-btn card-btn">
+                                THE TRUTH ABOUT SFT21
+                            </a>
                         </div>
-                    </button>
+                    </div>
 
-                    <!-- 2. The Truth about SFT21 -->
-                    <a href="https://scam.sft21.com/en/index.html" target="_blank" class="content-btn">
-                        The Truth about SFT21
-                    </a>
-
-                    <!-- 3. YouTube Channel -->
-                    <a href="https://www.youtube.com/@SFT21_SFteam" target="_blank" class="content-btn">
-                        <i class="fab fa-youtube mr-2"></i> YouTube channel @SFT21_SFteam
-                    </a>
-
-                    <!-- 4. MAKE A DECISION -->
-                    <a href="izbor_en.html" class="content-btn" style="margin-top: 10px; background-color: var(--fluorescent-green); color: #0e076a;">
-                         <div>
-                            <span class="btn-main-text">MAKE A DECISION</span>
+                    <!-- 2. UPGRADED SYSTEM -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-rocket"></i> UPGRADED BUSINESS SYSTEM</h3>
+                        <p>
+                            In order to make your own decision, whatever it may be, we would like to ask you first to set aside a little of your free time to look at and study the official presentation of the "SFT21 Business Concept" project (by clicking the button below) without prejudice. We are convinced that you will be more than satisfied with the upgrades and benefits for members that we have introduced in the new business system.
+                        </p>
+                        <p>
+                            In addition to the presentation, by visiting the company YouTube channel "@SFT21_SFteam", you can watch several videos in which we speak argumentatively and transparently about our project as the most powerful business concept on the internet.
+                        </p>
+                        <div class="card-footer-btns">
+                            <button type="button" id="openVideoPlayerButton" class="content-btn card-btn">
+                                <div>
+                                    <span class="btn-main-text">SFT21 Business Concept</span>
+                                    <span class="btn-sub-text">(project presentation)</span>
+                                </div>
+                            </button>
+                            <a href="https://www.youtube.com/@SFT21_SFteam" target="_blank" class="content-btn card-btn">
+                                <i class="fab fa-youtube mr-2"></i> YouTube channel @SFT21_SFteam
+                            </a>
                         </div>
-                    </a>
+                    </div>
+
+                    <!-- 3. STATUS & PRIVACY -->
+                    <div class="info-card" style="border-left: 4px solid var(--fluorescent-green);">
+                        <h3><i class="fas fa-user-check"></i> YOUR STATUS IS SECURE</h3>
+                        <p>
+                            All data from the database (your positions, your payments, network...) are saved. We continue exactly where we left off, but with an improved business model.
+                        </p>
+                        
+                        <h3><i class="fas fa-user-lock"></i> WE RESPECT YOUR PRIVACY (GDPR)</h3>
+                        <p>
+                            This is an "opt-in" campaign. If you do not confirm your interest, or do not make a decision on the continuation of business, we will consider that you have opted out and will permanently remove your data from active communication. Accordingly, we ask you to click the button below to make a decision on business continuation.
+                        </p>
+                        
+                        <div class="card-footer-btns" style="margin-top: 2rem;">
+                            <a href="izbor_en.html" class="content-btn" style="background-color: var(--fluorescent-green); color: #0d0118; font-weight: 900; width: 100%; max-width: 500px; font-size: 1.1rem;">
+                                MAKE A DECISION
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Overlay for Presentation Popup -->
     <div id="videoPlayerOverlay" class="video-player-overlay">
         <div class="video-player-container">
-            <!-- Fixed ID and permissions -->
-            <iframe id="youtubePlayer"
-                    src="" 
-                    title="SFT21 Presentation" 
-                    frameborder="0"
-                    allow="autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-            </iframe>
+            <iframe id="youtubePlayer" src="" title="SFT21 Presentation" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <button id="closeVideoPlayerButton" class="video-player-close-button" title="Close video">×</button>
+        <button id="closeVideoPlayerButton" class="video-player-close-button">×</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -288,150 +349,96 @@
             const body = document.body;
             const logoImage = document.getElementById('site-logo');
 
-            // --- 1. Light/Dark Mode Logic ---
             const applyTheme = () => {
                 const isLight = document.documentElement.classList.contains('light-mode');
-                if (logoImage) {
-                    logoImage.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
-                }
-                if (window.setAnimationTheme) {
-                    window.setAnimationTheme(isLight ? 'light' : 'dark');
-                }
+                if (logoImage) logoImage.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
+                if (window.setAnimationTheme) window.setAnimationTheme(isLight ? 'light' : 'dark');
             };
-            
-            window.addEventListener('pageshow', function(event) {
-                if (event.persisted) applyTheme();
-            });
+            window.addEventListener('pageshow', (e) => { if (e.persisted) applyTheme(); });
             applyTheme();
 
-            // --- 2. Custom Cursor ---
+            // Custom Cursor
             const cursor = document.querySelector('.custom-cursor');
-            if (cursor && body) {
-                let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-                const speed = 0.1;
-                const updateCursorPosition = () => {
-                    cursorX += (mouseX - cursorX) * speed;
-                    cursorY += (mouseY - cursorY) * speed;
-                    cursor.style.left = `${cursorX}px`;
-                    cursor.style.top = `${cursorY}px`;
-                    requestAnimationFrame(updateCursorPosition);
-                };
-                requestAnimationFrame(updateCursorPosition);
-                window.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX; mouseY = e.clientY;
-                    if (cursor.style.opacity === '0') cursor.style.opacity = '1';
-                });
-                document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
-                document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
+            let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+            const updateCursor = () => {
+                cursorX += (mouseX - cursorX) * 0.1;
+                cursorY += (mouseY - cursorY) * 0.1;
+                cursor.style.left = `${cursorX}px`;
+                cursor.style.top = `${cursorY}px`;
+                requestAnimationFrame(updateCursor);
+            };
+            requestAnimationFrame(updateCursor);
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX; mouseY = e.clientY;
+                cursor.style.opacity = '1';
+            });
 
-                document.querySelectorAll('a, button, iframe').forEach(el => {
-                    el.addEventListener('mouseenter', () => gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }));
-                    el.addEventListener('mouseleave', () => gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }));
-                });
-            }
-
-            // --- 3. GSAP Animations ---
-            if (typeof gsap !== 'undefined') {
-                gsap.from('.content-box', { duration: 1, opacity: 0, y: 30, ease: "power3.out", delay: 0.2 });
-            }
-
-            // --- 4. YouTube Video Player Popup Logic ---
+            // Video Popup
             const openBtn = document.getElementById('openVideoPlayerButton');
             const overlay = document.getElementById('videoPlayerOverlay');
-            const closeBtn = document.getElementById('closeVideoPlayerButton');
             const ytPlayer = document.getElementById('youtubePlayer');
-            const videoId = "869JpBb5KVU"; 
+            const closeBtn = document.getElementById('closeVideoPlayerButton');
 
-            if (openBtn && overlay && closeBtn && ytPlayer) {
-                openBtn.onclick = (e) => {
-                    e.preventDefault();
-                    // Applied fix: mute=1 for autoplay success
-                    ytPlayer.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0&enablejsapi=1`;
-                    overlay.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                };
+            openBtn.onclick = () => {
+                ytPlayer.src = "https://www.youtube-nocookie.com/embed/869JpBb5KVU?autoplay=1&mute=1&rel=0";
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
 
-                const closeVideo = () => {
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                    ytPlayer.src = ""; 
-                };
+            const closeVideo = () => {
+                overlay.classList.remove('active');
+                ytPlayer.src = "";
+                document.body.style.overflow = '';
+            };
+            closeBtn.onclick = closeVideo;
+            overlay.onclick = (e) => { if(e.target === overlay) closeVideo(); };
+        });
 
-                closeBtn.onclick = closeVideo;
-                overlay.onclick = (event) => {
-                    if (event.target === overlay) closeVideo();
-                };
-            }
-        }); 
-
-        // --- 5. Background Animation ---
+        // Network Animation
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('network-canvas');
-            if (!canvas) return;
             const ctx = canvas.getContext('2d');
             let particles = [];
-            
-            const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 100, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
-            const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 100, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
-            
-            let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+            const dark = { p: '128, 255, 0', l: '170, 0, 255' };
+            const light = { p: '106, 27, 154', l: '171, 71, 188' };
+            let opt = document.documentElement.classList.contains('light-mode') ? light : dark;
 
-            const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
-            window.addEventListener('resize', resizeCanvas);
+            const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; init(); };
+            window.addEventListener('resize', resize);
 
             class Particle {
                 constructor() {
                     this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-                    this.radius = currentOptions.defaultRadius;
-                    this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
-                    this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
-                }
-                draw() {
-                    ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, 0.85)`; ctx.fill();
+                    this.vx = (Math.random() - 0.5) * 0.3; this.vy = (Math.random() - 0.5) * 0.3;
                 }
                 update() {
                     this.x += this.vx; this.y += this.vy;
-                    if (this.x > canvas.width || this.x < 0) this.vx = -this.vx;
-                    if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
+                    if (this.x > canvas.width || this.x < 0) this.vx *= -1;
+                    if (this.y > canvas.height || this.y < 0) this.vy *= -1;
+                }
+                draw() {
+                    ctx.beginPath(); ctx.arc(this.x, this.y, 1.3, 0, Math.PI*2);
+                    ctx.fillStyle = `rgba(${opt.p}, 0.8)`; ctx.fill();
                 }
             }
 
-            const initParticles = () => {
-                particles = [];
-                for (let i = 0; i < currentOptions.particleAmount; i++) particles.push(new Particle());
-            };
-
-            const drawLines = () => {
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const dist = Math.sqrt(Math.pow(particles[i].x - particles[j].x, 2) + Math.pow(particles[i].y - particles[j].y, 2));
-                        if (dist < currentOptions.linkRadius) {
-                            ctx.beginPath();
-                            ctx.strokeStyle = `rgba(${currentOptions.lineColorRGB}, ${1 - dist / currentOptions.linkRadius})`;
-                            ctx.lineWidth = currentOptions.lineWidth;
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            };
-
+            const init = () => { particles = Array.from({length: 80}, () => new Particle()); };
             const animate = () => {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => { p.update(); p.draw(); });
-                drawLines();
+                ctx.clearRect(0,0,canvas.width, canvas.height);
+                particles.forEach(p => { 
+                    p.update(); p.draw();
+                    particles.forEach(p2 => {
+                        const d = Math.hypot(p.x - p2.x, p.y - p2.y);
+                        if(d < 150) {
+                            ctx.beginPath(); ctx.strokeStyle = `rgba(${opt.l}, ${1 - d/150})`;
+                            ctx.lineWidth = 0.4; ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+                        }
+                    });
+                });
                 requestAnimationFrame(animate);
             };
-
-            window.setAnimationTheme = (theme) => {
-                currentOptions = (theme === 'light') ? lightOptions : darkOptions;
-                initParticles();
-            };
-            
-            resizeCanvas();
-            animate();
+            window.setAnimationTheme = (t) => { opt = (t==='light') ? light : dark; };
+            resize(); animate();
         });
     </script>
 </body>
