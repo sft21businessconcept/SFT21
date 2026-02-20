@@ -270,24 +270,24 @@
     <!-- Overlay za Video Prezentaciju (Popup) -->
     <div id="videoPlayerOverlay" class="video-player-overlay">
         <div class="video-player-container">
-            <!-- DODALI SMO id="youtubePlayer" i ISPRAZNILI src -->
             <iframe id="youtubePlayer"
                     src="" 
                     title="SFT21 Presentation" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin">
             </iframe>
         </div>
         <button id="closeVideoPlayerButton" class="video-player-close-button" title="Close video">×</button>
     </div>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const body = document.body;
             const logoImage = document.getElementById('site-logo');
 
-            // --- Light/Dark Mode Logic ---
+            // --- 1. Light/Dark Mode Logic ---
             const applyTheme = () => {
                 const isLight = document.documentElement.classList.contains('light-mode');
                 if (logoImage) {
@@ -299,13 +299,11 @@
             };
             
             window.addEventListener('pageshow', function(event) {
-                if (event.persisted) {
-                    applyTheme();
-                }
+                if (event.persisted) applyTheme();
             });
             applyTheme();
 
-            // --- Custom Cursor ---
+            // --- 2. Custom Cursor ---
             const cursor = document.querySelector('.custom-cursor');
             if (cursor && body) {
                 let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
@@ -313,71 +311,65 @@
                 const updateCursorPosition = () => {
                     cursorX += (mouseX - cursorX) * speed;
                     cursorY += (mouseY - cursorY) * speed;
-                    if (cursor) {
-                        cursor.style.left = `${cursorX}px`;
-                        cursor.style.top = `${cursorY}px`;
-                    }
+                    cursor.style.left = `${cursorX}px`;
+                    cursor.style.top = `${cursorY}px`;
                     requestAnimationFrame(updateCursorPosition);
                 };
                 requestAnimationFrame(updateCursorPosition);
                 window.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    if (cursor && cursor.style.opacity === '0') {
-                        cursor.style.opacity = '1';
-                    }
+                    mouseX = e.clientX; mouseY = e.clientY;
+                    if (cursor.style.opacity === '0') cursor.style.opacity = '1';
                 });
-                document.addEventListener('mouseleave', () => { if (cursor) cursor.style.opacity = '0'; });
-                document.addEventListener('mouseenter', () => { if (cursor) cursor.style.opacity = '1'; });
+                document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
+                document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
 
                 document.querySelectorAll('a, button, iframe').forEach(el => {
-                    el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, width: "30px", height: "30px", backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
-                    el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, width: "20px", height: "20px", backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
+                    el.addEventListener('mouseenter', () => gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }));
+                    el.addEventListener('mouseleave', () => gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }));
                 });
             }
 
-            // --- GSAP Animations ---
+            // --- 3. GSAP Animations ---
             if (typeof gsap !== 'undefined') {
                 gsap.from('.content-box', { duration: 1, opacity: 0, y: 30, ease: "power3.out", delay: 0.2 });
             }
 
-            // === YouTube Video Player Popup Logic (Prezentacija) ===
-            const openVideoPlayerButton = document.getElementById('openVideoPlayerButton');
-            const videoPlayerOverlay = document.getElementById('videoPlayerOverlay');
-            const closeVideoPlayerButton = document.getElementById('closeVideoPlayerButton');
-            const youtubePlayer = document.getElementById('youtubePlayer');
-            const youtubeEmbedUrl = "https://www.youtube.com/embed/869JpBb5KVU";
+            // --- 4. YouTube Video Player Popup Logic ---
+            const openBtn = document.getElementById('openVideoPlayerButton');
+            const overlay = document.getElementById('videoPlayerOverlay');
+            const closeBtn = document.getElementById('closeVideoPlayerButton');
+            const ytPlayer = document.getElementById('youtubePlayer');
+            const videoId = "869JpBb5KVU"; 
 
-            if (openVideoPlayerButton && videoPlayerOverlay && closeVideoPlayerButton && youtubePlayer) {
-                const closeVideo = () => {
-                    videoPlayerOverlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                    youtubePlayer.src = "";
+            if (openBtn && overlay && closeBtn && ytPlayer) {
+                openBtn.onclick = (e) => {
+                    e.preventDefault();
+                    ytPlayer.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0`;
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                 };
-                
-                openVideoPlayerButton.addEventListener('click', () => {
-                    youtubePlayer.src = youtubeEmbedUrl + "&autoplay=1&rel=0";
-                    videoPlayerOverlay.classList.add('active');
-                    document.body.style.overflow = 'hidden'; 
-                });
 
-                closeVideoPlayerButton.addEventListener('click', closeVideo);
-                videoPlayerOverlay.addEventListener('click', (event) => {
-                    if (event.target === videoPlayerOverlay) closeVideo();
-                });
+                const closeVideo = () => {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                    ytPlayer.src = ""; 
+                };
+
+                closeBtn.onclick = closeVideo;
+                overlay.onclick = (event) => {
+                    if (event.target === overlay) closeVideo();
+                };
             }
-        });
+        }); // OVDJE ZAVRŠAVA GLAVNI DOMContentLoaded
 
-        // Background Animation Script (Network Particles)
+        // --- 5. Background Animation Script (Network Particles) ---
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('network-canvas');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             let particles = [];
             
-            // Postavke za DARK temu
             const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 100, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
-            // Postavke za LIGHT temu
             const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 100, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
             
             let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
@@ -405,9 +397,7 @@
 
             const initParticles = () => {
                 particles = [];
-                for (let i = 0; i < currentOptions.particleAmount; i++) {
-                    particles.push(new Particle());
-                }
+                for (let i = 0; i < currentOptions.particleAmount; i++) particles.push(new Particle());
             };
 
             const drawLines = () => {
@@ -442,6 +432,5 @@
             animate();
         });
     </script>
-</body>
-
+    </body>
 </html>
