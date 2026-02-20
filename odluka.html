@@ -273,13 +273,14 @@
             <iframe id="youtubePlayer"
                     src="" 
                     title="SFT21 Presentation" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen
-                    referrerpolicy="strict-origin-when-cross-origin">
+                    frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
             </iframe>
         </div>
         <button id="closeVideoPlayerButton" class="video-player-close-button" title="Close video">×</button>
     </div>
+
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
@@ -339,12 +340,19 @@
             const overlay = document.getElementById('videoPlayerOverlay');
             const closeBtn = document.getElementById('closeVideoPlayerButton');
             const ytPlayer = document.getElementById('youtubePlayer');
+            
+            // Koristimo ovaj format linka koji je najstabilniji
             const videoId = "869JpBb5KVU"; 
 
             if (openBtn && overlay && closeBtn && ytPlayer) {
                 openBtn.onclick = (e) => {
                     e.preventDefault();
-                    ytPlayer.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0`;
+                    
+                    // Dodajemo rel=0 (prikazuje samo tvoje videe na kraju) 
+                    // i enablejsapi=1 za bolju komunikaciju s preglednikom
+                    const finalUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0&enablejsapi=1`;
+                    
+                    ytPlayer.src = finalUrl;
                     overlay.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 };
