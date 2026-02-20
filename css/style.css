@@ -17,8 +17,8 @@
 }
 
 body {
-    font-family: 'Arial Narrow', 'Arial Narrow', Arial, sans-serif;
-    background-color: transparent; /* Postavite na prozirno */
+    font-family: Arial, Helvetica, sans-serif !important;
+    background-color: transparent; 
     color: var(--text-color);
     overflow-x: hidden;
 }
@@ -26,7 +26,7 @@ body {
 
 /* --- Headings --- */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'arial Narrow', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif; /* Changed font family for headings */
+    font-family: Arial, Helvetica, sans-serif !important;
     color: var(--fluorescent-green); 
 }
 
@@ -587,6 +587,7 @@ body.light-mode .custom-cursor {
     justify-content: space-between;
     align-items: center;
     border: 1px solid var(--fluorescent-green);
+    color: var(--fluorescent-green) !important; 
 }
 
 .accordion-header:hover {
@@ -699,7 +700,7 @@ body.overflow-hidden {
 }
 .ip-card-header h4 {
     color: #0e076a !important; 
-    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; 
+    font-family: Arial, Helvetica, sans-serif !important;
     font-size: 1.25rem;
     font-weight: 700;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3); 
@@ -859,7 +860,7 @@ body.overflow-hidden {
 
 .ip-wide-card-header .ip-wide-card-header-title { 
     color:#0e076a !important;
-    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; 
+    font-family: Arial, Helvetica, sans-serif !important;
     font-size: 1.5rem; 
     font-weight: 700; 
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
@@ -1405,10 +1406,22 @@ body.light-mode #startni-paketi h2 {
 
 body.light-mode .accordion-header {
     border-color: var(--fluorescent-purple);
+    color: var(--accent-color) !important;
+
 }
 
 body.light-mode .accordion-header span {
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
+}
+
+/* Light Mode: Strelica postaje tamno ljubičasta (umjesto zelene) */
+body.light-mode .accordion-header i {
+    color: var(--primary-color) !important;
+}
+
+/* Light Mode: Okvir harmonike (opcionalno, da sve bude u tonu) */
+body.light-mode .accordion-header {
+    border-color: var(--primary-color) !important;
 }
 
 body.light-mode #poslovni-koncept .icon-box {
