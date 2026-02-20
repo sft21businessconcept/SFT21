@@ -53,6 +53,7 @@
             overflow-x: hidden;
         }
 
+        /* Canvas background */
         #network-canvas { 
             position: fixed; 
             top: 0; 
@@ -133,7 +134,7 @@
 
         .page-video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; 
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
             width: 100%;
             overflow: hidden;
@@ -153,7 +154,7 @@
             border: 0;
         }
 
-        /* Overlay for Presentation Popup */
+        /* Video Player Overlay (Popup) */
         .video-player-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.9); z-index: 2000;
@@ -169,7 +170,10 @@
         
         /* Fixed Close Button position */
         .video-player-close-button {
-            position: absolute; top: 15px; right: 15px; transform: none;
+            position: absolute; 
+            top: 15px; 
+            right: 15px; 
+            transform: none; /* Applied fix */
             width: 44px; height: 44px; font-size: 1.8rem; color: white; background: rgba(0,0,0,0.7);
             border: 2px solid white; border-radius: 50%; cursor: pointer; transition: all 0.3s ease;
             z-index: 2001; display: flex; align-items: center; justify-content: center; line-height: 1;
@@ -179,7 +183,7 @@
             scale: 1.1;
         }
 
-        /* Light mode adjustments */
+        /* Light mode styles */
         html.light-mode body { background-color: #f8fafc !important; color: #4a0e6c !important; }
         html.light-mode #network-canvas { background-color: transparent !important; }
         html.light-mode nav.fixed { background-color: rgba(255, 255, 255, 0.9) !important; border-bottom: 1px solid var(--primary-color) !important; }
@@ -194,8 +198,10 @@
 
 <body class="bg-gray-900">
     <div class="custom-cursor"></div>
+    
     <canvas id="network-canvas"></canvas>
 
+    <!-- Navigation -->
     <nav class="fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="header-container flex items-center relative h-12">
@@ -215,21 +221,23 @@
     <main>
         <div class="content-box-wrapper">
             <div class="content-box">
+                <!-- Close button -->
                 <button class="content-box-close" onclick="window.location.href='index_en.html';" title="Return to homepage">×</button>
                 
-                <!-- Main Video -->
+                <!-- MAIN VIDEO -->
                 <div class="page-video-wrapper">
                     <iframe 
-                        src="https://www.youtube.com/embed/869JpBb5KVU" 
-                        title="Owners' Address" 
+                        src="https://www.youtube-nocookie.com/embed/869JpBb5KVU" 
+                        title="Owner's Address" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen>
                     </iframe>
                 </div>
 
-                <!-- Action Buttons -->
+                <!-- Buttons -->
                 <div class="content-buttons" id="odlukaGumbi">
                     
+                    <!-- 1. Presentation Popup Button -->
                     <button type="button" id="openVideoPlayerButton" class="content-btn">
                         <div>
                             <span class="btn-main-text">SFT21 Business Concept</span>
@@ -237,14 +245,17 @@
                         </div>
                     </button>
 
+                    <!-- 2. The Truth about SFT21 -->
                     <a href="https://scam.sft21.com/en/index.html" target="_blank" class="content-btn">
                         The Truth about SFT21
                     </a>
 
+                    <!-- 3. YouTube Channel -->
                     <a href="https://www.youtube.com/@SFT21_SFteam" target="_blank" class="content-btn">
                         <i class="fab fa-youtube mr-2"></i> YouTube channel @SFT21_SFteam
                     </a>
 
+                    <!-- 4. MAKE A DECISION -->
                     <a href="izbor_en.html" class="content-btn" style="margin-top: 10px; background-color: var(--fluorescent-green); color: #0e076a;">
                          <div>
                             <span class="btn-main-text">MAKE A DECISION</span>
@@ -256,20 +267,21 @@
         </div>
     </main>
 
-    <!-- Presentation Video Popup -->
+    <!-- Overlay for Presentation Popup -->
     <div id="videoPlayerOverlay" class="video-player-overlay">
         <div class="video-player-container">
+            <!-- Fixed ID and permissions -->
             <iframe id="youtubePlayer"
                     src="" 
                     title="SFT21 Presentation" 
                     frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allow="autoplay; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
             </iframe>
         </div>
         <button id="closeVideoPlayerButton" class="video-player-close-button" title="Close video">×</button>
     </div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -333,6 +345,7 @@
             if (openBtn && overlay && closeBtn && ytPlayer) {
                 openBtn.onclick = (e) => {
                     e.preventDefault();
+                    // Applied fix: mute=1 for autoplay success
                     ytPlayer.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0&enablejsapi=1`;
                     overlay.classList.add('active');
                     document.body.style.overflow = 'hidden';
@@ -349,9 +362,9 @@
                     if (event.target === overlay) closeVideo();
                 };
             }
-        });
+        }); 
 
-        // Background Animation Script (Network Particles)
+        // --- 5. Background Animation ---
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('network-canvas');
             if (!canvas) return;
