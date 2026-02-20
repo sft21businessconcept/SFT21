@@ -47,7 +47,7 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Arial', sans-serif;
             color: var(--text-color);
             background-color: var(--background-dark);
             overflow-x: hidden; /* Sprječava horizontalni scroll */
@@ -191,6 +191,77 @@
         html.light-mode .logo-nav .text-white { color: var(--primary-color) !important; }
         html.light-mode .logo-nav .text-logo-orange { color: var(--primary-color) !important; }
         html.light-mode .page-video-wrapper { border-color: var(--primary-color) !important; }
+        
+        .content-box { 
+            max-width: 800px; 
+            width: 90%; 
+            font-family: 'Arial', Arial, sans-serif; 
+        }
+
+        .info-vertical-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(171, 71, 188, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-align: left; 
+        }
+
+        .info-card:hover {
+            border-color: var(--fluorescent-green);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .info-card h3 {
+            color: var(--fluorescent-green);
+            font-family: 'Arial', Arial, sans-serif; 
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-card h3 i {
+            font-size: 1.6rem; 
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .info-card p {
+            font-size: 1.05rem; 
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            color: #e5e7eb;
+        }
+
+        .card-footer-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center; 
+
+        /* Prilagodba gumba */
+        .card-btn {
+            max-width: 350px !important;
+            flex: 1 1 300px; 
+        }
+
+        /* Light mode prilagodba */
+        html.light-mode .info-card {
+            background: rgba(106, 27, 154, 0.05);
+            border-color: rgba(106, 27, 154, 0.2);
+        }
+        html.light-mode .info-card p { color: #1a1a1a; }
+        html.light-mode .info-card h3 { color: var(--primary-color); }
     </style>
 </head>
 
@@ -221,10 +292,20 @@
     <main>
         <div class="content-box-wrapper">
             <div class="content-box">
-                <!-- Close button (x) -->
+                <!-- Close button -->
                 <button class="content-box-close" onclick="window.location.href='index.html';" title="Povratak na naslovnu">×</button>
                 
-                <!-- VIDEO PLAYER (Obraćanje vlasnika) -->
+                <!-- GORNJI TEKST -->
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h2 style="color: white; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem;">
+                        Prošlo je više od 3 godine. Vrijeme je za novo poglavlje.
+                    </h2>
+                    <p style="color: var(--fluorescent-green); font-size: 1.2rem; opacity: 0.9;">
+                        Vaša pozicija je sačuvana, ali trebamo Vašu odluku.
+                    </p>
+                </div>
+
+                <!-- VIDEO PLAYER -->
                 <div class="page-video-wrapper">
                     <iframe 
                         src="https://www.youtube-nocookie.com/embed/869JpBb5KVU" 
@@ -234,35 +315,70 @@
                     </iframe>
                 </div>
 
-                <!-- Gumbi -->
-                <div class="content-buttons" id="odlukaGumbi">
+                <!-- NASLOV SEKCIJE -->
+                <h2 class="text-center mt-10 mb-6 font-bold uppercase tracking-widest" style="font-family: 'Arial'; color: white; font-size: 1.2rem; border-bottom: 1px solid rgba(128, 255, 0, 0.3); padding-bottom: 10px; display: inline-block; width: 100%;">
+                    Gdje smo bili i kamo idemo?
+                </h2>
+
+                <!-- VERTIKALNA LISTA POLJA -->
+                <div class="info-vertical-list">
                     
-                    <!-- 1. SFT21 Business Concept (Prezentacija - otvara popup) -->
-                    <button type="button" id="openVideoPlayerButton" class="content-btn">
-                        <div>
-                            <span class="btn-main-text">SFT21 Business Concept</span>
-                            <span class="btn-sub-text">(prezentacija projekta)</span>
+                    <!-- 1. TRANSPARENTNOST -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-shield-halved"></i> TRANSPARENTNOST PRIJE SVEGA</h3>
+                        <p>
+                            Svjesni smo kleveata, obmana i lažnih glasina koje su kružile. Umjesto skrivanja, odlučili smo sve javno dokumentirati. 
+                            Sve detalje o proteklom razdoblju i izazovima možete pročitati na našem portalu za transparentnost "Istina o SFT21 kompaniji".
+                        </p>
+                        <div class="card-footer-btns">
+                            <a href="https://scam.sft21.com/hr/" target="_blank" class="content-btn card-btn">
+                                ISTINA O SFT21
+                            </a>
                         </div>
-                    </button>
+                    </div>
 
-                    <!-- 2. Istina o SFT21 -->
-                    <a href="https://scam.sft21.com/hr/" target="_blank" class="content-btn">
-                        Istina o SFT21
-                    </a>
-
-                    <!-- 3. YouTube kanal -->
-                    <a href="https://www.youtube.com/@SFT21_SFteam" target="_blank" class="content-btn">
-                        <i class="fab fa-youtube mr-2"></i> YouTube kanal @SFT21_SFteam
-                    </a>
-
-                    <!-- 4. DONESI ODLUKU -->
-                    <a href="izbor.html" class="content-btn" style="margin-top: 10px; background-color: var(--fluorescent-green); color: #0e076a;">
-                         <div>
-                            <span class="btn-main-text">DONESI ODLUKU</span>
+                    <!-- 2. NADOGRAĐENI SISTEM -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-rocket"></i> NADOGRAĐENI SISTEM POSLOVANJA</h3>
+                        <p>
+                            Kako bi donijeli vlastitu odluku, pa kakva god ona bila, zamolili bi Vas da ponajprije odvojite malo svog slobodnog vremena te da bez predrasude pogledate i proučite službenu prezentaciju projekta "SFT21 Business Concept". Uvjereni smo da ćete biti i više nego zadovoljni nadogradnjama i pogodnostima za članove, koje smo uveli u novom sistemu poslovanja.
+                        </p>
+                        <p>
+                            Osim prezentacije, posjetom kompanijskog YouTube kanala "@SFT21_SFteam" možete pogledati više videa u kojima argumentirano i transparentno govorimo o našem projektu kao najmoćnijem poslovnom konceptu na internetu.
+                        </p>
+                        <div class="card-footer-btns">
+                            <button type="button" id="openVideoPlayerButton" class="content-btn card-btn">
+                                <div>
+                                    <span class="btn-main-text">SFT21 Business Concept</span>
+                                    <span class="btn-sub-text">(prezentacija projekta)</span>
+                                </div>
+                            </button>
+                            <a href="https://www.youtube.com/@SFT21_SFteam" target="_blank" class="content-btn card-btn">
+                                <i class="fab fa-youtube mr-2"></i> YouTube kanal @SFT21_SFteam
+                            </a>
                         </div>
-                    </a>
+                    </div>
 
-                </div>
+                    <!-- 3. STATUS I PRIVATNOST -->
+                    <div class="info-card" style="border-left: 4px solid var(--fluorescent-green);">
+                        <h3><i class="fas fa-user-check"></i> VAŠ STATUS JE SIGURAN</h3>
+                        <p>
+                            Svi podaci iz baze (vaše pozicije, vaša uplata, mreža...) su sačuvani. Nastavljamo točno tamo gdje smo stali, ali s poboljšanim modelom rada.
+                        </p>
+                        
+                        <h3><i class="fas fa-user-lock"></i> POŠTUJEMO VAŠU PRIVATNOST (GDPR)</h3>
+                        <p>
+                            Ovo je "opt-in" kampanja. Ukoliko ne potvrdite svoj interes, odnosno ne donesete odluku o nastavku poslovanja, smatrat ćemo da ste odustali i trajno ukloniti vaše podatke iz aktivne komunikacije. Sukladno navedenom molimo Vas da klikom na gumb ispod donesete odluku o nastavku poslovanja.
+                        </p>
+                        
+                        <div class="card-footer-btns" style="margin-top: 2rem;">
+                            <a href="izbor.html" class="content-btn" style="background-color: var(--fluorescent-green); color: #0d0118; font-weight: 900; width: 100%; max-width: 500px; font-size: 1.1rem;">
+                                DONESI ODLUKU
+                            </a>
+                        </div>
+                    </div>
+
+                </div> <!-- Kraj liste -->
             </div>
         </div>
     </main>
