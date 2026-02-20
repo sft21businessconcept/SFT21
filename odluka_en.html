@@ -60,7 +60,7 @@
             width: 100%; 
             height: 100%; 
             z-index: -1; 
-            background-color: #1d012e;
+            background-color: #1d012e; 
         }
 
         .custom-cursor {
@@ -80,7 +80,7 @@
         .content-box-wrapper {
             display: flex; 
             justify-content: center; 
-            align-items: center;
+            align-items: center; 
             min-height: calc(100vh - 80px); 
             padding-top: 100px; 
             padding-bottom: 4rem;
@@ -131,10 +131,9 @@
         .content-btn .btn-main-text { display: block; }
         .content-btn .btn-sub-text { display: block; font-size: 0.7rem; opacity: 0.8; margin-top: 0.1rem; }
 
-        /* Video wrapper styles */
         .page-video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%; 
             height: 0;
             width: 100%;
             overflow: hidden;
@@ -153,24 +152,42 @@
             height: 100%;
             border: 0;
         }
-        
-        /* Overlay for Presentation Popup */
-        .video-player-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: 2000; display: none; justify-content: center; align-items: center; }
-        .video-player-overlay.active { display: flex; }
-        .video-player-container { position: relative; width: 80vw; max-width: 1100px; aspect-ratio: 16 / 9; background-color: #000; border: 2px solid var(--fluorescent-green); box-shadow: 0 0 30px rgba(128, 255, 0, 0.5); }
-        .video-player-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .video-player-close-button { position: absolute; top: 0; right: 0; transform: translate(40%, -40%); width: 44px; height: 44px; font-size: 1.8rem; color: white; background: rgba(0,0,0,0.7); border: 2px solid white; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; z-index: 2001; display: flex; align-items: center; justify-content: center; line-height: 1; }
-        .video-player-close-button:hover { color: var(--fluorescent-green); border-color: var(--fluorescent-green); transform: translate(40%, -40%) scale(1.1); }
 
-        /* Light Mode Adjustments */
+        /* Overlay for Presentation Popup */
+        .video-player-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); z-index: 2000;
+            display: none; justify-content: center; align-items: center;
+        }
+        .video-player-overlay.active { display: flex; }
+        .video-player-container {
+            position: relative; width: 80vw; max-width: 1100px; aspect-ratio: 16 / 9;
+            background-color: #000; border: 2px solid var(--fluorescent-green);
+            box-shadow: 0 0 30px rgba(128, 255, 0, 0.5);
+        }
+        .video-player-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        
+        /* Fixed Close Button position */
+        .video-player-close-button {
+            position: absolute; top: 15px; right: 15px; transform: none;
+            width: 44px; height: 44px; font-size: 1.8rem; color: white; background: rgba(0,0,0,0.7);
+            border: 2px solid white; border-radius: 50%; cursor: pointer; transition: all 0.3s ease;
+            z-index: 2001; display: flex; align-items: center; justify-content: center; line-height: 1;
+        }
+        .video-player-close-button:hover {
+            color: var(--fluorescent-green); border-color: var(--fluorescent-green);
+            scale: 1.1;
+        }
+
+        /* Light mode adjustments */
         html.light-mode body { background-color: #f8fafc !important; color: #4a0e6c !important; }
+        html.light-mode #network-canvas { background-color: transparent !important; }
         html.light-mode nav.fixed { background-color: rgba(255, 255, 255, 0.9) !important; border-bottom: 1px solid var(--primary-color) !important; }
         html.light-mode .content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
         html.light-mode .content-box-close { color: #64748b !important; }
         html.light-mode .header-title-text { color: var(--primary-color) !important; }
         html.light-mode .logo-nav .text-white { color: var(--primary-color) !important; }
         html.light-mode .logo-nav .text-logo-orange { color: var(--primary-color) !important; }
-        html.light-mode #network-canvas { background-color: transparent !important; }
         html.light-mode .page-video-wrapper { border-color: var(--primary-color) !important; }
     </style>
 </head>
@@ -182,7 +199,7 @@
     <nav class="fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="header-container flex items-center relative h-12">
-                <a href="index_en.html" title="Return to the homepage" class="flex items-center">
+                <a href="index_en.html" title="Return to homepage" class="flex items-center">
                     <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
                     <div class="flex flex-col logo-nav">
                         <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
@@ -191,7 +208,6 @@
                 <div class="header-title-container absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full px-4 pointer-events-none">
                     <span class="header-title-text font-semibold uppercase tracking-wider">Decision on Business Continuation</span>
                 </div>
-                 <div class="w-auto ml-auto"> </div>
             </div>
         </div>
     </nav>
@@ -199,22 +215,21 @@
     <main>
         <div class="content-box-wrapper">
             <div class="content-box">
-                <button class="content-box-close" onclick="window.location.href='index_en.html';" title="Return to the homepage">×</button>
+                <button class="content-box-close" onclick="window.location.href='index_en.html';" title="Return to homepage">×</button>
                 
-                <!-- VIDEO PLAYER (Owners Address) -->
+                <!-- Main Video -->
                 <div class="page-video-wrapper">
                     <iframe 
-                        src="https://www.youtube.com/embed/PLACEHOLDER_VIDEO_ID" 
-                        title="Owners Address" 
+                        src="https://www.youtube.com/embed/869JpBb5KVU" 
+                        title="Owners' Address" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen>
                     </iframe>
                 </div>
 
-                <!-- Buttons -->
+                <!-- Action Buttons -->
                 <div class="content-buttons" id="odlukaGumbi">
                     
-                    <!-- 1. Presentation Popup -->
                     <button type="button" id="openVideoPlayerButton" class="content-btn">
                         <div>
                             <span class="btn-main-text">SFT21 Business Concept</span>
@@ -222,17 +237,14 @@
                         </div>
                     </button>
 
-                    <!-- 2. The Truth about SFT21 -->
                     <a href="https://scam.sft21.com/en/index.html" target="_blank" class="content-btn">
                         The Truth about SFT21
                     </a>
 
-                    <!-- 3. YouTube channel -->
                     <a href="https://www.youtube.com/@SFT21_SFteam" target="_blank" class="content-btn">
                         <i class="fab fa-youtube mr-2"></i> YouTube channel @SFT21_SFteam
                     </a>
 
-                    <!-- 4. MAKE A DECISION -->
                     <a href="izbor_en.html" class="content-btn" style="margin-top: 10px; background-color: var(--fluorescent-green); color: #0e076a;">
                          <div>
                             <span class="btn-main-text">MAKE A DECISION</span>
@@ -244,10 +256,16 @@
         </div>
     </main>
 
-    <!-- Overlay for Presentation Popup -->
+    <!-- Presentation Video Popup -->
     <div id="videoPlayerOverlay" class="video-player-overlay">
         <div class="video-player-container">
-            <iframe id="youtubePlayer" src="" title="SFT21 Presentation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe id="youtubePlayer"
+                    src="" 
+                    title="SFT21 Presentation" 
+                    frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
         </div>
         <button id="closeVideoPlayerButton" class="video-player-close-button" title="Close video">×</button>
     </div>
@@ -258,6 +276,7 @@
             const body = document.body;
             const logoImage = document.getElementById('site-logo');
 
+            // --- 1. Light/Dark Mode Logic ---
             const applyTheme = () => {
                 const isLight = document.documentElement.classList.contains('light-mode');
                 if (logoImage) {
@@ -269,14 +288,11 @@
             };
             
             window.addEventListener('pageshow', function(event) {
-                if (event.persisted) {
-                    applyTheme();
-                }
+                if (event.persisted) applyTheme();
             });
-
             applyTheme();
 
-            // Custom Cursor
+            // --- 2. Custom Cursor ---
             const cursor = document.querySelector('.custom-cursor');
             if (cursor && body) {
                 let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
@@ -284,62 +300,58 @@
                 const updateCursorPosition = () => {
                     cursorX += (mouseX - cursorX) * speed;
                     cursorY += (mouseY - cursorY) * speed;
-                    if (cursor) {
-                        cursor.style.left = `${cursorX}px`;
-                        cursor.style.top = `${cursorY}px`;
-                    }
+                    cursor.style.left = `${cursorX}px`;
+                    cursor.style.top = `${cursorY}px`;
                     requestAnimationFrame(updateCursorPosition);
                 };
                 requestAnimationFrame(updateCursorPosition);
                 window.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    if (cursor && cursor.style.opacity === '0') {
-                        cursor.style.opacity = '1';
-                    }
+                    mouseX = e.clientX; mouseY = e.clientY;
+                    if (cursor.style.opacity === '0') cursor.style.opacity = '1';
                 });
-                document.addEventListener('mouseleave', () => { if (cursor) cursor.style.opacity = '0'; });
-                document.addEventListener('mouseenter', () => { if (cursor) cursor.style.opacity = '1'; });
+                document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
+                document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
 
-                document.querySelectorAll('a, button, input, textarea, select, label[for], .content-box-close, iframe').forEach(el => {
-                    el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, width: "30px", height: "30px", backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
-                    el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, width: "20px", height: "20px", backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
+                document.querySelectorAll('a, button, iframe').forEach(el => {
+                    el.addEventListener('mouseenter', () => gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }));
+                    el.addEventListener('mouseleave', () => gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }));
                 });
             }
 
-            // GSAP Animations
+            // --- 3. GSAP Animations ---
             if (typeof gsap !== 'undefined') {
                 gsap.from('.content-box', { duration: 1, opacity: 0, y: 30, ease: "power3.out", delay: 0.2 });
             }
 
-            // Presentation Video Popup Logic
-            const openVideoPlayerButton = document.getElementById('openVideoPlayerButton');
-            const videoPlayerOverlay = document.getElementById('videoPlayerOverlay');
-            const closeVideoPlayerButton = document.getElementById('closeVideoPlayerButton');
-            const youtubePlayer = document.getElementById('youtubePlayer');
-            const youtubeEmbedUrl = "https://www.youtube.com/embed/869JpBb5KVU";
+            // --- 4. YouTube Video Player Popup Logic ---
+            const openBtn = document.getElementById('openVideoPlayerButton');
+            const overlay = document.getElementById('videoPlayerOverlay');
+            const closeBtn = document.getElementById('closeVideoPlayerButton');
+            const ytPlayer = document.getElementById('youtubePlayer');
+            const videoId = "869JpBb5KVU"; 
 
-            if (openVideoPlayerButton && videoPlayerOverlay && closeVideoPlayerButton && youtubePlayer) {
-                const closeVideo = () => {
-                    videoPlayerOverlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                    youtubePlayer.src = "";
+            if (openBtn && overlay && closeBtn && ytPlayer) {
+                openBtn.onclick = (e) => {
+                    e.preventDefault();
+                    ytPlayer.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0&enablejsapi=1`;
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                 };
-                
-                openVideoPlayerButton.addEventListener('click', () => {
-                    youtubePlayer.src = youtubeEmbedUrl + "&autoplay=1&rel=0";
-                    videoPlayerOverlay.classList.add('active');
-                    document.body.style.overflow = 'hidden'; 
-                });
 
-                closeVideoPlayerButton.addEventListener('click', closeVideo);
-                videoPlayerOverlay.addEventListener('click', (event) => {
-                    if (event.target === videoPlayerOverlay) closeVideo();
-                });
+                const closeVideo = () => {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                    ytPlayer.src = ""; 
+                };
+
+                closeBtn.onclick = closeVideo;
+                overlay.onclick = (event) => {
+                    if (event.target === overlay) closeVideo();
+                };
             }
         });
 
-        // Background Animation Script
+        // Background Animation Script (Network Particles)
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('network-canvas');
             if (!canvas) return;
@@ -374,9 +386,7 @@
 
             const initParticles = () => {
                 particles = [];
-                for (let i = 0; i < currentOptions.particleAmount; i++) {
-                    particles.push(new Particle());
-                }
+                for (let i = 0; i < currentOptions.particleAmount; i++) particles.push(new Particle());
             };
 
             const drawLines = () => {
