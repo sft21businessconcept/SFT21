@@ -44,6 +44,12 @@
             color: var(--text-color);
             background-color: var(--background-dark);
         }
+        body {
+            font-family: Arial, Helvetica, sans-serif !important; /* Arial kao što smo dogovorili */
+            color: var(--text-color);
+            background-color: var(--background-dark);
+            overflow: hidden;
+        }
         #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
         .header-title-text {
             color: var(--fluorescent-green); font-size: 1.1rem;
@@ -54,14 +60,14 @@
 
         .content-box-wrapper {
             display: flex; justify-content: center; align-items: flex-start;
-            min-height: calc(100vh - 80px); padding-top: 140px; padding-bottom: 4rem;
+            height: calc(100vh - 80px); padding-top: 120px; 
         }
         .content-box {
             background-color: rgba(106, 27, 154, 0.1); backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(171, 71, 188, 0.3);
-            border-radius: 20px; padding: 2rem 2.5rem; max-width: 900px; width: 90%;
+            border-radius: 20px; padding: 1.2rem 2rem; max-width: 900px; width: 90%;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); position: relative;
-            color: var(--text-color); overflow-y: auto; max-height: calc(100vh - 140px);
+            color: var(--text-color); overflow: hidden; max-height: calc(100vh - 110px);
         }
         .content-box-close {
             position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem;
@@ -70,7 +76,7 @@
         }
         .content-box-close:hover { color: white; }
         .instruction-text-block {
-            text-align: center; margin-bottom: 2.5rem; color: var(--fluorescent-green);
+            text-align: center; margin-bottom: 1rem; color: var(--fluorescent-green);
             font-size: 1.1rem; line-height: 1.6; font-weight: 600; text-transform: uppercase;
         }
          .instruction-text-block p { margin-bottom: 0.2rem; }
@@ -114,6 +120,20 @@
                 font-size: 0.95rem;
             }
         }
+        /* Vraća scroll na mobitelima jer tamo sadržaj ne može stati na jedan ekran */
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+            }
+            .content-box-wrapper {
+                height: auto;
+                padding-top: 100px;
+            }
+            .content-box {
+                overflow: visible;
+                max-height: none;
+            }
+        }
     </style>
     <style>
         html.light-mode body { background-color: #f8fafc !important; color: #334155 !important; }
@@ -127,6 +147,19 @@
         html.light-mode .instruction-text-block { color: var(--primary-color) !important; }
         html.light-mode .option-btn { background-color: var(--primary-color) !important; color: white !important; }
         html.light-mode .option-btn:hover { background-color: var(--secondary-color) !important; }
+
+        .note-text-block {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--fluorescent-green);
+            font-size: 1rem;
+            line-height: 1.6;
+            font-family: Arial, Helvetica, sans-serif !important;
+        }
+        /* Prilagodba za Light Mode - tamno ljubičasta radi čitljivosti */
+        html.light-mode .note-text-block {
+            color: var(--primary-color) !important;
+        }
     </style>
 </head>
 
@@ -158,10 +191,9 @@
               <button class="content-box-close" onclick="window.location.href='odluka.html#odlukaGumbi';" title="Natrag na odluku">×</button>
                 
                 <div class="instruction-text-block">
-                    <p>Kako bi donijeli odluku o tome da li želite</p>
-                    <p>odustati ili nastaviti poslovanje</p>
-                    <p>klikom na dugme ispod izaberite iznos</p>
-                    <p>s kojim ste započeli poslovanje u starom sistemu</p>
+                    <p>Kako bi donijeli odluku o tome da li želite odustati</p>
+                    <p>ili nastaviti poslovanje, klikom na dugme ispod izaberite</p>
+                    <p>iznos s kojim ste započeli poslovanje u starom sistemu</p>
                 </div>
 
                 <div class="options-grid">
@@ -180,6 +212,10 @@
                     <a href="prikaz_opcije.html?iznos=1955&valuta=usd" class="option-btn">1955 $</a>
                     <a href="prikaz_opcije.html?iznos=2710&valuta=eur" class="option-btn">2710 €</a>
                     <a href="prikaz_opcije.html?iznos=veci&valuta=iznos" class="option-btn">Veći iznos</a>
+                </div>
+                <div class="note-text-block">
+                    Ukoliko se ne sjećate točnog iznosa kojega ste uplatili, nema problema... <br>
+                    Odaberite približan iznos jer mi ćemo ionako točan iznos izvući iz baze podataka.
                 </div>
             </div>
         </div>
