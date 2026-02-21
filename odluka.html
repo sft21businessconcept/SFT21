@@ -248,7 +248,7 @@
             flex-wrap: wrap;
             gap: 1rem;
             justify-content: center; 
-
+        } 
         /* Prilagodba gumba */
         .card-btn {
             max-width: 350px !important;
@@ -256,12 +256,40 @@
         }
 
         /* Light mode prilagodba */
-        html.light-mode .info-card {
-            background: rgba(106, 27, 154, 0.05);
-            border-color: rgba(106, 27, 154, 0.2);
-        }
+       html.light-mode body { background-color: #f8fafc !important; color: #4a0e6c !important; }
+        html.light-mode #network-canvas { background-color: transparent !important; }
+        html.light-mode .content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; }
+        html.light-mode .info-card { background: rgba(106, 27, 154, 0.05); border-color: rgba(106, 27, 154, 0.2); }
         html.light-mode .info-card p { color: #1a1a1a; }
         html.light-mode .info-card h3 { color: var(--primary-color); }
+        html.light-mode .header-title-text { color: var(--primary-color) !important; }
+
+         @media (max-width: 768px) {
+            nav.fixed {
+                height: auto !important;
+                padding: 10px 0 !important;
+            }
+            .header-container {
+                flex-direction: column !important;
+                height: auto !important;
+                gap: 5px !important;
+            }
+            .header-title-container {
+                position: static !important;
+                transform: none !important;
+                width: 100% !important;
+                text-align: center !important;
+                pointer-events: auto !important;
+            }
+            .header-title-text {
+                font-size: 0.9rem !important;
+                display: block;
+                line-height: 1.2;
+            }
+            .content-box-wrapper {
+                padding-top: 150px !important;
+            }
+        }
     </style>
 </head>
 
