@@ -126,45 +126,50 @@
             .header-title-text {
                 font-size: 0.95rem;
             }
-        }
-/* KOD SAMO ZA MOBILNE UREĐAJE (Spuštanje kontejnera) */
-        @media (max-width: 768px) {
-            body {
-                overflow-y: auto !important; /* Omogućuje skrolanje na mobitelu */
-                overflow-x: hidden;
             }
-            
-            .content-box-wrapper {
-                height: auto !important;
-                /* POVEĆANO: Spuštamo kutiju sa 100px na 140px da ne udara u header */
-                padding-top: 140px !important; 
-                padding-bottom: 30px !important;
-                align-items: flex-start !important;
-            }
+    /* KOD SAMO ZA MOBILNE UREĐAJE (Spuštanje kontejnera) */
+            @media (max-width: 768px) {
+                body {
+                    overflow-y: auto !important; /* Omogućuje skrolanje na mobitelu */
+                    overflow-x: hidden;
+                }
+                
+                .content-box-wrapper {
+                    height: auto !important;
+                    /* POVEĆANO: Spuštamo kutiju sa 100px na 140px da ne udara u header */
+                    padding-top: 140px !important; 
+                    padding-bottom: 30px !important;
+                    align-items: flex-start !important;
+                }
 
-            .content-box {
-                width: 95% !important; /* Malo šira kutija na mobitelu da gumbići imaju mjesta */
-                padding: 1rem 1rem !important; /* Manji unutarnji razmaci da uštedimo prostor */
-                overflow: visible !important;
-                max-height: none !important;
-            }
+                .content-box {
+                    width: 95% !important; /* Malo šira kutija na mobitelu da gumbići imaju mjesta */
+                    padding: 1rem 1rem !important; /* Manji unutarnji razmaci da uštedimo prostor */
+                    overflow: visible !important;
+                    max-height: none !important;
+                }
 
-            .instruction-text-block {
-                font-size: 0.95rem !important; /* Malo manji tekst uputa na mobitelu */
-                margin-bottom: 1rem !important;
-            }
+                .instruction-text-block {
+                    font-size: 0.95rem !important; /* Malo manji tekst uputa na mobitelu */
+                    margin-bottom: 1rem !important;
+                }
 
-            .options-grid {
-                /* Smanjujemo broj stupaca na mobitelu da gumbi budu veći i lakši za kliknuti */
-                grid-template-columns: repeat(2, 1fr) !important; 
-                gap: 0.5rem !important;
+                .options-grid {
+                    /* Smanjujemo broj stupaca na mobitelu da gumbi budu veći i lakši za kliknuti */
+                    grid-template-columns: repeat(2, 1fr) !important; 
+                    gap: 0.5rem !important;
+                }
+                
+                .note-text-block {
+                    font-size: 0.85rem !important;
+                    margin-top: 1.5rem !important;
+                }
             }
-            
-            .note-text-block {
-                font-size: 0.85rem !important;
-                margin-top: 1.5rem !important;
+                    .content-box-close {
+                top: -35px !important; 
+                right: 5px !important;
+                font-size: 2.2rem !important;
             }
-        }
     </style>
     <style>
         html.light-mode body { background-color: #f8fafc !important; color: #334155 !important; }
