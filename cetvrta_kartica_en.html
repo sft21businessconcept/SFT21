@@ -73,19 +73,23 @@
             margin-top: calc(3.5rem + 30px); padding: clamp(20px, 4vw, 40px); border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); font-size: clamp(0.9rem, 1.8vw, 1.05rem); line-height: 1.65;
         }
+
         .decision-content-box .main-greeting {
             font-size: clamp(1.2rem, 2.5vw, 1.5rem); color: white;
             text-align: center; margin-bottom: 25px; font-weight: bold;
         }
         .intro-section { text-align: center; } 
         .intro-section p { color: var(--warning-red); margin-bottom: 12px; font-size: 1.05em; font-weight: bold; line-height: 1.5; }
+        
         .detailed-text { margin-top: 25px; }
         .detailed-text p { margin-bottom: 15px; text-align: justify; color: white; }
         .detailed-text strong, .detailed-text b { color: var(--fluorescent-green); font-weight: bold; }
         .detailed-text .kyc-info { font-style: italic; color: #c7c1da; }
+        
         .important-note-dark { margin: 20px 0; padding: 15px; background-color: rgba(128, 255, 0, 0.05); border-left: 4px solid var(--fluorescent-green); color: #e5e7eb; }
         .important-note-dark strong { color: var(--fluorescent-green); }
         .final-note-section { margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--card-border); text-align: center; }
+        
         .confirm-button-container { text-align: center; margin-top: 35px; }
         .confirm-main-page-button { background-color: var(--button-confirm-bg); color: white; padding: 12px 30px; border: none; border-radius: 5px; font-family: 'Arial Narrow', Arial, sans-serif; font-size: clamp(1rem, 2vw, 1.2rem); font-weight: bold; text-transform: uppercase; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2), 0 0 15px rgba(194, 0, 0, 0.2); }
         .confirm-main-page-button:hover { background-color: var(--button-confirm-hover-bg); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 25px rgba(194, 0, 0, 0.4); }
@@ -99,11 +103,13 @@
         }
         .modal-scrollable-content { overflow-y: auto; padding-right: 15px; margin-right: -15px; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        
         .modal-close-button {
             color: var(--fluorescent-green); position: absolute; top: 10px; right: 15px;
             font-size: 2.5rem; font-weight: bold; cursor: pointer; z-index: 10; transition: color 0.3s, transform 0.3s;
         }
         .modal-close-button:hover, .modal-close-button:focus { color: #fff; transform: scale(1.1); }
+        
         .modal-content .popup-title {
             color: var(--fluorescent-green); text-align: center; font-size: clamp(1.2rem, 2.5vw, 1.6rem);
             font-weight: bold; text-transform: uppercase; margin-bottom: 20px; padding-top: 10px;
@@ -130,11 +136,22 @@
         .modal-confirm-button:hover:not(:disabled) { background-color: #fff; transform: translateY(-2px); }
         .modal-confirm-button:disabled { background-color: #586351; color: #999; opacity: 0.7; cursor: not-allowed; transform: none; }
         
-        .final-popup-title { font-size: clamp(1.4rem, 3vw, 1.8rem) !important; }
         #final-confirmation-message { text-align: center; line-height: 1.6; font-size: 1.1rem; }
         #final-confirmation-message b { color: var(--fluorescent-yellow); }
 
+        /* Custom Cursor Style */
+        .custom-cursor {
+            position: fixed; width: 20px; height: 20px; border-radius: 50%;
+            background-color: rgba(106, 27, 154, 0.6); border: 2px solid var(--fluorescent-green);
+            pointer-events: none; z-index: 10000; transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, background-color 0.2s ease;
+            opacity: 0;
+        }
+
+        .animated-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; background-color: var(--background-dark); }
         #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
+        .bg-dots { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.5; }
+        .glow { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(171, 71, 188, 0.2) 0%, rgba(171, 71, 188, 0) 70%); filter: blur(50px); pointer-events: none; }
     </style>
     <!-- ============================================= -->
     <!-- STYLES FOR LIGHT MODE -->
@@ -148,30 +165,26 @@
         html.light-mode .main-greeting, html.light-mode .detailed-text p { color: #334155 !important; }
         html.light-mode .intro-section p { color: #c0392b !important; }
         html.light-mode .detailed-text strong, html.light-mode .detailed-text b { color: var(--primary-color) !important; }
-        html.light-mode .kyc-info { color: #64748b !important; }
         html.light-mode .important-note-dark { background-color: rgba(106, 27, 154, 0.05); border-left-color: var(--primary-color); color: #334155; }
         html.light-mode .important-note-dark strong { color: var(--primary-color); }
-        html.light-mode .confirm-main-page-button { background-color: #dc2626 !important; }
-        html.light-mode .confirm-main-page-button:hover { background-color: #ef4444 !important; }
-        html.light-mode .modal-content { background-color: #ffffff; border-color: var(--primary-color); }
-        html.light-mode .modal-close-button, html.light-mode .popup-title, html.light-mode .form-group label { color: var(--primary-color); }
-        html.light-mode .modal-close-button:hover { color: #333; }
-        html.light-mode input[type="text"], html.light-mode input[type="email"] { background-color: #f1f5f9; border-color: #cbd5e1; color: #1e293b; }
-        html.light-mode input::placeholder { color: #94a3b8; }
-        html.light-mode .email-subtitle { color: #475569; }
-        html.light-mode #final-confirmation-message b { color: var(--primary-color); }
         html.light-mode .modal-confirm-button { background-color: var(--primary-color); color: white; }
-        html.light-mode .modal-confirm-button:hover:not(:disabled) { background-color: var(--secondary-color); }
-        html.light-mode #network-canvas { background-color: transparent !important; }
+        html.light-mode #final-confirmation-message b { color: var(--primary-color); }
+        html.light-mode .animated-background, html.light-mode #network-canvas { background-color: transparent !important; }
     </style>
 </head>
 <body>
+    <div class="custom-cursor"></div>
     <canvas id="network-canvas"></canvas>
+    <div class="animated-background">
+        <div class="bg-dots"></div>
+        <div class="glow" style="top: 10%; left: 10%; width: 400px; height: 400px;"></div>
+        <div class="glow" style="top: 70%; left: 80%; width: 350px; height: 350px; opacity: 0.15;"></div>
+    </div>
 
     <div class="fixed-header-container">
         <div class="header-content">
             <span class="header-title">SFT21 – Decision: Termination with Donation</span>
-            <button class="page-close-button" id="closePageButton" title="Back to previous page">×</button>
+            <button class="page-close-button" id="closePageButton" title="Close">×</button>
         </div>
     </div>
 
@@ -195,12 +208,8 @@
                 </p>
 
                 <div class="final-note-section">
-                     <p>
-                        Our sincerest advice is to follow our development and return to our community as soon as possible.
-                     </p>
-                     <p>
-                        By registering for free, you become a member of our community without any obligations, with the possibility of reactivation if you decide to join us later. In that case, you continue business by taking the first available position in the SFalgorithm.
-                     </p>
+                     <p>Our sincerest advice is to follow our development and return to our community as soon as possible.</p>
+                     <p>By registering for free, you become a member of our community without any obligations, with the possibility of reactivation if you decide to join us later. In that case, you continue business by taking the first available position in the SFalgorithm.</p>
                      <p style="margin-top: 20px; font-weight: bold; color: var(--fluorescent-green);">
                         We are sorry that you have decided to leave our community, but we respect your decision.<br>
                         We wish you all the best both personally and professionally.
@@ -220,38 +229,34 @@
              <span id="closeUserDetailsPopupButton" class="modal-close-button" title="Close">×</span>
             <h2 class="popup-title">DATA CONFIRMATION</h2>
             <div class="modal-scrollable-content">
-                <!-- Field for Full Name -->
                 <div class="form-group">
                     <label for="fullNameInputPopup">FULL NAME</label>
-                    <input type="text" id="fullNameInputPopup" placeholder="Enter full name">
+                    <input type="text" id="fullNameInputPopup" placeholder="Enter your full name">
+                    <!-- HIDDEN FIELD FOR AMOUNT -->
+                    <input type="hidden" id="pocetni_iznos" name="pocetni_iznos" value="">
                 </div>
-                
                 <div class="form-group">
                     <label for="usernameInputPopup">Username</label>
                     <input type="text" id="usernameInputPopup" maxlength="21" placeholder="Your username from the old system">
                 </div>
                 <div class="form-group">
                     <label for="oldEmailInputPopup">Email Address</label>
-                     <p class="email-subtitle">(with which you registered in the old system)</p>
+                     <p class="email-subtitle">(as registered in the old system)</p>
                     <input type="email" id="oldEmailInputPopup" placeholder="Old email address">
-                    <div id="oldEmailErrorPopup" class="error-message"></div>
                 </div>
                 <div class="form-group">
                      <label for="newEmailInputPopup">New Email Address (optional)</label>
-                    <p class="email-subtitle">If you no longer use the old address or don't have access, enter a new one.<br><strong>Email change is subject to additional verification.</strong></p>
-                    <input type="email" id="newEmailInputPopup" placeholder="New email address">
-                    <div id="newEmailErrorPopup" class="error-message"></div>
+                    <input type="email" id="newEmailInputPopup" placeholder="Enter new address if desired">
                 </div>
             </div>
             <button id="confirmUserDetailsButton" class="modal-confirm-button">Confirm</button>
         </div>
     </div>
     
-    <!-- HTML STRUCTURE FOR FINAL POPUP -->
+    <!-- FINAL POPUP -->
     <div id="finalConfirmationPopup" class="modal-overlay">
-        <div class="modal-content">
-            <span id="closeFinalConfirmationPopup" class="modal-close-button" title="Close">×</span>
-            <h2 class="popup-title final-popup-title">Information</h2>
+        <div class="modal-content text-center">
+            <h2 class="popup-title">Information</h2>
             <p id="final-confirmation-message"></p>
         </div>
     </div>
@@ -259,20 +264,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyXvVom7kEX18qpB8k9xJ8LzBquCg6qL0_nHP9y_G67weOkpo4tRC_r6JPOJz3JPzNj/exec';   
+            const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbwYQGDtBdUIPSD0GJHPJCOrPhgdMhlw-q_Z3wIqtecPvRw_ELYrahZ9QojcKzoBxGIy/exec';   
+            
             const mainPopup = document.getElementById('confirmationUserDetailsPopup');
-            const openMainPopupButton = document.getElementById('openPopupForConfirmation');
-            const closeMainPopupButton = document.getElementById('closeUserDetailsPopupButton');
             const finalPopup = document.getElementById('finalConfirmationPopup');
-            const closeFinalPopupButton = document.getElementById('closeFinalConfirmationPopup');
             const finalMessageP = document.getElementById('final-confirmation-message');
             
-            // Form fields
             const fullNameInput = document.getElementById('fullNameInputPopup');
             const usernameInput = document.getElementById('usernameInputPopup');
             const oldEmailInput = document.getElementById('oldEmailInputPopup');
             const newEmailInput = document.getElementById('newEmailInputPopup');
             const confirmButton = document.getElementById('confirmUserDetailsButton');
+
+            // --- CAPTURING AMOUNT FROM URL ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramIznos = urlParams.get('iznos');
+            const paramValuta = urlParams.get('valuta');
+            let formattedAmount = "Not detected";
+
+            if (paramIznos === 'veci') {
+                formattedAmount = "Larger amount/Investment";
+            } else if (paramIznos && paramValuta) {
+                const currencySymbol = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
+                formattedAmount = `${paramIznos} ${currencySymbol}`;
+            }
+            document.getElementById('pocetni_iznos').value = formattedAmount;
 
             // --- HELPER FUNCTIONS ---
             const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).toLowerCase());
@@ -280,33 +296,25 @@
             const closeFinalPopup = () => { if (finalPopup) finalPopup.style.display = 'none'; document.body.style.overflow = 'auto'; };
 
             const validateForm = () => {
-                let isFormValid = true;
-                if (fullNameInput.value.trim() === '') isFormValid = false;
-                if (usernameInput.value.trim() === '') isFormValid = false;
-                if (!isEmailValid(oldEmailInput.value.trim())) isFormValid = false;
-                const newEmailValue = newEmailInput.value.trim();
-                if (newEmailValue !== '' && !isEmailValid(newEmailValue)) isFormValid = false;
-                confirmButton.disabled = !isFormValid;
+                const isFullNameValid = fullNameInput.value.trim() !== '';
+                const isUsernameValid = usernameInput.value.trim() !== '';
+                const isOldEmailValid = isEmailValid(oldEmailInput.value.trim());
+                confirmButton.disabled = !(isFullNameValid && isUsernameValid && isOldEmailValid);
             };
 
             // --- EVENT LISTENERS ---
-            document.getElementById('closePageButton')?.addEventListener('click', () => { window.history.back(); });
-            openMainPopupButton.addEventListener('click', () => { mainPopup.style.display = 'flex'; document.body.style.overflow = 'hidden'; validateForm(); });
-            closeMainPopupButton.addEventListener('click', closeMainPopup);
-            mainPopup.addEventListener('click', (event) => { if (event.target === mainPopup) closeMainPopup(); });
-            closeFinalPopupButton.addEventListener('click', closeFinalPopup);
-            finalPopup.addEventListener('click', (event) => { if (event.target === finalPopup) closeFinalPopup(); });
-            
+            document.getElementById('openPopupForConfirmation').onclick = () => { mainPopup.style.display = 'flex'; validateForm(); };
+            document.getElementById('closeUserDetailsPopupButton').onclick = closeMainPopup;
+            document.getElementById('closePageButton').onclick = () => window.history.back();
             [fullNameInput, usernameInput, oldEmailInput, newEmailInput].forEach(input => input.addEventListener('input', validateForm));
 
-            // --- MAIN LOGIC FOR SENDING DATA ---
-            confirmButton.addEventListener('click', () => {
+            // --- MAIN SEND LOGIC ---
+            confirmButton.onclick = () => {
                 if(confirmButton.disabled) return;
                 
                 closeMainPopup();
                 finalMessageP.innerHTML = `<h4>Sending...</h4><p>Please wait.</p>`;
                 finalPopup.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
 
                 const dataToSend = new FormData();
                 dataToSend.append('requestType', 'discontinueWithCharity'); 
@@ -314,99 +322,71 @@
                 dataToSend.append('username', usernameInput.value.trim());
                 dataToSend.append('oldEmail', oldEmailInput.value.trim());
                 dataToSend.append('newEmail', newEmailInput.value.trim());
-                
-                fetch(WEBAPP_URL, {
-                    method: 'POST',
-                    body: dataToSend
-                })
+                dataToSend.append('pocetni_iznos', document.getElementById('pocetni_iznos').value);
+               
+                fetch(WEBAPP_URL, { method: 'POST', body: dataToSend })
                 .then(res => res.json())
                 .then(data => {
                     if (data.success) {
                         const finalEmail = newEmailInput.value.trim() || oldEmailInput.value.trim();
-                        finalMessageP.innerHTML = `Your data and email address (<b>${finalEmail}</b>) have been recorded with the request for donation to charity and permanent deletion. We will contact you in due time. Thank you.`;
+                        finalMessageP.innerHTML = `Your data and email address (<b>${finalEmail}</b>) have been recorded with the request to donate your starting package amount (<b>${document.getElementById('pocetni_iznos').value}</b>). Thank you.`;
                     } else {
                         finalMessageP.innerHTML = 'An error occurred. Please try again.';
                     }
+                    setTimeout(() => {
+                        closeFinalPopup();
+                        window.location.href = 'index_en.html'; 
+                    }, 5000);
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    finalMessageP.innerHTML = 'A network error occurred. Please check your connection and try again.';
-                })
-                .finally(() => {
-                setTimeout(() => {
-                closeFinalPopup();
-                window.location.href = 'index_en.html'; 
-                }, 5000);
+                    finalMessageP.innerHTML = 'Network error. Please try again.';
                 });
-            });
+            };
 
-            // --- ANIMATIONS ---
+            // --- ANIMATIONS AND CURSOR ---
             if (typeof gsap !== 'undefined') {
                 gsap.from('.decision-content-box', { duration: 1, y: 50, opacity: 0, ease: 'power3.out', delay: 0.3 });
-                gsap.utils.toArray(".glow").forEach((glow) => {
-                    gsap.to(glow, {
-                        opacity: gsap.utils.random(0.15, 0.4), scale: gsap.utils.random(0.8, 1.3),
-                        duration: gsap.utils.random(6, 12), ease: "sine.inOut",
-                        repeat: -1, yoyo: true, delay: gsap.utils.random(0, 4)
-                    });
+                const cursor = document.querySelector('.custom-cursor');
+                document.addEventListener('mousemove', (e) => {
+                    gsap.to(cursor, { duration: 0.1, left: e.clientX, top: e.clientY, opacity: 1 });
                 });
             }
         });
     </script>
-     <!-- Background Animation Script -->
-     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const canvas = document.getElementById('network-canvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
-            const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
-            let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
-    
-            const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
-            window.addEventListener('resize', resizeCanvas);
-    
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-                    this.radius = currentOptions.defaultRadius;
-                    this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
-                    this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
-                }
-                draw() {
-                    ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, 0.85)`; ctx.fill();
-                }
-                update() {
-                    this.x += this.vx; this.y += this.vy;
-                    if (this.x > canvas.width || this.x < 0) this.vx = -this.vx;
-                    if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
-                }
-            }
-    
-            const initParticles = () => {
-                particles = [];
-                for (let i = 0; i < currentOptions.particleAmount; i++) {
-                    particles.push(new Particle());
-                }
-            };
-    
-            const animate = () => {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => { p.update(); p.draw(); });
-                requestAnimationFrame(animate);
-            };
-    
-            window.setAnimationTheme = (theme) => {
-                currentOptions = (theme === 'light') ? lightOptions : darkOptions;
-                if(canvas.width > 0) initParticles();
-            };
-            
-            resizeCanvas();
-            animate();
-        });
-        </script>
-</body>
 
+    <!-- Background Animation Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('network-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+        window.addEventListener('resize', resize);
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                this.dx = (Math.random() - 0.5) * 0.2; this.dy = (Math.random() - 0.5) * 0.2;
+            }
+            draw() {
+                ctx.beginPath(); ctx.arc(this.x, this.y, 1.3, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(128, 255, 0, 0.85)`; ctx.fill();
+            }
+            update() {
+                this.x += this.dx; this.y += this.dy;
+                if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
+                if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
+            }
+        }
+        for (let i = 0; i < 80; i++) particles.push(new Particle());
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        };
+        resize(); animate();
+    });
+    </script>
+</body>
 </html>
