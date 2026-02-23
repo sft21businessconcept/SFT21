@@ -123,168 +123,175 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
     <link rel="stylesheet" href="css/style.css">
 
     <!-- STILOVI ZA SFTEAM.HTML -->
-    <style>
-.hero-media-container {
-            width: 100%;
-            height: 90vh; /* <-- OVDJE PODEŠAVATE VISINU OKVIRA */
-            min-height: 500px;
-            
-            /* === NOVI KOD ZA POZADINSKU SLIKU === */
-            background-image: url('img/sfteam.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center 40%; /* <-- OVDJE PODEŠAVATE POLOŽAJ */
-        }
+<style>
+    /* === HERO SEKCIJA === */
+    .hero-media-container {
+        width: 100%;
+        height: 90vh;
+        min-height: 500px;
+        background-image: url('img/sfteam.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center 40%;
+    }
 
-        .hero-media-container img.hero-image {
-            width: 100%;
-            height: auto; /* <-- SLIKA ZADRŽAVA SVOJ OMJER */
-            position: absolute; /* <-- APSOLUTNO POZICIONIRANJE */
-            top: 50%; /* <-- POČETNA POZICIJA JE SREDINA */
-            left: 0;
-            transform: translateY(-60%); /* <-- VERTIKALNO CENTRIRANJE */
-        }
+    .hero-media-container img.hero-image {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-60%);
+    }
 
-        .team-subtitle { color: #d1d5db; }
-        body.light-mode .team-subtitle { color: #475569; }
+    .team-subtitle { color: #d1d5db; }
+    body.light-mode .team-subtitle { color: #475569; }
 
-        .member-card { text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .member-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(128, 255, 0, 0.2); }
-        .member-card img { border-radius: 10px; margin-bottom: 1rem; aspect-ratio: 1 / 1; object-fit: cover; border: 2px solid var(--fluorescent-green); }
-        .member-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem; }
-        .member-card p { font-size: 0.9rem; color: #d1d5db; min-height: 40px; }
-        body.light-mode .member-card p { color: #64748b; }
-        body.light-mode .member-card img { border-color: var(--primary-color); }
+    /* === KARTICE ČLANOVA === */
+    .member-card { text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .member-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(128, 255, 0, 0.2); }
+    .member-card img { border-radius: 10px; margin-bottom: 1rem; aspect-ratio: 1 / 1; object-fit: cover; border: 2px solid var(--fluorescent-green); }
+    .member-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .member-card p { font-size: 0.9rem; color: #d1d5db; min-height: 40px; }
+    body.light-mode .member-card p { color: #64748b; }
+    body.light-mode .member-card img { border-color: var(--primary-color); }
 
-        .career-status-section {
-         padding: 2rem 0;
-         border-bottom: 1px solid rgba(128, 255, 0, 0.1);
-         text-align: center; /* Ovo centrira SVE inline i inline-block elemente, uključujući naslov */
-        }
+    /* === KARIJERNI STATUSI === */
+    .career-status-section {
+        padding: 2rem 0;
+        border-bottom: 1px solid rgba(128, 255, 0, 0.1);
+        text-align: center;
+    }
 
-        body.light-mode .career-status-section {
-            border-bottom-color: rgba(106, 27, 154, 0.1);
-        }
-        .career-status-section:last-of-type {
-            border-bottom: none;
-        }
+    body.light-mode .career-status-section { border-bottom-color: rgba(106, 27, 154, 0.1); }
+    .career-status-section:last-of-type { border-bottom: none; }
 
-        /* === IZMJENA: Centriran naslov i povećan font === */
-        .career-status-title {
-            text-align: center;
-            font-size: 1.75rem; /* Povećano sa 1.5rem */
-            font-weight: 700;
-            margin-bottom: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--fluorescent-green);
-        }
-        body.light-mode .career-status-title {
-            color: var(--primary-color);
+    .career-status-title {
+        text-align: center;
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--fluorescent-green);
+    }
+    body.light-mode .career-status-title { color: var(--primary-color); }
+    
+    .career-members-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); 
+        gap: 1.5rem; 
+        width: 100%; 
+        padding: 0 1rem; 
+    }
+
+    .career-members-grid > .text-center { grid-column: 1 / -1; }
+
+    .career-member-avatar { text-align: center; transition: transform 0.2s ease-in-out; }
+    .career-member-avatar:hover { transform: scale(1.1); }
+    .career-member-avatar img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 0.5rem auto; border: 3px solid; }
+    .career-member-avatar .name { font-size: 0.8rem; font-weight: 500; }
+    .status-dijamant img { border-color: #b9f2ff; }
+    .status-smaragd img { border-color: #50c878; }
+    .status-rubin img { border-color: #e0115f; }
+    .status-zlato img { border-color: #ffd700; }
+    .status-srebro img { border-color: #c0c0c0; }
+
+    /* === SLIDER (SWIPER.JS) - POPRAVLJENO ZA MOBITELE === */
+    .testimonials-slider { 
+        position: relative; 
+        padding: 0 50px; /* Standardni razmak za desktop */
+    }
+
+    /* Boje strelica i paginacije */
+    .swiper-button-next, .swiper-button-prev { color: var(--fluorescent-green) !important; }
+    body.light-mode .swiper-button-next, body.light-mode .swiper-button-prev { color: var(--primary-color) !important; }
+    .swiper-pagination-bullet-active { background: var(--fluorescent-green) !important; }
+    body.light-mode .swiper-pagination-bullet-active { background: var(--primary-color) !important; }
+
+    /* Stilovi kartice svjedočanstva */
+    .testimonial-card { height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+    .testimonial-card blockquote { font-style: italic; font-size: 1.1rem; line-height: 1.6; position: relative; padding-left: 2rem; border-left: 4px solid var(--fluorescent-green); }
+    body.light-mode .testimonial-card blockquote { border-left-color: var(--primary-color); }
+    .testimonial-card .author-info { display: flex; align-items: center; margin-top: 1.5rem; }
+    .testimonial-card .author-info img { width: 60px; height: 60px; border-radius: 50%; margin-right: 1rem; object-fit: cover; }
+    .testimonial-card .author-info cite { font-style: normal; font-weight: 600; }
+    .testimonial-card .author-info cite span { display: block; font-size: 0.85rem; font-weight: 400; color: #9ca3af; }
+    body.light-mode .testimonial-card .author-info cite span { color: #64748b; }
+
+    /* === MEDIA QUERY ZA NOTE 10 I MOBITELE === */
+    @media (max-width: 768px) {
+        .testimonials-slider { 
+            padding: 0 5px !important; /* Širi stupce do ruba ekrana */
         }
         
-        .career-members-grid { 
-         display: grid; 
-         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); 
-         gap: 1.5rem; 
-         width: 100%; /* Osigurava da se privremeni tekst "Uskoro..." ispravno centrira */
-         padding: 0 1rem; /* Mali padding da se ne zalijepi za rubove na mobilnom */
+        /* Strelice stavljamo unutar stupaca */
+        .swiper-button-prev { left: 5px !important; }
+        .swiper-button-next { right: 5px !important; }
+        
+        /* Činimo strelice manjima i dodajemo prozirnu pozadinu radi vidljivosti */
+        .swiper-button-next, .swiper-button-prev {
+            background: rgba(0, 0, 0, 0.15);
+            width: 38px !important;
+            height: 38px !important;
+            border-radius: 50%;
+            top: 50% !important;
+        }
+        
+        /* Smanjujemo samu ikonu strelice */
+        .swiper-button-next::after, .swiper-button-prev::after {
+            font-size: 18px !important;
         }
 
-        .career-members-grid > .text-center {
-            grid-column: 1 / -1; 
+        /* Smanjujemo padding kartice da tekst dobije više mjesta */
+        .testimonial-card {
+            padding: 1.5rem 1.25rem !important;
         }
 
-        .career-member-avatar { text-align: center; transition: transform 0.2s ease-in-out; }
-        .career-member-avatar:hover { transform: scale(1.1); }
-        .career-member-avatar img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 0.5rem auto; border: 3px solid; }
-        .career-member-avatar .name { font-size: 0.8rem; font-weight: 500; }
-        .status-dijamant img { border-color: #b9f2ff; }
-        .status-smaragd img { border-color: #50c878; }
-        .status-rubin img { border-color: #e0115f; }
-        .status-zlato img { border-color: #ffd700; }
-        .status-srebro img { border-color: #c0c0c0; }
-
-        /* Slider (Swiper.js) Stilovi */
-        .testimonials-slider { position: relative; padding: 0 50px; }
-        .swiper-button-next, .swiper-button-prev { color: var(--fluorescent-green) !important; }
-        body.light-mode .swiper-button-next, body.light-mode .swiper-button-prev { color: var(--primary-color) !important; }
-        .swiper-pagination-bullet-active { background: var(--fluorescent-green) !important; }
-        body.light-mode .swiper-pagination-bullet-active { background: var(--primary-color) !important; }
-
-        .testimonial-card { height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
-        .testimonial-card blockquote { font-style: italic; font-size: 1.1rem; line-height: 1.6; position: relative; padding-left: 2rem; border-left: 4px solid var(--fluorescent-green); }
-         body.light-mode .testimonial-card blockquote { border-left-color: var(--primary-color); }
-        .testimonial-card .author-info { display: flex; align-items: center; margin-top: 1.5rem; }
-        .testimonial-card .author-info img { width: 60px; height: 60px; border-radius: 50%; margin-right: 1rem; object-fit: cover; }
-        .testimonial-card .author-info cite { font-style: normal; font-weight: 600; }
-        .testimonial-card .author-info cite span { display: block; font-size: 0.85rem; font-weight: 400; color: #9ca3af; }
-        body.light-mode .testimonial-card .author-info cite span { color: #64748b; }
-
-        body.light-mode #career-status {
-            background-color: transparent; /* Postavljeno na prozirno da se vidi animacija */
+        /* Smanjujemo zelenu marginu citata na mobitelu */
+        .testimonial-card blockquote {
+            padding-left: 1rem !important;
+            font-size: 1rem !important;
         }
+    }
 
-        body.light-mode .career-members-grid .text-gray-400 {
-            color: #64748b; /* Malo tamnija siva za bolju čitljivost (Tailwind slate-500) */
-        }
+    /* === OSTALI STILOVI === */
+    body.light-mode #career-status { background-color: transparent; }
+    body.light-mode .career-members-grid .text-gray-400 { color: #64748b; }
 
-        /* === STIL ZA ANIMIRANU POZADINU === */
-        canvas#network-canvas {
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1; /* Postavlja ga iza svog sadržaja */
-            pointer-events: none; /* Da ne ometa klikanje */
-            background-color: #1d012e; /* Tamna pozadina kao fallback */
-        }
-        body.light-mode canvas#network-canvas {
-            background-color: transparent; /* U light modu je pozadina canvasa prozirna */
-        }
+    canvas#network-canvas {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+        background-color: #1d012e;
+    }
+    body.light-mode canvas#network-canvas { background-color: transparent; }
 
-        /* === DODATAK: STILOVI ZA HAMBURGER I MOBILNI MENI === */
-        .hamburger {
-            cursor: pointer;
-            display: block; /* Osigurava da je uvijek vidljiv na mobilnom */
-        }
+    .hamburger { cursor: pointer; display: block; }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-        .hamburger.active .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--dark-bg);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
 
-        .nav-menu {
-    position: fixed;
-    left: -100%; /* Počinje izvan ekrana */
-    top: 70px; /* Visina vašeg navbara */
-    flex-direction: column;
-    background-color: var(--dark-bg);
-    width: 100%;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-}
-
-        .nav-menu.active {
-            left: 0; /* Ulazi u ekran kada je aktivan */
-}
-
-        body.light-mode .nav-menu {
-            background-color: var(--light-bg);
-        }
-
-        body:not(.light-mode) .nav-menu a.btn-primary {
-            color: var(--dark-color);
-        }
-    
+    .nav-menu.active { left: 0; }
+    body.light-mode .nav-menu { background-color: var(--light-bg); }
+    body:not(.light-mode) .nav-menu a.btn-primary { color: var(--dark-color); }
 </style>
 </head>
 
@@ -474,7 +481,7 @@ handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
                 <!-- Slide 1: Vedrana Kramar -->
                  <div class="swiper-slide">
                     <div class="glass-card p-8 testimonial-card interactive-card">
-                        <blockquote>"Ono što me već na prvi pogled osvojilo kod ovog projekta jest činjenica da pruža iznimno jasnu, snažnu i dobro definiranu strukturu, kako pravnu tako i idejnu, koja je detaljno osmišljena kako bi pravedno i dosljedno štitila interese tvrtke i svakog sudionika koji se tada osjeća apsolutno cijenjeno i motivirano. Prepoznati to u ovoj ranoj fazi za mene je jednak osvajanju Nobelove nagrade 🎯✅."</blockquote>
+                        <blockquote>"Ono što me već na prvi pogled osvojilo kod ovog projekta jest činjenica da pruža iznimno jasnu, snažnu i dobro definiranu strukturu, kako pravnu tako i idejnu, koja je detaljno osmišljena kako bi pravedno i dosljedno štitila interese tvrtke i svakog sudionika koji se tada osjeća apsolutno cijenjeno i motivirano.Prepoznati to u ovoj ranoj fazi za mene je jednak osvajanju Nobelove nagrade 🎯✅."</blockquote>
                         <div class="author-info">
                             <img src="img/vedrana-kramar.png" alt="Vedrana Kramar">
                             <cite>Vedrana Kramar<span>Član SFteam zajednice</span></cite>
