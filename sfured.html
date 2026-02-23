@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="hr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SFured - SFT21 Business Concept</title>
 
     <script>
-        (function() {
+        (function () {
             try {
-                const theme = localStorage.getItem('sft21_theme') || 'dark';                
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
                 if (theme === 'light') {
                     document.documentElement.classList.add('light-mode');
                     document.write(`
@@ -29,7 +30,9 @@
     <!-- Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts (Ostavit ćemo ih jer ih koristi originalni dizajn, ali ćemo prebaciti font-family na Arial Narrow u CSS-u) -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- Link to your external CSS file (optional, can embed styles here) -->
     <!-- <link rel="stylesheet" href="css/style.css"> -->
 
@@ -61,7 +64,7 @@
 
         // 2. Add a listener for the 'pageshow' event. This solves the problem
         //    when the page is loaded from the browser's "back-forward" cache.
-        window.addEventListener('pageshow', function(event) {
+        window.addEventListener('pageshow', function (event) {
             // event.persisted is 'true' if the page is loaded from the cache
             if (event.persisted) {
                 console.log('Page loaded from bfcache, re-checking theme.');
@@ -69,448 +72,1508 @@
             }
         });
     </script>
-    
+
     <style>
-:root {
-    --primary-color: #6a1b9a; 
-    --secondary-color: #ab47bc; 
-    --fluorescent-green: #80ff00; 
-    --success-green: #4caf50; 
-    --text-color: #e5e7eb; 
-    --background-color: #0f172a; 
-    --glass-background: rgba(106, 27, 154, 0.15); 
-    --glass-border: rgba(128, 255, 0, 0.3); 
-    --glass-shadow: rgba(0, 0, 0, 0.3);
-    --fluorescent-orange: #d9ff00;
-}
+        :root {
+            --primary-color: #6a1b9a;
+            --secondary-color: #ab47bc;
+            --fluorescent-green: #80ff00;
+            --success-green: #4caf50;
+            --text-color: #e5e7eb;
+            --background-color: #0f172a;
+            --glass-background: rgba(106, 27, 154, 0.15);
+            --glass-border: rgba(128, 255, 0, 0.3);
+            --glass-shadow: rgba(0, 0, 0, 0.3);
+            --fluorescent-orange: #d9ff00;
+        }
 
-body {
-    font-family: 'Arial Narrow', Arial, sans-serif !important; 
-    background-color: var(--background-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
+        body {
+            font-family: 'Arial Narrow', Arial, sans-serif !important;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-/* ============================================= */
-/* === STILOVI ZA LIGHT MODE - ISPRAVNO POSTAVLJENI === */
-/* ============================================= */
-html.light-mode {
-    --primary-color: #6a1b9a;
-    --secondary-color: #ab47bc;
-    --fluorescent-green: #16a34a;
-    --fluorescent-yellow: #ca8a04;
-    --text-color: #334155;
-    --background-color: #f8fafc;
-    --glass-background: rgba(233, 213, 255, 0.6);
-    --glass-border: rgba(168, 85, 247, 0.4);
-    --glass-shadow: rgba(0, 0, 0, 0.1);
-    --fluorescent-orange: #d97706;
-}
-html.light-mode body { background-color: var(--background-color); color: var(--text-color); }
-html.light-mode .sfured-header { background-color: #ffffff; border-bottom-color: #e2e8f0; }
-html.light-mode .sfured-header .logo-nav .small-text,
-html.light-mode .sfured-header .user-info .user-username { color: #64748b; }
-html.light-mode .sfured-header .user-info .user-name { color: #1e293b; }
-html.light-mode .sfured-header .user-info .logout-icon { color: #64748b; }
-html.light-mode .sfured-header .user-info .logout-icon:hover { color: #ef4444; }
-html.light-mode .hamburger .bar { background-color: #4b5563; }
-html.light-mode .sfured-nav-vertical { background-color: #f1f5f9; border-right-color: #e2e8f0; }
-html.light-mode .sfured-nav-vertical .nav-top-icons,
-html.light-mode .sfured-nav-vertical .sf-status-title { border-bottom-color: #e2e8f0; }
-html.light-mode .sfured-nav-vertical .nav-top-icons .icon-link,
-html.light-mode .sfured-nav-vertical .nav-top-icons .notification-icon i { color: #4b5563; }
-html.light-mode .sfured-nav-vertical .nav-top-icons .icon-link:hover,
-html.light-mode .sfured-nav-vertical .nav-top-icons .notification-icon:hover i { color: var(--primary-color); }
-html.light-mode .sfured-nav-vertical .sf-status-title { color: var(--primary-color); }
-html.light-mode .sfured-nav-vertical .nav-link-vertical { color: #4b5563; }
-html.light-mode .sfured-nav-vertical .nav-link-vertical:hover { background-color: rgba(106, 27, 154, 0.1); color: var(--primary-color); }
-html.light-mode .sfured-nav-vertical .nav-link-vertical.active { background-color: var(--primary-color); color: white !important; }
-html.light-mode .dashboard-panel { background-color: #ffffff; border-color: #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-html.light-mode .dashboard-panel:hover { border-color: var(--primary-color); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-html.light-mode .dashboard-panel h4 { color: #334155; }
-html.light-mode .dashboard-panel .panel-secondary-text,
-html.light-mode .panel-value-subtext { color: #64748b; }
-html.light-mode .sftim-top-info-container { background-color: #ffffff; border-color: #e2e8f0; }
-html.light-mode .sftim-top-info-container .sftim-info-block .info-line { border-bottom-color: #f1f5f9; }
-html.light-mode .sftim-top-info-container .sftim-info-block .info-line span:first-child,
-html.light-mode .sftim-top-info-container .sftim-info-block .info-line span.value-white { color: #4b5563; }
-html.light-mode .sfkod-generator-container { background-color: #ffffff; border-color: #e2e8f0; }
-html.light-mode .sfkod-package-button { background-color: #e2e8f0; color: #4b5563; border-color: #cbd5e1; }
-html.light-mode .sfkod-package-button.selected,
-html.light-mode .sfkod-package-button:not(:disabled):hover { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
-html.light-mode .sfkod-generator-button,
-html.light-mode .sfkod-confirm-button { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
-html.light-mode .sfkod-generator-button:hover,
-html.light-mode .sfkod-confirm-button:hover,
-html.light-mode .sfkod-generator-button.active-mode { background-color: transparent; color: var(--primary-color); }
-html.light-mode .sfkod-codes-table-wrapper { background-color: #f8fafc; }
-html.light-mode .sfkod-codes-table th { background-color: #e2e8f0; color: #334155; }
-html.light-mode .sfkod-codes-table td { border-bottom-color: #e2e8f0; }
-html.light-mode .sfkod-kyc-options { background-color: #f1f5f9; border-color: #e2e8f0; }
-html.light-mode .popup-content { background: #ffffff; border-color: var(--primary-color); color: #334155; }
-html.light-mode .popup-content p { color: #4b5569; }
-html.light-mode .modal-close { color: #9ca3af; }
-html.light-mode footer { background-color: #e2e8f0; color: #4b5563; }
-/* Promjena boje "SF" dijela logotipa u ljubičastu */
-html.light-mode .text-logo-orange {
-    color: var(--primary-color) !important;
-}
+        /* ============================================= */
+        /* === STILOVI ZA LIGHT MODE - ISPRAVNO POSTAVLJENI === */
+        /* ============================================= */
+        html.light-mode {
+            --primary-color: #6a1b9a;
+            --secondary-color: #ab47bc;
+            --fluorescent-green: #16a34a;
+            --fluorescent-yellow: #ca8a04;
+            --text-color: #334155;
+            --background-color: #f8fafc;
+            --glass-background: rgba(233, 213, 255, 0.6);
+            --glass-border: rgba(168, 85, 247, 0.4);
+            --glass-shadow: rgba(0, 0, 0, 0.1);
+            --fluorescent-orange: #d97706;
+        }
 
-/* Promjena boje ostatka teksta ("ured") u tamno sivu */
-html.light-mode .text-white,
-html.light-mode .logo-nav .small-text {
-    color: #4b5563 !important; 
-}
+        html.light-mode body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
 
-/* Promjena boje teksta statusa "AKTIVAN" */
-html.light-mode .sfured-header .status-timer .status {
-    color: var(--primary-color) !important;
-}
+        html.light-mode .sfured-header {
+            background-color: #ffffff;
+            border-bottom-color: #e2e8f0;
+        }
 
-/* Promjena boje brojeva tajmera */
-html.light-mode .sfured-header .status-timer .timer-display {
-    color: #4b5563 !important;
-}
+        html.light-mode .sfured-header .logo-nav .small-text,
+        html.light-mode .sfured-header .user-info .user-username {
+            color: #64748b;
+        }
 
-/* === POSEBNI STILOVI ZA SFKOD U LIGHT MODE-U === */
-/* Promjena boje naslova "Generator SFkodova" */
-html.light-mode .sfkod-generator-container h1 {
-    color: var(--primary-color);
-}
+        html.light-mode .sfured-header .user-info .user-name {
+            color: #1e293b;
+        }
 
-/* Promjena boje "i" info ikonice */
-html.light-mode .info-icon {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-    background-color: rgba(106, 27, 154, 0.1);
-}
+        html.light-mode .sfured-header .user-info .logout-icon {
+            color: #64748b;
+        }
 
-/* Promjena stila klikabilnog gumba u tablici (npr. broj 1) */
-html.light-mode .sfkod-index-cell.clickable {
-    background-color: var(--primary-color);
-    color: white !important; /* !important osigurava da prebriše druge boje teksta */
-    border-color: var(--primary-color);
-}
+        html.light-mode .sfured-header .user-info .logout-icon:hover {
+            color: #ef4444;
+        }
 
-/* Promjena boje aktivnog gumba u tablici (kada se uređuje) */
-html.light-mode .sfkod-index-cell.active {
-    background-color: transparent;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color) !important; 
-}
+        html.light-mode .hamburger .bar {
+            background-color: #4b5563;
+        }
 
-/* Promjena boje strelica za brojeve */
-html.light-mode .sfkod-arrow {
-    color: var(--primary-color);
-}
+        html.light-mode .sfured-nav-vertical {
+            background-color: #f1f5f9;
+            border-right-color: #e2e8f0;
+        }
 
-/* === STILOVI ZA POPUP PROZORE U LIGHT MODE-U === */
-/* Promjena boje naslova u popupu */
-html.light-mode .popup-content h4 {
-    color: var(--primary-color);
-}
+        html.light-mode .sfured-nav-vertical .nav-top-icons,
+        html.light-mode .sfured-nav-vertical .sf-status-title {
+            border-bottom-color: #e2e8f0;
+        }
 
-/* Promjena stila gumba u popupu */
-html.light-mode .popup-button {
-    background-color: rgba(106, 27, 154, 0.1); /* Svijetlo ljubičasta pozadina */
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-}
+        html.light-mode .sfured-nav-vertical .nav-top-icons .icon-link,
+        html.light-mode .sfured-nav-vertical .nav-top-icons .notification-icon i {
+            color: #4b5563;
+        }
 
-/* Promjena stila gumba u popupu na hover */
-html.light-mode .popup-button:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
+        html.light-mode .sfured-nav-vertical .nav-top-icons .icon-link:hover,
+        html.light-mode .sfured-nav-vertical .nav-top-icons .notification-icon:hover i {
+            color: var(--primary-color);
+        }
 
-/* Promjena boje checkboxa */
-html.light-mode #ne-prikazuj-ponovno {
-    accent-color: var(--primary-color);
-}
+        html.light-mode .sfured-nav-vertical .sf-status-title {
+            color: var(--primary-color);
+        }
 
-/* Promjena boje teksta labela uz checkbox */
-html.light-mode .popup-content label {
-    color: #64748b; /* Tamnije siva za bolji kontrast */
-}
-/* === KRAJ STILOVA ZA LIGHT MODE === */
+        html.light-mode .sfured-nav-vertical .nav-link-vertical {
+            color: #4b5563;
+        }
 
-.popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); z-index: 10000; display: none; justify-content: center; align-items: center; }
-.popup-content { background: #1f2937; border: 2px solid var(--fluorescent-green); border-radius: 20px; padding: 2.5rem; width: 90%; max-width: 800px; position: relative; box-shadow: 0 8px 32px 0 rgba(var(--fluorescent-green-rgb), 0.3); color: var(--text-color); max-height: 90vh; overflow-y: auto; text-align: left; }
-.popup-content h4 { color: var(--fluorescent-green); margin-bottom: 1.5rem; font-size: 1.5rem; text-align: center; }
-.popup-content p { margin-bottom: 1rem; line-height: 1.7; text-align: justify; }
-.popup-content ul { list-style-type: decimal; padding-left: 2rem; }
-.popup-content li { margin-bottom: 0.5rem; }
-.popup-content strong { color: var(--fluorescent-yellow); }
-.popup-content .napomena-title { color: var(--fluorescent-green); font-weight: bold; margin-top: 1.5rem; }
-.modal-close { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #d1d5db; cursor: pointer; }
-.popup-button { background-color: rgba(var(--fluorescent-green-rgb), 0.1); color: var(--fluorescent-green); border: 1px solid var(--fluorescent-green); border-radius: 8px; padding: 0.75rem 1.5rem; font-weight: 600; cursor: pointer; }
-.popup-button:hover { background-color: var(--fluorescent-green); color: #0e076a; }
-#ne-prikazuj-ponovno { width: 1rem; height: 1rem; accent-color: var(--fluorescent-green); }
+        html.light-mode .sfured-nav-vertical .nav-link-vertical:hover {
+            background-color: rgba(106, 27, 154, 0.1);
+            color: var(--primary-color);
+        }
 
-.sfkod-generator-container { background-color: var(--glass-background); border: 1px solid var(--glass-border); border-radius: 15px; padding: 2rem; }
-.sfkod-generator-container h1 { color: var(--fluorescent-green); text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 2.5rem; }
-.sfkod-package-buttons, #sfkod_generatorButtons, #sfkod_numberInputs, #sfkod_confirmButton, #sfkod_kycOptions { display: none; }
-.visible-flex { display: flex !important; }
-.visible-block { display: block !important; }
-.sfkod-package-buttons { justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; }
-.sfkod-package-button { background-color: var(--primary-color); color: white; border: 1px solid var(--primary-color); border-radius: 8px; padding: 0.6rem 1rem; cursor: pointer; font-weight: 600; min-width: 90px; text-align: center; }
-.sfkod-package-button.selected, .sfkod-package-button:not(:disabled):hover { background-color: var(--fluorescent-green); color: #0f172a; border-color: var(--fluorescent-green); }
-.sfkod-package-button:disabled { background-color: var(--disabled-color); color: rgba(229, 231, 235, 0.6); cursor: not-allowed; opacity: 0.5; border-color: var(--input-border-color); }
-.sfkod-generator-buttons { justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
-.sfkod-number-inputs { justify-content: center; gap: 5px; margin-bottom: 1.5rem; }
-.sfkod-confirm-button { margin: 0 auto; display: block; margin-bottom: 1.5rem; }
-.sfkod-generator-button, .sfkod-confirm-button { background-color: var(--fluorescent-green); color: #0f172a; border: 2px solid var(--fluorescent-green); border-radius: 8px; padding: 0.6rem 1.2rem; cursor: pointer; font-weight: 600; transition: all 0.3s ease; }
-.sfkod-generator-button.active-mode, .sfkod-confirm-button:hover, .sfkod-generator-button:hover { background-color: transparent; color: var(--fluorescent-green); }
-.sfkod-number-input-container { display: flex; flex-direction: column; align-items: center; }
-.sfkod-arrow { cursor: pointer; color: var(--fluorescent-green); font-size: 1.25rem; }
-.sfkod-number-input { width: 36px; height: 36px; text-align: center; border: 1px solid var(--input-border-color); border-radius: 6px; margin: 3px 0; font-size: 1.1rem; background-color: rgba(var(--primary-color-rgb), 0.2); color: var(--text-color); font-weight: bold; }
-.sfkod-codes-table-wrapper { background-color: rgba(0,0,0,0.2); padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem; }
-.sfkod-codes-table { width: 100%; border-collapse: collapse; }
-.sfkod-codes-table th, .sfkod-codes-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid rgba(229, 231, 235, 0.15); vertical-align: middle; }
-.sfkod-codes-table th { background-color: rgba(var(--primary-color-rgb), 0.5); color: white; font-weight: 600; }
-.info-icon-cell { display: flex; justify-content: space-between; align-items: center; }
-.info-icon { font-family: 'Lucida Calligraphy', 'Comic Sans MS', cursive; font-style: italic; font-weight: bold; color: var(--fluorescent-green); background-color: rgba(var(--fluorescent-green-rgb), 0.1); border: 1px solid var(--fluorescent-green); border-radius: 50%; width: 24px; height: 24px; display: inline-flex; justify-content: center; align-items: center; cursor: pointer; }
-.sfkod-index-cell { width: 50px; text-align: center; font-weight: bold; color: #0f172a; background-color: rgba(var(--fluorescent-green-rgb), 0.2); border: 1px solid transparent; cursor: default; border-radius: 4px; }
-.sfkod-index-cell.clickable { background-color: var(--fluorescent-green); cursor: pointer; }
-.sfkod-index-cell.active { background-color: transparent; border: 2px solid var(--fluorescent-green); color: var(--fluorescent-green); }
-.sfkod-index-cell.completed { background-color: transparent !important; color: var(--fluorescent-orange) !important; cursor: default; border-color: transparent !important; }
-.sfkod-code-cell-content { display: flex; align-items: center; justify-content: flex-start; gap: 1.5rem; }
-.sfkod-code-cell-content span:first-child { font-family: 'Arial', sans-serif; font-size: 1.1rem; letter-spacing: 1px; color: var(--fluorescent-orange); font-weight: bold; }
-.sfkod-code-suffix { font-size: 0.9rem; color: #a0aec0; margin-left: auto; padding-right: 1rem; }
-tr.hidden-row { display: none; }
-.sfkod-kyc-options { margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--glass-border); border-radius: 10px; background-color: rgba(106, 27, 154, 0.3); }
-.sfkod-kyc-option input[type="checkbox"] { margin-right: 0.75rem; }
+        html.light-mode .sfured-nav-vertical .nav-link-vertical.active {
+            background-color: var(--primary-color);
+            color: white !important;
+        }
 
-/* === OSTALI STILOVI (HEADER, NAVIGACIJA, PANELI, itd.) === */
-.sfured-header { position: fixed; top: 0; left: 0; width: 100%; height: 64px; background-color: #1f2937; border-bottom: 1px solid rgba(255, 255, 255, 0.1); z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; }
-.sfured-header .logo-sfured { display: flex; align-items: center; }
-.sfured-header .logo-nav { font-size: 1.5rem; line-height: 1; display: flex; flex-direction: column; align-items: flex-start; }
-.sfured-header .logo-nav .small-text { font-size: 0.75rem; color: #d1d5db; font-weight: 400; margin-bottom: -0.1em; }
-.sfured-header .logo-nav .text-logo-orange { color: var(--fluorescent-green); }
-.sfured-header .logo-sfured img { width: 48px; height: auto; margin-right: 0.5rem; }
-.sfured-header .status-timer { display: flex; flex-direction: column; align-items: center; text-align: center; font-size: 0.9rem; color: #d1d5db; }
-.sfured-header .status-timer .status { font-weight: 600; color: var(--fluorescent-green); }
-.sfured-header .status-timer .status.inactive { color: #ef4444; }
-.sfured-header .status-timer .timer-display { font-size: 1rem; font-weight: 700; color: white; margin-top: 0.25rem; }
-.sfured-header .user-info { display: flex; align-items: center; }
-.sfured-header .user-info .user-details { display: flex; flex-direction: column; margin-right: 0.75rem; text-align: right; }
-.sfured-header .user-info .user-name { font-size: 1rem; font-weight: 600; color: white; }
-.sfured-header .user-info .user-username { font-size: 0.875rem; color: #d1d5db; }
-.sfured-header .user-info .avatar-placeholder { width: 40px; height: 40px; background-color: #6b7280; border-radius: 0.375rem; margin-right: 0.75rem; flex-shrink: 0; cursor: pointer; transition: opacity 0.2s ease; }
-.sfured-header .user-info .avatar-placeholder:hover { opacity: 0.8; }
-.sfured-header .user-info .logout-icon { color: #d1d5db; font-size: 1.25rem; cursor: pointer; transition: color 0.2s ease; }
-.sfured-header .user-info .logout-icon:hover { color: #ef4444; }
+        html.light-mode .dashboard-panel {
+            background-color: #ffffff;
+            border-color: #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
 
-.sfured-nav-vertical { position: fixed; top: 64px; left: 0; bottom: 0; width: 250px; background-color: #111827; border-right: 1px solid rgba(255, 255, 255, 0.1); z-index: 40; display: flex; flex-direction: column; padding: 0; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--secondary-color) rgba(255,255,255,0.05); }
-.sfured-nav-vertical::-webkit-scrollbar { width: 5px; }
-.sfured-nav-vertical::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
-.sfured-nav-vertical::-webkit-scrollbar-thumb { background-color: var(--secondary-color); border-radius: 10px; }
-.sfured-nav-vertical .nav-top-icons { display: flex; justify-content: space-around; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 0.75rem; width: 100%; box-sizing: border-box; }
-.sfured-nav-vertical .video-player-icon-area, .sfured-nav-vertical .notification-icon-area { display: flex; flex: 1; justify-content: center; align-items: center; }
-.sfured-nav-vertical .nav-top-icons .icon-link, .sfured-nav-vertical .nav-top-icons .notification-icon { font-size: 1.5rem; color: #d1d5db; transition: color 0.2s ease, transform 0.2s ease; cursor: pointer; }
-.sfured-nav-vertical .nav-top-icons .icon-link:hover, .sfured-nav-vertical .nav-top-icons .notification-icon:hover { color: var(--fluorescent-green); transform: scale(1.1); }
-.notification-icon { position: relative; display: flex; align-items: center; }
-.notification-icon i { font-size: 1.5rem; color: #d1d5db; transition: color 0.2s ease; }
-.notification-icon i:hover { color: var(--fluorescent-green); }
-.notification-counter { position: absolute; top: -8px; right: -8px; font-size: 0.75rem; font-weight: 700; border-radius: 9999px; padding: 0.1rem 0.4rem; line-height: 1; min-width: 1.2em; text-align: center; transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; z-index: 10; background-color: rgba(128, 255, 0, 0.1); color: var(--fluorescent-green); border: 1px solid var(--fluorescent-green); }
-.notification-counter.has-unread { background-color: #ef4444; color: white; border-color: #ef4444; }
-.sfured-nav-vertical .sf-status-title { text-align: center; color: white; font-size: 1.1rem; font-weight: 700; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 0.75rem; }
-.sfured-nav-vertical .sf-status-title .larger-sf { font-size: 1.3rem; }
-.sfured-nav-vertical .nav-links-vertical { flex-grow: 1; list-style: none; padding: 0; margin: 0; }
-.sfured-nav-vertical .nav-link-vertical { display: block; padding: 0.75rem 1.5rem; color: #d1d5db; text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease; font-weight: 500; }
-.sfured-nav-vertical .nav-link-vertical:hover { background-color: rgba(106, 27, 154, 0.1); color: white; }
-.sfured-nav-vertical .nav-link-vertical.active { background-color: var(--fluorescent-green); color: #0e076a; font-weight: 700; }
+        html.light-mode .dashboard-panel:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
 
-.sfured-main-content { margin-left: 250px; padding: 1.5rem; padding-top: calc(64px + 1.5rem); min-height: calc(100vh - 64px); }
-.dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
-.dashboard-panel { background-color: var(--glass-background); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--glass-border); border-radius: 15px; padding: 1.5rem; text-align: center; color: var(--text-color); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.dashboard-panel:hover { transform: translateY(-5px); box-shadow: 0 10px 25px var(--glass-shadow); border-color: var(--fluorescent-green); }
-.dashboard-panel h4 { font-size: 1.1rem; font-weight: 600; color: white; margin-bottom: 0.5rem; font-family: 'Arial Narrow', Arial, sans-serif; }
-.dashboard-panel .panel-value { font-size: 1.5rem; font-weight: 700; color: var(--fluorescent-green); font-family: 'Arial Narrow', Arial, sans-serif; margin-bottom: 0.25rem; }
-.dashboard-panel .panel-secondary-text { font-size: 0.875rem; color: #d1d5db; line-height: 1.4; }
-.dashboard-panel i { font-size: 2rem; color: var(--secondary-color); margin-bottom: 0.5rem; }
-.dashboard-panel .panel-value + i { margin-bottom: 0; }
-.panel-status-timer { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-top: 1rem; padding-bottom: 1rem; }
-.panel-status-timer .panel-value { margin-bottom: 0; font-size: 0.875rem !important; }
-.panel-status-timer .panel-secondary-text { margin-top: 0rem; }
-.dashboard-panel.sf-algorithm-status { min-height: 80px; max-height: 150px; padding: 0.75rem; width: 200px; min-width: 200px; margin: 0 auto; }
-.sf-algorithm-status h4 { font-size: 1rem; margin-bottom: 0.25rem; }
-.panel-small-text { font-size: 0.875rem; color: #d1d5db; }
-.panel-link { color: var(--fluorescent-green); text-decoration: none; font-weight: 600; transition: color 0.2s ease; }
-.panel-link:hover { color: #aaff44; }
+        html.light-mode .dashboard-panel h4 {
+            color: #334155;
+        }
 
-.personal-info-data-panel { background: rgba(106, 27, 154, 0.1); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--fluorescent-green); border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); padding: 1rem; color: var(--text-color); display: flex; flex-direction: column; min-width: 310px; }
-.personal-info-data-panel > div { margin-bottom: 0.5rem; }
-.personal-info-data-panel > div:last-child { margin-bottom: 0; }
-.panel-value-subtext { font-size: 0.75rem; color: #fff; margin-top: 0.25rem; display: block; text-align: center; }
-.text-fluorescent-orange { color: var(--fluorescent-orange); }
-.avatar-upload-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    z-index: 9999;
-    display: none; /* Inicijalno sakriven */
-    justify-content: center;
-    align-items: center;
-}
-.avatar-upload-modal-content {
-    background: #1f2937;
-    border: 1px solid var(--fluorescent-green);
-    border-radius: 15px;
-    padding: 2rem;
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 8px 32px 0 rgba(128, 255, 0, 0.3);
-    color: var(--text-color);
-}
-.avatar-upload-modal-content h4 {
-    color: var(--fluorescent-green);
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-}
-.avatar-upload-options {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-.avatar-upload-button {
-    background-color: rgba(128, 255, 0, 0.1);
-    color: var(--fluorescent-green);
-    border: 1px solid var(--fluorescent-green);
-    border-radius: 8px;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-}
-.avatar-upload-button i {
-    margin-right: 0.75rem;
-    font-size: 1.2rem;
-    color: var(--fluorescent-green);
-}
-.avatar-upload-button:hover {
-    background-color: var(--fluorescent-green);
-    color: #0e076a;
-}
-.avatar-upload-button:hover i {
-    color: #0e076a;
-}
-.avatar-upload-input {
-    display: none; /* Input polje je skriveno */
-}
-/* Popravak pozicije modal-close gumba koji je već definiran */
-.avatar-upload-modal-content .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 2rem;
-    color: #d1d5db;
-    cursor: pointer;
-}
+        html.light-mode .dashboard-panel .panel-secondary-text,
+        html.light-mode .panel-value-subtext {
+            color: #64748b;
+        }
 
-/* Light mode stilovi za modal */
-html.light-mode .avatar-upload-modal-content {
-    background: #ffffff;
-    border-color: var(--primary-color);
-    color: #334155;
-}
-html.light-mode .avatar-upload-modal-content h4 {
-    color: var(--primary-color);
-}
-html.light-mode .avatar-upload-button {
-    background-color: rgba(106, 27, 154, 0.1);
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-html.light-mode .avatar-upload-button i {
-    color: var(--primary-color);
-}
-html.light-mode .avatar-upload-button:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-html.light-mode .avatar-upload-button:hover i {
-    color: white;
-}
-.avatar-upload-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); z-index: 9999; display: none; justify-content: center; align-items: center; }
-.avatar-upload-modal-content { background: #1f2937; border: 1px solid var(--fluorescent-green); border-radius: 15px; padding: 2rem; max-width: 400px; width: 90%; text-align: center; position: relative; box-shadow: 0 8px 32px 0 rgba(128, 255, 0, 0.3); color: var(--text-color); }
-.avatar-upload-modal-content h4 { color: var(--fluorescent-green); margin-bottom: 1.5rem; font-size: 1.5rem; }
-.avatar-upload-options { display: flex; flex-direction: column; gap: 1rem; }
-.avatar-upload-button { background-color: rgba(128, 255, 0, 0.1); color: var(--fluorescent-green); border: 1px solid var(--fluorescent-green); border-radius: 8px; padding: 0.75rem 1.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
-.avatar-upload-button i { margin-right: 0.75rem; font-size: 1.2rem; color: var(--fluorescent-green); }
-.avatar-upload-button:hover { background-color: var(--fluorescent-green); color: #0e076a; }
-.avatar-upload-button:hover i { color: #0e076a; }
-.avatar-upload-input { display: none; }
-.modal-close { position: absolute; top: 10px; right: 10px; font-size: 2rem; color: #d1d5db; cursor: pointer; transition: color 0.2s ease; }
-.modal-close:hover { color: white; }
+        html.light-mode .sftim-top-info-container {
+            background-color: #ffffff;
+            border-color: #e2e8f0;
+        }
 
-.sftim-top-info-container { background-color: var(--glass-background); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--glass-border); border-radius: 15px; padding: 2rem; margin-bottom: 2rem; color: var(--text-color); }
-.sftim-top-info-container .sftim-info-block .info-line { display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); font-size: 1rem; flex-wrap: wrap; }
-.sftim-top-info-container .sftim-info-block .info-line:last-child { border-bottom: none; }
-.sftim-top-info-container .sftim-info-block .info-line span:first-child { color: #d1d5db; flex-shrink: 0; margin-right: 1rem; }
-.sftim-top-info-container .sftim-info-block .info-line span.value-number { font-weight: 700; text-align: right; min-width: 60px; flex-grow: 1; }
-.sftim-top-info-container .sftim-info-block .info-line span.value-white { color: white; }
-.sftim-top-info-container .sftim-info-block .info-line span.value-green { color: var(--fluorescent-green); }
-.sftim-panel-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem; }
-.sfalgoritam-status-panel { width: 110px; height: 120px; padding: 1rem; justify-self: start; }
-.sfalgoritam-status-panel h4 { font-size: 1rem; margin-bottom: 0.3rem; }
-.sfalgoritam-status-panel .panel-secondary-text { font-size: 0.8rem; }
-.sfalgoritam-status-panel i { font-size: 1.8rem; margin-bottom: 0.4rem; }
+        html.light-mode .sftim-top-info-container .sftim-info-block .info-line {
+            border-bottom-color: #f1f5f9;
+        }
 
-/* Mobile Responsive Adjustments */
-@media (max-width: 768px) {
-    body { padding-top: 0; padding-left: 0; }
-    .sfured-header { padding: 0 1rem; }
-    .sfured-header .logo-sfured .logo-nav { font-size: 1rem; }
-    .sfured-header .logo-sfured .logo-nav .small-text { font-size: 0.5rem; }
-    .sfured-header .logo-sfured img { width: 40px; margin-right: 0.25rem; }
-    .sfured-header .status-timer { display: none; }
-    .sfured-header .user-info .user-details { display: none; }
-    .sfured-header .user-info .avatar-placeholder { margin-right: 0.5rem; }
-    .sfured-header .user-info .logout-icon { margin-right: 1rem; }
-    .sfured-nav-vertical { width: 100%; height: auto; max-height: calc(100vh - 64px); top: 64px; left: 0; bottom: auto; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); transform: translateY(-100%); transition: transform 0.3s ease-in-out; padding: 1rem; overflow-y: auto; }
-    .sfured-nav-vertical.active { transform: translateY(0); }
-    .sfured-main-content { margin-left: 0; padding: 1.5rem 1rem; padding-top: calc(64px + 1.5rem); min-height: auto; margin-top: 0; }
-    .dashboard-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
-    .dashboard-panel { padding: 1rem; }
-    .sfalgoritam-status-panel { padding: 0.75rem; }
-    .sfured-nav-vertical .nav-top-icons { justify-content: center; gap: 1rem; padding: 0.5rem 0; margin-bottom: 0.5rem; }
-    .sfured-nav-vertical .sf-status-title { font-size: 1rem; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
-    .sfured-nav-vertical .sf-status-title .larger-sf { font-size: 1.2rem; }
-    .sfured-nav-vertical .nav-links-vertical { padding: 0.5rem 0; flex-direction: column; }
-    .sfured-nav-vertical .nav-link-vertical { padding: 0.75rem 1rem; text-align: center; }
-    .hamburger { display: block; cursor: pointer; margin-right: 0rem; z-index: 60; }
-    .hamburger .bar { display: block; width: 25px; height: 3px; margin: 5px auto; transition: all 0.3s ease-in-out; background-color: #d1d5db; }
-    .hamburger.active .bar:nth-child(2) { opacity: 0; }
-    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-}
+        html.light-mode .sftim-top-info-container .sftim-info-block .info-line span:first-child,
+        html.light-mode .sftim-top-info-container .sftim-info-block .info-line span.value-white {
+            color: #4b5563;
+        }
 
-@media (min-width: 640px) {
-    .sftim-panel-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 768px) {
-    .sftim-panel-grid { grid-template-columns: repeat(4, 1fr); }
-    .sftim-panel-grid .sftim-span-panel { grid-column: span 2 / span 2; }
-}
+        html.light-mode .sfkod-generator-container {
+            background-color: #ffffff;
+            border-color: #e2e8f0;
+        }
+
+        html.light-mode .sfkod-package-button {
+            background-color: #e2e8f0;
+            color: #4b5563;
+            border-color: #cbd5e1;
+        }
+
+        html.light-mode .sfkod-package-button.selected,
+        html.light-mode .sfkod-package-button:not(:disabled):hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        html.light-mode .sfkod-generator-button,
+        html.light-mode .sfkod-confirm-button {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        html.light-mode .sfkod-generator-button:hover,
+        html.light-mode .sfkod-confirm-button:hover,
+        html.light-mode .sfkod-generator-button.active-mode {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        html.light-mode .sfkod-codes-table-wrapper {
+            background-color: #f8fafc;
+        }
+
+        html.light-mode .sfkod-codes-table th {
+            background-color: #e2e8f0;
+            color: #334155;
+        }
+
+        html.light-mode .sfkod-codes-table td {
+            border-bottom-color: #e2e8f0;
+        }
+
+        html.light-mode .sfkod-kyc-options {
+            background-color: #f1f5f9;
+            border-color: #e2e8f0;
+        }
+
+        html.light-mode .popup-content {
+            background: #ffffff;
+            border-color: var(--primary-color);
+            color: #334155;
+        }
+
+        html.light-mode .popup-content p {
+            color: #4b5569;
+        }
+
+        html.light-mode .modal-close {
+            color: #9ca3af;
+        }
+
+        html.light-mode footer {
+            background-color: #e2e8f0;
+            color: #4b5563;
+        }
+
+        /* Promjena boje "SF" dijela logotipa u ljubičastu */
+        html.light-mode .text-logo-orange {
+            color: var(--primary-color) !important;
+        }
+
+        /* Promjena boje ostatka teksta ("ured") u tamno sivu */
+        html.light-mode .text-white,
+        html.light-mode .logo-nav .small-text {
+            color: #4b5563 !important;
+        }
+
+        /* Promjena boje teksta statusa "AKTIVAN" */
+        html.light-mode .sfured-header .status-timer .status {
+            color: var(--primary-color) !important;
+        }
+
+        /* Promjena boje brojeva tajmera */
+        html.light-mode .sfured-header .status-timer .timer-display {
+            color: #4b5563 !important;
+        }
+
+        /* === POSEBNI STILOVI ZA SFKOD U LIGHT MODE-U === */
+        /* Promjena boje naslova "Generator SFkodova" */
+        html.light-mode .sfkod-generator-container h1 {
+            color: var(--primary-color);
+        }
+
+        /* Promjena boje "i" info ikonice */
+        html.light-mode .info-icon {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            background-color: rgba(106, 27, 154, 0.1);
+        }
+
+        /* Promjena stila klikabilnog gumba u tablici (npr. broj 1) */
+        html.light-mode .sfkod-index-cell.clickable {
+            background-color: var(--primary-color);
+            color: white !important;
+            /* !important osigurava da prebriše druge boje teksta */
+            border-color: var(--primary-color);
+        }
+
+        /* Promjena boje aktivnog gumba u tablici (kada se uređuje) */
+        html.light-mode .sfkod-index-cell.active {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color) !important;
+        }
+
+        /* Promjena boje strelica za brojeve */
+        html.light-mode .sfkod-arrow {
+            color: var(--primary-color);
+        }
+
+        /* === STILOVI ZA POPUP PROZORE U LIGHT MODE-U === */
+        /* Promjena boje naslova u popupu */
+        html.light-mode .popup-content h4 {
+            color: var(--primary-color);
+        }
+
+        /* Promjena stila gumba u popupu */
+        html.light-mode .popup-button {
+            background-color: rgba(106, 27, 154, 0.1);
+            /* Svijetlo ljubičasta pozadina */
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* Promjena stila gumba u popupu na hover */
+        html.light-mode .popup-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Promjena boje checkboxa */
+        html.light-mode #ne-prikazuj-ponovno {
+            accent-color: var(--primary-color);
+        }
+
+        /* Promjena boje teksta labela uz checkbox */
+        html.light-mode .popup-content label {
+            color: #64748b;
+            /* Tamnije siva za bolji kontrast */
+        }
+
+        /* === KRAJ STILOVA ZA LIGHT MODE === */
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: #1f2937;
+            border: 2px solid var(--fluorescent-green);
+            border-radius: 20px;
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            box-shadow: 0 8px 32px 0 rgba(var(--fluorescent-green-rgb), 0.3);
+            color: var(--text-color);
+            max-height: 90vh;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .popup-content h4 {
+            color: var(--fluorescent-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .popup-content p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .popup-content ul {
+            list-style-type: decimal;
+            padding-left: 2rem;
+        }
+
+        .popup-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .popup-content strong {
+            color: var(--fluorescent-yellow);
+        }
+
+        .popup-content .napomena-title {
+            color: var(--fluorescent-green);
+            font-weight: bold;
+            margin-top: 1.5rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #d1d5db;
+            cursor: pointer;
+        }
+
+        .popup-button {
+            background-color: rgba(var(--fluorescent-green-rgb), 0.1);
+            color: var(--fluorescent-green);
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .popup-button:hover {
+            background-color: var(--fluorescent-green);
+            color: #0e076a;
+        }
+
+        #ne-prikazuj-ponovno {
+            width: 1rem;
+            height: 1rem;
+            accent-color: var(--fluorescent-green);
+        }
+
+        .sfkod-generator-container {
+            background-color: var(--glass-background);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .sfkod-generator-container h1 {
+            color: var(--fluorescent-green);
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+        }
+
+        .sfkod-package-buttons,
+        #sfkod_generatorButtons,
+        #sfkod_numberInputs,
+        #sfkod_confirmButton,
+        #sfkod_kycOptions {
+            display: none;
+        }
+
+        .visible-flex {
+            display: flex !important;
+        }
+
+        .visible-block {
+            display: block !important;
+        }
+
+        .sfkod-package-buttons {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sfkod-package-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            min-width: 90px;
+            text-align: center;
+        }
+
+        .sfkod-package-button.selected,
+        .sfkod-package-button:not(:disabled):hover {
+            background-color: var(--fluorescent-green);
+            color: #0f172a;
+            border-color: var(--fluorescent-green);
+        }
+
+        .sfkod-package-button:disabled {
+            background-color: var(--disabled-color);
+            color: rgba(229, 231, 235, 0.6);
+            cursor: not-allowed;
+            opacity: 0.5;
+            border-color: var(--input-border-color);
+        }
+
+        .sfkod-generator-buttons {
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sfkod-number-inputs {
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .sfkod-confirm-button {
+            margin: 0 auto;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .sfkod-generator-button,
+        .sfkod-confirm-button {
+            background-color: var(--fluorescent-green);
+            color: #0f172a;
+            border: 2px solid var(--fluorescent-green);
+            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .sfkod-generator-button.active-mode,
+        .sfkod-confirm-button:hover,
+        .sfkod-generator-button:hover {
+            background-color: transparent;
+            color: var(--fluorescent-green);
+        }
+
+        .sfkod-number-input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sfkod-arrow {
+            cursor: pointer;
+            color: var(--fluorescent-green);
+            font-size: 1.25rem;
+        }
+
+        .sfkod-number-input {
+            width: 36px;
+            height: 36px;
+            text-align: center;
+            border: 1px solid var(--input-border-color);
+            border-radius: 6px;
+            margin: 3px 0;
+            font-size: 1.1rem;
+            background-color: rgba(var(--primary-color-rgb), 0.2);
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .sfkod-codes-table-wrapper {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .sfkod-codes-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sfkod-codes-table th,
+        .sfkod-codes-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(229, 231, 235, 0.15);
+            vertical-align: middle;
+        }
+
+        .sfkod-codes-table th {
+            background-color: rgba(var(--primary-color-rgb), 0.5);
+            color: white;
+            font-weight: 600;
+        }
+
+        .info-icon-cell {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-icon {
+            font-family: 'Lucida Calligraphy', 'Comic Sans MS', cursive;
+            font-style: italic;
+            font-weight: bold;
+            color: var(--fluorescent-green);
+            background-color: rgba(var(--fluorescent-green-rgb), 0.1);
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .sfkod-index-cell {
+            width: 50px;
+            text-align: center;
+            font-weight: bold;
+            color: #0f172a;
+            background-color: rgba(var(--fluorescent-green-rgb), 0.2);
+            border: 1px solid transparent;
+            cursor: default;
+            border-radius: 4px;
+        }
+
+        .sfkod-index-cell.clickable {
+            background-color: var(--fluorescent-green);
+            cursor: pointer;
+        }
+
+        .sfkod-index-cell.active {
+            background-color: transparent;
+            border: 2px solid var(--fluorescent-green);
+            color: var(--fluorescent-green);
+        }
+
+        .sfkod-index-cell.completed {
+            background-color: transparent !important;
+            color: var(--fluorescent-orange) !important;
+            cursor: default;
+            border-color: transparent !important;
+        }
+
+        .sfkod-code-cell-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1.5rem;
+        }
+
+        .sfkod-code-cell-content span:first-child {
+            font-family: 'Arial', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: var(--fluorescent-orange);
+            font-weight: bold;
+        }
+
+        .sfkod-code-suffix {
+            font-size: 0.9rem;
+            color: #a0aec0;
+            margin-left: auto;
+            padding-right: 1rem;
+        }
+
+        tr.hidden-row {
+            display: none;
+        }
+
+        .sfkod-kyc-options {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            background-color: rgba(106, 27, 154, 0.3);
+        }
+
+        .sfkod-kyc-option input[type="checkbox"] {
+            margin-right: 0.75rem;
+        }
+
+        /* === OSTALI STILOVI (HEADER, NAVIGACIJA, PANELI, itd.) === */
+        .sfured-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 64px;
+            background-color: #1f2937;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+        }
+
+        .sfured-header .logo-sfured {
+            display: flex;
+            align-items: center;
+        }
+
+        .sfured-header .logo-nav {
+            font-size: 1.5rem;
+            line-height: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .sfured-header .logo-nav .small-text {
+            font-size: 0.75rem;
+            color: #d1d5db;
+            font-weight: 400;
+            margin-bottom: -0.1em;
+        }
+
+        .sfured-header .logo-nav .text-logo-orange {
+            color: var(--fluorescent-green);
+        }
+
+        .sfured-header .logo-sfured img {
+            width: 48px;
+            height: auto;
+            margin-right: 0.5rem;
+        }
+
+        .sfured-header .status-timer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        .sfured-header .status-timer .status {
+            font-weight: 600;
+            color: var(--fluorescent-green);
+        }
+
+        .sfured-header .status-timer .status.inactive {
+            color: #ef4444;
+        }
+
+        .sfured-header .status-timer .timer-display {
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            margin-top: 0.25rem;
+        }
+
+        .sfured-header .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .sfured-header .user-info .user-details {
+            display: flex;
+            flex-direction: column;
+            margin-right: 0.75rem;
+            text-align: right;
+        }
+
+        .sfured-header .user-info .user-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .sfured-header .user-info .user-username {
+            font-size: 0.875rem;
+            color: #d1d5db;
+        }
+
+        .sfured-header .user-info .avatar-placeholder {
+            width: 40px;
+            height: 40px;
+            background-color: #6b7280;
+            border-radius: 0.375rem;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .sfured-header .user-info .avatar-placeholder:hover {
+            opacity: 0.8;
+        }
+
+        .sfured-header .user-info .logout-icon {
+            color: #d1d5db;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .sfured-header .user-info .logout-icon:hover {
+            color: #ef4444;
+        }
+
+        .sfured-nav-vertical {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            bottom: 0;
+            width: 250px;
+            background-color: #111827;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 40;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary-color) rgba(255, 255, 255, 0.05);
+        }
+
+        .sfured-nav-vertical::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .sfured-nav-vertical::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .sfured-nav-vertical::-webkit-scrollbar-thumb {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        .sfured-nav-vertical .nav-top-icons {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 0.75rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .sfured-nav-vertical .video-player-icon-area,
+        .sfured-nav-vertical .notification-icon-area {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sfured-nav-vertical .nav-top-icons .icon-link,
+        .sfured-nav-vertical .nav-top-icons .notification-icon {
+            font-size: 1.5rem;
+            color: #d1d5db;
+            transition: color 0.2s ease, transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .sfured-nav-vertical .nav-top-icons .icon-link:hover,
+        .sfured-nav-vertical .nav-top-icons .notification-icon:hover {
+            color: var(--fluorescent-green);
+            transform: scale(1.1);
+        }
+
+        .notification-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .notification-icon i {
+            font-size: 1.5rem;
+            color: #d1d5db;
+            transition: color 0.2s ease;
+        }
+
+        .notification-icon i:hover {
+            color: var(--fluorescent-green);
+        }
+
+        .notification-counter {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 9999px;
+            padding: 0.1rem 0.4rem;
+            line-height: 1;
+            min-width: 1.2em;
+            text-align: center;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+            z-index: 10;
+            background-color: rgba(128, 255, 0, 0.1);
+            color: var(--fluorescent-green);
+            border: 1px solid var(--fluorescent-green);
+        }
+
+        .notification-counter.has-unread {
+            background-color: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        .sfured-nav-vertical .sf-status-title {
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 0.75rem;
+        }
+
+        .sfured-nav-vertical .sf-status-title .larger-sf {
+            font-size: 1.3rem;
+        }
+
+        .sfured-nav-vertical .nav-links-vertical {
+            flex-grow: 1;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sfured-nav-vertical .nav-link-vertical {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #d1d5db;
+            text-decoration: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-weight: 500;
+        }
+
+        .sfured-nav-vertical .nav-link-vertical:hover {
+            background-color: rgba(106, 27, 154, 0.1);
+            color: white;
+        }
+
+        .sfured-nav-vertical .nav-link-vertical.active {
+            background-color: var(--fluorescent-green);
+            color: #0e076a;
+            font-weight: 700;
+        }
+
+        .sfured-main-content {
+            margin-left: 250px;
+            padding: 1.5rem;
+            padding-top: calc(64px + 1.5rem);
+            min-height: calc(100vh - 64px);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .dashboard-panel {
+            background-color: var(--glass-background);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--text-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dashboard-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--glass-shadow);
+            border-color: var(--fluorescent-green);
+        }
+
+        .dashboard-panel h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .dashboard-panel .panel-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--fluorescent-green);
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            margin-bottom: 0.25rem;
+        }
+
+        .dashboard-panel .panel-secondary-text {
+            font-size: 0.875rem;
+            color: #d1d5db;
+            line-height: 1.4;
+        }
+
+        .dashboard-panel i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-panel .panel-value+i {
+            margin-bottom: 0;
+        }
+
+        .panel-status-timer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .panel-status-timer .panel-value {
+            margin-bottom: 0;
+            font-size: 0.875rem !important;
+        }
+
+        .panel-status-timer .panel-secondary-text {
+            margin-top: 0rem;
+        }
+
+        .dashboard-panel.sf-algorithm-status {
+            min-height: 80px;
+            max-height: 150px;
+            padding: 0.75rem;
+            width: 200px;
+            min-width: 200px;
+            margin: 0 auto;
+        }
+
+        .sf-algorithm-status h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .panel-small-text {
+            font-size: 0.875rem;
+            color: #d1d5db;
+        }
+
+        .panel-link {
+            color: var(--fluorescent-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .panel-link:hover {
+            color: #aaff44;
+        }
+
+        .personal-info-data-panel {
+            background: rgba(106, 27, 154, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-width: 310px;
+        }
+
+        .personal-info-data-panel>div {
+            margin-bottom: 0.5rem;
+        }
+
+        .personal-info-data-panel>div:last-child {
+            margin-bottom: 0;
+        }
+
+        .panel-value-subtext {
+            font-size: 0.75rem;
+            color: #fff;
+            margin-top: 0.25rem;
+            display: block;
+            text-align: center;
+        }
+
+        .text-fluorescent-orange {
+            color: var(--fluorescent-orange);
+        }
+
+        .avatar-upload-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: none;
+            /* Inicijalno sakriven */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-upload-modal-content {
+            background: #1f2937;
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 8px 32px 0 rgba(128, 255, 0, 0.3);
+            color: var(--text-color);
+        }
+
+        .avatar-upload-modal-content h4 {
+            color: var(--fluorescent-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .avatar-upload-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .avatar-upload-button {
+            background-color: rgba(128, 255, 0, 0.1);
+            color: var(--fluorescent-green);
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .avatar-upload-button i {
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+            color: var(--fluorescent-green);
+        }
+
+        .avatar-upload-button:hover {
+            background-color: var(--fluorescent-green);
+            color: #0e076a;
+        }
+
+        .avatar-upload-button:hover i {
+            color: #0e076a;
+        }
+
+        .avatar-upload-input {
+            display: none;
+            /* Input polje je skriveno */
+        }
+
+        /* Popravak pozicije modal-close gumba koji je već definiran */
+        .avatar-upload-modal-content .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            color: #d1d5db;
+            cursor: pointer;
+        }
+
+        /* Light mode stilovi za modal */
+        html.light-mode .avatar-upload-modal-content {
+            background: #ffffff;
+            border-color: var(--primary-color);
+            color: #334155;
+        }
+
+        html.light-mode .avatar-upload-modal-content h4 {
+            color: var(--primary-color);
+        }
+
+        html.light-mode .avatar-upload-button {
+            background-color: rgba(106, 27, 154, 0.1);
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        html.light-mode .avatar-upload-button i {
+            color: var(--primary-color);
+        }
+
+        html.light-mode .avatar-upload-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        html.light-mode .avatar-upload-button:hover i {
+            color: white;
+        }
+
+        .avatar-upload-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-upload-modal-content {
+            background: #1f2937;
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 8px 32px 0 rgba(128, 255, 0, 0.3);
+            color: var(--text-color);
+        }
+
+        .avatar-upload-modal-content h4 {
+            color: var(--fluorescent-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .avatar-upload-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .avatar-upload-button {
+            background-color: rgba(128, 255, 0, 0.1);
+            color: var(--fluorescent-green);
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .avatar-upload-button i {
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+            color: var(--fluorescent-green);
+        }
+
+        .avatar-upload-button:hover {
+            background-color: var(--fluorescent-green);
+            color: #0e076a;
+        }
+
+        .avatar-upload-button:hover i {
+            color: #0e076a;
+        }
+
+        .avatar-upload-input {
+            display: none;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            color: #d1d5db;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: white;
+        }
+
+        .sftim-top-info-container {
+            background-color: var(--glass-background);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .sftim-top-info-container .sftim-info-block .info-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.45rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .sftim-top-info-container .sftim-info-block .info-line:last-child {
+            border-bottom: none;
+        }
+
+        .sftim-top-info-container .sftim-info-block .info-line span:first-child {
+            color: #d1d5db;
+            flex-shrink: 0;
+            margin-right: 1rem;
+        }
+
+        .sftim-top-info-container .sftim-info-block .info-line span.value-number {
+            font-weight: 700;
+            text-align: right;
+            min-width: 60px;
+            flex-grow: 1;
+        }
+
+        .sftim-top-info-container .sftim-info-block .info-line span.value-white {
+            color: white;
+        }
+
+        .sftim-top-info-container .sftim-info-block .info-line span.value-green {
+            color: var(--fluorescent-green);
+        }
+
+        .sftim-panel-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+        }
+
+        .sfalgoritam-status-panel {
+            width: 110px;
+            height: 120px;
+            padding: 1rem;
+            justify-self: start;
+        }
+
+        .sfalgoritam-status-panel h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .sfalgoritam-status-panel .panel-secondary-text {
+            font-size: 0.8rem;
+        }
+
+        .sfalgoritam-status-panel i {
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 0;
+                padding-left: 0;
+            }
+
+            .sfured-header {
+                padding: 0 1rem;
+            }
+
+            .sfured-header .logo-sfured .logo-nav {
+                font-size: 1rem;
+            }
+
+            .sfured-header .logo-sfured .logo-nav .small-text {
+                font-size: 0.5rem;
+            }
+
+            .sfured-header .logo-sfured img {
+                width: 40px;
+                margin-right: 0.25rem;
+            }
+
+            .sfured-header .status-timer {
+                display: none;
+            }
+
+            .sfured-header .user-info .user-details {
+                display: none;
+            }
+
+            .sfured-header .user-info .avatar-placeholder {
+                margin-right: 0.5rem;
+            }
+
+            .sfured-header .user-info .logout-icon {
+                margin-right: 1rem;
+            }
+
+            .sfured-nav-vertical {
+                width: 100%;
+                height: auto;
+                max-height: calc(100vh - 64px);
+                top: 64px;
+                left: 0;
+                bottom: auto;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                transform: translateY(-100%);
+                transition: transform 0.3s ease-in-out;
+                padding: 1rem;
+                overflow-y: auto;
+            }
+
+            .sfured-nav-vertical.active {
+                transform: translateY(0);
+            }
+
+            .sfured-main-content {
+                margin-left: 0;
+                padding: 1.5rem 1rem;
+                padding-top: calc(64px + 1.5rem);
+                min-height: auto;
+                margin-top: 0;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .dashboard-panel {
+                padding: 1rem;
+            }
+
+            .sfalgoritam-status-panel {
+                padding: 0.75rem;
+            }
+
+            .sfured-nav-vertical .nav-top-icons {
+                justify-content: center;
+                gap: 1rem;
+                padding: 0.5rem 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .sfured-nav-vertical .sf-status-title {
+                font-size: 1rem;
+                padding-bottom: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .sfured-nav-vertical .sf-status-title .larger-sf {
+                font-size: 1.2rem;
+            }
+
+            .sfured-nav-vertical .nav-links-vertical {
+                padding: 0.5rem 0;
+                flex-direction: column;
+            }
+
+            .sfured-nav-vertical .nav-link-vertical {
+                padding: 0.75rem 1rem;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: block;
+                cursor: pointer;
+                margin-right: 0rem;
+                z-index: 60;
+            }
+
+            .hamburger .bar {
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin: 5px auto;
+                transition: all 0.3s ease-in-out;
+                background-color: #d1d5db;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+/* Popravak za Generator SFkodova na mobitelu */
+            .sfkod-number-inputs {
+                gap: 2px !important; /* Smanjuje razmak između brojeva */
+                padding: 0 5px;
+            }
+
+            .sfkod-number-input {
+                width: 28px !important;  /* Smanjeno sa 36px na 28px */
+                height: 30px !important;
+                font-size: 0.9rem !important;
+                margin: 2px 0 !important;
+            }
+
+            .sfkod-arrow {
+                font-size: 0.9rem !important; /* Smanjuje strelice gore/dolje */
+            }
+
+            .sfkod-generator-container {
+                padding: 1.5rem 0.5rem !important; /* Smanjuje bočni padding kontejnera */
+            }
+
+        @media (min-width: 640px) {
+            .sftim-panel-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .sftim-panel-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .sftim-panel-grid .sftim-span-panel {
+                grid-column: span 2 / span 2;
+            }
+        }
     </style>
-     <!-- Učitavanje Skripti (opcionalno ako već imate globalni setup) -->
+    <!-- Učitavanje Skripti (opcionalno ako već imate globalni setup) -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.5/dist/ScrollTrigger.min.js"></script>
 </head>
+
 <body>
 
     <!-- Elementi za animiranu pozadinu i kursor -->
@@ -520,41 +1583,43 @@ html.light-mode .avatar-upload-button:hover i {
     <!-- Top Fixed Header -->
     <header class="sfured-header">
 
-    <!-- === IZMIJENJENI DIO ZA LOGO U HEADERU - POČETAK === -->
-    <a href="index.html" class="flex items-center" id="logo-link">
-    <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-2">
-    <div class="flex flex-col logo-nav">
-         <div class="font-bold text-xl"> 
-            <span class="text-logo-orange">SF</span><span class="text-white">ured</span>
-         </div>
-    </div>
-    </a>
-    </div>
+        <!-- === IZMIJENJENI DIO ZA LOGO U HEADERU - POČETAK === -->
+        <a href="index.html" class="flex items-center" id="logo-link">
+            <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-2">
+            <div class="flex flex-col logo-nav">
+                <div class="font-bold text-xl">
+                    <span class="text-logo-orange">SF</span><span class="text-white">ured</span>
+                </div>
+            </div>
+        </a>
+        </div>
 
         <!-- Status/Timer (Hidden on mobile) -->
         <div class="status-timer hidden md:flex">
-             <span id="account-status" class="status active">AKTIVAN</span>
-             <span id="account-timer" class="timer-display">0_ 00:00:00</span> <!-- POČETNA VRIJEDNOST TAJMERA PRIKAZANA U HTML-U -->
+            <span id="account-status" class="status active">AKTIVAN</span>
+            <span id="account-timer" class="timer-display">0_ 00:00:00</span>
+            <!-- POČETNA VRIJEDNOST TAJMERA PRIKAZANA U HTML-U -->
         </div>
 
         <!-- User Info & Logout -->
         <div class="user-info">
             <div class="user-details hidden md:flex">
-                 <span id="user-name" class="user-name">Maja Novak</span>
-                 <span id="user-username" class="user-username">maja.novak@example.com</span> <!-- Koristi email ili korisničko ime -->
+                <span id="user-name" class="user-name">Maja Novak</span>
+                <span id="user-username" class="user-username">maja.novak@example.com</span>
+                <!-- Koristi email ili korisničko ime -->
             </div>
             <!-- Avatar Placeholder (sada klikabilan) -->
             <div id="avatar-placeholder" class="avatar-placeholder">
-                 <!-- Ovdje ide profilna slika/avatar -->
-                 <!-- Može se dodati i ikona tipa <i class="fas fa-camera"></i> ili <i class="fas fa-user-circle"></i> -->
+                <!-- Ovdje ide profilna slika/avatar -->
+                <!-- Može se dodati i ikona tipa <i class="fas fa-camera"></i> ili <i class="fas fa-user-circle"></i> -->
             </div>
             <i class="fas fa-power-off logout-icon" title="Odjava"></i>
             <!-- Hamburger ikona za mobilni prikaz -->
             <div class="hamburger md:hidden">
-                 <span class="bar"></span>
-                 <span class="bar"></span>
-                 <span class="bar"></span>
-             </div>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </header>
 
@@ -562,38 +1627,46 @@ html.light-mode .avatar-upload-button:hover i {
     <nav class="sfured-nav-vertical">
         <!-- === IKONE NA VRHU VERTIKALNOG MENIJA (SADA SPLITANE) - POČETAK === -->
         <div class="nav-top-icons">
-             <!-- Lijevo polje: Video Player Icon -->
+            <!-- Lijevo polje: Video Player Icon -->
             <div class="video-player-icon-area">
-            <div class="video-player-icon-area"><a href="video_player.html?from=sfured.html" class="icon-link" title="Video Player"><i class="fas fa-play-circle"></i></a>
-            </div>
+                <div class="video-player-icon-area"><a href="video_player.html?from=sfured.html" class="icon-link"
+                        title="Video Player"><i class="fas fa-play-circle"></i></a>
+                </div>
             </div>
             <!-- Desno polje: Notification Icon i Brojač -->
             <div class="notification-icon-area">
                 <div class="notification-icon" title="Obavijesti">
-                     <i class="fas fa-bell"></i>
-                     <!-- Brojač nepročitanih obavijesti (sa klasom za crveni krug u demo verziji) -->
-                     <span class="notification-counter has-unread">1</span>
+                    <i class="fas fa-bell"></i>
+                    <!-- Brojač nepročitanih obavijesti (sa klasom za crveni krug u demo verziji) -->
+                    <span class="notification-counter has-unread">1</span>
                 </div>
             </div>
         </div>
-         <!-- === IKONE NA VRHU VERTIKALNOG MENIJA (SADA SPLITANE) - KRAJ === -->
+        <!-- === IKONE NA VRHU VERTIKALNOG MENIJA (SADA SPLITANE) - KRAJ === -->
 
 
         <!-- User Status/Title -->
         <div class="sf-status-title">
-             <span class="larger-sf">SF</span>Franšizer
+            <span class="larger-sf">SF</span>Franšizer
         </div>
 
         <!-- Main Vertical Links -->
         <ul class="nav-links-vertical">
-             <li><a href="#" class="nav-link-vertical active" data-panel-target="kontrolna-ploca"><i class="fas fa-tachometer-alt mr-3"></i>Kontrolna ploča</a></li>
-             <li><a href="#" class="nav-link-vertical" data-panel-target="moj-racun"><i class="fas fa-user-circle mr-3"></i>Moj račun</a></li>
-             <li><a href="#" class="nav-link-vertical" data-panel-target="novcanik"><i class="fas fa-wallet mr-3"></i>Novčanik</a></li>
-             <li><a href="#" class="nav-link-vertical" data-panel-target="sftim"><i class="fas fa-users mr-3"></i>Steam</a></li>             
-             <li><a href="#" class="nav-link-vertical" data-panel-target="sfkod"><i class="fas fa-ticket-alt mr-3"></i>SFkod</a></li>             
-             <li><a href="#" class="nav-link-vertical" data-panel-target="sfnet"><i class="fas fa-share-nodes mr-3"></i>SFnet</a></li>
-             <li><a href="#" class="nav-link-vertical" data-panel-target="sfshop"><i class="fas fa-shopping-bag mr-3"></i>SFshop</a></li>
-            </ul>
+            <li><a href="#" class="nav-link-vertical active" data-panel-target="kontrolna-ploca"><i
+                        class="fas fa-tachometer-alt mr-3"></i>KONTROLNA PLOČA</a></li>
+            <li><a href="#" class="nav-link-vertical" data-panel-target="moj-racun"><i
+                        class="fas fa-user-circle mr-3"></i>MOJ RAČUN</a></li>
+            <li><a href="#" class="nav-link-vertical" data-panel-target="novcanik"><i
+                        class="fas fa-wallet mr-3"></i>NOVČANIK</a></li>
+            <li><a href="#" class="nav-link-vertical" data-panel-target="sftim"><i
+                        class="fas fa-users mr-3"></i>SFTIM</a></li>
+            <li><a href="#" class="nav-link-vertical" data-panel-target="sfkod"><i
+                        class="fas fa-ticket-alt mr-3"></i>SFKOD</a></li>
+            <li><a href="#" class="nav-link-vertical" data-panel-target="sfnet"><i
+                        class="fas fa-share-nodes mr-3"></i>SFNET</a></li>
+            <li><a href="#" class="nav-link-vertical" data-panel-target="sfshop"><i
+                        class="fas fa-shopping-bag mr-3"></i>SFSHOP</a></li>
+        </ul>
 
         <!-- UKLONJENO: nav-bottom-icons jer su sada na vrhu -->
     </nav>
@@ -606,49 +1679,52 @@ html.light-mode .avatar-upload-button:hover i {
             <!-- Panel 1: Startni paket -->
             <div class="dashboard-panel" id="startni-paket-panel">
                 <i class="fas fa-box-open"></i>
-                 <h4>Startni paket</h4>
-                 <span class="panel-value">SP7</span>
-                 <span class="panel-secondary-text">Pretplatnički period: <span style="color: var(--fluorescent-green); font-size: 1.1em;">1 / 21</span>            
+                <h4>Startni paket</h4>
+                <span class="panel-value">SP7</span>
+                <span class="panel-secondary-text">Pretplatnički period: <span
+                        style="color: var(--fluorescent-green); font-size: 1.1em;">1 / 21</span>
             </div>
 
             <!-- Panel 2: Zarada -->
             <div class="dashboard-panel">
-                 <i class="fas fa-coins"></i>
-                 <h4>Zarada</h4>
-                 <span class="panel-value">0,00 SFC</span>
-                 <span class="panel-secondary-text">Blokirano: 0,00 SFC</span>
-                 <!-- <button class="btn-primary mt-4 text-xs px-3 py-1">Detalji</button> -->
+                <i class="fas fa-coins"></i>
+                <h4>Zarada</h4>
+                <span class="panel-value">0,00 SFC</span>
+                <span class="panel-secondary-text">Blokirano: 0,00 SFC</span>
+                <!-- <button class="btn-primary mt-4 text-xs px-3 py-1">Detalji</button> -->
             </div>
 
             <!-- Panel 3: Radna obaveza -->
-             <div class="dashboard-panel">
-                 <i class="fas fa-tasks"></i>
-                 <h4>Radna obaveza</h4>
-                 <span class="panel-value">Potvrdi</span> <!-- Može biti tekst "Potvrdi" ili status "Obavljena" -->
-                 <span class="panel-secondary-text">Tjedna / mjesečna obaveza</span>
-                 <!-- <button class="btn-primary mt-4 text-xs px-3 py-1">Obavi</button> -->
-             </div>
+            <div class="dashboard-panel">
+                <i class="fas fa-tasks"></i>
+                <h4>Radna obaveza</h4>
+                <span class="panel-value">Potvrdi</span> <!-- Može biti tekst "Potvrdi" ili status "Obavljena" -->
+                <span class="panel-secondary-text">Tjedna / mjesečna obaveza</span>
+                <!-- <button class="btn-primary mt-4 text-xs px-3 py-1">Obavi</button> -->
+            </div>
 
-           <!-- Panel 4: SFpodrška -->
-<div class="dashboard-panel">
-    <i class="fas fa-headset"></i>
-    <h4>SFpodrška</h4>
-    <div style="white-space: nowrap;" class="panel-secondary-text">Nepročitani emailovi: <span style="color: var(--fluorescent-green); font-size: 1.1em;">1</span>
-    </div>
-</div>
+            <!-- Panel 4: SFpodrška -->
+            <div class="dashboard-panel">
+                <i class="fas fa-headset"></i>
+                <h4>SFpodrška</h4>
+                <div style="white-space: nowrap;" class="panel-secondary-text">Nepročitani emailovi: <span
+                        style="color: var(--fluorescent-green); font-size: 1.1em;">1</span>
+                </div>
+            </div>
 
             <!-- Panel 5: Dodaj novog člana -->
             <div class="dashboard-panel">
-                 <i class="fas fa-user-plus"></i>
-                 <h4>Dodaj novog člana</h4>
-                 <span class="panel-secondary-text">Registrirajte novog korisnika</span>
+                <i class="fas fa-user-plus"></i>
+                <h4>Dodaj novog člana</h4>
+                <span class="panel-secondary-text">Registrirajte novog korisnika</span>
             </div>
 
             <!-- Panel 6: Limit maksimalne zarade -->
             <div class="dashboard-panel">
-                 <i class="fas fa-chart-bar"></i>
-                 <h4>Limit max. zarade</h4>
-                 <span class="panel-value">2100 SFC</span>                <!-- <button class="btn-primary mt-4 text-xs px-3 py-1">Povećaj</button> -->
+                <i class="fas fa-chart-bar"></i>
+                <h4>Limit max. zarade</h4>
+                <span class="panel-value">2100 SFC</span>
+                <!-- <button class="btn-primary mt-4 text-xs px-3 py-1">Povećaj</button> -->
             </div>
 
             <!-- Panel 7: Status aktivnih / neaktivnih dana -->
@@ -656,12 +1732,15 @@ html.light-mode .avatar-upload-button:hover i {
                 <i class="fas fa-calendar-alt"></i>
                 <h4>Status aktivnih / neaktivnih dana</h4>
                 <!-- Kontejner za Aktivne dane -->
-                <div class="flex justify-center items-center text-sm"> <!-- Added flex for side-by-side and text-sm for size -->
+                <div class="flex justify-center items-center text-sm">
+                    <!-- Added flex for side-by-side and text-sm for size -->
                     <span class="panel-secondary-text mr-1">Aktivni dani:</span> <!-- Label -->
-                    <span class="panel-value text-sm" id="panel7-active-days">0</span> <!-- Value, adjusted size to fit -->
+                    <span class="panel-value text-sm" id="panel7-active-days">0</span>
+                    <!-- Value, adjusted size to fit -->
                 </div>
                 <!-- Kontejner za Neaktivne dane -->
-                <div class="flex justify-center items-center text-sm mt-1"> <!-- Added flex and text-sm, mt-1 for spacing -->
+                <div class="flex justify-center items-center text-sm mt-1">
+                    <!-- Added flex and text-sm, mt-1 for spacing -->
                     <span class="panel-secondary-text mr-1">Neaktivni dani:</span> <!-- Label -->
                     <span class="panel-value text-sm" id="panel7-inactive-days">0</span> <!-- Value, adjusted size -->
                 </div>
@@ -669,120 +1748,134 @@ html.light-mode .avatar-upload-button:hover i {
 
             <!-- Panel 8: SFpojmovnik -->
             <div class="dashboard-panel">
-                 <i class="fas fa-book"></i>
-                 <h4>SFpojmovnik</h4>
-                 <span class="panel-secondary-text">Objašnjenje pojmova</span>
-                 <span class="panel-value"></span>
+                <i class="fas fa-book"></i>
+                <h4>SFpojmovnik</h4>
+                <span class="panel-secondary-text">Objašnjenje pojmova</span>
+                <span class="panel-value"></span>
             </div>
 
             <!-- Panel 9: SFbodovi -->
             <div class="dashboard-panel">
-                 <i class="fas fa-star"></i>
-                 <h4>SFbodovi</h4>
-                 <span class="panel-value">1450</span>                <!-- <button class="btn-primary mt-4 text-xs px-3 py-1">Detalji</button> -->
-             </div>
+                <i class="fas fa-star"></i>
+                <h4>SFbodovi</h4>
+                <span class="panel-value">1450</span>
+                <!-- <button class="btn-primary mt-4 text-xs px-3 py-1">Detalji</button> -->
+            </div>
 
             <!-- Panel 10: SFkreator -->
             <div class="dashboard-panel">
-                 <i class="fas fa-pencil-alt"></i>
-                 <h4>SFkreator</h4>
-                 <span class="panel-secondary-text">Kreirajte marketinški materijal</span>
+                <i class="fas fa-pencil-alt"></i>
+                <h4>SFkreator</h4>
+                <span class="panel-secondary-text">Kreirajte marketinški materijal</span>
             </div>
 
             <!-- Panel 11: SFT21 Business Concept -->
-             <div class="dashboard-panel">
-                 <i class="fas fa-rocket"></i> <!-- Promijenjena ikona u raketu -->
-                 <h4>SFT21 Business Concept</h4>
-                 <span class="panel-secondary-text">Službena prezentacija</span>
-             </div>
+            <div class="dashboard-panel">
+                <i class="fas fa-rocket"></i> <!-- Promijenjena ikona u raketu -->
+                <h4>SFT21 Business Concept</h4>
+                <span class="panel-secondary-text">Službena prezentacija</span>
+            </div>
 
             <!-- Panel 12: Preuzimanja -->
             <div class="dashboard-panel">
-                 <i class="fas fa-file-download"></i> <!-- Promijenjena ikona u file-download -->
-                 <h4>Preuzimanja</h4>
-                 <span class="panel-secondary-text">Važni dokumenti i materijali</span>
+                <i class="fas fa-file-download"></i> <!-- Promijenjena ikona u file-download -->
+                <h4>Preuzimanja</h4>
+                <span class="panel-secondary-text">Važni dokumenti i materijali</span>
             </div>
         </div> <!-- End Dashboard Grid -->
 
         <!-- === MOJ RAČUN CONTENT - POČETAK (Inicijalno sakriven) === -->
-         <div id="moj-racun-content" style="display: none;">
-             <!-- Top Personal Details Block (Slično slici) -->
-             <div class="glass-card mb-8">
-                 <h4 class="text-xl font-bold mb-6 text-center">Moji Podaci</h4>
-                 <!-- Data Panels Grid -->
-                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-8"> <!-- Original grid structure, added mb-8 for space below -->
-                     <!-- Panel 1: Lijevi stupac -->
-                     <div class="personal-info-data-panel"> <!-- Changed class -->
-                         <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Broj dokumenta:</span> <span class="text-white">123456789</span></div>
-                         <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">eMail:</span> <span class="text-white">maja.novak@example.com</span></div>
-                         <div class="flex justify-between"><span class="font-semibold text-gray-400">Mobitel:</span> <span class="text-white">+385912345678</span></div>
-                     </div>
-                     <!-- Panel 2: Srednji stupac -->
-                     <div class="personal-info-data-panel"> <!-- Changed class -->
-                         <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Adresa:</span> <span class="text-white">Moja ulica 7</span></div>
-                         <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Grad / Mjesto:</span> <span class="text-white">Rovinj</span></div>
-                         <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Broj pošte:</span> <span class="text-white">52210</span></div>
-                         <div class="flex justify-between"><span class="font-semibold text-gray-400">Država:</span> <span class="text-white">Hrvatska</span></div>
-                     </div>
-                     <!-- Panel 3: Desni stupac -->
-                     <div class="personal-info-data-panel"> <!-- Changed class -->
-                         <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Korisnički ID:</span> <span class="text-white">fde3486b891fd8858c83b722938d6527</span></div>
-                         <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Korisničko ime:</span> <span class="text-white">majanovak</span></div>
-                         <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Preporučitelj:</span> <span class="text-white">dreamhacker</span></div>
-                         <div class="flex justify-between"><span class="font-semibold text-gray-400">Sponzor:</span> <span class="text-white">dreamhacker</span></div>
-                     </div>
-                 </div>
-             </div>
+        <div id="moj-racun-content" style="display: none;">
+            <!-- Top Personal Details Block (Slično slici) -->
+            <div class="glass-card mb-8">
+                <h4 class="text-xl font-bold mb-6 text-center">Moji Podaci</h4>
+                <!-- Data Panels Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-8">
+                    <!-- Original grid structure, added mb-8 for space below -->
+                    <!-- Panel 1: Lijevi stupac -->
+                    <div class="personal-info-data-panel"> <!-- Changed class -->
+                        <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Broj
+                                dokumenta:</span> <span class="text-white">123456789</span></div>
+                        <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">eMail:</span>
+                            <span class="text-white">maja.novak@example.com</span></div>
+                        <div class="flex justify-between"><span class="font-semibold text-gray-400">Mobitel:</span>
+                            <span class="text-white">+385912345678</span></div>
+                    </div>
+                    <!-- Panel 2: Srednji stupac -->
+                    <div class="personal-info-data-panel"> <!-- Changed class -->
+                        <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Adresa:</span>
+                            <span class="text-white">Moja ulica 7</span></div>
+                        <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Grad /
+                                Mjesto:</span> <span class="text-white">Rovinj</span></div>
+                        <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Broj
+                                pošte:</span> <span class="text-white">52210</span></div>
+                        <div class="flex justify-between"><span class="font-semibold text-gray-400">Država:</span> <span
+                                class="text-white">Hrvatska</span></div>
+                    </div>
+                    <!-- Panel 3: Desni stupac -->
+                    <div class="personal-info-data-panel"> <!-- Changed class -->
+                        <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Korisnički
+                                ID:</span> <span class="text-white">fde3486b891fd8858c83b722938d6527</span></div>
+                        <div class="flex justify-between mb-2"><span class="font-semibold text-gray-400">Korisničko
+                                ime:</span> <span class="text-white">majanovak</span></div>
+                        <div class="flex justify-between mb-2"><span
+                                class="font-semibold text-gray-400">Preporučitelj:</span> <span
+                                class="text-white">dreamhacker</span></div>
+                        <div class="flex justify-between"><span class="font-semibold text-gray-400">Sponzor:</span>
+                            <span class="text-white">dreamhacker</span></div>
+                    </div>
+                </div>
+            </div>
 
-             <!-- Panels Grid for Moj Račun (2 rows of 4) -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                 <!-- Panel 1: Svi računi -->
-                 <div class="dashboard-panel">
-                     <i class="fas fa-layer-group"></i>
-                     <h4>Svi računi</h4>
-                 </div>
-                 <!-- Panel 2: Moji linkovi -->
-                  <div class="dashboard-panel">
-                      <i class="fas fa-link"></i>
-                      <h4>Moji linkovi</h4>
-                  </div>
-                  <!-- Panel 3: Franšizni ugovor -->
-                  <div class="dashboard-panel">
-                      <i class="fas fa-file-contract"></i>
-                      <h4>Franšizni ugovor</h4>
-                  </div>
-                  <!-- Panel 4: Korisnički podaci -->
-                  <div class="dashboard-panel">
-                      <i class="fas fa-id-card"></i>
-                      <h4>Korisnički podaci</h4>
-                  </div>
-                  <!-- Panel 5: Licencni paketi -->
-                  <div class="dashboard-panel">
-                      <i class="fas fa-percent"></i>
-                      <h4>Licencni paketi</h4>
-                  </div>
-                  <!-- Panel 6: Drugi vlasnik -->
-                  <div class="dashboard-panel">
-                      <i class="fas fa-user-tie"></i>
-                      <h4>Drugi vlasnik</h4>
-                  </div>
-                  <!-- Panel 7: KYC -->
-                  <div class="dashboard-panel">
-                      <i class="fas fa-user-check"></i>
-                      <h4>KYC</h4>
-                  </div>
-                  <!-- Panel 8: Deaktiviraj Račun (poseban stil) -->
-                  <div class="dashboard-panel" style="color: #ef4444; border-color: #ef4444;"> <!-- Crveni stil -->
-                      <i class="fas fa-times-circle"></i>
-                      <h4>DEAKTIVIRAJ RAČUN</h4>
-                  </div>
-             </div>
+            <!-- Panels Grid for Moj Račun (2 rows of 4) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Panel 1: Svi računi -->
+                <div class="dashboard-panel">
+                    <i class="fas fa-layer-group"></i>
+                    <h4>Svi računi</h4>
+                </div>
+                <!-- Panel 2: Moji linkovi -->
+                <div class="dashboard-panel">
+                    <i class="fas fa-link"></i>
+                    <h4>Moji linkovi</h4>
+                </div>
+                <!-- Panel 3: Franšizni ugovor -->
+                <div class="dashboard-panel">
+                    <i class="fas fa-file-contract"></i>
+                    <h4>Franšizni ugovor</h4>
+                </div>
+                <!-- Panel 4: Korisnički podaci -->
+                <div class="dashboard-panel">
+                    <i class="fas fa-id-card"></i>
+                    <h4>Korisnički podaci</h4>
+                </div>
+                <!-- Panel 5: Licencni paketi -->
+                <div class="dashboard-panel">
+                    <i class="fas fa-percent"></i>
+                    <h4>Licencni paketi</h4>
+                </div>
+                <!-- Panel 6: Drugi vlasnik -->
+                <div class="dashboard-panel">
+                    <i class="fas fa-user-tie"></i>
+                    <h4>Drugi vlasnik</h4>
+                </div>
+                <!-- Panel 7: KYC -->
+                <div class="dashboard-panel">
+                    <i class="fas fa-user-check"></i>
+                    <h4>KYC</h4>
+                </div>
+                <!-- Panel 8: Deaktiviraj Račun (poseban stil) -->
+                <div class="dashboard-panel" style="color: #ef4444; border-color: #ef4444;"> <!-- Crveni stil -->
+                    <i class="fas fa-times-circle"></i>
+                    <h4>DEAKTIVIRAJ RAČUN</h4>
+                </div>
+            </div>
 
-         </div>
-         <!-- === MOJ RAČUN CONTENT - KRAJ === -->
+        </div>
+        <!-- === MOJ RAČUN CONTENT - KRAJ === -->
 
-         <!-- === SFTIM CONTENT - POČETAK (NOVO DODANO) === -->
-         <div id="sftim-content" style="display: none;">
+        <!-- === SFTIM CONTENT - POČETAK (NOVO DODANO) === -->
+        <div id="sftim-content" style="display: none;">
             <!-- Top Info Block for SFTIM -->
             <div class="sftim-top-info-container">
                 <h4 class="text-xl font-bold mb-4 text-center text-white">SFalgoritam Status</h4>
@@ -832,11 +1925,13 @@ html.light-mode .avatar-upload-button:hover i {
                 </div>
                 <!-- Panel 3: SFkorisnici / BPR / Članovi na čekanju -->
                 <div class="dashboard-panel panel-sftim-status-clanova">
-                    <i class="fas fa-users-cog panel-icon-sftim"></i>                  
+                    <i class="fas fa-users-cog panel-icon-sftim"></i>
                     <div class="text-left w-full mt-1">
-                        <p class="panel-secondary-text flex justify-between"><span>SFkorisnici:</span> <span>0</span></p>
+                        <p class="panel-secondary-text flex justify-between"><span>SFkorisnici:</span> <span>0</span>
+                        </p>
                         <p class="panel-secondary-text flex justify-between"><span>BPR:</span> <span>0</span></p>
-                        <p class="panel-secondary-text flex justify-between"><span>Članovi na čekanju:</span> <span>0</span></p>
+                        <p class="panel-secondary-text flex justify-between"><span>Članovi na čekanju:</span>
+                            <span>0</span></p>
                     </div>
                 </div>
                 <!-- Panel 4: Povezani računi u SFalgoritmu -->
@@ -849,7 +1944,7 @@ html.light-mode .avatar-upload-button:hover i {
                 <div class="dashboard-panel sftim-span-panel"> <!-- Added sftim-span-panel class -->
                     <i class="fas fa-user-plus panel-icon-sftim"></i>
                     <h4>Dodaj novog člana</h4>
-                     <span class="panel-secondary-text mt-2"></span>
+                    <span class="panel-secondary-text mt-2"></span>
                 </div>
                 <!-- Panel 6: SFkarijera (spans 2 cols on md+) -->
                 <div class="dashboard-panel sftim-span-panel"> <!-- Added sftim-span-panel class -->
@@ -859,70 +1954,74 @@ html.light-mode .avatar-upload-button:hover i {
                 </div>
             </div>
         </div>
-         <!-- === SFTIM CONTENT - KRAJ === -->
+        <!-- === SFTIM CONTENT - KRAJ === -->
 
-         <!-- === NOVČANIK CONTENT - POČETAK (Inicijalno sakriven) === -->
-          <div id="novcanik-content" style="display: none;">
-              <h2 class="text-2xl font-bold mb-6 text-center">Novčanik</h2>
-              <!-- Novčanik Panels Grid (3 rows) -->
-               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                   <!-- Row 1 -->
-                   <div class="dashboard-panel">
+        <!-- === NOVČANIK CONTENT - POČETAK (Inicijalno sakriven) === -->
+        <div id="novcanik-content" style="display: none;">
+            <h2 class="text-2xl font-bold mb-6 text-center">Novčanik</h2>
+            <!-- Novčanik Panels Grid (3 rows) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Row 1 -->
+                <div class="dashboard-panel">
                     <i class="fas fa-coins"></i>
                     <h4>Zarada</h4>
                     <span class="panel-value">0,00 SFC</span>
                     <span class="panel-value-subtext">Blokirano: 0,00 SFC</span> <!-- Smaller, lighter text -->
                 </div>
-                      <div class="dashboard-panel">
-                       <i class="fas fa-wallet"></i>
-                       <h4>Novčanik</h4>
-                       <span class="panel-value">N: 0,00 SFC</span>
-                   </div>
-                    <div class="dashboard-panel">
-                        <i class="fas fa-shopping-cart"></i>
-                        <h4>Webshop novčanik</h4>
-                        <span class="panel-value">WN: 0,00 SFC</span>
-                   </div>
-                   <div class="dashboard-panel">
-                        <i class="fas fa-piggy-bank"></i>
-                       <h4>Rezervni novčanik</h4>
-                       <span class="panel-value">RN: 0,00 SFC</span>
-                       <span class="panel-value-subtext">Blokirano: 0,00 SFC</span> <!-- Smaller, lighter text -->
-                   </div>
-                   <!-- Row 2 -->
-                   <div class="dashboard-panel">
-                       <i class="fas fa-exchange-alt"></i>
-                       <h4>Depozit</h4>
-                       <h4>Povlačenje</h4> <!-- Separate line -->
-                   </div>
-                    <div class="dashboard-panel">
-                        <i class="fas fa-paper-plane"></i>
-                        <h4>Pošalji SFC</h4>
-                   </div>
-                    <div class="dashboard-panel">
-                        <i class="fas fa-hand-holding-usd"></i>
-                        <h4>Primi SFC</h4>
-                   </div>
-                   <div class="dashboard-panel">
-                       <i class="fas fa-history"></i>
-                       <h4>Sve transakcije</h4>
-                   </div>
-                   <!-- Row 3 (spans two columns on smaller screens, one row on larger) -->
-                   <div class="dashboard-panel col-span-1 sm:col-span-2 md:col-span-2"> <!-- Spans 2 columns on md and larger -->
-                       <i class="fas fa-money-check-alt"></i>
-                       <h4>Pošalji pozajmice</h4>
-                       <span class="panel-value-subtext">Pošalji SFC sa garancijom povrata</span> <!-- Smaller, lighter text -->
-                   </div>
-                   <div class="dashboard-panel col-span-1 sm:col-span-2 md:col-span-2"> <!-- Spans 2 columns on md and larger -->
-                       <i class="fas fa-handshake"></i>
-                       <h4>Primi pozajmice</h4>
-                       <span class="panel-value-subtext">Primi SFC sa garancijom povrata</span> <!-- Smaller, lighter text -->
-                   </div>
-               </div>
-          </div>
-          <!-- === NOVČANIK CONTENT - KRAJ === -->
-                <div id="sfkod-content" style="display: none;">
-                <div class="sfkod-generator-container">
+                <div class="dashboard-panel">
+                    <i class="fas fa-wallet"></i>
+                    <h4>Novčanik</h4>
+                    <span class="panel-value">N: 0,00 SFC</span>
+                </div>
+                <div class="dashboard-panel">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h4>Webshop novčanik</h4>
+                    <span class="panel-value">WN: 0,00 SFC</span>
+                </div>
+                <div class="dashboard-panel">
+                    <i class="fas fa-piggy-bank"></i>
+                    <h4>Rezervni novčanik</h4>
+                    <span class="panel-value">RN: 0,00 SFC</span>
+                    <span class="panel-value-subtext">Blokirano: 0,00 SFC</span> <!-- Smaller, lighter text -->
+                </div>
+                <!-- Row 2 -->
+                <div class="dashboard-panel">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h4>Depozit</h4>
+                    <h4>Povlačenje</h4> <!-- Separate line -->
+                </div>
+                <div class="dashboard-panel">
+                    <i class="fas fa-paper-plane"></i>
+                    <h4>Pošalji SFC</h4>
+                </div>
+                <div class="dashboard-panel">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h4>Primi SFC</h4>
+                </div>
+                <div class="dashboard-panel">
+                    <i class="fas fa-history"></i>
+                    <h4>Sve transakcije</h4>
+                </div>
+                <!-- Row 3 (spans two columns on smaller screens, one row on larger) -->
+                <div class="dashboard-panel col-span-1 sm:col-span-2 md:col-span-2">
+                    <!-- Spans 2 columns on md and larger -->
+                    <i class="fas fa-money-check-alt"></i>
+                    <h4>Pošalji pozajmice</h4>
+                    <span class="panel-value-subtext">Pošalji SFC sa garancijom povrata</span>
+                    <!-- Smaller, lighter text -->
+                </div>
+                <div class="dashboard-panel col-span-1 sm:col-span-2 md:col-span-2">
+                    <!-- Spans 2 columns on md and larger -->
+                    <i class="fas fa-handshake"></i>
+                    <h4>Primi pozajmice</h4>
+                    <span class="panel-value-subtext">Primi SFC sa garancijom povrata</span>
+                    <!-- Smaller, lighter text -->
+                </div>
+            </div>
+        </div>
+        <!-- === NOVČANIK CONTENT - KRAJ === -->
+        <div id="sfkod-content" style="display: none;">
+            <div class="sfkod-generator-container">
                 <h1>Generator SFkodova</h1>
                 <div class="sfkod-package-buttons" id="sfkod_packageButtons">
                     <button class="sfkod-package-button" id="sp1" disabled>SP1</button>
@@ -941,21 +2040,31 @@ html.light-mode .avatar-upload-button:hover i {
                 <button class="sfkod-confirm-button" id="sfkod_confirmButton">Potvrdi SFkod</button>
                 <div class="sfkod-codes-table-wrapper">
                     <table class="sfkod-codes-table">
-                        <thead><tr><th style="width: 50px;">#</th><th><div class="info-icon-cell"><span>SFkod</span><i class="info-icon" id="sfkod-info-icon" title="Upute">i</i></div></th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">#</th>
+                                <th>
+                                    <div class="info-icon-cell"><span>SFkod</span><i class="info-icon"
+                                            id="sfkod-info-icon" title="Upute">i</i></div>
+                                </th>
+                            </tr>
+                        </thead>
                         <tbody id="sfkod_codesTableBody"></tbody>
                     </table>
                 </div>
                 <div class="sfkod-kyc-options" id="sfkod_kycOptions">
                     <h3>SFkodovi dobiveni na osnovi registracije novih korisnika sa KYC.</h3>
-                    <div class="sfkod-kyc-option"><input type="checkbox" id="sfkod_kyc10"><label for="sfkod_kyc10">Registrirao sam 10 novih korisnika (KYC)</label></div>
-                    <div class="sfkod-kyc-option"><input type="checkbox" id="sfkod_kyc21"><label for="sfkod_kyc21">Registrirao sam 21 novog korisnika (KYC)</label></div>
+                    <div class="sfkod-kyc-option"><input type="checkbox" id="sfkod_kyc10"><label
+                            for="sfkod_kyc10">Registrirao sam 10 novih korisnika (KYC)</label></div>
+                    <div class="sfkod-kyc-option"><input type="checkbox" id="sfkod_kyc21"><label
+                            for="sfkod_kyc21">Registrirao sam 21 novog korisnika (KYC)</label></div>
                 </div>
             </div>
         </div>
 
     </main> <!-- End Main Content Area -->
 
-        <!-- === MODAL ZA AVATAR UPLOAD/SLIKANJE - POČETAK === -->
+    <!-- === MODAL ZA AVATAR UPLOAD/SLIKANJE - POČETAK === -->
     <div id="avatar-upload-modal-overlay" class="avatar-upload-modal-overlay">
         <div id="avatar-upload-modal-content" class="avatar-upload-modal-content">
             <button class="modal-close" aria-label="Zatvori">×</button>
@@ -965,14 +2074,14 @@ html.light-mode .avatar-upload-button:hover i {
                 <button id="upload-photo-button" class="avatar-upload-button">
                     <i class="fas fa-upload"></i> Učitaj fotografiju
                 </button>
-                 <!-- Skriveni input za odabir datoteke -->
+                <!-- Skriveni input za odabir datoteke -->
                 <input type="file" id="avatar-file-input" class="avatar-upload-input" accept="image/*">
             </div>
             <!-- Ovdje se može dodati <video> za preview kamere, <canvas> za snimanje slike, itd. -->
             <!-- Za sada samo gumbi -->
         </div>
     </div>
-     <!-- === MODAL ZA AVATAR UPLOAD/SLIKANJE - KRAJ === -->
+    <!-- === MODAL ZA AVATAR UPLOAD/SLIKANJE - KRAJ === -->
 
     <!-- Simple Footer -->
     <footer class="py-8 bg-gray-900 text-center text-gray-400 text-sm">
@@ -981,19 +2090,39 @@ html.light-mode .avatar-upload-button:hover i {
         </div>
     </footer>
 
-    
-        <div id="sfkod-vrijednost-popup" class="popup">
+
+    <div id="sfkod-vrijednost-popup" class="popup">
         <div class="popup-content">
             <button class="modal-close" aria-label="Zatvori">×</button>
             <h4>Vrijednost SFkodova</h4>
-            <p>Kao besplatno registriranom korisniku u znak dobrodošlice Kompanija Vam poklanja jedan trajni SFkod, s kojim možete sudjelovati besplatno u gotovo svakoj nagradnoj igri u organizaciji Kompanije, stoga je važno napomenuti vrijednost SFkodova.<br><br>Naime, Kompanija će organizirati mnoge nagradne igre u kojima će nagrade biti npr. startni paketi, mobiteli, kompjutori ili mnoge druge vrijedne nagrade...<br><br>Osim nagrada koje će davati Kompanija, svaki trgovac, proizvođač, poduzetnik ili kompanija, tvrtka veća ili manja, prilikom ulaska u kompanijski SFshop imat će priliku pripremiti svoj proizvod ili uslugu, paket proizvoda ili bilo koju vrstu nagrade koju će ponuditi kroz naš sistem nagradnih igara čime, zauzvrat dobiva svojevrsnu reklamu putem naše kompanije i uz pomoć naših franšizera.<br><br>SFkod možete sami odabrati (Kreiraj ručno) ili možete izabrati automatski generiran SFkod (Kreiraj automatski). Klikom na POTVRDI KOD, trajno ćete spremiti SFkod, kojega nakon toga više ne možete mijenjati.<br><br>Vrlo je važno napomenuti da će SFfranšizer može imati maksimalno 25 SFkodova. (1 besplatnom registracijom + 21 jednokratnom uplatom SP7 + 3 registracijom 21 besplatnog korisnika)<br><br>SFkorisnik / BPR (besplatno registrirani korisnici) mogu imati maksimalno 4 SFkoda. (1 besplatnom registracijom + 3 registracijom 21 besplatnog korisnika)<br><br>Ukoliko započnete sa SP1 ili drugim manjim paketima dobivate određeni broj SFkodova, koje možete povećavati nadogradnjama odnosno uplatama pretplatničkih perioda, pod uvjetom da vam račun nema neaktivnih dana između pretplatničkih perioda.<br><br>Sa većim brojem SFkodova veće su i Vaše mogućnosti dobivanja nagrade, što ne znači da nagradu ne možete dobiti i sa samo jednim kodom. To je već pitanje sreće na koju nitko ne može utjecati.<br><br>Bez obzira s koliko kodova krenuli i koliko ih na kraju imali od srca Vam želimo sreću prilikom izvlaćenja sretnih dobitnika.</p>
-            
+            <p>Kao besplatno registriranom korisniku u znak dobrodošlice Kompanija Vam poklanja jedan trajni SFkod, s
+                kojim možete sudjelovati besplatno u gotovo svakoj nagradnoj igri u organizaciji Kompanije, stoga je
+                važno napomenuti vrijednost SFkodova.<br><br>Naime, Kompanija će organizirati mnoge nagradne igre u
+                kojima će nagrade biti npr. startni paketi, mobiteli, kompjutori ili mnoge druge vrijedne
+                nagrade...<br><br>Osim nagrada koje će davati Kompanija, svaki trgovac, proizvođač, poduzetnik ili
+                kompanija, tvrtka veća ili manja, prilikom ulaska u kompanijski SFshop imat će priliku pripremiti svoj
+                proizvod ili uslugu, paket proizvoda ili bilo koju vrstu nagrade koju će ponuditi kroz naš sistem
+                nagradnih igara čime, zauzvrat dobiva svojevrsnu reklamu putem naše kompanije i uz pomoć naših
+                franšizera.<br><br>SFkod možete sami odabrati (Kreiraj ručno) ili možete izabrati automatski generiran
+                SFkod (Kreiraj automatski). Klikom na POTVRDI KOD, trajno ćete spremiti SFkod, kojega nakon toga više ne
+                možete mijenjati.<br><br>Vrlo je važno napomenuti da će SFfranšizer može imati maksimalno 25 SFkodova.
+                (1 besplatnom registracijom + 21 jednokratnom uplatom SP7 + 3 registracijom 21 besplatnog
+                korisnika)<br><br>SFkorisnik / BPR (besplatno registrirani korisnici) mogu imati maksimalno 4 SFkoda. (1
+                besplatnom registracijom + 3 registracijom 21 besplatnog korisnika)<br><br>Ukoliko započnete sa SP1 ili
+                drugim manjim paketima dobivate određeni broj SFkodova, koje možete povećavati nadogradnjama odnosno
+                uplatama pretplatničkih perioda, pod uvjetom da vam račun nema neaktivnih dana između pretplatničkih
+                perioda.<br><br>Sa većim brojem SFkodova veće su i Vaše mogućnosti dobivanja nagrade, što ne znači da
+                nagradu ne možete dobiti i sa samo jednim kodom. To je već pitanje sreće na koju nitko ne može
+                utjecati.<br><br>Bez obzira s koliko kodova krenuli i koliko ih na kraju imali od srca Vam želimo sreću
+                prilikom izvlaćenja sretnih dobitnika.</p>
+
             <!-- ====== POČETAK IZMJENE: GUMB I CHECKBOX ====== -->
             <div class="flex flex-col items-center mt-6">
                 <button class="popup-button">Razumijem vrijednost SFkodova</button>
                 <div class="flex items-center mt-4">
                     <input type="checkbox" id="ne-prikazuj-ponovno">
-                    <label for="ne-prikazuj-ponovno" class="ml-2 text-sm text-gray-300 cursor-pointer">Ne prikazuj ponovno</label>
+                    <label for="ne-prikazuj-ponovno" class="ml-2 text-sm text-gray-300 cursor-pointer">Ne prikazuj
+                        ponovno</label>
                 </div>
             </div>
             <!-- ====== KRAJ IZMJENE ====== -->
@@ -1004,361 +2133,372 @@ html.light-mode .avatar-upload-button:hover i {
         <div class="popup-content">
             <button class="modal-close" aria-label="Zatvori">×</button>
             <h4>Upute za generiranje SFkoda</h4>
-            <p>Besplatnom registracijom dobili ste jedan SFkod, s kojim imate pravo sudjelovanja u nagradnim igrama koje organizira kompanija. Prije svega potrebno je generirati odnosno izabrati brojeve svog SFkoda.</p>
+            <p>Besplatnom registracijom dobili ste jedan SFkod, s kojim imate pravo sudjelovanja u nagradnim igrama koje
+                organizira kompanija. Prije svega potrebno je generirati odnosno izabrati brojeve svog SFkoda.</p>
             <ul>
                 <li>Kliknite na polje sa rednim brojem SFkoda, što će aktivirati generator kodova.</li>
-                <li>Ukoliko želite sami odabrati brojeve svog koda kliknite na <strong>KREIRAJ RUČNO</strong> ili na bilo koju strelicu „gore / dole“ što će vam omogućiti da kreirate SFkod sa vlastito odabranim brojevima.</li>
-                <li>Klikom na <strong>KREIRAJ AUTOMATSKI</strong> sistem će vam nasumice odabrati 10 brojeva za vaš SFkod, kojega možete zadržati ili ga možete izmijeniti klikom na strelice „gore / dole“.</li>
-                <li>Nakon što sami kreirate SFkod ili ga kreirate automatski, klikom na <strong>Potvrdi SFkod</strong>, trajno ga spremate i više ga nije moguće mijenjati.</li>
+                <li>Ukoliko želite sami odabrati brojeve svog koda kliknite na <strong>KREIRAJ RUČNO</strong> ili na
+                    bilo koju strelicu „gore / dole“ što će vam omogućiti da kreirate SFkod sa vlastito odabranim
+                    brojevima.</li>
+                <li>Klikom na <strong>KREIRAJ AUTOMATSKI</strong> sistem će vam nasumice odabrati 10 brojeva za vaš
+                    SFkod, kojega možete zadržati ili ga možete izmijeniti klikom na strelice „gore / dole“.</li>
+                <li>Nakon što sami kreirate SFkod ili ga kreirate automatski, klikom na <strong>Potvrdi SFkod</strong>,
+                    trajno ga spremate i više ga nije moguće mijenjati.</li>
             </ul>
-            <p>Uplatom startnog ili investicijskog paketa dobivate nove SFkodove koje ćete na isti način kreirati i aktivirati.</p>
+            <p>Uplatom startnog ili investicijskog paketa dobivate nove SFkodove koje ćete na isti način kreirati i
+                aktivirati.</p>
             <p class="napomena-title">Napomena:</p>
-            <p>Ovo je trenutno demo verzija, gdje na vrhu ove stranice imate mogućnost kliknuti na jedan od sedam startnih paketa, ili na dnu stranice na dva “check box“-a, nakon čega možete kreirati više kodova. Završetkom i puštanjem u rad potrebnih softvera odnosno početkom poslovanja, sukladno odabranom startnom ili investicijskom paketu sistem će vam automatski ponuditi određeni broj SFkodova kao i u slučaju registracije 10. ili 21. besplatno registriranog korisnika.</p>
+            <p>Ovo je trenutno demo verzija, gdje na vrhu ove stranice imate mogućnost kliknuti na jedan od sedam
+                startnih paketa, ili na dnu stranice na dva “check box“-a, nakon čega možete kreirati više kodova.
+                Završetkom i puštanjem u rad potrebnih softvera odnosno početkom poslovanja, sukladno odabranom startnom
+                ili investicijskom paketu sistem će vam automatski ponuditi određeni broj SFkodova kao i u slučaju
+                registracije 10. ili 21. besplatno registriranog korisnika.</p>
         </div>
     </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // ===================================================
-    // === GLOBALNE VARIJABLE I ELEMENTI
-    // ===================================================
-    const hamburger = document.querySelector('.hamburger');
-    const verticalNav = document.querySelector('.sfured-nav-vertical');
-    const navLinksVertical = document.querySelectorAll('.nav-link-vertical');
-    const logoutButton = document.querySelector('.logout-icon');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===================================================
+            // === GLOBALNE VARIJABLE I ELEMENTI
+            // ===================================================
+            const hamburger = document.querySelector('.hamburger');
+            const verticalNav = document.querySelector('.sfured-nav-vertical');
+            const navLinksVertical = document.querySelectorAll('.nav-link-vertical');
+            const logoutButton = document.querySelector('.logout-icon');
 
-    // Elementi za logo
-    const logoLink = document.getElementById('logo-link');
-    const logoImg = document.getElementById('site-logo');
-    const lightModeLogo = 'img/IFIG-logo_purple.png'; // Ažurirano na ljubičastu verziju
-    const darkModeLogo = 'img/IFIG-logo.png';
-    
-    // Elementi za panele
-    const panelMap = {
-        'kontrolna-ploca': document.getElementById('dashboard-grid'),
-        'moj-racun': document.getElementById('moj-racun-content'),
-        'novcanik': document.getElementById('novcanik-content'),
-        'sftim': document.getElementById('sftim-content'),
-        'sfkod': document.getElementById('sfkod-content')
-    };
+            // Elementi za logo
+            const logoLink = document.getElementById('logo-link');
+            const logoImg = document.getElementById('site-logo');
+            const lightModeLogo = 'img/IFIG-logo_purple.png'; // Ažurirano na ljubičastu verziju
+            const darkModeLogo = 'img/IFIG-logo.png';
 
-    // Elementi za Avatar Modal
-    const avatarPlaceholder = document.getElementById('avatar-placeholder');
-    const avatarModalOverlay = document.getElementById('avatar-upload-modal-overlay');
-    const avatarModalClose = avatarModalOverlay.querySelector('.modal-close');
-    const uploadPhotoButton = document.getElementById('upload-photo-button');
-    const avatarFileInput = document.getElementById('avatar-file-input');
+            // Elementi za panele
+            const panelMap = {
+                'kontrolna-ploca': document.getElementById('dashboard-grid'),
+                'moj-racun': document.getElementById('moj-racun-content'),
+                'novcanik': document.getElementById('novcanik-content'),
+                'sftim': document.getElementById('sftim-content'),
+                'sfkod': document.getElementById('sfkod-content')
+            };
 
-    // Varijable za SFKOD Generator
-    let sfkodInitialized = false;
+            // Elementi za Avatar Modal
+            const avatarPlaceholder = document.getElementById('avatar-placeholder');
+            const avatarModalOverlay = document.getElementById('avatar-upload-modal-overlay');
+            const avatarModalClose = avatarModalOverlay.querySelector('.modal-close');
+            const uploadPhotoButton = document.getElementById('upload-photo-button');
+            const avatarFileInput = document.getElementById('avatar-file-input');
 
-    // ===================================================
-    // === UPRAVLJANJE TEMOM I LOGOTIPOM
-    // ===================================================
-    function updateLogoAndVisibility() {
-        if (document.documentElement.classList.contains('light-mode')) {
-            if (logoImg) logoImg.src = lightModeLogo;
-        } else {
-            if (logoImg) logoImg.src = darkModeLogo;
-        }
-        // Učini logo vidljivim nakon što je slika postavljena (rješava "flash")
-        if (logoLink) logoLink.style.visibility = 'visible';
-    }
+            // Varijable za SFKOD Generator
+            let sfkodInitialized = false;
 
-    // Pozovi odmah da se ispravi izgled nakon što se sve učita
-    updateLogoAndVisibility();
+            // ===================================================
+            // === UPRAVLJANJE TEMOM I LOGOTIPOM
+            // ===================================================
+            function updateLogoAndVisibility() {
+                if (document.documentElement.classList.contains('light-mode')) {
+                    if (logoImg) logoImg.src = lightModeLogo;
+                } else {
+                    if (logoImg) logoImg.src = darkModeLogo;
+                }
+                // Učini logo vidljivim nakon što je slika postavljena (rješava "flash")
+                if (logoLink) logoLink.style.visibility = 'visible';
+            }
 
-    // Slušaj promjene teme s drugih stranica
-    window.addEventListener('storage', (event) => {
-        if (event.key === 'sft21_theme' && typeof applySft21Theme === 'function') {
-            applySft21Theme(); // Funkcija iz <head>
+            // Pozovi odmah da se ispravi izgled nakon što se sve učita
             updateLogoAndVisibility();
-        }
-    });
 
-    // ===================================================
-    // === UČITAVANJE SPREMLJENOG AVATARA
-    // ===================================================
-    function loadAvatar() {
-        const savedAvatar = localStorage.getItem('sft21_avatar');
-        if (savedAvatar && avatarPlaceholder) {
-            avatarPlaceholder.style.backgroundImage = `url(${savedAvatar})`;
-            avatarPlaceholder.style.backgroundSize = 'cover';
-            avatarPlaceholder.style.backgroundPosition = 'center';
-            avatarPlaceholder.innerHTML = ''; // Ukloni eventualne ikone unutra
-        }
-    }
-    loadAvatar(); // Pozovi pri učitavanju stranice
+            // Slušaj promjene teme s drugih stranica
+            window.addEventListener('storage', (event) => {
+                if (event.key === 'sft21_theme' && typeof applySft21Theme === 'function') {
+                    applySft21Theme(); // Funkcija iz <head>
+                    updateLogoAndVisibility();
+                }
+            });
 
-    // ===================================================
-    // === LOGIKA ZA AVATAR MODAL
-    // ===================================================
-    if (avatarPlaceholder) {
-        avatarPlaceholder.addEventListener('click', () => {
-            if (avatarModalOverlay) avatarModalOverlay.style.display = 'flex';
-        });
-    }
+            // ===================================================
+            // === UČITAVANJE SPREMLJENOG AVATARA
+            // ===================================================
+            function loadAvatar() {
+                const savedAvatar = localStorage.getItem('sft21_avatar');
+                if (savedAvatar && avatarPlaceholder) {
+                    avatarPlaceholder.style.backgroundImage = `url(${savedAvatar})`;
+                    avatarPlaceholder.style.backgroundSize = 'cover';
+                    avatarPlaceholder.style.backgroundPosition = 'center';
+                    avatarPlaceholder.innerHTML = ''; // Ukloni eventualne ikone unutra
+                }
+            }
+            loadAvatar(); // Pozovi pri učitavanju stranice
 
-    function closeAvatarModal() {
-        if (avatarModalOverlay) avatarModalOverlay.style.display = 'none';
-    }
+            // ===================================================
+            // === LOGIKA ZA AVATAR MODAL
+            // ===================================================
+            if (avatarPlaceholder) {
+                avatarPlaceholder.addEventListener('click', () => {
+                    if (avatarModalOverlay) avatarModalOverlay.style.display = 'flex';
+                });
+            }
 
-    if (avatarModalClose) avatarModalClose.addEventListener('click', closeAvatarModal);
-    if (avatarModalOverlay) avatarModalOverlay.addEventListener('click', (e) => {
-        if (e.target === avatarModalOverlay) closeAvatarModal();
-    });
+            function closeAvatarModal() {
+                if (avatarModalOverlay) avatarModalOverlay.style.display = 'none';
+            }
 
-    if (uploadPhotoButton) {
-        uploadPhotoButton.addEventListener('click', () => {
-            if (avatarFileInput) avatarFileInput.click();
-        });
-    }
+            if (avatarModalClose) avatarModalClose.addEventListener('click', closeAvatarModal);
+            if (avatarModalOverlay) avatarModalOverlay.addEventListener('click', (e) => {
+                if (e.target === avatarModalOverlay) closeAvatarModal();
+            });
 
-    if (avatarFileInput) {
-        avatarFileInput.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const imageUrl = e.target.result;
-                    localStorage.setItem('sft21_avatar', imageUrl); // Spremi u localStorage
-                    loadAvatar(); // ponovno učitaj avatar da se prikaže
-                    closeAvatarModal();
+            if (uploadPhotoButton) {
+                uploadPhotoButton.addEventListener('click', () => {
+                    if (avatarFileInput) avatarFileInput.click();
+                });
+            }
+
+            if (avatarFileInput) {
+                avatarFileInput.addEventListener('change', (event) => {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            const imageUrl = e.target.result;
+                            localStorage.setItem('sft21_avatar', imageUrl); // Spremi u localStorage
+                            loadAvatar(); // ponovno učitaj avatar da se prikaže
+                            closeAvatarModal();
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+
+            // ===================================================
+            // === GLAVNA NAVIGACIJA I OSTALE FUNKCIJE
+            // ===================================================
+
+            // --- Mobile Menu Toggle ---
+            if (hamburger && verticalNav) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    verticalNav.classList.toggle('active');
+                });
+            }
+
+            // --- Navigacija i Prikaz Panela ---
+            navLinksVertical.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetPanelId = link.getAttribute('data-panel-target');
+
+                    navLinksVertical.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+
+                    Object.values(panelMap).forEach(panel => {
+                        if (panel) panel.style.display = 'none';
+                    });
+
+                    const panelToShow = panelMap[targetPanelId];
+                    if (panelToShow) {
+                        panelToShow.style.display = (targetPanelId === 'kontrolna-ploca' || targetPanelId === 'sftim') ? 'grid' : 'block';
+                        if (targetPanelId === 'sftim') panelToShow.style.display = 'block'; // SFTIM je block, ne grid
+
+                        if (targetPanelId === 'sfkod' && !sfkodInitialized) {
+                            initializeSfkodGenerator();
+                            sfkodInitialized = true;
+                        }
+                    }
+
+                    if (hamburger.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        verticalNav.classList.remove('active');
+                    }
+                });
+            });
+
+            // --- Odjava ---
+            if (logoutButton) {
+                logoutButton.addEventListener('click', () => { window.location.href = 'index.html'; });
+            }
+
+            // ===================================================
+            // === SFKOD GENERATOR LOGIKA (Nepromijenjena)
+            // ===================================================
+            function initializeSfkodGenerator() {
+                const vrijednostPopup = document.getElementById('sfkod-vrijednost-popup');
+                const uputePopup = document.getElementById('sfkod-upute-popup');
+                const infoIcon = document.getElementById('sfkod-info-icon');
+                const tableBody = document.getElementById('sfkod_codesTableBody');
+                const generatorButtonsEl = document.getElementById('sfkod_generatorButtons');
+                const numberInputsEl = document.getElementById('sfkod_numberInputs');
+                const confirmButtonEl = document.getElementById('sfkod_confirmButton');
+                const createManualButton = document.getElementById('sfkod_createManual');
+                const createAutoButton = document.getElementById('sfkod_createAuto');
+                const packageButtonsContainer = document.getElementById('sfkod_packageButtons');
+                const kycOptionsEl = document.getElementById('sfkod_kycOptions');
+                const packageButtons = document.querySelectorAll('.sfkod-package-button');
+                const kyc10Checkbox = document.getElementById('sfkod_kyc10');
+                const kyc21Checkbox = document.getElementById('sfkod_kyc21');
+
+                // Prikaz pop-upa samo prvi put
+                if (!localStorage.getItem('sfkod_vrijednost_popup_seen')) {
+                    setTimeout(() => {
+                        if (vrijednostPopup) vrijednostPopup.style.display = 'flex';
+                    }, 300);
+                }
+
+                const closeAllPopups = () => {
+                    if (vrijednostPopup) vrijednostPopup.style.display = 'none';
+                    if (uputePopup) uputePopup.style.display = 'none';
                 };
-                reader.readAsDataURL(file);
-            }
-        });
-    }
-    
-    // ===================================================
-    // === GLAVNA NAVIGACIJA I OSTALE FUNKCIJE
-    // ===================================================
-    
-    // --- Mobile Menu Toggle ---
-    if (hamburger && verticalNav) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            verticalNav.classList.toggle('active');
-        });
-    }
 
-    // --- Navigacija i Prikaz Panela ---
-    navLinksVertical.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetPanelId = link.getAttribute('data-panel-target');
+                document.querySelectorAll('.popup .modal-close').forEach(btn => btn.addEventListener('click', closeAllPopups));
 
-            navLinksVertical.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-
-            Object.values(panelMap).forEach(panel => {
-                if (panel) panel.style.display = 'none';
-            });
-
-            const panelToShow = panelMap[targetPanelId];
-            if (panelToShow) {
-                panelToShow.style.display = (targetPanelId === 'kontrolna-ploca' || targetPanelId === 'sftim') ? 'grid' : 'block';
-                if (targetPanelId === 'sftim') panelToShow.style.display = 'block'; // SFTIM je block, ne grid
-
-                if (targetPanelId === 'sfkod' && !sfkodInitialized) {
-                    initializeSfkodGenerator();
-                    sfkodInitialized = true;
+                const razumijemButton = document.querySelector('.popup-button');
+                if (razumijemButton) {
+                    razumijemButton.addEventListener('click', () => {
+                        const nePrikazujCheckbox = document.getElementById('ne-prikazuj-ponovno');
+                        if (nePrikazujCheckbox && nePrikazujCheckbox.checked) {
+                            localStorage.setItem('sfkod_vrijednost_popup_seen', 'true');
+                        }
+                        closeAllPopups();
+                    });
                 }
-            }
 
-            if (hamburger.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                verticalNav.classList.remove('active');
-            }
-        });
-    });
+                if (infoIcon) infoIcon.addEventListener('click', () => uputePopup.style.display = 'flex');
 
-    // --- Odjava ---
-    if (logoutButton) {
-        logoutButton.addEventListener('click', () => { window.location.href = 'index.html'; });
-    }
+                let currentCode = Array(10).fill(0);
+                let activeRowIndex = null;
+                let nextAvailableRow = 2;
+                let completedRows = [];
+                let allConfirmedCodes = [];
+                const packageCodesCount = { sp1: 1, sp2: 4, sp3: 7, sp4: 10, sp5: 13, sp6: 17, sp7: 21 };
 
-    // ===================================================
-    // === SFKOD GENERATOR LOGIKA (Nepromijenjena)
-    // ===================================================
-    function initializeSfkodGenerator() {
-        const vrijednostPopup = document.getElementById('sfkod-vrijednost-popup');
-        const uputePopup = document.getElementById('sfkod-upute-popup');
-        const infoIcon = document.getElementById('sfkod-info-icon');
-        const tableBody = document.getElementById('sfkod_codesTableBody');
-        const generatorButtonsEl = document.getElementById('sfkod_generatorButtons');
-        const numberInputsEl = document.getElementById('sfkod_numberInputs');
-        const confirmButtonEl = document.getElementById('sfkod_confirmButton');
-        const createManualButton = document.getElementById('sfkod_createManual');
-        const createAutoButton = document.getElementById('sfkod_createAuto');
-        const packageButtonsContainer = document.getElementById('sfkod_packageButtons');
-        const kycOptionsEl = document.getElementById('sfkod_kycOptions');
-        const packageButtons = document.querySelectorAll('.sfkod-package-button');
-        const kyc10Checkbox = document.getElementById('sfkod_kyc10');
-        const kyc21Checkbox = document.getElementById('sfkod_kyc21');
-        
-        // Prikaz pop-upa samo prvi put
-        if (!localStorage.getItem('sfkod_vrijednost_popup_seen')) {
-             setTimeout(() => {
-                if(vrijednostPopup) vrijednostPopup.style.display = 'flex';
-            }, 300);
-        }
-        
-        const closeAllPopups = () => {
-            if(vrijednostPopup) vrijednostPopup.style.display = 'none';
-            if(uputePopup) uputePopup.style.display = 'none';
-        };
-        
-        document.querySelectorAll('.popup .modal-close').forEach(btn => btn.addEventListener('click', closeAllPopups));
-        
-        const razumijemButton = document.querySelector('.popup-button');
-        if (razumijemButton) {
-            razumijemButton.addEventListener('click', () => {
-                const nePrikazujCheckbox = document.getElementById('ne-prikazuj-ponovno');
-                if (nePrikazujCheckbox && nePrikazujCheckbox.checked) {
-                    localStorage.setItem('sfkod_vrijednost_popup_seen', 'true');
-                }
-                closeAllPopups();
-            });
-        }
-        
-        if (infoIcon) infoIcon.addEventListener('click', () => uputePopup.style.display = 'flex');
+                const initializeNumberInputs = () => {
+                    let html = '';
+                    for (let i = 0; i < 10; i++) {
+                        html += `<div class="sfkod-number-input-container"><i class="fas fa-chevron-up sfkod-arrow" data-index="${i}"></i><input type="text" class="sfkod-number-input" value="0" readonly data-index="${i}"><i class="fas fa-chevron-down sfkod-arrow" data-index="${i}"></i></div>`;
+                    }
+                    numberInputsEl.innerHTML = html;
+                    document.querySelectorAll('.sfkod-arrow').forEach(arrow => arrow.addEventListener('click', handleArrowClick));
+                };
 
-        let currentCode = Array(10).fill(0);
-        let activeRowIndex = null;
-        let nextAvailableRow = 2;
-        let completedRows = [];
-        let allConfirmedCodes = [];
-        const packageCodesCount = { sp1: 1, sp2: 4, sp3: 7, sp4: 10, sp5: 13, sp6: 17, sp7: 21 };
+                const initializeTable = () => {
+                    tableBody.innerHTML = '';
+                    for (let i = 1; i <= 25; i++) {
+                        const row = document.createElement('tr');
+                        row.classList.add('hidden-row');
+                        const indexCell = document.createElement('td');
+                        indexCell.textContent = i;
+                        indexCell.classList.add('sfkod-index-cell');
+                        indexCell.setAttribute('data-row', i);
+                        row.appendChild(indexCell);
+                        const codeCell = document.createElement('td');
+                        codeCell.innerHTML = `<div class="sfkod-code-cell-content"><span>0000000000</span><span class="sfkod-code-suffix">${i === 1 ? 'Besplatna registracija' : '/'}</span></div>`;
+                        row.appendChild(codeCell);
+                        tableBody.appendChild(row);
+                    }
+                    const firstRow = tableBody.rows[0];
+                    firstRow.classList.remove('hidden-row');
+                    const firstIndexCell = firstRow.querySelector('.sfkod-index-cell');
+                    firstIndexCell.classList.add('clickable');
+                    addClickEventToIndexCell(firstIndexCell);
+                };
+                const addClickEventToIndexCell = (cell) => {
+                    if (!cell || cell.hasListener) return;
+                    cell.addEventListener('click', function () { if (this.classList.contains('clickable')) activateRowForEditing(parseInt(this.dataset.row)); });
+                    cell.hasListener = true;
+                };
+                const activateRowForEditing = (rowIndex) => {
+                    if (completedRows.includes(rowIndex)) return;
+                    [createManualButton, createAutoButton].forEach(b => b.classList.remove('active-mode'));
+                    const activeCell = tableBody.querySelector(`.sfkod-index-cell.active`);
+                    if (activeCell) activeCell.classList.remove('active');
+                    activeRowIndex = rowIndex;
+                    const newActiveCell = tableBody.querySelector(`.sfkod-index-cell[data-row="${rowIndex}"]`);
+                    if (newActiveCell) newActiveCell.classList.add('active');
+                    currentCode = Array(10).fill(0);
+                    updateNumberInputs();
+                    generatorButtonsEl.style.display = 'flex';
+                    numberInputsEl.style.display = 'flex';
+                    confirmButtonEl.style.display = 'block';
+                };
+                const updateNumberInputs = () => document.querySelectorAll('.sfkod-number-input').forEach((input, i) => input.value = currentCode[i]);
+                const unlockNextRows = (count, suffixText) => {
+                    for (let i = 0; i < count; i++) {
+                        if (tableBody.rows[nextAvailableRow - 1]) {
+                            const row = tableBody.rows[nextAvailableRow - 1];
+                            row.classList.remove('hidden-row');
+                            const indexCell = row.querySelector('.sfkod-index-cell');
+                            indexCell.classList.add('clickable');
+                            addClickEventToIndexCell(indexCell);
+                            if (suffixText) row.querySelector('.sfkod-code-suffix').textContent = suffixText;
+                            nextAvailableRow++;
+                        }
+                    }
+                };
+                const handleArrowClick = function () {
+                    const index = parseInt(this.dataset.index);
+                    currentCode[index] = (currentCode[index] + (this.classList.contains('fa-chevron-up') ? 1 : -1) + 10) % 10;
+                    updateNumberInputs();
+                    createManualButton.classList.add('active-mode');
+                    createAutoButton.classList.remove('active-mode');
+                };
 
-        const initializeNumberInputs = () => {
-            let html = '';
-            for(let i=0; i<10; i++) {
-                html += `<div class="sfkod-number-input-container"><i class="fas fa-chevron-up sfkod-arrow" data-index="${i}"></i><input type="text" class="sfkod-number-input" value="0" readonly data-index="${i}"><i class="fas fa-chevron-down sfkod-arrow" data-index="${i}"></i></div>`;
-            }
-            numberInputsEl.innerHTML = html;
-            document.querySelectorAll('.sfkod-arrow').forEach(arrow => arrow.addEventListener('click', handleArrowClick));
-        };
+                confirmButtonEl.addEventListener('click', function () {
+                    if (activeRowIndex === null) return;
+                    if (!createManualButton.classList.contains('active-mode') && !createAutoButton.classList.contains('active-mode')) { alert("Molimo prvo odaberite 'Kreiraj ručno' ili 'Kreiraj automatski'."); return; }
+                    const codeStr = currentCode.join('');
+                    if (allConfirmedCodes.includes(codeStr)) { alert("Ovaj kod je već korišten."); return; }
 
-        const initializeTable = () => {
-            tableBody.innerHTML = '';
-            for (let i = 1; i <= 25; i++) {
-                const row = document.createElement('tr');
-                row.classList.add('hidden-row');
-                const indexCell = document.createElement('td');
-                indexCell.textContent = i;
-                indexCell.classList.add('sfkod-index-cell');
-                indexCell.setAttribute('data-row', i);
-                row.appendChild(indexCell);
-                const codeCell = document.createElement('td');
-                codeCell.innerHTML = `<div class="sfkod-code-cell-content"><span>0000000000</span><span class="sfkod-code-suffix">${i === 1 ? 'Besplatna registracija' : '/'}</span></div>`;
-                row.appendChild(codeCell);
-                tableBody.appendChild(row);
-            }
-            const firstRow = tableBody.rows[0];
-            firstRow.classList.remove('hidden-row');
-            const firstIndexCell = firstRow.querySelector('.sfkod-index-cell');
-            firstIndexCell.classList.add('clickable');
-            addClickEventToIndexCell(firstIndexCell);
-        };
-        const addClickEventToIndexCell = (cell) => {
-            if (!cell || cell.hasListener) return;
-            cell.addEventListener('click', function() { if (this.classList.contains('clickable')) activateRowForEditing(parseInt(this.dataset.row)); });
-            cell.hasListener = true;
-        };
-        const activateRowForEditing = (rowIndex) => {
-            if (completedRows.includes(rowIndex)) return;
-            [createManualButton, createAutoButton].forEach(b => b.classList.remove('active-mode'));
-            const activeCell = tableBody.querySelector(`.sfkod-index-cell.active`);
-            if(activeCell) activeCell.classList.remove('active');
-            activeRowIndex = rowIndex;
-            const newActiveCell = tableBody.querySelector(`.sfkod-index-cell[data-row="${rowIndex}"]`);
-            if(newActiveCell) newActiveCell.classList.add('active');
-            currentCode = Array(10).fill(0);
-            updateNumberInputs();
-            generatorButtonsEl.style.display = 'flex';
-            numberInputsEl.style.display = 'flex';
-            confirmButtonEl.style.display = 'block';
-        };
-        const updateNumberInputs = () => document.querySelectorAll('.sfkod-number-input').forEach((input, i) => input.value = currentCode[i]);
-        const unlockNextRows = (count, suffixText) => {
-            for(let i = 0; i < count; i++) {
-                if(tableBody.rows[nextAvailableRow - 1]) {
-                    const row = tableBody.rows[nextAvailableRow - 1];
-                    row.classList.remove('hidden-row');
+                    allConfirmedCodes.push(codeStr);
+                    completedRows.push(activeRowIndex);
+                    const row = tableBody.rows[activeRowIndex - 1];
+                    row.querySelector('.sfkod-code-cell-content span:first-child').textContent = codeStr;
                     const indexCell = row.querySelector('.sfkod-index-cell');
-                    indexCell.classList.add('clickable');
-                    addClickEventToIndexCell(indexCell);
-                    if(suffixText) row.querySelector('.sfkod-code-suffix').textContent = suffixText;
-                    nextAvailableRow++;
-                }
+                    indexCell.classList.remove('clickable', 'active');
+                    indexCell.classList.add('completed');
+
+                    if (completedRows.length === 1) {
+                        packageButtonsContainer.style.display = 'flex';
+                        kycOptionsEl.style.display = 'block';
+                        packageButtons.forEach(btn => btn.disabled = false);
+                    }
+
+                    generatorButtonsEl.style.display = 'none';
+                    numberInputsEl.style.display = 'none';
+                    confirmButtonEl.style.display = 'none';
+                    activeRowIndex = null;
+                });
+
+                packageButtons.forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        if (this.disabled) return;
+                        if (completedRows.length === 0) { alert('Morate prvo potvrditi svoj prvi besplatni SFkod.'); return; }
+                        unlockNextRows(packageCodesCount[this.id], this.id.toUpperCase());
+                        packageButtons.forEach(b => { b.disabled = true; b.classList.remove('selected'); });
+                        this.classList.add('selected');
+                    });
+                });
+
+                kyc10Checkbox.addEventListener('change', function () { if (this.checked) { unlockNextRows(1, '10 KYC'); this.disabled = true; } });
+                kyc21Checkbox.addEventListener('change', function () { if (this.checked) { if (!kyc10Checkbox.checked) { kyc10Checkbox.checked = true; kyc10Checkbox.dispatchEvent(new Event('change')); } unlockNextRows(2, '21 KYC'); this.disabled = true; } });
+
+                [createManualButton, createAutoButton].forEach(btn => btn.addEventListener('click', function () {
+                    createManualButton.classList.remove('active-mode');
+                    createAutoButton.classList.remove('active-mode');
+                    this.classList.add('active-mode');
+                    if (this.id === 'sfkod_createAuto') {
+                        let newCodeArr;
+                        do { newCodeArr = Array(10).fill(0).map(() => Math.floor(Math.random() * 10)); }
+                        while (allConfirmedCodes.includes(newCodeArr.join('')));
+                        currentCode = newCodeArr;
+                        updateNumberInputs();
+                    }
+                }));
+
+                initializeNumberInputs();
+                initializeTable();
             }
-        };
-        const handleArrowClick = function() {
-            const index = parseInt(this.dataset.index);
-            currentCode[index] = (currentCode[index] + (this.classList.contains('fa-chevron-up') ? 1 : -1) + 10) % 10;
-            updateNumberInputs();
-            createManualButton.classList.add('active-mode');
-            createAutoButton.classList.remove('active-mode');
-        };
-
-        confirmButtonEl.addEventListener('click', function() {
-            if (activeRowIndex === null) return;
-            if (!createManualButton.classList.contains('active-mode') && !createAutoButton.classList.contains('active-mode')) { alert("Molimo prvo odaberite 'Kreiraj ručno' ili 'Kreiraj automatski'."); return; }
-            const codeStr = currentCode.join('');
-            if (allConfirmedCodes.includes(codeStr)) { alert("Ovaj kod je već korišten."); return; }
-            
-            allConfirmedCodes.push(codeStr);
-            completedRows.push(activeRowIndex);
-            const row = tableBody.rows[activeRowIndex - 1];
-            row.querySelector('.sfkod-code-cell-content span:first-child').textContent = codeStr;
-            const indexCell = row.querySelector('.sfkod-index-cell');
-            indexCell.classList.remove('clickable', 'active');
-            indexCell.classList.add('completed');
-
-            if (completedRows.length === 1) {
-                packageButtonsContainer.style.display = 'flex';
-                kycOptionsEl.style.display = 'block';
-                packageButtons.forEach(btn => btn.disabled = false);
-            }
-
-            generatorButtonsEl.style.display = 'none';
-            numberInputsEl.style.display = 'none';
-            confirmButtonEl.style.display = 'none';
-            activeRowIndex = null;
         });
-        
-        packageButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (this.disabled) return;
-                if (completedRows.length === 0) { alert('Morate prvo potvrditi svoj prvi besplatni SFkod.'); return; }
-                unlockNextRows(packageCodesCount[this.id], this.id.toUpperCase());
-                packageButtons.forEach(b => { b.disabled = true; b.classList.remove('selected'); });
-                this.classList.add('selected');
-            });
-        });
-
-        kyc10Checkbox.addEventListener('change', function() { if(this.checked) { unlockNextRows(1, '10 KYC'); this.disabled = true; } });
-        kyc21Checkbox.addEventListener('change', function() { if(this.checked) { if(!kyc10Checkbox.checked) { kyc10Checkbox.checked = true; kyc10Checkbox.dispatchEvent(new Event('change')); } unlockNextRows(2, '21 KYC'); this.disabled = true; } });
-        
-        [createManualButton, createAutoButton].forEach(btn => btn.addEventListener('click', function(){
-            createManualButton.classList.remove('active-mode');
-            createAutoButton.classList.remove('active-mode');
-            this.classList.add('active-mode');
-            if(this.id === 'sfkod_createAuto') {
-                let newCodeArr;
-                do { newCodeArr = Array(10).fill(0).map(() => Math.floor(Math.random() * 10)); }
-                while (allConfirmedCodes.includes(newCodeArr.join('')));
-                currentCode = newCodeArr;
-                updateNumberInputs();
-            }
-        }));
-
-        initializeNumberInputs();
-        initializeTable();
-    }
-});
-</script>
+    </script>
 
 </body>
+
 </html>
