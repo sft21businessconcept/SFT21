@@ -501,6 +501,96 @@ body.light-mode .nav-link i {
         opacity: 0.6;
     }
 }
+/* === PRILAGODBA ZA MOBITELE: PROŠIRENJE SEKCIJE PRIHODI OD LICENCI === */
+        @media (max-width: 768px) {
+            /* 1. Uklanjamo okvir oko cijele grupe (Temeljni softver, Webshop...) */
+            #licencni-paketi .glass-card[style*="animation-delay: 0.2s"] {
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                outline: none !important; /* Važno jer imate hover-card-stable klasu */
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+
+            /* 2. Smanjujemo razmak naslova "Prihodi od prodaje..." */
+            #licencni-paketi .glass-card[style*="animation-delay: 0.2s"] h3 {
+                padding: 0 5px;
+                margin-bottom: 1.5rem !important;
+                font-size: 1.3rem !important;
+            }
+
+            /* 3. Širimo pojedinačna polja (info-box) do rubova ekrana */
+            .info-box {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+                padding: 1.5rem 1rem !important; /* Malo više mjesta unutar samog polja */
+            }
+
+            /* 4. Smanjujemo margine kontejnera sekcije da polja imaju gdje "disati" */
+            #licencni-paketi .container {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+        }
+        /* --- ANIMACIJE ZA VIZUALNI MODEL (SFURED, SFNET, SFSHOP) --- */
+.sfu-float { animation: sfu-float 5s ease-in-out infinite; }
+.sfu-scanline { animation: sfu-scan 4s linear infinite; }
+@keyframes sfu-float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+@keyframes sfu-scan { from { transform: translateY(0px); opacity: 0; } 20% { opacity: 0.7; } 80% { opacity: 0.7; } to { transform: translateY(35px); opacity: 0; } }
+
+.sfn-structure { transform-origin: center; animation: sfn-rotate-poly 20s linear infinite; transform-style: preserve-3d; }
+.sfn-node { animation: sfn-node-pulse 4s ease-in-out infinite; }
+@keyframes sfn-rotate-poly { from { transform: rotateY(0deg) rotateX(15deg); } to { transform: rotateY(-360deg) rotateX(15deg); } }
+@keyframes sfn-node-pulse { 0%, 100% { r: 5; opacity: 0.8; } 50% { r: 5.5; opacity: 1; } }
+
+.sfs-cart-rotate-reverse { animation: sfs-rotate-cart-reverse 20s linear infinite; transform-origin: center; transform-style: preserve-3d; }
+@keyframes sfs-rotate-cart-reverse { from { transform: rotateY(0deg) rotateX(5deg); } to { transform: rotateY(-360deg) rotateX(5deg); } }
+
+/* === PROŠIRENJE KARTICA LICENCNIH PAKETA ZA MOBITELE === */
+@media (max-width: 768px) {
+    /* 1. Smanjujemo vanjske margine cijele sekcije */
+    #licencni-paketi .container, 
+    #licencni-paketi + section .container {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    /* 2. Širimo same kartice (LP1, LP2, LP3...) */
+    .ip-card {
+        padding-left: 10px !important;  /* Smanjen unutarnji razmak s 24px na 10px */
+        padding-right: 10px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
+
+    /* 3. Prilagodba teksta unutar kartica da bolje iskoristi prostor */
+    .ip-card-body p {
+        display: flex;
+        flex-direction: column; /* Stavlja vrijednost ISPOD naziva ako nema mjesta, ili ostavite bez ovoga ako želite u istom redu */
+        align-items: flex-start;
+        margin-bottom: 12px !important;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Suptilna linija između redova */
+    }
+
+    .ip-card-body .label {
+        font-size: 0.9rem !important;
+        margin-bottom: 2px;
+    }
+
+    .ip-card-body .value {
+        font-size: 1.1rem !important;
+        font-weight: bold;
+    }
+
+    .ip-card-body .duration {
+        font-size: 0.8rem !important;
+        margin-left: 0 !important; /* Poravnava trajanje s lijeve strane */
+    }
+}
 </style>
 </head>
 
@@ -844,88 +934,63 @@ body.light-mode .nav-link i {
             </div>
         </section>
 
-    <section id="visual-model" class="py-12 relative overflow-hidden">
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">Visual Representation of the Business Model</h2>
-                <div class="w-24 h-1 bg-purple-500 mx-auto mb-8"></div>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto font-semibold">Key elements of our integrated ecosystem</p>
-            </div>
+<section id="visual-model" class="py-12 relative overflow-hidden">
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-16 fade-in">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">Visual Representation of the Business Model</h2>
+            <div class="w-24 h-1 bg-purple-500 mx-auto mb-8"></div>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto font-semibold">Key elements of our integrated ecosystem</p>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <div class="glass-card p-6 text-center fade-in border interactive-card border-orange-500/20 hover:border-blue-400/80 transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-blue-500/20 rounded-lg flex flex-col" style="animation-delay: 0.1s;">
-                    <div class="mx-auto w-32 h-32 flex-shrink-0">
-                        <style>
-                            .sfu-float { animation: sfu-float 5s ease-in-out infinite; }
-                            .sfu-scanline { animation: sfu-scan 4s linear infinite; }
-                        @keyframes sfu-float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-                        @keyframes sfu-scan { from { transform: translateY(0px); opacity: 0; } 20% { opacity: 0.7; } 80% { opacity: 0.7; } to { transform: translateY(35px); opacity: 0; } }
-                        </style>
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                            <defs><filter id="sfu-monitor-glow-en"><feGaussianBlur stdDeviation="1.5" result="coloredBlur" /><feMerge><feMergeNode in="coloredBlur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs>
-                            <g filter="url(#sfu-monitor-glow-en)"><path d="M20 35 H80 V70 H20 Z M35 70 V75 H65 V70" stroke="#60a5fa" fill="none" stroke-width="3" stroke-linejoin="round" /><rect class="sfu-scanline" x="22" y="36" width="56" height="1.5" fill="#93c5fd" /></g>
-                            <g><circle class="sfu-float" cx="40" cy="25" r="4" fill="#93c5fd" style="animation-delay: -1s;"></circle><circle class="sfu-float" cx="28" cy="30" r="3.5" fill="#93c5fd" style="animation-delay: -3s;"></circle><circle class="sfu-float" cx="60" cy="22" r="4" fill="#93c5fd" style="animation-delay: 0s;"></circle><circle class="sfu-float" cx="72" cy="28" r="3" fill="#93c5fd" style="animation-delay: -4.2s;"></circle><circle class="sfu-float" cx="50" cy="15" r="3.5" fill="#93c5fd" style="animation-delay: -2.2s;"></circle></g>
-                        </svg>
-                    </div>
-                    <div class="mt-auto pt-2"><h3 class="text-2xl font-bold text-white"><span class="text-blue-400">SF</span>OFFICE</h3></div>
+            
+            <!-- SFOFFICE CARD -->
+            <div class="glass-card p-6 text-center fade-in border interactive-card border-orange-500/20 hover:border-blue-400/80 transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-blue-500/20 rounded-lg flex flex-col" style="animation-delay: 0.1s;">
+                <div class="mx-auto w-32 h-32 flex-shrink-0">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                        <defs><filter id="sfu-monitor-glow-en"><feGaussianBlur stdDeviation="1.5" result="coloredBlur" /><feMerge><feMergeNode in="coloredBlur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs>
+                        <g filter="url(#sfu-monitor-glow-en)"><path d="M20 35 H80 V70 H20 Z M35 70 V75 H65 V70" stroke="#60a5fa" fill="none" stroke-width="3" stroke-linejoin="round" /><rect class="sfu-scanline" x="22" y="36" width="56" height="1.5" fill="#93c5fd" /></g>
+                        <g><circle class="sfu-float" cx="40" cy="25" r="4" fill="#93c5fd" style="animation-delay: -1s;"></circle><circle class="sfu-float" cx="28" cy="30" r="3.5" fill="#93c5fd" style="animation-delay: -3s;"></circle><circle class="sfu-float" cx="60" cy="22" r="4" fill="#93c5fd" style="animation-delay: 0s;"></circle><circle class="sfu-float" cx="72" cy="28" r="3" fill="#93c5fd" style="animation-delay: -4.2s;"></circle><circle class="sfu-float" cx="50" cy="15" r="3.5" fill="#93c5fd" style="animation-delay: -2.2s;"></circle></g>
+                    </svg>
                 </div>
-                
-                <div class="glass-card p-6 text-center fade-in border interactive-card border-orange-500/20 hover:border-pink-400/80 transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-pink-500/20 rounded-lg flex flex-col" style="animation-delay: 0.2s;">
-                     <div class="mx-auto w-32 h-32 flex-shrink-0" style="perspective: 500px;">
-                        <style>
-                            .sfn-structure { transform-origin: center; animation: sfn-rotate-poly 20s linear infinite; transform-style: preserve-3d; }
-                            .sfn-node { animation: sfn-node-pulse 4s ease-in-out infinite; }
-
-                        @keyframes sfn-rotate-poly { from { transform: rotateY(0deg) rotateX(15deg); } to { transform: rotateY(-360deg) rotateX(15deg); } }
-                        @keyframes sfn-node-pulse { 0%, 100% { r: 5; opacity: 0.8; } 50% { r: 5.5; opacity: 1; } }
-                        </style>
-                         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-full h-full sfn-structure">
-                            <defs><filter id="sfn-glow-pink-en"><feGaussianBlur stdDeviation="1" result="coloredBlur" /><feMerge><feMergeNode in="coloredBlur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs>
-                            <g filter="url(#sfn-glow-pink-en)">
-                                <g stroke="#ec4899" stroke-width="1.5"><line x1="50" y1="15" x2="80" y2="30" /> <line x1="50" y1="15" x2="20" y2="30" /><line x1="20" y1="30" x2="20" y2="70" /> <line x1="80" y1="30" x2="80" y2="70" /><line x1="20" y1="70" x2="50" y2="85" /> <line x1="80" y1="70" x2="50" y2="85" /><line x1="50" y1="15" x2="50" y2="50" /> <line x1="20" y1="30" x2="50" y2="50" /><line x1="80" y1="30" x2="50" y2="50" /> <line x1="20" y1="70" x2="50" y2="50" /><line x1="80" y1="70" x2="50" y2="50" /> <line x1="50" y1="85" x2="50" y2="50" /></g>
-                                <g fill="#f9a8d4"><circle class="sfn-node" cx="50" cy="15" style="animation-delay: -1s;" /><circle class="sfn-node" cx="80" cy="30" style="animation-delay: -2s;" /><circle class="sfn-node" cx="20" cy="30" style="animation-delay: -3s;" /><circle class="sfn-node" cx="80" cy="70" style="animation-delay: -1.5s;" /><circle class="sfn-node" cx="20" cy="70" style="animation-delay: -2.5s;" /><circle class="sfn-node" cx="50" cy="85" style="animation-delay: -0.5s;" /><circle class="sfn-node" cx="50" cy="50" r="6" style="animation-delay: 0s;" /></g>
-                            </g>
-                         </svg>
-                     </div>
-                     <div class="mt-auto pt-2"><h3 class="text-2xl font-bold text-white"><span class="text-pink-500">SF</span>NET</h3></div>
-                </div>
-    
-                <div class="glass-card p-6 text-center fade-in border interactive-card border-orange-500/20 hover:border-red-500/80 transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-red-500/20 rounded-lg flex flex-col" style="animation-delay: 0.3s;">
-                    <div class="mx-auto w-32 h-32 flex-shrink-0" style="perspective: 500px;">
-                        <style>
-                            .sfs-cart-rotate-reverse {
-                                animation: sfs-rotate-cart-reverse 20s linear infinite;
-                                transform-origin: center;
-                                transform-style: preserve-3d;
-                            }
-                            @keyframes sfs-rotate-cart-reverse {
-                                from { transform: rotateY(0deg) rotateX(5deg); }
-                                to   { transform: rotateY(-360deg) rotateX(5deg); }
-                            }
-                        </style>
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                            <defs>
-                                <filter id="sfs-glow-red-en">
-                                    <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-                                    <feMerge>
-                                        <feMergeNode in="coloredBlur" />
-                                        <feMergeNode in="SourceGraphic" />
-                                    </feMerge>
-                                </filter>
-                            </defs>
-                            <g class="sfs-cart-rotate-reverse" filter="url(#sfs-glow-red-en)">
-                                <g fill="#ef4444">
-                                    <path d="M22 30 L35 75 H80 L88 45 H22z" />
-                                    <path d="M22 30 L15 30 A 4 4 0 0 0 15 38 L20 38" />
-                                    <circle cx="40" cy="85" r="7" />
-                                    <circle cx="75" cy="85" r="7" />
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="mt-auto pt-2"><h3 class="text-2xl font-bold text-white"><span class="text-red-500">SF</span>SHOP</h3></div>
-                </div>
+                <div class="mt-auto pt-2"><h3 class="text-2xl font-bold text-white"><span class="text-blue-400">SF</span>OFFICE</h3></div>
             </div>
-    </section>
+            
+            <!-- SFNET CARD -->
+            <div class="glass-card p-6 text-center fade-in border interactive-card border-orange-500/20 hover:border-pink-400/80 transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-pink-500/20 rounded-lg flex flex-col" style="animation-delay: 0.2s;">
+                 <div class="mx-auto w-32 h-32 flex-shrink-0" style="perspective: 500px;">
+                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-full h-full sfn-structure">
+                        <defs><filter id="sfn-glow-pink-en"><feGaussianBlur stdDeviation="1" result="coloredBlur" /><feMerge><feMergeNode in="coloredBlur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs>
+                        <g filter="url(#sfn-glow-pink-en)">
+                            <g stroke="#ec4899" stroke-width="1.5"><line x1="50" y1="15" x2="80" y2="30" /> <line x1="50" y1="15" x2="20" y2="30" /><line x1="20" y1="30" x2="20" y2="70" /> <line x1="80" y1="30" x2="80" y2="70" /><line x1="20" y1="70" x2="50" y2="85" /> <line x1="80" y1="70" x2="50" y2="85" /><line x1="50" y1="15" x2="50" y2="50" /> <line x1="20" y1="30" x2="50" y2="50" /><line x1="80" y1="30" x2="50" y2="50" /> <line x1="20" y1="70" x2="50" y2="50" /><line x1="80" y1="70" x2="50" y2="50" /> <line x1="50" y1="85" x2="50" y2="50" /></g>
+                            <g fill="#f9a8d4"><circle class="sfn-node" cx="50" cy="15" style="animation-delay: -1s;" /><circle class="sfn-node" cx="80" cy="30" style="animation-delay: -2s;" /><circle class="sfn-node" cx="20" cy="30" style="animation-delay: -3s;" /><circle class="sfn-node" cx="80" cy="70" style="animation-delay: -1.5s;" /><circle class="sfn-node" cx="20" cy="70" style="animation-delay: -2.5s;" /><circle class="sfn-node" cx="50" cy="85" style="animation-delay: -0.5s;" /><circle class="sfn-node" cx="50" cy="50" r="6" style="animation-delay: 0s;" /></g>
+                        </g>
+                     </svg>
+                 </div>
+                 <div class="mt-auto pt-2"><h3 class="text-2xl font-bold text-white"><span class="text-pink-500">SF</span>NET</h3></div>
+            </div>
+
+            <!-- SFSHOP CARD -->
+            <div class="glass-card p-6 text-center fade-in border interactive-card border-orange-500/20 hover:border-red-500/80 transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-red-500/20 rounded-lg flex flex-col" style="animation-delay: 0.3s;">
+                <div class="mx-auto w-32 h-32 flex-shrink-0" style="perspective: 500px;">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                        <defs>
+                            <filter id="sfs-glow-red-en"><feGaussianBlur stdDeviation="2" result="coloredBlur" /><feMerge><feMergeNode in="coloredBlur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+                        </defs>
+                        <g class="sfs-cart-rotate-reverse" filter="url(#sfs-glow-red-en)">
+                            <g fill="#ef4444">
+                                <path d="M22 30 L35 75 H80 L88 45 H22z" />
+                                <path d="M22 30 L15 30 A 4 4 0 0 0 15 38 L20 38" />
+                                <circle cx="40" cy="85" r="7" />
+                                <circle cx="75" cy="85" r="7" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="mt-auto pt-2"><h3 class="text-2xl font-bold text-white"><span class="text-red-500">SF</span>SHOP</h3></div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <section id="ecosystem-details" class="pt-0 pb-24 relative overflow-hidden">
     <div class="container mx-auto px-6 relative z-10">
@@ -3752,6 +3817,3 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
-
-
-
