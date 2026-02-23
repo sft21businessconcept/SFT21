@@ -344,11 +344,11 @@
 
             <div class="options-container">
                 
-               <!-- CARD 1 -->
+                <!-- CARD 1 -->
                 <div class="option-card" id="opcijaNastavak" data-interactive>
                     <h2>I CONTINUE THE BUSINESS</h2>
                     <div class="card-separator"></div>
-                    <p>You continue business with <strong>SPfree </strong> (free personal or business account).</p>
+                    <p>You continue business with <strong>SPfree </strong> (personal or business account).</p>
                     <p>Based on the total number of SFpoints you transfer from the old system;</p>
                     <ul class="special-list">
                         <li>you take a position in the SFalgorithm</li>
@@ -442,19 +442,17 @@
                  initialInfoContentDiv.querySelector('.veci-iznos-intro-text').classList.add('hidden');
             }
 
-            if (paramIznos && paramValuta) {
+if (paramIznos && paramValuta) {
                 if (paramIznos === 'veci' && paramValuta === 'iznos') {
-                    if (pageMainTitle) pageMainTitle.innerHTML = 'You started the business with a larger investment amount';
+                    // Update Title
+                    if (pageMainTitle) pageMainTitle.innerHTML = 'You started the business with a <span>larger investment amount</span>';
+                    
+                    // Replace Info Content
                     if (initialInfoContentDiv) {
-                        if (standardInfoList) standardInfoList.classList.add('hidden');
-                        if (standardNoteText) standardNoteText.classList.add('hidden');
-                        let veciIznosTextElement = initialInfoContentDiv.querySelector('.veci-iznos-intro-text');
-                        if (!veciIznosTextElement) {
-                            veciIznosTextElement = document.createElement('div');
-                            initialInfoContentDiv.insertBefore(veciIznosTextElement, initialInfoContentDiv.firstChild);
-                        }
-                        veciIznosTextElement.innerHTML = `
-                            <p class="veci-iznos-intro-text">If, as a member in the old system, you paid for a business account with workstations (BAWS) along with a starter package or made an investment:</p>
+                        initialInfoContentDiv.innerHTML = `
+                            <p style="margin-bottom: 15px; font-size: 1.15rem; font-weight: bold; color: var(--fluorescent-yellow); text-align: center;">
+                                If, as a member in the old system, you paid for a business account with workstations (BAWS) along with a starter package or made an investment:
+                            </p>
                             <ul>
                                 <li>you receive a number of <strong>SFpoints</strong> (SFb) based on the total invested amount (1 € = 2 SFb)</li>
                                 <li>plus points based on earnings from the reserve wallet, if you achieved an account upgrade (1 SFC = 1 SFb)</li>
@@ -464,9 +462,9 @@
                             </ul>
                             <p class="note-text"><strong>Note:</strong> The number of SFpoints from your direct and indirect members is recognized exclusively from those members who continue the business.</p>
                         `;
-                        veciIznosTextElement.classList.remove('hidden');
                     }
                 } else { 
+                    // Standard logic for fixed amounts (30, 42, 77...)
                     const numericIznosLo = parseFloat(paramIznos);
                     if (!isNaN(numericIznosLo)) {
                         calculatedSfbPoints = numericIznosLo * 2;
@@ -474,14 +472,9 @@
                     const currencySymbolLo = paramValuta.toLowerCase() === 'usd' || paramValuta === '$' ? '$' : '€';
                     displayText = `${paramIznos} ${currencySymbolLo}`;
 
-                    if (pageMainTitle) pageMainTitle.innerHTML = `You started your business by purchasing a Starter Package of <span id="dynamicPageHeaderAmount">${displayText}</span>`;
+                    if (pageMainTitle) pageMainTitle.innerHTML = `You started your business by purchasing a Starter Package of <span>${displayText}</span>`;
                 }
-            } else { 
-                 if (pageMainTitle) pageMainTitle.innerHTML = `You started your business by purchasing a Starter Package of <span id="dynamicPageHeaderAmount">${displayText}</span>`;
             }
-
-            if (sfbPointsSpan) sfbPointsSpan.textContent = calculatedSfbPoints;
-
             // --- Card Clicks ---
             const allOptionCards = document.querySelectorAll('.option-card');
             allOptionCards.forEach(card => {
@@ -580,7 +573,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
