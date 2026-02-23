@@ -235,7 +235,7 @@ html.light-mode .avatar-upload-button:hover i {
         .popup-content .napomena-title { color: var(--fluorescent-green); font-weight: bold; margin-top: 1.5rem; }
         .popup-button { background-color: rgba(128, 255, 0, 0.1); color: var(--fluorescent-green); border: 1px solid var(--fluorescent-green); border-radius: 8px; padding: 0.75rem 1.5rem; font-weight: 600; cursor: pointer; }
         .popup-button:hover { background-color: var(--fluorescent-green); color: #0e076a; }
-        #ne-prikazuj-ponovo { width: 1rem; height: 1rem; accent-color: var(--fluorescent-green); }
+        #ne-prikazuj-ponovno { width: 1rem; height: 1rem; accent-color: var(--fluorescent-green); }
         .sfkod-generator-container { background-color: var(--glass-background); border: 1px solid var(--glass-border); border-radius: 15px; padding: 2rem; }
         .sfkod-generator-container h1 { color: var(--fluorescent-green); text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 2.5rem; }
         .sfkod-package-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; }
@@ -278,6 +278,26 @@ html.light-mode .avatar-upload-button:hover i {
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
             .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            /* Fix for SFcode Generator on mobile */
+            .sfkod-number-inputs {
+                gap: 2px !important; /* Reduces space between numbers */
+                padding: 0 5px;
+            }
+
+            .sfkod-number-input {
+                width: 28px !important;  /* Reduced from 36px to 28px */
+                height: 30px !important;
+                font-size: 0.9rem !important;
+                margin: 2px 0 !important;
+            }
+
+            .sfkod-arrow {
+                font-size: 0.9rem !important; /* Smaller arrows */
+            }
+
+            .sfkod-generator-container {
+                padding: 1.5rem 0.5rem !important; /* Smaller container padding */
+            }
         }
 
         /* ============================================= */
@@ -533,13 +553,13 @@ html.light-mode .text-white {
              <span class="larger-sf">SF</span>Franchisee
         </div>
         <ul class="nav-links-vertical">
-             <li><a href="#" class="nav-link-vertical active" data-panel-target="kontrolna-ploca"><i class="fas fa-tachometer-alt mr-3"></i>Dashboard</a></li>
-             <li><a href="#" class="nav-link-vertical" data-panel-target="moj-racun"><i class="fas fa-user-circle mr-3"></i>My Account</a></li>
-             <li><a href="#" class="nav-link-vertical" data-panel-target="novcanik"><i class="fas fa-wallet mr-3"></i>Wallet</a></li>
-             <li><a href="#" class="nav-link-vertical" data-panel-target="sftim"><i class="fas fa-users mr-3"></i>SFteam</a></li>
-             <li><a href="#" class="nav-link-vertical" data-panel-target="sfkod"><i class="fas fa-ticket-alt mr-3"></i>SFcode</a></li>
-             <li><a href="#" class="nav-link-vertical" data-panel-target="sfnet"><i class="fas fa-share-nodes mr-3"></i>SFnet</a></li>
-             <li><a href="#" class="nav-link-vertical" data-panel-target="sfshop"><i class="fas fa-shopping-bag mr-3"></i>SFshop</a></li>
+             <li><a href="#" class="nav-link-vertical active" data-panel-target="kontrolna-ploca"><i class="fas fa-tachometer-alt mr-3"></i>DASHBOARD</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="moj-racun"><i class="fas fa-user-circle mr-3"></i>MY ACCOUNT</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="novcanik"><i class="fas fa-wallet mr-3"></i>WALLET</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="sftim"><i class="fas fa-users mr-3"></i>SFTEAM</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="sfkod"><i class="fas fa-ticket-alt mr-3"></i>SFCODE</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="sfnet"><i class="fas fa-share-nodes mr-3"></i>SFNET</a></li>
+             <li><a href="#" class="nav-link-vertical" data-panel-target="sfshop"><i class="fas fa-shopping-bag mr-3"></i>SFSHOP</a></li>
         </ul>
     </nav>
 
@@ -666,7 +686,7 @@ html.light-mode .text-white {
             <button class="modal-close" aria-label="Close">×</button>
             <h4>Value of SFcodes</h4>
             <p>As a freely registered user, the company gives you one permanent SFcode as a welcome gift, with which you can participate for free in almost every prize game organized by the company. Therefore, it is important to mention the value of SFcodes.<br><br>Specifically, the company will organize many prize games where the prizes will be, for example, starter packs, mobile phones, computers, or many other valuable rewards...<br><br>In addition to the prizes given by the company, every merchant, manufacturer, entrepreneur, or company, large or small, will have the opportunity to prepare their product or service, a package of products, or any type of prize to offer through our prize game system upon entering the company's SFshop. In return, they receive a form of advertising through our company and with the help of our franchisees.<br><br>You can choose the SFcode yourself (Create manually) or you can choose an automatically generated SFcode (Create automatically). By clicking on CONFIRM SFCODE, you will permanently save the SFcode, which cannot be changed afterward.<br><br>It is very important to note that an SFfranchisee can have a maximum of 25 SFcodes. (1 from free registration + 21 from a one-time payment for SP7 + 3 from registering 21 free users)<br><br>An SFuser / BPR (freely registered users) can have a maximum of 4 SFcodes. (1 from free registration + 3 from registering 21 free users)<br><br>If you start with SP1 or other smaller packages, you receive a certain number of SFcodes, which you can increase with upgrades or payments of subscription periods, provided your account has no inactive days between subscription periods.<br><br>With a larger number of SFcodes, your chances of winning a prize are greater, which does not mean you cannot win a prize with just one code. That is a matter of luck that no one can influence.<br><br>Regardless of how many codes you start with and how many you end up with, we sincerely wish you luck in the prize draws.</p>
-            <div class="flex flex-col items-center mt-6"><button class="popup-button">I understand the value of SFcodes</button><div class="flex items-center mt-4"><input type="checkbox" id="ne-prikazuj-ponovo"><label for="ne-prikazuj-ponovo" class="ml-2 text-sm text-gray-300 cursor-pointer">Do not show again</label></div></div>
+            <div class="flex flex-col items-center mt-6"><button class="popup-button">I understand the value of SFcodes</button><div class="flex items-center mt-4"><input type="checkbox" id="ne-prikazuj-ponovno"><label for="ne-prikazuj-ponovno" class="ml-2 text-sm text-gray-300 cursor-pointer">Do not show again</label></div></div>
         </div>
     </div>
     <div id="sfkod-upute-popup" class="popup">
@@ -812,7 +832,7 @@ html.light-mode .text-white {
             const razumijemButton = vrijednostPopup.querySelector('.popup-button');
             if (razumijemButton) {
                 razumijemButton.addEventListener('click', () => {
-                    const nePrikazujCheckbox = document.getElementById('ne-prikazuj-ponovo');
+                    const nePrikazujCheckbox = document.getElementById('ne-prikazuj-ponovno');
                     if (nePrikazujCheckbox && nePrikazujCheckbox.checked) {
                         localStorage.setItem('sfkod_vrijednost_popup_seen', 'true');
                     }
