@@ -318,6 +318,9 @@
                 border-left: none !important;
                 border-right: none !important;
                 padding: 1.5rem 1.2rem !important; /* Ostavljeno malo prostora da tekst ne dira rub stakla mobitela */
+                background: rgba(0, 0, 0, 0.7) !important; 
+                backdrop-filter: blur(8px) !important;
+                -webkit-backdrop-filter: blur(8px) !important;
             }
 
             /* Zadržavanje zelenog ruba na zadnjoj kartici ("VAŠ STATUS JE SIGURAN") */
@@ -342,6 +345,10 @@
                 background: transparent !important;
                 border: none !important;
                 box-shadow: none !important;
+            }
+            /* Zaštita čitljivosti za Light mode na mobitelu */
+            html.light-mode .info-card {
+                background: rgba(255, 255, 255, 0.85) !important;
             }
         }
     </style>
@@ -640,5 +647,6 @@
     </script>
     </body>
 </html>
+
 
 
