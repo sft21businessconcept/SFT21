@@ -264,7 +264,7 @@
         html.light-mode .info-card h3 { color: var(--primary-color); }
         html.light-mode .header-title-text { color: var(--primary-color) !important; }
 
-         @media (max-width: 768px) {
+@media (max-width: 768px) {
             nav.fixed {
                 height: auto !important;
                 padding: 10px 0 !important;
@@ -288,6 +288,60 @@
             }
             .content-box-wrapper {
                 padding-top: 150px !important;
+            }
+            
+            /* --- NOVI KOD ZA MOBILNI PRIKAZ BEZ GLAVNOG OKVIRA --- */
+            
+            /* 1. Uklanjanje vizualnog okvira .content-box i širenje na 100% */
+            .content-box {
+                width: 100% !important;
+                max-width: 100% !important;
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                padding: 0 0 2rem 0 !important; /* Uklonjen bočni padding */
+            }
+
+            /* 2. Rastezanje videa od ruba do ruba */
+            .page-video-wrapper {
+                border-radius: 0 !important;
+                border-left: none !important;
+                border-right: none !important;
+                width: 100% !important;
+            }
+
+            /* 3. Rastezanje informativnih polja (kartica) od ruba do ruba */
+            .info-card {
+                border-radius: 0 !important;
+                border-left: none !important;
+                border-right: none !important;
+                padding: 1.5rem 1.2rem !important; /* Ostavljeno malo prostora da tekst ne dira rub stakla mobitela */
+            }
+
+            /* Zadržavanje zelenog ruba na zadnjoj kartici ("VAŠ STATUS JE SIGURAN") */
+            .info-card[style*="border-left"] {
+                border-left: 4px solid var(--fluorescent-green) !important;
+            }
+
+            /* 4. Osiguravanje da naslovi i glavni tekst ne dodiruju rub ekrana */
+            .content-box > div:first-of-type,
+            .content-box > h2 {
+                padding: 0 1.2rem !important;
+            }
+
+            /* 5. Prilagodba 'X' gumba za zatvaranje jer je padding uklonjen */
+            .content-box-close {
+                top: -2rem !important;
+                right: 1.2rem !important;
+            }
+            
+            /* Osiguravamo da i u Light modu prozirnost glavnog okvira na mobitelu ostane */
+            html.light-mode .content-box {
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
             }
         }
     </style>
@@ -509,4 +563,5 @@
     </script>
 </body>
 </html>
+
 
