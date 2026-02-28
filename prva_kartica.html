@@ -540,7 +540,7 @@
          background-color: transparent;                                 ">
         <div id="sib-form-container" class="sib-form-container">
           <div id="error-message" class="sib-form-message-panel"
-            style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+            style="display:none; font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
             <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
               <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
                 <path
@@ -553,7 +553,7 @@
           </div>
           <div></div>
           <div id="success-message" class="sib-form-message-panel"
-            style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+            style="display:none; font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
             <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
               <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
                 <path
@@ -771,7 +771,6 @@
                 </div>
               </div>
 
-              <input type="text" name="email_address_check" value="" class="input--hidden">
               <input type="hidden" name="locale" value="en">
             </form>
           </div>
@@ -833,9 +832,8 @@
           modal.style.display = 'flex';
           document.body.style.overflow = 'hidden';
 
-          // Čistimo skrivenu zaštitu od robota (da gumb ne blokira)
-          const antiSpam = document.getElementsByName('email_address_check')[0];
-          if (antiSpam) antiSpam.value = '';
+          // Cleaned up robots field
+          // The hidden email_address_check field was removed from HTML
 
           // Upisujemo iznos u skriveno polje i "budimo" ga za Brevo skriptu
           const brevoInput = document.getElementById('POCETNI_IZNOS');
