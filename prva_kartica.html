@@ -83,89 +83,33 @@
         .confirm-button { background-color: var(--button-confirm-bg); color: white; padding: 12px 30px; border: none; border-radius: 5px; font-family: 'Arial Narrow', Arial, sans-serif; font-size: clamp(1rem, 2vw, 1.2rem); font-weight: bold; text-transform: uppercase; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .confirm-button:hover { background-color: var(--button-confirm-hover-bg); transform: translateY(-2px); }
 
-        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center; padding: 20px; }
-        
+        /* NOVI MODAL ZA BREVO */
+        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; padding: 10px; }
         .modal-content {
-            background-color: var(--background-dark); color: var(--text-color); padding: clamp(20px, 4vw, 40px);
-            border: 2px solid var(--fluorescent-green); border-radius: 15px; width: 100%; max-width: 600px;
-            position: relative; box-shadow: 0 0 25px rgba(128, 255, 0, 0.3); animation: fadeIn 0.3s ease-out;
-            display: flex; flex-direction: column; max-height: calc(100vh - 40px);
+            background-color: #0d0118; color: var(--text-color); padding: 5px;
+            border: 2px solid var(--fluorescent-green); border-radius: 15px; width: 100%; max-width: 650px;
+            position: relative; box-shadow: 0 0 35px rgba(128, 255, 0, 0.4); animation: fadeIn 0.3s ease-out;
+            display: flex; flex-direction: column; height: 90vh;
         }
-        .modal-scrollable-content { overflow-y: auto; padding-right: 15px; margin-right: -15px; padding-left: 15px; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .modal-close-button { color: var(--fluorescent-green); position: absolute; top: 10px; right: 15px; font-size: 2.5rem; font-weight: bold; cursor: pointer; z-index: 11; transition: color 0.3s; }
+        .modal-close-button:hover { color: #fff; }
         
-        .modal-close-button {
-            color: var(--fluorescent-green); position: absolute; top: 10px; right: 15px;
-            font-size: 2.5rem; font-weight: bold; cursor: pointer; z-index: 10; transition: color 0.3s, transform 0.3s;
-        }
-        .modal-close-button:hover, .modal-close-button:focus { color: #fff; transform: scale(1.1); }
-        
-        .modal-content .popup-title {
-            color: var(--fluorescent-green); text-align: center; font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-            font-weight: bold; text-transform: uppercase; margin-bottom: 20px; padding-top: 10px;
-        }
-        .modal-content .form-group { margin-bottom: 15px; }
-        .modal-content .form-group label {
-            display: block; color: var(--fluorescent-green); text-align: center;
-            text-transform: uppercase; margin-bottom: 8px; font-size: 0.9rem; font-weight: bold;
-        }
-        .modal-content input[type="text"], .modal-content input[type="email"] {
-            width: 100%; padding: 12px; border: 1px solid var(--fluorescent-green); border-radius: 4px; box-sizing: border-box;
-            font-size: 1rem; background-color: rgba(0,0,0,0.2); color: var(--text-color); text-align: center;
-        }
-        .modal-content input::placeholder { color: #888; }
-        .modal-content .email-subtitle { margin-top: 5px; margin-bottom: 8px; font-size: 0.85rem; color: #ccc; text-align: center; }
-        .modal-content .napomena {
-            margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--card-border);
-            font-size: 0.85rem; line-height: 1.5; color: #bbb; text-align: left;
-        }
-        .modal-content .napomena p { color: #bbb; margin-bottom: 0.3em; text-align: justify; }
-        .modal-content .napomena strong { color: var(--fluorescent-yellow); }
+        #brevo-iframe { width: 100%; height: 100%; border: none; border-radius: 10px; }
 
-        .error-message { color: #ff4d4d; font-size: 0.85rem; height: 1.2em; margin-top: 5px; text-align: center; }
-        .input-error { border-color: #ff4d4d !important; box-shadow: 0 0 8px rgba(255, 77, 77, 0.7); }
-
-        .modal-confirm-button {
-            display: block; margin: 20px auto 0; padding: 12px 35px; font-size: 1.1rem; font-weight: bold;
-            text-transform: uppercase; color: var(--background-dark); background-color: var(--fluorescent-green);
-            border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
-        }
-        .modal-confirm-button:hover:not(:disabled) { background-color: #fff; transform: translateY(-2px); }
-        .modal-confirm-button:disabled { background-color: #586351; color: #999; opacity: 0.7; cursor: not-allowed; transform: none; }
-
-        .final-popup-title { font-size: clamp(1.4rem, 3vw, 1.8rem) !important; }
-        #final-confirmation-message { text-align: center; line-height: 1.6; font-size: 1.1rem; }
-        #final-confirmation-message b { color: var(--fluorescent-yellow); }
-
+        /* ANIMIRANA POZADINA */
         .animated-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; background-color: var(--background-dark); }
         #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
         .bg-dots { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.5; }
         .glow { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(171, 71, 188, 0.2) 0%, rgba(171, 71, 188, 0) 70%); filter: blur(50px); pointer-events: none; }
 
-        /* Custom Cursor Style */
-        .custom-cursor {
-            position: fixed; width: 20px; height: 20px; border-radius: 50%;
-            background-color: rgba(106, 27, 154, 0.6); border: 2px solid var(--fluorescent-green);
-            pointer-events: none; z-index: 10000; transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out, background-color 0.2s ease;
-            opacity: 0;
-        }
+        /* Custom Cursor */
+        .custom-cursor { position: fixed; width: 20px; height: 20px; border-radius: 50%; background-color: rgba(106, 27, 154, 0.6); border: 2px solid var(--fluorescent-green); pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); transition: transform 0.1s ease-out; opacity: 0; }
 
-        /* Light mode prilagodbe */
+        /* Light mode */
         html.light-mode body { background-color: #f8fafc !important; color: #334155 !important; }
-        html.light-mode .fixed-header-container { background-color: var(--primary-color) !important; }
-        html.light-mode .header-title, html.light-mode .page-close-button { color: var(--fluorescent-green) !important; }
-        html.light-mode .page-close-button:hover { color: white !important; }
-        html.light-mode .decision-content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
-        html.light-mode .main-congrats-title, html.light-mode .detailed-text p, html.light-mode .detailed-text ul { color: #334155 !important; }
-        html.light-mode .detailed-text ul li::before { color: #334155 !important; }
-        html.light-mode .intro-section p, html.light-mode .highlighted-choice-title { color: #842a9d !important;}
-        html.light-mode .detailed-text strong { color: var(--primary-color) !important; }
-        html.light-mode .modal-content { background-color: #ffffff; border-color: var(--primary-color); }
-        html.light-mode .modal-close-button, html.light-mode .popup-title, html.light-mode .form-group label { color: var(--primary-color); }
-        html.light-mode input[type="text"], html.light-mode input[type="email"] { background-color: #f1f5f9; border-color: #cbd5e1; color: #1e293b; }
-        html.light-mode .modal-confirm-button { background-color: var(--primary-color); color: white; }
-        html.light-mode .animated-background, html.light-mode #network-canvas { background-color: transparent !important; }
+        html.light-mode .decision-content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; color: #334155 !important; }
+        html.light-mode .main-congrats-title, html.light-mode .detailed-text p { color: #334155 !important; }
     </style>
 </head>
 <body>
@@ -180,7 +124,7 @@
     <div class="fixed-header-container">
         <div class="header-content">
             <span class="header-title">SFT21 - Odluka o nastavku poslovanja</span>
-            <button class="page-close-button" id="closePageButton" title="Zatvori">×</button>
+            <button class="page-close-button" id="closePageButton">×</button>
         </div>
     </div>
 
@@ -213,135 +157,61 @@
             </div>
 
             <div class="confirm-button-container">
-                <button class="confirm-button" id="openPopupForConfirmation">POTVRDI ODABIR</button>
+                <button class="confirm-button" id="openBrevoPopup">POTVRDI ODABIR</button>
             </div>
         </div>
     </div>
     
-    <!-- POPUP FORMA -->
-    <div id="confirmationUserDetailsPopup" class="modal-overlay">
+    <!-- POPUP S BREVO FORMOM -->
+    <div id="brevoModalOverlay" class="modal-overlay">
         <div class="modal-content">
-             <span id="closeUserDetailsPopupButton" class="modal-close-button" title="Zatvori">×</span>
-            <h2 class="popup-title">POTVRDA PODATAKA</h2>
-            <div class="modal-scrollable-content">
-                <div class="form-group">
-                    <label for="fullNameInputPopup">Ime i Prezime</label>
-                    <input type="text" id="fullNameInputPopup" placeholder="Upišite ime i prezime">
-                    <!-- OVDJE JE SKRIVENO POLJE ZA IZNOS -->
-                    <input type="hidden" id="pocetni_iznos" name="pocetni_iznos" value="">
-                </div>
-                <div class="form-group">
-                    <label for="usernameInputPopup">Korisničko ime</label>
-                    <input type="text" id="usernameInputPopup" maxlength="21" placeholder="Vaše korisničko ime iz starog sistema">
-                </div>
-                <div class="form-group">
-                    <label for="oldEmailInputPopup">Email Adresa</label>
-                     <p class="email-subtitle">(sa kojom ste se registrirali u starom sistemu)</p>
-                    <input type="email" id="oldEmailInputPopup" placeholder="Stara email adresa">
-                </div>
-                <div class="form-group">
-                     <label for="newEmailInputPopup">Nova Email Adresa (opcionalno)</label>
-                    <input type="email" id="newEmailInputPopup" placeholder="Nova email adresa">
-                </div>
-                <div class="napomena">
-                    <strong>Napomena:</strong>
-                    <p>Sa prvim popunjavanjem SFalgoritma započeti će nastavak poslovanja o čemu ćete biti pravovremeno obaviješteni.</p>
-                </div>
-            </div>
-            <button id="confirmUserDetailsButton" class="modal-confirm-button">Potvrdi</button>
+             <span id="closeBrevoModal" class="modal-close-button">×</span>
+             <iframe id="brevo-iframe" src=""></iframe>
         </div>
     </div>
 
-    <!-- FINALNI POPUP POTVRDE -->
-    <div id="finalConfirmationPopup" class="modal-overlay">
-        <div class="modal-content">
-            <h2 class="popup-title final-popup-title">Informacija</h2>
-            <p id="final-confirmation-message"></p>
-        </div>
-    </div>
-
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // ZAMIJENI OVAJ URL SVOJIM NOVIM URL-OM NAKON "NEW DEPLOYMENT"
-            const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbwYQGDtBdUIPSD0GJHPJCOrPhgdMhlw-q_Z3wIqtecPvRw_ELYrahZ9QojcKzoBxGIy/exec';   
-            const fullNameInput = document.getElementById('fullNameInputPopup');
-            const usernameInput = document.getElementById('usernameInputPopup');
-            const oldEmailInput = document.getElementById('oldEmailInputPopup');
-            const newEmailInput = document.getElementById('newEmailInputPopup');
-            const confirmButton = document.getElementById('confirmUserDetailsButton');
-            const mainPopup = document.getElementById('confirmationUserDetailsPopup');
-            const finalPopup = document.getElementById('finalConfirmationPopup');
-            const finalMessageP = document.getElementById('final-confirmation-message');
+            const modal = document.getElementById('brevoModalOverlay');
+            const iframe = document.getElementById('brevo-iframe');
+            
+            // OVDJE ZALIJEPITE SVOJ LINK IZ BREVA (ako je drugačiji od ovog)
+            const baseBrevoUrl = "https://7e6b58d8.sibforms.com/serve/MUIFALOP5DWfZPmgjDy8-FPOWo-iYtwqnv_4aFgpAaQ0RH9PVtFFdBtkqien-m58vu9Kphv8M753E9-AvLBfuHHme9S7sxw4-gdk82P_5VtIJWapaDOzh0goai-qcyLWbQR8S-shqnk6DJDtoOehsQwNDq1EGz_Ptcejb6Nz-TKKcVzuHK4mDRbB6xS0bEpebdrBbz38LSaiZ7Tp6g==";
 
-            const validateForm = () => {
-                const isFullNameValid = fullNameInput.value.trim() !== '';
-                const isUsernameValid = usernameInput.value.trim() !== '';
-                const isOldEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(oldEmailInput.value.trim());
-                confirmButton.disabled = !(isFullNameValid && isUsernameValid && isOldEmailValid);
-            };
-
-            [fullNameInput, usernameInput, oldEmailInput, newEmailInput].forEach(input => input.addEventListener('input', validateForm));
-
-            confirmButton.addEventListener('click', () => {
-                if(confirmButton.disabled) return;
-                
-                mainPopup.style.display = 'none';
-                finalMessageP.innerHTML = `<h4>Slanje...</h4><p>Molimo pričekajte.</p>`;
-                finalPopup.style.display = 'flex';
-
-                const dataToSend = new FormData();
-                dataToSend.append('requestType', 'activeNoInvest');
-                dataToSend.append('fullName', fullNameInput.value.trim());
-                dataToSend.append('username', usernameInput.value.trim());
-                dataToSend.append('oldEmail', oldEmailInput.value.trim());
-                dataToSend.append('newEmail', newEmailInput.value.trim());
-                dataToSend.append('pocetni_iznos', document.getElementById('pocetni_iznos').value);
-
-                fetch(WEBAPP_URL, { method: 'POST', body: dataToSend })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        finalMessageP.innerHTML = 'Vaša je odluka zabilježena. Hvala.';
-                    } else {
-                        finalMessageP.innerHTML = 'Došlo je do greške. Pokušajte ponovno.';
-                    }
-                    setTimeout(() => window.location.href = 'index.html', 4000);
-                })
-                .catch(err => {
-                    finalMessageP.innerHTML = 'Mrežna greška. Pokušajte ponovno.';
-                });
-            });
-
-            // LOGIKA ZA DINAMIČKI IZNOS IZ URL-A
+            // Logika za prikaz iznosa na stranici (ovo ostavljamo da tekstovi rade)
             const urlParams = new URLSearchParams(window.location.search);
-            const paramIznos = urlParams.get('iznos');
-            const paramValuta = urlParams.get('valuta');
-            let displayText = "30 $";
+            const paramIznos = urlParams.get('iznos') || "30";
+            const paramValuta = urlParams.get('valuta') || "usd";
+            const currencySymbol = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
+            let displayText = `${paramIznos} ${currencySymbol}`;
 
-            if (paramIznos && paramValuta) {
-                if (paramIznos === 'veci' && paramValuta === 'iznos') {
-                    displayText = "Veći iznos/Investicija";
-                } else {
-                    const currencySymbol = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
-                    displayText = `${paramIznos} ${currencySymbol}`;
-                }
+            if (paramIznos === 'veci') {
+                displayText = "Veći iznos/Investicija";
+                document.getElementById('standard-text-block').style.display = 'none';
+                document.getElementById('veci-iznos-text-block').style.display = 'block';
             }
             
-            // UPISIVANJE U STRANICU I U SKRIVENO POLJE
             document.getElementById('startAmountDisplay').textContent = displayText;
             document.getElementById('startAmountDisplayIntro').textContent = displayText;
-            document.getElementById('pocetni_iznos').value = displayText;
-            
-            const numeric = parseFloat(paramIznos);
-            if(!isNaN(numeric)) document.getElementById('sfPointsValue').textContent = numeric * 2;
 
-            // OSTALI UI EVENTI
-            document.getElementById('openPopupForConfirmation').onclick = () => { mainPopup.style.display = 'flex'; validateForm(); };
-            document.getElementById('closeUserDetailsPopupButton').onclick = () => mainPopup.style.display = 'none';
+            // OTVARANJE POPUPA - NAJJEDNOSTAVNIJA VERZIJA
+            document.getElementById('openBrevoPopup').onclick = function() {
+                console.log("Gumb kliknut!"); // Ovo provjeravamo u konzoli
+                iframe.src = baseBrevoUrl; 
+                modal.style.display = 'flex';
+            };
+
+            // ZATVARANJE POPUPA
+            document.getElementById('closeBrevoModal').onclick = function() {
+                modal.style.display = 'none';
+                iframe.src = "";
+            };
+
+            // Gumb za povratak (X u zaglavlju)
             document.getElementById('closePageButton').onclick = () => window.history.back();
 
-            // CUSTOM CURSOR LOGIKA
+            // Custom Cursor
             const cursor = document.querySelector('.custom-cursor');
             document.addEventListener('mousemove', (e) => {
                 gsap.to(cursor, { duration: 0.1, left: e.clientX, top: e.clientY, opacity: 1 });
@@ -349,16 +219,14 @@
         });
     </script>
     
-    <!-- Background Animation Script -->
+    <!-- Mreža u pozadini (Network Canvas) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('network-canvas');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             let particles = [];
-            const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 100, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
-            const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 100, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
-            let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+            const options = { particleColorRGB: '128, 255, 0', particleAmount: 100, defaultRadius: 1.3, particleSpeed: 0.25 };
 
             const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
             window.addEventListener('resize', resizeCanvas);
@@ -366,13 +234,12 @@
             class Particle {
                 constructor() {
                     this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-                    this.radius = currentOptions.defaultRadius;
-                    this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
-                    this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                    this.vx = (Math.random() - 0.5) * options.particleSpeed;
+                    this.vy = (Math.random() - 0.5) * options.particleSpeed;
                 }
                 draw() {
-                    ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, 0.85)`; ctx.fill();
+                    ctx.beginPath(); ctx.arc(this.x, this.y, options.defaultRadius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${options.particleColorRGB}, 0.5)`; ctx.fill();
                 }
                 update() {
                     this.x += this.vx; this.y += this.vy;
@@ -380,20 +247,9 @@
                     if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
                 }
             }
-
-            const initParticles = () => {
-                particles = [];
-                for (let i = 0; i < currentOptions.particleAmount; i++) particles.push(new Particle());
-            };
-
-            const animate = () => {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => { p.update(); p.draw(); });
-                requestAnimationFrame(animate);
-            };
-            
-            resizeCanvas();
-            animate();
+            const initParticles = () => { particles = []; for (let i = 0; i < options.particleAmount; i++) particles.push(new Particle()); };
+            const animate = () => { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); };
+            resizeCanvas(); animate();
         });
     </script>
 </body>
