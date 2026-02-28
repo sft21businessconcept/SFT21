@@ -569,8 +569,9 @@
           <div></div>
           <div id="sib-container" class="sib-container--large sib-container--vertical"
             style="text-align:center; background-color:rgba(8,0,0,0.47); max-width:540px; border-radius:22px; border-width:2px; border-color:#00fe00; border-style:solid; direction:ltr">
-            <form id="sib-form" method="POST"
-              action="https://7e6b58d8.sibforms.com/serve/MUIFALOP5DWfZPmgjDy8-FPOWo-iYtwqnv_4aFgpAaQ0RH9PVtFFdBtkqien-m58vu9Kphv8M753E9-AvLBfuHHme9S7sxw4-gdk82P_5VtIJWapaDOzh0goai-qcYLWbQR8S-shqnk6DJDtoOehsQwNDq1EGz_Ptcejb6Nz-TKKcVzuHK4mDRBb6xS0bepebdrBbz38LSaiZ7Tp6g=="
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+            <form id="sib-form" method="POST" target="hidden_iframe"
+              action="https://7e6b58d8.sibforms.com/serve/MUIFALOP5DWfZPmgjDy8-FPOWo-iYtwqnv_4aFgpAaQ0RH9PVtFFdBtkqien-m58vu9Kphv8M753E9-AvLBfuHHme9S7sxw4-gdk82P_5VtIJWapaDOzh0goai-qcyLWbQR8S-shqnk6DJDtoOehsQwNDq1EGz_Ptcejb6Nz-TKKcVzuHK4mDRbB6xS0bEpebdrBbz38LSaiZ7Tp6g=="
               data-type="subscription">
               <div style="padding: 8px 0;">
                 <div class="sib-form-block"
@@ -779,32 +780,31 @@
       <!-- END - We recommend to place the above code where you want the form in your website html  -->
 
       <!-- START - We recommend to place the below code in footer or bottom of your website html  -->
+      <!-- START - We recommend to place the below code in footer or bottom of your website html  -->
       <script>
-        window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
-        window.LOCALE = 'en';
-        window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Pružene informacije nisu ispravne. Molimo provjerite format polja (npr. email adresu) i pokušajte ponovno.";
-
-        window.REQUIRED_ERROR_MESSAGE = "Ovo polje je obavezno i ne može ostati prazno. ";
-
-        window.GENERIC_INVALID_MESSAGE = "Pružene informacije nisu ispravne. Molimo provjerite format polja (npr. email adresu) i pokušajte ponovno.";
-
-        window.INVALID_NUMBER = "Pružene informacije nisu ispravne. Molimo provjerite format polja (npr. email adresu) i pokušajte ponovno.";
-
-
-
-        window.translation = {
-          common: {
-            selectedList: '{quantity} list selected',
-            selectedLists: '{quantity} lists selected',
-            selectedOption: '{quantity} selected',
-            selectedOptions: '{quantity} selected',
+        document.getElementById('sib-form').addEventListener('submit', function () {
+          const btn = this.querySelector('button[type="submit"]');
+          if (btn) {
+            btn.innerHTML = 'SLANJE...';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
           }
-        };
 
-        var AUTOHIDE = Boolean(0);
+          setTimeout(() => {
+            const container = document.getElementById('sib-container');
+            if (container) {
+              container.innerHTML = `
+                <div style="padding: 20px 30px; text-align: center; color: #00fe00; font-family: Helvetica, sans-serif;">
+                  <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">Hvala vam!</h2>
+                  <p style="font-size: 18px; line-height: 1.4; color: #fff;">Vaša odluka je uspješno zabilježena.<br>Upravo smo vam poslali e-mail potvrde.</p>
+                  <p style="font-size: 14px; margin-top: 25px; color: #ffff00; font-style: italic;">NAPOMENA: Ako mail ne vidite u dolaznoj pošti u roku od minute, obavezno provjerite mapu Neželjena pošta (Spam/Junk) te ga označite kao 'Nije neželjena pošta'.</p>
+                  <button onclick="document.getElementById('brevoModalOverlay').style.display='none'" style="margin-top: 35px; margin-bottom: 10px; padding: 12px 35px; font-size:18px; font-weight:700; background-color:#00fe00; color:#000; border:none; border-radius:12px; cursor:pointer;">ZATVORI</button>
+                </div>
+              `;
+            }
+          }, 1000);
+        });
       </script>
-
-      <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
 
       <!-- END - We recommend to place the above code in footer or bottom of your website html  -->
