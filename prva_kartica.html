@@ -708,12 +708,14 @@
                         for="OPT_IN" data-required="*">Suglasnost</label>
                       <div class="entry__choice">
                         <label>
-                          <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required />
-                          <span class="checkbox checkbox_tick_positive"></span><span
-                            style="font-size:14px; text-align:left; font-family:Helvetica, sans-serif; color:#ffff00; background-color:transparent;">
-                            <p><em>"Slažem se s obradom mojih podataka u svrhu ažuriranja statusa u SFT21 sistemu i
-                                prihvaćam uvjete privatnosti."</em></p>
-                          </span> </label>
+                          <input type="checkbox" value="1" id="OPT_IN" name="OPT_IN" required
+                            style="margin-right: 10px; width: 18px; height: 18px; vertical-align: middle;" />
+                          <span
+                            style="font-size:14px; text-align:left; font-family:Helvetica, sans-serif; color:#ffff00; background-color:transparent; display: inline-block; vertical-align: middle; max-width: 90%;">
+                            <em>"Slažem se s obradom mojih podataka u svrhu ažuriranja statusa u SFT21 sistemu i
+                              prihvaćam uvjete privatnosti."</em>
+                          </span>
+                        </label>
                       </div>
                     </div>
                     <label class="entry__error entry__error--primary"
@@ -771,6 +773,8 @@
                 </div>
               </div>
 
+              <input type="text" name="email_address_check" value="" class="input--hidden"
+                style="display:none !important;">
               <input type="hidden" name="locale" value="en">
             </form>
           </div>
@@ -779,14 +783,16 @@
       <!-- END - We recommend to place the above code where you want the form in your website html  -->
 
       <!-- START - We recommend to place the below code in footer or bottom of your website html  -->
-      <!-- START - We recommend to place the below code in footer or bottom of your website html  -->
       <script>
         document.getElementById('sib-form').addEventListener('submit', function () {
+          // NE ZAUSTAVLJATI event.preventDefault()! 
+          // Puštamo preglednik da prirodno pošalje podatke u nevidljivi iframe (target="hidden_iframe")
+
           const btn = this.querySelector('button[type="submit"]');
           if (btn) {
             btn.innerHTML = 'SLANJE...';
             btn.style.opacity = '0.7';
-            btn.disabled = true;
+            // btn.disabled = true; // Ne gasimo gumb odmah da preglednik stigne poslati
           }
 
           setTimeout(() => {
@@ -797,11 +803,17 @@
                   <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">Hvala vam!</h2>
                   <p style="font-size: 18px; line-height: 1.4; color: #fff;">Vaša odluka je uspješno zabilježena.<br>Upravo smo vam poslali e-mail potvrde.</p>
                   <p style="font-size: 14px; margin-top: 25px; color: #ffff00; font-style: italic;">NAPOMENA: Ako mail ne vidite u dolaznoj pošti u roku od minute, obavezno provjerite mapu Neželjena pošta (Spam/Junk) te ga označite kao 'Nije neželjena pošta'.</p>
-                  <button onclick="document.getElementById('brevoModalOverlay').style.display='none'" style="margin-top: 35px; margin-bottom: 10px; padding: 12px 35px; font-size:18px; font-weight:700; background-color:#00fe00; color:#000; border:none; border-radius:12px; cursor:pointer;">ZATVORI</button>
+                  <button onclick="window.location.href='index.html'" style="margin-top: 35px; margin-bottom: 10px; padding: 12px 35px; font-size:18px; font-weight:700; background-color:#00fe00; color:#000; border:none; border-radius:12px; cursor:pointer;">ZATVORI</button>
+                  <p style="font-size: 11px; margin-top: 15px; color: #888;">Automatski povratak na početnu za 10 sekundi...</p>
                 </div>
               `;
+
+              // Automatsko preusmjeravanje nakon 10 sekundi
+              setTimeout(() => {
+                window.location.href = 'index.html';
+              }, 10000);
             }
-          }, 1000);
+          }, 2000);
         });
       </script>
 
@@ -821,10 +833,34 @@
       // 1. Logika za preuzimanje iznosa iz linka
       const urlParams = new URLSearchParams(window.location.search);
       const paramIznos = urlParams.get('iznos') || "30";
+
+      // Postavljanje ispravnog formata valute za prikaz na ekranu
       const paramValuta = urlParams.get('valuta') || "usd";
       const currencySymbol = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
       let displayText = `${paramIznos} ${currencySymbol}`;
       if (paramIznos === 'veci') { displayText = "Veći iznos/Investicija"; }
+
+      // Osvježavanje teksta na samoj stranici
+      const displayIntro = document.getElementById('startAmountDisplayIntro');
+      if (displayIntro) displayIntro.innerText = displayText;
+
+      const displayAmount = document.getElementById('startAmountDisplay');
+      if (displayAmount) displayAmount.innerText = displayText;
+
+      // Promjena teksta za bodove ovisno o iznosu (ako je potrebno, ovdje možemo dodati kompleksniju logiku, zasad ostaje statično ili se može proširiti)
+      // Ako korisnik odabere viši iznos, mijenjamo i SFbodove prikaz (opcionalno)
+      const sfPointsDisplay = document.getElementById('sfPointsValue');
+      if (sfPointsDisplay && !isNaN(parseInt(paramIznos))) {
+        // Primjer: 30$ = 60 bodova (množitelj x2)
+        sfPointsDisplay.innerText = parseInt(paramIznos) * 2;
+      }
+
+      // VAŽNO: Brevo polje 'POCETNI_IZNOS' je striktno numeričko ('data-numeric="true"').
+      // Slanje "30 $" ili "Veći iznos" nativnim putem uzrokuje tihu grešku na serveru i brisanje podataka!
+      let numericIznos = parseInt(paramIznos, 10);
+      if (isNaN(numericIznos) || paramIznos === 'veci') {
+        numericIznos = 0; // Koristimo 0 kao definiciju za Veći iznos
+      }
 
       // 2. Otvaranje popupa i popunjavanje polja
       if (openBtn) {
@@ -832,14 +868,15 @@
           modal.style.display = 'flex';
           document.body.style.overflow = 'hidden';
 
-          // Cleaned up robots field
-          // The hidden email_address_check field was removed from HTML
+          // Čistimo skrivenu zaštitu od robota ako ona postoji, da je bot nije ispunio
+          const antiSpam = document.getElementsByName('email_address_check')[0];
+          if (antiSpam) antiSpam.value = '';
 
-          // Upisujemo iznos u skriveno polje i "budimo" ga za Brevo skriptu
+          // Upisujemo iznos u skriveno polje
           const brevoInput = document.getElementById('POCETNI_IZNOS');
           if (brevoInput) {
-            brevoInput.value = displayText;
-            // Šaljemo signale Brevu da je polje popunjeno
+            brevoInput.value = numericIznos; // Obavezno samo čisti broj!
+            // Šaljemo signale
             brevoInput.dispatchEvent(new Event('input', { bubbles: true }));
             brevoInput.dispatchEvent(new Event('change', { bubbles: true }));
             brevoInput.dispatchEvent(new Event('blur', { bubbles: true }));
