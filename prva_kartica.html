@@ -230,6 +230,13 @@
     [data-attribute="POCETNI_IZNOS"] { 
         display: none !important; 
     }
+    /* Popravak za vidljivost teksta u poljima forme */
+#sib-container input[type="text"], 
+#sib-container input[type="email"],
+#sib-container input {
+    color: #000000 !important; /* Prisiljava tekst da bude crne boje */
+    -webkit-text-fill-color: #000000 !important; /* Za iPhone/Safari preglednike */
+}
 </style>
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 <!--  END - We recommend to place the above code in head tag of your website html -->
@@ -545,3 +552,4 @@
     </script>
 </body>
 </html>
+
