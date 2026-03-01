@@ -592,7 +592,7 @@
                     </label>
                     <label class="entry__specification"
                       style="font-size:12px; text-align:left; font-family:Helvetica, sans-serif; color:#eaeef5; text-align:left">
-                        Enter the email address used for your original registration.
+                        Enter the email address used in the previous system (or a new one if you no longer have access to the old one. <strong>New email addresses are subject to additional verification - KYC</strong>).
                     </label>
                   </div>
                 </div>
@@ -641,30 +641,6 @@
                     <label class="entry__specification"
                       style="font-size:12px; text-align:left; font-family:Helvetica, sans-serif; color:#eaeef5; text-align:left">
                       Enter the username from the old system
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div style="padding: 8px 0;">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row ">
-                      <label class="entry__label"
-                        style="font-weight: 700; text-align:center; font-size:17px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#00fe00;"
-                        for="NOVA_EMAIL_ADRESA">NEW EMAIL ADDRESS (optional)</label>
-
-                      <div class="entry__field">
-                        <input class="input " maxlength="200" type="text" id="NOVA_EMAIL_ADRESA"
-                          name="NOVA_EMAIL_ADRESA" autocomplete="off" placeholder="New email address - OPTIONAL"/>
-                      </div>
-                    </div>
-
-                    <label class="entry__error entry__error--primary"
-                      style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
-                    </label>
-                    <label class="entry__specification"
-                      style="font-size:12px; text-align:left; font-family:Helvetica, sans-serif; color:#eaeef5; text-align:left">
-                      If you no longer use the old address or do not have access to it, enter a new one. <br><strong>Email changes are subject to additional verification.</strong>.
                     </label>
                   </div>
                 </div>
@@ -780,7 +756,7 @@
 
           const btn = this.querySelector('button[type="submit"]');
           if (btn) {
-            btn.innerHTML = 'SLANJE...';
+            btn.innerHTML = 'SENDING...';
             btn.style.opacity = '0.7';
             // btn.disabled = true; // Ne gasimo gumb odmah da preglednik stigne poslati
           }
@@ -798,7 +774,7 @@
             </div>
             `;
               setTimeout(() => {
-                window.location.href = 'index_en.html';
+                window.location.href = 'index-en.html';
               }, 10000);
             }
           }, 2000);
@@ -812,59 +788,59 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
       const modal = document.getElementById('brevoModalOverlay');
       const openBtn = document.getElementById('openBrevoPopup');
       const closeBtn = document.getElementById('closeBrevoModal');
 
-      // 1. Logika za preuzimanje iznosa iz linka
+      // 1. Logic for retrieving the amount from the URL parameter
       const urlParams = new URLSearchParams(window.location.search);
       const paramIznos = urlParams.get('iznos') || "30";
 
-      // Postavljanje ispravnog formata valute za prikaz na ekranu
+      // Set the correct currency format for display
       const paramValuta = urlParams.get('valuta') || "usd";
       const currencySymbol = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
       let displayText = `${paramIznos} ${currencySymbol}`;
-      if (paramIznos === 'veci') { displayText = "Veći iznos/Investicija"; }
+      
+      if (paramIznos === 'veci') { 
+        displayText = "Greater amount/Investment"; 
+      }
 
-      // Osvježavanje teksta na samoj stranici
+      // Updating text on the page itself
       const displayIntro = document.getElementById('startAmountDisplayIntro');
       if (displayIntro) displayIntro.innerText = displayText;
 
       const displayAmount = document.getElementById('startAmountDisplay');
       if (displayAmount) displayAmount.innerText = displayText;
 
-      // Promjena teksta za bodove ovisno o iznosu (ako je potrebno, ovdje možemo dodati kompleksniju logiku, zasad ostaje statično ili se može proširiti)
-      // Ako korisnik odabere viši iznos, mijenjamo i SFbodove prikaz (opcionalno)
+      // Change SFpoints display based on amount (Multiplier x2)
       const sfPointsDisplay = document.getElementById('sfPointsValue');
       if (sfPointsDisplay && !isNaN(parseInt(paramIznos))) {
-        // Primjer: 30$ = 60 bodova (množitelj x2)
         sfPointsDisplay.innerText = parseInt(paramIznos) * 2;
       }
 
-      // VAŽNO: Brevo polje 'POCETNI_IZNOS' je striktno numeričko ('data-numeric="true"').
-      // Slanje "30 $" ili "Veći iznos" nativnim putem uzrokuje tihu grešku na serveru i brisanje podataka!
+      // IMPORTANT: Brevo 'POCETNI_IZNOS' field must be a pure number
       let numericIznos = parseInt(paramIznos, 10);
       if (isNaN(numericIznos) || paramIznos === 'veci') {
-        numericIznos = 0; // Koristimo 0 kao definiciju za Veći iznos
+        numericIznos = 0; // Use 0 to define 'Greater amount'
       }
 
-      // 2. Otvaranje popupa i popunjavanje polja
+      // 2. Opening the popup and filling the hidden fields
       if (openBtn) {
         openBtn.onclick = function () {
           modal.style.display = 'flex';
           document.body.style.overflow = 'hidden';
 
-          // Čistimo skrivenu zaštitu od robota ako ona postoji, da je bot nije ispunio
+          // Clear hidden bot protection if present
           const antiSpam = document.getElementsByName('email_address_check')[0];
           if (antiSpam) antiSpam.value = '';
 
-          // Upisujemo iznos u skriveno polje
+          // Insert the amount into the hidden Brevo field
           const brevoInput = document.getElementById('POCETNI_IZNOS');
           if (brevoInput) {
-            brevoInput.value = numericIznos; // Obavezno samo čisti broj!
-            // Šaljemo signale
+            brevoInput.value = numericIznos; 
+            // Dispatch events to ensure Brevo script recognizes the value
             brevoInput.dispatchEvent(new Event('input', { bubbles: true }));
             brevoInput.dispatchEvent(new Event('change', { bubbles: true }));
             brevoInput.dispatchEvent(new Event('blur', { bubbles: true }));
@@ -872,7 +848,7 @@
         };
       }
 
-      // 3. Zatvaranje popupa
+      // 3. Closing the popup
       if (closeBtn) {
         closeBtn.onclick = function () {
           modal.style.display = 'none';
@@ -880,17 +856,51 @@
         };
       }
 
-      // 4. Zatvaranje stranice na X u headeru
+      // 4. Closing the page via X button in header
       const closePage = document.getElementById('closePageButton');
       if (closePage) {
         closePage.onclick = () => window.history.back();
       }
 
-      // 5. Custom Cursor Animacija
+      // 5. Logic after clicking CONFIRM - Displaying the "Thank You" message
+      const sibForm = document.getElementById('sib-form');
+      if (sibForm) {
+        sibForm.addEventListener('submit', function () {
+          const btn = this.querySelector('button[type="submit"]');
+          if (btn) {
+            btn.innerHTML = 'SENDING...';
+            btn.style.opacity = '0.7';
+          }
+
+          setTimeout(() => {
+            const container = document.getElementById('sib-container');
+            if (container) {
+              container.innerHTML = `
+                <div style="padding: 20px 30px; text-align: center; color: #00fe00; font-family: Helvetica, sans-serif;">
+                  <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">Thank you!</h2>
+                  <p style="font-size: 18px; line-height: 1.4; color: #fff;">Your decision has been successfully recorded.<br>We have just sent you a confirmation email.</p>
+                  <p style="font-size: 14px; margin-top: 25px; color: #ffff00; font-style: italic;">NOTE: If you do not see the email in your inbox within a minute, please check your Spam/Junk folder and mark it as 'Not spam'.</p>
+                  <button onclick="window.location.href='index_en.html'" style="margin-top: 35px; margin-bottom: 10px; padding: 12px 35px; font-size:18px; font-weight:700; background-color:#00fe00; color:#000; border:none; border-radius:12px; cursor:pointer;">CLOSE</button>
+                  <p style="font-size: 11px; margin-top: 15px; color: #888;">Automatically returning to the homepage in 10 seconds...</p>
+                </div>
+              `;
+
+              // Auto-redirect to English index after 10 seconds
+              setTimeout(() => {
+                window.location.href = 'index_en.html';
+              }, 10000);
+            }
+          }, 2000);
+        });
+      }
+
+      // 6. Custom Cursor Animation
       const cursor = document.querySelector('.custom-cursor');
-      document.addEventListener('mousemove', (e) => {
-        gsap.to(cursor, { duration: 0.1, left: e.clientX, top: e.clientY, opacity: 1 });
-      });
+      if (cursor) {
+          document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { duration: 0.1, left: e.clientX, top: e.clientY, opacity: 1 });
+          });
+      }
     });
   </script>
 
@@ -931,4 +941,3 @@
 </body>
 
 </html>
-
