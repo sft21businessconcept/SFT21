@@ -1,407 +1,933 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFT21 - Decision: Business Continuation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SFT21 - Decision: Business Continuation</title>
 
-    <!-- ============================================= -->
-    <!-- UNIVERSAL THEME INITIALIZATION SCRIPT -->
-    <!-- ============================================= -->
-    <script>
-        function applySft21Theme() {
-            try {
-                const theme = localStorage.getItem('sft21_theme') || 'dark';
-                if (theme === 'light') {
-                    document.documentElement.classList.add('light-mode');
-                } else {
-                    document.documentElement.classList.remove('light-mode');
-                }
-                 if (window.setAnimationTheme) {
-                    window.setAnimationTheme(theme);
-                }
-            } catch (e) {
-                console.error('Error applying theme:', e);
-            }
+  <!-- ============================================= -->
+  <!-- UNIVERZALNA SKRIPTA ZA INICIJALIZACIJU TEME -->
+  <!-- ============================================= -->
+  <script>
+    function applySft21Theme() {
+      try {
+        const theme = localStorage.getItem('sft21_theme') || 'dark';
+        if (theme === 'light') {
+          document.documentElement.classList.add('light-mode');
+        } else {
+          document.documentElement.classList.remove('light-mode');
         }
+        if (window.setAnimationTheme) {
+          window.setAnimationTheme(theme);
+        }
+      } catch (e) {
+        console.error('Error applying theme:', e);
+      }
+    }
+    applySft21Theme();
+    window.addEventListener('pageshow', function (event) {
+      if (event.persisted) {
         applySft21Theme();
-        window.addEventListener('pageshow', function(event) {
-            if (event.persisted) {
-                applySft21Theme();
-            }
-        });
-    </script>
+      }
+    });
+  </script>
 
-    <!-- Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Arial+Narrow&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Arial+Narrow&family=Orbitron:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
-    <style>
-        :root {
-            --primary-color: #6a1b9a; 
-            --secondary-color: #ab47bc; 
-            --accent-color: #ff00ff; 
-            --fluorescent-green: #80ff00; 
-            --fluorescent-yellow: #ccff00;
-            --text-color: #e5e7eb; 
-            --background-dark: #0d0118; 
-            --card-background: rgba(106, 27, 154, 0.1); 
-            --card-border: rgba(171, 71, 188, 0.3); 
-            --button-confirm-bg: #c0392b; 
-            --button-confirm-hover-bg: #e74c3c;
-        }
+  <style>
+    :root {
+      --primary-color: #6a1b9a;
+      --secondary-color: #ab47bc;
+      --accent-color: #ff00ff;
+      --fluorescent-green: #80ff00;
+      --fluorescent-yellow: #ccff00;
+      --text-color: #e5e7eb;
+      --background-dark: #0d0118;
+      --card-background: rgba(106, 27, 154, 0.1);
+      --card-border: rgba(171, 71, 188, 0.3);
+      --button-confirm-bg: #c0392b;
+      --button-confirm-hover-bg: #e74c3c;
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { width: 100%; min-height: 100vh; overflow-x: hidden; overflow-y: auto; background-color: var(--background-dark); color: var(--text-color); font-family: 'Arial Narrow', Arial, sans-serif; }
-        .page-wrapper { display: flex; flex-direction: column; align-items: center; padding-bottom: 40px; min-height: 100vh; width: 100%; }
-        .fixed-header-container { position: fixed; top: 0; left: 0; width: 100%; z-index: 500; background-color: var(--primary-color); box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .fixed-header-container .header-content { display: flex; align-items: center; justify-content: center; position: relative; height: 3.5rem; padding-left: 1.5rem; padding-right: 4rem; max-width: 100%; margin: 0 auto; }
-        .fixed-header-container .header-title { font-family: 'Arial Narrow', Arial, sans-serif; font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--fluorescent-green); font-weight: bold; text-align: center; text-transform: uppercase; }
-        .page-close-button { position: absolute; top: 50%; right: 1rem; transform: translateY(-50%); font-size: 2.2rem; color: var(--fluorescent-green); background: none; border: none; cursor: pointer; transition: color 0.3s ease, transform 0.2s ease; line-height: 1; padding: 5px; }
-        .page-close-button:hover { color: white; transform: scale(1.1) translateY(-50%); }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .decision-content-box {
-            background-color: var(--card-background); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border); color: white; width: 90%; max-width: 900px; 
-            margin-top: calc(3.5rem + 30px); padding: clamp(20px, 4vw, 40px); border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); font-size: clamp(0.9rem, 1.8vw, 1.05rem); line-height: 1.65;
-        }
-        .decision-content-box .main-congrats-title { font-family: 'Arial Narrow', Arial, sans-serif; font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: white; text-align: center; margin-bottom: 25px; font-weight: bold; text-transform: uppercase; }
-        
-        .intro-section p { color: var(--fluorescent-yellow); margin-bottom: 12px; font-size: 1em; text-align: center; }
-        .intro-section p.important { font-weight: bold; }
+    html,
+    body {
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background-color: var(--background-dark);
+      color: var(--text-color);
+      font-family: 'Arial Narrow', Arial, sans-serif;
+    }
 
-        .decision-content-box .highlighted-choice-title { font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: var(--fluorescent-green); margin-top: 30px; margin-bottom: 20px; font-weight: bold; text-align: center; text-transform: uppercase; }
-        
-        .decision-content-box .detailed-text p { margin-bottom: 15px; text-align: justify; color: white; }
-        .decision-content-box .detailed-text strong { color: var(--fluorescent-green); font-weight: bold; }
-        .decision-content-box .detailed-text ul { list-style: none; padding-left: 0; margin-bottom: 15px; color: white; }
-        .decision-content-box .detailed-text ul li { position: relative; margin-bottom: 10px; padding-left: 25px; text-align: justify;}
-        .decision-content-box .detailed-text ul li::before { content: "❖ "; color: white; font-size: 0.9em; position: absolute; left: 0; }
-        .confirm-button-container { text-align: center; margin-top: 35px; }
-        .confirm-button { background-color: var(--button-confirm-bg); color: white; padding: 12px 30px; border: none; border-radius: 5px; font-family: 'Arial Narrow', Arial, sans-serif; font-size: clamp(1rem, 2vw, 1.2rem); font-weight: bold; text-transform: uppercase; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .confirm-button:hover { background-color: var(--button-confirm-hover-bg); transform: translateY(-2px); }
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 40px;
+      min-height: 100vh;
+      width: 100%;
+    }
 
-        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center; padding: 20px; }
-        
-        .modal-content {
-            background-color: var(--background-dark); color: var(--text-color); padding: clamp(20px, 4vw, 40px);
-            border: 2px solid var(--fluorescent-green); border-radius: 15px; width: 100%; max-width: 600px;
-            position: relative; box-shadow: 0 0 25px rgba(128, 255, 0, 0.3); animation: fadeIn 0.3s ease-out;
-            display: flex; flex-direction: column; max-height: calc(100vh - 40px);
-        }
-        .modal-scrollable-content { overflow-y: auto; padding-right: 15px; margin-right: -15px; padding-left: 15px; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        
-        .modal-close-button {
-            color: var(--fluorescent-green); position: absolute; top: 10px; right: 15px;
-            font-size: 2.5rem; font-weight: bold; cursor: pointer; z-index: 10; transition: color 0.3s, transform 0.3s;
-        }
-        .modal-close-button:hover, .modal-close-button:focus { color: #fff; transform: scale(1.1); }
-        
-        .modal-content .popup-title {
-            color: var(--fluorescent-green); text-align: center; font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-            font-weight: bold; text-transform: uppercase; margin-bottom: 20px; padding-top: 10px;
-        }
-        .modal-content .form-group { margin-bottom: 15px; }
-        .modal-content .form-group label {
-            display: block; color: var(--fluorescent-green); text-align: center;
-            text-transform: uppercase; margin-bottom: 8px; font-size: 0.9rem; font-weight: bold;
-        }
-        .modal-content input[type="text"], .modal-content input[type="email"] {
-            width: 100%; padding: 12px; border: 1px solid var(--fluorescent-green); border-radius: 4px; box-sizing: border-box;
-            font-size: 1rem; background-color: rgba(0,0,0,0.2); color: var(--text-color); text-align: center;
-        }
-        .modal-content input::placeholder { color: #888; }
-        .modal-content .email-subtitle { margin-top: 5px; margin-bottom: 8px; font-size: 0.85rem; color: #ccc; text-align: center; }
-        .modal-content .napomena {
-            margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--card-border);
-            font-size: 0.85rem; line-height: 1.5; color: #bbb; text-align: left;
-        }
-        .modal-content .napomena p { color: #bbb; margin-bottom: 0.3em; text-align: justify; }
-        .modal-content .napomena strong { color: var(--fluorescent-yellow); }
+    .fixed-header-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 500;
+      background-color: var(--primary-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
 
-        .error-message { color: #ff4d4d; font-size: 0.85rem; height: 1.2em; margin-top: 5px; text-align: center; }
-        .input-error { border-color: #ff4d4d !important; box-shadow: 0 0 8px rgba(255, 77, 77, 0.7); }
+    .fixed-header-container .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 3.5rem;
+      padding-left: 1.5rem;
+      padding-right: 4rem;
+      max-width: 100%;
+      margin: 0 auto;
+    }
 
-        .modal-confirm-button {
-            display: block; margin: 20px auto 0; padding: 12px 35px; font-size: 1.1rem; font-weight: bold;
-            text-transform: uppercase; color: var(--background-dark); background-color: var(--fluorescent-green);
-            border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
-        }
-        .modal-confirm-button:hover:not(:disabled) { background-color: #fff; transform: translateY(-2px); }
-        .modal-confirm-button:disabled { background-color: #586351; color: #999; opacity: 0.7; cursor: not-allowed; transform: none; }
+    .fixed-header-container .header-title {
+      font-family: 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--fluorescent-green);
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+    }
 
-        .final-popup-title { font-size: clamp(1.4rem, 3vw, 1.8rem) !important; }
-        #final-confirmation-message { text-align: center; line-height: 1.6; font-size: 1.1rem; }
-        #final-confirmation-message b { color: var(--fluorescent-yellow); }
+    .page-close-button {
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      font-size: 2.2rem;
+      color: var(--fluorescent-green);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.2s ease;
+      line-height: 1;
+      padding: 5px;
+    }
 
-        .animated-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; background-color: var(--background-dark); }
-        #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
-        .bg-dots { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.5; }
-        .glow { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(171, 71, 188, 0.2) 0%, rgba(171, 71, 188, 0) 70%); filter: blur(50px); pointer-events: none; }
+    .page-close-button:hover {
+      color: white;
+      transform: scale(1.1) translateY(-50%);
+    }
 
-        /* Custom Cursor Style */
-        .custom-cursor {
-            position: fixed; width: 20px; height: 20px; border-radius: 50%;
-            background-color: rgba(106, 27, 154, 0.6); border: 2px solid var(--fluorescent-green);
-            pointer-events: none; z-index: 10000; transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out, background-color 0.2s ease;
-            opacity: 0;
-        }
+    .decision-content-box {
+      background-color: var(--card-background);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      color: white;
+      width: 90%;
+      max-width: 900px;
+      margin-top: calc(3.5rem + 30px);
+      padding: clamp(20px, 4vw, 40px);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+      line-height: 1.65;
+    }
 
-        /* Light mode adjustments */
-        html.light-mode body { background-color: #f8fafc !important; color: #334155 !important; }
-        html.light-mode .fixed-header-container { background-color: var(--primary-color) !important; }
-        html.light-mode .header-title, html.light-mode .page-close-button { color: var(--fluorescent-green) !important; }
-        html.light-mode .page-close-button:hover { color: white !important; }
-        html.light-mode .decision-content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
-        html.light-mode .main-congrats-title, html.light-mode .detailed-text p, html.light-mode .detailed-text ul { color: #334155 !important; }
-        html.light-mode .detailed-text ul li::before { color: #334155 !important; }
-        html.light-mode .intro-section p, html.light-mode .highlighted-choice-title { color: #842a9d !important;}
-        html.light-mode .detailed-text strong { color: var(--primary-color) !important; }
-        html.light-mode .modal-content { background-color: #ffffff; border-color: var(--primary-color); }
-        html.light-mode .modal-close-button, html.light-mode .popup-title, html.light-mode .form-group label { color: var(--primary-color); }
-        html.light-mode input[type="text"], html.light-mode input[type="email"] { background-color: #f1f5f9; border-color: #cbd5e1; color: #1e293b; }
-        html.light-mode .modal-confirm-button { background-color: var(--primary-color); color: white; }
-        html.light-mode .animated-background, html.light-mode #network-canvas { background-color: transparent !important; }
-    </style>
+    .decision-content-box .main-congrats-title {
+      font-family: 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+      color: white;
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .intro-section p {
+      color: var(--fluorescent-yellow);
+      margin-bottom: 12px;
+      font-size: 1em;
+      text-align: center;
+    }
+
+    .intro-section p.important {
+      font-weight: bold;
+    }
+
+    .decision-content-box .highlighted-choice-title {
+      font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+      color: var(--fluorescent-green);
+      margin-top: 30px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .decision-content-box .detailed-text p {
+      margin-bottom: 15px;
+      text-align: justify;
+      color: white;
+    }
+
+    .decision-content-box .detailed-text strong {
+      color: var(--fluorescent-green);
+      font-weight: bold;
+    }
+
+    .decision-content-box .detailed-text ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 15px;
+      color: white;
+    }
+
+    .decision-content-box .detailed-text ul li {
+      position: relative;
+      margin-bottom: 10px;
+      padding-left: 25px;
+      text-align: justify;
+    }
+
+    .decision-content-box .detailed-text ul li::before {
+      content: "❖ ";
+      color: white;
+      font-size: 0.9em;
+      position: absolute;
+      left: 0;
+    }
+
+    .confirm-button-container {
+      text-align: center;
+      margin-top: 35px;
+    }
+
+    .confirm-button {
+      background-color: var(--button-confirm-bg);
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .confirm-button:hover {
+      background-color: var(--button-confirm-hover-bg);
+      transform: translateY(-2px);
+    }
+
+    /* NOVI MODAL ZA BREVO */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .modal-content {
+      background-color: #0d0118;
+      color: var(--text-color);
+      padding: 20px;
+      border: 2px solid var(--fluorescent-green);
+      border-radius: 15px;
+      width: 95%;
+      max-width: 600px;
+      position: relative;
+      box-shadow: 0 0 35px rgba(128, 255, 0, 0.4);
+      animation: fadeIn 0.3s ease-out;
+
+      /* OVE DVIJE LINIJE SU KLJUČNE ZA SKROLANJE */
+      max-height: 90vh;
+      /* Visina popupa je 90% ekrana */
+      overflow-y: auto;
+      /* Omogućava skrolanje unutar popupa */
+    }
+
+    /* SAKRIVANJE POLJA ZA IZNOS (da Popup bude kraći) */
+    [data-attribute="POCETNI_IZNOS"],
+    .sib-input[data-attribute="POCETNI_IZNOS"] {
+      display: none !important;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .modal-close-button {
+      color: var(--fluorescent-green);
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 11;
+      transition: color 0.3s;
+    }
+
+    .modal-close-button:hover {
+      color: #fff;
+    }
+
+    #brevo-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 10px;
+    }
+
+    /* ANIMIRANA POZADINA */
+    .animated-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      background-color: var(--background-dark);
+    }
+
+    #network-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    .bg-dots {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+      opacity: 0.5;
+    }
+
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(171, 71, 188, 0.2) 0%, rgba(171, 71, 188, 0) 70%);
+      filter: blur(50px);
+      pointer-events: none;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: rgba(106, 27, 154, 0.6);
+      border: 2px solid var(--fluorescent-green);
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
+      opacity: 0;
+    }
+
+    /* Light mode */
+    html.light-mode body {
+      background-color: #f8fafc !important;
+      color: #334155 !important;
+    }
+
+    html.light-mode .decision-content-box {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      color: #334155 !important;
+    }
+
+    html.light-mode .main-congrats-title,
+    html.light-mode .detailed-text p {
+      color: #334155 !important;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="custom-cursor"></div>
-    <canvas id="network-canvas"></canvas>
-    <div class="animated-background">
-        <div class="bg-dots"></div>
-        <div class="glow" style="top: 10%; left: 10%; width: 400px; height: 400px;"></div>
-        <div class="glow" style="top: 70%; left: 80%; width: 350px; height: 350px; opacity: 0.15;"></div>
-    </div>
+  <div class="custom-cursor"></div>
+  <canvas id="network-canvas"></canvas>
+  <div class="animated-background">
+    <div class="bg-dots"></div>
+    <div class="glow" style="top: 10%; left: 10%; width: 400px; height: 400px;"></div>
+    <div class="glow" style="top: 70%; left: 80%; width: 350px; height: 350px; opacity: 0.15;"></div>
+  </div>
 
-    <div class="fixed-header-container">
-        <div class="header-content">
-            <span class="header-title">SFT21 - Decision on Business Continuation</span>
-            <button class="page-close-button" id="closePageButton" title="Close">×</button>
+  <div class="fixed-header-container">
+    <div class="header-content">
+      <span class="header-title">SFT21 - Decision on Business Continuation</span>
+      <button class="page-close-button" id="closePageButton">×</button>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <div class="decision-content-box">
+      <h1 class="main-congrats-title">CONGRATULATIONS AND THANK YOU FOR YOUR DECISION TO JOIN US IN CONTINUING BUSINESS ACCORDING TO THE RULES OF THE NEW BUSINESS SYSTEM</h1>
+
+      <div class="intro-section">
+        <p>Given the changes in the business model and the distribution of funds,</p>
+        <p class="important">The Franchise Agreement you signed in the old system remains in effect until further notice.</p>
+        <p>However, before activating the "SPfree" starter package, you will sign an Annex to the Franchise Agreement.</p>
+        <p id="initialInvestmentInfo">Considering that you started in the old system with a starter package payment of 
+          <strong><span id="startAmountDisplayIntro">30 $</span></strong>, and that you have decided that;
+        </p>
+      </div>
+
+      <h2 class="highlighted-choice-title">YOU ARE CONTINUING BUSINESS</h2>
+
+      <div class="detailed-text">
+        <div id="standard-text-block">
+          <p>... if you have less than 1450 SFpoints your status is <strong>SFstarter</strong>, or <strong>SFfranchisee</strong> - if you have more than 1450 SFpoints, by opening a <strong>personal (PA) or business (BA)</strong> user account with the <strong>"SPfree"</strong> starter package.</p>
+          <p>During the first filling of positions in the SFalgorithm, your account will take a position according to the number of your <strong>personal</strong> or <strong>group SFpoints</strong> from the old system. Based on the payment of <strong><span id="startAmountDisplay">30 $</span></strong> for the Starter Package from the old system, you receive <strong><span id="sfPointsValue">60</span> personal SFpoints</strong> which are transferred to the new system.</p>
+          <ul>
+            <li><strong>Group SFpoints</strong> are obtained by adding the sum of the personal points of your direct and indirect members who are also continuing their business to your personal SFpoints.</li>
+            <li>For every <strong>100 SFpoints</strong> you receive <strong>1 SFcode</strong>.</li>
+            <li>The <strong>Maximum Earnings Limit (MEL)</strong> will be determined according to your <strong>group SFpoints</strong>.</li>
+          </ul>
         </div>
-    </div>
-
-    <div class="page-wrapper">
-        <div class="decision-content-box">
-            <h1 class="main-congrats-title">CONGRATULATIONS AND THANK YOU FOR YOUR DECISION TO JOIN US IN CONTINUING BUSINESS ACCORDING TO THE RULES OF THE NEW BUSINESS SYSTEM</h1>
-            
-            <div class="intro-section">
-                <p>Given the changes in the business model and the distribution of funds,</p>
-                <p class="important">The Franchise Agreement you signed in the old system remains in effect until further notice.</p>
-                <p>However, before activating the "SPfree" starter package, you will sign an Annex to the Franchise Agreement.</p>
-                <p id="initialInvestmentInfo">Considering that you started in the old system with a starter package payment of <strong><span id="startAmountDisplayIntro">30 $</span></strong>, and that you have decided that;</p>
-            </div>
-            
-            <h2 class="highlighted-choice-title">YOU ARE CONTINUING BUSINESS</h2>
-
-            <div class="detailed-text">
-                <div id="standard-text-block">
-                    <p>... if you have less than 1450 SFpoints your status is <strong>SFstarter</strong>, or <strong>SFfranchisee</strong> - if you have more than 1450 SFpoints, by opening a <strong>personal (PA) or business (BA)</strong> user account with the <strong>"SPfree"</strong> starter package.</p>
-                    <p>During the first filling of positions in the SFalgorithm, your account will take a position according to the number of your <strong>personal</strong> or <strong>group SFpoints</strong> from the old system. Based on the payment of <strong><span id="startAmountDisplay">30 $</span></strong> for the Starter Package from the old system, you receive <strong><span id="sfPointsValue">60</span> personal SFpoints</strong> which are transferred to the new system.</p>
-                    <ul>
-                        <li><strong>Group SFpoints</strong> are obtained by adding the sum of the personal points of your direct and indirect members who are also continuing their business to your personal SFpoints.</li>
-                        <li>For every <strong>100 SFpoints</strong> you receive <strong>1 SFcode</strong>.</li>
-                        <li>The <strong>Maximum Earnings Limit (MEL)</strong> will be determined according to your <strong>group SFpoints</strong>.</li>
-                    </ul>
-                </div>
-                <div id="veci-iznos-text-block" style="display: none;">
-                    <p>... you continue business as an <strong>ACTIVE member - SFfranchisee</strong>, by simultaneously opening up to a maximum of 7 personal accounts with SPfree starter packages.</p>
-                </div>
-            </div>
-
-            <div class="confirm-button-container">
-                <button class="confirm-button" id="openPopupForConfirmation">CONFIRM SELECTION</button>
-            </div>
+        <div id="veci-iznos-text-block" style="display: none;">
+          <p>... you continue business as an <strong>ACTIVE member - SFfranchisee</strong>, by simultaneously opening up to a maximum of 7 personal accounts with SPfree starter packages.</p>
         </div>
+      </div>
+
+      <div class="confirm-button-container">
+        <button class="confirm-button" id="openBrevoPopup">CONFIRM SELECTION</button>
+      </div>
     </div>
-    
-    <!-- POPUP FORM -->
-    <div id="confirmationUserDetailsPopup" class="modal-overlay">
-        <div class="modal-content">
-             <span id="closeUserDetailsPopupButton" class="modal-close-button" title="Close">×</span>
-            <h2 class="popup-title">CONFIRM DATA</h2>
-            <div class="modal-scrollable-content">
-                <div class="form-group">
-                    <label for="fullNameInputPopup">Full Name</label>
-                    <input type="text" id="fullNameInputPopup" placeholder="Enter your full name">
-                    <!-- HIDDEN FIELD FOR AMOUNT -->
-                    <input type="hidden" id="pocetni_iznos" name="pocetni_iznos" value="">
-                </div>
-                <div class="form-group">
-                    <label for="usernameInputPopup">Username</label>
-                    <input type="text" id="usernameInputPopup" maxlength="21" placeholder="Your username from the old system">
-                </div>
-                <div class="form-group">
-                    <label for="oldEmailInputPopup">Email Address</label>
-                     <p class="email-subtitle">(with which you registered in the old system)</p>
-                    <input type="email" id="oldEmailInputPopup" placeholder="Old email address">
-                </div>
-                <div class="form-group">
-                     <label for="newEmailInputPopup">New Email Address (optional)</label>
-                    <input type="email" id="newEmailInputPopup" placeholder="New email address">
-                </div>
-                <div class="napomena">
-                    <strong>Note:</strong>
-                    <p>Business operations will resume with the first filling of the SFalgorithm, and you will be notified in a timely manner.</p>
-                </div>
+  </div>
+
+  <!-- POPUP S BREVO FORMOM -->
+  <div id="brevoModalOverlay" class="modal-overlay">
+    <div class="modal-content">
+      <span id="closeBrevoModal" class="modal-close-button">×</span>
+      <!-- Begin Brevo Form -->
+      <!-- START - We recommend to place the below code in head tag of your website html  -->
+      <style>
+        @font-face {
+          font-display: block;
+          font-family: Roboto;
+          src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
+        }
+
+        @font-face {
+          font-display: fallback;
+          font-family: Roboto;
+          font-weight: 600;
+          src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
+        }
+
+        @font-face {
+          font-display: fallback;
+          font-family: Roboto;
+          font-weight: 700;
+          src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
+        }
+
+        #sib-container input:-ms-input-placeholder {
+          text-align: left;
+          font-family: Helvetica, sans-serif;
+          color: #13e30f;
+        }
+
+        #sib-container input::placeholder {
+          text-align: left;
+          font-family: Helvetica, sans-serif;
+          color: #13e30f;
+        }
+
+        #sib-container textarea::placeholder {
+          text-align: left;
+          font-family: Helvetica, sans-serif;
+          color: #13e30f;
+        }
+
+        #sib-container a {
+          text-decoration: underline;
+          color: #2BB2FC;
+        }
+
+        /* Ovo će potpuno sakriti polje za početni iznos iz Popup-a */
+        [data-attribute="POCETNI_IZNOS"] {
+          display: none !important;
+        }
+
+        /* 1. Tekst koji korisnik UPISUJE neka bude CRN */
+        #sib-container input[type="text"],
+        #sib-container input[type="email"],
+        #sib-container input {
+          color: #000000 !important;
+          -webkit-text-fill-color: #000000 !important;
+        }
+
+        /* 2. Tekst UPUTE (dok je polje prazno) neka bude ZELEN */
+        #sib-container input::-webkit-input-placeholder {
+          color: #80ff00 !important;
+          -webkit-text-fill-color: #80ff00 !important;
+        }
+
+        #sib-container input::-moz-placeholder {
+          color: #80ff00 !important;
+          opacity: 1;
+        }
+
+        #sib-container input:-ms-input-placeholder {
+          color: #80ff00 !important;
+        }
+
+        #sib-container input::placeholder {
+          color: #80ff00 !important;
+          -webkit-text-fill-color: #80ff00 !important;
+        }
+      </style>
+      <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+      <!--  END - We recommend to place the above code in head tag of your website html -->
+
+      <!-- START - We recommend to place the below code where you want the form in your website html  -->
+      <div class="sib-form" style="text-align: center;
+         background-color: transparent;                                 ">
+        <div id="sib-form-container" class="sib-form-container">
+          <div id="error-message" class="sib-form-message-panel"
+            style="display:none; font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+                <path
+                  d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
+              </svg>
+              <span class="sib-form-message-panel__inner-text">
+                  Unfortunately, we were unable to save your information. Please try again later or contact us.
+              </span>
             </div>
-            <button id="confirmUserDetailsButton" class="modal-confirm-button">Confirm</button>
+          </div>
+          <div></div>
+          <div id="success-message" class="sib-form-message-panel"
+            style="display:none; font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+                <path
+                  d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
+              </svg>
+                <span class="sib-form-message-panel__inner-text">
+                &quot;Thank you! Your decision has been successfully recorded. We have just sent you a confirmation email. NOTE: If you do not see the email in your inbox within a minute, please check your Spam/Junk folder and mark it as &#039;Not spam&#039;.&quot;
+                </span>
+            </div>
+          </div>
+          <div></div>
+          <div id="sib-container" class="sib-container--large sib-container--vertical"
+            style="text-align:center; background-color:rgba(8,0,0,0.47); max-width:540px; border-radius:22px; border-width:2px; border-color:#00fe00; border-style:solid; direction:ltr">
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+            <form id="sib-form" method="POST" target="hidden_iframe"
+                action="https://7e6b58d8.sibforms.com/serve/MUIFABpeZeqP3547SMQu0Mgx26OFwBN1iSXD6QHa_RDhnH5c6Kr53uElqXyKsrHkT_GEQJFrBpdKnksCu-X1EDfIXdMWpa49OvpkMs68OMjK3G1_8vok_VC5IKQ8aA5Jb4UvLq2vc3PH7cT62NJjHW9yeR7Ft2biIwSmm-3AGrjOWXENpcUNtgqksaRnijgljafjZZKDO5w50b6bAA=="              data-type="subscription">
+              <div style="padding: 8px 0;">
+                <div class="sib-form-block"
+                  style="font-size:32px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#00fe00; background-color:transparent; text-align:center">
+                    <p>DATA VERIFICATION</p>
+                </div>
+              </div>
+              <div style="padding: 8px 0;">
+                <div class="sib-form-block"
+                  style="font-size:17px; text-align:center; font-family:Helvetica, sans-serif; color:#00fe00; background-color:transparent; text-align:center">
+                <div class="sib-text-form-block">
+                <p>Please confirm your details to continue the process.</p>
+                </div>
+                </div>
+              </div>
+              <div style="padding: 8px 0;">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row ">
+                      <label class="entry__label"
+                        style="font-weight: 700; text-align:center; font-size:17px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#00fe00;"
+                        for="EMAIL" data-required="*">EMAIL</label>
+
+                      <div class="entry__field">
+                        <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Email address""
+                          data-required="true" required />
+                      </div>
+                    </div>
+
+                    <label class="entry__error entry__error--primary"
+                      style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+                    </label>
+                    <label class="entry__specification"
+                      style="font-size:12px; text-align:left; font-family:Helvetica, sans-serif; color:#eaeef5; text-align:left">
+                        Enter the email address used for your original registration.
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 8px 0;">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row ">
+                      <label class="entry__label"
+                        style="font-weight: 700; text-align:center; font-size:17px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#00fe00;"
+                        for="FIRSTNAME" data-required="*">FIRST AND LAST NAME</label>
+
+                      <div class="entry__field">
+                        <input class="input " maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME"
+                          autocomplete="off" placeholder="Full Name" data-required="true" required />
+                      </div>
+                    </div>
+
+                    <label class="entry__error entry__error--primary"
+                      style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+                    </label>
+                    <label class="entry__specification"
+                      style="font-size:12px; text-align:left; font-family:Helvetica, sans-serif; color:#eaeef5; text-align:left">
+                      Please enter your first and last name.
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 8px 0;">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row ">
+                      <label class="entry__label"
+                        style="font-weight: 700; text-align:center; font-size:17px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#00fe00;"
+                        for="USERNAME" data-required="*">USERNAME</label>
+
+                      <div class="entry__field">
+                        <input class="input " maxlength="200" type="text" id="USERNAME" name="USERNAME"
+                          autocomplete="off" placeholder="Username" data-required="true" required />
+                      </div>
+                    </div>
+
+                    <label class="entry__error entry__error--primary"
+                      style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+                    </label>
+                    <label class="entry__specification"
+                      style="font-size:12px; text-align:left; font-family:Helvetica, sans-serif; color:#eaeef5; text-align:left">
+                      Enter the username from the old system
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 8px 0;">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row ">
+                      <label class="entry__label"
+                        style="font-weight: 700; text-align:center; font-size:17px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#00fe00;"
+                        for="NOVA_EMAIL_ADRESA">NEW EMAIL ADDRESS (optional)</label>
+
+                      <div class="entry__field">
+                        <input class="input " maxlength="200" type="text" id="NOVA_EMAIL_ADRESA"
+                          name="NOVA_EMAIL_ADRESA" autocomplete="off" placeholder="New email address - OPTIONAL"/>
+                      </div>
+                    </div>
+
+                    <label class="entry__error entry__error--primary"
+                      style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+                    </label>
+                    <label class="entry__specification"
+                      style="font-size:12px; text-align:left; font-family:Helvetica, sans-serif; color:#eaeef5; text-align:left">
+                      If you no longer use the old address or do not have access to it, enter a new one. <br><strong>Email changes are subject to additional verification.</strong>.
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 8px 0;">
+                <div class="sib-input sib-form-block" style="display:none !important;">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row ">
+                      <div class="entry__field">
+                        <input maxlength="200" type="text" class="input " id="POCETNI_IZNOS" name="POCETNI_IZNOS"
+                          autocomplete="off" />
+                      </div>
+                    </div>
+                    <label class="entry__error entry__error--primary"
+                      style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 8px 0;">
+                <div class="sib-optin sib-form-block" data-required="true">
+                  <div class="form__entry entry_mcq" style="margin: 0; width: 100%; text-align: left !important;">
+                    
+                    <!-- 1. Naslov u sredini, smanjen font -->
+                    <div style="text-align: center !important; margin-bottom: 15px; font-weight: 700; font-size: 17px; font-family: Helvetica, sans-serif; color: #00fe00; width: 100%;">
+                      Consent & Privacy
+                    </div>
+
+                    <!-- 2. Kvadratić i tekst: SAVRŠENO PORAVNATI LIJEVO -->
+                    <div style="padding-left: 0px !important; padding-right: 10px; text-align: left !important;">
+                      <table style="width: 100%; border-collapse: collapse; border: none; margin-left: 0; text-align: left !important;">
+                        <tr>
+                          <!-- Stupac za kvadratić bez ikakvog odmaka -->
+                          <td style="vertical-align: top; width: 25px; padding-top: 4px; border: none; text-align: left !important;">
+                            <input type="checkbox" value="1" id="OPT_IN" name="OPT_IN" required
+                              style="width: 20px; height: 20px; cursor: pointer; display: block; margin: 0; -webkit-appearance: checkbox !important; appearance: checkbox !important;" />
+                          </td>
+                          <!-- Stupac za tekst s malim razmakom od kvadratića -->
+                          <td style="vertical-align: top; text-align: left !important; border: none; padding-left: 8px;">
+                            <span style="font-size: 14px; font-family: Helvetica, sans-serif; color: #ffff00; line-height: 1.4; display: block; text-align: left !important;">
+                              <em>"I consent to the processing of my personal data for status updates within the SFT21 system and accept the Privacy Policy."</em>
+                            </span>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 8px 0;">
+                <div class="sib-form-block" style="text-align: center">
+                  <button class="sib-form-block__button sib-form-block__button-with-loader"
+                    style="font-size:21px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#000000; background-color:#00fe00; border-radius:12px; border-width:0px;"
+                    form="sib-form" type="submit">
+                    <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon"
+                      viewBox="0 0 512 512">
+                      <path
+                        d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                    </svg>
+                    C O N F I R M 
+                  </button>
+                </div>
+              </div>
+              <div style="padding: 8px 0;">
+                <div class="sib-form-block"
+                  style="font-size:21px; text-align:center; font-family:Helvetica, sans-serif; color:#00fe00; background-color:transparent; text-align:center">
+                  <div class="sib-text-form-block">
+                    <p>Thank You and Welcome to SFteam!</p>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 8px 0;">
+                <div class="sib-form__declaration" style="direction:ltr">
+                  <div class="declaration-block-icon">
+                    <svg class="icon__SVG" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <symbol id="svgIcon-sphere" viewBox="0 0 63 63">
+                          <path class="path1"
+                            d="M31.54 0l1.05 3.06 3.385-.01-2.735 1.897 1.05 3.042-2.748-1.886-2.738 1.886 1.044-3.05-2.745-1.897h3.393zm13.97 3.019L46.555 6.4l3.384.01-2.743 2.101 1.048 3.387-2.752-2.1-2.752 2.1 1.054-3.382-2.745-2.105h3.385zm9.998 10.056l1.039 3.382h3.38l-2.751 2.1 1.05 3.382-2.744-2.091-2.743 2.091 1.054-3.381-2.754-2.1h3.385zM58.58 27.1l1.04 3.372h3.379l-2.752 2.096 1.05 3.387-2.744-2.091-2.75 2.092 1.054-3.387-2.747-2.097h3.376zm-3.076 14.02l1.044 3.364h3.385l-2.743 2.09 1.05 3.392-2.744-2.097-2.743 2.097 1.052-3.377-2.752-2.117 3.385-.01zm-9.985 9.91l1.045 3.364h3.393l-2.752 2.09 1.05 3.393-2.745-2.097-2.743 2.097 1.05-3.383-2.751-2.1 3.384-.01zM31.45 55.01l1.044 3.043 3.393-.008-2.752 1.9L34.19 63l-2.744-1.895-2.748 1.891 1.054-3.05-2.743-1.9h3.384zm-13.934-3.98l1.036 3.364h3.402l-2.752 2.09 1.053 3.393-2.747-2.097-2.752 2.097 1.053-3.382-2.743-2.1 3.384-.01zm-9.981-9.91l1.045 3.364h3.398l-2.748 2.09 1.05 3.392-2.753-2.1-2.752 2.096 1.053-3.382-2.743-2.102 3.384-.009zM4.466 27.1l1.038 3.372H8.88l-2.752 2.097 1.053 3.387-2.743-2.09-2.748 2.09 1.053-3.387L0 30.472h3.385zm3.069-14.025l1.045 3.382h3.395L9.23 18.56l1.05 3.381-2.752-2.09-2.752 2.09 1.053-3.381-2.744-2.1h3.384zm9.99-10.056L18.57 6.4l3.393.01-2.743 2.1 1.05 3.373-2.754-2.092-2.751 2.092 1.053-3.382-2.744-2.1h3.384zm24.938 19.394l-10-4.22a2.48 2.48 0 00-1.921 0l-10 4.22A2.529 2.529 0 0019 24.75c0 10.47 5.964 17.705 11.537 20.057a2.48 2.48 0 001.921 0C36.921 42.924 44 36.421 44 24.75a2.532 2.532 0 00-1.537-2.336zm-2.46 6.023l-9.583 9.705a.83.83 0 01-1.177 0l-5.416-5.485a.855.855 0 010-1.192l1.177-1.192a.83.83 0 011.177 0l3.65 3.697 7.819-7.916a.83.83 0 011.177 0l1.177 1.191a.843.843 0 010 1.192z"
+                            fill="#0092FF"></path>
+                        </symbol>
+                      </defs>
+                    </svg>
+                    <svg class="svgIcon-sphere" style="width:63px; height:63px;">
+                      <use xlink:href="#svgIcon-sphere"></use>
+                    </svg>
+                  </div>
+                  <div
+                    style="font-size:14px; text-align:left; font-family:Helvetica, sans-serif; color:#ffff00; background-color:transparent;">
+                    <p><em>"Your information is collected solely for account verification and to facilitate your transition to the new system. We take your privacy seriously. You may request to access, update, or delete your data at any time by contacting us at  </em><a
+                        href="https://www.google.com/url?sa=E&amp;q=mailto%3Aofficial%40sft21.com"
+                        target="_blank">official@sft21.com</a><em>."</em></p>
+                  </div>
+                </div>
+              </div>
+
+              <input type="text" name="email_address_check" value="" class="input--hidden"
+                style="display:none !important;">
+              <input type="hidden" name="locale" value="en">
+            </form>
+          </div>
         </div>
-    </div>
+      </div>
+      <!-- END - We recommend to place the above code where you want the form in your website html  -->
 
-    <!-- FINAL CONFIRMATION POPUP -->
-    <div id="finalConfirmationPopup" class="modal-overlay">
-        <div class="modal-content">
-            <h2 class="popup-title final-popup-title">Information</h2>
-            <p id="final-confirmation-message"></p>
-        </div>
-    </div>
+      <!-- START - We recommend to place the below code in footer or bottom of your website html  -->
+      <script>
+        document.getElementById('sib-form').addEventListener('submit', function () {
+          // NE ZAUSTAVLJATI event.preventDefault()! 
+          // Puštamo preglednik da prirodno pošalje podatke u nevidljivi iframe (target="hidden_iframe")
 
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // REPLACE THIS URL WITH YOUR NEW URL AFTER "NEW DEPLOYMENT"
-            const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbwYQGDtBdUIPSD0GJHPJCOrPhgdMhlw-q_Z3wIqtecPvRw_ELYrahZ9QojcKzoBxGIy/exec';   
-            
-            const fullNameInput = document.getElementById('fullNameInputPopup');
-            const usernameInput = document.getElementById('usernameInputPopup');
-            const oldEmailInput = document.getElementById('oldEmailInputPopup');
-            const newEmailInput = document.getElementById('newEmailInputPopup');
-            const confirmButton = document.getElementById('confirmUserDetailsButton');
-            const mainPopup = document.getElementById('confirmationUserDetailsPopup');
-            const finalPopup = document.getElementById('finalConfirmationPopup');
-            const finalMessageP = document.getElementById('final-confirmation-message');
+          const btn = this.querySelector('button[type="submit"]');
+          if (btn) {
+            btn.innerHTML = 'SLANJE...';
+            btn.style.opacity = '0.7';
+            // btn.disabled = true; // Ne gasimo gumb odmah da preglednik stigne poslati
+          }
 
-            const validateForm = () => {
-                const isFullNameValid = fullNameInput.value.trim() !== '';
-                const isUsernameValid = usernameInput.value.trim() !== '';
-                const isOldEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(oldEmailInput.value.trim());
-                confirmButton.disabled = !(isFullNameValid && isUsernameValid && isOldEmailValid);
-            };
-
-            [fullNameInput, usernameInput, oldEmailInput, newEmailInput].forEach(input => input.addEventListener('input', validateForm));
-
-            confirmButton.addEventListener('click', () => {
-                if(confirmButton.disabled) return;
-                
-                mainPopup.style.display = 'none';
-                finalMessageP.innerHTML = `<h4>Sending...</h4><p>Please wait.</p>`;
-                finalPopup.style.display = 'flex';
-
-                const dataToSend = new FormData();
-                dataToSend.append('requestType', 'activeNoInvest');
-                dataToSend.append('fullName', fullNameInput.value.trim());
-                dataToSend.append('username', usernameInput.value.trim());
-                dataToSend.append('oldEmail', oldEmailInput.value.trim());
-                dataToSend.append('newEmail', newEmailInput.value.trim());
-                
-                // SEND THE AMOUNT TO GOOGLE SHEETS
-                dataToSend.append('pocetni_iznos', document.getElementById('pocetni_iznos').value);
-
-                fetch(WEBAPP_URL, { method: 'POST', body: dataToSend })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        finalMessageP.innerHTML = 'Your decision has been recorded. Thank you.';
-                    } else {
-                        finalMessageP.innerHTML = 'An error occurred. Please try again.';
-                    }
-                    setTimeout(() => window.location.href = 'index_en.html', 4000);
-                })
-                .catch(err => {
-                    finalMessageP.innerHTML = 'Network error. Please try again.';
-                });
-            });
-
-            // LOGIC FOR DYNAMIC AMOUNT FROM URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const paramIznos = urlParams.get('iznos');
-            const paramValuta = urlParams.get('valuta');
-            let displayText = "30 $";
-
-            if (paramIznos && paramValuta) {
-                if (paramIznos === 'veci' && paramValuta === 'iznos') {
-                    displayText = "Larger investment amount";
-                    const standardTextBlock = document.getElementById('standard-text-block');
-                    const veciIznosTextBlock = document.getElementById('veci-iznos-text-block');
-                    if (standardTextBlock) standardTextBlock.style.display = 'none';
-                    if (veciIznosTextBlock) veciIznosTextBlock.style.display = 'block';
-                } else {
-                    const currencySymbol = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
-                    displayText = `${paramIznos} ${currencySymbol}`;
-                }
+          setTimeout(() => {
+            const container = document.getElementById('sib-container');
+            if (container) {
+            container.innerHTML = `
+            <div style="padding: 20px 30px; text-align: center; color: #00fe00; font-family: Helvetica, sans-serif;">
+                <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">Thank you!</h2>
+                <p style="font-size: 18px; line-height: 1.4; color: #fff;">Your decision has been successfully recorded.<br>We have just sent you a confirmation email.</p>
+                <p style="font-size: 14px; margin-top: 25px; color: #ffff00; font-style: italic;">NOTE: If you do not see the email in your inbox within a minute, please check your Spam/Junk folder and mark it as 'Not spam'.</p>
+                <button onclick="window.location.href='index_en.html'" style="margin-top: 35px; margin-bottom: 10px; padding: 12px 35px; font-size:18px; font-weight:700; background-color:#00fe00; color:#000; border:none; border-radius:12px; cursor:pointer;">CLOSE</button>
+                <p style="font-size: 11px; margin-top: 15px; color: #888;">Automatic return to home in 10 seconds...</p>
+            </div>
+            `;
+              setTimeout(() => {
+                window.location.href = 'index.html';
+              }, 10000);
             }
-            
-            // WRITE TO PAGE AND HIDDEN FIELD
-            document.getElementById('startAmountDisplay').textContent = displayText;
-            document.getElementById('startAmountDisplayIntro').textContent = displayText;
-            document.getElementById('pocetni_iznos').value = displayText;
-            
-            const numeric = parseFloat(paramIznos);
-            if(!isNaN(numeric)) document.getElementById('sfPointsValue').textContent = numeric * 2;
-
-            // UI EVENTS
-            document.getElementById('openPopupForConfirmation').onclick = () => { mainPopup.style.display = 'flex'; validateForm(); };
-            document.getElementById('closeUserDetailsPopupButton').onclick = () => mainPopup.style.display = 'none';
-            document.getElementById('closePageButton').onclick = () => window.history.back();
-
-            // CUSTOM CURSOR LOGIC
-            const cursor = document.querySelector('.custom-cursor');
-            document.addEventListener('mousemove', (e) => {
-                gsap.to(cursor, { duration: 0.1, left: e.clientX, top: e.clientY, opacity: 1 });
-            });
+          }, 2000);
         });
-    </script>
-    
-    <!-- Background Animation Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const canvas = document.getElementById('network-canvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            const darkOptions = { particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 100, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
-            const lightOptions = { particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 100, defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4 };
-            let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+      </script>
 
-            const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
-            window.addEventListener('resize', resizeCanvas);
 
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-                    this.radius = currentOptions.defaultRadius;
-                    this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
-                    this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
-                }
-                draw() {
-                    ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, 0.85)`; ctx.fill();
-                }
-                update() {
-                    this.x += this.vx; this.y += this.vy;
-                    if (this.x > canvas.width || this.x < 0) this.vx = -this.vx;
-                    if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
-                }
-            }
+      <!-- END - We recommend to place the above code in footer or bottom of your website html  -->
+      <!-- End Brevo Form -->
+    </div>
+  </div>
 
-            const initParticles = () => {
-                particles = [];
-                for (let i = 0; i < currentOptions.particleAmount; i++) particles.push(new Particle());
-            };
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('brevoModalOverlay');
+      const openBtn = document.getElementById('openBrevoPopup');
+      const closeBtn = document.getElementById('closeBrevoModal');
 
-            const animate = () => {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => { p.update(); p.draw(); });
-                requestAnimationFrame(animate);
-            };
-            
-            resizeCanvas();
-            animate();
-        });
-    </script>
+      // 1. Logika za preuzimanje iznosa iz linka
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramIznos = urlParams.get('iznos') || "30";
+
+      // Postavljanje ispravnog formata valute za prikaz na ekranu
+      const paramValuta = urlParams.get('valuta') || "usd";
+      const currencySymbol = paramValuta.toLowerCase() === 'usd' ? '$' : '€';
+      let displayText = `${paramIznos} ${currencySymbol}`;
+      if (paramIznos === 'veci') { displayText = "Veći iznos/Investicija"; }
+
+      // Osvježavanje teksta na samoj stranici
+      const displayIntro = document.getElementById('startAmountDisplayIntro');
+      if (displayIntro) displayIntro.innerText = displayText;
+
+      const displayAmount = document.getElementById('startAmountDisplay');
+      if (displayAmount) displayAmount.innerText = displayText;
+
+      // Promjena teksta za bodove ovisno o iznosu (ako je potrebno, ovdje možemo dodati kompleksniju logiku, zasad ostaje statično ili se može proširiti)
+      // Ako korisnik odabere viši iznos, mijenjamo i SFbodove prikaz (opcionalno)
+      const sfPointsDisplay = document.getElementById('sfPointsValue');
+      if (sfPointsDisplay && !isNaN(parseInt(paramIznos))) {
+        // Primjer: 30$ = 60 bodova (množitelj x2)
+        sfPointsDisplay.innerText = parseInt(paramIznos) * 2;
+      }
+
+      // VAŽNO: Brevo polje 'POCETNI_IZNOS' je striktno numeričko ('data-numeric="true"').
+      // Slanje "30 $" ili "Veći iznos" nativnim putem uzrokuje tihu grešku na serveru i brisanje podataka!
+      let numericIznos = parseInt(paramIznos, 10);
+      if (isNaN(numericIznos) || paramIznos === 'veci') {
+        numericIznos = 0; // Koristimo 0 kao definiciju za Veći iznos
+      }
+
+      // 2. Otvaranje popupa i popunjavanje polja
+      if (openBtn) {
+        openBtn.onclick = function () {
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+
+          // Čistimo skrivenu zaštitu od robota ako ona postoji, da je bot nije ispunio
+          const antiSpam = document.getElementsByName('email_address_check')[0];
+          if (antiSpam) antiSpam.value = '';
+
+          // Upisujemo iznos u skriveno polje
+          const brevoInput = document.getElementById('POCETNI_IZNOS');
+          if (brevoInput) {
+            brevoInput.value = numericIznos; // Obavezno samo čisti broj!
+            // Šaljemo signale
+            brevoInput.dispatchEvent(new Event('input', { bubbles: true }));
+            brevoInput.dispatchEvent(new Event('change', { bubbles: true }));
+            brevoInput.dispatchEvent(new Event('blur', { bubbles: true }));
+          }
+        };
+      }
+
+      // 3. Zatvaranje popupa
+      if (closeBtn) {
+        closeBtn.onclick = function () {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        };
+      }
+
+      // 4. Zatvaranje stranice na X u headeru
+      const closePage = document.getElementById('closePageButton');
+      if (closePage) {
+        closePage.onclick = () => window.history.back();
+      }
+
+      // 5. Custom Cursor Animacija
+      const cursor = document.querySelector('.custom-cursor');
+      document.addEventListener('mousemove', (e) => {
+        gsap.to(cursor, { duration: 0.1, left: e.clientX, top: e.clientY, opacity: 1 });
+      });
+    });
+  </script>
+
+
+  <!-- Mreža u pozadini (Network Canvas) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('network-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      const options = { particleColorRGB: '128, 255, 0', particleAmount: 100, defaultRadius: 1.3, particleSpeed: 0.25 };
+
+      const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); };
+      window.addEventListener('resize', resizeCanvas);
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+          this.vx = (Math.random() - 0.5) * options.particleSpeed;
+          this.vy = (Math.random() - 0.5) * options.particleSpeed;
+        }
+        draw() {
+          ctx.beginPath(); ctx.arc(this.x, this.y, options.defaultRadius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${options.particleColorRGB}, 0.5)`; ctx.fill();
+        }
+        update() {
+          this.x += this.vx; this.y += this.vy;
+          if (this.x > canvas.width || this.x < 0) this.vx = -this.vx;
+          if (this.y > canvas.height || this.y < 0) this.vy = -this.vy;
+        }
+      }
+      const initParticles = () => { particles = []; for (let i = 0; i < options.particleAmount; i++) particles.push(new Particle()); };
+      const animate = () => { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); };
+      resizeCanvas(); animate();
+    });
+  </script>
 </body>
+
 </html>
