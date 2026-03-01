@@ -699,28 +699,35 @@
                   </div>
                 </div>
               </div>
-              <div style="padding: 8px 0;">
+ <div style="padding: 8px 0;">
                 <div class="sib-optin sib-form-block" data-required="true">
-                  <div class="form__entry entry_mcq">
-                    <div class="form__label-row ">
-                      <label class="entry__label"
-                        style="font-weight: 700; text-align:center; font-size:17px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#00fe00;"
-                        for="OPT_IN" data-required="*">Suglasnost</label>
-                      <div class="entry__choice">
-                        <label>
-                          <input type="checkbox" value="1" id="OPT_IN" name="OPT_IN" required
-                            style="margin-right: 10px; width: 18px; height: 18px; vertical-align: middle;" />
-                          <span
-                            style="font-size:14px; text-align:left; font-family:Helvetica, sans-serif; color:#ffff00; background-color:transparent; display: inline-block; vertical-align: middle; max-width: 90%;">
-                            <em>"Slažem se s obradom mojih podataka u svrhu ažuriranja statusa u SFT21 sistemu i
-                              prihvaćam uvjete privatnosti."</em>
-                          </span>
-                        </label>
-                      </div>
+                  <div class="form__entry entry_mcq" style="margin: 0; width: 100%; text-align: left !important;">
+                    
+                    <!-- 1. Naslov u sredini, smanjen font -->
+                    <div style="text-align: center !important; margin-bottom: 15px; font-weight: 700; font-size: 17px; font-family: Helvetica, sans-serif; color: #00fe00; width: 100%;">
+                      Suglasnost i privatnost
                     </div>
-                    <label class="entry__error entry__error--primary"
-                      style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
-                    </label>
+
+                    <!-- 2. Kvadratić i tekst: SAVRŠENO PORAVNATI LIJEVO -->
+                    <div style="padding-left: 0px !important; padding-right: 10px; text-align: left !important;">
+                      <table style="width: 100%; border-collapse: collapse; border: none; margin-left: 0; text-align: left !important;">
+                        <tr>
+                          <!-- Stupac za kvadratić bez ikakvog odmaka -->
+                          <td style="vertical-align: top; width: 25px; padding-top: 4px; border: none; text-align: left !important;">
+                            <input type="checkbox" value="1" id="OPT_IN" name="OPT_IN" required
+                              style="width: 20px; height: 20px; cursor: pointer; display: block; margin: 0; -webkit-appearance: checkbox !important; appearance: checkbox !important;" />
+                          </td>
+                          <!-- Stupac za tekst s malim razmakom od kvadratića -->
+                          <td style="vertical-align: top; text-align: left !important; border: none; padding-left: 8px;">
+                            <span style="font-size: 14px; font-family: Helvetica, sans-serif; color: #ffff00; line-height: 1.4; display: block; text-align: left !important;">
+                            <em>"Slažem se s obradom mojih podataka u svrhu ažuriranja statusa u SFT21 sistemu i prihvaćam uvjete privatnosti."</em>
+                            </span>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
                   </div>
                 </div>
               </div>
