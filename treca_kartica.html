@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="hr"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -375,20 +375,69 @@
     }
 
     /* Light mode */
-    html.light-mode body {
-      background-color: #f8fafc !important;
-      color: #334155 !important;
+ html.light-mode body { 
+        background-color: #f8fafc !important; 
+        color: #1e293b !important; 
     }
-
-    html.light-mode .decision-content-box {
+    html.light-mode #network-canvas { background-color: transparent !important; }
+    
+    /* HEADER: Bijela traka, ljubičasta slova (kao na prvoj kartici) */
+    html.light-mode .fixed-header-container {
       background-color: #ffffff !important;
-      border-color: #e2e8f0 !important;
-      color: #334155 !important;
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+    }
+    html.light-mode .header-title { color: var(--primary-color) !important; }
+    html.light-mode .page-close-button { color: var(--primary-color) !important; }
+
+    /* Glavni okvir kartice */
+    html.light-mode .decision-content-box {
+        background-color: #ffffff !important;
+        border-color: #e2e8f0 !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
     }
 
-    html.light-mode .main-congrats-title,
-    html.light-mode .detailed-text p {
-      color: #334155 !important;
+    /* Glavni naslovi (Poštovanje/Greetings) postaju LJUBIČASTI */
+    html.light-mode .main-greeting { 
+        color: var(--primary-color) !important; 
+    }
+
+    /* Tekst "ODABRALI STE PREKINUTI..." postaje TAMNO SIV */
+    html.light-mode .intro-section p { 
+        color: #334155 !important; 
+    }
+
+    /* Poseban okvir "Važno je napomenuti..." (postaje vrlo svijetlo ljubičast) */
+    html.light-mode .important-note-dark {
+        background: rgba(106, 27, 154, 0.05) !important;
+        border: 1px solid rgba(106, 27, 154, 0.1) !important;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    html.light-mode .important-note-dark p {
+        color: #1e293b !important;
+    }
+
+    /* Sav ostali tekst u kartici i napomena na dnu */
+    html.light-mode .detailed-text p, 
+    html.light-mode .final-note-section p { 
+        color: #334155 !important; 
+    }
+
+    /* Podebljani tekstovi (strong) postaju potpuno CRNI */
+    html.light-mode strong { 
+        color: #000000 !important; 
+    }
+
+    /* Zeleni tekst na dnu ("Žao nam je...") postaje tamniji radi kontrasta */
+    html.light-mode p[style*="var(--fluorescent-green)"] {
+        color: #15803d !important; /* Tamno zelena koja je čitljiva na bijelom */
+    }
+
+    /* Popup prozor (Brevo forma) */
+    html.light-mode .modal-content {
+        background-color: #ffffff !important;
+        color: #1e293b !important;
     }
   </style>
 </head>
