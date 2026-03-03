@@ -282,25 +282,47 @@
 
         .hidden { display: none !important; }
 
-        /* Light Mode Styles */
-        html.light-mode body { background-color: #f8fafc !important; color: #334155 !important; }
+        /* --- Defaultno (Dark Mode) --- */
+        .veci-iznos-intro-text {
+            color: var(--fluorescent-yellow);
+        }
+
+        /* --- Light Mode (ispravak čitljivosti) --- */
+        html.light-mode .veci-iznos-intro-text {
+            color: var(--primary-color) !important; /* Postaje ljubičast na bijeloj pozadini */
+        }
+
+/* --- LIGHT MODE POPRAVAK --- */
+        html.light-mode body { background-color: #f8fafc !important; color: #1e293b !important; }
         html.light-mode .fixed-header-container { background-color: white !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important; }
         html.light-mode .product-name { color: var(--primary-color) !important; }
         html.light-mode .option-close-button { color: #64748b !important; }
-        html.light-mode .option-close-button:hover { color: #1e293b !important; }
+        
+        /* Tekst: "Molimo odaberite opciju..." */
+        html.light-mode .intro-text { color: #475569 !important; }
         html.light-mode .intro-title { color: var(--primary-color) !important; }
-        html.light-mode .green-separator { background-color: var(--primary-color) !important; box-shadow: 0 0 10px var(--primary-color) !important; }
+        html.light-mode .green-separator { background-color: var(--primary-color) !important; box-shadow: none !important; }
+
+        /* Naslov: "Poslovanje ste započeli..." */
+        html.light-mode .page-main-title { color: #1e293b !important; }
         html.light-mode .page-main-title span { color: var(--primary-color) !important; }
-        html.light-mode .initial-info li, html.light-mode .option-card p, html.light-mode .option-card li { color: #334155 !important; }
-        html.light-mode .initial-info li::before, html.light-mode .option-card ul.special-list li::before { color: var(--primary-color) !important; }
-        html.light-mode .initial-info strong, html.light-mode .note-text strong { color: #1e293b !important; }
+
+        /* Lista s bodovima i Napomena na dnu */
+        html.light-mode .initial-info li { color: #334155 !important; }
+        html.light-mode .initial-info li::before { color: var(--primary-color) !important; }
+        html.light-mode .initial-info strong { color: #000000 !important; }
         html.light-mode .note-text { color: #64748b !important; }
+        html.light-mode .note-text strong { color: #1e293b !important; }
+
+        /* Kartice opcija */
         html.light-mode .options-title-separator { color: var(--primary-color) !important; text-shadow: none !important; }
         html.light-mode .option-card { background-color: white !important; border-color: #e2e8f0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
-        html.light-mode .option-card h2, html.light-mode .click-indicator { color: var(--primary-color) !important; }
-        html.light-mode .card-separator { background-color: var(--primary-color) !important; }
+        html.light-mode .option-card h2 { color: var(--primary-color) !important; }
         html.light-mode .option-card h3 { color: #475569 !important; }
-        html.light-mode .option-card:hover { box-shadow: 0 8px 25px rgba(106, 27, 154, 0.15) !important; }
+        html.light-mode .option-card p, html.light-mode .option-card li { color: #334155 !important; }
+        html.light-mode .card-separator { background-color: var(--primary-color) !important; }
+        html.light-mode .click-indicator { color: var(--primary-color) !important; }
+        
         html.light-mode #network-canvas { background-color: transparent !important; }
     </style>
 </head>
@@ -460,7 +482,7 @@
                             initialInfoContentDiv.insertBefore(veciIznosTextElement, initialInfoContentDiv.firstChild);
                         }
                         veciIznosTextElement.innerHTML = `
-                            <p class="veci-iznos-intro-text">Ukoliko ste kao član u starom sistemu uz startni paket uplatili poslovni račun sa radnim mjestima (BAWS) ili ste uplatili investiciju:</p><br>
+                            <p class="veciIznosTextElement.innerHTML = '<p class="veci-iznos-intro-text" style="margin-bottom: 15px; font-size: 1.15rem; font-weight: bold; text-align: center;">Ukoliko ste kao član u starom sistemu uz startni paket uplatili poslovni račun sa radnim mjestima (BAWS) ili ste uplatili investiciju:</p><br>
                             <ul>
                                 <li>dobivate broj <strong>SFbodova</strong> (SFb) na osnovi veličine ukupno investiranog iznosa (1 € = 2 SFb)</li>
                                 <li>plus bodovi na osnovi zarade iz rezervnog novčanika, ukoliko ste ostvarili nadogradnju računa (1 SFC = 1 SFb)</li>
