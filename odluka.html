@@ -255,14 +255,37 @@
             flex: 1 1 300px; 
         }
 
-        /* Light mode prilagodba */
-       html.light-mode body { background-color: #f8fafc !important; color: #4a0e6c !important; }
-        html.light-mode #network-canvas { background-color: transparent !important; }
-        html.light-mode .content-box { background-color: #ffffff !important; border-color: #e2e8f0 !important; }
-        html.light-mode .info-card { background: rgba(106, 27, 154, 0.05); border-color: rgba(106, 27, 154, 0.2); }
-        html.light-mode .info-card p { color: #1a1a1a; }
-        html.light-mode .info-card h3 { color: var(--primary-color); }
-        html.light-mode .header-title-text { color: var(--primary-color) !important; }
+/* --- LIGHT MODE POPRAVAK ZA TEKSTOVE --- */
+    html.light-mode body { background-color: #f8fafc !important; color: #1e293b !important; }
+    html.light-mode #network-canvas { background-color: transparent !important; }
+    
+    /* Glavni okvir i naslovi u njemu */
+    html.light-mode .content-box { 
+        background-color: #ffffff !important; 
+        border-color: #e2e8f0 !important; 
+    }
+    
+    /* Svi H2 naslovi unutar content-boxa postaju tamno sivi/ljubičasti */
+    html.light-mode .content-box h2 { 
+        color: #1e293b !important; 
+    }
+
+    /* Zeleni podnaslov (Vaša pozicija je sačuvana) - u Light modu ga stavljamo u ljubičastu radi čitljivosti */
+    html.light-mode .content-box p[style*="var(--fluorescent-green)"] {
+        color: var(--primary-color) !important;
+        opacity: 1 !important;
+    }
+
+    /* Informativne kartice unutra */
+    html.light-mode .info-card { 
+        background: rgba(106, 27, 154, 0.05) !important; 
+        border-color: rgba(106, 27, 154, 0.2) !important; 
+    }
+    html.light-mode .info-card p { color: #334155 !important; }
+    html.light-mode .info-card h3 { color: var(--primary-color) !important; }
+    
+    /* Navigacija */
+    html.light-mode .header-title-text { color: var(--primary-color) !important; }
 
 @media (max-width: 768px) {
             nav.fixed {
@@ -390,7 +413,7 @@
                 
                 <!-- GORNJI TEKST -->
                 <div style="text-align: center; margin-bottom: 2rem;">
-                    <h2 style="color: white; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem;">
+                    <h2 style="font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem;">
                         Prošlo je više od 3 godine. Vrijeme je za novo poglavlje.
                     </h2>
                     <p style="color: var(--fluorescent-green); font-size: 1.6rem; opacity: 0.9;">
@@ -409,7 +432,7 @@
                 </div>
 
                 <!-- NASLOV SEKCIJE -->
-                <h2 class="text-center mt-10 mb-6 font-bold uppercase tracking-widest" style="font-family: 'Arial'; color: white; font-size: 1.2rem; border-bottom: 1px solid rgba(128, 255, 0, 0.3); padding-bottom: 10px; display: inline-block; width: 100%;">
+                <h2 class="text-center mt-10 mb-6 font-bold uppercase tracking-widest" style="font-family: 'Arial'; font-size: 1.2rem; border-bottom: 1px solid rgba(128, 255, 0, 0.3); padding-bottom: 10px; display: inline-block; width: 100%;">
                     Gdje smo bili i kamo idemo?
                 </h2>
 
@@ -652,7 +675,6 @@
     </body>
 </html>
 
-
-
+ 
 
 
