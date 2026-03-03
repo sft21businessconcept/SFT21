@@ -8,7 +8,7 @@
   <!-- ============================================= -->
   <!-- UNIVERZALNA SKRIPTA ZA INICIJALIZACIJU TEME -->
   <!-- ============================================= -->
-  <script>
+  <script> 
     function applySft21Theme() {
       try {
         const theme = localStorage.getItem('sft21_theme') || 'dark';
@@ -374,22 +374,62 @@
       opacity: 0;
     }
 
-    /* Light mode */
-    html.light-mode body {
-      background-color: #f8fafc !important;
-      color: #334155 !important;
+/* ============================================================ */
+    /* FINALNI POPRAVAK ZA LIGHT MODE - KOPIRAJTE SVE ISPOD OVOGA */
+    /* ============================================================ */
+    
+    html.light-mode body { 
+        background-color: #f8fafc !important; 
+        color: #1e293b !important; 
     }
-
+    html.light-mode #network-canvas { background-color: transparent !important; }
+    
+    /* Glavni okvir postaje bijel */
     html.light-mode .decision-content-box {
-      background-color: #ffffff !important;
-      border-color: #e2e8f0 !important;
-      color: #334155 !important;
+        background-color: #ffffff !important;
+        border-color: #e2e8f0 !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
     }
 
+    /* Glavni naslovi (Poštovanje/Greetings) postaju LJUBIČASTI */
+    html.light-mode .main-greeting,
     html.light-mode .main-congrats-title,
-    html.light-mode .detailed-text p {
-      color: #334155 !important;
+    html.light-mode .header-title { 
+        color: var(--primary-color) !important; 
     }
+
+    /* Žuti tekst koji je bio nevidljiv sada postaje TAMNO SIV (čitljiv) */
+    html.light-mode .intro-section p { 
+        color: #334155 !important; 
+        font-weight: 500 !important;
+    }
+
+    /* Sva podebljana slova postaju potpuno CRNA */
+    html.light-mode strong { 
+        color: #000000 !important; 
+    }
+
+    /* Tekstovi unutar kartice */
+    html.light-mode .detailed-text p, 
+    html.light-mode .action-info p,
+    html.light-mode .detailed-text ul li { 
+        color: #334155 !important; 
+    }
+
+    /* Pomoćni okvir s napomenom o povratu */
+    html.light-mode .important-note-dark {
+        background: rgba(106, 27, 154, 0.05) !important;
+        border: 1px solid rgba(106, 27, 154, 0.1);
+    }
+
+    /* Popup prozor (Brevo forma) */
+    html.light-mode .modal-content {
+        background-color: #ffffff !important;
+        color: #1e293b !important;
+    }
+
+    /* Gumb za zatvaranje (X) */
+    html.light-mode .page-close-button { color: var(--primary-color) !important; }
   </style>
 </head>
 
