@@ -439,7 +439,84 @@
         background-color: #ffffff !important;
         color: #1e293b !important;
     }
-  </style>
+    /* ============================================================ */
+/* PRILAGODBA BREVO FORME - PINK & LJUBIČASTA TEMA (LIGHT MODE) */
+/* ============================================================ */
+/* --- PREBOJAVANJE UNUTRAŠNJEG ZELENOG OKVIRA U PINK --- */
+html.light-mode #sib-container {
+    border-color: #ff00ff !important; /* Mijenja zelenu u PINK */
+    background-color: rgba(13, 1, 24, 0.5) !important; /* Poluprozirna tamna pozadina */
+}
+
+html.light-mode .modal-content {
+    background-color: #0d0118 !important; /* Pozadina ostaje tamna */
+    border: 3px solid #ff00ff !important; /* PINK OKVIR (Magenta) */
+    box-shadow: 0 0 35px rgba(255, 0, 255, 0.4) !important;
+}
+
+/* Polja za unos - tekst koji korisnik piše neka bude bijel radi kontrasta na tamnom */
+html.light-mode #sib-container .input {
+    background-color: #1a0229 !important; /* Vrlo tamna ljubičasta unutar polja */
+    border: 1px solid #ff00ff !important; /* Pink rubovi polja */
+    color: #ffffff !important; 
+    -webkit-text-fill-color: #ffffff !important; 
+}
+
+/* PLACEHOLDER TEKST U PINK BOJI (Upute unutar polja) */
+html.light-mode #sib-container input::placeholder {
+    color: #ff00ff !important;
+    opacity: 0.8 !important;
+}
+/* Za Chrome/Safari/Edge */
+html.light-mode #sib-container input::-webkit-input-placeholder {
+    color: #ff00ff !important;
+    -webkit-text-fill-color: #ff00ff !important;
+}
+/* Za Firefox */
+html.light-mode #sib-container input::-moz-placeholder {
+    color: #ff00ff !important;
+    opacity: 1 !important;
+}
+
+/* NASLOVI POLJA (EMAIL, IME I PREZIME...) - Lila/Svijetlo ljubičasta */
+html.light-mode #sib-container .entry__label,
+html.light-mode #sib-container .sib-form-block p {
+    color: #ab47bc !important; 
+}
+
+/* NASLOV "SUGLASNOST I PRIVATNOST" - TAMNO LJUBIČASTA */
+html.light-mode #sib-container .sib-optin div[style*="font-weight: 700"] {
+    color: #9c27b0 !important; /* Jasna ljubičasta */
+    text-transform: uppercase;
+}
+
+/* Tekst same suglasnosti (pored kvačice) - Svijetlo sivo/lila */
+html.light-mode #sib-container .sib-optin span,
+html.light-mode #sib-container .sib-form__declaration p {
+    color: #c7c1da !important;
+}
+
+/* GUMB "POTVRDI" - Ljubičast */
+html.light-mode #sib-container .sib-form-block__button {
+    background-color: #6a1b9a !important; 
+    color: #ffffff !important;
+}
+
+/* Gumb za zatvaranje (X) - Pink */
+html.light-mode .modal-close-button {
+    color: #ff00ff !important;
+}
+
+/* Ekran nakon slanja (Hvala vam!) */
+html.light-mode #sib-container h2 {
+    color: #ab47bc !important;
+}
+html.light-mode #sib-container .entry__specification,
+html.light-mode #sib-container .entry__specification strong {
+    color: #ffffff !important; /* Sve ispod emaila postaje BIJELO */
+   -webkit-text-fill-color: #ffffff !important;
+}
+</style>
 </head>
 
 <body>
