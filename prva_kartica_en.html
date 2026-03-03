@@ -367,21 +367,60 @@
       opacity: 0;
     }
 
-    /* Light mode */
-    html.light-mode body {
-      background-color: #f8fafc !important;
-      color: #334155 !important;
+/* --- LIGHT MODE TOTALNI POPRAVAK --- */
+    html.light-mode body { 
+      background-color: #f8fafc !important; 
+      color: #1e293b !important; 
     }
-
+    html.light-mode #network-canvas { background-color: transparent !important; }
+    
+    /* Glavni okvir */
     html.light-mode .decision-content-box {
       background-color: #ffffff !important;
       border-color: #e2e8f0 !important;
-      color: #334155 !important;
+      color: #1e293b !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
     }
 
-    html.light-mode .main-congrats-title,
-    html.light-mode .detailed-text p {
-      color: #334155 !important;
+    /* Naslovi */
+    html.light-mode .main-congrats-title { color: #1e293b !important; }
+    
+    /* Žuti tekst u intro sekciji - postaje tamno plav/siv */
+    html.light-mode .intro-section p { color: #475569 !important; }
+    html.light-mode .intro-section p.important { color: #0f172a !important; }
+
+    /* Zeleni naslov izbora (NASTAVLJATE POSLOVANJE) - postaje ljubičast */
+    html.light-mode .highlighted-choice-title { 
+      color: var(--primary-color) !important; 
+    }
+
+    /* Tekst unutar detaljne sekcije */
+    html.light-mode .detailed-text p, 
+    html.light-mode .detailed-text ul li { 
+      color: #334155 !important; 
+    }
+
+    /* Ikonice u listi (križići/strepice) */
+    html.light-mode .detailed-text ul li::before { color: var(--primary-color) !important; }
+
+    /* Svi STRONG (podebljani) elementi koji su bili zeleni - postaju tamni ili ljubičasti */
+    html.light-mode strong, 
+    html.light-mode strong span { 
+      color: #000000 !important; 
+    }
+
+    /* Fixed Header i Logo */
+    html.light-mode .fixed-header-container { 
+      background-color: white !important; 
+      border-bottom: 1px solid #e2e8f0;
+    }
+    html.light-mode .header-title { color: var(--primary-color) !important; }
+    html.light-mode .page-close-button { color: var(--primary-color) !important; }
+
+    /* Modal (Popup) unutrašnjost */
+    html.light-mode .modal-content {
+      background-color: #ffffff !important;
+      color: #1e293b !important;
     }
   </style>
 </head>
@@ -582,7 +621,7 @@
                         for="EMAIL" data-required="*">EMAIL</label>
 
                       <div class="entry__field">
-                        <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Email address""
+                        <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Email address"
                           data-required="true" required />
                       </div>
                     </div>
