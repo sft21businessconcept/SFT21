@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFT21 - Decision: Free Member with Refund</title>
+    <title>SFT21 - Decision: Termination with Donation</title>
 
   <!-- ============================================= -->
   <!-- UNIVERZALNA SKRIPTA ZA INICIJALIZACIJU TEME -->
@@ -85,7 +85,7 @@
       left: 0;
       width: 100%;
       z-index: 500;
-      background-color: #ffffff; 
+      background-color: var(--primary-color);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
@@ -104,7 +104,7 @@
     .fixed-header-container .header-title {
       font-family: 'Arial Narrow', Arial, sans-serif;
       font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      color: var(--primary-color); 
+      color: var(--fluorescent-green);
       font-weight: bold;
       text-align: center;
       text-transform: uppercase;
@@ -116,7 +116,7 @@
       right: 1rem;
       transform: translateY(-50%);
       font-size: 2.2rem;
-      color: var(--primary-color); 
+      color: var(--fluorescent-green);
       background: none;
       border: none;
       cursor: pointer;
@@ -170,7 +170,7 @@
     .decision-content-box .main-greeting {
       font-size: clamp(1.2rem, 2.5vw, 1.5rem);
       color: white;
-      text-align: center; 
+      text-align: center; /* Ovo stavlja tekst u sredinu */
       margin-bottom: 25px;
       font-weight: bold;
     }
@@ -218,7 +218,7 @@
       left: 0;
     }
 
-.confirm-main-page-button {
+    .confirm-main-page-button {
       background-color: var(--button-confirm-bg) !important;
       color: white !important;
       padding: 12px 30px !important;
@@ -270,10 +270,15 @@
       position: relative;
       box-shadow: 0 0 35px rgba(128, 255, 0, 0.4);
       animation: fadeIn 0.3s ease-out;
+
+      /* OVE DVIJE LINIJE SU KLJUČNE ZA SKROLANJE */
       max-height: 90vh;
+      /* Visina popupa je 90% ekrana */
       overflow-y: auto;
+      /* Omogućava skrolanje unutar popupa */
     }
 
+    /* SAKRIVANJE POLJA ZA IZNOS (da Popup bude kraći) */
     [data-attribute="POCETNI_IZNOS"],
     .sib-input[data-attribute="POCETNI_IZNOS"] {
       display: none !important;
@@ -314,6 +319,7 @@
       border-radius: 10px;
     }
 
+    /* ANIMIRANA POZADINA */
     .animated-background {
       position: fixed;
       top: 0;
@@ -353,6 +359,7 @@
       pointer-events: none;
     }
 
+    /* Custom Cursor */
     .custom-cursor {
       position: fixed;
       width: 20px;
@@ -367,17 +374,23 @@
       opacity: 0;
     }
 
-/* ============================================================ */
-    /* FINALNI POPRAVAK ZA LIGHT MODE - KOPIRAJTE SVE ISPOD OVOGA */
-    /* ============================================================ */
-    
-    html.light-mode body { 
+    /* Light mode */
+ html.light-mode body { 
         background-color: #f8fafc !important; 
         color: #1e293b !important; 
     }
     html.light-mode #network-canvas { background-color: transparent !important; }
     
-    /* Glavni okvir postaje bijel */
+    /* HEADER: Bijela traka, ljubičasta slova (kao na prvoj kartici) */
+    html.light-mode .fixed-header-container {
+      background-color: #ffffff !important;
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+    }
+    html.light-mode .header-title { color: var(--primary-color) !important; }
+    html.light-mode .page-close-button { color: var(--primary-color) !important; }
+
+    /* Glavni okvir kartice */
     html.light-mode .decision-content-box {
         background-color: #ffffff !important;
         border-color: #e2e8f0 !important;
@@ -385,34 +398,40 @@
     }
 
     /* Glavni naslovi (Poštovanje/Greetings) postaju LJUBIČASTI */
-    html.light-mode .main-greeting,
-    html.light-mode .main-congrats-title,
-    html.light-mode .header-title { 
+    html.light-mode .main-greeting { 
         color: var(--primary-color) !important; 
     }
 
-    /* Žuti tekst koji je bio nevidljiv sada postaje TAMNO SIV (čitljiv) */
+    /* Tekst "ODABRALI STE PREKINUTI..." postaje TAMNO SIV */
     html.light-mode .intro-section p { 
         color: #334155 !important; 
-        font-weight: 500 !important;
     }
 
-    /* Sva podebljana slova postaju potpuno CRNA */
+    /* Poseban okvir "Važno je napomenuti..." (postaje vrlo svijetlo ljubičast) */
+    html.light-mode .important-note-dark {
+        background: rgba(106, 27, 154, 0.05) !important;
+        border: 1px solid rgba(106, 27, 154, 0.1) !important;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    html.light-mode .important-note-dark p {
+        color: #1e293b !important;
+    }
+
+    /* Sav ostali tekst u kartici i napomena na dnu */
+    html.light-mode .detailed-text p, 
+    html.light-mode .final-note-section p { 
+        color: #334155 !important; 
+    }
+
+    /* Podebljani tekstovi (strong) postaju potpuno CRNI */
     html.light-mode strong { 
         color: #000000 !important; 
     }
 
-    /* Tekstovi unutar kartice */
-    html.light-mode .detailed-text p, 
-    html.light-mode .action-info p,
-    html.light-mode .detailed-text ul li { 
-        color: #334155 !important; 
-    }
-
-    /* Pomoćni okvir s napomenom o povratu */
-    html.light-mode .important-note-dark {
-        background: rgba(106, 27, 154, 0.05) !important;
-        border: 1px solid rgba(106, 27, 154, 0.1);
+    /* Zeleni tekst na dnu ("Žao nam je...") postaje tamniji radi kontrasta */
+    html.light-mode p[style*="var(--fluorescent-green)"] {
+        color: #15803d !important; /* Tamno zelena koja je čitljiva na bijelom */
     }
 
     /* Popup prozor (Brevo forma) */
@@ -420,9 +439,6 @@
         background-color: #ffffff !important;
         color: #1e293b !important;
     }
-
-    /* Gumb za zatvaranje (X) */
-    html.light-mode .page-close-button { color: var(--primary-color) !important; }
     /* ============================================================ */
 /* PRILAGODBA BREVO FORME - PINK & LJUBIČASTA TEMA (LIGHT MODE) */
 /* ============================================================ */
@@ -495,12 +511,7 @@ html.light-mode .modal-close-button {
 html.light-mode #sib-container h2 {
     color: #ab47bc !important;
 }
-html.light-mode #sib-container .entry__specification,
-html.light-mode #sib-container .entry__specification strong {
-    color: #ffffff !important; /* Sve ispod emaila postaje BIJELO */
-   -webkit-text-fill-color: #ffffff !important;
-}
-  </style>
+</style>
 </head>
 
 <body>
@@ -514,8 +525,8 @@ html.light-mode #sib-container .entry__specification strong {
 
     <div class="fixed-header-container">
         <div class="header-content">
-            <span class="header-title">SFT21 – Decision to continue as SFuser / FBA</span>
-            <button class="page-close-button" id="closePageButton" title="Natrag na prethodnu stranicu">×</button>
+            <span class="header-title">SFT21 – Decision: Termination with Donation</span>
+            <button class="page-close-button" id="closePageButton" title="Close">×</button>
         </div>
     </div>
 
@@ -524,33 +535,32 @@ html.light-mode #sib-container .entry__specification strong {
             <h2 class="main-greeting">Greetings</h2>
             <div class="intro-section">
                 <p>
-                    YOU HAVE CHOSEN TO TERMINATE BUSINESS COOPERATION, WITH A REQUEST FOR A REFUND OF THE MONEY PAID FOR THE STARTING PACKAGE, WHILE RETAINING THE USER ACCOUNT AS A FREE REGISTERED USER, (SFUSER OR FREE BUSINESS ACCOUNT),<br>
-                    IN ACCORDANCE WITH THE RULES OF CONDUCT AND BUSINESS WITHIN OUR COMMUNITY.
+                    YOU HAVE CHOSEN TO TERMINATE BUSINESS COOPERATION WITH OUR COMPANY,<br>
+                    WITH A REQUEST THAT THE AMOUNT OF YOUR STARTING PACKAGE PAYMENT BE USED FOR CHARITABLE PURPOSES,<br>
+                    AND PERMANENT DELETION OF YOUR DATA FROM OUR DATABASES.
                 </p>
             </div>
             
             <div class="detailed-text">
                 <div class="important-note-dark">
-                    <p>Since you are withdrawing from the business, it is important to note that the company, in accordance with the franchise agreement you signed, <strong>IS NOT OBLIGED TO REFUND THE MONEY YOU PAID FOR THE STARTING PACKAGE,</strong> however, as the company owners do not want anyone to feel damaged within our company, <strong>your funds will be returned to you!</strong></p>
+                    <p>Since you are withdrawing from the business, it is important to note that the company, in accordance with the franchise agreement you signed, <strong>IS NOT OBLIGED TO REFUND THE MONEY YOU PAID FOR THE STARTING PACKAGE,</strong> however, as the company owners do not want anyone to feel damaged within our company, <strong>your funds will be used for charitable purposes, in accordance with your request!</strong></p>
                 </div>
                 <p>
-                    Users who have earned and withdrawn an amount equal to or greater than the amount paid for the starting package are not eligible for a refund. Along with the refund request, it is necessary to attach a <strong>valid personal document</strong> (ID card, passport, or driver's license) <strong>used for KYC</strong> <span class="kyc-info">(or a new one if the old document has expired)</span>. You will submit the request after the company notifies you that it has started the refund process. The money will be returned to your user account wallet, from where you can withdraw it to your card, bank account, or spend it in the company webshop.
+                    By your decision not to continue business, the company commits to permanently deleting your data from all our databases.
                 </p>
-                <p>
-                    By deciding to continue as a free registered user, you retain the SFT21 user account with the right to use the social network, blog, webshop, payment system, participate in sweepstakes, and our other projects and applications, but without the right to participate in the distribution of funds according to the SFalgorithm rules and the new Franchise Agreement, without any obligations to the company.
-                </p>
-                <p>
-                    Your user account remains in our company's main database but is deleted from its position in the SFalgorithm fund distribution.
-                </p>
-                <div class="action-info">
-                     <p>
-                        By clicking the <strong>"ACTIVATE ACCOUNT"</strong> button in your new SFoffice, you will have the option to reactivate your user account and continue business as an SFfranchisee, should you decide to do so later. In that case, you continue business by taking the first available position in the SFalgorithm.
+
+                <div class="final-note-section">
+                     <p>Our sincerest advice is to follow our development and return to our community as soon as possible.</p>
+                     <p>By registering for free, you become a member of our community without any obligations, with the possibility of reactivation if you decide to join us later. In that case, you continue business by taking the first available position in the SFalgorithm.</p>
+                     <p style="margin-top: 20px; font-weight: bold; color: var(--fluorescent-green);">
+                        We are sorry that you have decided to leave our community, but we respect your decision.<br>
+                        We wish you all the best both personally and professionally.
                      </p>
                 </div>
             </div>
 
             <div class="confirm-button-container">
-              <button class="confirm-main-page-button" id="openBrevoPopup">CONFIRM SELECTION</button>
+                <button class="confirm-main-page-button" id="openPopupForConfirmation">CONFIRM SELECTION</button>
             </div>
         </div>
     </div>
@@ -637,6 +647,11 @@ html.light-mode #sib-container .entry__specification strong {
           color: #80ff00 !important;
           -webkit-text-fill-color: #80ff00 !important;
         }
+        html.light-mode #sib-container .entry__specification,
+        html.light-mode #sib-container .entry__specification strong {
+            color: #ffffff !important; /* Sve ispod emaila postaje BIJELO */
+            -webkit-text-fill-color: #ffffff !important;
+        }
       </style>
       <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
       <!--  END - We recommend to place the above code in head tag of your website html -->
@@ -677,7 +692,7 @@ html.light-mode #sib-container .entry__specification strong {
             style="text-align:center; background-color:rgba(8,0,0,0.47); max-width:540px; border-radius:22px; border-width:2px; border-color:#00fe00; border-style:solid; direction:ltr">
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
              <form id="sib-form" method="POST" target="hidden_iframe"
-              action="https://7e6b58d8.sibforms.com/serve/MUIFACpGnRt_wYSobl8vzmmDTulvjOJTQJrewTl9A2kizWmL3oh_fdFx1eDWtaOG0BDRZYud_uUFDeKChEZnnZMovlqgOe8ITCRBYn-yDloLfxGg8ScHPIjoUpFlLsJJn2PXVj95IAuhO9XHy2uhVUfZqtnAw5K-ZwyHyu5hTX5zI4LRpVqIQv5tenDTPSYKNiOQNRY9IS_nWXRGsQ==">
+              action="https://7e6b58d8.sibforms.com/serve/MUIFADUW3vRIerYaZg0aHPqYdtrDwrysnholnjzrwMoZmAp49qEJy9Ioxn7wne_2vtM-bezFyk98xk40IVW4v6x7WvXmC4kfA6IAhTttxgPCdEVsllNQ3JifyS6mM6WUEDj0SPGTOlqUfsS75W0OGnvctZ5QtWPlc8P24lSP6NldNzfidxuFepf7f6iSM3mu5UQRWfFRHmmEnK6KeQ==">
               <div style="padding: 8px 0;">
                 <div class="sib-form-block"
                   style="font-size:32px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#00fe00; background-color:transparent; text-align:center">
@@ -828,9 +843,6 @@ html.light-mode #sib-container .entry__specification strong {
               <div style="padding: 8px 0;">
                 <div class="sib-form-block"
                   style="font-size:21px; text-align:center; font-family:Helvetica, sans-serif; color:#00fe00; background-color:transparent; text-align:center">
-                  <div class="sib-text-form-block">
-                    <p>Thank You and Welcome to SFteam!</p>
-                  </div>
                 </div>
               </div>
               <div style="padding: 8px 0;">
@@ -851,7 +863,7 @@ html.light-mode #sib-container .entry__specification strong {
                   </div>
                   <div
                     style="font-size:14px; text-align:left; font-family:Helvetica, sans-serif; color:#ffff00; background-color:transparent;">
-                    <p><em>Your information is collected solely for account verification and to facilitate your transition to the new system. We take your privacy seriously. You may request to access, update, or delete your data at any time by contacting us at </em><a
+                    <p><em>We collect your data exclusively for identity verification purposes to process your request for donating funds to humanitarian causes and the permanent closure of your user account. We take your privacy seriously. At any time, you may request access to, modification, or deletion of your data by sending an inquiry to </em><a
                         href="https://www.google.com/url?sa=E&amp;q=mailto%3Aofficial%40sft21.com"
                         target="_blank">official@sft21.com</a><em>.</em></p>
                   </div>
@@ -912,7 +924,7 @@ html.light-mode #sib-container .entry__specification strong {
 <script>
     document.addEventListener('DOMContentLoaded', () => {
       const modal = document.getElementById('brevoModalOverlay');
-      const openBtn = document.getElementById('openBrevoPopup');
+      const openBtn = document.getElementById('openPopupForConfirmation');
       const closeBtn = document.getElementById('closeBrevoModal');
 
       // 1. Logic for retrieving the amount from the URL parameter
@@ -1062,4 +1074,3 @@ html.light-mode #sib-container .entry__specification strong {
 </body>
 
 </html> 
-
