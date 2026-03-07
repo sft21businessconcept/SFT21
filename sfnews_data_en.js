@@ -216,7 +216,7 @@ const sfNews = [
             </footer>
         `
     },
-     {
+    {
         id: 3,
         title: "Agreement on the Purchase of an SFLicense and Participation in the SFT21 Business Model",
         date: "January 10, 2026",
@@ -262,6 +262,68 @@ const sfNews = [
             <p>If you have any questions or concerns regarding the provisions of the Agreement, feel free to contact us at the email address:</p>
             <p class="text-center my-4"><a href="mailto:licenca@sft21.com" class="text-fluorescent-green font-bold hover:underline">licenca@sft21.com</a></p>
 
+        `
+    },
+    {
+        id: 4,
+        title: "BIG NEWS: World-renowned, international journalist, author, and PR expert Sanja Andrijić Marinović takes over SFT21 Public Relations and Media!",
+        date: "March 09, 2026",
+        imageSrc: "img/sanja_mm.png",
+        shortTitle: "Sanja Andrijić Marinović",
+        contentHTML: `
+            <p class="font-semibold text-white">We are proud to announce that Sanja Andrijić Marinović (known on the international scene as Sanja Mihaljinac), a top journalist, writer, and communications expert, one of the most prominent figures in the history of modern Croatian and European journalism, whose biography includes collaboration with the most important media houses in Europe, has joined our SFteam as part of the management of SFT21.</p>
+            
+            <p class="mt-4">Her engagement as Director of Public Relations and Media confirms our strategic determination for full transparency and global expansion. Sanja is not just a reinforcement – she is confirmation that SFT21 is becoming a project of global significance, supported by the knowledge and integrity of a person who has been at the center of world events for decades.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">From Vatican Audiences to World Security Leaders</h3>
+            <p>Sanja Andrijić Marinović brings to SFT21 experience that is rarely encountered. As a long-time correspondent from Rome and the Vatican, she had the rare honor of being at four private audiences with Pope John Paul II.</p>
+
+            <h4 class="text-xl font-bold text-white mt-6 mb-3">Her professional authority is confirmed by exclusive interviews with the world's most powerful people, including:</h4>
+            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 mb-6">
+                <li><strong class="text-white">Italian Political Leaders:</strong> President of the Republic Sergio Mattarella, former prime ministers Silvio Berlusconi, Matteo Renzi, Giulio Andreotti, Gianfranco Fini, Senate President Pietro Grasso, Presidents of the Chamber of Deputies of the Italian Parliament Gianfranco Fini, Irene Pivetti, and many others…</li>
+                <li><strong class="text-white">Global Security Leaders:</strong> Interpol Secretary General Ronald K. Noble, Europol Director Sir Robert Mark Wainwright, Director of the Italian Secret Service Sismi Gennaro Vecchione, and Antonio Manganelli, former police chief and Director General for Public Security of Italy.</li>
+                <li><strong class="text-white">Regional Statesmen:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić, Vuk Drašković, and many others were just some of her interlocutors.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Partnerships with Giants: From FIAT Owners to Marconi's Legacy</h3>
+            <p>Sanja's versatility is reflected in the circles of the highest world business. She was a business partner of Prince Guglielmo Marconi, grandson of the legendary scientist, and she also interviewed Gianni Agnelli, the legendary owner of FIAT and a symbol of Italian industrial power.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Style and PR Icon: High Fashion and the World Jet-Set</h3>
+            <p>As long-time PR Director for Eastern Europe for the famous fashion magus Renato Balestra, Sanja built bridges between high fashion and our region. Her collaboration and exclusive interviews with icons and doyens of high fashion such as Armani, Dolce & Gabbana, Benetton, Missoni, and Naomi Campbell, along with the promotion of luxury in the cult Glamour Caffe of Siniša Svilan, makes her an undisputed authority in building brands and images.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Journalistic Strength and Moral Compass</h3>
+            <p>In addition to glamour and high politics, Sanja showed incredible courage in investigative journalism. Authorship of the book "'Ndrangheta", which she wrote with the most famous Italian anti-mafia prosecutor Alberto Cisterna, testifies to her unwavering search for transparency – a value that is at the heart of the SFT21 concept.</p>
+
+            <p class="mt-6">Her reports and analyses have graced the screens and pages of media giants such as:</p>
+            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 my-6">
+                <li><strong class="text-white">Croatian Radiotelevision (HRT)</strong> and <strong class="text-white">Federal TV</strong>,</li>
+                <li><strong class="text-white">Deutsche Welle (DW)</strong> and <strong class="text-white">Radio Free Europe</strong>,</li>
+                <li>Leading regional and national newspapers: <strong class="text-white">Vjesnik, Večernji list, Slobodna Dalmacija, Novi list, Oslobođenje, Avaz, Vijesti</strong> and many others.</li>
+            </ul>
+
+            <p>In addition to her correspondent work for the Eastern European market, Sanja has achieved a notable career within the Italian media space itself, collaborating with prestigious newspapers such as <i class="text-white">"Il Gazzettino Veneziano"</i> and <i class="text-white">"La Gazzetta del Sud"</i>.</p>
+
+            <h3 class="text-2xl font-bold text-purple-400 pt-8 mb-4">Why SFT21?</h3>
+            <p>As the president of the ex-journalists' association Esjoya and director of the New Immigration platform, Sanja has dedicated her life to human rights, in search of truth and transparency. She recognized SFT21 as a project that offers a fairer model for the global community, based on local and regional roots.</p>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    "I have collaborated with kings, popes, and presidents, but the real power always lies in people who unite around a fair vision. SFT21 is that vision," Sanja said.
+                </p>
+            </blockquote>
+
+            <p>Mladen Pejić and Zoran Lazarević conclude: <i class="text-gray-300">"Sanja is not just a reinforcement, she is our connection to the world. Her name opens doors from Berlin to Rome, and her expertise guarantees that the truth about SFT21 will be heard clearly, professionally, and without compromise. She is our link to the highest levels of global diplomacy, while her reputation and history of working with Interpol and Europol give our members unprecedented security."</i></p>
+
+            <div class="text-center pt-10">
+                <p class="font-bold text-2xl text-white">Sanja, welcome to the SFT21 family!</p>
+                <p class="mt-4 text-fluorescent-green text-xl font-bold">Together we are writing history.</p>
+            </div>
+
+            <footer class="mt-12 pt-6 border-t border-gray-700">
+                <p class="hashtag-container text-sm text-center">
+                    #SanjaAndrijicMarinovic #SFT21 #PR #GlobalExpansion #EthicsInBusiness #Journalism #Transparency #SFteam
+                </p>
+            </footer>
         `
     }
 ];
