@@ -88,7 +88,7 @@ const sfNews = [
         id: 2,
         title: "Ključni Potez za Budućnost: Licencni Paketi vs. Startni Paketi",
         date: "14. Studeni 2025.",
-        imageSrc: "img/image_883718.jpg", 
+        imageSrc: "img/image_883718.jpg",
         shortTitle: "Licenca vs Franšiza",
         contentHTML: `
             <p class="font-semibold text-white">Koja je razlika između Licencnih i Startnih paketa?</p>
@@ -255,13 +255,75 @@ const sfNews = [
                 <li><strong>Primjeri i tumačenja:</strong> Konkretni scenariji koji objašnjavaju primjenu odredbi u praksi.</li>
             </ul>
 
-            <p>Ovaj video je neophodan za sve koji žele potpuno razumjeti ugovor prije potpisivanja – bilo da ste fizička osoba, poduzetnik ili pravna osoba.</p>
+            <p>Ovaj video je neophodan za sve koji želite potpuno razumjeti ugovor prije potpisivanja – bilo da ste fizička osoba, poduzetnik ili pravna osoba.</p>
             <p>Za cjelovitu analizu i detaljna pojašnjenja, preporučujemo gledanje cijelog videa.</p>
 
             <h4 class="text-xl font-bold text-purple-400 mt-8">Pitanja ili nedoumice?</h4>
             <p>U slučaju da imate pitanja ili nedoumice u pogledu odredbi Ugovora, slobodno nam se obratite na email adresu:</p>
             <p class="text-center my-4"><a href="mailto:licenca@sft21.com" class="text-fluorescent-green font-bold hover:underline">licenca@sft21.com</a></p>
 
+        `
+    },
+    {
+        id: 4,
+        title: "VELIKA VIJEST: Svjetski priznata, renomirana međunarodna novinarka, autorica i PR stručnjakinja Sanja Andrijić Marinović preuzima SFT21 odnose s javnošću i medije!",
+        date: "09. Ožujak 2026.",
+        imageSrc: "img/sanja_mm.png",
+        shortTitle: "Sanja Andrijić Marinović",
+        contentHTML: `
+            <p class="font-semibold text-white">S ponosom objavljujemo da se našem SFteam-u, kao dio menadžmenta kompanije SFT21 pridružila Sanja Andrijić Marinović (na međunarodnoj sceni poznata kao Sanja Mihaljinac), vrhunska novinarka, spisateljica i komunikacijska stručnjakinja, jedna od najistaknutijih figura u povijesti modernog hrvatskog i europskog novinarstva, čija biografija obuhvaća suradnju s najvažnijim medijskim kućama Europe.</p>
+            
+            <p class="mt-4">Njezin angažman na poziciji direktorice odnosa s javnošću i medije potvrđuje našu stratešku odlučnost za potpunu transparentnost i globalnu ekspanziju. Sanja nije samo pojačanje – ona je potvrda da SFT21 postaje projekt od globalnog značaja, podržan znanjem i integritetom osobe koja je desetljećima bila u samom središtu svjetskih zbivanja.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Od vatikanskih audijencija do čelnika svjetske sigurnosti</h3>
+            <p>Sanja Andrijić Marinović u SFT21 donosi iskustvo koje se rijetko susreće. Kao dugogodišnja dopisnica iz Rima i Vatikana, imala je rijetku čast biti na čak četiri privatne audijencije kod pape Ivana Pavla II.</p>
+
+            <h4 class="text-xl font-bold text-white mt-6 mb-3">Njezin profesionalni autoritet potvrđuju ekskluzivni intervjui s najmoćnijim ljudima svijeta, uključujući:</h4>
+            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 mb-6">
+                <li><strong class="text-white">Političke lidere Italije:</strong> Predsjednika republike Sergia Mattarellu, bivše premijere Silvija Berlusconija, Mattea Renzija, Giulija Andreottija, Gianfranca Finija, predsjednika senata Pietra Grassa, predsjednike zastupničkog doma Parlamenta Italije Gianfranco Fini, Irene Pivetti i mnoge druge…</li>
+                <li><strong class="text-white">Čelnike globalne sigurnosti:</strong> Glavnog tajnika Interpola Ronald K. Noble, ravnatelja Europola Sir Robert Mark Wainwright, direktora talijanske tajne službe Sismi, Gennaro Vecchione te Antonio Manganelli, bivši šef policije i glavni direktor za javnu sigurnost Italije.</li>
+                <li><strong class="text-white">Regionalne državnike:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić, Vuk Drašković i mnogi drugi bili su samo neki od njezinih sugovornika.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Partnerstva s gigantima: Od vlasnika FIAT-a do Marconijevog nasljeđa</h3>
+            <p>Sanjina svestranost ogleda se u krugovima najvišeg svjetskog biznisa. Bila je poslovna partnerica princa Guglielma Marconija, unuka legendarnog znanstvenika, te je također intervjuirala Gianni Agnellija, legendarnog vlasnika FIAT-a i simbolom talijanske industrijske moći.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Ikona stila i PR-a: Visoka moda i svjetski jet-set</h3>
+            <p>Kao dugogodišnja PR direktorica za Istočnu Europu čuvenog modnog maga Renata Balestre, Sanja je gradila mostove između vrhunske mode i naših prostora. Njezina suradnja i ekskluzivni intervjui s ikonama i doajenima visoke mode kao što su Armani, Dolce & Gabbana, Benetton, Missoni i Naomi Campbell, uz promociju luksuza u kultnom Glamour Caffe-u Siniše Svilana, čini je neprikosnovenim autoritetom u građenju brenda i imidža.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Novinarska čvrstoća i moralni kompas</h3>
+            <p>Osim glamura i visoke politike, Sanja je pokazala nevjerojatnu hrabrost u istraživačkom novinarstvu. Autorstvo na knjizi "'Ndrangheta", koju je napisala s najpoznatijim talijanskim protumafijaškim tužiteljem Albertom Cisternom, svjedoči o njezinoj nepokolebljivoj potrazi za transparentnošću – vrijednošću koja je u samom srcu SFT21 koncepta.</p>
+
+            <p class="mt-6">Njezini izvještaji i analize krasili su ekrane i stranice medijskih giganata kao što su:</p>
+            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 my-6">
+                <li><strong class="text-white">Hrvatska radiotelevizija (HRT)</strong> i <strong class="text-white">Federalna TV</strong>,</li>
+                <li><strong class="text-white">Deutsche Welle (DW)</strong> i <strong class="text-white">Radio Slobodna Europa (Free Europe)</strong>,</li>
+                <li>Vodeći regionalni i nacionalni listovi: <strong class="text-white">Vjesnik, Večernji list, Slobodna Dalmacija, Novi list, Oslobođenje, Avaz, Vijesti</strong> i mnogi drugi.</li>
+            </ul>
+
+            <p>Osim dopisničkog rada za istočnoeuropsko tržište, Sanja je ostvarila zapaženu karijeru i unutar samog talijanskog medijskog prostora surađujući s uglednim listovima poput <i class="text-white">"Il Gazzettino Veneziano"</i> i <i class="text-white">"La Gazzetta del Sud"</i>.</p>
+
+            <h3 class="text-2xl font-bold text-purple-400 pt-8 mb-4">Zašto SFT21?</h3>
+            <p>Kao predsjednica ex-novinarske udruge Esjoya i direktorica platforme New Immigration, Sanja je život posvetila ljudskim pravima, u potrazi za istinom i transparentnosti. SFT21 je prepoznala kao projekt koji nudi pravedniji model za globalnu zajednicu, utemeljen na lokalnim i regionalnim korijenima.</p>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    "Surađivala sam s kraljevima, papama i predsjednicima, ali prava snaga uvijek leži u ljudima koji se udružuju oko poštene vizije. SFT21 je ta vizija," poručila je Sanja.
+                </p>
+            </blockquote>
+
+            <p>Mladen Pejić i Zoran Lazarević zaključuju: <i class="text-gray-300">"Sanja nije samo pojačanje, ona je naša veza sa svijetom. Njezino ime otvara vrata od Berlina do Rima, a njezina stručnost jamči da će se istina o SFT21 čuti jasno, profesionalno i bez kompromisa. Ona je naša poveznica s najvišim nivoima svjetske diplomacije dok njezin ugled i povijest rada s Interpolom i Europolom našim članovima daju neviđenu sigurnost."</i></p>
+
+            <div class="text-center pt-10">
+                <p class="font-bold text-2xl text-white">Sanja, dobrodošla u SFT21 obitelj!</p>
+                <p class="mt-4 text-fluorescent-green text-xl font-bold">Zajedno ispisujemo povijest.</p>
+            </div>
+
+            <footer class="mt-12 pt-6 border-t border-gray-700">
+                <p class="hashtag-container text-sm text-center">
+                    #SanjaAndrijicMarinovic #SFT21 #PR #GlobalExpansion #EthicsInBusiness #Journalism #Transparency #SFteam
+                </p>
+            </footer>
         `
     }
 ];
