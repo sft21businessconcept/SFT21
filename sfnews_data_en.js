@@ -308,7 +308,7 @@ const sfNews = [
 
             <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
                 <p class="text-xl font-bold text-white italic">
-                    "I have collaborated with kings, popes, and presidents, but the real power always lies in people who unite around a fair vision. SFT21 is that vision," Sanja said.
+                    "It is a great honor to be part of the SFT21 project, which brings a new dimension to connecting people, ideas, and business opportunities through its unique concept. It is precisely this innovation and different approach that give us a solid foundation to believe in the project's ultimate success. I am grateful for the trust placed in me and look forward to working on the international expansion of this community, which has real potential to achieve significant results," Sanja said.
                 </p>
             </blockquote>
 
@@ -327,6 +327,7 @@ const sfNews = [
         `
     }
 ];
+
 
 
 
