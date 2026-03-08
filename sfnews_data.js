@@ -308,7 +308,7 @@ const sfNews = [
 
             <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
                 <p class="text-xl font-bold text-white italic">
-                    "Surađivala sam s kraljevima, papama i predsjednicima, ali prava snaga uvijek leži u ljudima koji se udružuju oko poštene vizije. SFT21 je ta vizija," poručila je Sanja.
+                    "Velika mi je čast biti dio projekta SFT21, koji svojim jedinstvenim konceptom donosi novu dimenziju povezivanja ljudi, ideja i poslovnih prilika. Upravo ta inovativnost i drugačiji pristup daju nam snažan temelj da vjerujemu u vrhunski uspjeh projekta . Zahvaljujem na ukazanom povjerenju i veselim se radu na medjunarodnom razvoju ove zajednice koja ima realan  potencijal u ostvarenju značajnih rezultata." poručila je Sanja.
                 </p>
             </blockquote>
 
@@ -327,6 +327,7 @@ const sfNews = [
         `
     }
 ];
+
 
 
 
