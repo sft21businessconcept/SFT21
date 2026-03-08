@@ -282,7 +282,7 @@ const sfNews = [
             <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 mb-6">
                 <li><strong class="text-white">Italian Political Leaders:</strong> President of the Republic Sergio Mattarella, former prime ministers Silvio Berlusconi, Matteo Renzi, Giulio Andreotti, Gianfranco Fini, Senate President Pietro Grasso, Presidents of the Chamber of Deputies of the Italian Parliament Gianfranco Fini, Irene Pivetti, and many others…</li>
                 <li><strong class="text-white">Global Security Leaders:</strong> Interpol Secretary General Ronald K. Noble, Europol Director Sir Robert Mark Wainwright, Director of the Italian Secret Service Sismi Gennaro Vecchione, and Antonio Manganelli, former police chief and Director General for Public Security of Italy.</li>
-                <li><strong class="text-white">Regional Statesmen:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić, Vuk Drašković, and many others were just some of her interlocutors.</li>
+                <li><strong class="text-white">Regional Statesmen:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić and many others were just some of her interlocutors.</li>
             </ul>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Partnerships with Giants: From FIAT Owners to Marconi's Legacy</h3>
@@ -327,6 +327,7 @@ const sfNews = [
         `
     }
 ];
+
 
 
 
