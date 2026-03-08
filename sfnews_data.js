@@ -282,7 +282,7 @@ const sfNews = [
             <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 mb-6">
                 <li><strong class="text-white">Političke lidere Italije:</strong> Predsjednika republike Sergia Mattarellu, bivše premijere Silvija Berlusconija, Mattea Renzija, Giulija Andreottija, Gianfranca Finija, predsjednika senata Pietra Grassa, predsjednike zastupničkog doma Parlamenta Italije Gianfranco Fini, Irene Pivetti i mnoge druge…</li>
                 <li><strong class="text-white">Čelnike globalne sigurnosti:</strong> Glavnog tajnika Interpola Ronald K. Noble, ravnatelja Europola Sir Robert Mark Wainwright, direktora talijanske tajne službe Sismi, Gennaro Vecchione te Antonio Manganelli, bivši šef policije i glavni direktor za javnu sigurnost Italije.</li>
-                <li><strong class="text-white">Regionalne državnike:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić, Vuk Drašković i mnogi drugi bili su samo neki od njezinih sugovornika.</li>
+                <li><strong class="text-white">Regionalne državnike:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić i mnogi drugi bili su samo neki od njezinih sugovornika.</li>
             </ul>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Partnerstva s gigantima: Od vlasnika FIAT-a do Marconijevog nasljeđa</h3>
@@ -327,6 +327,7 @@ const sfNews = [
         `
     }
 ];
+
 
 
 
