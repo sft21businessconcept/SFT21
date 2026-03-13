@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politika privatnosti - SFT21 Business Concept</title>
+    <title>Uvjeti korištenja - SFT21 Business Concept</title>
 
     <script>
         function applySft21Theme() {
@@ -23,6 +23,9 @@
 
         // 1. Primijeni temu ODMAH pri učitavanju da se spriječi "bljesak"
         applySft21Theme();
+
+        // 2. Dodaj listener za 'pageshow' događaj. Ovo rješava problem
+        //    kada se stranica učita iz "back-forward" cachea preglednika.
         window.addEventListener('pageshow', function (event) {
             // event.persisted je 'true' ako je stranica učitana iz cachea
             if (event.persisted) {
@@ -123,12 +126,215 @@
             display: block;
         }
 
-        /* Osnovni layout za sve stranice */
-        body.page-layout {
+        /* Stilovi specifični za login stranicu */
+        body.login-page {
+            color: var(--text-color);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            /* Možete dodati i druge zajedničke stilove ovdje */
+        }
+
+        main.login-main {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            /* Veći odmak od headera */
+            padding-bottom: 3rem;
+            padding-left: 1rem;
+            /* Padding za manje ekrane */
+            padding-right: 1rem;
+            /* Padding za manje ekrane */
+        }
+
+        .login-card {
+            position: relative;
+            background-color: rgba(13, 1, 24, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-color);
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 28rem;
+            width: 100%;
+            padding: 2rem 2.5rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .login-title {
+            color: var(--fluorescent-green);
+        }
+
+        .login-subtitle {
+            color: var(--fluorescent-green);
+        }
+
+        .form-input-login {
+            border: 1px solid var(--fluorescent-green);
+            background-color: rgba(13, 1, 24, 0.6);
+            color: white;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+        }
+
+        .form-input-login::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-input-login:focus {
+            outline: none;
+            border-color: var(--fluorescent-orange);
+            background-color: rgba(13, 1, 24, 0.8);
+            box-shadow: 0 0 0 3px rgba(128, 255, 0, 0.3);
+        }
+
+        .form-input-login.invalid {
+            border-color: var(--error-red) !important;
+            box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.4) !important;
+        }
+
+        .error-message {
+            color: var(--error-red);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+            min-height: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .login-label {
+            color: var(--text-color);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .login-submit-button {
+            background-color: var(--fluorescent-green);
+            color: #0e076a;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .login-submit-button:hover {
+            background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%);
+            transform: translateY(-2px);
+        }
+
+        .form-checkbox-login {
+            color: var(--fluorescent-green);
+            border-color: var(--fluorescent-green);
+            background-color: transparent;
+            height: 1rem;
+            width: 1rem;
+            border-radius: 0.25rem;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .form-checkbox-login:checked {
+            background-color: var(--fluorescent-green);
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%230d0118' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .form-checkbox-login:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(128, 255, 0, 0.3);
+        }
+
+        .checkbox-label-login {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text-color);
+            cursor: pointer;
+            line-height: 1rem;
+        }
+
+        .login-link {
+            color: var(--fluorescent-green);
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .login-link:hover {
+            color: var(--fluorescent-orange);
+            text-decoration: underline;
+        }
+
+        .register-prompt-text {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+
+        .register-link {
+            font-weight: 700;
+            color: var(--fluorescent-green);
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            display: inline-block;
+        }
+
+        .register-link:hover {
+            color: var(--fluorescent-orange);
+            text-decoration: underline;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+        }
+
+        form>div:not(.checkbox-container):not(.text-sm) {
+            margin-bottom: 1rem;
+        }
+
+        .flex.justify-between+div {
+            margin-top: 1.5rem;
+        }
+
+        hr {
+            margin: 1.5rem 0;
+            border-color: rgba(128, 255, 0, 0.2);
+            border-top-width: 1px;
+            border-style: dashed;
+        }
+
+        .login-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--fluorescent-green);
+            line-height: 1;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.2s ease, color 0.2s ease;
+        }
+
+        .login-close-btn:hover {
+            color: var(--fluorescent-orange);
+            opacity: 1;
         }
 
         /* Stilovi za Navigaciju */
@@ -324,25 +530,16 @@
     <nav class="fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <!-- Lijeva strana: Logo (ispravan link) -->
+                <!-- Lijeva strana: Logo -->
                 <div class="flex items-center">
                     <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
-                    <a href="index_en.html" class="flex flex-col logo-nav">
+                    <a href="index.html" class="flex flex-col logo-nav">
                         <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
                     </a>
                 </div>
 
-                <!-- Desna strana: Desktop Navigacija (s ispravnim linkovima) -->
+                <!-- Desna strana: Desktop Navigacija -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <a href="index_en.html#home" class="nav-link transition-colors duration-300">Home</a>
-                    <a href="index_en.html#business-concept" class="nav-link transition-colors duration-300">Business
-                        Concept</a>
-                    <a href="index_en.html#license-packages" class="nav-link transition-colors duration-300">License
-                        Packages</a>
-                    <a href="index_en.html#starter-packages" class="nav-link transition-colors duration-300">Starter
-                        Packages</a>
-                    <a href="index_en.html#contact" class="nav-link transition-colors duration-300">Contact</a>
-
                     <div class="language-selector relative">
                         <button id="theme-toggle" type="button"
                             class="text-white hover:text-fluorescent-green transition-colors duration-300 text-xl p-2 rounded-full">
@@ -354,16 +551,14 @@
                             <i class="fas fa-globe"></i>
                         </button>
                         <div id="desktop-lang-dropdown" class="language-dropdown">
-                            <a href="privacy-policy_en.html" class="language-item"> <img
-                                    src="https://flagcdn.com/w20/gb.png" class="flag-image" alt="English">
-                                <span>ENG</span> </a>
-                            <a href="privacy-policy.html" class="language-item"> <img
-                                    src="https://flagcdn.com/w20/hr.png" class="flag-image" alt="Croatian">
-                                <span>HRV</span> </a>
+                            <a href="terms-of-use.html" class="language-item"> <img src="https://flagcdn.com/w20/gb.png"
+                                    alt="English"> <span>ENG</span> </a>
+                            <a href="uvjeti-koristenja.html" class="language-item"> <img
+                                    src="https://flagcdn.com/w20/hr.png" alt="Croatian"> <span>HRV</span> </a>
                         </div>
                     </div>
-                    <a href="login_en.html" class="btn-primary text-xs">Login</a>
-                    <a href="register_en.html" class="btn-primary text-xs">Registration</a>
+                    <a href="login.html" class="btn-primary text-xs">Prijava</a>
+                    <a href="register.html" class="btn-primary text-xs">Registracija</a>
                 </div>
 
                 <!-- Mobilni Hamburger -->
@@ -374,7 +569,7 @@
             </div>
         </div>
 
-        <!-- Mobilni Navigacijski Meni (s ispravnim linkovima) -->
+        <!-- Mobilni Navigacijski Meni -->
         <div class="nav-menu md:hidden">
             <div class="mb-4">
                 <button id="theme-toggle-mobile" type="button"
@@ -383,146 +578,167 @@
                     <i id="theme-toggle-light-icon-mobile" class="fas fa-sun hidden"></i>
                 </button>
             </div>
-            <a href="index_en.html#home" class="block py-3 text-center">Home</a>
-            <a href="index_en.html#business-concept" class="block py-3 text-center">Business Concept</a>
-            <a href="index_en.html#license-packages" class="block py-3 text-center">License Packages</a>
-            <a href="index_en.html#starter-packages" class="block py-3 text-center">Starter Packages</a>
-            <a href="index_en.html#contact" class="block py-3 text-center">Contact</a>
+            <!-- Gumbi u mobilnom meniju -->
             <div class="flex flex-col mt-5 px-6 pt-4 border-t border-gray-700">
-                <a href="login_en.html" class="btn-primary w-full text-center text-xs">Login</a>
-                <a href="register_en.html" class="btn-primary w-full text-center text-xs mt-3">Registration</a>
+                <a href="login.html" class="btn-primary w-full text-center text-xs">Prijava</a>
+                <a href="register.html" class="btn-primary w-full text-center text-xs mt-3">Registracija</a>
             </div>
         </div>
     </nav>
 
     <main class="legal-content-wrapper">
-        <div class="legal-content glass-card">
-            <h1>Privacy Policy</h1>
-            <p class="last-updated">Last Updated: September 10, 2025</p>
+        <div class="legal-content glass-card interactive-card">
 
-            <h2>1. Introduction</h2>
-            <p>This Privacy Policy ("Policy") describes how SFT21 LLC ("Company", "we", "our") collects, uses, shares,
-                and protects your personal information when you use our websites and services within the SFT21 Ecosystem
-                ("Services").</p>
-            <p>Your privacy is extremely important to us. By using our Services, you agree to the collection and use of
-                information in accordance with this Policy.</p>
+            <h1>Uvjeti korištenja</h1>
+            <p class="last-updated">Datum zadnje izmjene: 10. rujna 2025.</p>
 
-            <h2>2. What Information We Collect</h2>
-            <p>We collect various types of information to provide and improve our Services for you.</p>
+            <h2>Uvod</h2>
+            <p>Dobrodošli na SFT21! Ovi Uvjeti korištenja ("Uvjeti") predstavljaju pravno obvezujući sporazum između
+                vas, kao korisnika ("vi", "vaš", "Korisnik"), i tvrtke SFT21 LLC ("Kompanija", "mi", "naš"), sa
+                sjedištem na adresi 2120 Carey Ave, Cheyenne, WY 82001, Wyoming, USA.</p>
+            <p>Pristupanjem, registracijom ili korištenjem bilo kojeg dijela web stranice
+                https://sft21businessconcept.github.io/SFT21/ i povezanih platformi unutar SFT21 Ekosustava
+                (uključujući, ali ne ograničavajući se na SFured, SFnet i SFshop), potvrđujete da ste pročitali,
+                razumjeli i da se slažete s ovim Uvjetima i našom Politikom privatnosti. Ako se ne slažete s ovim
+                Uvjetima, molimo vas da ne koristite naše usluge.</p>
+
+            <h2>1. Definicije ključnih pojmova</h2>
             <ul>
-                <li><strong>Information You Provide to Us Directly:</strong>
+                <li><strong>Usluge:</strong> Sve web stranice, platforme (uključujući, ali ne ograničavajući se na
+                    SFured, SFnet i SFshop), aplikacije, sadržaj i funkcionalnosti koje Kompanija trenutno nudi ili će
+                    ponuditi u budućnosti unutar SFT21 Ekosustava.</li>
+                <li><strong>Korisnik:</strong> Svaka osoba koja pristupa ili koristi Usluge, bez obzira na to je li
+                    registrirana.</li>
+                <li><strong>Registrirani korisnik:</strong> Korisnik koji je uspješno kreirao korisnički račun.</li>
+                <li><strong>Vlasnik Licence:</strong> Registrirani korisnik koji je kupio SFT21 Licencni Paket.</li>
+                <li><strong>SFfranšizer:</strong> Vlasnik Licence ili drugi kupac koji je sklopio Franšizni ugovor.</li>
+                <li><strong>Sadržaj:</strong> Sav tekst, grafika, slike, softver, video, audio i druge informacije
+                    dostupne putem Usluga.</li>
+                <li><strong>Korisnički sadržaj:</strong> Sav sadržaj koji Korisnici objavljuju, prenose ili dijele putem
+                    Usluga (npr. postovi na SFnetu, recenzije proizvoda).</li>
+            </ul>
+
+            <h2>2. Prihvatljivost i registracija računa</h2>
+            <ul>
+                <li><strong>Dobna granica i suglasnost:</strong> Korištenje naših Usluga dopušteno je osobama koje imaju
+                    najmanje 16 godina.
                     <ul>
-                        <li><strong>Account Registration Data:</strong> When you create an account, we collect your
-                            first and last name, username, email address, and password.</li>
-                        <li><strong>Identity Verification (KYC) Data:</strong> To activate certain functionalities, we
-                            may require you to provide additional information, such as your address, date of birth, and
-                            a photograph or scan of a valid identification document (ID card, passport).</li>
-                        <li><strong>Contact Information:</strong> When you contact us via contact forms or email, we
-                            collect your name, email address, and the content of your message.</li>
-                        <li><strong>Transaction Data:</strong> When you purchase a License Package, we collect
-                            information necessary to process payments, although credit card details are handled by our
-                            payment processing partners and are not stored by us.</li>
+                        <li>Ako imate 18 ili više godina, samostalno prihvaćate ove Uvjete.</li>
+                        <li>Ako imate između 16 i 18 godina (smatrate se maloljetnikom prema mjerodavnom pravu), za
+                            kreiranje računa i korištenje Usluga nužna je suglasnost roditelja ili zakonskog skrbnika
+                            ("Zastupnik"). Prilikom registracije, od vas će se tražiti da dostavite podatke o Zastupniku
+                            te obrazac suglasnosti koji Zastupnik mora potpisati. Prihvaćanjem ovih Uvjeta, potvrđujete
+                            da ste dobili valjanu suglasnost. Zastupnik koji daje suglasnost također prihvaća ove Uvjete
+                            u vaše ime i preuzima odgovornost za vaše aktivnosti na platformi.</li>
                     </ul>
                 </li>
-                <li><strong>Information We Collect Automatically:</strong>
-                    <ul>
-                        <li><strong>Usage Data:</strong> Information on how you use our Services, such as the pages you
-                            visit, the time spent on them, and the actions you take.</li>
-                        <li><strong>Device Data:</strong> Information about the device you use to access the Services,
-                            including IP address, browser type, operating system, and unique device identifiers.</li>
-                        <li><strong>Cookies:</strong> We use cookies and similar tracking technologies to track activity
-                            on our Services and store certain information. More details can be found in our Cookie
-                            Policy.</li>
-                    </ul>
+                <li><strong>Točnost informacija:</strong> Prilikom registracije, obvezujete se pružiti točne, potpune i
+                    ažurne informacije, uključujući i podatke o Zastupniku ako je primjenjivo. Vi ste odgovorni za
+                    održavanje točnosti tih informacija.</li>
+                <li><strong>Sigurnost računa:</strong> Vi ste isključivo odgovorni za sigurnost svoje lozinke i za sve
+                    aktivnosti koje se događaju pod vašim korisničkim računom. Obvezujete se odmah obavijestiti
+                    Kompaniju o bilo kakvom neovlaštenom korištenju vašeg računa.</li>
+                <li><strong>Provjera identiteta (KYC - Know Your Customer):</strong> Kreiranje korisničkog računa i
+                    pristup funkcionalnostima unutar SFT21 Ekosustava, uključujući SFured, SFnet i SFshop, uvjetovano je
+                    uspješnim završetkom obveznog postupka provjere identiteta (KYC). Ovaj postupak je nužan radi
+                    sigurnosti svih korisnika, sprječavanja prijevara i usklađenosti s regulatornim zahtjevima. U sklopu
+                    KYC procesa, od vas će se tražiti da dostavite točne osobne podatke te važeću dokumentaciju, što
+                    može uključivati, ali nije ograničeno na, fotografiju osobnog dokumenta i "selfie" fotografiju.
+                    Odbijanje ili neuspjeh u prolasku KYC procedure rezultirat će nemogućnošću korištenja Usluga koje
+                    zahtijevaju registrirani račun.</li>
+            </ul>
+
+            <h2>3. Pravila korištenja i ponašanja Korisnika</h2>
+            <p>Korištenjem naših Usluga, obvezujete se da nećete:</p>
+            <ul>
+                <li>Objavljivati lažne, obmanjujuće, ilegalne, klevetničke, uvredljive ili diskriminirajuće informacije.
                 </li>
+                <li>Koristiti Usluge za bilo kakve nezakonite svrhe ili kršenje bilo kojih lokalnih, državnih,
+                    nacionalnih ili međunarodnih zakona.</li>
+                <li>Lažno se predstavljati kao druga osoba ili entitet.</li>
+                <li>Distribuirati spam, neželjene poruke, lančana pisma ili piramidalne sheme.</li>
+                <li>Učitavati viruse, zlonamjerni kod ili bilo što što bi moglo naštetiti funkcionalnosti Usluga.</li>
+                <li>Pokušavati neovlašteno pristupiti našim sustavima, računima drugih Korisnika ili prikupljati njihove
+                    osobne podatke.</li>
+                <li>Kršiti prava intelektualnog vlasništva Kompanije ili trećih strana.</li>
             </ul>
 
-            <h2>3. How We Use Your Information</h2>
-            <p>We use your information for the following purposes:</p>
+            <h2>4. Vlasnička prava i intelektualno vlasništvo</h2>
             <ul>
-                <li><strong>To Provide and Maintain the Services:</strong> Including creating and managing your account,
-                    processing transactions, and providing customer support.</li>
-                <li><strong>For Identity Verification (KYC):</strong> To comply with legal obligations and prevent
-                    fraud.</li>
-                <li><strong>To Communicate with You:</strong> To send you important notices about your account,
-                    transactions, changes to our terms or services, and marketing messages (if you have consented).</li>
-                <li><strong>To Improve the Services:</strong> We analyze usage data to understand how our users interact
-                    with the Services and how we can improve them.</li>
-                <li><strong>For Security:</strong> To monitor and prevent fraud, abuse, and other harmful activities.
-                </li>
+                <li><strong>Vlasništvo Kompanije:</strong> Sve Usluge, uključujući SFT21 brend, logotipe, softver
+                    (uključujući SFalgoritam), dizajn i Sadržaj, isključivo su vlasništvo Kompanije i njenih davatelja
+                    licenci, zaštićeni zakonima o autorskim pravima i drugim zakonima o intelektualnom vlasništvu.</li>
+                <li><strong>Licenca za korištenje:</strong> Dajemo vam ograničenu, neekskluzivnu, neprenosivu i opozivu
+                    licencu za pristup i korištenje Usluga isključivo za vaše osobne, nekomercijalne svrhe (osim ako
+                    nije drugačije definirano Franšiznim ugovorom), u skladu s ovim Uvjetima.</li>
+                <li><strong>Korisnički sadržaj:</strong> Vi zadržavate vlasništvo nad svojim Korisničkim sadržajem.
+                    Međutim, objavljivanjem Korisničkog sadržaja, dajete Kompaniji globalnu, neekskluzivnu, besplatnu
+                    licencu za korištenje, kopiranje, modificiranje, distribuciju i prikazivanje tog sadržaja u svrhu
+                    pružanja i promocije Usluga.</li>
             </ul>
 
-            <h2>4. How We Share Your Information</h2>
-            <p>We do not sell or rent your personal information to third parties. We may share it only in the following
-                situations:</p>
+            <h2>5. Specifični uvjeti za proizvode</h2>
             <ul>
-                <li><strong>With Service Providers:</strong> With third parties that perform services on our behalf,
-                    such as payment processors, hosting providers, and analytics tools. They have access to your data
-                    only to the extent necessary to perform these services and are obligated to protect it.</li>
-                <li><strong>For Legal Compliance:</strong> We may disclose your information if we believe it is
-                    necessary to comply with a law, court order, or other legal process.</li>
-                <li><strong>To Protect Our Rights:</strong> We may disclose information to protect the rights, property,
-                    or safety of the Company, our Users, or the public.</li>
+                <li><strong>Kupnja Licencnih Paketa:</strong> Kupnja SFT21 Licence regulirana je zasebnim Ugovorom o
+                    kupnji licence. U slučaju sukoba između ovih Uvjeta i Ugovora o kupnji licence, odredbe Ugovora o
+                    kupnji licence imaju prednost.</li>
+                <li><strong>Franšizno poslovanje:</strong> Sudjelovanje u SFT21 Business Conceptu kao SFfranšizer
+                    regulirano je zasebnim Franšiznim ugovorom. U slučaju sukoba, odredbe Franšiznog ugovora imaju
+                    prednost.</li>
             </ul>
 
-            <h2>5. How Long We Retain Your Data</h2>
-            <p>We retain your personal data for as long as necessary for the purposes stated in this Policy, unless a
-                longer retention period is required or permitted by law. Data associated with your account is kept as
-                long as your account is active. After account closure, data may be retained in our archives to comply
-                with legal obligations or resolve disputes.</p>
-
-            <h2 id="gdpr-rights">6. Your Privacy Rights (including GDPR)</h2>
-            <p>SFT21 LLC is committed to respecting your privacy rights. If you are a resident of the European Economic
-                Area (EEA), the United Kingdom, or Switzerland, the General Data Protection Regulation (GDPR) provides
-                you with the following rights over your personal data:</p>
+            <h2>6. Odricanje od jamstva i ograničenje odgovornosti</h2>
             <ul>
-                <li><strong>Right to Access:</strong> You have the right to request and obtain a copy of the personal
-                    data we hold about you.</li>
-                <li><strong>Right to Rectification:</strong> You have the right to request that we correct any
-                    inaccurate or incomplete personal data.</li>
-                <li><strong>Right to Erasure ("Right to be Forgotten"):</strong> You have the right to request the
-                    deletion of your personal data when it is no longer necessary for the purposes for which it was
-                    collected, or under other conditions stipulated by law.</li>
-                <li><strong>Right to Restrict Processing:</strong> You have the right to request that we temporarily
-                    halt the processing of your data in certain situations.</li>
-                <li><strong>Right to Data Portability:</strong> You have the right to request that we provide your data
-                    in a structured, machine-readable format, so you can transfer it to another data controller.</li>
-                <li><strong>Right to Object:</strong> You have the right to object to the processing of your personal
-                    data that is based on our legitimate interests.</li>
-                <li><strong>Right to Withdraw Consent:</strong> If processing is based on your consent, you have the
-                    right to withdraw that consent at any time.</li>
+                <li><strong>"KAKAV JEST":</strong> Usluge se pružaju "takve kakve jesu" i "prema dostupnosti", bez
+                    ikakvih jamstava, izričitih ili prešutnih. Kompanija ne jamči da će Usluge biti neprekinute, sigurne
+                    ili bez grešaka.</li>
+                <li><strong>OGRANIČENJE ODGOVORNOSTI:</strong> U najvećoj mjeri dopuštenoj zakonom, Kompanija, njeni
+                    direktori, zaposlenici i partneri neće biti odgovorni za bilo kakvu neizravnu, slučajnu, posebnu,
+                    posljedičnu ili kaznenu štetu, uključujući gubitak profita, podataka, dobre volje ili druge
+                    nematerijalne gubitke, koji proizlaze iz vašeg pristupa ili korištenja Usluga.</li>
+                <li><strong>RIZICI:</strong> Kao što je navedeno u Ugovoru o kupnji licence, ostvarivanje bilo kakvih
+                    financijskih benefita nije garantirano i ovisi o nizu poslovnih i tržišnih rizika.</li>
             </ul>
-            <p><strong>How to Exercise Your Rights?</strong></p>
-            <p>You can submit a request to exercise any of the above rights by sending an email to our Data Protection
-                Officer at: dpo@sft21.com</p>
-            <p><strong>Right to Lodge a Complaint</strong></p>
-            <p>If you believe that the processing of your personal data violates the GDPR, you have the right to lodge a
-                complaint with a data protection supervisory authority in the EU member state of your residence, place
-                of work, or where the alleged infringement occurred.</p>
 
-            <h2>7. Data Security</h2>
-            <p>We implement reasonable technical and organizational measures to protect your personal data from
-                unauthorized access, use, alteration, or destruction. However, no data transmission over the Internet is
-                100% secure, and we cannot guarantee absolute security.</p>
+            <h2>7. Prestanak korištenja</h2>
+            <ul>
+                <li><strong>Vašom odlukom:</strong> Možete prestati koristiti naše Usluge u bilo kojem trenutku. Za
+                    trajno brisanje računa, molimo slijedite procedure navedene u Politici privatnosti.</li>
+                <li><strong>Našom odlukom:</strong> Zadržavamo pravo, prema vlastitom nahođenju, privremeno suspendirati
+                    ili trajno ukinuti vaš korisnički račun i pristup Uslugama ako utvrdimo da ste prekršili ove Uvjete
+                    ili druge važeće ugovore (poput Ugovora o kupnji licence ili Franšiznog ugovora).</li>
+            </ul>
+            <p>U slučaju takve odluke, uložit ćemo razumne napore da vas obavijestimo putem e-pošte o poduzetoj mjeri. U
+                obavijesti će biti naveden razlog za suspenziju ili ukidanje računa te ćete, gdje je to primjenjivo i
+                moguće, biti upućeni na vaša prava i korake koje možete poduzeti, poput prava na žalbu ili pojašnjenje,
+                u skladu s našim internim procedurama.</p>
+            <p>Kompanija zadržava pravo poduzeti trenutne mjere bez prethodne najave u slučajevima teških kršenja, poput
+                ilegalnih aktivnosti, ugrožavanja sigurnosti platforme ili drugih Korisnika.</p>
 
-            <h2>8. Children's Privacy</h2>
-            <p>Our Services are not intended for individuals under the age of 16. We do not knowingly collect personal
-                information from children below this age. If we become aware that we have collected data from a child
-                under 16, we will take immediate steps to remove that information.</p>
-            <p>For individuals between the ages of 16 and 18 (minors), the collection of personal data is permitted only
-                with verifiable consent from a parent or legal guardian. As part of the registration process for minors,
-                we also collect information about the parent/guardian to administer that consent. We consider the
-                parent/guardian providing consent to be responsible for the personal data the minor provides.</p>
+            <h2>8. Izmjene Uvjeta</h2>
+            <p>Kompanija zadržava pravo, prema vlastitom nahođenju, izmijeniti ili dopuniti ove Uvjete u bilo kojem
+                trenutku.</p>
+            <p>O svim izmjenama obavijestit ćemo vas objavom ažurirane verzije Uvjeta na ovoj stranici, uz ažuriranje
+                "Datuma zadnje izmjene" na vrhu dokumenta.</p>
+            <p>Dodatno, uložit ćemo razumne napore da sve Registrirane korisnike (uključujući Vlasnike Licenci i
+                SFfranšizere) o značajnim izmjenama obavijestimo putem notifikacije unutar njihovog SFured korisničkog
+                sučelja ili putem e-pošte.</p>
+            <p>Vaš nastavak korištenja Usluga nakon što izmjene stupe na snagu smatrat će se vašim prihvaćanjem takvih
+                izmijenjenih Uvjeta. Ako se ne slažete s novim Uvjetima, morate prestati koristiti Usluge. Preporučujemo
+                da redovito pregledavate ove Uvjete kako biste bili upoznati s eventualnim promjenama.</p>
 
-            <h2>9. Changes to This Privacy Policy</h2>
-            <p>We reserve the right to modify this Policy at any time. If we make changes, we will post the updated
-                Policy on this page and update the "Last Updated" date. Your continued use of the Services after the
-                changes are posted will be deemed acceptance of the new Policy.</p>
-
-            <h2>10. Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy or our practices, please contact us:<br><strong>SFT21
-                    LLC</strong><br>Email: privacy@sft21.com</p>
+            <h2>9. Mjerodavno pravo i rješavanje sporova</h2>
+            <p>Na ove Uvjete korištenja primjenjivat će se i tumačiti materijalno pravo Švicarske, isključujući primjenu
+                Konvencije Ujedinjenih naroda o ugovorima o međunarodnoj prodaji robe (CISG).</p>
+            <p>Svi sporovi, nesuglasice ili zahtjevi koji proizlaze iz ovih Uvjeta korištenja ili su u vezi s njima,
+                uključujući njihovo kršenje, prestanak ili valjanost, konačno će se riješiti arbitražom u skladu sa
+                Švicarskim pravilima o međunarodnoj arbitraži Švicarskog arbitražnog centra.</p>
+            <p>Broj arbitara bit će jedan.<br>Mjesto arbitraže bit će Zürich, Švicarska.<br>Jezik arbitražnog postupka
+                bit će engleski.</p>
+            <h2>10. Kontakt</h2>
+            <p>Ako imate bilo kakvih pitanja o ovim Uvjetima, molimo kontaktirajte nas na: legal@sft21.com.</p>
         </div>
+
         <!-- NOVI KOD ZA PAMETNI GUMB ZA POVRATAK -->
         <div class="container mx-auto px-6 pt-12 pb-4 text-center">
             <div id="back-button-container">
@@ -564,9 +780,10 @@
             }
         </style>
 
+        <!-- ZAMIJENITE GA S OVIM NOVIM BLOKOM KODA -->
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                // === FUNKCIJA ZA PROVJERU STATUSA PRIJAVE ===
+                // === KOD ZA PROVJERU STATUSA PRIJAVE (ostaje isti) ===
                 function handleLoginState() {
                     const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
                     const isEnglish = window.location.pathname.includes('_en');
@@ -581,17 +798,15 @@
                                 btn.href = '#';
                                 btn.id = 'logout-button';
                                 btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                                if (btn.tagName === 'BUTTON') btn.disabled = false;
+                                btn.disabled = false;
                             }
                         });
                         const updatePlatformLink = (link) => {
                             const originalHref = link.href;
                             if (originalHref.includes('login')) {
-                                try {
-                                    const url = new URL(originalHref);
-                                    const redirectTarget = url.searchParams.get('redirect');
-                                    if (redirectTarget) { link.href = redirectTarget; }
-                                } catch (e) { console.error("Error parsing URL for redirect:", originalHref, e); }
+                                const url = new URL(originalHref);
+                                const redirectTarget = url.searchParams.get('redirect');
+                                if (redirectTarget) { link.href = redirectTarget; }
                             }
                         };
                         platformLinksDesktop.forEach(updatePlatformLink);
@@ -615,32 +830,33 @@
                     }
                 }
                 handleLoginState();
-                // === KRAJ FUNKCIJE ZA PROVJERU STATUSA PRIJAVE ===
+                // === KRAJ KODA ZA PROVJERU STATUSA PRIJAVE ===
 
-
-                // === LOGIKA ZA PAMETNI GUMB I FOOTER LINKOVE ===
-                const urlParams = new URLSearchParams(window.location.search);
-                const sourcePage = urlParams.get('from');
-                const isEnglish = window.location.pathname.includes('_en.html');
-
-                // 1. Logika za pametni gumb za povratak
+                // === POBOLJŠANA LOGIKA ZA PAMETNI GUMB ===
                 const backButtonContainer = document.getElementById('back-button-container');
                 if (backButtonContainer) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const sourcePage = urlParams.get('from');
+                    const isEnglish = window.location.pathname.includes('_en.html');
+
                     let backLink = '';
                     let backText = '';
 
                     if (sourcePage) {
-                        backLink = sourcePage;
+                        backLink = sourcePage; // Link je uvijek stranica s koje smo došli
 
+                        // Odredi tekst gumba na temelju stranice s koje smo došli
                         if (sourcePage.includes('register')) {
                             backText = isEnglish ? 'Back to Registration' : 'Natrag na registraciju';
                         } else if (sourcePage.includes('login')) {
                             backText = isEnglish ? 'Back to Login' : 'Natrag na prijavu';
                         } else {
+                            // Ako 'from' postoji, ali nije ni login ni register, vrati na početnu kao sigurna opcija
                             backLink = isEnglish ? 'index_en.html' : 'index.html';
                             backText = isEnglish ? 'Back to Home' : 'Natrag na početnu';
                         }
                     } else {
+                        // Zadano ponašanje ako 'from' parametar ne postoji
                         backLink = isEnglish ? 'index_en.html' : 'index.html';
                         backText = isEnglish ? 'Back to Home' : 'Natrag na početnu';
                     }
@@ -649,59 +865,60 @@
                     backButton.href = backLink;
                     backButton.className = 'btn-primary-legal';
                     backButton.textContent = backText;
-                    backButtonContainer.appendChild(backButton);
-                }
 
-                // 2. Logika za očuvanje 'from' parametra u footer linkovima
-                if (sourcePage) {
-                    const legalLinks = document.querySelectorAll('#legal-links a');
-                    legalLinks.forEach(link => {
-                        if (link.href.indexOf('?') === -1) {
-                            link.href = `${link.href}?from=${sourcePage}`;
-                        }
-                    });
+                    backButtonContainer.appendChild(backButton);
                 }
             });
         </script>
-
 
     </main>
 
     <footer class="py-16 bg-gray-900 border-t border-gray-800">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div>
-                    <h3 class="text-2xl font-bold mb-6 text-white">SFT21</h3>
-                    <p class="text-gray-400 mb-8">On strong local and regional foundations, we create a global online
-                        community that connects people in a new, more humane, and fairer way.</p>
+                <div class="md:col-span-1">
+                    <h3 class="text-2xl font-bold mb-6 text-white">SFT21 </h3>
+                    <p class="text-gray-400 mb-8">Na jakim lokalnim i regionalnim temeljima stvaramo globalnu online
+                        zajednica koja povezuje ljude na jedan novi, humaniji i prije svega pošteniji način.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-purple-400"><i
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
                                 class="fab fa-facebook-f text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-purple-400"><i
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
                                 class="fab fa-x-twitter text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-purple-400"><i
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
                                 class="fab fa-instagram text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-purple-400"><i
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
                                 class="fab fa-linkedin-in text-xl"></i></a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="text-lg font-bold mb-6 text-white">Quick Links</h4>
+                    <h4 class="text-lg font-bold mb-6 text-white">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="index_en.html#home" class="text-gray-400 hover:text-purple-400">Home</a></li>
-                        <li><a href="index_en.html#business-concept"
-                                class="text-gray-400 hover:text-purple-400">Business Concept</a></li>
-                        <li><a href="index_en.html#license-packages" class="text-gray-400 hover:text-purple-400">License
-                                Packages</a></li>
-                        <li><a href="index_en.html#starter-packages" class="text-gray-400 hover:text-purple-400">Starter
-                                Packages</a></li>
-                        <li><a href="register_en.html" class="text-gray-400 hover:text-purple-400">Registration</a></li>
-                        <li><a href="login_en.html" class="text-gray-400 hover:text-purple-400">Login</a></li>
-                        <li><a href="index_en.html#contact" class="text-gray-400 hover:text-purple-400">Contact</a></li>
+                        <li><a href="index.html#pocetna"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Početna</a>
+                        </li>
+                        <li><a href="index.html#poslovni-koncept"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Poslovni
+                                koncept</a></li>
+                        <li><a href="index.html#investicija"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Inicijalni
+                                paketi</a></li>
+                        <li><a href="index.html#startni-paketi"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Startni
+                                paketi</a></li>
+                        <li><a href="register.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Registracija</a>
+                        </li>
+                        <li><a href="login.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Prijava</a>
+                        </li>
+                        <li><a href="index.html#kontakt"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Kontakt</a>
+                        </li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-lg font-bold mb-6 text-white">Contact</h4>
+                    <h4 class="text-lg font-bold mb-6 text-white">Kontakt</h4>
                     <ul class="space-y-3">
                         <li class="text-gray-400">SFT21 LLC</li>
                         <li class="text-gray-400">2120 Carey Ave, Cheyenne</li>
@@ -712,24 +929,24 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-lg font-bold mb-6 text-white">Legal Information</h4>
-                    <ul class="space-y-3" id="legal-links">
-                        <li><a href="terms-of-use.html"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Terms of
-                                Use</a></li>
-                        <li><a href="privacy-policy_en.html"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Privacy
-                                Policy</a></li>
-                        <li><a href="privacy-policy_en.html#gdpr-rights"
+                    <h4 class="text-lg font-bold mb-6 text-white">Pravne informacije</h4>
+                    <ul class="space-y-3">
+                        <li><a href="uvjeti-koristenja.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Uvjeti
+                                korištenja</a></li>
+                        <li><a href="privacy-policy.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Politika
+                                privatnosti</a></li>
+                        <li><a href="privacy-policy.html#gdpr-rights"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">GDPR</a></li>
-                        <li><a href="business-rules_en.html"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Business
-                                Rules</a></li>
+                        <li><a href="business-rules.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Pravila
+                                poslovanja</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-center">
-                <p class="text-gray-400">© 2026 SFT21 LLC - All rights reserved.</p>
+                <p class="text-gray-400">© 2026 SFT21 LLC - Sva prava pridržana.</p>
             </div>
         </div>
     </footer>

@@ -282,7 +282,7 @@ const sfNews = [
             <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 mb-6">
                 <li><strong class="text-white">Političke lidere Italije:</strong> Predsjednika republike Sergia Mattarellu, bivše premijere Silvija Berlusconija, Mattea Renzija, Giulija Andreottija, Gianfranca Finija, predsjednika senata Pietra Grassa, predsjednike zastupničkog doma Parlamenta Italije Gianfranco Fini, Irene Pivetti i mnoge druge…</li>
                 <li><strong class="text-white">Čelnike globalne sigurnosti:</strong> Glavnog tajnika Interpola Ronald K. Noble, ravnatelja Europola Sir Robert Mark Wainwright, direktora talijanske tajne službe Sismi, Gennaro Vecchione te Antonio Manganelli, bivši šef policije i glavni direktor za javnu sigurnost Italije.</li>
-                <li><strong class="text-white">Regionalne državnike:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić i mnogi drugi bili su samo neki od njezinih sugovornika.</li>
+                <li><strong class="text-white">Regionalne državnike:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić, Vuk Drašković i mnogi drugi bili su samo neki od njezinih sugovornika.</li>
             </ul>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Partnerstva s gigantima: Od vlasnika FIAT-a do Marconijevog nasljeđa</h3>
@@ -308,7 +308,7 @@ const sfNews = [
 
             <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
                 <p class="text-xl font-bold text-white italic">
-                    "Velika mi je čast biti dio projekta SFT21, koji svojim jedinstvenim konceptom donosi novu dimenziju povezivanja ljudi, ideja i poslovnih prilika. Upravo ta inovativnost i drugačiji pristup daju nam snažan temelj da vjerujemo u vrhunski uspjeh projekta. Zahvaljujem na ukazanom povjerenju i veselim se radu na međunarodnom razvoju ove zajednice koja ima realan potencijal za ostvarenje značajnih rezultata," poručila je Sanja.
+                    "Surađivala sam s kraljevima, papama i predsjednicima, ali prava snaga uvijek leži u ljudima koji se udružuju oko poštene vizije. SFT21 je ta vizija," poručila je Sanja.
                 </p>
             </blockquote>
 
@@ -327,9 +327,6 @@ const sfNews = [
         `
     }
 ];
-
-
-
 
 
 

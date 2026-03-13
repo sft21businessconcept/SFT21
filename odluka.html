@@ -582,7 +582,7 @@
                     
                     // Dodajemo rel=0 (prikazuje samo tvoje videe na kraju) 
                     // i enablejsapi=1 za bolju komunikaciju s preglednikom
-                    const finalUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=0&rel=0&enablejsapi=1`;
+                    const finalUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0&enablejsapi=1`;
                     
                     ytPlayer.src = finalUrl;
                     overlay.classList.add('active');
@@ -676,8 +676,5 @@
 </html>
 
  
-
-
-
 
 

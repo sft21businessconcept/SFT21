@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +26,7 @@
 
         // 2. Dodaj listener za 'pageshow' događaj. Ovo rješava problem
         //    kada se stranica učita iz "back-forward" cachea preglednika.
-        window.addEventListener('pageshow', function(event) {
+        window.addEventListener('pageshow', function (event) {
             // event.persisted je 'true' ako je stranica učitana iz cachea
             if (event.persisted) {
                 console.log('Stranica učitana iz bfcachea, ponovno provjeravam temu.');
@@ -37,25 +38,32 @@
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- Link na vanjsku CSS datoteku -->
     <link rel="stylesheet" href="css/style.css?v=7">
     <!-- Stilovi za Login Stranicu -->
     <style>
         /* Osnovni stilovi (mogu biti u style.css) */
         :root {
-            --primary-color: #6a1b9a; /* Purple */
-            --secondary-color: #ab47bc; /* Lighter Purple */
-            --accent-color: #c55bd7; /* Even Lighter Purple */
+            --primary-color: #6a1b9a;
+            /* Purple */
+            --secondary-color: #ab47bc;
+            /* Lighter Purple */
+            --accent-color: #c55bd7;
+            /* Even Lighter Purple */
             --text-color: #e5e7eb;
             --fluorescent-orange: #d9ff00;
             --success-green: #4ade80;
             --fluorescent-green: #80ff00;
             --dark-color: #0e076a;
-            --error-red: #ff4d4d; /* Boja za greške */
+            --error-red: #ff4d4d;
+            /* Boja za greške */
         }
+
         body {
             font-family: 'Arial Narrow', Arial, sans-serif;
             background-color: #0d0118;
@@ -63,179 +71,377 @@
             overflow-x: hidden;
         }
 
-         /* == STILOVI ZA IZBORNIK JEZIKA (SAMO DESKTOP) == */
-         .language-dropdown { display: none; position: absolute; background-color: #1f2937; border: 1px solid var(--fluorescent-green); border-radius: 0.375rem; margin-top: 0.5rem; padding: 0.25rem 0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); right: 0; z-index: 60; min-width: 80px; }
-        .language-dropdown.active { display: block; }
-        .language-item { display: flex; align-items: center; padding: 0.5rem 0.75rem; font-size: 0.875rem; color: #d1d5db; white-space: nowrap; cursor: pointer; }
-        .language-item:hover { background-color: var(--primary-color); color: white; }
-        .language-item .flag-image, .language-item .flag-icon { width: 20px; height: auto; margin-right: 0.5rem; flex-shrink: 0; }
-        .language-item span:not(.flag-icon) { font-weight: 500; }
-        
-        .sft21-nav-item.dropdown .dropdown-menu:not(.language-dropdown) { position: absolute; display: none; }
-        .sft21-nav-item.dropdown:hover .dropdown-menu:not(.language-dropdown) { display: block; }
+        /* == STILOVI ZA IZBORNIK JEZIKA (SAMO DESKTOP) == */
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            background-color: #1f2937;
+            border: 1px solid var(--fluorescent-green);
+            border-radius: 0.375rem;
+            margin-top: 0.5rem;
+            padding: 0.25rem 0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            right: 0;
+            z-index: 60;
+            min-width: 80px;
+        }
 
-/* Osnovni layout za sve stranice */
-body.page-layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    /* Možete dodati i druge zajedničke stilove ovdje */
-}
-         /* Stilovi za Navigaciju */
-         .logo-nav { font-size: 1.75rem; line-height: 1; display: flex; flex-direction: column; align-items: center; }
-         .logo-nav .small-text { font-size: 0.75rem; color: #d1d5db; font-weight: normal; margin-bottom: -0.2em; }
-         .text-logo-orange { color: var(--fluorescent-green); }
-         nav.fixed { position: fixed; top: 0; left: 0; width: 100%; z-index: 50; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); background-color: rgba(13, 1, 24, 0.8); border-bottom: 1px solid var(--fluorescent-green); box-shadow: 0 2px 10px rgba(128, 255, 0, 0.3); }
-         nav a.btn-primary, nav button.btn-primary, nav a.btn-outline, nav button.btn-outline { padding: 6px 16px !important; font-size: 0.75rem !important; line-height: 1.4 !important; }
-         .hamburger { display: none; cursor: pointer; } .hamburger .bar { display: block; width: 25px; height: 3px; margin: 5px 0; background-color: white; transition: all 0.3s ease; }
-         .nav-menu { display: none; }
-         
-         @media (max-width: 768px) {
-            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); background-color: #0d0118; flex-direction: column; transition: all 0.5s ease; padding: 20px; z-index: 100; border-right: 1px solid var(--fluorescent-green); display: flex; }
-            .nav-menu.active { left: 0; }
-            .nav-menu a, .nav-menu button:not(#theme-toggle-mobile) {
-                display: block; padding: 0.75rem 1.5rem; text-align: center; transition: background-color 0.3s ease;
+        .language-dropdown.active {
+            display: block;
+        }
+
+        .language-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            color: #d1d5db;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .language-item:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .language-item .flag-image,
+        .language-item .flag-icon {
+            width: 20px;
+            height: auto;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .language-item span:not(.flag-icon) {
+            font-weight: 500;
+        }
+
+        .sft21-nav-item.dropdown .dropdown-menu:not(.language-dropdown) {
+            position: absolute;
+            display: none;
+        }
+
+        .sft21-nav-item.dropdown:hover .dropdown-menu:not(.language-dropdown) {
+            display: block;
+        }
+
+        /* Osnovni layout za sve stranice */
+        body.page-layout {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* Možete dodati i druge zajedničke stilove ovdje */
+        }
+
+        /* Stilovi za Navigaciju */
+        .logo-nav {
+            font-size: 1.75rem;
+            line-height: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-nav .small-text {
+            font-size: 0.75rem;
+            color: #d1d5db;
+            font-weight: normal;
+            margin-bottom: -0.2em;
+        }
+
+        .text-logo-orange {
+            color: var(--fluorescent-green);
+        }
+
+        nav.fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(13, 1, 24, 0.8);
+            border-bottom: 1px solid var(--fluorescent-green);
+            box-shadow: 0 2px 10px rgba(128, 255, 0, 0.3);
+        }
+
+        nav a.btn-primary,
+        nav button.btn-primary,
+        nav a.btn-outline,
+        nav button.btn-outline {
+            padding: 6px 16px !important;
+            font-size: 0.75rem !important;
+            line-height: 1.4 !important;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: #0d0118;
+                flex-direction: column;
+                transition: all 0.5s ease;
+                padding: 20px;
+                z-index: 100;
+                border-right: 1px solid var(--fluorescent-green);
+                display: flex;
             }
-            .nav-menu a:not(.btn-primary), .nav-menu button.btn-outline {
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu a,
+            .nav-menu button:not(#theme-toggle-mobile) {
+                display: block;
+                padding: 0.75rem 1.5rem;
+                text-align: center;
+                transition: background-color 0.3s ease;
+            }
+
+            .nav-menu a:not(.btn-primary),
+            .nav-menu button.btn-outline {
                 color: white;
             }
-            .nav-menu a:hover, .nav-menu button:not(#theme-toggle-mobile):hover { color: var(--fluorescent-green); background-color: rgba(128, 255, 0, 0.1); }
-            .hamburger { display: block; }
-            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            .hamburger.active .bar:nth-child(2) { opacity: 0; }
-            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-         }
 
-        #network-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+            .nav-menu a:hover,
+            .nav-menu button:not(#theme-toggle-mobile):hover {
+                color: var(--fluorescent-green);
+                background-color: rgba(128, 255, 0, 0.1);
+            }
 
-        body:not(.light-mode) nav button.btn-outline[disabled] { color: var(--fluorescent-green) !important; border-color: var(--fluorescent-green) !important; opacity: 1 !important; }
-        body.light-mode nav button.btn-outline[disabled] { opacity: 1 !important; }
-        
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        #network-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        body:not(.light-mode) nav button.btn-outline[disabled] {
+            color: var(--fluorescent-green) !important;
+            border-color: var(--fluorescent-green) !important;
+            opacity: 1 !important;
+        }
+
+        body.light-mode nav button.btn-outline[disabled] {
+            opacity: 1 !important;
+        }
+
         /* ISPRAVCI ZA LIGHT MODE U MOBILNOM MENIJU */
         body.light-mode .nav-menu {
             background-color: #f9fafb;
             border-right-color: rgba(106, 27, 154, 0.2);
         }
-        body.light-mode .nav-menu a:not(.btn-primary), body.light-mode .nav-menu button:not(#theme-toggle-mobile), body.light-mode .nav-menu #theme-toggle-mobile {
+
+        body.light-mode .nav-menu a:not(.btn-primary),
+        body.light-mode .nav-menu button:not(#theme-toggle-mobile),
+        body.light-mode .nav-menu #theme-toggle-mobile {
             color: var(--primary-color);
         }
-        body.light-mode .nav-menu a:hover, body.light-mode .nav-menu button:not(#theme-toggle-mobile):hover, body.light-mode .nav-menu #theme-toggle-mobile:hover {
+
+        body.light-mode .nav-menu a:hover,
+        body.light-mode .nav-menu button:not(#theme-toggle-mobile):hover,
+        body.light-mode .nav-menu #theme-toggle-mobile:hover {
             background-color: var(--primary-color);
             color: white;
         }
 
         /* FINALNI ISPRAVAK ZA BOJU TEKSTA NA GUMBU U DARK MODU */
-        body:not(.light-mode) .nav-menu a.btn-primary { color: var(--dark-color); }
-
+        body:not(.light-mode) .nav-menu a.btn-primary {
+            color: var(--dark-color);
+        }
     </style>
 
     <style>
-    /* U tamnom (default) modu, sakrij ikonu mjeseca, prikaži sunce */
-    #theme-toggle-dark-icon, #theme-toggle-dark-icon-mobile { display: none !important; }
-    #theme-toggle-light-icon, #theme-toggle-light-icon-mobile { display: inline-block !important; }
-    /* Kada je light-mode aktivan */
-    body.light-mode #theme-toggle-dark-icon, body.light-mode #theme-toggle-dark-icon-mobile { display: inline-block !important; }
-    body.light-mode #theme-toggle-light-icon, body.light-mode #theme-toggle-light-icon-mobile { display: none !important; }
+        /* U tamnom (default) modu, sakrij ikonu mjeseca, prikaži sunce */
+        #theme-toggle-dark-icon,
+        #theme-toggle-dark-icon-mobile {
+            display: none !important;
+        }
+
+        #theme-toggle-light-icon,
+        #theme-toggle-light-icon-mobile {
+            display: inline-block !important;
+        }
+
+        /* Kada je light-mode aktivan */
+        body.light-mode #theme-toggle-dark-icon,
+        body.light-mode #theme-toggle-dark-icon-mobile {
+            display: inline-block !important;
+        }
+
+        body.light-mode #theme-toggle-light-icon,
+        body.light-mode #theme-toggle-light-icon-mobile {
+            display: none !important;
+        }
     </style>
 </head>
 
 <body class="login-page">
-    
+
     <canvas id="network-canvas"></canvas>
     <div class="custom-cursor"></div>
 
-<nav class="fixed top-0 left-0 w-full z-50">
-    <div class="container mx-auto px-6 py-4">
-        <div class="flex justify-between items-center">
-            <!-- Lijeva strana: Logo SADA JE LINK -->
-            <div class="flex items-center">
-                <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
-                <a href="index.html" class="flex flex-col logo-nav"> <!-- ISPRAVAK: Dodan <a> tag oko loga -->
-                    <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
-                </a>
-            </div>
-
-            <!-- Desna strana: Desktop Navigacija -->
-            <div class="hidden md:flex items-center space-x-4">
-                 <!-- ISPRAVAK: Linkovi sada vode na index.html#... -->
-                <a href="index.html#pocetna" class="nav-link transition-colors duration-300">Početna</a>
-                <a href="index.html#poslovni-koncept" class="nav-link transition-colors duration-300">Poslovni koncept</a>
-                <a href="index.html#licencni-paketi" class="nav-link transition-colors duration-300">Licencni paketi</a>
-                <a href="index.html#startni-paketi" class="nav-link transition-colors duration-300">Startni paketi</a>
-                <a href="index.html#kontakt" class="nav-link transition-colors duration-300">Kontakt</a>
-                
-                <div class="language-selector relative">
-                    <button id="theme-toggle" type="button" class="text-white hover:text-fluorescent-green transition-colors duration-300 text-xl p-2 rounded-full">
-                        <i id="theme-toggle-dark-icon" class="fas fa-moon"></i>
-                        <i id="theme-toggle-light-icon" class="fas fa-sun hidden"></i>
-                    </button>
-                    <button id="desktop-lang-trigger" class="language-trigger text-white hover:text-fluorescent-green transition-colors duration-300 text-xl">
-                        <i class="fas fa-globe"></i>
-                    </button>
-                    <div id="desktop-lang-dropdown" class="language-dropdown">
-                        <a href="privacy-policy_en.html" class="language-item"> <img src="https://flagcdn.com/w20/gb.png" class="flag-image" alt="English"> <span>ENG</span> </a>
-                        <a href="privacy-policy.html" class="language-item"> <img src="https://flagcdn.com/w20/hr.png" class="flag-image" alt="Croatian"> <span>HRV</span> </a>
-                    </div>
+    <nav class="fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Lijeva strana: Logo SADA JE LINK -->
+                <div class="flex items-center">
+                    <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
+                    <a href="index.html" class="flex flex-col logo-nav"> <!-- ISPRAVAK: Dodan <a> tag oko loga -->
+                        <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
+                    </a>
                 </div>
-                 <a href="login.html" class="btn-primary text-xs">Prijava</a>
-                 <a href="register.html" class="btn-primary text-xs">Registracija</a>
-            </div>
 
-            <!-- Mobilni Hamburger -->
-            <div class="md:hidden">
-                <div class="hamburger"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </div>
+                <!-- Desna strana: Desktop Navigacija -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- ISPRAVAK: Linkovi sada vode na index.html#... -->
+                    <a href="index.html#pocetna" class="nav-link transition-colors duration-300">Početna</a>
+                    <a href="index.html#poslovni-koncept" class="nav-link transition-colors duration-300">Poslovni
+                        koncept</a>
+                    <a href="index.html#licencni-paketi" class="nav-link transition-colors duration-300">Licencni
+                        paketi</a>
+                    <a href="index.html#startni-paketi" class="nav-link transition-colors duration-300">Startni
+                        paketi</a>
+                    <a href="index.html#kontakt" class="nav-link transition-colors duration-300">Kontakt</a>
+
+                    <div class="language-selector relative">
+                        <button id="theme-toggle" type="button"
+                            class="text-white hover:text-fluorescent-green transition-colors duration-300 text-xl p-2 rounded-full">
+                            <i id="theme-toggle-dark-icon" class="fas fa-moon"></i>
+                            <i id="theme-toggle-light-icon" class="fas fa-sun hidden"></i>
+                        </button>
+                        <button id="desktop-lang-trigger"
+                            class="language-trigger text-white hover:text-fluorescent-green transition-colors duration-300 text-xl">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <div id="desktop-lang-dropdown" class="language-dropdown">
+                            <a href="privacy-policy_en.html" class="language-item"> <img
+                                    src="https://flagcdn.com/w20/gb.png" class="flag-image" alt="English">
+                                <span>ENG</span> </a>
+                            <a href="privacy-policy.html" class="language-item"> <img
+                                    src="https://flagcdn.com/w20/hr.png" class="flag-image" alt="Croatian">
+                                <span>HRV</span> </a>
+                        </div>
+                    </div>
+                    <a href="login.html" class="btn-primary text-xs">Prijava</a>
+                    <a href="register.html" class="btn-primary text-xs">Registracija</a>
+                </div>
+
+                <!-- Mobilni Hamburger -->
+                <div class="md:hidden">
+                    <div class="hamburger"> <span class="bar"></span> <span class="bar"></span> <span
+                            class="bar"></span> </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Mobilni Navigacijski Meni -->
-    <div class="nav-menu md:hidden">
-        <div class="mb-4">
-            <button id="theme-toggle-mobile" type="button" class="text-white hover:text-fluorescent-green transition-colors duration-300 text-2xl p-2 rounded-full">
-                <i id="theme-toggle-dark-icon-mobile" class="fas fa-moon"></i>
-                <i id="theme-toggle-light-icon-mobile" class="fas fa-sun hidden"></i>
-            </button>
+        <!-- Mobilni Navigacijski Meni -->
+        <div class="nav-menu md:hidden">
+            <div class="mb-4">
+                <button id="theme-toggle-mobile" type="button"
+                    class="text-white hover:text-fluorescent-green transition-colors duration-300 text-2xl p-2 rounded-full">
+                    <i id="theme-toggle-dark-icon-mobile" class="fas fa-moon"></i>
+                    <i id="theme-toggle-light-icon-mobile" class="fas fa-sun hidden"></i>
+                </button>
+            </div>
+            <!-- ISPRAVAK: Linkovi sada vode na index.html#... -->
+            <a href="index.html#pocetna" class="block py-3 text-center">Početna</a>
+            <a href="index.html#poslovni-koncept" class="block py-3 text-center">Poslovni koncept</a>
+            <a href="index.html#licencni-paketi" class="block py-3 text-center">Licencni paketi</a>
+            <a href="index.html#startni-paketi" class="block py-3 text-center">Startni paketi</a>
+            <a href="index.html#kontakt" class="block py-3 text-center">Kontakt</a>
+
+            <!-- Gumbi u mobilnom meniju -->
+            <div class="flex flex-col mt-5 px-6 pt-4 border-t border-gray-700">
+                <a href="login.html" class="btn-primary w-full text-center text-xs">Prijava</a>
+                <a href="register.html" class="btn-primary w-full text-center text-xs mt-3">Registracija</a>
+            </div>
         </div>
-        <!-- ISPRAVAK: Linkovi sada vode na index.html#... -->
-        <a href="index.html#pocetna" class="block py-3 text-center">Početna</a>
-        <a href="index.html#poslovni-koncept" class="block py-3 text-center">Poslovni koncept</a>
-        <a href="index.html#licencni-paketi" class="block py-3 text-center">Licencni paketi</a>
-        <a href="index.html#startni-paketi" class="block py-3 text-center">Startni paketi</a>
-        <a href="index.html#kontakt" class="block py-3 text-center">Kontakt</a>
-        
-         <!-- Gumbi u mobilnom meniju -->
-         <div class="flex flex-col mt-5 px-6 pt-4 border-t border-gray-700">
-            <a href="login.html" class="btn-primary w-full text-center text-xs">Prijava</a>
-            <a href="register.html" class="btn-primary w-full text-center text-xs mt-3">Registracija</a>
-        </div>
-    </div>
-</nav>
-   
+    </nav>
+
     <main class="legal-content-wrapper">
         <div class="legal-content glass-card">
             <h1>Politika privatnosti</h1>
             <p class="last-updated">Datum zadnje izmjene: 10. rujna 2025.</p>
 
             <h2>1. Uvod</h2>
-            <p>Ova Politika privatnosti ("Politika") opisuje kako SFT21 LLC ("Kompanija", "mi", "naš") prikuplja, koristi, dijeli i štiti vaše osobne podatke kada koristite naše web stranice i usluge unutar SFT21 Ekosustava ("Usluge").</p>
-            <p>Vaša privatnost nam je izuzetno važna. Korištenjem naših Usluga, pristajete na prikupljanje i korištenje podataka u skladu s ovom Politikom.</p>
+            <p>Ova Politika privatnosti ("Politika") opisuje kako SFT21 LLC ("Kompanija", "mi", "naš") prikuplja,
+                koristi, dijeli i štiti vaše osobne podatke kada koristite naše web stranice i usluge unutar SFT21
+                Ekosustava ("Usluge").</p>
+            <p>Vaša privatnost nam je izuzetno važna. Korištenjem naših Usluga, pristajete na prikupljanje i korištenje
+                podataka u skladu s ovom Politikom.</p>
 
             <h2>2. Koje podatke prikupljamo?</h2>
             <p>Prikupljamo različite vrste podataka kako bismo vam pružili i poboljšali naše Usluge.</p>
             <ul>
                 <li><strong>Podaci koje nam izravno pružate:</strong>
                     <ul>
-                        <li><strong>Podaci za registraciju računa:</strong> Kada kreirate račun, prikupljamo vaše ime i prezime, korisničko ime, email adresu i lozinku.</li>
-                        <li><strong>Podaci za provjeru identiteta (KYC):</strong> Za aktivaciju određenih funkcionalnosti, možemo tražiti da nam dostavite dodatne podatke, kao što su adresa, datum rođenja, te fotografiju ili sken važećeg identifikacijskog dokumenta (osobna iskaznica, putovnica).</li>
-                        <li><strong>Kontakt informacije:</strong> Kada nas kontaktirate putem kontakt formi ili e-pošte, prikupljamo vaše ime, email adresu i sadržaj vaše poruke.</li>
-                        <li><strong>Podaci o transakcijama:</strong> Kada kupujete Licencni Paket, prikupljamo informacije potrebne za obradu plaćanja, iako podatke o kreditnoj kartici obrađuju naši partneri za platne usluge (payment processors) i mi ih ne pohranjujemo.</li>
+                        <li><strong>Podaci za registraciju računa:</strong> Kada kreirate račun, prikupljamo vaše ime i
+                            prezime, korisničko ime, email adresu i lozinku.</li>
+                        <li><strong>Podaci za provjeru identiteta (KYC):</strong> Za aktivaciju određenih
+                            funkcionalnosti, možemo tražiti da nam dostavite dodatne podatke, kao što su adresa, datum
+                            rođenja, te fotografiju ili sken važećeg identifikacijskog dokumenta (osobna iskaznica,
+                            putovnica).</li>
+                        <li><strong>Kontakt informacije:</strong> Kada nas kontaktirate putem kontakt formi ili e-pošte,
+                            prikupljamo vaše ime, email adresu i sadržaj vaše poruke.</li>
+                        <li><strong>Podaci o transakcijama:</strong> Kada kupujete Licencni Paket, prikupljamo
+                            informacije potrebne za obradu plaćanja, iako podatke o kreditnoj kartici obrađuju naši
+                            partneri za platne usluge (payment processors) i mi ih ne pohranjujemo.</li>
                     </ul>
                 </li>
                 <li><strong>Podaci koje prikupljamo automatski:</strong>
                     <ul>
-                        <li><strong>Podaci o korištenju:</strong> Informacije o tome kako koristite naše Usluge, kao što su stranice koje posjećujete, vrijeme provedeno na njima i radnje koje poduzimate.</li>
-                        <li><strong>Podaci o uređaju:</strong> Informacije o uređaju koji koristite za pristup Uslugama, uključujući IP adresu, vrstu preglednika, operativni sustav i jedinstvene identifikatore uređaja.</li>
-                        <li><strong>Kolačići (Cookies):</strong> Koristimo kolačiće i slične tehnologije praćenja kako bismo pratili aktivnost na našim Uslugama i pohranili određene informacije. Više detalja možete pronaći u našoj Politici o kolačićima.</li>
+                        <li><strong>Podaci o korištenju:</strong> Informacije o tome kako koristite naše Usluge, kao što
+                            su stranice koje posjećujete, vrijeme provedeno na njima i radnje koje poduzimate.</li>
+                        <li><strong>Podaci o uređaju:</strong> Informacije o uređaju koji koristite za pristup Uslugama,
+                            uključujući IP adresu, vrstu preglednika, operativni sustav i jedinstvene identifikatore
+                            uređaja.</li>
+                        <li><strong>Kolačići (Cookies):</strong> Koristimo kolačiće i slične tehnologije praćenja kako
+                            bismo pratili aktivnost na našim Uslugama i pohranili određene informacije. Više detalja
+                            možete pronaći u našoj Politici o kolačićima.</li>
                     </ul>
                 </li>
             </ul>
@@ -243,243 +449,315 @@ body.page-layout {
             <h2>3. Kako koristimo vaše podatke?</h2>
             <p>Vaše podatke koristimo u sljedeće svrhe:</p>
             <ul>
-                <li><strong>Za pružanje i održavanje Usluga:</strong> Uključujući kreiranje i upravljanje vašim računom, obradu transakcija i pružanje korisničke podrške.</li>
-                <li><strong>Za provjeru identiteta (KYC):</strong> Kako bismo ispunili zakonske obveze i spriječili prijevare.</li>
-                <li><strong>Za komunikaciju s vama:</strong> Kako bismo vam slali važne obavijesti o vašem računu, transakcijama, promjenama u našim uvjetima ili uslugama, te marketinške poruke (ako ste na njih pristali).</li>
-                <li><strong>Za poboljšanje Usluga:</strong> Analiziramo podatke o korištenju kako bismo razumjeli kako naši korisnici koriste Usluge i kako ih možemo poboljšati.</li>
-                <li><strong>Za sigurnost:</strong> Za praćenje i sprječavanje prijevara, zlouporabe i drugih štetnih aktivnosti.</li>
+                <li><strong>Za pružanje i održavanje Usluga:</strong> Uključujući kreiranje i upravljanje vašim računom,
+                    obradu transakcija i pružanje korisničke podrške.</li>
+                <li><strong>Za provjeru identiteta (KYC):</strong> Kako bismo ispunili zakonske obveze i spriječili
+                    prijevare.</li>
+                <li><strong>Za komunikaciju s vama:</strong> Kako bismo vam slali važne obavijesti o vašem računu,
+                    transakcijama, promjenama u našim uvjetima ili uslugama, te marketinške poruke (ako ste na njih
+                    pristali).</li>
+                <li><strong>Za poboljšanje Usluga:</strong> Analiziramo podatke o korištenju kako bismo razumjeli kako
+                    naši korisnici koriste Usluge i kako ih možemo poboljšati.</li>
+                <li><strong>Za sigurnost:</strong> Za praćenje i sprječavanje prijevara, zlouporabe i drugih štetnih
+                    aktivnosti.</li>
             </ul>
 
             <h2>4. S kime dijelimo vaše podatke?</h2>
-            <p>Vaše osobne podatke ne prodajemo niti iznajmljujemo trećim stranama. Možemo ih dijeliti samo u sljedećim situacijama:</p>
+            <p>Vaše osobne podatke ne prodajemo niti iznajmljujemo trećim stranama. Možemo ih dijeliti samo u sljedećim
+                situacijama:</p>
             <ul>
-                <li><strong>S pružateljima usluga:</strong> S trećim stranama koje obavljaju usluge u naše ime, kao što su procesori plaćanja, pružatelji usluga hostinga i alati za analitiku. Oni imaju pristup vašim podacima samo u mjeri potrebnoj za obavljanje tih usluga i obvezni su ih štititi.</li>
-                <li><strong>Radi usklađenosti sa zakonom:</strong> Možemo otkriti vaše podatke ako vjerujemo da je to potrebno radi poštivanja zakona, sudskog naloga ili drugog pravnog procesa.</li>
-                <li><strong>Radi zaštite naših prava:</strong> Možemo otkriti podatke kako bismo zaštitili prava, imovinu ili sigurnost Kompanije, naših Korisnika ili javnosti.</li>
+                <li><strong>S pružateljima usluga:</strong> S trećim stranama koje obavljaju usluge u naše ime, kao što
+                    su procesori plaćanja, pružatelji usluga hostinga i alati za analitiku. Oni imaju pristup vašim
+                    podacima samo u mjeri potrebnoj za obavljanje tih usluga i obvezni su ih štititi.</li>
+                <li><strong>Radi usklađenosti sa zakonom:</strong> Možemo otkriti vaše podatke ako vjerujemo da je to
+                    potrebno radi poštivanja zakona, sudskog naloga ili drugog pravnog procesa.</li>
+                <li><strong>Radi zaštite naših prava:</strong> Možemo otkriti podatke kako bismo zaštitili prava,
+                    imovinu ili sigurnost Kompanije, naših Korisnika ili javnosti.</li>
             </ul>
 
             <h2>5. Koliko dugo čuvamo vaše podatke?</h2>
-            <p>Vaše osobne podatke čuvamo onoliko dugo koliko je potrebno za svrhe navedene u ovoj Politici, osim ako zakon ne zahtijeva ili dopušta duži period čuvanja. Podatke povezane s vašim računom čuvamo dok je vaš račun aktivan. Nakon zatvaranja računa, podaci se mogu zadržati u našim arhivama radi ispunjavanja zakonskih obveza ili rješavanja sporova.</p>
+            <p>Vaše osobne podatke čuvamo onoliko dugo koliko je potrebno za svrhe navedene u ovoj Politici, osim ako
+                zakon ne zahtijeva ili dopušta duži period čuvanja. Podatke povezane s vašim računom čuvamo dok je vaš
+                račun aktivan. Nakon zatvaranja računa, podaci se mogu zadržati u našim arhivama radi ispunjavanja
+                zakonskih obveza ili rješavanja sporova.</p>
 
             <h2 id="gdpr-rights">6. Vaša prava na privatnost (uključujući GDPR)</h2>
-            <p>SFT21 kompanija posvećena je poštivanju vaših prava na privatnost. Ako ste stanovnik Europskog gospodarskog prostora (EEA), Ujedinjenog Kraljevstva ili Švicarske, Opća uredba o zaštiti podataka (GDPR) pruža vam sljedeća prava nad vašim osobnim podacima:</p>
+            <p>SFT21 kompanija posvećena je poštivanju vaših prava na privatnost. Ako ste stanovnik Europskog
+                gospodarskog prostora (EEA), Ujedinjenog Kraljevstva ili Švicarske, Opća uredba o zaštiti podataka
+                (GDPR) pruža vam sljedeća prava nad vašim osobnim podacima:</p>
             <ul>
-                <li><strong>Pravo na pristup:</strong> Imate pravo zatražiti i dobiti kopiju osobnih podataka koje imamo o vama.</li>
-                <li><strong>Pravo na ispravak:</strong> Imate pravo zatražiti da ispravimo bilo koje netočne ili dopunimo nepotpune osobne podatke.</li>
-                <li><strong>Pravo na brisanje ("pravo na zaborav"):</strong> Imate pravo zatražiti brisanje vaših osobnih podataka kada oni više nisu potrebni za svrhe za koje su prikupljeni, ili pod drugim uvjetima propisanim zakonom.</li>
-                <li><strong>Pravo na ograničenje obrade:</strong> Imate pravo zatražiti da privremeno zaustavimo obradu vaših podataka u određenim situacijama.</li>
-                <li><strong>Pravo na prenosivost podataka:</strong> Imate pravo zatražiti da vam vaše podatke dostavimo u strukturiranom, strojno čitljivom formatu, kako biste ih mogli prenijeti drugom voditelju obrade.</li>
-                <li><strong>Pravo na prigovor:</strong> Imate pravo uložiti prigovor na obradu vaših osobnih podataka koja se temelji na našim legitimnim interesima.</li>
-                <li><strong>Pravo na povlačenje privole:</strong> Ako se obrada temelji na vašoj privoli, imate pravo povući tu privolu u bilo kojem trenutku.</li>
+                <li><strong>Pravo na pristup:</strong> Imate pravo zatražiti i dobiti kopiju osobnih podataka koje imamo
+                    o vama.</li>
+                <li><strong>Pravo na ispravak:</strong> Imate pravo zatražiti da ispravimo bilo koje netočne ili
+                    dopunimo nepotpune osobne podatke.</li>
+                <li><strong>Pravo na brisanje ("pravo na zaborav"):</strong> Imate pravo zatražiti brisanje vaših
+                    osobnih podataka kada oni više nisu potrebni za svrhe za koje su prikupljeni, ili pod drugim
+                    uvjetima propisanim zakonom.</li>
+                <li><strong>Pravo na ograničenje obrade:</strong> Imate pravo zatražiti da privremeno zaustavimo obradu
+                    vaših podataka u određenim situacijama.</li>
+                <li><strong>Pravo na prenosivost podataka:</strong> Imate pravo zatražiti da vam vaše podatke dostavimo
+                    u strukturiranom, strojno čitljivom formatu, kako biste ih mogli prenijeti drugom voditelju obrade.
+                </li>
+                <li><strong>Pravo na prigovor:</strong> Imate pravo uložiti prigovor na obradu vaših osobnih podataka
+                    koja se temelji na našim legitimnim interesima.</li>
+                <li><strong>Pravo na povlačenje privole:</strong> Ako se obrada temelji na vašoj privoli, imate pravo
+                    povući tu privolu u bilo kojem trenutku.</li>
             </ul>
             <h3>Kako ostvariti svoja prava?</h3>
-            <p>Zahtjev za ostvarivanje bilo kojeg od navedenih prava možete podnijeti slanjem e-pošte našem službeniku za zaštitu podataka na: dpo@sft21.com</p>
+            <p>Zahtjev za ostvarivanje bilo kojeg od navedenih prava možete podnijeti slanjem e-pošte našem službeniku
+                za zaštitu podataka na: dpo@sft21.com</p>
             <h3>Pravo na podnošenje pritužbe</h3>
-            <p>Ako smatrate da je obrada vaših osobnih podataka u suprotnosti s GDPR-om, imate pravo podnijeti pritužbu nadzornom tijelu za zaštitu podataka u državi članici EU u kojoj imate prebivalište, radno mjesto ili gdje se dogodilo navodno kršenje.</p>
-            
+            <p>Ako smatrate da je obrada vaših osobnih podataka u suprotnosti s GDPR-om, imate pravo podnijeti pritužbu
+                nadzornom tijelu za zaštitu podataka u državi članici EU u kojoj imate prebivalište, radno mjesto ili
+                gdje se dogodilo navodno kršenje.</p>
+
             <h2>7. Sigurnost podataka</h2>
-            <p>Primjenjujemo razumne tehničke i organizacijske mjere kako bismo zaštitili vaše osobne podatke od neovlaštenog pristupa, korištenja, izmjene ili uništenja. Međutim, nijedan prijenos podataka putem interneta nije 100% siguran i ne možemo jamčiti apsolutnu sigurnost.</p>
+            <p>Primjenjujemo razumne tehničke i organizacijske mjere kako bismo zaštitili vaše osobne podatke od
+                neovlaštenog pristupa, korištenja, izmjene ili uništenja. Međutim, nijedan prijenos podataka putem
+                interneta nije 100% siguran i ne možemo jamčiti apsolutnu sigurnost.</p>
 
             <h2>8. Privatnost djece</h2>
-            <p>Naše Usluge nisu namijenjene osobama mlađim od 16 godina. Svjesno ne prikupljamo osobne podatke od djece ispod te dobne granice. Ako postanemo svjesni da smo prikupili podatke od djeteta mlađeg od 16 godina, odmah ćemo poduzeti korake za uklanjanje tih informacija.</p>
-            <p>Za osobe starosti između 16 i 18 godina (maloljetnici), prikupljanje osobnih podataka je dopušteno isključivo uz provjerljivu suglasnost roditelja ili zakonskog skrbnika. U sklopu procesa registracije za maloljetnike, prikupljamo i podatke o roditelju/skrbniku kako bismo mogli administrirati tu suglasnost. Smatramo da roditelj/skrbnik koji daje suglasnost preuzima odgovornost za osobne podatke koje maloljetnik pruža.</p>
+            <p>Naše Usluge nisu namijenjene osobama mlađim od 16 godina. Svjesno ne prikupljamo osobne podatke od djece
+                ispod te dobne granice. Ako postanemo svjesni da smo prikupili podatke od djeteta mlađeg od 16 godina,
+                odmah ćemo poduzeti korake za uklanjanje tih informacija.</p>
+            <p>Za osobe starosti između 16 i 18 godina (maloljetnici), prikupljanje osobnih podataka je dopušteno
+                isključivo uz provjerljivu suglasnost roditelja ili zakonskog skrbnika. U sklopu procesa registracije za
+                maloljetnike, prikupljamo i podatke o roditelju/skrbniku kako bismo mogli administrirati tu suglasnost.
+                Smatramo da roditelj/skrbnik koji daje suglasnost preuzima odgovornost za osobne podatke koje
+                maloljetnik pruža.</p>
 
             <h2>9. Izmjene ove Politike privatnosti</h2>
-            <p>Zadržavamo pravo izmjene ove Politike u bilo kojem trenutku. Ako napravimo izmjene, objavit ćemo ažuriranu Politiku na ovoj stranici i ažurirati "Datum zadnje izmjene". Vaš nastavak korištenja Usluga nakon objave izmjena smatrat će se prihvaćanjem nove Politike.</p>
+            <p>Zadržavamo pravo izmjene ove Politike u bilo kojem trenutku. Ako napravimo izmjene, objavit ćemo
+                ažuriranu Politiku na ovoj stranici i ažurirati "Datum zadnje izmjene". Vaš nastavak korištenja Usluga
+                nakon objave izmjena smatrat će se prihvaćanjem nove Politike.</p>
 
             <h2>10. Kontakt</h2>
-            <p>Ako imate bilo kakvih pitanja o ovoj Politici privatnosti ili našim praksama, molimo kontaktirajte nas:<br><strong>SFT21 LLC</strong><br>Email: privacy@sft21.com</p>
+            <p>Ako imate bilo kakvih pitanja o ovoj Politici privatnosti ili našim praksama, molimo kontaktirajte
+                nas:<br><strong>SFT21 LLC</strong><br>Email: privacy@sft21.com</p>
         </div>
 
         <!-- NOVI KOD ZA PAMETNI GUMB ZA POVRATAK -->
-<div class="container mx-auto px-6 pt-12 pb-4 text-center"> 
-    <div id="back-button-container">
-    </div>
-</div>
+        <div class="container mx-auto px-6 pt-12 pb-4 text-center">
+            <div id="back-button-container">
+            </div>
+        </div>
 
-<style>
-    /* Osnovni stilovi za gumb */
-    .btn-primary-legal {
-        background-color: var(--fluorescent-green) !important;
-        color: #0e076a !important;
-        padding: 12px 30px !important;
-        border-radius: 50px !important;
-        font-weight: 600 !important;
-        letter-spacing: 1px !important;
-        text-transform: uppercase !important;
-        border: none !important;
-        display: inline-block;
-        transition: all 0.3s ease;
-        font-size: 1rem;
-    }
-    .btn-primary-legal:hover {
-        background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%) !important;
-        transform: translateY(-2px);
-    }
-
-    /* NOVO: Stilovi za Light Mode */
-    html.light-mode .btn-primary-legal {
-        background-color: var(--primary-color) !important; /* Ljubičasta pozadina */
-        color: white !important; /* Bijeli tekst */
-    }
-    html.light-mode .btn-primary-legal:hover {
-        background-color: var(--secondary-color) !important; /* Svjetlija ljubičasta na hover */
-    }
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // === KOD ZA PROVJERU STATUSA PRIJAVE (ostaje isti) ===
-        function handleLoginState() {
-            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-            const isEnglish = window.location.pathname.includes('_en');
-            const loginButtons = document.querySelectorAll('a[href^="login"]');
-            const platformLinksDesktop = document.querySelectorAll('#desktop-platform-menu a');
-            const platformLinksMobile = document.querySelectorAll('#mobile-platform-menu a');
-
-            if (isLoggedIn) {
-                loginButtons.forEach(btn => {
-                    if (btn.textContent.toLowerCase().includes('prijava') || btn.textContent.toLowerCase().includes('login')) {
-                        btn.textContent = isEnglish ? 'Logout' : 'Odjava';
-                        btn.href = '#';
-                        btn.id = 'logout-button';
-                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                        btn.disabled = false;
-                    }
-                });
-                const updatePlatformLink = (link) => {
-                    const originalHref = link.href;
-                    if (originalHref.includes('login')) {
-                        const url = new URL(originalHref);
-                        const redirectTarget = url.searchParams.get('redirect');
-                        if (redirectTarget) { link.href = redirectTarget; }
-                    }
-                };
-                platformLinksDesktop.forEach(updatePlatformLink);
-                platformLinksMobile.forEach(updatePlatformLink);
-                const logoutButton = document.getElementById('logout-button');
-                if (logoutButton) {
-                    logoutButton.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        sessionStorage.removeItem('isLoggedIn');
-                        alert(isEnglish ? 'You have been logged out.' : 'Odjavljeni ste.');
-                        window.location.href = isEnglish ? 'index_en.html' : 'index.html';
-                    });
-                }
-            } else {
-                const logoutButton = document.getElementById('logout-button');
-                if (logoutButton) {
-                    logoutButton.textContent = isEnglish ? 'Login' : 'Prijava';
-                    logoutButton.href = isEnglish ? 'login_en.html' : 'login.html';
-                    logoutButton.id = '';
-                }
-            }
-        }
-        handleLoginState();
-        // === KRAJ KODA ZA PROVJERU STATUSA PRIJAVE ===
-
-        // === POBOLJŠANA LOGIKA ZA PAMETNI GUMB ===
-        const backButtonContainer = document.getElementById('back-button-container');
-        if (backButtonContainer) {
-            const urlParams = new URLSearchParams(window.location.search);
-            const sourcePage = urlParams.get('from');
-            const isEnglish = window.location.pathname.includes('_en.html');
-
-            let backLink = '';
-            let backText = '';
-
-            if (sourcePage) {
-                backLink = sourcePage; // Link je uvijek stranica s koje smo došli
-
-                // Odredi tekst gumba na temelju stranice s koje smo došli
-                if (sourcePage.includes('register')) {
-                    backText = isEnglish ? 'Back to Registration' : 'Natrag na registraciju';
-                } else if (sourcePage.includes('login')) {
-                    backText = isEnglish ? 'Back to Login' : 'Natrag na prijavu';
-                } else {
-                    // Ako 'from' postoji, ali nije ni login ni register, vrati na početnu kao sigurna opcija
-                    backLink = isEnglish ? 'index_en.html' : 'index.html';
-                    backText = isEnglish ? 'Back to Home' : 'Natrag na početnu';
-                }
-            } else {
-                // Zadano ponašanje ako 'from' parametar ne postoji
-                backLink = isEnglish ? 'index_en.html' : 'index.html';
-                backText = isEnglish ? 'Back to Home' : 'Natrag na početnu';
+        <style>
+            /* Osnovni stilovi za gumb */
+            .btn-primary-legal {
+                background-color: var(--fluorescent-green) !important;
+                color: #0e076a !important;
+                padding: 12px 30px !important;
+                border-radius: 50px !important;
+                font-weight: 600 !important;
+                letter-spacing: 1px !important;
+                text-transform: uppercase !important;
+                border: none !important;
+                display: inline-block;
+                transition: all 0.3s ease;
+                font-size: 1rem;
             }
 
-            const backButton = document.createElement('a');
-            backButton.href = backLink;
-            backButton.className = 'btn-primary-legal';
-            backButton.textContent = backText;
+            .btn-primary-legal:hover {
+                background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%) !important;
+                transform: translateY(-2px);
+            }
 
-            backButtonContainer.appendChild(backButton);
-        }
-    });
-</script>
-</main>
+            /* NOVO: Stilovi za Light Mode */
+            html.light-mode .btn-primary-legal {
+                background-color: var(--primary-color) !important;
+                /* Ljubičasta pozadina */
+                color: white !important;
+                /* Bijeli tekst */
+            }
 
-<footer class="py-16 bg-gray-900 border-t border-gray-800">
-    <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <!-- Kolona 1: SFT21 -->
-            <div>
-                <h3 class="text-2xl font-bold mb-6 text-white">SFT21</h3>
-                <p class="text-gray-400 mb-8">Na jakim lokalnim i regionalnim temeljima stvaramo globalnu online zajednica koja povezuje ljude na jedan novi, humaniji i prije svega pošteniji način.</p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-x-twitter text-xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+            html.light-mode .btn-primary-legal:hover {
+                background-color: var(--secondary-color) !important;
+                /* Svjetlija ljubičasta na hover */
+            }
+        </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // === KOD ZA PROVJERU STATUSA PRIJAVE (ostaje isti) ===
+                function handleLoginState() {
+                    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+                    const isEnglish = window.location.pathname.includes('_en');
+                    const loginButtons = document.querySelectorAll('a[href^="login"]');
+                    const platformLinksDesktop = document.querySelectorAll('#desktop-platform-menu a');
+                    const platformLinksMobile = document.querySelectorAll('#mobile-platform-menu a');
+
+                    if (isLoggedIn) {
+                        loginButtons.forEach(btn => {
+                            if (btn.textContent.toLowerCase().includes('prijava') || btn.textContent.toLowerCase().includes('login')) {
+                                btn.textContent = isEnglish ? 'Logout' : 'Odjava';
+                                btn.href = '#';
+                                btn.id = 'logout-button';
+                                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                                btn.disabled = false;
+                            }
+                        });
+                        const updatePlatformLink = (link) => {
+                            const originalHref = link.href;
+                            if (originalHref.includes('login')) {
+                                const url = new URL(originalHref);
+                                const redirectTarget = url.searchParams.get('redirect');
+                                if (redirectTarget) { link.href = redirectTarget; }
+                            }
+                        };
+                        platformLinksDesktop.forEach(updatePlatformLink);
+                        platformLinksMobile.forEach(updatePlatformLink);
+                        const logoutButton = document.getElementById('logout-button');
+                        if (logoutButton) {
+                            logoutButton.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                sessionStorage.removeItem('isLoggedIn');
+                                alert(isEnglish ? 'You have been logged out.' : 'Odjavljeni ste.');
+                                window.location.href = isEnglish ? 'index_en.html' : 'index.html';
+                            });
+                        }
+                    } else {
+                        const logoutButton = document.getElementById('logout-button');
+                        if (logoutButton) {
+                            logoutButton.textContent = isEnglish ? 'Login' : 'Prijava';
+                            logoutButton.href = isEnglish ? 'login_en.html' : 'login.html';
+                            logoutButton.id = '';
+                        }
+                    }
+                }
+                handleLoginState();
+                // === KRAJ KODA ZA PROVJERU STATUSA PRIJAVE ===
+
+                // === POBOLJŠANA LOGIKA ZA PAMETNI GUMB ===
+                const backButtonContainer = document.getElementById('back-button-container');
+                if (backButtonContainer) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const sourcePage = urlParams.get('from');
+                    const isEnglish = window.location.pathname.includes('_en.html');
+
+                    let backLink = '';
+                    let backText = '';
+
+                    if (sourcePage) {
+                        backLink = sourcePage; // Link je uvijek stranica s koje smo došli
+
+                        // Odredi tekst gumba na temelju stranice s koje smo došli
+                        if (sourcePage.includes('register')) {
+                            backText = isEnglish ? 'Back to Registration' : 'Natrag na registraciju';
+                        } else if (sourcePage.includes('login')) {
+                            backText = isEnglish ? 'Back to Login' : 'Natrag na prijavu';
+                        } else {
+                            // Ako 'from' postoji, ali nije ni login ni register, vrati na početnu kao sigurna opcija
+                            backLink = isEnglish ? 'index_en.html' : 'index.html';
+                            backText = isEnglish ? 'Back to Home' : 'Natrag na početnu';
+                        }
+                    } else {
+                        // Zadano ponašanje ako 'from' parametar ne postoji
+                        backLink = isEnglish ? 'index_en.html' : 'index.html';
+                        backText = isEnglish ? 'Back to Home' : 'Natrag na početnu';
+                    }
+
+                    const backButton = document.createElement('a');
+                    backButton.href = backLink;
+                    backButton.className = 'btn-primary-legal';
+                    backButton.textContent = backText;
+
+                    backButtonContainer.appendChild(backButton);
+                }
+            });
+        </script>
+    </main>
+
+    <footer class="py-16 bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- Kolona 1: SFT21 -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-white">SFT21</h3>
+                    <p class="text-gray-400 mb-8">Na jakim lokalnim i regionalnim temeljima stvaramo globalnu online
+                        zajednica koja povezuje ljude na jedan novi, humaniji i prije svega pošteniji način.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
+                                class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
+                                class="fab fa-x-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
+                                class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
+                                class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
                 </div>
-            </div>
-            <!-- Kolona 2: Brzi linkovi -->
-            <div>
-                <h4 class="text-lg font-bold mb-6 text-white">Brzi linkovi</h4>
-                <ul class="space-y-3">
-                    <li><a href="#pocetna" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Početna</a></li>
-                    <li><a href="#poslovni-koncept" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Poslovni koncept</a></li>
-                    <li><a href="#investicija" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Licencni paketi</a></li>
-                    <li><a href="#startni-paketi" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Startni paketi</a></li>
-                    <li><a href="register.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Registracija</a></li>
-                    <li><a href="login.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Prijava</a></li>
-                    <li><a href="#kontakt" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Kontakt</a></li>
-                </ul>
-            </div>
-            <!-- Kolona 3: Kontakt -->
-            <div>
-                <h4 class="text-lg font-bold mb-6 text-white">Kontakt</h4>
+                <!-- Kolona 2: Brzi linkovi -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Brzi linkovi</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#pocetna"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Početna</a>
+                        </li>
+                        <li><a href="#poslovni-koncept"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Poslovni
+                                koncept</a></li>
+                        <li><a href="#investicija"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Licencni
+                                paketi</a></li>
+                        <li><a href="#startni-paketi"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Startni
+                                paketi</a></li>
+                        <li><a href="register.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Registracija</a>
+                        </li>
+                        <li><a href="login.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Prijava</a>
+                        </li>
+                        <li><a href="#kontakt"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Kontakt</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Kolona 3: Kontakt -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Kontakt</h4>
                     <ul class="space-y-3">
                         <li class="text-gray-400">SFT21 LLC</li>
                         <li class="text-gray-400">2120 Carey Ave, Cheyenne,</li>
                         <li class="text-gray-400">WY 82001</li>
                         <li class="text-gray-400">Wyoming, USA</li>
-                        <li><a href="mailto:info@sft21.com" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">info@sft21.com</a></li>
+                        <li><a href="mailto:info@sft21.com"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">info@sft21.com</a>
+                        </li>
                     </ul>
+                </div>
+                <!-- Kolona 4: Pravne informacije -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Pravne informacije</h4>
+                    <ul class="space-y-3">
+                        <li><a href="uvjeti-koristenja.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Uvjeti
+                                korištenja</a></li>
+                        <li><a href="privacy-policy.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Politika
+                                privatnosti</a></li>
+                        <li><a href="privacy-policy.html#gdpr-rights"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">GDPR</a></li>
+                        <li><a href="business-rules.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Pravila
+                                poslovanja</a></li>
+                    </ul>
+                </div>
             </div>
-            <!-- Kolona 4: Pravne informacije -->
-            <div>
-                <h4 class="text-lg font-bold mb-6 text-white">Pravne informacije</h4>
-                <ul class="space-y-3">
-                    <li><a href="terms-of-use.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Uvjeti korištenja</a></li>
-                    <li><a href="privacy-policy.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Politika privatnosti</a></li>
-                    <li><a href="privacy-policy.html#gdpr-rights" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">GDPR</a></li>
-                    <li><a href="business-rules.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Pravila poslovanja</a></li>
-                </ul>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© 2026 SFT21 LLC - Sva prava pridržana.</p>
             </div>
         </div>
-        <div class="border-t border-gray-800 mt-12 pt-8 text-center">
-            <p class="text-gray-400">© 2026 SFT21 LLC - Sva prava pridržana.</p>
-        </div>
-    </div>
-<!-- ZAMIJENJENO: Pulsirajući krug je sada link -->
-    <a href="sfteam.html" title="Posjetite SFteam stranicu" class="pulsating-circle">
-        <div class="circle-content">
-            <span class="circle-line line-i">I</span>
-            <span class="circle-line heart-symbol">❤️</span>
-            <span class="circle-line line-sfteam">SFteam</span>
-        </div>
-    </a>
-</footer>
+        <!-- ZAMIJENJENO: Pulsirajući krug je sada link -->
+        <a href="sfteam.html" title="Posjetite SFteam stranicu" class="pulsating-circle">
+            <div class="circle-content">
+                <span class="circle-line line-i">I</span>
+                <span class="circle-line heart-symbol">❤️</span>
+                <span class="circle-line line-sfteam">SFteam</span>
+            </div>
+        </a>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -488,7 +766,7 @@ body.page-layout {
             const desktopLangDropdown = document.getElementById('desktop-lang-dropdown');
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
-            
+
             // Custom Cursor
             const cursor = document.querySelector('.custom-cursor');
             if (cursor && body) {
@@ -516,7 +794,7 @@ body.page-layout {
                     desktopLangDropdown.classList.remove('active');
                 }
             };
-            
+
             // Desktop Language Dropdown
             if (desktopLangTrigger && desktopLangDropdown) {
                 desktopLangTrigger.addEventListener('click', (event) => {
@@ -525,7 +803,7 @@ body.page-layout {
                 });
                 desktopLangDropdown.addEventListener('click', (event) => event.stopPropagation());
             }
-            
+
             // Hamburger Menu
             if (hamburger && navMenu && body) {
                 hamburger.addEventListener('click', () => {
@@ -628,114 +906,115 @@ body.page-layout {
             }
         });
     </script>
-    
+
     <!-- SKRIPTA ZA ANIMACIJU POZADINE -->
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const canvas = document.getElementById('network-canvas');
-        if (!canvas) return;
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('network-canvas');
+            if (!canvas) return;
 
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let mouse = { x: null, y: null };
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let mouse = { x: null, y: null };
 
-        const darkOptions = {
-            particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120,
-            defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4,
-            mouseInteractionRadius: 150, mouseEffectStrength: 2,
-        };
-        const lightOptions = {
-            particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120,
-            defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4,
-            mouseInteractionRadius: 150, mouseEffectStrength: 2,
-        };
-        let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
+            const darkOptions = {
+                particleColorRGB: '128, 255, 0', lineColorRGB: '170, 0, 255', particleAmount: 120,
+                defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4,
+                mouseInteractionRadius: 150, mouseEffectStrength: 2,
+            };
+            const lightOptions = {
+                particleColorRGB: '106, 27, 154', lineColorRGB: '171, 71, 188', particleAmount: 120,
+                defaultRadius: 1.3, linkRadius: 150, particleSpeed: 0.25, lineWidth: 0.4,
+                mouseInteractionRadius: 150, mouseEffectStrength: 2,
+            };
+            let currentOptions = document.documentElement.classList.contains('light-mode') ? lightOptions : darkOptions;
 
-        const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+            const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
 
-        window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
-        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+            window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+            window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-                this.z = Math.random() * 2 - 1; this.radius = currentOptions.defaultRadius * (1 + this.z * 0.5);
-                this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
-                this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
-            }
-            draw() {
-                let finalRadius = this.radius; let opacity = 1;
-                if (mouse.x !== null) {
-                    const dist = Math.sqrt(Math.pow(this.x - mouse.x, 2) + Math.pow(this.y - mouse.y, 2));
-                    if (dist < currentOptions.mouseInteractionRadius) {
-                        const effect = (1 - dist / currentOptions.mouseInteractionRadius);
-                        finalRadius += effect * currentOptions.mouseEffectStrength; opacity += effect * 0.5;
-                    }
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                    this.z = Math.random() * 2 - 1; this.radius = currentOptions.defaultRadius * (1 + this.z * 0.5);
+                    this.vx = (Math.random() - 0.5) * currentOptions.particleSpeed;
+                    this.vy = (Math.random() - 0.5) * currentOptions.particleSpeed;
                 }
-                ctx.beginPath(); ctx.arc(this.x, this.y, finalRadius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, ${opacity * 0.85})`; ctx.fill();
-            }
-            update() {
-                this.x += this.vx * (1 + this.z * 0.5); this.y += this.vy * (1 + this.z * 0.5);
-                if (this.x > canvas.width + 5) this.x = -5; else if (this.x < -5) this.x = canvas.width + 5;
-                if (this.y > canvas.height + 5) this.y = -5; else if (this.y < -5) this.y = canvas.height + 5;
-            }
-        }
-        const initParticles = () => { particles = []; for (let i = 0; i < currentOptions.particleAmount; i++) { particles.push(new Particle()); } };
-        const drawLines = () => {
-            let pulse = Math.sin(Date.now() * 0.001) * 0.2 + 0.8;
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dist = Math.sqrt(Math.pow(particles[i].x - particles[j].x, 2) + Math.pow(particles[i].y - particles[j].y, 2));
-                    if (dist < currentOptions.linkRadius) {
-                        let opacity = (1 - (dist / currentOptions.linkRadius)) * pulse;
-                        if (mouse.x !== null) {
-                           const distToMouse1 = Math.sqrt(Math.pow(particles[i].x - mouse.x, 2) + Math.pow(particles[i].y - mouse.y, 2));
-                           const distToMouse2 = Math.sqrt(Math.pow(particles[j].x - mouse.x, 2) + Math.pow(particles[j].y - mouse.y, 2));
-                           if(distToMouse1 < currentOptions.mouseInteractionRadius || distToMouse2 < currentOptions.mouseInteractionRadius) { opacity = Math.min(1, opacity + 0.5); }
+                draw() {
+                    let finalRadius = this.radius; let opacity = 1;
+                    if (mouse.x !== null) {
+                        const dist = Math.sqrt(Math.pow(this.x - mouse.x, 2) + Math.pow(this.y - mouse.y, 2));
+                        if (dist < currentOptions.mouseInteractionRadius) {
+                            const effect = (1 - dist / currentOptions.mouseInteractionRadius);
+                            finalRadius += effect * currentOptions.mouseEffectStrength; opacity += effect * 0.5;
                         }
-                        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(${currentOptions.lineColorRGB}, ${opacity * 0.5})`; ctx.lineWidth = currentOptions.lineWidth; ctx.stroke();
                     }
+                    ctx.beginPath(); ctx.arc(this.x, this.y, finalRadius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${currentOptions.particleColorRGB}, ${opacity * 0.85})`; ctx.fill();
+                }
+                update() {
+                    this.x += this.vx * (1 + this.z * 0.5); this.y += this.vy * (1 + this.z * 0.5);
+                    if (this.x > canvas.width + 5) this.x = -5; else if (this.x < -5) this.x = canvas.width + 5;
+                    if (this.y > canvas.height + 5) this.y = -5; else if (this.y < -5) this.y = canvas.height + 5;
                 }
             }
-        };
-        const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => p.update()); drawLines(); particles.forEach(p => p.draw());
-            requestAnimationFrame(animate);
-        };
-        window.setAnimationTheme = (theme) => { currentOptions = theme === 'light' ? lightOptions : darkOptions; initParticles(); };
-        initParticles(); animate();
-    });
+            const initParticles = () => { particles = []; for (let i = 0; i < currentOptions.particleAmount; i++) { particles.push(new Particle()); } };
+            const drawLines = () => {
+                let pulse = Math.sin(Date.now() * 0.001) * 0.2 + 0.8;
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dist = Math.sqrt(Math.pow(particles[i].x - particles[j].x, 2) + Math.pow(particles[i].y - particles[j].y, 2));
+                        if (dist < currentOptions.linkRadius) {
+                            let opacity = (1 - (dist / currentOptions.linkRadius)) * pulse;
+                            if (mouse.x !== null) {
+                                const distToMouse1 = Math.sqrt(Math.pow(particles[i].x - mouse.x, 2) + Math.pow(particles[i].y - mouse.y, 2));
+                                const distToMouse2 = Math.sqrt(Math.pow(particles[j].x - mouse.x, 2) + Math.pow(particles[j].y - mouse.y, 2));
+                                if (distToMouse1 < currentOptions.mouseInteractionRadius || distToMouse2 < currentOptions.mouseInteractionRadius) { opacity = Math.min(1, opacity + 0.5); }
+                            }
+                            ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(${currentOptions.lineColorRGB}, ${opacity * 0.5})`; ctx.lineWidth = currentOptions.lineWidth; ctx.stroke();
+                        }
+                    }
+                }
+            };
+            const animate = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => p.update()); drawLines(); particles.forEach(p => p.draw());
+                requestAnimationFrame(animate);
+            };
+            window.setAnimationTheme = (theme) => { currentOptions = theme === 'light' ? lightOptions : darkOptions; initParticles(); };
+            initParticles(); animate();
+        });
     </script>
 
     <!-- SCRIPT ZA UPRAVLJANJE TEMAMA -->
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const themeToggleBtns = [ document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile') ];
-        const logoImg = document.getElementById('site-logo');
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+            const logoImg = document.getElementById('site-logo');
 
-        function updateThemeUI() {
-            const isLight = document.documentElement.classList.contains('light-mode');
-            document.body.classList.toggle('light-mode', isLight);
-            if(logoImg) logoImg.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
-            if (window.setAnimationTheme) { window.setAnimationTheme(isLight ? 'light' : 'dark'); }
-        }
+            function updateThemeUI() {
+                const isLight = document.documentElement.classList.contains('light-mode');
+                document.body.classList.toggle('light-mode', isLight);
+                if (logoImg) logoImg.src = isLight ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
+                if (window.setAnimationTheme) { window.setAnimationTheme(isLight ? 'light' : 'dark'); }
+            }
 
-        function handleThemeToggle() {
-            document.documentElement.classList.toggle('light-mode');
-            const isNowLight = document.documentElement.classList.contains('light-mode');
-            localStorage.setItem('sft21_theme', isNowLight ? 'light' : 'dark');
+            function handleThemeToggle() {
+                document.documentElement.classList.toggle('light-mode');
+                const isNowLight = document.documentElement.classList.contains('light-mode');
+                localStorage.setItem('sft21_theme', isNowLight ? 'light' : 'dark');
+                updateThemeUI();
+            }
+
             updateThemeUI();
-        }
-
-        updateThemeUI();
-        themeToggleBtns.forEach(btn => { if (btn) { btn.addEventListener('click', handleThemeToggle); } });
-    });
+            themeToggleBtns.forEach(btn => { if (btn) { btn.addEventListener('click', handleThemeToggle); } });
+        });
     </script>
 
 </body>
+
 </html>
