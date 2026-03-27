@@ -10,44 +10,26 @@
         function applySft21Theme() {
             try {
                 const theme = localStorage.getItem('sft21_theme') || 'dark';
-
                 if (theme === 'light') {
                     document.documentElement.classList.add('light-mode');
                 } else {
                     document.documentElement.classList.remove('light-mode');
                 }
             } catch (e) {
-                console.error('Greška pri primjeni teme:', e);
+                console.error('Greška pri primeni teme:', e);
             }
         }
-
-        // 1. Primijeni temu ODMAH pri učitavanju da se spriječi "bljesak"
         applySft21Theme();
-
-        // 2. Dodaj listener za 'pageshow' događaj. Ovo rješava problem
-        //    kada se stranica učita iz "back-forward" cachea preglednika.
         window.addEventListener('pageshow', function (event) {
-            // event.persisted je 'true' ako je stranica učitana iz cachea
-            if (event.persisted) {
-                console.log('Stranica učitana iz bfcachea, ponovno provjeravam temu.');
-                applySft21Theme();
-            }
+            if (event.persisted) { applySft21Theme(); }
         });
     </script>
 
-    <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <!-- Link na vanjsku CSS datoteku -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css?v=7">
-    <!-- Stilovi za Login Stranicu -->
     <style>
-        /* Osnovni stilovi (mogu biti u style.css) */
         :root {
             --primary-color: #6a1b9a;
             /* Purple */
@@ -330,23 +312,13 @@
                 <!-- Lijeva strana: Logo SADA JE LINK -->
                 <div class="flex items-center">
                     <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
-                    <a href="index_sr.html" class="flex flex-col logo-nav"> <!-- ISPRAVAK: Dodan <a> tag oko loga -->
+                    <a href="index_sr.html" class="flex flex-col logo-nav"> 
                         <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
                     </a>
                 </div>
 
                 <!-- Desna strana: Desktop Navigacija -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <!-- ISPRAVAK: Linkovi sada vode na index.html#... -->
-                    <a href="index_sr.html#pocetna" class="nav-link transition-colors duration-300">Početna</a>
-                    <a href="index_sr.html#poslovni-koncept" class="nav-link transition-colors duration-300">Poslovni
-                        koncept</a>
-                    <a href="index_sr.html#licencni-paketi" class="nav-link transition-colors duration-300">Licencni
-                        paketi</a>
-                    <a href="index_sr.html#startni-paketi" class="nav-link transition-colors duration-300">Startni
-                        paketi</a>
-                    <a href="index_sr.html#kontakt" class="nav-link transition-colors duration-300">Kontakt</a>
-
                     <div class="language-selector relative">
                         <button id="theme-toggle" type="button"
                             class="text-white hover:text-fluorescent-green transition-colors duration-300 text-xl p-2 rounded-full">
@@ -406,136 +378,133 @@
     <main class="legal-content-wrapper">
         <div class="legal-content glass-card">
             <h1>Politika privatnosti</h1>
-            <p class="last-updated">Datum zadnje izmjene: 10. rujna 2025.</p>
+            <p class="last-updated">Datum poslednje izmene: 10. septembar 2025.</p>
 
             <h2>1. Uvod</h2>
-            <p>Ova Politika privatnosti ("Politika") opisuje kako SFT21 LLC ("Kompanija", "mi", "naš") prikuplja,
-                koristi, dijeli i štiti vaše osobne podatke kada koristite naše web stranice i usluge unutar SFT21
-                Ekosustava ("Usluge").</p>
-            <p>Vaša privatnost nam je izuzetno važna. Korištenjem naših Usluga, pristajete na prikupljanje i korištenje
-                podataka u skladu s ovom Politikom.</p>
+            <p>Ova Politika privatnosti ("Politika") opisuje kako SFT21 LLC ("Kompanija", "mi", "naš") prikuplja, koristi, deli i štiti vaše lične podatke kada koristite naše veb stranice i usluge unutar SFT21 Ekosistema ("Usluge").</p>
 
-            <h2>2. Koje podatke prikupljamo?</h2>
+            <p>Vaša privatnost nam je izuzetno važna. Korišćenjem naših Usluga, pristajete na prikupljanje i korišćenje podataka u skladu sa ovom Politikom.</p>
+
+<h2>2. Koje podatke prikupljamo?</h2>
             <p>Prikupljamo različite vrste podataka kako bismo vam pružili i poboljšali naše Usluge.</p>
             <ul>
-                <li><strong>Podaci koje nam izravno pružate:</strong>
+                <li><strong>Podaci koje nam direktno pružate:</strong>
                     <ul>
-                        <li><strong>Podaci za registraciju računa:</strong> Kada kreirate račun, prikupljamo vaše ime i
+                        <li><strong>Podaci za registraciju naloga:</strong> Kada kreirate nalog, prikupljamo vaše ime i
                             prezime, korisničko ime, email adresu i lozinku.</li>
-                        <li><strong>Podaci za provjeru identiteta (KYC):</strong> Za aktivaciju određenih
+                        <li><strong>Podaci za proveru identiteta (KYC):</strong> Za aktivaciju određenih
                             funkcionalnosti, možemo tražiti da nam dostavite dodatne podatke, kao što su adresa, datum
-                            rođenja, te fotografiju ili sken važećeg identifikacijskog dokumenta (osobna iskaznica,
-                            putovnica).</li>
+                            rođenja, kao i fotografiju ili sken važećeg identifikacionog dokumenta (lična karta,
+                            pasoš).</li>
                         <li><strong>Kontakt informacije:</strong> Kada nas kontaktirate putem kontakt formi ili e-pošte,
                             prikupljamo vaše ime, email adresu i sadržaj vaše poruke.</li>
                         <li><strong>Podaci o transakcijama:</strong> Kada kupujete Licencni Paket, prikupljamo
                             informacije potrebne za obradu plaćanja, iako podatke o kreditnoj kartici obrađuju naši
-                            partneri za platne usluge (payment processors) i mi ih ne pohranjujemo.</li>
+                            partneri za platne usluge (payment processors) i mi ih ne skladištimo.</li>
                     </ul>
                 </li>
                 <li><strong>Podaci koje prikupljamo automatski:</strong>
                     <ul>
-                        <li><strong>Podaci o korištenju:</strong> Informacije o tome kako koristite naše Usluge, kao što
-                            su stranice koje posjećujete, vrijeme provedeno na njima i radnje koje poduzimate.</li>
+                        <li><strong>Podaci o korišćenju:</strong> Informacije o tome kako koristite naše Usluge, kao što
+                            su stranice koje posećujete, vreme provedeno na njima i radnje koje preduzimate.</li>
                         <li><strong>Podaci o uređaju:</strong> Informacije o uređaju koji koristite za pristup Uslugama,
-                            uključujući IP adresu, vrstu preglednika, operativni sustav i jedinstvene identifikatore
+                            uključujući IP adresu, vrstu pregledača, operativni sistem i jedinstvene identifikatore
                             uređaja.</li>
                         <li><strong>Kolačići (Cookies):</strong> Koristimo kolačiće i slične tehnologije praćenja kako
-                            bismo pratili aktivnost na našim Uslugama i pohranili određene informacije. Više detalja
+                            bismo pratili aktivnost na našim Uslugama i sačuvali određene informacije. Više detalja
                             možete pronaći u našoj Politici o kolačićima.</li>
                     </ul>
                 </li>
             </ul>
 
             <h2>3. Kako koristimo vaše podatke?</h2>
-            <p>Vaše podatke koristimo u sljedeće svrhe:</p>
+            <p>Vaše podatke koristimo u sledeće svrhe:</p>
             <ul>
-                <li><strong>Za pružanje i održavanje Usluga:</strong> Uključujući kreiranje i upravljanje vašim računom,
+                <li><strong>Za pružanje i održavanje Usluga:</strong> Uključujući kreiranje i upravljanje vašim nalogom,
                     obradu transakcija i pružanje korisničke podrške.</li>
-                <li><strong>Za provjeru identiteta (KYC):</strong> Kako bismo ispunili zakonske obveze i spriječili
-                    prijevare.</li>
-                <li><strong>Za komunikaciju s vama:</strong> Kako bismo vam slali važne obavijesti o vašem računu,
-                    transakcijama, promjenama u našim uvjetima ili uslugama, te marketinške poruke (ako ste na njih
+                <li><strong>Za proveru identiteta (KYC):</strong> Kako bismo ispunili zakonske obaveze i sprečili
+                    prevare.</li>
+                <li><strong>Za komunikaciju sa vama:</strong> Kako bismo vam slali važna obaveštenja o vašem nalogu,
+                    transakcijama, promenama u našim uslovima ili uslugama, kao i marketinške poruke (ako ste na njih
                     pristali).</li>
-                <li><strong>Za poboljšanje Usluga:</strong> Analiziramo podatke o korištenju kako bismo razumjeli kako
-                    naši korisnici koriste Usluge i kako ih možemo poboljšati.</li>
-                <li><strong>Za sigurnost:</strong> Za praćenje i sprječavanje prijevara, zlouporabe i drugih štetnih
+                <li><strong>Za poboljšanje Usluga:</strong> Analiziramo podatke o korišćenju kako bismo razumeli kako
+                    naši korisnici koriste Usluge i kako možemo da ih poboljšamo.</li>
+                <li><strong>Za bezbednost:</strong> Za praćenje i sprečavanje prevara, zloupotrebe i drugih štetnih
                     aktivnosti.</li>
             </ul>
 
-            <h2>4. S kime dijelimo vaše podatke?</h2>
-            <p>Vaše osobne podatke ne prodajemo niti iznajmljujemo trećim stranama. Možemo ih dijeliti samo u sljedećim
+            <h2>4. Sa kime delimo vaše podatke?</h2>
+            <p>Vaše lične podatke ne prodajemo niti iznajmljujemo trećim licima. Možemo ih deliti samo u sledećim
                 situacijama:</p>
             <ul>
-                <li><strong>S pružateljima usluga:</strong> S trećim stranama koje obavljaju usluge u naše ime, kao što
-                    su procesori plaćanja, pružatelji usluga hostinga i alati za analitiku. Oni imaju pristup vašim
-                    podacima samo u mjeri potrebnoj za obavljanje tih usluga i obvezni su ih štititi.</li>
-                <li><strong>Radi usklađenosti sa zakonom:</strong> Možemo otkriti vaše podatke ako vjerujemo da je to
-                    potrebno radi poštivanja zakona, sudskog naloga ili drugog pravnog procesa.</li>
+                <li><strong>Sa pružaocima usluga:</strong> Sa trećim licima koja obavljaju usluge u naše ime, kao što
+                    su procesori plaćanja, pružaoci usluga hostinga i alati za analitiku. Oni imaju pristup vašim
+                    podacima samo u meri potrebnoj za obavljanje tih usluga i obavezni su da ih štite.</li>
+                <li><strong>Radi usklađenosti sa zakonom:</strong> Možemo otkriti vaše podatke ako verujemo da je to
+                    potrebno radi poštovanja zakona, sudskog naloga ili drugog pravnog procesa.</li>
                 <li><strong>Radi zaštite naših prava:</strong> Možemo otkriti podatke kako bismo zaštitili prava,
-                    imovinu ili sigurnost Kompanije, naših Korisnika ili javnosti.</li>
+                    imovinu ili bezbednost Kompanije, naših Korisnika ili javnosti.</li>
             </ul>
 
             <h2>5. Koliko dugo čuvamo vaše podatke?</h2>
-            <p>Vaše osobne podatke čuvamo onoliko dugo koliko je potrebno za svrhe navedene u ovoj Politici, osim ako
-                zakon ne zahtijeva ili dopušta duži period čuvanja. Podatke povezane s vašim računom čuvamo dok je vaš
-                račun aktivan. Nakon zatvaranja računa, podaci se mogu zadržati u našim arhivama radi ispunjavanja
-                zakonskih obveza ili rješavanja sporova.</p>
+            <p>Vaše lične podatke čuvamo onoliko dugo koliko je potrebno za svrhe navedene u ovoj Politici, osim ako
+                zakon ne zahteva ili dopušta duži period čuvanja. Podatke povezane sa vašim nalogom čuvamo dok je vaš
+                nalog aktivan. Nakon zatvaranja naloga, podaci se mogu zadržati u našim arhivama radi ispunjavanja
+                zakonskih obaveza ili rešavanja sporova.</p>
 
             <h2 id="gdpr-rights">6. Vaša prava na privatnost (uključujući GDPR)</h2>
-            <p>SFT21 kompanija posvećena je poštivanju vaših prava na privatnost. Ako ste stanovnik Europskog
-                gospodarskog prostora (EEA), Ujedinjenog Kraljevstva ili Švicarske, Opća uredba o zaštiti podataka
-                (GDPR) pruža vam sljedeća prava nad vašim osobnim podacima:</p>
+            <p>SFT21 kompanija posvećena je poštovanju vaših prava na privatnost. Ako ste stanovnik Evropskog
+                ekonomskog prostora (EEA), Ujedinjenog Kraljevstva ili Švajcarske, Opšta uredba o zaštiti podataka
+                (GDPR) pruža vam sledeća prava nad vašim ličnim podacima:</p>
             <ul>
-                <li><strong>Pravo na pristup:</strong> Imate pravo zatražiti i dobiti kopiju osobnih podataka koje imamo
+                <li><strong>Pravo na pristup:</strong> Imate pravo da zatražite i dobijete kopiju ličnih podataka koje imamo
                     o vama.</li>
-                <li><strong>Pravo na ispravak:</strong> Imate pravo zatražiti da ispravimo bilo koje netočne ili
-                    dopunimo nepotpune osobne podatke.</li>
-                <li><strong>Pravo na brisanje ("pravo na zaborav"):</strong> Imate pravo zatražiti brisanje vaših
-                    osobnih podataka kada oni više nisu potrebni za svrhe za koje su prikupljeni, ili pod drugim
-                    uvjetima propisanim zakonom.</li>
-                <li><strong>Pravo na ograničenje obrade:</strong> Imate pravo zatražiti da privremeno zaustavimo obradu
+                <li><strong>Pravo na ispravku:</strong> Imate pravo da zatražite da ispravimo bilo koje netačne ili
+                    dopunimo nepotpune lične podatke.</li>
+                <li><strong>Pravo na brisanje ("pravo na zaborav"):</strong> Imate pravo da zatražite brisanje vaših
+                    ličnih podataka kada oni više nisu potrebni za svrhe za koje su prikupljeni, ili pod drugim
+                    uslovima propisanim zakonom.</li>
+                <li><strong>Pravo na ograničenje obrade:</strong> Imate pravo da zatražite da privremeno zaustavimo obradu
                     vaših podataka u određenim situacijama.</li>
-                <li><strong>Pravo na prenosivost podataka:</strong> Imate pravo zatražiti da vam vaše podatke dostavimo
-                    u strukturiranom, strojno čitljivom formatu, kako biste ih mogli prenijeti drugom voditelju obrade.
+                <li><strong>Pravo na prenosivost podataka:</strong> Imate pravo da zatražite da vam vaše podatke dostavimo
+                    u strukturiranom, mašinski čitljivom formatu, kako biste mogli da ih prenesete drugom rukovaocu obrade.
                 </li>
-                <li><strong>Pravo na prigovor:</strong> Imate pravo uložiti prigovor na obradu vaših osobnih podataka
-                    koja se temelji na našim legitimnim interesima.</li>
-                <li><strong>Pravo na povlačenje privole:</strong> Ako se obrada temelji na vašoj privoli, imate pravo
-                    povući tu privolu u bilo kojem trenutku.</li>
+                <li><strong>Pravo na prigovor:</strong> Imate pravo da uložite prigovor na obradu vaših ličnih podataka
+                    koja se zasniva na našim legitimnim interesima.</li>
+                <li><strong>Pravo na povlačenje saglasnosti:</strong> Ako se obrada zasniva na vašoj saglasnosti, imate pravo
+                    da povučete tu saglasnost u bilo kom trenutku.</li>
             </ul>
             <h3>Kako ostvariti svoja prava?</h3>
-            <p>Zahtjev za ostvarivanje bilo kojeg od navedenih prava možete podnijeti slanjem e-pošte našem službeniku
+            <p>Zahtev za ostvarivanje bilo kog od navedenih prava možete podneti slanjem e-pošte našem službeniku
                 za zaštitu podataka na: dpo@sft21.com</p>
             <h3>Pravo na podnošenje pritužbe</h3>
-            <p>Ako smatrate da je obrada vaših osobnih podataka u suprotnosti s GDPR-om, imate pravo podnijeti pritužbu
-                nadzornom tijelu za zaštitu podataka u državi članici EU u kojoj imate prebivalište, radno mjesto ili
-                gdje se dogodilo navodno kršenje.</p>
+            <p>Ako smatrate da je obrada vaših ličnih podataka u suprotnosti sa GDPR-om, imate pravo da podnesete pritužbu
+                nadzornom organu za zaštitu podataka u državi članici EU u kojoj imate prebivalište, radno mesto ili
+                gde se dogodilo navodno kršenje.</p>
 
-            <h2>7. Sigurnost podataka</h2>
-            <p>Primjenjujemo razumne tehničke i organizacijske mjere kako bismo zaštitili vaše osobne podatke od
-                neovlaštenog pristupa, korištenja, izmjene ili uništenja. Međutim, nijedan prijenos podataka putem
-                interneta nije 100% siguran i ne možemo jamčiti apsolutnu sigurnost.</p>
+            <h2>7. Bezbednost podataka</h2>
+            <p>Primenjujemo razumne tehničke i organizacione mere kako bismo zaštitili vaše lične podatke od
+                neovlašćenog pristupa, korišćenja, izmene ili uništenja. Međutim, nijedan prenos podataka putem
+                interneta nije 100% bezbedan i ne možemo da garantujemo apsolutnu bezbednost.</p>
 
-            <h2>8. Privatnost djece</h2>
-            <p>Naše Usluge nisu namijenjene osobama mlađim od 16 godina. Svjesno ne prikupljamo osobne podatke od djece
-                ispod te dobne granice. Ako postanemo svjesni da smo prikupili podatke od djeteta mlađeg od 16 godina,
-                odmah ćemo poduzeti korake za uklanjanje tih informacija.</p>
-            <p>Za osobe starosti između 16 i 18 godina (maloljetnici), prikupljanje osobnih podataka je dopušteno
-                isključivo uz provjerljivu suglasnost roditelja ili zakonskog skrbnika. U sklopu procesa registracije za
-                maloljetnike, prikupljamo i podatke o roditelju/skrbniku kako bismo mogli administrirati tu suglasnost.
-                Smatramo da roditelj/skrbnik koji daje suglasnost preuzima odgovornost za osobne podatke koje
-                maloljetnik pruža.</p>
+            <h2>8. Privatnost dece</h2>
+            <p>Naše Usluge nisu namenjene osobama mlađim od 16 godina. Svesno ne prikupljamo lične podatke od dece
+                ispod te starosne granice. Ako postanemo svesni da smo prikupili podatke od deteta mlađeg od 16 godina,
+                odmah ćemo preduzeti korake za uklanjanje tih informacija.</p>
+            <p>Za osobe starosti između 16 i 18 godina (maloletnici), prikupljanje ličnih podataka je dopušteno
+                isključivo uz proverljivu saglasnost roditelja ili zakonskog staratelja. U sklopu procesa registracije za
+                maloletnike, prikupljamo i podatke o roditelju/staratelju kako bismo mogli da administriramo tu saglasnost.
+                Smatramo da roditelj/staratelj koji daje saglasnost preuzima odgovornost za lične podatke koje
+                maloletnik pruža.</p>
 
-            <h2>9. Izmjene ove Politike privatnosti</h2>
-            <p>Zadržavamo pravo izmjene ove Politike u bilo kojem trenutku. Ako napravimo izmjene, objavit ćemo
-                ažuriranu Politiku na ovoj stranici i ažurirati "Datum zadnje izmjene". Vaš nastavak korištenja Usluga
-                nakon objave izmjena smatrat će se prihvaćanjem nove Politike.</p>
+            <h2>9. Izmene ove Politike privatnosti</h2>
+            <p>Zadržavamo pravo izmene ove Politike u bilo kom trenutku. Ako napravimo izmene, objavićemo
+                ažuriranu Politiku na ovoj stranici i ažurirati "Datum poslednje izmene". Vaš nastavak korišćenja Usluga
+                nakon objave izmena smatraće se prihvatanjem nove Politike.</p>
 
             <h2>10. Kontakt</h2>
             <p>Ako imate bilo kakvih pitanja o ovoj Politici privatnosti ili našim praksama, molimo kontaktirajte
                 nas:<br><strong>SFT21 LLC</strong><br>Email: privacy@sft21.com</p>
-        </div>
 
         <!-- NOVI KOD ZA PAMETNI GUMB ZA POVRATAK -->
         <div class="container mx-auto px-6 pt-12 pb-4 text-center">
@@ -675,8 +644,8 @@
                 <!-- Kolona 1: SFT21 -->
                 <div>
                     <h3 class="text-2xl font-bold mb-6 text-white">SFT21</h3>
-                    <p class="text-gray-400 mb-8">Na jakim lokalnim i regionalnim temeljima stvaramo globalnu online
-                        zajednica koja povezuje ljude na jedan novi, humaniji i prije svega pošteniji način.</p>
+                    <p class="text-gray-400 mb-8">Na jakim lokalnim i regionalnim temeljima stvaramo globalnu onlajn
+                        zajednica koja povezuje ljude na jedan novi, humaniji i pre svega pošteniji način.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
                                 class="fab fa-facebook-f text-xl"></i></a>
@@ -720,12 +689,11 @@
                     <h4 class="text-lg font-bold mb-6 text-white">Kontakt</h4>
                     <ul class="space-y-3">
                         <li class="text-gray-400">SFT21 LLC</li>
-                        <li class="text-gray-400">2120 Carey Ave, Cheyenne,</li>
-                        <li class="text-gray-400">WY 82001</li>
-                        <li class="text-gray-400">Wyoming, USA</li>
+                        <li class="text-gray-400">1111B S Governors Ave, STE 40828,</li>
+                        <li class="text-gray-400">Dover, DE 19904</li>
+                        <li class="text-gray-400">USA</li>
                         <li><a href="mailto:info@sft21.com"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">info@sft21.com</a>
-                        </li>
+                                class="text-gray-400 hover:text-purple-400">info@sft21.com</a></li>
                     </ul>
                 </div>
                 <!-- Kolona 4: Pravne informacije -->
@@ -733,8 +701,8 @@
                     <h4 class="text-lg font-bold mb-6 text-white">Pravne informacije</h4>
                     <ul class="space-y-3">
                         <li><a href="uvjeti-koristenja_sr.html"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Uvjeti
-                                korištenja</a></li>
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Uslovi
+                                korišćenja</a></li>
                         <li><a href="privacy-policy_sr.html"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Politika
                                 privatnosti</a></li>
@@ -747,17 +715,9 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-center">
-                <p class="text-gray-400">© 2026 SFT21 LLC - Sva prava pridržana.</p>
+                <p class="text-gray-400">© 2026 SFT21 LLC - Sva prava zadržana.</p>
             </div>
         </div>
-        <!-- ZAMIJENJENO: Pulsirajući krug je sada link -->
-        <a href="sfteam_sr.html" title="Posjetite SFteam stranicu" class="pulsating-circle">
-            <div class="circle-content">
-                <span class="circle-line line-i">I</span>
-                <span class="circle-line heart-symbol">❤️</span>
-                <span class="circle-line line-sfteam">SFteam</span>
-            </div>
-        </a>
     </footer>
 
     <script>
