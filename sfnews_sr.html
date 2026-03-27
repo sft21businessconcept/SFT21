@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFT21 News | US Company Successfully Registered!</title>
+    <title>SFT21 News | Uspješno registrirana američka kompanija!</title>
     <meta name="description"
-        content="Get the latest news from the SFT21 community. Read about our biggest step yet - the successful registration of SFT21, LLC in Delaware, USA.">
+        content="Saznajte najnovije vijesti iz SFT21 zajednice. Pročitajte o našem najvećem koraku do sada - uspješnoj registraciji SFT21, LLC u Delawareu, SAD.">
 
-    <!-- Open Graph (Facebook, Viber, etc.) -->
-    <meta property="og:title" content="SFT21 News | WE DID IT!">
+    <!-- Open Graph (Facebook, Viber, itd.) -->
+    <meta property="og:title" content="SFT21 News | USPJELI SMO!">
     <meta property="og:description"
-        content="SFT21 is now officially “SFT21, LLC“, a company registered in the United States! Read more about this historic step.">
+        content="SFT21 je sada i službeno “SFT21, LLC“ kompanija registrirana u Sjedinjenim Američkim Državama! Pročitajte više o ovom povijesnom koraku.">
     <meta property="og:image" content="https://sft21businessconcept.github.io/SFT21/img/sft21_1news.png">
-    <meta property="og:url" content="https://sft21businessconcept.github.io/SFT21/sfnews_en.html">
+    <meta property="og:url" content="https://sft21businessconcept.github.io/SFT21/sfnews.html">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="SFT21 Business Concept">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SFT21 News | WE DID IT!">
+    <meta name="twitter:title" content="SFT21 News | USPJELI SMO!">
     <meta name="twitter:description"
-        content="SFT21 is now officially “SFT21, LLC“, a company registered in the United States! Read more about this historic step.">
+        content="SFT21 je sada i službeno “SFT21, LLC“ kompanija registrirana u Sjedinjenim Američkim Državama! Pročitajte više o ovom povijesnom koraku.">
     <meta name="twitter:image" content="https://sft21businessconcept.github.io/SFT21/img/sft21_1news.png">
 
     <!-- ============================================= -->
-    <!-- UNIVERSAL THEME INITIALIZATION SCRIPT -->
+    <!-- UNIVERZALNA SKRIPTA ZA INICIJALIZACIJU TEME -->
     <!-- ============================================= -->
     <script>
         function applySft21Theme() {
@@ -37,7 +37,7 @@
                     document.documentElement.classList.remove('light-mode');
                 }
             } catch (e) {
-                console.error('Error applying theme:', e);
+                console.error('Greška pri primjeni teme:', e);
             }
         }
         applySft21Theme();
@@ -56,12 +56,12 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* Styles from index.html for consistency */
+        /* Stilovi preuzeti iz index.html radi konzistentnosti */
         body.light-mode #cta-section h2,
         body.light-mode #cta-section p,
         body.light-mode #cta-section a.btn-primary,
         body.light-mode #cta-section a.btn-primary:hover {
-            /* Index specific styles */
+            /* Stilovi specifični za index.html, mogu ostati ili se ukloniti ako nema cta-section */
         }
 
         .back-to-top-btn,
@@ -69,7 +69,7 @@
         .back-to-top-btn:hover,
         body.light-mode .back-to-top-btn,
         body.light-mode .back-to-top-btn:hover {
-            /* Back to top button styles */
+            /* Stilovi za gumb "povratak na vrh" */
         }
 
         .back-to-top-btn {
@@ -183,22 +183,24 @@
         }
 
         /* ======================================= */
-        /* SPECIFIC STYLES FOR SFNEWS.HTML */
+        /* NOVI STILOVI SPECIFIČNI ZA SFNEWS.HTML */
         /* ======================================= */
 
-        /* Lightbox for certificate image */
+        /* Lightbox za sliku certifikata */
         .lightbox-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            /* Pokriva cijeli ekran, uključujući i ispod UI elemenata */
             background-color: rgba(0, 0, 0, 0.85);
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 10000;
             padding: 40px;
+            /* Povećavamo razmak za bolji "okvir" */
             box-sizing: border-box;
         }
 
@@ -211,18 +213,24 @@
             justify-content: center;
         }
 
+        /* === KLJUČNA PROMJENA ZA SLIKU === */
         .lightbox-content img {
             display: block;
+            /* Osigurava da slika nikada ne bude veća od dostupnog prostora UNUTAR paddinga */
             max-width: 100%;
             max-height: 100%;
             width: auto;
             height: auto;
             object-fit: contain;
+            /* Osigurava da se cijela slika vidi, čuvajući omjer */
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            /* Dodaje lijepi efekt sjene */
         }
 
+        /* === KLJUČNA PROMJENA ZA GUMB ZA ZATVARANJE === */
         .lightbox-close {
             position: fixed;
+            /* Fiksiran u odnosu na ekran */
             top: 20px;
             right: 30px;
             color: #fff;
@@ -239,7 +247,7 @@
             transform: scale(1.1);
         }
 
-        /* Certificate thumbnail style */
+        /* Stil za thumbnail certifikata */
         .certificate-thumbnail {
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -250,7 +258,18 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* Achievement list styles */
+        /* Stil za thumbnail certifikata */
+        .certificate-thumbnail {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .certificate-thumbnail:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Stilovi za listu postignuća */
         .achievement-list-item {
             display: flex;
             align-items: flex-start;
@@ -296,14 +315,16 @@
         }
 
         /* ======================================= */
-        /* PARTNER SLIDER STYLES                   */
+        /* PARTNER SLIDER STILOVI                */
         /* ======================================= */
         .partner-slider-section {
             background-color: rgba(10, 5, 40, 0.5);
+            /* Malo tamnija pozadina za kontrast */
         }
 
         body.light-mode .partner-slider-section {
             background-color: #f1f5f9;
+            /* Svijetlo siva u light modu */
         }
 
         .slider-container {
@@ -320,6 +341,7 @@
             top: 0;
             height: 100%;
             width: 15%;
+            /* Širina fade efekta */
             z-index: 2;
         }
 
@@ -343,6 +365,7 @@
 
         .slide-track {
             display: flex;
+            /* Širina = (broj_slika * 2) * širina_jedne_slike */
             width: calc(180px * 10);
             animation: scroll 40s linear infinite;
         }
@@ -364,6 +387,7 @@
             height: 50px;
             object-fit: contain;
             filter: grayscale(1) brightness(1.5);
+            /* Početno sivo i malo svjetlije */
             opacity: 0.7;
             transition: filter 0.3s, opacity 0.3s, transform 0.3s;
         }
@@ -376,6 +400,7 @@
 
         body.light-mode .slide img {
             filter: grayscale(1) brightness(0.5);
+            /* U light modu, tamnije da bude vidljivo */
         }
 
         body.light-mode .slide:hover img {
@@ -392,12 +417,15 @@
             }
         }
 
-         /* Klasa za smanjivanje slike u vijestima */
-               .news-image-small {
-               max-width: 25%; /* Ograničava širinu na 25% kontejnera */
-               margin-left: auto;  /* Automatski centrira sliku horizontalno */
-               margin-right: auto; /* Automatski centrira sliku horizontalno */
-         }
+        /* Klasa za smanjivanje slike u vijestima */
+        .news-image-small {
+            max-width: 25%;
+            /* Ograničava širinu na 25% kontejnera */
+            margin-left: auto;
+            /* Automatski centrira sliku horizontalno */
+            margin-right: auto;
+            /* Automatski centrira sliku horizontalno */
+        }
     </style>
 </head>
 
@@ -406,12 +434,11 @@
     <div class="custom-cursor"></div>
 
 
-
-    <!-- Lightbox for certificate -->
+    <!-- Lightbox za prikaz certifikata -->
     <div id="certificate-lightbox" class="lightbox-overlay">
         <span class="lightbox-close">&times;</span>
         <div class="lightbox-content">
-            <img src="" alt="Certificate of Formation - Zoomed">
+            <img src="" alt="Certifikat o osnivanju - uvećano">
         </div>
     </div>
 
@@ -419,7 +446,7 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <a href="index.html">
+                    <a href="index_sr.html">
                         <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
                     </a>
                     <div class="flex flex-col logo-nav">
@@ -427,28 +454,28 @@
                     </div>
                 </div>
 
-                <!-- Desktop Navigation -->
+                <!-- Desktop Navigacija -->
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="index.html#pocetna" class="nav-link transition-colors duration-300">Home</a>
-                    <a href="index.html#poslovni-koncept" class="nav-link transition-colors duration-300">Business
-                        Concept</a>
-                    <a href="index.html#licencni-paketi" class="nav-link transition-colors duration-300">License
-                        Packages</a>
-                    <a href="index.html#startni-paketi" class="nav-link transition-colors duration-300">Starter
-                        Packages</a>
-                    <a href="index.html#kontakt" class="nav-link transition-colors duration-300">Contact</a>
+                    <a href="index_sr.html#pocetna" class="nav-link transition-colors duration-300">Početna</a>
+                    <a href="index_sr.html#poslovni-koncept" class="nav-link transition-colors duration-300">Poslovni
+                        koncept</a>
+                    <a href="index_sr.html#licencni-paketi" class="nav-link transition-colors duration-300">Licencni
+                        paketi</a>
+                    <a href="index_sr.html#startni-paketi" class="nav-link transition-colors duration-300">Startni
+                        paketi</a>
+                    <a href="index_sr.html#kontakt" class="nav-link transition-colors duration-300">Kontakt</a>
                     <div class="sft21-nav-item dropdown relative">
                         <a href="#" class="nav-link transition-colors duration-300 inline-flex items-center"
                             id="desktop-platform-trigger">
-                            Platforms <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            Platforme <i class="fas fa-chevron-down ml-1 text-xs"></i>
                         </a>
                         <div class="dropdown-menu absolute hidden bg-gray-800 rounded shadow-lg py-1"
                             id="desktop-platform-menu">
-                            <a href="login.html?redirect=sfured.html"
+                            <a href="login_sr.html?redirect=sfured_sr.html"
                                 class="dropdown-item block px-4 py-2 text-sm text-gray-200 hover:bg-purple-700 hover:text-white">SFured</a>
-                            <a href="login.html?redirect=sfalgoritam.html"
+                            <a href="login_sr.html?redirect=sfalgoritam_sr.html"
                                 class="dropdown-item block px-4 py-2 text-sm text-gray-200 hover:bg-purple-700 hover:text-white">SFalgoritam</a>
-                            <a href="login.html?redirect=video_player.html%3Ffrom%3Dindex.html"
+                            <a href="login_sr.html?redirect=video_player_sr.html%3Ffrom%3Dindex_sr.html"
                                 class="dropdown-item block px-4 py-2 text-sm text-gray-200 hover:bg-purple-700 hover:text-white">Video
                                 Player</a>
                             <a href="#"
@@ -457,7 +484,7 @@
                                 class="dropdown-item block px-4 py-2 text-sm text-gray-200 hover:bg-purple-700 hover:text-white">SFshop</a>
                         </div>
                     </div>
-                    <a href="sfnews_en.html" class="nav-link transition-colors duration-300 active">SFnews</a>
+                    <a href="sfnews_sr.html" class="nav-link transition-colors duration-300 active">SFnews</a>
 
                     <div class="flex items-center space-x-4">
                         <div class="flex items-center space-x-1">
@@ -472,7 +499,7 @@
                                     class="language-trigger text-white hover:text-fluorescent-green transition-colors duration-300 text-xl">
                                     <i class="fas fa-globe"></i>
                                 </button>
-                                <!-- LANGUAGE LINKS -->
+                                <!-- AŽURIRANI LINKOVI ZA JEZIK -->
                                 <div id="desktop-lang-dropdown" class="language-dropdown">
                                     <a href="sfnews_en.html" class="language-item"> <img
                                             src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-image">
@@ -486,13 +513,13 @@
                         </div>
 
                         <div class="flex items-center space-x-2">
-                            <a href="login.html" class="btn-primary text-xs">Login</a>
-                            <a href="register.html" class="btn-primary text-xs">Register</a>
+                            <a href="login_sr.html" class="btn-primary text-xs">Prijava</a>
+                            <a href="register_sr.html" class="btn-primary text-xs">Registracija</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Hamburger Icon -->
+                <!-- Hamburger ikona -->
                 <div class="md:hidden">
                     <div class="hamburger">
                         <span class="bar"></span>
@@ -509,30 +536,30 @@
                             <i id="theme-toggle-light-icon-mobile" class="fas fa-sun"></i>
                         </button>
                     </div>
-                    <a href="index.html#pocetna"
-                        class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Home</a>
-                    <a href="index.html#poslovni-koncept"
-                        class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Business
-                        Concept</a>
-                    <a href="index.html#licencni-paketi"
-                        class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">License
-                        Packages</a>
-                    <a href="index.html#startni-paketi"
-                        class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Starter
-                        Packages</a>
-                    <a href="index.html#kontakt"
-                        class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Contact</a>
+                    <a href="index_sr.html#pocetna"
+                        class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Početna</a>
+                    <a href="index_sr.html#poslovni-koncept"
+                        class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Poslovni
+                        koncept</a>
+                    <a href="index_sr.html#licencni-paketi"
+                        class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Licencni
+                        paketi</a>
+                    <a href="index_sr.html#startni-paketi"
+                        class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Startni
+                        paketi</a>
+                    <a href="index_sr.html#kontakt"
+                        class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Kontakt</a>
                     <div class="sft21-nav-item dropdown">
                         <a href="#" id="mobile-platform-trigger"
                             class="block py-3 text-center hover:text-purple-400 transition-colors duration-300 flex justify-center items-center">
-                            Platforms <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                            Platforme <i class="fas fa-chevron-down ml-2 text-xs"></i>
                         </a>
                         <div id="mobile-platform-menu" class="dropdown-menu" style="display: none;">
-                            <a href="login.html?redirect=sfured.html"
+                            <a href="login_sr.html?redirect=sfured_sr.html"
                                 class="dropdown-item block py-2 text-center text-sm bg-gray-800 hover:bg-purple-700 text-gray-300 hover:text-white">SFured</a>
-                            <a href="login.html?redirect=sfalgoritam.html"
+                            <a href="login_sr.html?redirect=sfalgoritam_sr.html"
                                 class="dropdown-item block py-2 text-center text-sm bg-gray-800 hover:bg-purple-700 text-gray-300 hover:text-white">SFalgoritam</a>
-                            <a href="login.html?redirect=video_player.html?from=index.html"
+                            <a href="login_sr.html?redirect=video_player_sr.html?from=index_sr.html"
                                 class="dropdown-item block py-2 text-center text-sm bg-gray-800 hover:bg-purple-700 text-gray-300 hover:text-white">Video
                                 player</a>
                             <a href="#"
@@ -541,81 +568,81 @@
                                 class="dropdown-item block py-2 text-center text-sm bg-gray-800 hover:bg-purple-700 text-gray-300 hover:text-white">SFshop</a>
                         </div>
                     </div>
-                    <a href="sfnews_en.html"
+                    <a href="sfnews_sr.html"
                         class="block py-3 text-center hover:text-purple-400 transition-colors duration-300 active">SFnews</a>
                     <div class="flex flex-col space-y-3 mt-5 px-6">
                         <div
                             class="sft21-nav-item dropdown mobile-language-selector mb-3 border-t border-b border-gray-700 py-2">
                             <a href="#" id="mobile-lang-trigger"
                                 class="block text-center transition-colors duration-300 sft21-nav-link mobile-language-trigger text-gray-300 hover:text-fluorescent-green">
-                                <i class="fas fa-globe mr-2"></i> Select Language <i
+                                <i class="fas fa-globe mr-2"></i> Odaberi jezik <i
                                     class="fas fa-chevron-down ml-1 text-xs"></i>
                             </a>
-                            <!-- LANGUAGE LINKS MOBILE -->
+                            <!-- AŽURIRANI LINKOVI ZA JEZIK -->
                             <div id="mobile-lang-dropdown" class="language-dropdown-mobile">
                                 <a href="sfnews_en.html" class="language-item"> <img
-                                        src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-image">
+                                        src="https://flagcdn.com/w20/gb.png" alt="Engleski" class="flag-image">
                                     <span>ENG</span> </a>
-                                <a href="sfnews.html" class="language-item"> <img src="https://flagcdn.com/w20/hr.png"
-                                        alt="Croatian" class="flag-image"> <span>HRV</span> </a>
+                                <a href="sfnews_sr.html" class="language-item"> <img src="https://flagcdn.com/w20/hr.png"
+                                        alt="Hrvatski" class="flag-image"> <span>HRV</span> </a>
                                         <a href="sfnews_sr.html" class="language-item"> <img src="https://flagcdn.com/w20/rs.png" alt="Srpski" class="flag-image"> <span>SRP</span> </a>
                             </div>
                         </div>
-                        <a href="login.html" class="btn-primary text-center text-xs">Login</a>
-                        <a href="register.html" class="btn-primary text-center text-xs">Register</a>
+                        <a href="login_sr.html" class="btn-primary text-center text-xs">Prijava</a>
+                        <a href="register_sr.html" class="btn-primary text-center text-xs">Registracija</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-         <main class="pt-24">
-            <section class="relative overflow-hidden">
-                <div class="container mx-auto px-6 relative z-10">
+    <main class="pt-24">
+        <section class="relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
 
-                    <div id="news-slider-container"
-                        class="flex justify-center items-center py-6 bg-gray-800 bg-opacity-50 rounded-lg mx-auto max-w-4xl mb-4">
-                        <span id="prev-news-btn"
-                            class="text-purple-400 cursor-pointer text-2xl px-4 hover:text-white transition-colors">&lt;</span>
-                        <div id="news-navigation" class="flex items-center space-x-2">
-                        </div>
-                        <span id="next-news-btn"
-                            class="text-purple-400 cursor-pointer text-2xl px-4 hover:text-white transition-colors">&gt;</span>
+                <div id="news-slider-container"
+                    class="flex justify-center items-center py-6 bg-gray-800 bg-opacity-50 rounded-lg mx-auto max-w-4xl mb-4">
+                    <span id="prev-news-btn"
+                        class="text-purple-400 cursor-pointer text-2xl px-4 hover:text-white transition-colors">&lt;</span>
+                    <div id="news-navigation" class="flex items-center space-x-2">
+                    </div>
+                    <span id="next-news-btn"
+                        class="text-purple-400 cursor-pointer text-2xl px-4 hover:text-white transition-colors">&gt;</span>
+                </div>
+
+                <div
+                    class="main-article-container mx-auto max-w-4xl p-4 md:p-8 bg-gray-800 bg-opacity-40 rounded-lg shadow-xl glass-card">
+                    <header class="text-center mb-10">
+                        <h1 id="news-title"
+                            class="text-3xl md:text-5xl font-bold mb-4 leading-tight text-fluorescent-green"></h1>
+                        <p id="news-info" class="text-gray-400 mt-4 text-sm"></p>
+                    </header>
+
+                    <div class="news-visuals text-center mb-8">
+                        <img id="news-image" src="" alt="Naslov vijesti"
+                            class="w-full h-auto rounded-lg shadow-lg mx-auto">
                     </div>
 
-                    <div
-                        class="main-article-container mx-auto max-w-4xl p-4 md:p-8 bg-gray-800 bg-opacity-40 rounded-lg shadow-xl glass-card">
-                        <header class="text-center mb-10">
-                            <h1 id="news-title"
-                                class="text-3xl md:text-5xl font-bold mb-4 leading-tight text-fluorescent-green"></h1>
-                            <p id="news-info" class="text-gray-400 mt-4 text-sm"></p>
-                        </header>
-
-                        <div class="news-visuals text-center mb-8">
-                            <img id="news-image" src="" alt="Naslov vijesti"
-                                class="w-full h-auto rounded-lg shadow-lg mx-auto">
-                        </div>
-
-                        <div id="news-text" class="text-lg text-gray-300 leading-relaxed space-y-6 text-justify">
-                        </div>
+                    <div id="news-text" class="text-lg text-gray-300 leading-relaxed space-y-6 text-justify">
                     </div>
                 </div>
-            </section>
-        </main>
-    
-    <!-- PARTNER SLIDER SECTION -->
+            </div>
+        </section>
+    </main>
+
+    <!-- SEKCIJA ZA PARTNER SLIDER -->
     <section class="py-16 partner-slider-section">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-10">Our Key Technological and Financial Partners</h2>
+            <h2 class="text-2xl md:text-3xl font-bold mb-10">Naši ključni tehnološki i financijski partneri</h2>
             <div class="slider-container">
                 <div class="slide-track">
-                    <!-- Original set of images -->
+                    <!-- Originalni set slika -->
                     <div class="slide"><img src="img/stripe.png" alt="Stripe logo"></div>
                     <div class="slide"><img src="img/thread.png" alt="Thread Bank logo"></div>
                     <div class="slide"><img src="img/wise.png" alt="Wise logo"></div>
                     <div class="slide"><img src="img/relay.png" alt="Relay Financial logo"></div>
                     <div class="slide"><img src="img/geckosolutions.png" alt="Gecko Solutions logo"></div>
-                    <!-- Duplicated set of images for infinite effect -->
+                    <!-- Duplicirani set slika za beskonačni efekt -->
                     <div class="slide"><img src="img/stripe.png" alt="Stripe logo"></div>
                     <div class="slide"><img src="img/thread.png" alt="Thread Bank logo"></div>
                     <div class="slide"><img src="img/wise.png" alt="Wise logo"></div>
@@ -629,51 +656,57 @@
     <footer class="py-16 bg-gray-900 border-t border-gray-800">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <!-- Column 1: SFT21 -->
+                <!-- Kolona 1: SFT21 -->
                 <div>
                     <h3 class="text-2xl font-bold mb-6 text-white">SFT21, LLC</h3>
-                    <p class="text-gray-400 mb-8">On strong local and regional foundations, we are creating a global
-                        online community connecting people in a new, more humane, and above all, fairer way.</p>
+                    <p class="text-gray-400 mb-8">Na jakim lokalnim i regionalnim temeljima stvaramo globalnu online
+                        zajednica koja povezuje ljude na jedan novi, humaniji i prije svega pošteniji način.</p>
                     <div class="flex space-x-4">
-                    <a href="https://www.facebook.com/profile.php?id=100063008870681" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-facebook-f text-xl"></i></a>                    
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-x-twitter text-xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100063008870681" target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
+                                class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
+                                class="fab fa-linkedin-in text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
+                                class="fab fa-x-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"><i
+                                class="fab fa-instagram text-xl"></i></a>
                     </div>
                 </div>
-                <!-- Column 2: Quick Links -->
+                <!-- Kolona 2: Brzi linkovi -->
                 <div>
-                    <h4 class="text-lg font-bold mb-6 text-white">Quick Links</h4>
+                    <h4 class="text-lg font-bold mb-6 text-white">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="index.html#pocetna"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Home</a>
+                        <li><a href="index_sr.html#pocetna"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Početna</a>
                         </li>
-                        <li><a href="index.html#poslovni-koncept"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Business
-                                Concept</a></li>
-                        <li><a href="index.html#licencni-paketi"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">License
-                                Packages</a></li>
-                        <li><a href="index.html#startni-paketi"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Starter
-                                Packages</a></li>
-                        <li><a href="sfnews_en.html"
+                        <li><a href="index_sr.html#poslovni-koncept"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Poslovni
+                                koncept</a></li>
+                        <li><a href="index_sr.html#licencni-paketi"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Licencni
+                                paketi</a></li>
+                        <li><a href="index_sr.html#startni-paketi"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Startni
+                                paketi</a></li>
+                        <li><a href="sfnews_sr.html"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">SFnews</a>
                         </li>
-                        <li><a href="register.html"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Register</a>
+                        <li><a href="register_sr.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Registracija</a>
                         </li>
-                        <li><a href="login.html"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Login</a>
+                        <li><a href="login_sr.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Prijava</a>
                         </li>
-                        <li><a href="index.html#kontakt"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Contact</a>
+                        <li><a href="index_sr.html#kontakt"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Kontakt</a>
                         </li>
                     </ul>
                 </div>
-                <!-- Column 3: Contact -->
+                <!-- Kolona 3: Kontakt -->
                 <div>
-                    <h4 class="text-lg font-bold mb-6 text-white">Contact</h4>
+                    <h4 class="text-lg font-bold mb-6 text-white">Kontakt</h4>
                     <ul class="space-y-3">
                         <li class="text-gray-400">SFT21 LLC</li>
                         <li class="text-gray-400">1111B S Governors Ave, STE 40828</li>
@@ -684,29 +717,29 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Column 4: Legal Info -->
+                <!-- Kolona 4: Pravne informacije -->
                 <div>
-                    <h4 class="text-lg font-bold mb-6 text-white">Legal Information</h4>
+                    <h4 class="text-lg font-bold mb-6 text-white">Pravne informacije</h4>
                     <ul class="space-y-3">
-                        <li><a href="terms-of-use.html"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Terms of
-                                Use</a></li>
-                        <li><a href="privacy-policy.html"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Privacy
-                                Policy</a></li>
-                        <li><a href="privacy-policy.html#gdpr-rights"
+                        <li><a href="uvjeti-koristenja_sr.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Uvjeti
+                                korištenja</a></li>
+                        <li><a href="privacy-policy_sr.html"
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Politika
+                                privatnosti</a></li>
+                        <li><a href="privacy-policy_sr.html#gdpr-rights"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">GDPR</a></li>
                         <li><a href="business-rules.html"
-                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Business
-                                Rules</a></li>
+                                class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Pravila
+                                poslovanja</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-center">
-                <p class="text-gray-400">© 2026 SFT21 LLC - All rights reserved.</p>
+                <p class="text-gray-400">© 2026 SFT21 LLC - Sva prava pridržana.</p>
             </div>
         </div>
-        <a href="sfteam.html" title="Visit SFteam page" class="pulsating-circle">
+        <a href="sfteam_sr.html" title="Posjetite SFteam stranicu" class="pulsating-circle">
             <div class="circle-content">
                 <span class="circle-line line-i">I</span>
                 <span class="circle-line heart-symbol">❤️</span>
@@ -715,14 +748,14 @@
         </a>
     </footer>
 
-    <!-- Back to top button -->
+    <!-- Gumb za povratak na vrh -->
     <button id="back-to-top-btn" title="Go to top" class="back-to-top-btn">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script>
-        // Scripts taken from index.html for consistent functionality
-        // Including navigation, theme, cursor, and background animation.
+        // Skripte su preuzete iz index.html radi osiguravanja identične funkcionalnosti
+        // Uključujući navigaciju, temu, kursor, i pozadinsku animaciju.
 
         document.addEventListener('DOMContentLoaded', () => {
             const body = document.body;
@@ -731,7 +764,7 @@
             const backToTopButton = document.getElementById('back-to-top-btn');
             const cursor = document.querySelector('.custom-cursor');
 
-            // --- UPDATED LANGUAGE SELECTOR SCRIPT ---
+            // --- AŽURIRANA I ISPRAVLJENA SKRIPTA ZA JEZIČNI IZBORNIK ---
             const desktopLangTrigger = document.getElementById('desktop-lang-trigger');
             const desktopLangDropdown = document.getElementById('desktop-lang-dropdown');
             const mobileLangTrigger = document.getElementById('mobile-lang-trigger');
@@ -740,7 +773,7 @@
             const desktopPlatformTrigger = document.getElementById('desktop-platform-trigger');
             const desktopPlatformMenu = document.getElementById('desktop-platform-menu');
 
-            // Hamburger menu functionality
+            // Funkcionalnost za Hamburger meni
             if (hamburger && navMenu) {
                 hamburger.addEventListener('click', () => {
                     hamburger.classList.toggle('active');
@@ -749,7 +782,7 @@
                 });
             }
 
-            // Back to top functionality
+            // Funkcionalnost za povratak na vrh
             if (backToTopButton) {
                 window.addEventListener('scroll', () => {
                     if (window.scrollY > 400) {
@@ -763,7 +796,7 @@
                 });
             }
 
-            // Cursor
+            // Kursor
             if (cursor) {
                 let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
                 const speed = 0.1;
@@ -785,12 +818,12 @@
                 });
             }
 
-            // Platforms dropdown (Desktop)
+            // Platforme dropdown (Desktop)
             if (desktopPlatformTrigger && desktopPlatformMenu) {
                 desktopPlatformTrigger.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    desktopLangDropdown.classList.remove('active'); // Close language if open
+                    desktopLangDropdown.classList.remove('active'); // Zatvori jezični ako je otvoren
                     desktopPlatformMenu.classList.toggle('hidden');
                 });
             }
@@ -799,12 +832,12 @@
             if (desktopLangTrigger && desktopLangDropdown) {
                 desktopLangTrigger.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    desktopPlatformMenu.classList.add('hidden'); // Close platforms if open
+                    desktopPlatformMenu.classList.add('hidden'); // Zatvori platforme ako su otvorene
                     desktopLangDropdown.classList.toggle('active');
                 });
             }
 
-            // All dropdown menus (Mobile)
+            // Svi dropdown meniji (Mobile)
             const allMobileDropdowns = document.querySelectorAll('.nav-menu .sft21-nav-item.dropdown');
             allMobileDropdowns.forEach(dropdown => {
                 const trigger = dropdown.querySelector('a');
@@ -816,7 +849,7 @@
                         event.preventDefault();
                         event.stopPropagation();
                         const isCurrentlyOpen = dropdown.classList.contains('open');
-                        // Close ALL others first
+                        // Prvo zatvori SVE ostale
                         allMobileDropdowns.forEach(otherDropdown => {
                             if (otherDropdown !== dropdown) {
                                 otherDropdown.classList.remove('open');
@@ -826,7 +859,7 @@
                                 if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
                             }
                         });
-                        // Then toggle current
+                        // Zatim otvori/zatvori trenutni
                         if (isCurrentlyOpen) {
                             dropdown.classList.remove('open');
                             menu.style.display = 'none';
@@ -840,7 +873,7 @@
                 }
             });
 
-            // Close dropdowns when clicking outside
+            // Zatvaranje svih dropdowna klikom izvan
             document.addEventListener('click', (e) => {
                 if (desktopPlatformMenu && !desktopPlatformMenu.contains(e.target) && !desktopPlatformTrigger.contains(e.target)) {
                     desktopPlatformMenu.classList.add('hidden');
@@ -850,7 +883,7 @@
                 }
             });
 
-            // Lightbox for certificate
+            // Lightbox za certifikat
             const lightbox = document.getElementById('certificate-lightbox');
             const thumbnail = document.getElementById('certificate-thumbnail');
             const closeBtn = lightbox.querySelector('.lightbox-close');
@@ -879,7 +912,7 @@
     </script>
 
     <script>
-        // Background animation script (identical to index.html)
+        // Skripta za pozadinsku animaciju (identična kao na index.html)
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('network-canvas');
             if (!canvas) return;
@@ -916,7 +949,7 @@
     </script>
 
     <script>
-        // Theme switch script (identical to index.html)
+        // Skripta za promjenu teme (identična kao na index.html)
         document.addEventListener('DOMContentLoaded', () => {
             const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
             const moonIcons = [document.getElementById('theme-toggle-dark-icon'), document.getElementById('theme-toggle-dark-icon-mobile')];
@@ -954,24 +987,17 @@
             });
         });
     </script>
-    <script src="sfnews_data_en.js"></script>
+    <script src="sfnews_data_sr.js"></script> 
     <script src="sfnews_script.js"></script>
     <div id="image-modal"
         class="fixed inset-0 bg-black bg-opacity-90 z-50 flex justify-center items-center transition-opacity duration-300 hidden opacity-0">
-        <div class="relative max-w-5xl mx-auto p-4">
+        <div class="relative max-w-7xl mx-auto p-4 h-full flex items-center">
             <button id="close-modal-btn"
                 class="absolute top-4 right-4 text-white text-3xl z-50 hover:text-purple-400">&times;</button>
-            <img id="modal-image-content" src="" alt="Zoomed image" class="max-h-full max-w-full rounded-lg shadow-2xl">
+            <img id="modal-image-content" src="" alt="Uvećana slika"
+                class="rounded-lg shadow-2xl w-auto h-auto max-w-full max-h-[90vh] object-contain">
         </div>
     </div>
 </body>
 
 </html>
-
-
-
-
-
-
-
-

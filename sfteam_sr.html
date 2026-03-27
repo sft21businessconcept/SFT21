@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFteam - Ponosna Zajednica | SFT21</title>
+
+    <!-- SEO i Social Media Meta Tagovi -->
+    <meta name="description"
+        content="Upoznajte SFteam, ponosnu zajednicu dobrih ljudi koja stoji iza SFT21 koncepta. Pogledajte naš menadžment, članove sa karijernim statusima i njihova iskustva.">
+    <meta property="og:title" content="SFteam - Srce SFT21 Zajednice">
+    <meta property="og:description"
+        content="Otkrijte lica i priče koje čine našu zajednicu. Od menadžmenta do najuspešnijih članova, ovo je SFteam.">
+    <meta property="og:image" content="https://sft21businessconcept.github.io/SFT21/img/sfteam_og.png">
+    <meta property="og:url" content="https://sft21businessconcept.github.io/SFT21/sfteam.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- ============================================= -->
+    <!-- UNIVERZALNA SKRIPTA ZA INICIJALIZACIJU TEME -->
+    <!-- ============================================= -->
+    <script>
+        function applySft21Theme() {
+            try {
+                const theme = localStorage.getItem('sft21_theme') || 'dark';
+                document.documentElement.classList.toggle('light-mode', theme === 'light');
+                document.body.classList.toggle('light-mode', theme === 'light');
+            } catch (e) {
+                console.error('Greška pri primjeni teme:', e);
+            }
+        }
+
+        (function () {
+            const theme = localStorage.getItem('sft21_theme') || 'dark';
+            if (theme === 'light') {
+                document.documentElement.classList.add('light-mode');
+            }
+        })();
+
+        document.addEventListener('DOMContentLoaded', applySft21Theme);
+        // === NOVI KOD ZA PROVJERU STATUSA PRIJAVE ===
+
+        function handleLoginState() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+            const isEnglish = window.location.pathname.includes('_en');
+
+            // Selektori za sve relevantne elemente menija
+            const loginButtons = document.querySelectorAll('a[href^="login"]'); // Cilja i login.html i login_en.html
+            const platformLinksDesktop = document.querySelectorAll('#desktop-platform-menu a');
+            const platformLinksMobile = document.querySelectorAll('#mobile-platform-menu a');
+
+            if (isLoggedIn) {
+                // === KORISNIK JE PRIJAVLJEN ===
+
+                // 1. Promijeni gumb "Prijava" u "Odjava"
+                loginButtons.forEach(btn => {
+                    if (btn.textContent.toLowerCase().includes('prijava') || btn.textContent.toLowerCase().includes('login')) {
+                        btn.textContent = isEnglish ? 'Logout' : 'Odjava';
+                        btn.href = '#'; // Ukloni link da ne vodi nigde
+                        btn.id = 'logout-button'; // Dajemo mu ID za odjavu
+                        // Ako je gumb "disabled" (kao na login stranici), ukloni to
+                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        btn.disabled = false;
+                    }
+                });
+
+                // 2. Ažuriraj linkove pod "Platforme" da vode direktno
+                const updatePlatformLink = (link) => {
+                    const originalHref = link.href;
+                    if (originalHref.includes('login')) {
+                        const url = new URL(originalHref);
+                        const redirectTarget = url.searchParams.get('redirect');
+                        if (redirectTarget) {
+                            link.href = redirectTarget;
+                        }
+                    }
+                };
+                platformLinksDesktop.forEach(updatePlatformLink);
+                platformLinksMobile.forEach(updatePlatformLink);
+
+                // 3. Dodaj event listener za odjavu
+                const logoutButton = document.getElementById('logout-button');
+                if (logoutButton) {
+                    logoutButton.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        sessionStorage.removeItem('isLoggedIn');
+                        alert(isEnglish ? 'You have been logged out.' : 'Odjavljeni ste.');
+                        // Preusmjeri na početnu stranicu nakon odjave
+                        window.location.href = isEnglish ? 'index_en.html' : 'index.html';
+                    });
+                }
+
+            } else {
+                // === KORISNIK NIJE PRIJAVLJEN (osiguraj da je sve vraćeno na početno stanje) ===
+                // Ovo je važno ako korisnik klikne back button u pregledniku
+
+                const logoutButton = document.getElementById('logout-button');
+                if (logoutButton) {
+                    logoutButton.textContent = isEnglish ? 'Login' : 'Prijava';
+                    logoutButton.href = isEnglish ? 'login_en.html' : 'login.html';
+                    logoutButton.id = ''; // Makni ID
+                }
+
+                // (Opcionalno, ali dobro) Vrati linkove za platforme na login, ako je potrebno
+                // Obično nije potrebno jer se stranica ponovno učita.
+            }
+        }
+
+        handleLoginState(); // Pozovi funkciju odmah pri učitavanju stranice
+
+        // === KRAJ NOVOG KODA ===
+
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                applySft21Theme();
+            }
+        });
+    </script>
+
+    <!-- Glavni Stilovi -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- STILOVI ZA SFTEAM.HTML -->
+    <style>
+        /* === HERO SEKCIJA === */
+        .hero-media-container {
+            width: 100%;
+            height: 90vh;
+            min-height: 500px;
+            background-image: url('img/sfteam.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center 40%;
+        }
+
+        .hero-media-container img.hero-image {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-60%);
+        }
+
+        .team-subtitle {
+            color: #d1d5db;
+        }
+
+        body.light-mode .team-subtitle {
+            color: #475569;
+        }
+
+        /* === KARTICE ČLANOVA === */
+        .member-card {
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(128, 255, 0, 0.2);
+        }
+
+        .member-card img {
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border: 2px solid var(--fluorescent-green);
+        }
+
+        .member-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .member-card p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            min-height: 40px;
+        }
+
+        body.light-mode .member-card p {
+            color: #64748b;
+        }
+
+        body.light-mode .member-card img {
+            border-color: var(--primary-color);
+        }
+
+        /* === KARIJERNI STATUSI === */
+        .career-status-section {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(128, 255, 0, 0.1);
+            text-align: center;
+        }
+
+        body.light-mode .career-status-section {
+            border-bottom-color: rgba(106, 27, 154, 0.1);
+        }
+
+        .career-status-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .career-status-title {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--fluorescent-green);
+        }
+
+        body.light-mode .career-status-title {
+            color: var(--primary-color);
+        }
+
+        .career-members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .career-members-grid>.text-center {
+            grid-column: 1 / -1;
+        }
+
+        .career-member-avatar {
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .career-member-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .career-member-avatar img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 0.5rem auto;
+            border: 3px solid;
+        }
+
+        .career-member-avatar .name {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-dijamant img {
+            border-color: #b9f2ff;
+        }
+
+        .status-smaragd img {
+            border-color: #50c878;
+        }
+
+        .status-rubin img {
+            border-color: #e0115f;
+        }
+
+        .status-zlato img {
+            border-color: #ffd700;
+        }
+
+        .status-srebro img {
+            border-color: #c0c0c0;
+        }
+
+        /* === SLIDER (SWIPER.JS) - POPRAVLJENO ZA MOBITELE === */
+        .testimonials-slider {
+            position: relative;
+            padding: 0 50px;
+            /* Standardni razmak za desktop */
+        }
+
+        /* Boje strelica i paginacije */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--fluorescent-green) !important;
+        }
+
+        body.light-mode .swiper-button-next,
+        body.light-mode .swiper-button-prev {
+            color: var(--primary-color) !important;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--fluorescent-green) !important;
+        }
+
+        body.light-mode .swiper-pagination-bullet-active {
+            background: var(--primary-color) !important;
+        }
+
+        /* Stilovi kartice svjedočanstva */
+        .testimonial-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 4px solid var(--fluorescent-green);
+        }
+
+        body.light-mode .testimonial-card blockquote {
+            border-left-color: var(--primary-color);
+        }
+
+        .testimonial-card .author-info {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .testimonial-card .author-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+
+        .testimonial-card .author-info cite {
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .testimonial-card .author-info cite span {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #9ca3af;
+        }
+
+        body.light-mode .testimonial-card .author-info cite span {
+            color: #64748b;
+        }
+
+        /* === MEDIA QUERY ZA NOTE 10 I MOBITELE === */
+        @media (max-width: 768px) {
+            .testimonials-slider {
+                padding: 0 5px !important;
+                /* Širi stupce do ruba ekrana */
+            }
+
+            /* Strelice stavljamo unutar stupaca */
+            .swiper-button-prev {
+                left: 5px !important;
+            }
+
+            .swiper-button-next {
+                right: 5px !important;
+            }
+
+            /* Činimo strelice manjima i dodajemo prozirnu pozadinu radi vidljivosti */
+            .swiper-button-next,
+            .swiper-button-prev {
+                background: rgba(0, 0, 0, 0.15);
+                width: 38px !important;
+                height: 38px !important;
+                border-radius: 50%;
+                top: 50% !important;
+            }
+
+            /* Smanjujemo samu ikonu strelice */
+            .swiper-button-next::after,
+            .swiper-button-prev::after {
+                font-size: 18px !important;
+            }
+
+            /* Smanjujemo padding kartice da tekst dobije više mjesta */
+            .testimonial-card {
+                padding: 1.5rem 1.25rem !important;
+            }
+
+            /* Smanjujemo zelenu marginu citata na mobitelu */
+            .testimonial-card blockquote {
+                padding-left: 1rem !important;
+                font-size: 1rem !important;
+            }
+        }
+
+        /* === OSTALI STILOVI === */
+        body.light-mode #career-status {
+            background-color: transparent;
+        }
+
+        body.light-mode .career-members-grid .text-gray-400 {
+            color: #64748b;
+        }
+
+        canvas#network-canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            background-color: #1d012e;
+        }
+
+        body.light-mode canvas#network-canvas {
+            background-color: transparent;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: block;
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .nav-menu {
+            position: fixed;
+            left: -100%;
+            top: 70px;
+            flex-direction: column;
+            background-color: var(--dark-bg);
+            width: 100%;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-menu.active {
+            left: 0;
+        }
+
+        body.light-mode .nav-menu {
+            background-color: var(--light-bg);
+        }
+
+        body:not(.light-mode) .nav-menu a.btn-primary {
+            color: var(--dark-color);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900">
+    <canvas id="network-canvas"></canvas>
+    <div class="custom-cursor"></div>
+
+    <!-- HEADER -->
+    <nav class="fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index_sr.html" class="flex items-center">
+                    <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
+                    <div class="flex flex-col logo-nav">
+                        <div class="text-white font-bold"> <span class="text-logo-orange">SFT</span>21 </div>
+                    </div>
+                </a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index_sr.html" class="nav-link transition-colors duration-300">Početna</a>
+                    <a href="login_sr.html" class="btn-primary text-xs">PRIJAVA</a>
+                    <a href="register_sr.html" class="btn-primary text-xs">REGISTRACIJA</a>
+                </div>
+                <div class="md:hidden">
+                    <div class="hamburger">
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-menu md:hidden">
+            <a href="index_sr.html"
+                class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Početna stranica</a>
+            <div class="flex flex-col space-y-3 mt-5 px-6">
+                <a href="login_sr.html" class="btn-primary text-center">Prijava</a>
+                <a href="register_sr.html" class="btn-primary text-center">Registracija</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <div class="hero-media-container">
+        </div>
+
+        <section class="py-16 text-center">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">SFteam</h1>
+                <p class="text-xl md:text-2xl text-gray-300 font-light">Ponosna zajednica dobrih ljudi</p>
+            </div>
+        </section>
+
+        <section id="management" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">Menadžment kompanije</h2>
+                    <div class="w-24 h-1 bg-purple-500 mx-auto"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="glass-card p-6 member-card">
+                        <img src="img/mladen-pejic.png" alt="Mladen Pejic"
+                            class="w-full aspect-square object-cover rounded-xl border-2 border-green-400">
+                        <h3>Mladen Pejić</h3>
+                        <p>Suvlasnik i osnivač</p>
+                    </div>
+                    <div class="glass-card p-6 member-card">
+                        <img src="img/zoran-lazarevic.png" alt="Zoran Lazarevic"
+                            class="w-full aspect-square object-cover rounded-xl border-2 border-green-400">
+                        <h3>Zoran Lazarević</h3>
+                        <p>Suvlasnik i osnivač</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-24 mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 team-subtitle">Glavni tim</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                    <div class="glass-card p-6 member-card">
+                        <img src="img/sanja_mm.png" alt="Sanja Mihaljinac Marinović">
+                        <h3>Sanja Mihaljinac Marinović</h3>
+                        <p>Odnosi sa javnošću i mediji</p>
+                    </div>
+                    <div class="glass-card p-6 member-card">
+                        <img src="https://via.placeholder.com/400x400.png?text=Slika" alt="Ime Člana 2">
+                        <h3>Ime Člana 2</h3>
+                        <p>Pozicija člana</p>
+                    </div>
+                    <div class="glass-card p-6 member-card">
+                        <img src="https://via.placeholder.com/400x400.png?text=Slika" alt="Ime Člana 3">
+                        <h3>Ime Člana 3</h3>
+                        <p>Pozicija člana</p>
+                    </div>
+                    <div class="glass-card p-6 member-card">
+                        <img src="https://via.placeholder.com/400x400.png?text=Slika" alt="Ime Člana 4">
+                        <h3>Ime Člana 4</h3>
+                        <p>Pozicija člana</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Status Section -->
+        <section id="career-status" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">SFteam – Karijerni statusi</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">Ponosni smo na članove koji svojim radom dostižu
+                        najviše nivoe uspeha.</p>
+                </div>
+
+                <div class="career-status-section">
+                    <h3 class="career-status-title">SFT DIJAMANT</h3>
+                    <div class="career-members-grid" id="sft-dijamant-grid">
+                        <div class="text-center py-8">
+                            <img src="img/sftdijamant.png" alt="SFT Dijamant" class="w-20 h-20 mx-auto mb-4 opacity-70">
+                            <p class="text-gray-400">Trenutno nemamo članova sa ovim statusom</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="career-status-section">
+                    <h3 class="career-status-title">PLAVI DIJAMANT</h3>
+                    <div class="career-members-grid" id="plavi-dijamant-grid">
+                        <div class="text-center py-8">
+                            <img src="img/plavi dijamant.png" alt="Plavi Dijamant"
+                                class="w-20 h-20 mx-auto mb-4 opacity-70">
+                            <p class="text-gray-400">Trenutno nemamo članova sa ovim statusom</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="career-status-section">
+                    <h3 class="career-status-title">DIJAMANT</h3>
+                    <div class="career-members-grid" id="dijamant-grid">
+                        <div class="text-center py-8">
+                            <img src="img/dijamant.png" alt="Dijamant" class="w-20 h-20 mx-auto mb-4 opacity-70">
+                            <p class="text-gray-400">Trenutno nemamo članova sa ovim statusom</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="career-status-section">
+                    <h3 class="career-status-title">SMARAGD</h3>
+                    <div class="career-members-grid" id="smaragd-grid">
+                        <div class="text-center py-8">
+                            <img src="img/smaragd.png" alt="Smaragd" class="w-20 h-20 mx-auto mb-4 opacity-70">
+                            <p class="text-gray-400">Trenutno nemamo članova sa ovim statusom</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="career-status-section">
+                    <h3 class="career-status-title">RUBIN</h3>
+                    <div class="career-members-grid" id="rubin-grid">
+                        <div class="text-center py-8">
+                            <img src="img/rubin.png" alt="Rubin" class="w-20 h-20 mx-auto mb-4 opacity-70">
+                            <p class="text-gray-400">Trenutno nemamo članova sa ovim statusom</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="career-status-section">
+                    <h3 class="career-status-title">ZLATO</h3>
+                    <div class="career-members-grid" id="zlato-grid">
+                        <div class="text-center py-8">
+                            <img src="img/zlato.png" alt="Zlato" class="w-20 h-20 mx-auto mb-4 opacity-70">
+                            <p class="text-gray-400">Trenutno nemamo članova sa ovim statusom</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="career-status-section">
+                    <h3 class="career-status-title">SREBRO</h3>
+                    <div class="career-members-grid" id="srebro-grid">
+                        <div class="text-center py-8">
+                            <img src="img/srebro.png" alt="Srebro" class="w-20 h-20 mx-auto mb-4 opacity-70">
+                            <p class="text-gray-400">Trenutno nemamo članova sa ovim statusom</p>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section id="testimonials" class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">Glas zajednice</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">Iskustva naših članova su naša najveća snaga!</p>
+                </div>
+
+                <!-- Slider s prva dva svjedočanstva -->
+                <div class="swiper testimonials-slider">
+                    <div class="swiper-wrapper">
+
+                        <!-- Slide 1: Vedrana Kramar -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"Ono što me već na prvi pogled osvojilo kod ovog projekta jest činjenica da
+                                    pruža iznimno jasnu, snažnu i dobro definiranu strukturu, kako pravnu tako i idejnu,
+                                    koja je detaljno osmišljena kako bi pravedno i dosljedno štitila interese tvrtke i
+                                    svakog sudionika koji se tada osjeća apsolutno cijenjeno i motivirano.Prepoznati to
+                                    u ovoj ranoj fazi za mene je jednak osvajanju Nobelove nagrade 🎯✅."</blockquote>
+                                <div class="author-info">
+                                    <img src="img/vedrana-kramar.png" alt="Vedrana Kramar">
+                                    <cite>Vedrana Kramar<span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Tihomir Sanader -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"Zajednica je nevjerojatna. Podrška koju dobivate od drugih članova je
+                                    ključna za uspjeh. Osjećam se kao dio jedne velike obitelji. Kao član iz starog
+                                    sistema u novi sistem ulazim kao ponosni vlasnik Licence, jer vjerujem u ovaj
+                                    poslovni projekt."</blockquote>
+                                <div class="author-info">
+                                    <img src="img/tihomir-sanader-silenziopace.png" alt="Tihomir Sanader">
+                                    <cite>Tihomir Sanader Silenziopace<span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Milena Đurovski -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"Konačno projekt koji spaja digitalnu tehnologiju s podrškom lokalnoj
+                                    ekonomiji! Veselim se ideji da podržim i pomognem male proizvođače i trgovce iz
+                                    svoje regije, a istovremeno gradim vlastiti posao."</blockquote>
+                                <div class="author-info">
+                                    <img src="img/milena-djurovski.png" alt="Milena Đurovski">
+                                    <cite>Milena Đurovski <span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4: Irena Peršić -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"Kada neki projekt kao SFT21 ima društvenu mrežu, webshop i takvu online
+                                    zajednicu šta treba više objašnjavati. Pomaganje i druženje sa ljudima. Zato družimo
+                                    se ljudi jer čovjek je društveno biće. Čekamo Vas! "</blockquote>
+                                <div class="author-info">
+                                    <img src="img/irena-persic.png" alt="Irena Peršić">
+                                    <cite>Irena Peršić<span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5: Filip Dorić -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"Godinama sam aktivan u online poslovanju, kroz to vrijeme imao sam priliku
+                                    raditi s raznim poslovnim modelima, uključujući dropshipping, affiliate marketing,
+                                    digitalne proizvode i mrežni marketing. Svaki od njih donio je vrijedno iskustvo,
+                                    ali do sada nisam naišao na koncept koji na ovakav način povezuje tehnologiju,
+                                    strukturu i zajednicu kao SFT21 poslovni koncept. "</blockquote>
+                                <div class="author-info">
+                                    <img src="img/filip-doric.png" alt="Filip Dorić">
+                                    <cite>Filip Dorić<span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 6: Senka Uzunović -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"Zahvalna sam što se Ideja o stvaranju Zajednice kroz franšizni model
+                                    poslovanja kompanije SFT21, kao Inovativni, i do sada, u poslovnom svetu nikad
+                                    Vidljiv , polako, temeljno, sigurno postavlja na mesto koje Zaslužuje. Vrednosti,
+                                    kao što su Iskrenost, Samopožrtvovanje, Tolerancija, Davanje, Podrška, Lojalnost,
+                                    Ljubav može svako da dobije u Našoj Zajednici. Dođite da Zajedno Stvaramo Bolji Svet
+                                    ❤ "</blockquote>
+                                <div class="author-info">
+                                    <img src="img/senka-uzunovic.png" alt="Senka Uzunović">
+                                    <cite>Senka Uzunović<span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 7: Sava Višnjić -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"SFT21 je jedan od najkvalitetnijih i najkompletnijih online koncepata
+                                    današnjice – jasan, praktičan i primenljiv u realnom životu. Nije teorija bez
+                                    pokrića, već sistem koji gradi disciplinu, mentalnu snagu i dugoročne rezultate. Ko
+                                    jednom uđe u SFT21, shvati zašto pravi razliku. "</blockquote>
+                                <div class="author-info">
+                                    <img src="img/sava-visnjic.png" alt="Sava Višnjić">
+                                    <cite>Sava Višnjić<span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 8: Antonio Bozalo -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"Otkad sam se pridružio SFT21, osjećam se kao dio obitelji. Ne samo da su
+                                    alati i usluge vrhunski, već je i podrška korisnicima nevjerojatna. Uvijek su tu da
+                                    pomognu, a zajednica je puna inspirativnih ljudi. SFT21 nije samo usluga, to je
+                                    ekosustav koji potiče rast i učenje. Definitivno sam vjerni član do kraja!"
+                                </blockquote>
+                                <div class="author-info">
+                                    <img src="img/antonio-bozalo.png" alt="Antonio Bozalo">
+                                    <cite>Antonio Bozalo <span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 9: Biljana Milošević -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"SFT21 Business Concept je u potpunosti ispunio moja očekivanja kada je u
+                                    pitanju online posao. Godinama sam tražila neki posao preko interneta u kome bih
+                                    mogla iskazati svoje sposobnosti ekonomiste-komercijaliste. Sada imam priliku da se
+                                    angazujem na animiranju i promociji malih domaćih proizvođača robe i usluga putem
+                                    SFnet društvene mreže i SFshop online trgovine."</blockquote>
+                                <div class="author-info">
+                                    <img src="img/biljana-milosevic.png" alt="Biljana Milošević">
+                                    <cite>Biljana Milošević<span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 10: Brane Debelak -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"Če sem že skoraj od začetka prisoten in zaupam projektu SFT 21, bom seveda
+                                    še naprej, saj je po mojem mnenju najboljši. Veselim se že nadaljnih uspehov. Gremo
+                                    naprej s polno paro 💪💪💪"</blockquote>
+                                <div class="author-info">
+                                    <img src="img/brane-debelak.png" alt="Brane Debelak">
+                                    <cite>Brane Debelak<span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 11: Arnel Trako -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"Ovaj projekat je osvojio mene i moj tim. Vjerujem u namjere Zorana i
+                                    Mladena, koje sam i lično upoznao, i imaju moju punu podršku. SFT21 Business Concept
+                                    je drugačiji – to je projekat s misijom. Danas SFteam okuplja članove iz Bosne i
+                                    Hercegovine i mnogih evropskih zemalja, što potvrđuje snagu ovog koncepta."
+                                </blockquote>
+                                <div class="author-info">
+                                    <img src="img/arnel-trako.png" alt="Arnel Trako">
+                                    <cite>Arnel Trako<span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 12: Karolina Stojkova -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"Ova naša priča je više od biznisa, više od \"samo još jedan posao na
+                                    internetu\". Ona je jedinstvena misija poboljšanja kvalitete života. Ponosna sam što
+                                    sam dio tima koji nudi jedinstvena rješenja i viziju sigurne budućnosti za svakog
+                                    pojedinca. Pravo je zadovoljstvo biti dio tvrtke koja nam omogućuje da gradimo bolju
+                                    budućnost s osmijehom na licu!"</blockquote>
+                                <div class="author-info">
+                                    <img src="img/karolina-stojkova.png" alt="Karolina Stojkova">
+                                    <cite>Karolina Stojkova<span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 13: Saša Milenković -->
+                        <div class="swiper-slide">
+                            <div class="glass-card p-8 testimonial-card interactive-card">
+                                <blockquote>"Odavno sam uvideo da se stalnim poslom od 8 sati ne moze postići
+                                    finansijska nezavisnost. Godinama sam pokušavao to postići sa raznim sistemima na
+                                    internetu ali je svaki imao mnogo propusta i mana...
+                                    Ideja SFT 21 koju su nam prestavili Zoran i Mladen je potpuno drugačija sa
+                                    fenomenalnim mogućnostima i jako me raduje što sve više ljudi to prepoznaje, tako da
+                                    zajedno možemo postići istorijski uspeh!"</blockquote>
+                                <div class="author-info">
+                                    <img src="img/sasa-milenkovic.png" alt="Saša Milenković">
+                                    <cite>Saša Milenković<span>Član SFteam zajednice</span></cite>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <!-- Navigacija za Slider -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+
+                <!-- Container for video testimonials with added spacing -->
+                <div class="mt-16 flex flex-col space-y-12">
+
+                    <!-- Testimonial 1: Mario Peteh -->
+                    <div class="testimonial-card">
+                        <div class="flex flex-col md:flex-row items-center gap-6">
+                            <div class="flex-shrink-0">
+                                <video class="testimonial-video" id="testimonial2-video" controls>
+                                    <source src="video/testimonials/testimonial-2.mp4" type="video/mp4">
+                                    Your browser does not support the video element.
+                                </video>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-gray-300 text-lg mb-4 italic">
+                                    "Kao netko tko je dugo tražio pravu poslovnu priliku, SFT21 koncept me oduševio
+                                    svojom transparentnošću i potencijalom. Pravična raspodjela profita kroz SFalgoritam
+                                    nije samo obećanje, već temelj sustava koji nagrađuje trud. Ovo je budućnost
+                                    franšiznog poslovanja."
+                                </p>
+                                <div class="flex items-center">
+                                    <img src="img/mario-peteh.png" alt="Mario Peteh"
+                                        class="w-12 h-12 rounded-full border-2 border-green-400 mr-4">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Mario Peteh</h4>
+                                        <p class="text-gray-400 text-sm">Član SFteam zajednice</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2: Natali Zubak -->
+                    <div class="testimonial-card">
+                        <div class="flex flex-col md:flex-row items-center gap-6">
+                            <div class="flex-shrink-0">
+                                <video class="testimonial-video" id="testimonial3-video" controls>
+                                    <source src="video/testimonials/testimonial-3.mp4" type="video/mp4">
+                                    Your browser does not support the video element.
+                                </video>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-gray-300 text-lg mb-4 italic">
+                                    "Ono što SFT21 čini posebnim nisu samo poslovne mogućnosti, već ljudi koji čine ovu
+                                    zajednicu. Ta energija, zajedništvo i spremnost da si međusobno pomažemo je nešto
+                                    što nisam doživjela nigdje drugdje. Ovdje se ne osjećate kao broj, već kao cijenjeni
+                                    član SFteam obitelji."
+                                </p>
+                                <div class="flex items-center">
+                                    <img src="img/natali-zubak.png" alt="Natali Zubak"
+                                        class="w-12 h-12 rounded-full border-2 border-green-400 mr-4">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Natali Zubak</h4>
+                                        <p class="text-gray-400 text-sm">Član SFteam zajednice</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-16 bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© 2026 SFT21 LLC - Sva prava zadržana.</p>
+            </div>
+        </div>
+        <a href="sfteam_sr.html" title="Posetite SFteam stranicu" class="pulsating-circle">
+            <div class="circle-content">
+                <span class="circle-line line-i">I</span><span class="circle-line heart-symbol">❤️</span><span
+                    class="circle-line line-sfteam">SFteam</span>
+            </div>
+        </a>
+    </footer>
+
+    <!-- UČITAVANJE SVIH SKRIPTI -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+            }
+            // =========================================================
+            // === KOD ZA ANIMACIJU POZADINE (S PODRŠKOM ZA TEME) ===
+            // =========================================================
+            (function () {
+                const canvas = document.getElementById('network-canvas');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+
+                let particles = [];
+                const particleCount = 100;
+                const maxDistance = 100;
+
+                function resizeCanvas() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+                window.addEventListener('resize', resizeCanvas);
+                resizeCanvas();
+
+                class Particle {
+                    constructor() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * canvas.height;
+                        this.vx = (Math.random() - 0.5) * 0.5;
+                        this.vy = (Math.random() - 0.5) * 0.5;
+                        this.radius = 2;
+                    }
+                    update() {
+                        this.x += this.vx;
+                        this.y += this.vy;
+                        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                    }
+                    // Prima boju kao argument
+                    draw(color) {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                        ctx.fillStyle = color;
+                        ctx.fill();
+                    }
+                }
+
+                function initParticles() {
+                    particles = [];
+                    for (let i = 0; i < particleCount; i++) {
+                        particles.push(new Particle());
+                    }
+                }
+                initParticles();
+
+                // Prima osnovnu boju kao argument (npr. '106, 27, 154')
+                function connectParticles(lineColorBase) {
+                    for (let i = 0; i < particles.length; i++) {
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const dx = particles[i].x - particles[j].x;
+                            const dy = particles[i].y - particles[j].y;
+                            const distance = Math.sqrt(dx * dx + dy * dy);
+                            if (distance < maxDistance) {
+                                ctx.beginPath();
+                                ctx.moveTo(particles[i].x, particles[i].y);
+                                ctx.lineTo(particles[j].x, particles[j].y);
+                                ctx.strokeStyle = `rgba(${lineColorBase}, ${1 - distance / maxDistance})`;
+                                ctx.lineWidth = 0.5;
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                }
+
+                function animate() {
+                    // === POČETAK IZMJENE ===
+                    // Provjera teme na početku svakog iscrtavanja
+                    const isLightMode = document.documentElement.classList.contains('light-mode');
+
+                    // Definiranje boja na temelju teme
+                    const particleColor = isLightMode ? 'rgba(106, 27, 154, 0.8)' : 'rgba(128, 255, 0, 0.8)'; // Ljubičasta : Zelena
+                    const lineColorBase = isLightMode ? '106, 27, 154' : '128, 255, 0'; // Ljubičasta : Zelena (RGB vrijednosti)
+                    // === KRAJ IZMJENE ===
+
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    particles.forEach(p => {
+                        p.update();
+                        p.draw(particleColor); // Prosljeđivanje odabrane boje
+                    });
+                    connectParticles(lineColorBase); // Prosljeđivanje odabrane boje
+                    requestAnimationFrame(animate);
+                }
+                animate();
+            })();
+            // === KRAJ KODA ZA ANIMACIJU ===
+
+
+            // Ostatak vašeg postojećeg koda...
+            const logoImg = document.getElementById('site-logo');
+            const body = document.body;
+            const cursor = document.querySelector('.custom-cursor');
+
+            // POSLIJE (ZAMIJENITE S OVIM)
+
+            if (cursor && body) {
+                let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+                const speed = 0.1;
+
+                const updateCursorPosition = () => {
+                    cursorX += (mouseX - cursorX) * speed;
+                    cursorY += (mouseY - cursorY) * speed;
+                    cursor.style.left = `${cursorX}px`;
+                    cursor.style.top = `${cursorY}px`;
+                    requestAnimationFrame(updateCursorPosition);
+                };
+                requestAnimationFrame(updateCursorPosition);
+
+                // --- Događaji za MIŠ (za desktop) ---
+                window.addEventListener('mousemove', (e) => {
+                    cursor.style.opacity = '1'; // Pokaži kursor čim se miš pomakne
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+                document.addEventListener('mouseleave', () => {
+                    if (cursor) cursor.style.opacity = '0';
+                });
+                document.addEventListener('mouseenter', () => {
+                    if (cursor) cursor.style.opacity = '1';
+                });
+
+                // --- NOVO: Događaji za DODIR (za mobilne uređaje) ---
+                window.addEventListener('touchstart', (e) => {
+                    if (e.touches.length > 0) {
+                        cursor.style.opacity = '1'; // Pokaži kursor na početku dodira
+                        // Odmah postavi poziciju da izbjegne "skakanje"
+                        mouseX = e.touches[0].clientX;
+                        mouseY = e.touches[0].clientY;
+                        cursorX = e.touches[0].clientX;
+                        cursorY = e.touches[0].clientY;
+                    }
+                }, { passive: true });
+
+                window.addEventListener('touchmove', (e) => {
+                    if (e.touches.length > 0) {
+                        // Ažuriraj ciljanu poziciju dok se prst pomiče
+                        mouseX = e.touches[0].clientX;
+                        mouseY = e.touches[0].clientY;
+                    }
+                }, { passive: true });
+
+                window.addEventListener('touchend', () => {
+                    // Sakrij kursor kada se prst podigne
+                    if (cursor) cursor.style.opacity = '0';
+                });
+
+                // Hover efekti (ostaju isti)
+                document.querySelectorAll('a, button, .accordion-header, .hamburger, input, textarea, select, .language-trigger, .language-item, label[for], .kyc-placeholder-clickable, #camera-icon, .starter-package-select-btn, .trigger-choose-investor-type-popup, .open-investment-details-popup').forEach(el => {
+                    el.addEventListener('mouseenter', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1.5, backgroundColor: 'rgba(128, 255, 0, 0.5)' }); });
+                    el.addEventListener('mouseleave', () => { if (cursor && typeof gsap !== 'undefined') gsap.to(cursor, { duration: 0.3, scale: 1, backgroundColor: 'rgba(106, 27, 154, 0.6)' }); });
+                });
+            }
+
+            const applyThemeToLogo = () => {
+                const isLightMode = document.documentElement.classList.contains('light-mode');
+                if (logoImg) {
+                    logoImg.src = isLightMode ? 'img/IFIG-logo_purple.png' : 'img/IFIG-logo.png';
+                }
+            };
+
+            // Ponovno pozovi nakon što se tema promijeni
+            const originalApplyTheme = window.applySft21Theme;
+            window.applySft21Theme = function () {
+                originalApplyTheme();
+                applyThemeToLogo();
+            };
+            applyThemeToLogo(); // Inicijalni poziv
+
+            // Inicijalizacija Slidera (Swiper.js)
+            const swiper = new Swiper('.testimonials-slider', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 30,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
