@@ -135,6 +135,21 @@
             background-color: color-mix(in srgb, var(--fluorescent-green) 85%, black 15%) !important;
         }
 
+        /* Ispravak vidljivosti teksta za LP7 karticu u Light modu */
+        body.light-mode #individual-package .text-white {
+            color: var(--primary-color) !important; /* Mijenja bijeli tekst u ljubičastu */
+        }
+
+        body.light-mode #individual-package .text-gray-300 {
+            color: #1e293b !important; /* Mijenja svijetlo sivi tekst u tamni škriljevac za bolju čitljivost */
+        }
+
+        /* Opcionalno: prilagodba gumba "VEĆI IZNOS" u light modu ako je presvijetao */
+        body.light-mode #individual-package .btn-outline {
+            border-color: var(--primary-color) !important;
+            color: var(--primary-color) !important;
+        }
+
         .back-to-top-btn {
             position: fixed;
             bottom: 110px;
