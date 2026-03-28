@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="sr">
 
 <head>
     <meta charset="UTF-8">
@@ -71,6 +71,18 @@
         body.light-mode .back-to-top-btn:hover {
             /* Stilovi za gumb "povratak na vrh" */
         }
+         /* Forsiranje bijele boje za tekst u slajderu - uništava sivu boju u Light modu */
+        #news-navigation span, 
+        .news-slider-text {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important; /* Za Apple/Chrome preglednike */
+            opacity: 1 !important;
+        }
+
+        /* Osigurava da i u light modu ostane bijelo */
+        body.light-mode #news-navigation span {
+            color: #ffffff !important;
+        }       
 
         .back-to-top-btn {
             position: fixed;
@@ -446,7 +458,7 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <a href="index.html">
+                    <a href="index_sr.html">
                         <img src="img/IFIG-logo.png" alt="SFT21 logo" id="site-logo" class="h-auto w-12 mr-4">
                     </a>
                     <div class="flex flex-col logo-nav">
@@ -456,14 +468,14 @@
 
                 <!-- Desktop Navigacija -->
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="index.html#pocetna" class="nav-link transition-colors duration-300">Početna</a>
-                    <a href="index.html#poslovni-koncept" class="nav-link transition-colors duration-300">Poslovni
+                    <a href="index_sr.html#pocetna" class="nav-link transition-colors duration-300">Početna</a>
+                    <a href="index_sr.html#poslovni-koncept" class="nav-link transition-colors duration-300">Poslovni
                         koncept</a>
-                    <a href="index.html#licencni-paketi" class="nav-link transition-colors duration-300">Licencni
+                    <a href="index_sr.html#licencni-paketi" class="nav-link transition-colors duration-300">Licencni
                         paketi</a>
-                    <a href="index.html#startni-paketi" class="nav-link transition-colors duration-300">Startni
+                    <a href="index_sr.html#startni-paketi" class="nav-link transition-colors duration-300">Startni
                         paketi</a>
-                    <a href="index.html#kontakt" class="nav-link transition-colors duration-300">Kontakt</a>
+                    <a href="index_sr.html#kontakt" class="nav-link transition-colors duration-300">Kontakt</a>
                     <div class="sft21-nav-item dropdown relative">
                         <a href="#" class="nav-link transition-colors duration-300 inline-flex items-center"
                             id="desktop-platform-trigger">
@@ -471,11 +483,11 @@
                         </a>
                         <div class="dropdown-menu absolute hidden bg-gray-800 rounded shadow-lg py-1"
                             id="desktop-platform-menu">
-                            <a href="login.html?redirect=sfured.html"
+                            <a href="login_sr.html?redirect=sfured_sr.html"
                                 class="dropdown-item block px-4 py-2 text-sm text-gray-200 hover:bg-purple-700 hover:text-white">SFured</a>
-                            <a href="login.html?redirect=sfalgoritam.html"
+                            <a href="login_sr.html?redirect=sfalgoritam_sr.html"
                                 class="dropdown-item block px-4 py-2 text-sm text-gray-200 hover:bg-purple-700 hover:text-white">SFalgoritam</a>
-                            <a href="login.html?redirect=video_player.html%3Ffrom%3Dindex.html"
+                            <a href="login_sr.html?redirect=video_player_sr.html%3Ffrom%3Dindex_sr.html"
                                 class="dropdown-item block px-4 py-2 text-sm text-gray-200 hover:bg-purple-700 hover:text-white">Video
                                 Player</a>
                             <a href="#"
@@ -484,7 +496,7 @@
                                 class="dropdown-item block px-4 py-2 text-sm text-gray-200 hover:bg-purple-700 hover:text-white">SFshop</a>
                         </div>
                     </div>
-                    <a href="sfnews.html" class="nav-link transition-colors duration-300 active">SFnews</a>
+                    <a href="sfnews_sr.html" class="nav-link transition-colors duration-300 active">SFnews</a>
 
                     <div class="flex items-center space-x-4">
                         <div class="flex items-center space-x-1">
@@ -513,8 +525,8 @@
                         </div>
 
                         <div class="flex items-center space-x-2">
-                            <a href="login.html" class="btn-primary text-xs">Prijava</a>
-                            <a href="register.html" class="btn-primary text-xs">Registracija</a>
+                            <a href="login_sr.html" class="btn-primary text-xs">Prijava</a>
+                            <a href="register_sr.html" class="btn-primary text-xs">Registracija</a>
                         </div>
                     </div>
                 </div>
@@ -536,18 +548,18 @@
                             <i id="theme-toggle-light-icon-mobile" class="fas fa-sun"></i>
                         </button>
                     </div>
-                    <a href="index.html#pocetna"
+                    <a href="index_sr.html#pocetna"
                         class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Početna</a>
-                    <a href="index.html#poslovni-koncept"
+                    <a href="index_sr.html#poslovni-koncept"
                         class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Poslovni
                         koncept</a>
-                    <a href="index.html#licencni-paketi"
+                    <a href="index_sr.html#licencni-paketi"
                         class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Licencni
                         paketi</a>
-                    <a href="index.html#startni-paketi"
+                    <a href="index_sr.html#startni-paketi"
                         class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Startni
                         paketi</a>
-                    <a href="index.html#kontakt"
+                    <a href="index_sr.html#kontakt"
                         class="block py-3 text-center hover:text-purple-400 transition-colors duration-300">Kontakt</a>
                     <div class="sft21-nav-item dropdown">
                         <a href="#" id="mobile-platform-trigger"
@@ -555,11 +567,11 @@
                             Platforme <i class="fas fa-chevron-down ml-2 text-xs"></i>
                         </a>
                         <div id="mobile-platform-menu" class="dropdown-menu" style="display: none;">
-                            <a href="login.html?redirect=sfured.html"
+                            <a href="login_sr.html?redirect=sfured_sr.html"
                                 class="dropdown-item block py-2 text-center text-sm bg-gray-800 hover:bg-purple-700 text-gray-300 hover:text-white">SFured</a>
-                            <a href="login.html?redirect=sfalgoritam.html"
+                            <a href="login_sr.html?redirect=sfalgoritam_sr.html"
                                 class="dropdown-item block py-2 text-center text-sm bg-gray-800 hover:bg-purple-700 text-gray-300 hover:text-white">SFalgoritam</a>
-                            <a href="login.html?redirect=video_player.html?from=index.html"
+                            <a href="login_sr.html?redirect=video_player_sr.html?from=index_sr.html"
                                 class="dropdown-item block py-2 text-center text-sm bg-gray-800 hover:bg-purple-700 text-gray-300 hover:text-white">Video
                                 player</a>
                             <a href="#"
@@ -568,7 +580,7 @@
                                 class="dropdown-item block py-2 text-center text-sm bg-gray-800 hover:bg-purple-700 text-gray-300 hover:text-white">SFshop</a>
                         </div>
                     </div>
-                    <a href="sfnews.html"
+                    <a href="sfnews_sr.html"
                         class="block py-3 text-center hover:text-purple-400 transition-colors duration-300 active">SFnews</a>
                     <div class="flex flex-col space-y-3 mt-5 px-6">
                         <div
@@ -583,13 +595,13 @@
                                 <a href="sfnews_en.html" class="language-item"> <img
                                         src="https://flagcdn.com/w20/gb.png" alt="Engleski" class="flag-image">
                                     <span>ENG</span> </a>
-                                <a href="sfnews.html" class="language-item"> <img src="https://flagcdn.com/w20/hr.png"
+                                <a href="sfnews_sr.html" class="language-item"> <img src="https://flagcdn.com/w20/hr.png"
                                         alt="Hrvatski" class="flag-image"> <span>HRV</span> </a>
                                         <a href="sfnews_sr.html" class="language-item"> <img src="https://flagcdn.com/w20/rs.png" alt="Srpski" class="flag-image"> <span>SRP</span> </a>
                             </div>
                         </div>
-                        <a href="login.html" class="btn-primary text-center text-xs">Prijava</a>
-                        <a href="register.html" class="btn-primary text-center text-xs">Registracija</a>
+                        <a href="login_sr.html" class="btn-primary text-center text-xs">Prijava</a>
+                        <a href="register_sr.html" class="btn-primary text-center text-xs">Registracija</a>
                     </div>
                 </div>
             </div>
@@ -651,14 +663,14 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> 
 
     <footer class="py-16 bg-gray-900 border-t border-gray-800">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <!-- Kolona 1: SFT21 -->
                 <div>
-                    <h3 class="text-2xl font-bold mb-6 text-white">SFT21, LLC</h3> 
+                    <h3 class="text-2xl font-bold mb-6 text-white">SFT21, LLC</h3>
                     <p class="text-gray-400 mb-8">Na jakim lokalnim i regionalnim temeljima stvaramo globalnu online
                         zajednica koja povezuje ljude na jedan novi, humaniji i prije svega pošteniji način.</p>
                     <div class="flex space-x-4">
@@ -679,28 +691,28 @@
                 <div>
                     <h4 class="text-lg font-bold mb-6 text-white">Brzi linkovi</h4>
                     <ul class="space-y-3">
-                        <li><a href="index.html#pocetna"
+                        <li><a href="index_sr.html#pocetna"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Početna</a>
                         </li>
-                        <li><a href="index.html#poslovni-koncept"
+                        <li><a href="index_sr.html#poslovni-koncept"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Poslovni
                                 koncept</a></li>
-                        <li><a href="index.html#licencni-paketi"
+                        <li><a href="index_sr.html#licencni-paketi"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Licencni
                                 paketi</a></li>
-                        <li><a href="index.html#startni-paketi"
+                        <li><a href="index_sr.html#startni-paketi"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Startni
                                 paketi</a></li>
-                        <li><a href="sfnews.html"
+                        <li><a href="sfnews_sr.html"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">SFnews</a>
                         </li>
-                        <li><a href="register.html"
+                        <li><a href="register_sr.html"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Registracija</a>
                         </li>
-                        <li><a href="login.html"
+                        <li><a href="login_sr.html"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Prijava</a>
                         </li>
-                        <li><a href="index.html#kontakt"
+                        <li><a href="index_sr.html#kontakt"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Kontakt</a>
                         </li>
                     </ul>
@@ -722,13 +734,13 @@
                 <div>
                     <h4 class="text-lg font-bold mb-6 text-white">Pravne informacije</h4>
                     <ul class="space-y-3">
-                        <li><a href="uvjeti-koristenja.html"
+                        <li><a href="uvjeti-koristenja_sr.html"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Uvjeti
                                 korištenja</a></li>
-                        <li><a href="privacy-policy.html"
+                        <li><a href="privacy-policy_sr.html"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Politika
                                 privatnosti</a></li>
-                        <li><a href="privacy-policy.html#gdpr-rights"
+                        <li><a href="privacy-policy_sr.html#gdpr-rights"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">GDPR</a></li>
                         <li><a href="business-rules.html"
                                 class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Pravila
@@ -740,7 +752,7 @@
                 <p class="text-gray-400">© 2026 SFT21 LLC - Sva prava pridržana.</p>
             </div>
         </div>
-        <a href="sfteam.html" title="Posjetite SFteam stranicu" class="pulsating-circle">
+        <a href="sfteam_sr.html" title="Posjetite SFteam stranicu" class="pulsating-circle">
             <div class="circle-content">
                 <span class="circle-line line-i">I</span>
                 <span class="circle-line heart-symbol">❤️</span>
@@ -988,7 +1000,7 @@
             });
         });
     </script>
-    <script src="sfnews_data.js"></script>
+    <script src="sfnews_data_sr.js"></script> 
     <script src="sfnews_script.js"></script>
     <div id="image-modal"
         class="fixed inset-0 bg-black bg-opacity-90 z-50 flex justify-center items-center transition-opacity duration-300 hidden opacity-0">
