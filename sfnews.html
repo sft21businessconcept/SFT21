@@ -71,6 +71,18 @@
         body.light-mode .back-to-top-btn:hover {
             /* Stilovi za gumb "povratak na vrh" */
         }
+        /* Forsiranje bijele boje za tekst u slajderu - uništava sivu boju u Light modu */
+        #news-navigation span, 
+        .news-slider-text {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important; /* Za Apple/Chrome preglednike */
+            opacity: 1 !important;
+        }
+
+        /* Osigurava da i u light modu ostane bijelo */
+        body.light-mode #news-navigation span {
+            color: #ffffff !important;
+        }
 
         .back-to-top-btn {
             position: fixed;
