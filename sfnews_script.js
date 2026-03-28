@@ -81,33 +81,43 @@ function updateSlider(totalNews) {
         const button = document.createElement('button');
 
         button.textContent = newsID;
-        button.className = `p-2 rounded-full font-bold transition-all text-sm`;
+        // Osnovni stil gumba: fiksna veličina (w-9 h-9) da budu savršeni krugovi
+        button.className = `w-9 h-9 rounded-full font-bold transition-all text-sm flex items-center justify-center shadow-sm`;
         button.onclick = () => loadNews(i);
 
         if (i === currentNewsIndex) {
-            button.classList.add('bg-purple-600', 'text-white');
-            button.classList.remove('bg-gray-700', 'text-gray-300', 'hover:bg-purple-500');
+            // AKTIVNI GUMB: Ljubičasta pozadina, bijeli broj
+            button.classList.add('bg-purple-600', 'text-white', 'scale-110');
 
             const titleSpan = document.createElement('span');
             titleSpan.textContent = ` – ${shortTitle}`;
-            titleSpan.className = 'text-white text-md ml-1 font-semibold hidden sm:inline-block';
+            
+            // TRAŽENO: Bijela boja, NIJE bold (font-normal)
+            // Dodajemo 'news-slider-text' klasu za lakšu kontrolu preko CSS-a ako zatreba
+            titleSpan.className = 'text-white text-md ml-2 font-normal hidden sm:inline-block news-slider-text';
+            titleSpan.style.color = "white"; 
             navContainer.appendChild(button);
             navContainer.appendChild(titleSpan);
         } else {
-            button.classList.add('bg-gray-700', 'text-gray-300', 'hover:bg-purple-500');
+            // TRAŽENO: NEAKTIVNI GUMBI -> Bijela pozadina, ljubičasti brojevi
+            button.classList.add('bg-white', 'text-purple-600', 'hover:bg-purple-50');
             navContainer.appendChild(button);
         }
     }
 
+    // Stil za strelice < i > 
     if (prevBtn && nextBtn) {
+        // Postavljamo i strelice u isti stil (bijela pozadina, ljubičasta ikona)
+        [prevBtn, nextBtn].forEach(btn => {
+            btn.className = "bg-white text-purple-600 w-9 h-9 rounded-full flex items-center justify-center font-bold hover:bg-purple-50 transition-all mx-2 shadow-sm";
+        });
+
         prevBtn.style.opacity = currentNewsIndex === 0 ? '0.3' : '1';
         nextBtn.style.opacity = currentNewsIndex === sfNews.length - 1 ? '0.3' : '1';
-
         prevBtn.classList.toggle('pointer-events-none', currentNewsIndex === 0);
         nextBtn.classList.toggle('pointer-events-none', currentNewsIndex === sfNews.length - 1);
     }
 }
-
 // FUNKCIJE ZA MODAL/UVEĆANJE SLIKE
 
 function openModal(src, alt) {
@@ -174,5 +184,4 @@ window.onload = () => {
         loadNews(initialIndex);
     }
 };
-
 
