@@ -283,7 +283,7 @@ const sfNews = [
             <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 mb-6">
                 <li><strong class="text-white">Političke lidere Italije:</strong> Predsednika republike Serđa Matarelu, bivše premijere Silvija Berluskonija, Matea Rencija, Đulija Andreotija, Đanfranka Finija, predsednika senata Pjetra Grasa, predsednike zastupničkog doma Parlamenta Italije Đanfranka Finija, Irene Piveti i mnoge druge…</li>
                 <li><strong class="text-white">Čelnike globalne bezbednosti:</strong> Glavnog sekretara Interpola Ronalda K. Nobla, direktora Europola Sir Roberta Marka Vejnrajta, direktora italijanske tajne službe Sismi Đenara Vekjonea, kao i Antonija Manganelija, bivšeg šefa policije i glavnog direktora za javnu bezbednost Italije.</li>
-                <li><strong class="text-white">Regionalne državnike:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić, Vuk Drašković i mnogi drugi bili su samo neki od njenih sagovornika.</li>
+                <li><strong class="text-white">Regionalne državnike:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić i mnogi drugi bili su samo neki od njenih sagovornika.</li>
             </ul>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Partnerstva sa gigantima: Od vlasnika FIAT-a do Markonijevog nasleđa</h3>
