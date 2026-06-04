@@ -339,7 +339,7 @@ const sfNews = [
 
             <p class="mt-4">Njegov ulazak u našu zajednicu nije samo priznanje kvaliteti našeg poslovnog koncepta, već i garancija apsolutnog legitimiteta SFT21 algoritma na globalnoj razini. Prepoznavši našu društvenu misiju, odlučio je svojim utjecajem i kontaktima pomoći u razvoju i širenju naše vizije, te postati naš najjači most prema globalnim tokovima kapitala.</p>
 
-            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Službeno obraćanje suosnivaća</h3>
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Službeno obraćanje osnivača</h3>
 
             <!-- VIDEO PLAYER -->
             <div class="hero-video-wrapper my-8" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 0 30px rgba(128, 255, 0, 0.2); border: 2px solid #80ff00;">
