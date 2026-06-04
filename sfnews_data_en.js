@@ -362,7 +362,7 @@ const sfNews = [
             </blockquote>
 
             <p class="mt-4 mb-10 text-gray-300 leading-relaxed text-justify">
-                To find out firsthand why Mr. Domizio Cipriani decided to join the SFT21 community and exactly what he sees in our business concept, the SFalgorithm, and our vision, our Director of Public Relations and Media, Mrs. Sanja Andrijić Marinović, will conduct an exclusive interview with Mr. Domizio in the coming days.
+                To find out firsthand why one of the leading financial experts, an honorable and highly respected member of society from the heart of the Principality of Monaco, Mr. Domizio Cipriani, decided to join the SFT21 community and exactly what he sees in our business concept, the SFalgorithm, and our vision, our Director of Public Relations and Media, Mrs. Sanja Andrijić Marinović, will conduct an exclusive interview with Mr. Domizio in the coming days.            
             </p>
 
             <div class="text-center pt-8 border-t border-gray-700">
