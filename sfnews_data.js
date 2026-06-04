@@ -345,7 +345,7 @@ const sfNews = [
             <div class="hero-video-wrapper my-8" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 0 30px rgba(128, 255, 0, 0.2); border: 2px solid #80ff00;">
                 <iframe 
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                    src="https://www.youtube.com/embed/https://youtu.be/oDsDzFFDiL4" 
+                    src="https://www.youtube.com/embed/oDsDzFFDiL4" 
                     title="Obraćanje osnivača - Prvi Ambasador" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
