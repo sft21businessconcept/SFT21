@@ -363,7 +363,7 @@ const sfNews = [
             </blockquote>
 
             <p class="mt-4 mb-10 text-gray-300 leading-relaxed text-justify">
-                To find out firsthand why one of the leading financial experts, an honorable and highly respected member of society from the heart of the Principality of Monaco, Mr. Domizio Cipriani, decided to join the SFT21 community and exactly what he sees in our business concept, the SFalgorithm, and our vision, our Director of Public Relations and Media, Mrs. Sanja Andrijić Marinović, will conduct an exclusive interview with Mr. Domizio in the coming days.            
+               Kako biste iz prve ruke saznali zašto se jedan od vodećih finansijskih stručnjaka, časni i uvaženi član društva iz srca Kneževine Monako, gospodin Domizio Cipriani, odlučio da se pridruži SFT21 zajednici i šta tačno on vidi u našem poslovnom konceptu, SFalgoritmu i našoj viziji, naša direktorka za odnose s javnošću i medije, gđa. Sanja Andrijić Marinović, u narednim danima odradiće ekskluzivni intervju upravo sa gospodinom Domiziom.            
             </p>
 
             <div class="text-center pt-8 border-t border-gray-700">
