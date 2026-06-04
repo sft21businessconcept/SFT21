@@ -282,7 +282,7 @@ const sfNews = [
             <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 mb-6">
                 <li><strong class="text-white">Italian Political Leaders:</strong> President of the Republic Sergio Mattarella, former prime ministers Silvio Berlusconi, Matteo Renzi, Giulio Andreotti, Gianfranco Fini, Senate President Pietro Grasso, Presidents of the Chamber of Deputies of the Italian Parliament Gianfranco Fini, Irene Pivetti, and many others…</li>
                 <li><strong class="text-white">Global Security Leaders:</strong> Interpol Secretary General Ronald K. Noble, Europol Director Sir Robert Mark Wainwright, Director of the Italian Secret Service Sismi Gennaro Vecchione, and Antonio Manganelli, former police chief and Director General for Public Security of Italy.</li>
-                <li><strong class="text-white">Regional Statesmen:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić and many others were just some of her interlocutors.</li>
+                <li><strong class="text-white">Regional Statesmen:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić, Vuk Drašković, and many others were just some of her interlocutors.</li>
             </ul>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Partnerships with Giants: From FIAT Owners to Marconi's Legacy</h3>
@@ -322,6 +322,61 @@ const sfNews = [
             <footer class="mt-12 pt-6 border-t border-gray-700">
                 <p class="hashtag-container text-sm text-center">
                     #SanjaAndrijicMarinovic #SFT21 #PR #GlobalExpansion #EthicsInBusiness #Journalism #Transparency #SFteam
+                </p>
+            </footer>
+        `
+    },
+    {
+        id: 5,
+        title: "BIG NEWS: The first SFT21 Ambassador",
+        date: "May 30, 2026", 
+        imageSrc: "img/1sft21ambasador.png", 
+        shortTitle: "First SFT21 Ambassador",
+        contentHTML: `
+            <p class="font-semibold text-white">We proudly announce a historic moment for our SFT21 community. Our vision of a fairer business model, returning power to the hands of small entrepreneurs, and building a more humane system of wealth distribution has resonated far beyond our borders – all the way to the Principality of Monaco.</p>
+
+            <p class="mt-4">Today we have the exceptional honor to announce that Mr. <b>Domizio Cipriani</b>, an internationally recognized financial expert in Wealth Management and <b>Grand Prior of the Knights Templar of the Principality of Monaco</b>, has officially joined our SFteam.</p>
+
+            <p class="mt-4">His entry into our community is not only a recognition of the quality of our business concept but also a guarantee of the absolute legitimacy of the SFT21 algorithm on a global level. Recognizing our social mission, he decided to use his influence and contacts to help develop and spread our vision, becoming our strongest bridge to global capital flows.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Official Address by the Founder</h3>
+
+            <!-- VIDEO PLAYER (Ovdje zalijepi svoj YouTube link umjesto YOUR_YOUTUBE_ID_HERE) -->
+            <div class="hero-video-wrapper my-8" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 0 30px rgba(128, 255, 0, 0.2); border: 2px solid #80ff00;">
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    src="https://www.youtube.com/embed/oDsDzFFDiL4" 
+                    title="Founder's Address - First Ambassador" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <p class="mt-6">As a sign of deep respect and gratitude, SFT21 has decided to award its highest honor. In our system, there are exactly <b>31 Ambassador positions</b> – positions that cannot be bought with any amount of money, but are reserved exclusively for honorary members, individuals of exceptional social, moral, and historical significance.</p>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    The First Ambassador position (Number 1 in the Ambassador system) is officially awarded to Mr. Domizio Cipriani.
+                </p>
+            </blockquote>
+
+            <p class="mt-4 mb-10 text-gray-300 leading-relaxed text-justify">
+                To find out firsthand why Mr. Domizio Cipriani decided to join the SFT21 community and exactly what he sees in our business concept, the SFalgorithm, and our vision, our Director of Public Relations and Media, Mrs. Sanja Andrijić Marinović, will conduct an exclusive interview with Mr. Domizio in the coming days.
+            </p>
+
+            <div class="text-center pt-8 border-t border-gray-700">
+                <p class="text-lg text-white font-bold mb-8">Follow us on our official channels. Be part of history with us.</p>
+                
+                <p class="mt-4">With enthusiasm and faith in a better tomorrow,</p>
+                <p class="font-semibold text-purple-400 text-lg mt-2 mb-4">Semper Fidelis</p>
+                <p class="text-white font-bold">Mladen Pejić & Zoran Lazarević</p>
+                <p class="text-sm text-gray-400">Founders, SFT21 LLC</p>
+            </div>
+            
+            <footer class="mt-12 pt-6 border-t border-gray-700">
+                <p class="hashtag-container text-sm text-center">
+                    #DomizioCipriani #SFT21Ambassador #GlobalExpansion #SFteam #Monaco #SFT21BusinessConcept
                 </p>
             </footer>
         `
