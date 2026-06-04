@@ -283,7 +283,7 @@ const sfNews = [
             <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4 mb-6">
                 <li><strong class="text-white">Političke lidere Italije:</strong> Predsednika republike Serđa Matarelu, bivše premijere Silvija Berluskonija, Matea Rencija, Đulija Andreotija, Đanfranka Finija, predsednika senata Pjetra Grasa, predsednike zastupničkog doma Parlamenta Italije Đanfranka Finija, Irene Piveti i mnoge druge…</li>
                 <li><strong class="text-white">Čelnike globalne bezbednosti:</strong> Glavnog sekretara Interpola Ronalda K. Nobla, direktora Europola Sir Roberta Marka Vejnrajta, direktora italijanske tajne službe Sismi Đenara Vekjonea, kao i Antonija Manganelija, bivšeg šefa policije i glavnog direktora za javnu bezbednost Italije.</li>
-                <li><strong class="text-white">Regionalne državnike:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić i mnogi drugi bili su samo neki od njenih sagovornika.</li>
+                <li><strong class="text-white">Regionalne državnike:</strong> Ivica Račan, Ivo Sanader, Zoran Đinđić, Vuk Drašković i mnogi drugi bili su samo neki od njenih sagovornika.</li>
             </ul>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Partnerstva sa gigantima: Od vlasnika FIAT-a do Markonijevog nasleđa</h3>
@@ -323,6 +323,61 @@ const sfNews = [
             <footer class="mt-12 pt-6 border-t border-gray-700">
                 <p class="hashtag-container text-sm text-center">
                     #SanjaAndrijicMarinovic #SFT21 #PR #GlobalExpansion #EthicsInBusiness #Journalism #Transparency #SFteam
+                </p>
+            </footer>
+        `
+    },
+    {
+        id: 5,
+        title: "VELIKA VEST: Prvi SFT21 ambasador",
+        date: "30. Maj 2026.", 
+        imageSrc: "img/1sft21ambasador.png", 
+        shortTitle: "Prvi SFT21 ambasador",
+        contentHTML: `
+            <p class="font-semibold text-white">S ponosom objavljujemo istorijski trenutak za našu SFT21 zajednicu. Naša vizija pravednijeg poslovanja, vraćanja moći u ruke malih preduzetnika i izgradnje humanijeg sistema raspodele bogatstva, odjeknula je daleko izvan naših granica – sve do Kneževine Monako.</p>
+
+            <p class="mt-4">Danas imamo izuzetnu čast da objavimo da se našem SFteamu zvanično pridružio gospodin <b>Domizio Cipriani</b>, međunarodno priznati finansijski stručnjak za upravljanje bogatstvom (Wealth Management) i <b>Veliki Prior Vitezova Templara Kneževine Monako</b>.</p>
+
+            <p class="mt-4">Njegov ulazak u našu zajednicu nije samo priznanje kvalitetu našeg poslovnog koncepta, već i garancija apsolutnog legitimiteta SFT21 algoritma na globalnom nivou. Prepoznavši našu društvenu misiju, odlučio je da svojim uticajem i kontaktima pomogne u razvoju i širenju naše vizije, te postane naš najjači most prema globalnim tokovima kapitala.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4">Zvanično obraćanje suosnivača</h3>
+
+            <!-- VIDEO PLAYER (Ovde zalepi svoj YouTube link umesto TVOJ_YOUTUBE_ID_OVDE) -->
+            <div class="hero-video-wrapper my-8" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 0 30px rgba(128, 255, 0, 0.2); border: 2px solid #80ff00;">
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    src="https://www.youtube.com/embed/oDsDzFFDiL4" 
+                    title="Obraćanje osnivača - Prvi Ambasador" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <p class="mt-6">Kao znak dubokog poštovanja i zahvalnosti, kompanija SFT21 donela je odluku o dodeli najviše počasti. U našem sistemu postoji tačno <b>31 Ambasadorska pozicija</b> – pozicije koje se ne mogu kupiti nikakvim novcem, već su rezervisane isključivo za počasne članove, osobe od izuzetnog društvenog, moralnog i istorijskog značaja.</p>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    Prva Ambasadorska pozicija (Broj 1 u sistemu Ambasadora) zvanično je dodeljena gospodinu Domiziu Ciprianiju.
+                </p>
+            </blockquote>
+
+            <p class="mt-4 mb-10 text-gray-300 leading-relaxed text-justify">
+                Kako biste iz prve ruke saznali zašto se gospodin Domizio Cipriani odlučio da se pridruži SFT21 zajednici i šta tačno on vidi u našem poslovnom konceptu, SFalgoritmu i našoj viziji, naša direktorka za odnose s javnošću i medije, gđa. Sanja Andrijić Marinović, u narednim danima odradiće ekskluzivni intervju upravo sa gospodinom Domiziom.  
+            </p>
+
+            <div class="text-center pt-8 border-t border-gray-700">
+                <p class="text-lg text-white font-bold mb-8">Pratite nas na našim zvaničnim kanalima. Budite sa nama deo istorije.</p>
+                
+                <p class="mt-4">Sa entuzijazmom i verom u bolje sutra,</p>
+                <p class="font-semibold text-purple-400 text-lg mt-2 mb-4">Semper Fidelis</p>
+                <p class="text-white font-bold">Mladen Pejić i Zoran Lazarević</p>
+                <p class="text-sm text-gray-400">Osnivači, SFT21 LLC</p>
+            </div>
+            
+            <footer class="mt-12 pt-6 border-t border-gray-700">
+                <p class="hashtag-container text-sm text-center">
+                    #DomizioCipriani #SFT21Ambasador #GlobalExpansion #SFteam #Monaco #SFT21BusinessConcept
                 </p>
             </footer>
         `
