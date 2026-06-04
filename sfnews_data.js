@@ -362,7 +362,7 @@ const sfNews = [
             </blockquote>
 
             <p class="mt-4 mb-10 text-gray-300 leading-relaxed text-justify">
-                Kako biste iz prve ruke saznali zašto se gospodin Domizio Cipriani odlučio pridružiti SFT21 zajednici i što točno on vidi u našem poslovnom konceptu, SFalgoritmu i našoj viziji, naša direktorica za odnose s javnošću i medije, gđa. Sanja Andrijić Marinović, u narednim danima odraditi će ekskluzivni intervju upravo sa gospodinom Domiziom.  
+                Kako biste iz prve ruke saznali zašto se, jedan o vodećih financijskih stručnjaka, časni i uvaženi član društva iz srca Kneževine Monako,  gospodin Domizio Cipriani odlučio pridružiti SFT21 zajednici i što točno on vidi u našem poslovnom konceptu, SFalgoritmu i našoj viziji, naša direktorica za odnose s javnošću i medije, gđa. Sanja Andrijić Marinović, u narednim danima odraditi će ekskluzivni intervju upravo sa gospodinom Domiziom.
             </p>
 
             <div class="text-center pt-8 border-t border-gray-700">
