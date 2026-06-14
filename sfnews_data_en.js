@@ -380,6 +380,125 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 6,
+        title: "EXCLUSIVE: Kevin Kambarage Prince Nyerere becomes the SFT21 Ambassador for the African Continent!",
+        date: "June 11, 2026", 
+        imageSrc: "img/kevin_nyerere.png", 
+        shortTitle: "Ambassador for Africa",
+        contentHTML: `
+            <p class="font-semibold text-white text-lg">Dear friends, members, and visionaries of the SFT21 community,</p>
+            <p class="mt-4 text-gray-300">Just a few days ago, we shared the historic news regarding the appointment of our first Ambassador, Mr. Domizio Cipriani.</p>
+            <p class="mt-4 text-gray-300">Today we reach out to you again, because the vision we set in motion is growing with a speed and power that, we would dare say, exceeds all our expectations at this moment.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-6">A Bridge to the Global Elite</h3>
+
+            <div class="flex flex-col md:flex-row gap-8 my-6 items-start">
+                <img src="img/domizio_cipriani.png" alt="Domizio Cipriani" class="w-full md:w-1/3 rounded-lg shadow-lg object-cover border border-purple-500/30">
+                <div class="flex-1 space-y-4">
+                    <p class="font-bold text-white text-lg">It is of crucial importance to understand who stands with us.</p>
+                    <p class="text-gray-300 text-justify">Mr. <b>Domizio Cipriani</b>, Grand Prior of the Knights Templar of the Principality of Monaco, is not just a title – he is a top-tier, world-renowned financial expert. A man who daily collaborates and sits at the same table with the most influential politicians, leaders, and the global elite. He is a person whose personal connections open doors that are generally closed to the ordinary world.</p>
+                    <p class="italic text-gray-400 text-justify">The question arises; “Why would a man of such reputation and significance as an institution, who is also one of the leading global financial experts from the heart of Monte Carlo, Principality of Monaco, decide to stand with our SFT21 community?”</p>
+                </div>
+            </div>
+
+            <p class="mt-6 text-gray-300 text-justify">The answer is simple… he did it because he recognized the purity and strength of our vision and mission. As a financial expert, he understood the power of our business concept, as well as its humanitarian aspect and unlimited potential.</p>
+            
+            <p class="mt-4 text-gray-300 text-justify">Mr. Domizio did not accept our Ambassadorial title merely to lend us his name – he is a man of action, which he proves immediately, bringing us the next great story. His first strategic move, and proof of his incredible synergy, is connecting our SFT21 community with leaders who share our vision and ideals.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-10 mb-6">Official Address by the Founder: The Second SFT21 Ambassador</h3>
+
+            <div class="hero-video-wrapper mb-8" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 0 30px rgba(128, 255, 0, 0.2); border: 2px solid #80ff00;">
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    src="https://www.youtube.com/embed/9qH7TNnGhfI" 
+                    title="Founder's Address - SFT21 Ambassador" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <p class="mt-6 text-gray-300 text-justify">Thanks to the direct recommendation of Mr. Cipriani, today we have the honor and pleasure, with immense pride, to announce that the second SFT21 Ambassador on a global level, and our first Ambassador for the African continent, is Mr. <b>Kevin Kambarage Prince Nyerere</b>.</p>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">For those who follow world history, the surname NYERERE represents an institution. Mr. Kevin is the direct descendant of the late Julius Nyerere – the first president of Tanzania and the "Father of the African Nation."</p>
+            </blockquote>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-6 mb-4">Legacy / Diplomacy / Technology</h3>
+            <p class="text-gray-300 text-justify">The legacy of his family is so morally and spiritually great that his grandfather is currently in the process of beatification by the Holy See in the Vatican. Mr. Kevin grew up on the foundations of that historical legacy, but he also built his own fascinating path. He was educated in Europe, where he combined the African soul with a modern international and business vision.</p>
+            
+            <p class="mt-4 text-gray-300 text-justify">Today, he is a prominent entrepreneur with expertise in cyber security, an experienced diplomat, and an active representative of pan-Africanism and spokesperson for the African diaspora. His life's calling is social justice, the protection of cultural heritage, and connecting nations between Africa and Europe.</p>
+
+            <p class="mt-4 text-gray-300 text-justify"><b>Prince Kevin</b> is the honorary president of the Sierra Leone pavilion in Venice, which welcomes two million visitors annually.</p>
+            
+            <p class="mt-4 text-gray-300 text-justify">With the support of the <b>Economic Community of West African States (ECOWAS)</b>, the Leone pavilion is envisioned as a space of active presence, where contemporary art becomes a common language and a tool for connection. The curatorial project gathers artists from Sierra Leone, ECOWAS member states, and Italy, encouraging open dialogue through works that activate relationships and shared visions.</p>
+            <div class="p-6 bg-black/20 border-l-4 border-fluorescent-green rounded-r-lg my-8">
+                <p class="text-white font-bold text-lg">Why did a person of such diplomatic and historical significance choose SFT21?</p>
+                <p class="mt-2 text-gray-400 text-justify">Because in our SFalgorithm and business concept, he recognized a modern, technological tool for achieving the very ideals he has fought for his entire life. He recognized a system that gives the common man a chance, does not exploit, but rewards, and that can bring economic equality to the African continent of 1.4 billion people.</p>
+            </div>
+
+            <!-- ================= SLAJDER POČETAK ================= -->
+            <div class="news-slider-frame relative w-full max-w-4xl mx-auto my-10 rounded-xl overflow-hidden group" style="aspect-ratio: 16/9; background: #000; border: 2px solid #80ff00; box-shadow: 0 0 20px rgba(128,255,0,0.2);">
+                
+                <!-- Slike (Prva vidljiva, ostale imaju klasu 'hidden') -->
+                <img src="img/nyerere1.png" alt="SFT21 Gallery 1" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
+                <img src="img/nyerere2.png" alt="SFT21 Gallery 2" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/nyerere3.png" alt="SFT21 Gallery 3" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/nyerere4.png" alt="SFT21 Gallery 4" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                
+                <!-- Lijeva Strelica -->
+                <button onclick="moveNewsSlider(-1)" class="news-slider-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <!-- Desna Strelica -->
+                <button onclick="moveNewsSlider(1)" class="news-slider-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <!-- ================= SLAJDER KRAJ ================= -->
+
+            <p class="mt-8 text-gray-300 leading-relaxed text-justify">Dear friends, try to look at the bigger picture of what we are currently creating, with common sense and without prejudice.</p>
+            <p class="mt-4 text-gray-300 leading-relaxed text-justify">On one hand, we have the Principality of Monaco and European capital led by Mr. Cipriani.</p>
+            <p class="mt-4 text-gray-300 leading-relaxed text-justify">On the other hand, the diplomatic and historical nobility of the African continent led by Mr. Nyerere.</p>
+            <p class="mt-4 text-white font-bold text-lg leading-relaxed text-justify">They chose us and our community because they recognized a solution for the future in our SFT21 Business Concept.</p>
+            <p class="mt-6 text-gray-300 leading-relaxed text-justify">However, in order for this message to echo around the world exactly as it deserves – professionally, transparently, and at the highest media level, we must thank our Director of Public Relations and Media, Mrs. Sanja Andrijić Marinović. Her invaluable international experience, courage, and journalistic integrity guarantee that the truth about our community will be conveyed superbly and without compromise.</p>
+            <p class="mt-4 text-gray-300 leading-relaxed text-justify">The first major, exclusive interview with Mr. Cipriani was conducted today (June 11, 2026), so expect its publication in the coming days. However, very soon after that, an interview with Mr. Nyerere will follow. You will have the opportunity to hear firsthand why these global leaders decided to become part of the SFT21 family.</p>
+
+            <!-- FORBES LINK BUTTON -->
+            <div class="flex justify-center mt-10 mb-12">
+                <a href="https://forbes.it/2020/05/08/investire-in-africa-consulenza-speciale-kevin-nyerere-nipote-del-padre-fondatore-tanzania" target="_blank" class="forbes-link-btn flex items-center gap-4 bg-gray-800 border border-gray-600 hover:border-gray-400 px-6 py-4 rounded-lg shadow-lg transition-all hover:scale-105 group text-decoration-none">
+                    <img src="img/forbes_logo.png" alt="Forbes" class="h-6 object-contain filter brightness-200 group-hover:brightness-100 transition-all">
+                    <div class="forbes-divider h-8 w-px bg-gray-600"></div>
+                    <div class="text-left">
+                        <span class="forbes-title block text-white font-bold text-sm leading-tight">Read the interview on Forbes Italia</span>
+                        <span class="forbes-subtitle block text-gray-400 text-[10px] uppercase tracking-wider mt-1">Kevin Nyerere on investing in Africa</span>
+                    </div>
+                </a>
+            </div>
+            <!-- KRAJ FORBES LINKA -->
+
+            <div class="text-center pt-12 mt-8 border-t border-gray-700">
+                <p class="text-xl text-white font-bold mb-4">SFT21 is no longer just a company.</p>
+                <p class="text-lg text-gray-300 mb-6">We are becoming a global movement and consumer community whose vision attracts and leaves no one indifferent.</p>
+                <p class="text-lg text-fluorescent-green font-bold mb-10">We are in the right place at the right time; together, we are writing history.</p>
+                
+                <p class="text-2xl text-white font-black mb-16 uppercase tracking-widest">Be a proud member of the SFteam!</p>
+
+                <p class="text-xl text-gray-200">With enthusiasm and faith in a better tomorrow,</p>
+                <p class="text-2xl font-bold text-purple-400 mt-4 mb-6">Semper Fidelis</p>
+                <p class="text-xl text-white font-normal">Mladen Pejić & Zoran Lazarević</p>
+                <p class="text-base text-gray-400 mt-1">Founders, SFT21 LLC</p>
+            </div>
+
+            <footer class="pt-8 border-t border-gray-700 mt-8">
+                <p class="hashtag-container text-sm text-center">
+                    #KevinNyerere #SFT21Ambassador #Africa #Monaco #DomizioCipriani #SFT21BusinessConcept #SanjaAndrijicMarinovic
+                </p>
+            </footer>
+        `
     }
 ];
 
