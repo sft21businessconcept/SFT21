@@ -443,10 +443,10 @@ const sfNews = [
             <div class="news-slider-frame relative w-full max-w-4xl mx-auto my-10 rounded-xl overflow-hidden group" style="aspect-ratio: 16/9; background: #000; border: 2px solid #80ff00; box-shadow: 0 0 20px rgba(128,255,0,0.2);">
                 
                 <!-- Slike -->
-                <img src="img/nyerere1.png" alt="SFT21 Galerija 1" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
-                <img src="img/nyerere2.png" alt="SFT21 Galerija 2" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
-                <img src="img/nyerere3.png" alt="SFT21 Galerija 3" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
-                <img src="img/nyerere4.png" alt="SFT21 Galerija 4" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/nyerere1.png" alt="SFT21 Gallery 1" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
+                <img src="img/nyerere2.png" alt="SFT21 Gallery 2" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/nyerere3.png" alt="SFT21 Gallery 3" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/nyerere4.png" alt="SFT21 Gallery 4" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
                 
                 <!-- Lijeva Strelica (Uvijek vidljiva na mobitelu: opacity-100 lg:opacity-0) -->
                 <button onclick="moveNewsSlider(-1); event.stopPropagation();" class="news-slider-btn absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-10 h-10 md:w-12 md:h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all flex items-center justify-center shadow-lg text-lg md:text-xl border border-white/20 opacity-100 lg:opacity-0 group-hover:opacity-100" style="z-index: 100;">
