@@ -1002,9 +1002,12 @@
     </script>
     <script src="sfnews_data.js"></script>
     <script src="sfnews_script.js"></script>
-    <div id="image-modal" class="fixed inset-0 bg-black/95 transition-opacity duration-300 opacity-0" onclick="closeImageModal()" style="display: none; z-index: 2147483647 !important; align-items: center; justify-content: center; padding: 20px;">
-       <button class="fixed top-4 right-4 md:top-8 md:right-8 text-white text-5xl font-black cursor-pointer hover:text-[#80ff00] transition-colors drop-shadow-lg" style="z-index: 2147483647 !important; padding: 10px;" onclick="closeImageModal()">&times;</button>
-       <img id="modal-image-content" src="" alt="Uvećana slika" class="max-w-[95vw] max-h-[90vh] object-contain shadow-2xl rounded-lg border-2 border-[#80ff00]" style="z-index: 2147483647 !important; cursor: default;" onclick="event.stopPropagation()">
+    <div id="image-modal" class="fixed inset-0 bg-black/95 transition-opacity duration-300 opacity-0" onclick="closeImageModal()" style="display: none; z-index: 2147483647 !important; align-items: center; justify-content: center; padding: 40px;">
+        
+        <button class="fixed top-4 right-4 md:top-8 md:right-8 w-12 h-12 bg-black/70 hover:bg-black text-white text-3xl font-black rounded-full border-2 border-white/20 hover:border-[#80ff00] hover:text-[#80ff00] transition-all flex items-center justify-center shadow-lg" style="z-index: 2147483647 !important;" onclick="closeImageModal()">&times;</button>
+        
+        <img id="modal-image-content" src="" alt="Uvećana slika" class="max-w-[85vw] max-h-[85vh] object-contain shadow-[0_0_50px_rgba(0,0,0,0.8)] rounded-xl border-2 border-[#80ff00]" style="z-index: 2147483647 !important; cursor: default;" onclick="event.stopPropagation()">
+        
     </div>
 </body>
 </html>
