@@ -381,5 +381,124 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 6,
+        title: "EKSKLUZIVNO: Kevin Kambarage Prince Nyerere postaje SFT21 Ambasador za afrički kontinent!",
+        date: "11. Jun 2026.", 
+        imageSrc: "img/kevin_nyerere.png", 
+        shortTitle: "Ambasador za Afriku",
+        contentHTML: `
+            <p class="font-semibold text-white text-lg">Dragi prijatelji, članovi i vizionari SFT21 zajednice,</p>
+            <p class="mt-4 text-gray-300">Pre samo nekoliko dana podelili smo sa vama istorijsku vest o imenovanju našeg prvog Ambasadora, gospodina Domizia Ciprianija.</p>
+            <p class="mt-4 text-gray-300">Danas se ponovo javljamo, jer vizija koju smo pokrenuli raste brzinom i snagom koja, usudili bismo se reći, prevazilazi sva naša očekivanja u ovom trenutku.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-6">Most prema svetskoj eliti</h3>
+
+            <div class="flex flex-col md:flex-row gap-8 my-6 items-start">
+                <img src="img/domizio_cipriani.png" alt="Domizio Cipriani" class="w-full md:w-1/3 rounded-lg shadow-lg object-cover border border-purple-500/30">
+                <div class="flex-1 space-y-4">
+                    <p class="font-bold text-white text-lg">Od presudne je važnosti shvatiti ko stoji uz nas.</p>
+                    <p class="text-gray-300 text-justify">Gospodin <b>Domizio Cipriani</b>, Veliki Prior Vitezova Templara Kneževine Monako, nije samo titula – on je vrhunski, svetski priznat finansijski stručnjak. Čovek koji svakodnevno sarađuje i sedi za istim stolom sa najuticajnijim političarima, liderima i globalnom elitom. On je osoba čije lične veze otvaraju vrata koja su običnom svetu uglavnom zatvorena.</p>
+                    <p class="italic text-gray-400 text-justify">Postavlja se pitanje; “Zašto bi čovek takvog ugleda i značaja kao institucija, a ujedno i jedan od vodećih svetskih finansijskih stručnjaka iz srca Monte Karla, Kneževine Monako, odlučio da stane uz našu SFT21 zajednicu?“</p>
+                </div>
+            </div>
+
+            <p class="mt-6 text-gray-300 text-justify">Odgovor je jednostavan… učinio je to jer je prepoznao čistoću i snagu naše vizije i misije. Kao finansijski stručnjak shvatio je moć našeg poslovnog koncepta, kao i njegov humanitarni aspekt i neograničeni potencijal.</p>
+            
+            <p class="mt-4 text-gray-300 text-justify">Gospodin Domizio nije prihvatio našu Ambasadorsku titulu samo da bi nam pozajmio svoje ime – on je čovek od akcije, što dokazuje odmah, donoseći nam sledeću veliku priču. Njegov prvi, strateški potez ujedno je i dokaz te njegove neverovatne sinergije, povezivanje naše SFT21 zajednice sa liderima koji dele našu viziju i ideale.</p>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-10 mb-6">Zvanično obraćanje osnivača: Drugi SFT21 Ambasador</h3>
+
+            <div class="hero-video-wrapper mb-8" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 0 30px rgba(128, 255, 0, 0.2); border: 2px solid #80ff00;">
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    src="https://www.youtube.com/embed/9qH7TNnGhfI" 
+                    title="Obraćanje osnivača - SFT21 Ambasador" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <p class="mt-6 text-gray-300 text-justify">Zahvaljujući direktnoj preporuci gospodina Ciprianija, danas nam je čast i zadovoljstvo da, sa neizmernim ponosom objavimo, da drugi SFT21 Ambasador na globalnom nivou, i naš prvi Ambasador za afrički kontinent, postaje gospodin <b>Kevin Kambarage Prince Nyerere</b>.</p>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">Za one koji prate svetsku istoriju, prezime NYERERE predstavlja instituciju. Gospodin Kevin je direktni potomak pokojnog Juliusa Nyererea – prvog predsednika Tanzanije i "Oca afričke nacije".</p>
+            </blockquote>
+
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-6 mb-4">Nasleđe / Diplomatija / Tehnologija</h3>
+            <p class="text-gray-300 text-justify">Zaostavština njegove porodice je toliko moralno i duhovno velika da se njegov deda trenutno nalazi u procesu beatifikacije od strane Svete Stolice u Vatikanu. Gospodin Kevin odrastao je na temeljima tog istorijskog nasleđa, ali je izgradio i sopstveni, fascinantan put. Školovao se u Evropi, gde je spojio afričku dušu sa modernom međunarodnom i poslovnom vizijom.</p>
+            
+            <p class="mt-4 text-gray-300 text-justify">Danas je on istaknuti preduzetnik sa ekspertizom u cyber bezbednosti, iskusni diplomata te aktivni predstavnik pan-afrikanizma i portparol afričke dijaspore. Njegov životni poziv je socijalna pravda, zaštita kulturnog nasleđa i povezivanje naroda između Afrike i Evrope.</p>
+
+            <p class="mt-4 text-gray-300 text-justify"><b>Princ Kevin</b> je počasni predsednik paviljona Sijera Leone u Veneciji, koji godišnje poseti dva miliona posetilaca.</p>
+            
+            <p class="mt-4 text-gray-300 text-justify">Uz podršku <b>Ekonomske zajednice zapadnoafričkih država (ECOWAS)</b>, paviljon Leone zamišljen je kao prostor aktivnog prisustva, gde savremena umetnost postaje zajednički jezik i alat za povezivanje. Kustoski projekat okuplja umetnike iz Sijera Leonea, država članica ECOWAS-a i Italije, podstičući otvoreni dijalog kroz dela koja aktiviraju odnose i zajedničke vizije.</p>
+            <div class="p-6 bg-black/20 border-l-4 border-fluorescent-green rounded-r-lg my-8">
+                <p class="text-white font-bold text-lg">Zašto je osoba ovakvog diplomatskog i istorijskog značaja odabrala SFT21?</p>
+                <p class="mt-2 text-gray-400 text-justify">Zato što je u našem SFalgoritmu i poslovnom konceptu prepoznao moderni, tehnološki alat za ostvarenje upravo onih ideala za koje se bori celi svoj život. Prepoznao je sistem koji malom čoveku daje šansu, ne izrabljuje, već nagrađuje, i koji može doneti ekonomsku ravnopravnost afričkom kontinentu od 1.4 milijarde ljudi.</p>
+            </div>
+
+            <!-- ================= SLAJDER POČETAK ================= -->
+            <div class="news-slider-frame relative w-full max-w-4xl mx-auto my-10 rounded-xl overflow-hidden group" style="aspect-ratio: 16/9; background: #000; border: 2px solid #80ff00; box-shadow: 0 0 20px rgba(128,255,0,0.2);">
+                
+                <!-- Slike (Prva vidljiva, ostale imaju klasu 'hidden') -->
+                <img src="img/nyerere1.png" alt="SFT21 Galerija 1" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
+                <img src="img/nyerere2.png" alt="SFT21 Galerija 2" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/nyerere3.png" alt="SFT21 Galerija 3" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/nyerere4.png" alt="SFT21 Galerija 4" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                
+                <!-- Lijeva Strelica -->
+                <button onclick="moveNewsSlider(-1)" class="news-slider-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <!-- Desna Strelica -->
+                <button onclick="moveNewsSlider(1)" class="news-slider-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <!-- ================= SLAJDER KRAJ ================= -->
+
+            <p class="mt-8 text-gray-300 leading-relaxed text-justify">Dragi prijatelji, pokušajte da zdravog razuma i bez predrasuda sagledate širu sliku onoga što trenutno stvaramo.</p>
+            <p class="mt-4 text-gray-300 leading-relaxed text-justify">S jedne strane, imamo Kneževinu Monako i evropski kapital predvođen gospodinom Ciprianijem.</p>
+            <p class="mt-4 text-gray-300 leading-relaxed text-justify">S druge strane, diplomatsko i istorijsko plemstvo afričkog kontinenta na čelu sa gospodinom Nyerereom.</p>
+            <p class="mt-4 text-white font-bold text-lg leading-relaxed text-justify">Oni su odabrali nas i našu zajednicu jer su u našem SFT21 Business Concept-u prepoznali rešenje za budućnost.</p>
+            <p class="mt-6 text-gray-300 leading-relaxed text-justify">Međutim, kako bi ta poruka odjeknula svetom upravo onako kako zaslužuje – profesionalno, transparentno i na najvišem medijskom nivou, moramo se zahvaliti našoj direktorki za odnose sa javnošću i medije, gospođi Sanji Andrijić Marinović. Njeno neprocenjivo međunarodno iskustvo, hrabrost i novinarski integritet garantuju da će istina o našoj zajednici biti prenesena vrhunski i bez kompromisa.</p>
+            <p class="mt-4 text-gray-300 leading-relaxed text-justify">Prvi veliki, ekskluzivni intervju sa gospodinom Ciprianijem odrađen je danas (11.06.2026.) tako da u narednim danima očekujte njegovo objavljivanje. Međutim, vrlo brzo nakon toga uslediće i intervju sa gospodinom Nyerereom. Iz prve ruke imaćete priliku da čujete zašto su ovi globalni lideri odlučili da postanu deo SFT21 porodice.</p>
+
+            <!-- FORBES LINK BUTTON -->
+            <div class="flex justify-center mt-10 mb-12">
+                <a href="https://forbes.it/2020/05/08/investire-in-africa-consulenza-speciale-kevin-nyerere-nipote-del-padre-fondatore-tanzania" target="_blank" class="forbes-link-btn flex items-center gap-4 bg-gray-800 border border-gray-600 hover:border-gray-400 px-6 py-4 rounded-lg shadow-lg transition-all hover:scale-105 group text-decoration-none">
+                    <img src="img/forbes_logo.png" alt="Forbes" class="h-6 object-contain filter brightness-200 group-hover:brightness-100 transition-all">
+                    <div class="forbes-divider h-8 w-px bg-gray-600"></div>
+                    <div class="text-left">
+                        <span class="forbes-title block text-white font-bold text-sm leading-tight">Pročitajte intervju na Forbes Italia</span>
+                        <span class="forbes-subtitle block text-gray-400 text-[10px] uppercase tracking-wider mt-1">Kevin Nyerere o investiranju u Afriku</span>
+                    </div>
+                </a>
+            </div>
+            <!-- KRAJ FORBES LINKA -->
+
+            <div class="text-center pt-12 mt-8 border-t border-gray-700">
+                <p class="text-xl text-white font-bold mb-4">SFT21 nije više samo kompanija.</p>
+                <p class="text-lg text-gray-300 mb-6">Postajemo globalni pokret i potrošačka zajednica čija vizija privlači i nikoga ne ostavlja ravnodušnim.</p>
+                <p class="text-lg text-fluorescent-green font-bold mb-10">Nalazimo se u pravo vreme i na pravom mestu, zajedno pišemo istoriju.</p>
+                
+                <p class="text-2xl text-white font-black mb-16 uppercase tracking-widest">Budite ponosni član SFteam-a!</p>
+
+                <p class="text-xl text-gray-200">Sa entuzijazmom i verom u bolje sutra,</p>
+                <p class="text-2xl font-bold text-purple-400 mt-4 mb-6">Semper Fidelis</p>
+                <p class="text-xl text-white font-normal">Mladen Pejić i Zoran Lazarević</p>
+                <p class="text-base text-gray-400 mt-1">Osnivači, SFT21 LLC</p>
+            </div>
+
+            <footer class="pt-8 border-t border-gray-700 mt-8">
+                <p class="hashtag-container text-sm text-center">
+                    #KevinNyerere #SFT21Ambasador #Africa #Monaco #DomizioCipriani #SFT21BusinessConcept #SanjaAndrijicMarinovic
+                </p>
+            </footer>
+        `
     }
 ];
