@@ -383,7 +383,7 @@ const sfNews = [
     },
     {
         id: 6,
-        title: "EKSKLUZIVNO: Kevin Kambarage Prince Nyerere postaje SFT21 Ambasador za afrički kontinent!",
+        title: "EKSKLUZIVNO: Njegova Visost Kevin Kambarage Prince Nyerere postaje SFT21 Ambasador za afrički kontinent!",
         date: "11. Lipanj 2026.", 
         imageSrc: "img/kevin_nyerere.png", 
         shortTitle: "Ambasador za Afriku",
