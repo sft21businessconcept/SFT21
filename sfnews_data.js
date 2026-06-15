@@ -382,7 +382,7 @@ const sfNews = [
         `
     },
     {
-        id: 6,
+        id: 6, 
         title: "EKSKLUZIVNO: Njegova Visost Kevin Kambarage Prince Nyerere postaje SFT21 Ambasador za afrički kontinent!",
         date: "11. Lipanj 2026.", 
         imageSrc: "img/kevin_nyerere.png", 
@@ -420,18 +420,18 @@ const sfNews = [
                 </iframe>
             </div>
 
-            <p class="mt-6 text-gray-300 text-justify">Zahvaljujući izravnoj preporuci gospodina Ciprianija, danas nam je čast i zadovoljstvo, s neizmjernim ponosom objaviti, da drugi SFT21 Ambasador na globalnoj razini, i naš prvi Ambasador za afrički kontinent, postaje gospodin <b>Kevin Kambarage Prince Nyerere</b>.</p>
+            <p class="mt-6 text-gray-300 text-justify">Zahvaljujući izravnoj preporuci gospodina Ciprianija, danas nam je čast i zadovoljstvo, s neizmjernim ponosom objaviti, da drugi SFT21 Ambasador na globalnoj razini, i naš prvi Ambasador za afrički kontinent, postaje Njegova Visost <b>Kevin Kambarage Prince Nyerere</b>.</p>
 
             <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
-                <p class="text-xl font-bold text-white italic">Za one koji prate svjetsku povijest, prezime NYERERE predstavlja instituciju. Gospodin Kevin je izravni potomak pokojnog Juliusa Nyererea – prvog predsjednika Tanzanije i "Oca afričke nacije".</p>
+                <p class="text-xl font-bold text-white italic">Za one koji prate svjetsku povijest, prezime NYERERE predstavlja instituciju. NJ.V. Princ Kevin je izravni potomak pokojnog Juliusa Nyererea – prvog predsjednika Tanzanije i "Oca afričke nacije".</p>
             </blockquote>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-6 mb-4">Nasljeđe / Diplomacija / Tehnologija</h3>
-            <p class="text-gray-300 text-justify">Ostavština njegove obitelji toliko je moralno i duhovno velika da se njegov djed trenutno nalazi u procesu beatifikacije od strane Svete Stolice u Vatikanu. Gospodin Kevin odrastao je na temeljima tog povijesnog nasljeđa, no izgradio je i vlastiti, fascinantan put. Školovao se u Europi, gdje je spojio afričku dušu s modernom međunarodnom i poslovnom vizijom.</p>
+            <p class="text-gray-300 text-justify">Ostavština njegove obitelji toliko je moralno i duhovno velika da se njegov djed trenutno nalazi u procesu beatifikacije od strane Svete Stolice u Vatikanu. NJ.V. Princ Kevin odrastao je na temeljima tog povijesnog nasljeđa, no izgradio je i vlastiti, fascinantan put. Školovao se u Europi, gdje je spojio afričku dušu s modernom međunarodnom i poslovnom vizijom.</p>
             
             <p class="mt-4 text-gray-300 text-justify">Danas je on istaknuti poduzetnik s ekspertizom u cyber sigurnosti, iskusni diplomat te aktivni predstavnik pan-afrikanizma i glasnogovornik afričke dijaspore. Njegov životni poziv je socijalna pravda, zaštita kulturnog nasljeđa i povezivanje naroda između Afrike i Europe.</p>
 
-            <p class="mt-4 text-gray-300 text-justify"><b>Princ Kevin</b> počasni je predsjednik paviljona Sierra Leone u Veneciji, koji godišnje posjećuje dva milijuna posjetitelja.</p>
+            <p class="mt-4 text-gray-300 text-justify"><b>Nj.V. Princ Kevin</b> počasni je predsjednik paviljona Sierra Leone u Veneciji, koji godišnje posjećuje dva milijuna posjetitelja.</p>
             
             <p class="mt-4 text-gray-300 text-justify">Uz podršku <b>Gospodarske zajednice zapadnoafričkih država (ECOWAS)</b>, paviljon Leone zamišljen je kao prostor aktivne prisutnosti, gdje suvremena umjetnost postaje zajednički jezik i alat za povezivanje. Kustoski projekt okuplja umjetnike iz Sierra Leonea, država članica ECOWAS-a i Italije, potičući otvoreni dijalog kroz djela koja aktiviraju odnose i zajedničke vizije.</p>
             <div class="p-6 bg-black/20 border-l-4 border-fluorescent-green rounded-r-lg my-8">
@@ -459,13 +459,13 @@ const sfNews = [
                 </button>
             </div>
             <!-- ================= SLAJDER KRAJ ================= -->
-            
+
             <p class="mt-8 text-gray-300 leading-relaxed text-justify">Dragi prijatelji, pokušajte zdravog razuma i bez predrasuda sagledati širu sliku onoga što trenutno stvaramo.</p>
             <p class="mt-4 text-gray-300 leading-relaxed text-justify">S jedne strane, imamo Kneževinu Monako i europski kapital predvođen gospodinom Ciprianijem.</p>
-            <p class="mt-4 text-gray-300 leading-relaxed text-justify">S druge strane, diplomatsko i povijesno plemstvo afričkog kontinenta na čelu s gospodinom Nyerereom.</p>
+            <p class="mt-4 text-gray-300 leading-relaxed text-justify">S druge strane, diplomatsko i povijesno plemstvo afričkog kontinenta na čelu s Nj.V. Princom Nyerere.</p>
             <p class="mt-4 text-white font-bold text-lg leading-relaxed text-justify">Oni su odabrali nas i našu zajednicu jer su u našem SFT21 Business Concept-u prepoznali rješenje za budućnost.</p>
             <p class="mt-6 text-gray-300 leading-relaxed text-justify">No, kako bi ta poruka odjeknula svijetom upravo onako kako zaslužuje – profesionalno, transparentno i na najvišoj medijskoj razini, moramo se zahvaliti našoj direktorici za odnose s javnošću i medije, gospođi Sanji Andrijić Marinović. Njeno neprocjenjivo međunarodno iskustvo, hrabrost i novinarski integritet jamče da će istina o našoj zajednici biti prenesena vrhunski i bez kompromisa.</p>
-            <p class="mt-4 text-gray-300 leading-relaxed text-justify">Prvi veliki, ekskluzivni intervju s gospodinom Ciprianijem odrađen je danas (11.06.2026.) tako da u narednim danima očekujte njegovo objavljivanje. Međutim, vrlo brzo nakon toga uslijedit će i intervju s gospodinom Nyerereom. Iz prve ruke imat ćete priliku čuti zašto su ovi globalni lideri odlučili postati dio SFT21 obitelji.</p>
+            <p class="mt-4 text-gray-300 leading-relaxed text-justify">Prvi veliki, ekskluzivni intervju s gospodinom Ciprianijem odrađen je danas (11.06.2026.) tako da u narednim danima očekujte njegovo objavljivanje. Međutim, vrlo brzo nakon toga uslijedit će i intervju s Nj.V. Princom Nyerere. Iz prve ruke imat ćete priliku čuti zašto su ovi globalni lideri odlučili postati dio SFT21 obitelji.</p>
 
             <!-- FORBES LINK BUTTON -->
             <div class="flex justify-center mt-10 mb-12">
@@ -500,8 +500,7 @@ const sfNews = [
             </footer>
         `
     }
-]; 
- 
+];  
 
 
 
