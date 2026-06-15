@@ -420,18 +420,18 @@ const sfNews = [
                 </iframe>
             </div>
 
-            <p class="mt-6 text-gray-300 text-justify">Thanks to the direct recommendation of Mr. Cipriani, today we have the honor and pleasure, with immense pride, to announce that the second SFT21 Ambassador on a global level, and our first Ambassador for the African continent, is Mr. <b>Kevin Kambarage Prince Nyerere</b>.</p>
+            <p class="mt-6 text-gray-300 text-justify">Thanks to the direct recommendation of Mr. Cipriani, today we have the honor and pleasure, with immense pride, to announce that the second SFT21 Ambassador on a global level, and our first Ambassador for the African continent, is H.H. <b>Kevin Kambarage Prince Nyerere</b>.</p>
 
             <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
-                <p class="text-xl font-bold text-white italic">For those who follow world history, the surname NYERERE represents an institution. Mr. Kevin is the direct descendant of the late Julius Nyerere – the first president of Tanzania and the "Father of the African Nation."</p>
+                <p class="text-xl font-bold text-white italic">For those who follow world history, the surname NYERERE represents an institution. H.H. Prince Kevin is the direct descendant of the late Julius Nyerere – the first president of Tanzania and the "Father of the African Nation."</p>
             </blockquote>
 
             <h3 class="text-2xl font-bold text-fluorescent-green pt-6 mb-4">Legacy / Diplomacy / Technology</h3>
-            <p class="text-gray-300 text-justify">The legacy of his family is so morally and spiritually great that his grandfather is currently in the process of beatification by the Holy See in the Vatican. Mr. Kevin grew up on the foundations of that historical legacy, but he also built his own fascinating path. He was educated in Europe, where he combined the African soul with a modern international and business vision.</p>
+            <p class="text-gray-300 text-justify">The legacy of his family is so morally and spiritually great that his grandfather is currently in the process of beatification by the Holy See in the Vatican. H.H. Prince Kevin grew up on the foundations of that historical legacy, but he also built his own fascinating path. He was educated in Europe, where he combined the African soul with a modern international and business vision.</p>
             
             <p class="mt-4 text-gray-300 text-justify">Today, he is a prominent entrepreneur with expertise in cyber security, an experienced diplomat, and an active representative of pan-Africanism and spokesperson for the African diaspora. His life's calling is social justice, the protection of cultural heritage, and connecting nations between Africa and Europe.</p>
 
-            <p class="mt-4 text-gray-300 text-justify"><b>Prince Kevin</b> is the honorary president of the Sierra Leone pavilion in Venice, which welcomes two million visitors annually.</p>
+            <p class="mt-4 text-gray-300 text-justify"><b>H.H Prince Kevin</b> is the honorary president of the Sierra Leone pavilion in Venice, which welcomes two million visitors annually.</p>
             
             <p class="mt-4 text-gray-300 text-justify">With the support of the <b>Economic Community of West African States (ECOWAS)</b>, the Leone pavilion is envisioned as a space of active presence, where contemporary art becomes a common language and a tool for connection. The curatorial project gathers artists from Sierra Leone, ECOWAS member states, and Italy, encouraging open dialogue through works that activate relationships and shared visions.</p>
             <div class="p-6 bg-black/20 border-l-4 border-fluorescent-green rounded-r-lg my-8">
@@ -459,13 +459,13 @@ const sfNews = [
                 </button>
             </div>
             <!-- ================= SLAJDER KRAJ ================= -->
-            
+
             <p class="mt-8 text-gray-300 leading-relaxed text-justify">Dear friends, try to look at the bigger picture of what we are currently creating, with common sense and without prejudice.</p>
             <p class="mt-4 text-gray-300 leading-relaxed text-justify">On one hand, we have the Principality of Monaco and European capital led by Mr. Cipriani.</p>
-            <p class="mt-4 text-gray-300 leading-relaxed text-justify">On the other hand, the diplomatic and historical nobility of the African continent led by Mr. Nyerere.</p>
+            <p class="mt-4 text-gray-300 leading-relaxed text-justify">On the other hand, the diplomatic and historical nobility of the African continent led by H.H. Prince Nyerere.</p>
             <p class="mt-4 text-white font-bold text-lg leading-relaxed text-justify">They chose us and our community because they recognized a solution for the future in our SFT21 Business Concept.</p>
             <p class="mt-6 text-gray-300 leading-relaxed text-justify">However, in order for this message to echo around the world exactly as it deserves – professionally, transparently, and at the highest media level, we must thank our Director of Public Relations and Media, Mrs. Sanja Andrijić Marinović. Her invaluable international experience, courage, and journalistic integrity guarantee that the truth about our community will be conveyed superbly and without compromise.</p>
-            <p class="mt-4 text-gray-300 leading-relaxed text-justify">The first major, exclusive interview with Mr. Cipriani was conducted today (June 11, 2026), so expect its publication in the coming days. However, very soon after that, an interview with Mr. Nyerere will follow. You will have the opportunity to hear firsthand why these global leaders decided to become part of the SFT21 family.</p>
+            <p class="mt-4 text-gray-300 leading-relaxed text-justify">The first major, exclusive interview with Mr. Cipriani was conducted today (June 11, 2026), so expect its publication in the coming days. However, very soon after that, an interview with H.H. Prince Nyerere will follow. You will have the opportunity to hear firsthand why these global leaders decided to become part of the SFT21 family.</p>
 
             <!-- FORBES LINK BUTTON -->
             <div class="flex justify-center mt-10 mb-12">
@@ -501,7 +501,6 @@ const sfNews = [
         `
     }
 ];
-
 
 
 
