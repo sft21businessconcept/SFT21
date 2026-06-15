@@ -383,7 +383,7 @@ const sfNews = [
     },
     {
         id: 6,
-        title: "EXCLUSIVE: Kevin Kambarage Prince Nyerere becomes the SFT21 Ambassador for the African Continent!",
+        title: "EXCLUSIVE: His Highness Kevin Kambarage Prince Nyerere becomes the SFT21 Ambassador for the African Continent!",
         date: "June 11, 2026", 
         imageSrc: "img/kevin_nyerere.png", 
         shortTitle: "Ambassador for Africa",
