@@ -499,8 +499,234 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 7,
+        title: "EKSKLUZIVNI INTERVJU Domizio Cipriani",
+        date: "18. Lipanj 2026.", 
+        imageSrc: "img/domizio_int1.png", 
+        shortTitle: "Intervju: D. Cipriani",
+        contentHTML: `
+            <h2 class="text-2xl md:text-4xl font-bold text-fluorescent-green mb-8 text-center leading-tight">Templari, Kvantne Financije i SFT21 Vizija</h2>
+
+            <p class="font-semibold text-white text-lg mt-6 mb-4">Ekskluzivno iz Monte Carla: Razgovor vodi Sanja Andrijić Marinović</p>
+
+            <div class="flex flex-col md:flex-row gap-6 mb-8 items-start">
+                <img src="img/sanja_mm.png" alt="Sanja Andrijić Marinović" class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg shadow-[0_0_15px_rgba(106,27,154,0.4)] border border-purple-500/30 object-cover">
+                <p class="flex-1 text-gray-300 text-justify leading-relaxed text-lg m-0">
+                    Predstaviti i objasniti osobu koja obnaša toliko važnih međunarodnih uloga nije nimalo lak zadatak. Gospodin Domizio Cipriani, Veliki Prior Vitezova Templara Kneževine Monako, cijenjeni financijski stručnjak, autor i filantrop, otvorio je svoja vrata našoj direktorici za odnose s javnošću i medije, te podijelio svoja razmišljanja o modernom društvu, financijama, duhovnosti i razlozima zašto je odabrao SFT21.
+                </p>
+            </div>
+            <h3 class="text-3xl font-black text-white pt-4 mb-8 border-b border-gray-700 pb-4">I. TEMPLARI I MODERNO DRUŠTVO</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Bili ste prvi osnivač pokreta MEGA (Make Europe Great Again), svojevrsnog odgovora na Trumpov MAGA pokret. Kako ste razvili ovaj važan projekt?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Dobar dan. Da, obnašajući i funkciju regenta Svjetske konfederacije Reda templara, stvorio sam, zajedno s ostalim osnivačima, ovaj važan kršćanski suverenistički pokret. Svrha mu je podržati kršćanske i obiteljske vrijednosti u ovom svijetu koji je potpuno skrenuo prema društvenom zaboravu i beskrajnim ratovima.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Što danas znači biti Veliki Prior Templara u Kneževini Monako, koji su jedini pravi Templari u svijetu, i koje su glavne aktivnosti Velikog Priorata Monaka u 21. stoljeću?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Mi smo čuvari tradicije i drevnih duhovnih znanja primijenjenih u svakodnevnom životu. Upravo zato smo osnovali pučko sveučilište u Kneževini Monako, kako bismo ta znanja prenijeli i običnim ljudima.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Na koji način se povijesno nasljeđe Vitezova Templara može aktualizirati u modernom društvu?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Kroz njegove vrijednosti, filozofska i duhovna znanja, te kroz točne informacije o vrlo osjetljivim temama kao što su financije, geopolitika i socijalna podrška putem suverenizma koji kršćanske i obiteljske vrijednosti vraća u središte civilnog društva.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koje templarske vrijednosti smatrate najhitnijima za ponovno otkrivanje danas?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Svakako etiku i objektivnu transparentnost u komunikaciji mainstream medija. Formiranje nove političke klase također je nužno kako bi se vratio red i inteligentna kontrola migracijskih tokova. Edukacija je neophodna, kao i podrška održivom društvenom razvoju. No, edukacija nužno mora biti usmjerena na učenje vještina i znanja koja mogu biti korisna i primijenjena u zemljama iz kojih migranti dolaze.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kakvi su odnosi između Templara i Muslimana?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Baphomet je kombinacija riječi BAPtist (Sveti Ivan Krstitelj) i maHOMET (Muhamed, prorok islama) – predstavljajući dvostruku vjeru u dvije religije koje je navijestio arkanđeo Gabrijel. To je ezoterijska teza koja odražava zanimljivu simboličku hipotezu o mogućoj sintezi između kršćanstva i islama.<br>
+            Templari su u mirnodopskim vremenima doista imali vrlo dobre odnose s muslimanima, čak dopuštajući mnogima da se mole u crkvama Hrama. To odgovara hipotezi da su Templari namjeravali stvoriti jedinstvenu religiju koja bi stala na kraj vjerskim ratovima.</p>
+
+            <!-- SLIKA U TEKSTU 1 -->
+            <div class="my-10">
+                <img src="img/domizio_int12.png" alt="Templari i moderno društvo" class="w-full rounded-xl shadow-lg border border-white/10 object-cover cursor-pointer hover:opacity-80 transition-opacity" onclick="openModal(this.src, this.alt)">
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako usklađujete duhovnu dimenziju Reda sa zahtjevima suvremenog svijeta?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Zasigurno je Red – kako mu i samo ime kaže – oduvijek bio svjetionik i referentna točka u neredu društava i kraljevstava apsorbiranih u služenju profitu manjine. Stoga je cilj probuditi božansku iskru prisutnu u svakom ljudskom biću. Širiti etičku liniju ponašanja u slušanju i, prije svega, u tišini.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koje humanitarne ili filantropske projekte smatrate najznačajnijima među onima koje promiče Priorat?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Svakako online edukaciju koju nudimo putem naše Akademije kvantnih znanosti za fizičko i mentalno blagostanje, iz Kneževine Monako. Takva edukacija je jedinstvena u svijetu jer drevna duhovna i filozofska znanja spajamo s kvantnom fizikom i financijama, s primjenom u geopolitici i istraživačkom novinarstvu.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koji je bio najveći izazov u doprinosu razvoju Priorata u Monaku?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Svakako je najveći izazov, u kontekstu 2 kvadratna kilometra s preko 140 različitih nacionalnosti milijunaša rezidenata i preko 1200 prisutnih zaklada, bio osjetiti na vlastitoj koži i nadići zavist i ljubomoru okoline. Upravo zato Vitezovi Templari nose mač, poput arkanđela Mihaela, kako bi kontrolirali zmaja – odnosno Sotonu, odnosno ljudski ego.</p>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    "Ulaganje u nas same i u naš osobni i duhovni rast najbolja je investicija – za nas same, za našu obitelj, za našu zemlju i za čovječanstvo."
+                </p>
+            </blockquote>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako vidite budućnost viteških redova u međunarodnom kontekstu?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Zasigurno će svi viteški redovi povezani s crkvama i religijama, ako se ne odvoje od dogmi, doživjeti odljev simpatizera. Suvremeno društvo ima potrebu za novim smjernicama, novim idealima, novim karizmatičnim liderima svjesnima novih potreba ljudi i naroda.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koliko duhovnost utječe na odluke lidera?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Ona je zasigurno osnova puta pravog karizmatičnog lidera, odvojenog od pohlepe za funkcijom. Veliki lideri podučavaju; mnogi državnici imaju duhovne vodiče i s njima odlaze na duhovna povlačenja kada donose važne odluke.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Mora li dobar lider prvo vladati sobom?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Očigledno, moramo biti primjer radeći na sebi kao prvom koraku.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koja templarska učenja svakodnevno primjenjujete u svom životu?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Svakako disciplinu u svakodnevnoj praksi fizičkih vježbi i forsiranog disanja, jer su dah ili Logos temeljni dio, kako bismo promatrali um koji laže i kako ne bismo bili pod učinkom distrakcija svijeta koji nas okružuje.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako se razvija unutarnja disciplina potrebna za vođenje ljudi i organizacija?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Unutarnja disciplina je životni izbor koji se ne može razumjeti osim kroz osobnu praksu. Praksu koja zahtijeva volju za izlaskom iz okvira, podvrgavanje novim iskustvima bez komfora, buke i poroka.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koja je razlika između autoriteta i ugleda (karizme)?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> "Činiti", a ne samo "davati"; to je nesebična predanost u korist bližnjega, vlastite zemlje i iznad svega mladih.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koje bi kvalitete trebao posjedovati mladić koji teži postati vodič drugima?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Poniznost i disciplinu da uči od Učitelja prisutnog u svakome od nas, bez postavljanja pitanja. Razvijanje sposobnosti promatranja vlastitih senzacija u tišini, s onu stranu paralizirajućih mentalnih misli.</p>
+
+            <!-- ======================================================== -->
+            <!-- VIDEO PLAYER IZNAD II. POGLAVLJA -->
+            <!-- ======================================================== -->
+            <div class="hero-video-wrapper mt-16 mb-10" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 0 30px rgba(128, 255, 0, 0.2); border: 2px solid #80ff00;">
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    src="https://www.youtube.com/embed/w060OA03_84" 
+                    title="Intervju Domizio Cipriani" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h3 class="text-3xl font-black text-white pt-8 mb-8 border-b border-gray-700 pb-4">II. FINANCIJE, KVANTNA FIZIKA I BOGATSTVO</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Nakon godina iskustva kao međunarodni financijski savjetnik, koje su najčešće greške koje vidite kod investitora?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Sigurno je to loša informiranost od strane medija i prepuštanje emocijama, čime padaju u zamku.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako se svijet financija promijenio u posljednjih deset godina?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Kvantne financije vraćaju red i realne temelje. Odnosno, vraćaju kolaterale poput zlata kao pokriće valutama, izbjegavajući izdavanje i prodaju papirnatih izvedenica utemeljenih na ničemu, koje bi se bolje mogle definirati kao prevare koje želi trenutni sustav u kojem nekolicina posjeduje najveća bogatstva planeta.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koje karakteristike razlikuju uspješnog investitora od špekulanta?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Investitor mora imati strpljenja, strpljenje donosi rezultate. Dobar otac obitelji gleda dugoročno, a ne prema riziku "sve i odmah", koji neumoljivo vodi u sigurnost ogromnih gubitaka, jer je "banka" namještena u korist manjine.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Monako se često asocira s financijskom izvrsnošću: koje lekcije mogu biti korisne i izvan Kneževine?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Promatrati i družiti se s najboljima i pobjednicima, crpiti inspiraciju iz toga kako žive i s kim se druže. Kako su sposobni pretvoriti posao u biznis koji proizvodi, a da pritom nužno ne zahtijeva stalan angažman.</p>
+
+            <!-- SLIKA U TEKSTU 3 -->
+            <div class="my-10">
+                <img src="img/domizio_int13.png" alt="Financije i bogatstvo" class="w-full rounded-xl shadow-lg border border-white/10 object-cover cursor-pointer hover:opacity-80 transition-opacity" onclick="openModal(this.src, this.alt)">
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koliko psihologija znači u financijskim odlukama?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Više od psihologije, rekao bih da je važna metafizika ili parapsihologija, u smislu sposobnosti distanciranja od uma i slušanja vlastite intuicije, koja rijetko griješi.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koji biste savjet dali mladom poduzetniku koji želi dugoročno izgraditi bogatstvo?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Svakako pohađati napredne tečajeve o osobnom rastu kako bi uspjeli stvoriti vlastiti biznis s eksponencijalnom stopom rasta. Obratiti se kvalificiranim savjetnicima o alternativnim ulaganjima kao što su fizički plemeniti metali, tokenizirane sirovine, sudjelovanje u aktivnostima s prilikama za eksponencijalni rast.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako umjetna inteligencija mijenja financijski sektor?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> UI može biti važna pomoć u predviđanju tržišnih oscilacija. Jedini problem je: tko regulira postavke matičnog algoritma? Sjetimo se da smo mi već korak dalje, mi smo pri prirodnoj intuiciji pete duhovne dimenzije.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Smatrate li da financije mogu biti instrument društvenog poboljšanja, a ne samo profita?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Financije jesu i ostaju jedan od pet stupova svjetske kontrole. Ne vidim etičku promjenu po tom pitanju, radije ćemo ići prema formuli univerzalnog dohotka socijalne redistribucije.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Je li moguće pomiriti profit i etiku?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> To zahtijeva prvenstveno osobni izbor prema viziji novog čovječanstva. Sve dok je život uvjetovan egom i egzaperiran političkim sustavom, ne vidim dijeljivu etičku viziju.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koji bi moralni principi trebali voditi financijski svijet?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Odvajanje od dogmi, kakve god one bile. Povratak u budućnost kroz učenja iz prošlosti.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Mogu li templarske vrijednosti ponuditi etički kompas za moderne financije?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Tradicija kraljeva-svećenika, iscjelitelja i dijeljenje znanja sigurno bi pomoglo ljudskom rodu da si postavi pitanja o trenutnoj situaciji.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koja je uloga povjerenja na tržištima i u ekonomskim odnosima?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Povjerenje i indoktrinacija putem subliminalnih poruka predstavljaju uspjeh elita. Znanje je pravo bogatstvo, sloboda.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako se nosite s etičkim dilemama koje se mogu pojaviti u profesionalnom radu?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Uvijek se pitam je li svaka akcija koju poduzimamo pobjednička za sve uključene strane. Inače bi bilo bolje uzeti trenutak pauze u tišini, jer karma prije ili kasnije stiže, u ovoj inkarnaciji ili u sljedećoj...</p>
+
+            <h3 class="text-3xl font-black text-white pt-10 mb-8 border-b border-gray-700 pb-4">III. SFT21 - POVEZIVANJE ETIKE I POSLOVANJA</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Poklonjena Vam je najprestižnija i najvažnija pozicija u SFT21.</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Zahvaljujem cijelom menadžmentu i osoblju na zadovoljstvu što mogu podijeliti svoja znanja i, iznad svega, što mogu sudjelovati u sigurnim, velikim uspjesima i satisfakcijama koje će proizaći iz inicijative primjene ove inovativne etičke platforme.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Što Vas se najviše dojmilo kod projekta SFT21 kada ste se s njim prvi put upoznali?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Želja za stvaranjem etičnog i distributivnog poslovnog modela, pomalo nalik na motivaciju Cistercitskog reda, preteče Reda Hrama koji je ispisao povijest.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Na koji način SFT21 može stvoriti konkretne prilike za poduzetnike i potrošače?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Stavljajući ih u odnos putem komunikacije. Danas tehnologija i algoritmi mogu biti važna pomoć za rast mikro poduzeća na globalnoj razini.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koje SFT21 vrijednosti smatrate najvažnijima u trenutnom ekonomskom i društvenom kontekstu?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Mogućnost rasta koja se nudi i lokalnim susjedskim poslovima, te mogućnost stvaranja sinergija na međunarodnoj razini.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Gdje vidite SFT21 za pet godina?</h4>
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    Domizio Cipriani: "Vidim ga kao jednog od novih lidera na tržištu u svom sektoru."
+                </p>
+            </blockquote>
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koja je najvažnija lekcija koju biste mogli dati članovima SFT21?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Pouzdati se s povjerenjem u lidere i promišljeno vrednovati savjete.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Vi ste više od političkog lidera, Vi ste veliki "guru" života za nove generacije. Koju poruku biste željeli ostaviti novim generacijama?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Mladima mogu pokazati koji je bio moj put i postignuti uspjesi: informirajte se, ne vjerujte svemu što vam se servira, stječite subjektivno iskustvo i potom s rasuđivanjem procijenite. Ako s vama rezonira i ako je realno – to je pravi put, inače je bolje promatrati bez interesa.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kao osoba s velikim međunarodnim profesionalnim uspjehom, kako definirate uspjeh?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Najveći uspjeh je imati slobodno vrijeme koje možete posvetiti vlastitom osobnom rastu, vlastitoj obitelji, vlastitim hobijima.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kad biste svoju životnu filozofiju morali sažeti u jednu rečenicu, koja bi to bila?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Crpi mudrost iz tišine i koristi tišinu za stvaranje. Mi smo svjetlo u tišini beskonačnog prostora.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kad bi se Vitezovi Templari danas vratili, koja bi, po Vašem mišljenju, bila misija koju bi odabrali kako bi pomogli čovječanstvu u 21. stoljeću?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Imperijalni suverenizam, za mir među ljudima i narodima u etici. Uvijek se sjetimo da je duhovnost kontinuirano oduzimanje kako bi se postiglo bitno, i ona počinje tamo gdje završavaju religije (koje nisu ekskluzivna vozila). Kako je rekao Konfucije.</p>
+
+            <!-- ================= SLAJDER POČETAK ================= -->
+            <h4 class="text-2xl font-bold text-white text-center mt-16 mb-6 uppercase tracking-widest">Galerija</h4>
+            <div class="news-slider-frame relative w-full max-w-4xl mx-auto mb-10 rounded-xl overflow-hidden group" style="aspect-ratio: 16/9; background: #000; border: 2px solid #80ff00; box-shadow: 0 0 20px rgba(128,255,0,0.2);">
+                
+                <!-- Slike (sve s object-contain da se ne režu) -->
+                <img src="img/domizio_int2.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int3.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int4.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int5.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int6.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int7.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int8.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int9.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int10.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int11.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int14.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int15.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int16.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int17.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int18.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int19.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int20.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int21.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int22.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int23.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int24.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int25.png" alt="Galerija slika" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                
+                <!-- Lijeva Strelica -->
+                <button onclick="moveNewsSlider(-1)" class="news-slider-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <!-- Desna Strelica -->
+                <button onclick="moveNewsSlider(1)" class="news-slider-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <!-- ================= SLAJDER KRAJ ================= -->
+
+            <div class="text-center pt-8 border-t border-gray-700">
+                <p class="text-lg text-white font-bold mb-4">Uskoro donosimo i ekskluzivni intervju s našim Ambasadorom za afrički kontinent, Nj.V. Kevin Kambarage Princ Nyerere!</p>
+                <p class="mt-4 text-gray-300">Pratite nas na našim službenim kanalima. Budite sa nama dio povijesti.</p>
+                <p class="font-semibold text-purple-400 text-lg mt-6 mb-4">Semper Fidelis</p>
+                <p class="text-white font-normal">Mladen Pejić i Zoran Lazarević</p>
+                <p class="text-sm text-gray-400">Osnivači, SFT21 LLC</p>
+            </div>
+            
+            <footer class="mt-12 pt-6 border-t border-gray-700">
+                <p class="hashtag-container text-sm text-center">
+                    #DomizioCipriani #SFT21 #ExclusiveInterview #Templars #QuantumFinance #GlobalBusiness
+                </p>
+            </footer>
+        `
     }
-];  
+];   
 
 
 
