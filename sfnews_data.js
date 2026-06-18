@@ -604,7 +604,6 @@ const sfNews = [
             <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Monako se često asocira s financijskom izvrsnošću: koje lekcije mogu biti korisne i izvan Kneževine?</h4>
             <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Promatrati i družiti se s najboljima i pobjednicima, crpiti inspiraciju iz toga kako žive i s kim se druže. Kako su sposobni pretvoriti posao u biznis koji proizvodi, a da pritom nužno ne zahtijeva stalan angažman.</p>
 
-            <!-- SLIKA U TEKSTU 3 -->
             <div class="my-10">
                 <img src="img/domizio_int13.png" alt="Financije i bogatstvo" class="w-full rounded-xl shadow-lg border border-white/10 object-cover cursor-pointer hover:opacity-80 transition-opacity" onclick="openModal(this.src, this.alt)">
             </div>
