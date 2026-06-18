@@ -29,10 +29,17 @@ window.loadNews = function(index) {
     const newsItem = sfNews[currentNewsIndex];
     updateUrlHash(newsItem.id);
 
-    // Ažuriranje tekstova
+// Ažuriranje tekstova
     const titleEl = document.getElementById('news-title');
     const infoEl = document.getElementById('news-info');
-    if (titleEl) titleEl.textContent = newsItem.title;
+    
+    if (titleEl) {
+        if (newsItem.title.includes("EKSKLUZIVNI INTERVJU Domizio Cipriani")) {
+            titleEl.innerHTML = "EKSKLUZIVNI INTERVJU<br>Domizio Cipriani";
+        } else {
+            titleEl.textContent = newsItem.title;
+        }
+    }
     
     const lang = document.documentElement.lang || 'hr'; 
     const publishedText = lang === 'en' ? 'Published:' : 'Objavljeno:';
