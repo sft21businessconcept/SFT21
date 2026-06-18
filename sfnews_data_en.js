@@ -499,6 +499,229 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 7,
+        title: "EXCLUSIVE INTERVIEW: Domizio Cipriani",
+        date: "June 18, 2026", 
+        imageSrc: "img/domizio_int1.png", 
+        shortTitle: "Interview: D. Cipriani",
+        contentHTML: `
+            <h2 class="text-2xl md:text-4xl font-bold text-fluorescent-green mb-8 text-center leading-tight">Templars, Quantum Finance, and the SFT21 Vision</h2>
+
+            <p class="font-semibold text-white text-lg mt-6 mb-4">Exclusive from Monte Carlo: Interview conducted by Sanja Andrijić Marinović</p>
+            
+            <!-- BLOK: SLIKA SANJE LIJEVO, TEKST DESNO -->
+            <div class="flex flex-col md:flex-row gap-6 mb-8 items-start">
+                <img src="img/sanja_mm.png" alt="Sanja Andrijić Marinović" class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg shadow-[0_0_15px_rgba(106,27,154,0.4)] border border-purple-500/30 object-cover">
+                <p class="flex-1 text-gray-300 text-justify leading-relaxed text-lg m-0">
+                    To introduce and explain a person who holds so many important international roles is no easy task. Mr. Domizio Cipriani, Grand Prior of the Knights Templar of the Principality of Monaco, esteemed financial expert, author, and philanthropist, opened his doors to our Director of Public Relations and Media to share his thoughts on modern society, finance, spirituality, and the reasons why he chose SFT21.
+                </p>
+            </div>
+
+            <h3 class="text-3xl font-black text-white pt-4 mb-8 border-b border-gray-700 pb-4">I. TEMPLARS AND MODERN SOCIETY</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: You were the first founder of the MEGA (Make Europe Great Again) movement, a kind of response to Trump's MAGA movement. How did you develop this important project?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Good morning. Yes, while also holding the function of Regent of the World Confederation of the Templar Order, I created, together with the other founders, this important Christian sovereignist movement. Its purpose is to support Christian and family values in a world that has completely derailed towards social oblivion and endless wars.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What does it mean today to be the Grand Prior of the Templars in the Principality of Monaco, who are the only true Templars in the world, and what are the main activities of the Grand Priory of Monaco in the 21st century?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> We are the guardians of tradition and ancient spiritual knowledge applied to daily life. That is precisely why we established a popular university in the Principality of Monaco, to pass this knowledge on to ordinary people as well.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How can the historical legacy of the Knights Templar be updated in modern society?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Through its values, philosophical, and spiritual knowledge, and through accurate information on very sensitive topics such as finance, geopolitics, and social support via a sovereignism that brings Christian and family values back to the center of civil society.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Which Templar values do you consider most urgent to rediscover today?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Definitely ethics and objective transparency in mainstream media communication. The formation of a new political class is also necessary to bring back order and intelligent control of migration flows. Education is necessary, as is support for sustainable social development. But education must necessarily be aimed at learning skills and knowledge that can be useful and applied in the countries from which the migrants come.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What are the relations between the Templars and Muslims?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Baphomet is the combination of BAPtist (Saint John the Baptist) and maHOMET (Muhammad, the prophet of Islam) – representing a dual belief in the two religions announced by the Archangel Gabriel. It is an esoteric thesis that reflects an interesting symbolic hypothesis about a possible synthesis between Christianity and Islam.<br>
+            The Templars indeed had very good relations with Muslims in times of peace, even allowing some to pray in the churches of the Temple. This corresponds to the hypothesis that the Templars intended to create a single religion that would put an end to religious wars.</p>
+
+            <!-- SLIKA U TEKSTU 1 -->
+            <div class="my-10">
+                <img src="img/domizio_int12.png" alt="Templars and modern society" class="w-full rounded-xl shadow-lg border border-white/10 object-cover cursor-pointer hover:opacity-80 transition-opacity" onclick="openModal(this.src, this.alt)">
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How do you reconcile the spiritual dimension of the Order with the demands of the contemporary world?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Certainly, the Order – as its name implies – has always been a beacon and a point of reference in the disorder of societies and kingdoms absorbed in serving the profit of the few. Therefore, the goal is to awaken the divine spark present in every human being. To spread an ethical line of conduct in listening and, above all, in silence.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Which humanitarian or philanthropic projects do you consider most significant among those promoted by the Priory?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Definitely the online education we offer through our Academy of Quantum Sciences for Physical and Mental Wellbeing, from the Principality of Monaco. Such education is unique in the world because we combine ancient spiritual and philosophical knowledge with quantum physics and finance, with applications in geopolitics and investigative journalism.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What was the greatest challenge in contributing to the development of the Priory in Monaco?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Certainly, the biggest challenge, in a context of 2 square kilometers with over 140 different nationalities of resident millionaires and over 1,200 foundations present, was to experience and overcome the envy and jealousy of the surroundings. That is precisely why the Knights Templar carry a sword, like the Archangel Michael, to control the dragon – that is, Satan, that is, the human ego.</p>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    "Investing in ourselves and in our personal and spiritual growth is the best investment – for ourselves, for our family, for our country, and for humanity."
+                </p>
+            </blockquote>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How do you see the future of chivalric orders in the international context?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Certainly, all chivalric orders connected to churches and religions, if they do not detach themselves from dogmas, will experience an outflow of sympathizers. Contemporary society needs new guidelines, new ideals, and new charismatic leaders aware of the new needs of people and nations.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How much does spirituality influence a leader's decisions?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> It is certainly the foundation of the path of a true charismatic leader, detached from the greed for the position. Great leaders teach; many statesmen have spiritual guides and go on spiritual retreats with them when they need to make important decisions.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Must a good leader first govern himself?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Obviously, we must be the example by working on ourselves as a first step.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What Templar teachings do you apply daily in your life?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Definitely discipline in the daily practice of physical exercise and forced breathing, because the breath, or Logos, is a fundamental part to observe the mind that lies, and not to be affected by the influences and distractions of the world around us.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How is the inner discipline necessary to lead people and organizations developed?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Inner discipline is a life choice that cannot be understood except through personal practice. A practice that requires the will to step out of the box, submitting oneself to new experiences without comfort, noise, and vice.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What is the difference between authority and authoritativeness (charisma)?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> "To do", and not just "to give"; it is a selfless commitment in favor of one's neighbor, one's country, and above all, the youth.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What qualities should a young person aspiring to become a guide for others possess?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Humility and discipline to learn from the Master present in each of us, without asking questions. Developing the ability to observe one's own sensations in silence, beyond one's own paralyzing mental thoughts.</p>
+
+            <!-- ======================================================== -->
+            <!-- VIDEO PLAYER IZNAD II. POGLAVLJA -->
+            <!-- ======================================================== -->
+            <div class="hero-video-wrapper mt-16 mb-10" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 0 30px rgba(128, 255, 0, 0.2); border: 2px solid #80ff00;">
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    src="https://www.youtube.com/embed/w060OA03_84" 
+                    title="Interview Domizio Cipriani" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h3 class="text-3xl font-black text-white pt-8 mb-8 border-b border-gray-700 pb-4">II. FINANCE, QUANTUM PHYSICS AND WEALTH</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: After years of experience as an international financial advisor, what are the most common mistakes you see in investors?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> It is certainly being poorly informed by the media and getting caught up in emotions, thereby falling into the trap.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How has the world of finance changed in the last ten years?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Quantum finance is bringing back order and real fundamentals. That is, returning collaterals like gold to back currencies, avoiding the issuance and sale of paper derivatives based on nothing, which could better be defined as scams desired by the current system in which a few players own the greatest wealth of the entire planet.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What characteristics distinguish a successful investor from a speculator?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> An investor must have patience, patience brings results. A good father of a family looks to the long term, not to the risk of "everything right away", which inexorably leads to the certainty of huge losses, because the "bank" is rigged in favor of the few.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Monaco is often associated with financial excellence: what lessons can be useful outside the Principality?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Observe and associate with the best and the winners, draw inspiration from how they live and who they associate with. How they are able to transform a job into a business that produces without necessarily requiring constant engagement.</p>
+
+            <!-- SLIKA U TEKSTU 3 -->
+            <div class="my-10">
+                <img src="img/domizio_int13.png" alt="Finance and wealth" class="w-full rounded-xl shadow-lg border border-white/10 object-cover cursor-pointer hover:opacity-80 transition-opacity" onclick="openModal(this.src, this.alt)">
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How much does psychology matter in financial decisions?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> More than psychology, I would say metaphysics or perhaps parapsychology matters, in the sense of the ability to distance oneself from the mind and listen to one's own intuition, which rarely makes a mistake.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What advice would you give to a young entrepreneur who wants to build wealth in the long term?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Definitely attend advanced courses on personal growth to be able to create your own business with an exponential growth rate. Turn to qualified advisors on alternative investments such as physical precious metals and tokenized raw materials.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How is artificial intelligence changing the financial sector?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> AI can be an important aid in predicting market oscillations. The only problem is: who regulates the settings of the mother algorithm? Let us remember that we are already beyond that, we are at the natural intuition of the fifth spiritual dimension.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Do you believe that finance can be an instrument of social improvement, and not just of profit?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Finance is and remains one of the five pillars of world control. I do not see an ethical change in this regard, rather we will move towards a formula of universal income of social redistribution.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Is it possible to reconcile profit and ethics?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> It primarily requires a personal choice towards a vision of a new humanity. As long as life is conditioned by the ego, I do not see a shareable ethical vision.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What moral principles should guide the financial world?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Detachment from dogmas, whatever they may be. A return to the future through the teachings of the past.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Can Templar values offer an ethical compass for modern finance?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> The tradition of priest-kings, healers, and the sharing of the knowledge of Atlantis would certainly help the human race ask itself questions about the current situation.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What is the role of trust in markets and economic relations?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Trust and indoctrination through subliminal messages represent the success of the elites. Knowledge is the true wealth, freedom.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How do you deal with ethical dilemmas that can emerge in professional activity?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> I always ask myself if every action we take is a win for all parties involved. Otherwise, it would be better to take a moment of pause in silence, also because karma arrives sooner or later, in this incarnation or the next...</p>
+
+            <h3 class="text-3xl font-black text-white pt-10 mb-8 border-b border-gray-700 pb-4">III. SFT21 - CONNECTING ETHICS AND BUSINESS</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: You have been gifted the most prestigious and important position in SFT21.</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> I thank the entire management and staff for the pleasure of being able to share knowledge and, above all, to be able to participate in the sure great successes and satisfactions that will come from the initiative of applying this innovative ethical platform.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What struck you most about the SFT21 project when you first learned about it?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> The desire to create an ethical and distributive business model, somewhat akin to the motivation of the Cistercian Order, precursor to the Order of the Temple that rewrote history.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How can SFT21 create concrete opportunities for entrepreneurs and consumers?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> By putting them in a relationship through communication. Today, technology and algorithms can be an important aid for the growth of micro-enterprises on a global level.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Which SFT21 values do you consider most important in the current economic and social context?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> The growth possibility offered also to local neighborhood businesses, and the possibility of creating synergies on an international level.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Where do you see SFT21 in five years?</h4>
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    Domizio Cipriani: "I see it as one of the new market leaders in its sector."
+                </p>
+            </blockquote>
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What is the most important lesson you could give to SFT21 members?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> To rely with trust on the leaders and thoughtfully evaluate advice.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: You are more than a political leader, you are a great "guru" of life for the new generations. What message would you like to leave to the new generations?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Inform yourselves, do not believe everything you are told, gain subjective experience and then evaluate with discernment. If it resonates with you and is real – it is the right path, otherwise it is better to observe without interest.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: As a person with great international professional success, how do you define success?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> The greatest success is having free time to dedicate to your own personal growth, your family, and your hobbies.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: If you had to summarize your life philosophy in one sentence, what would it be?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Draw wisdom from silence and use silence to create. We are light in the silence of infinite space.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: If the Knights Templar returned today, what, in your opinion, would be the mission they would choose to help humanity in the 21st century?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Domizio Cipriani:</b> Imperial sovereignism, for peace among men and nations in ethics. As Confucius said.</p>
+
+            <!-- ================= SLAJDER POČETAK ================= -->
+            <h4 class="text-2xl font-bold text-white text-center mt-16 mb-6 uppercase tracking-widest">Gallery</h4>
+            <div class="news-slider-frame relative w-full max-w-4xl mx-auto mb-10 rounded-xl overflow-hidden group" style="aspect-ratio: 16/9; background: #000; border: 2px solid #80ff00; box-shadow: 0 0 20px rgba(128,255,0,0.2);">
+                
+                <img src="img/domizio_int2.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int3.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int4.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int5.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int6.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int7.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int8.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int9.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int10.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int11.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int14.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int15.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int16.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int17.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int18.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int19.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int20.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int21.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int22.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int23.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int24.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/domizio_int25.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                
+                <button onclick="moveNewsSlider(-1)" class="news-slider-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button onclick="moveNewsSlider(1)" class="news-slider-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="text-center pt-8 border-t border-gray-700">
+                <p class="text-lg text-white font-bold mb-4">We will soon be publishing an exclusive interview with our Ambassador for the African continent, H.S.H. Kevin Kambarage Prince Nyerere!</p>
+                <p class="mt-4 text-gray-300">Follow us on our official channels. Be part of history with us.</p>
+                <p class="font-semibold text-purple-400 text-lg mt-6 mb-4">Semper Fidelis</p>
+                <p class="text-white font-normal">Mladen Pejić & Zoran Lazarević</p>
+                <p class="text-sm text-gray-400">Founders, SFT21 LLC</p>
+            </div>
+            
+            <footer class="mt-12 pt-6 border-t border-gray-700">
+                <p class="hashtag-container text-sm text-center">
+                    #DomizioCipriani #SFT21 #ExclusiveInterview #Templars #QuantumFinance #GlobalBusiness
+                </p>
+            </footer>
+        `
     }
 ];
 
