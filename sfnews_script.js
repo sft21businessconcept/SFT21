@@ -34,8 +34,11 @@ window.loadNews = function(index) {
     const infoEl = document.getElementById('news-info');
     
     if (titleEl) {
+        // Provjerava i HR/SR verziju i EN verziju naslova
         if (newsItem.title.includes("EKSKLUZIVNI INTERVJU Domizio Cipriani")) {
             titleEl.innerHTML = "EKSKLUZIVNI INTERVJU<br>Domizio Cipriani";
+        } else if (newsItem.title.includes("EXCLUSIVE INTERVIEW: Domizio Cipriani")) {
+            titleEl.innerHTML = "EXCLUSIVE INTERVIEW<br>Domizio Cipriani";
         } else {
             titleEl.textContent = newsItem.title;
         }
