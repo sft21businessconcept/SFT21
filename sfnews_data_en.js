@@ -714,7 +714,7 @@ const sfNews = [
                 <p class="text-lg text-white font-bold mb-4">We will soon be publishing an exclusive interview with our Ambassador for the African continent, HH. Kevin Kambarage Prince Nyerere!</p>
                 <p class="mt-4 text-gray-300">Follow us on our official channels. Be part of history with us.</p>
                 <p class="font-semibold text-purple-400 text-lg mt-6 mb-4">Semper Fidelis</p>
-                <p class="text-white font-normal">Mladen Pejić & Zoran Lazarević</p>
+                <p class="text-white font-normal">Mladen Pejic & Zoran Lazarevic</p>
                 <p class="text-sm text-gray-400">Founders, SFT21 LLC</p>
             </div>
             
