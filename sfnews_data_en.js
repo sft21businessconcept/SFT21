@@ -383,7 +383,7 @@ const sfNews = [
     },
     {
         id: 6,
-        title: "EXCLUSIVE: His Highness Kevin Kambarage Prince Nyerere becomes the SFT21 Ambassador for the African Continent!",
+        title: "EXCLUSIVE: His Highness Kevin Prince Nyerere becomes the SFT21 Ambassador for the African Continent!",
         date: "June 11, 2026", 
         imageSrc: "img/kevin_nyerere.png", 
         shortTitle: "Ambassador for Africa",
@@ -420,7 +420,7 @@ const sfNews = [
                 </iframe>
             </div>
 
-            <p class="mt-6 text-gray-300 text-justify">Thanks to the direct recommendation of Mr. Cipriani, today we have the honor and pleasure, with immense pride, to announce that the second SFT21 Ambassador on a global level, and our first Ambassador for the African continent, is H.H. <b>Kevin Kambarage Prince Nyerere</b>.</p>
+            <p class="mt-6 text-gray-300 text-justify">Thanks to the direct recommendation of Mr. Cipriani, today we have the honor and pleasure, with immense pride, to announce that the second SFT21 Ambassador on a global level, and our first Ambassador for the African continent, is H.H. <b>Kevin Prince Nyerere</b>.</p>
 
             <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
                 <p class="text-xl font-bold text-white italic">For those who follow world history, the surname NYERERE represents an institution. H.H. Prince Kevin is the direct descendant of the late Julius Nyerere – the first president of Tanzania and the "Father of the African Nation."</p>
@@ -711,7 +711,7 @@ const sfNews = [
             </div>
 
             <div class="text-center pt-8 border-t border-gray-700">
-                <p class="text-lg text-white font-bold mb-4">We will soon be publishing an exclusive interview with our Ambassador for the African continent, HH. Kevin Kambarage Prince Nyerere!</p>
+                <p class="text-lg text-white font-bold mb-4">We will soon be publishing an exclusive interview with our Ambassador for the African continent, HH. Kevin Prince Nyerere!</p>
                 <p class="mt-4 text-gray-300">Follow us on our official channels. Be part of history with us.</p>
                 <p class="font-semibold text-purple-400 text-lg mt-6 mb-4">Semper Fidelis</p>
                 <p class="text-white font-normal">Mladen Pejic & Zoran Lazarevic</p>
