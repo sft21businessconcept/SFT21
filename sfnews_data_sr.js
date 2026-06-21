@@ -384,7 +384,7 @@ const sfNews = [
     },
     {
         id: 6, 
-        title: "EKSKLUZIVNO: Njegovo Visočanstvo Kevin Kambarage Prince Nyerere postaje SFT21 Ambasador za afrički kontinent!",
+        title: "EKSKLUZIVNO: Njegovo Visočanstvo Kevin Prince Nyerere postaje SFT21 Ambasador za afrički kontinent!",
         date: "11. Jun 2026.", 
         imageSrc: "img/kevin_nyerere.png", 
         shortTitle: "Ambasador za Afriku",
@@ -421,7 +421,7 @@ const sfNews = [
                 </iframe>
             </div>
 
-            <p class="mt-6 text-gray-300 text-justify">Zahvaljujući direktnoj preporuci gospodina Ciprianija, danas nam je čast i zadovoljstvo da, sa neizmernim ponosom objavimo, da drugi SFT21 Ambasador na globalnom nivou, i naš prvi Ambasador za afrički kontinent, postaje Njegova Visost <b>Kevin Kambarage Prince Nyerere</b>.</p>
+            <p class="mt-6 text-gray-300 text-justify">Zahvaljujući direktnoj preporuci gospodina Ciprianija, danas nam je čast i zadovoljstvo da, sa neizmernim ponosom objavimo, da drugi SFT21 Ambasador na globalnom nivou, i naš prvi Ambasador za afrički kontinent, postaje Njegova Visost <b>Kevin Prince Nyerere</b>.</p>
 
             <blockquote class="border-l-4 border-purple-500 pl-6 my-8 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
                 <p class="text-xl font-bold text-white italic">Za one koji prate svetsku istoriju, prezime NYERERE predstavlja instituciju. NJ.V. Princ Kevin je direktni potomak pokojnog Juliusa Nyererea – prvog predsednika Tanzanije i "Oca afričke nacije".</p>
@@ -717,7 +717,7 @@ const sfNews = [
             <!-- ================= SLAJDER KRAJ ================= -->
 
             <div class="text-center pt-8 border-t border-gray-700">
-                <p class="text-lg text-white font-bold mb-4">Uskoro donosimo i ekskluzivni intervju s našim Ambasadorom za afrički kontinent, Nj.V. Kevin Kambarage Princ Nyerere!</p>
+                <p class="text-lg text-white font-bold mb-4">Uskoro donosimo i ekskluzivni intervju s našim Ambasadorom za afrički kontinent, Nj.V. Kevin Princ Nyerere!</p>
                 <p class="mt-4 text-gray-300">Pratite nas na našim zvaničnim kanalima. Budite sa nama deo istorije.</p>
                 <p class="font-semibold text-purple-400 text-lg mt-6 mb-4">Semper Fidelis</p>
                 <p class="text-white font-normal">Mladen Pejić i Zoran Lazarević</p>
