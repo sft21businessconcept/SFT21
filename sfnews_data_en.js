@@ -724,6 +724,217 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 8,
+        title: "EXCLUSIVE INTERVIEW",
+        date: "June 23, 2026", 
+        imageSrc: "", 
+        shortTitle: "Interview: Kevin Prince Nyerere",
+        contentHTML: `
+            <!-- HIDING THE AUTOMATIC DATE ON TOP -->
+            <style>
+                .main-article-container header p.text-gray-400 { display: none !important; }
+            </style>
+
+            <!-- CUSTOM HEADINGS -->
+            <h2 class="text-3xl md:text-5xl font-black text-white text-center mb-2 mt-4">Prince Kevin Nyerere</h2>
+            <h3 class="text-xl md:text-2xl font-bold text-fluorescent-green text-center mb-2 tracking-widest uppercase">Legacy, Technology, and the Future of Africa</h3>
+            
+            <p class="text-sm text-gray-400 text-center mb-10">Published: June 23, 2026</p>
+            
+            <div class="mb-12">
+                <img src="img/kevin_int1.png" alt="Prince Kevin Nyerere" class="w-full rounded-xl shadow-lg border border-white/10 cursor-pointer object-cover" onclick="openModal(this.src, this.alt)">
+            </div>
+
+            <!-- INTRO WITH SANJA'S PICTURE -->
+            <div class="flex flex-col md:flex-row gap-8 my-10 items-start border-b border-gray-700 pb-10">
+                <img src="img/sanja_mm.png" alt="Sanja Andrijić Marinović" class="w-full md:w-1/3 rounded-lg shadow-lg object-cover border border-purple-500/30">
+                <div class="flex-1 space-y-4">
+                    <p class="font-bold text-white text-lg">Exclusive interview conducted by: Sanja Andrijić Marinović</p>
+                    <p class="text-gray-300 text-justify">As we announced, the SFT21 community has become a global bridge connecting Europe and Africa. After our first Ambassador, Mr. Domizio Cipriani, opened the doors to diplomatic circles, His Highness <b>Prince Kevin Nyerere</b> – descendant of the father of the African nation and the first SFT21 Ambassador for the African continent – has joined our team.</p>
+                    <p class="text-gray-300 text-justify">To find out firsthand who the man carrying such a profound historical legacy is, what challenges he faces on the global stage, and what his vision of the future looks like, we conducted this exclusive interview with H.H. Prince Kevin Nyerere.</p>
+                </div>
+            </div>
+
+            <h3 class="text-3xl font-black text-white pt-4 mb-8 border-b border-gray-700 pb-4">I. HISTORICAL LEGACY AND PERSONAL PATH</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Prince Kevin, your grandfather, Julius Nyerere, remains one of Africa's most revered statesmen. What aspects of his legacy have influenced your life the most?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Honestly, of course I was influenced by the fact of what kind of family I come from. That is exactly why I wanted to do my part, to keep that name alive.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How do you balance the responsibility of carrying a historical family name with building your own path and identity?</h4>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    "I don't think about family history, I am focused on myself. Whoever is capable of doing something, will do it. I have shown the world what I am capable of, and I have only just begun."
+                </p>
+            </blockquote>
+
+            <h3 class="text-3xl font-black text-white pt-10 mb-8 border-b border-gray-700 pb-4">II. DIPLOMACY, ENTREPRENEURSHIP, AND OPPORTUNITIES</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Can you tell us about your current business interests and the industries that excite you most?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> I am very excited to promote Sierra Leone and the Economic Community of West African States (ECOWAS). It is a fantastic nation that has opened very good doors for me on the global stage.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Your good friends are the presidential couple of Sierra Leone, Julius Maada Bio and Fatima Maada Bio?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Yes, Fatima Maada, Julius Maada, and Dr. Tony Morgan are the people who guided me and helped me to grow in working with governments, both as an experience and in life itself. I am very excited to promote Sierra Leone and ECOWAS, which is a truly fantastic nation that has opened very good doors for me on the global stage.</p>
+
+            <!-- ================= SLIDER 1 ================= -->
+            <div class="news-slider-frame relative w-full max-w-4xl mx-auto my-12 rounded-xl overflow-hidden group" style="aspect-ratio: 16/9; background: #000; border: 2px solid #80ff00; box-shadow: 0 0 20px rgba(128,255,0,0.2);">
+                <img src="img/Fatima Maada Bio.png" alt="SFT21 Gallery 1" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
+                <img src="img/Julius Maada Bio.png" alt="SFT21 Gallery 2" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Tony Morgan.png" alt="SFT21 Gallery 3" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Julius Maada Bio_1.png" alt="SFT21 Gallery 4" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Julius&Fatima.png" alt="SFT21 Gallery 5" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Tony Morgan&wife.png" alt="SFT21 Gallery 6" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima.png" alt="SFT21 Gallery 7" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_4.png" alt="SFT21 Gallery 8" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_5.png" alt="SFT21 Gallery 9" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_11.png" alt="SFT21 Gallery 10" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_12.png" alt="SFT21 Gallery 11" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_13.png" alt="SFT21 Gallery 12" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_papa.png" alt="SFT21 Gallery 13" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                
+                <button onclick="moveNewsSlider(-1, this)" class="news-slider-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="moveNewsSlider(1, this)" class="news-slider-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <!-- ================= SLIDER END ================= -->
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What professional achievement are you most proud of so far?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> I am proud of the upcoming 2026 Venice Biennale with the Sierra Leone pavilion, endorsed by ECOWAS and the amazing family of President Bio and the First Lady. I am the honorary president of that pavilion, which is visited by two million people annually. With the support of ECOWAS, it is conceived as a space of active presence, where contemporary art becomes a common language and a tool for connection between Africa and Italy.</p>
+
+            <!-- LUXURY LINK TO VENICE BIENNALE -->
+            <div class="mt-8 mb-12 p-5 bg-gray-800 bg-opacity-40 border border-gray-600 rounded-xl flex flex-col md:flex-row items-center justify-between hover:border-[#80ff00] transition-colors shadow-lg group">
+                <div class="flex items-center gap-5 mb-4 md:mb-0 w-full md:w-auto">
+                    <div class="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#80ff00]/20 transition-colors">
+                        <i class="fas fa-globe-europe text-3xl text-[#80ff00]"></i>
+                    </div>
+                    <div>
+                        <p class="text-white font-black text-sm md:text-base uppercase tracking-wider">La Biennale di Venezia 2026</p>
+                        <p class="text-xs text-gray-400 mt-1">Official announcement regarding the Republic of Sierra Leone Pavilion</p>
+                    </div>
+                </div>
+                <a href="https://www.labiennale.org/en/art/2026/sierra-leone-republic" target="_blank" class="w-full md:w-auto bg-[#80ff00] text-[#0e076a] px-6 py-3 rounded-lg font-black text-xs uppercase shadow-[0_0_15px_rgba(128,255,0,0.3)] hover:scale-105 transition-transform flex items-center justify-center gap-3">
+                    <span>Read announcement</span> <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What opportunities do you see for Africa's next generation of entrepreneurs?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Technologies represent a great opportunity, but also a huge challenge. The whole world is coming to Africa, investors with serious money are coming, but we need stronger institutional support to learn how to manage and accommodate these trade investments. Above all, we need more investments in education.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What long-term projects or ventures are you currently working to develop?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> I want to build schools across Africa.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What has been the biggest challenge you've faced professionally, and what did it teach you?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> The biggest challenge is being alone when serious problems arise. In Africa, and in the world, if you don't have trusted people, it's hard to rise again. It is a special challenge to handle the pressure and mental health under high levels of responsibility and an incredibly fast rhythm. The market never sleeps, and people are always ready to take advantage of you.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How do you balance business responsibilities with public engagements and charitable work?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> I just work. I am always on the phone talking. Communication is extremely important, as is constantly trying to find solutions.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What role does innovation play in your business strategy?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> It plays a major role because innovation facilitates the way we can strategically achieve what sometimes looks hard or almost impossible.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What skills do you believe every young entrepreneur should develop?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Communication is the key, especially transparency in work, along with a spirit of sacrifice.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What qualities do you value most in the people you choose to work with?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Honesty, 'hunger' for success, and passion (positive anger). The people I work with should run faster than me, not have me running double for them. I am very pragmatic, and I've learned that when things look easy, they usually aren't as they seem.</p>
+
+            <h3 class="text-3xl font-black text-white pt-10 mb-8 border-b border-gray-700 pb-4">III. PRIVATE LIFE AND PHILOSOPHY</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How do you manage stress and maintain focus during demanding periods?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> I am always under stress because I represent institutions. Looking at my partner, the President, and the First Lady, I know I cannot and must not have excuses for anything. You always have to work, and it's said for a reason that diamonds are created under pressure.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What personal habit has contributed most to your success?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> I am not successful yet, but determination is what has helped me so far.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How important is family in your life and decision-making?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Family is very important, but I make decisions myself. I was born alone, and I will die alone.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Is there a particular life experience that fundamentally changed your outlook?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Many experiences have influenced me, especially when you start looking at life from a different perspective. Traveling the world, I truly understood the pain of people and their challenges. I have risked a lot in my life, but I have also accomplished a lot.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What personal goal are you currently working toward that people may not know about?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Mental health is very important to me. We can have all the money in the world, but if the head, the brain, doesn't work, everything loses its meaning.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Outside of business and public duties, what are your passions and hobbies?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> My hobby is to try and help as many people as I can, and to try to remain genuine, being truly myself.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Three words that describe you?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Human. Humble. Determinate.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: The best advice you've ever received?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Start thinking about yourself and take care of yourself too. Life is short.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Your biggest ambition?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> To retire with my wife and just live a normal life.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: One thing people often misunderstand about you?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> They think what I do is easy, but I actually risk my life every day.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What excites you most about the future?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> The world is in chaos. Honestly, I don't think too much about the future, I try to live in the present.</p>
+
+            <!-- ================= SLIDER 2 ================= -->
+            <div class="news-slider-frame relative w-full max-w-4xl mx-auto my-12 rounded-xl overflow-hidden group" style="aspect-ratio: 16/9; background: #000; border: 2px solid #80ff00; box-shadow: 0 0 20px rgba(128,255,0,0.2);">
+                <img src="img/Prince Kevin_7.png" alt="SFT21 Gallery 1" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_1.png" alt="SFT21 Gallery 2" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_2.png" alt="SFT21 Gallery 3" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_3.png" alt="SFT21 Gallery 4" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_4.png" alt="SFT21 Gallery 5" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_5.png" alt="SFT21 Gallery 6" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_6.png" alt="SFT21 Gallery 7" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_8.png" alt="SFT21 Gallery 8" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_9.png" alt="SFT21 Gallery 9" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_10.png" alt="SFT21 Gallery 10" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                
+                <button onclick="moveNewsSlider(-1, this)" class="news-slider-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="moveNewsSlider(1, this)" class="news-slider-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <!-- ================= SLIDER END ================= -->
+
+            <h3 class="text-3xl font-black text-white pt-8 mb-8 border-b border-gray-700 pb-4">IV. SFT21 VISION AND AFRICAN OPPORTUNITIES</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: You recently became an Ambassador for SFT21. What drew you to this role and what does this appointment mean to you?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Inclusion, bilateral opportunities, and connection with the world. It means we are building bridges, not walls, which is extremely important, especially today in this world of chaos.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How do the goals and vision of SFT21 align with your personal values and aspirations?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> I love challenges, and I believe SFT21 has a lot to offer to all of us. I would love to give you a precise answer right now, but everything will fall into place in due time.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: As an SFT21 Ambassador, what specific initiatives or projects are you most looking forward to supporting?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Anything that can bring benefit to small and medium enterprises, and not necessarily just and always large projects.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What opportunities do you see for young people to become more involved in leadership, public service, and community development through organizations like SFT21?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> As I mentioned before, in a world of chaos, young people need the right guidance. They must find real, genuine people who will show them their true potential. SFT21 can be that guiding light for them.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Looking ahead, what impact do you hope to make through your role at SFT21 over the next few years?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> We will see.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What does public service mean to you in today's rapidly changing world?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> I engage in humanitarian work and many other things in silence, while people through social media or other channels might see another aspect of me. So, before we set out to change the world, let's take care of our neighbors – small deeds will grow into great changes.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: And finally, what is your vision for the future, both personally and as an Ambassador for SFT21?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> To connect as many people as possible so they can learn more, and of course, to make money that I will invest back into the world to help those in need, because I am a lucky man.</p>
+
+
+
+            <div class="text-center pt-12 mt-8 border-t border-gray-700">
+                <p class="text-xl text-white font-bold mb-4">Honesty, humility, and working under pressure.</p>
+                <p class="text-lg text-gray-300 mb-6">These are the values that H.H. Kevin Prince Nyerere brings to the SFT21 community. We are proud to have such leaders standing with us in building a fairer business model for Europe and Africa.</p>
+                <p class="text-lg text-fluorescent-green font-bold mb-10">Together, we are writing history.</p>
+                
+                <p class="text-2xl text-white font-black mb-16 uppercase tracking-widest">Be a proud member of the SFteam!</p>
+
+                <p class="text-xl text-gray-200">Semper Fidelis,</p>
+                <p class="text-xl text-white font-normal mt-2">Sanja Andrijić Marinović</p>
+                <p class="text-base text-gray-400 mt-1">Director of Public Relations and Media, SFT21 LLC</p>
+            </div>
+            
+            <footer class="pt-8 border-t border-gray-700 mt-8">
+                <p class="hashtag-container text-sm text-center">
+                    #KevinNyerere #SFT21Ambassador #Africa #ECOWAS #SierraLeone #SFteam #SFT21BusinessConcept #SanjaAndrijicMarinovic
+                </p>
+            </footer>
+        `
     }
 ];
 
