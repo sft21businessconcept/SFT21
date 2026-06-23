@@ -174,20 +174,18 @@ window.closeImageModal = () => {
 window.currentNewsSlideIdx = 0;
 
 window.moveNewsSlider = (direction, btnElement) => {
-    // Ako btnElement nije poslan (npr. u starim vijestima), funkcija se neće srušiti
-    if (!btnElement) return;
-
-    // Pronađi točan okvir slajdera unutar kojeg je kliknut gumb
-    const sliderContainer = btnElement.closest('.news-slider-frame');
+    // 1. Pronađi kontejner slajdera. Ako je btnElement poslan, traži njegov, inače traži prvi na stranici.
+    let sliderContainer = btnElement ? btnElement.closest('.news-slider-frame') : document.querySelector('.news-slider-frame');
+    
     if (!sliderContainer) return;
 
-    // Pronađi sve slike samo unutar tog slajdera
+    // 2. Pronađi sve slike SAMO unutar tog jednog slajdera
     const images = sliderContainer.querySelectorAll('.news-slide-img');
     if (images.length === 0) return;
 
     let activeIndex = 0;
     
-    // Pronađi sliku koja je trenutno prikazana (nema klasu 'hidden') i sakrij je
+    // 3. Nađi koja je slika trenutno vidljiva i sakrij je
     images.forEach((img, index) => {
         if (!img.classList.contains('hidden')) {
             activeIndex = index;
@@ -195,9 +193,9 @@ window.moveNewsSlider = (direction, btnElement) => {
         }
     });
 
-    // Izračunaj novu poziciju (matematika koja osigurava beskonačno kruženje)
+    // 4. Izračunaj iduću (s matematičkim kruženjem unutar broja slika tog slajdera)
     let newIndex = (activeIndex + direction + images.length) % images.length;
     
-    // Prikaži novu sliku
+    // 5. Prikaži novu sliku
     images[newIndex].classList.remove('hidden');
 };
