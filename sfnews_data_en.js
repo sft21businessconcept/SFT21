@@ -448,13 +448,13 @@ const sfNews = [
                 <img src="img/nyerere3.png" alt="SFT21 Gallery 3" class="news-slide-img w-full h-full object-cover cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
                 <img src="img/nyerere4.png" alt="SFT21 Gallery 4" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
                 
-                <!-- Lijeva Strelica (Uvijek vidljiva na mobitelu: opacity-100 lg:opacity-0) -->
-                <button onclick="moveNewsSlider(-1); event.stopPropagation();" class="news-slider-btn absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-10 h-10 md:w-12 md:h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all flex items-center justify-center shadow-lg text-lg md:text-xl border border-white/20 opacity-100 lg:opacity-0 group-hover:opacity-100" style="z-index: 100;">
+                <!-- Lijeva Strelica (Uvijek vidljiva na mobitelu) -->
+                <button onclick="moveNewsSlider(-1, this); event.stopPropagation();" class="news-slider-btn absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-10 h-10 md:w-12 md:h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all flex items-center justify-center shadow-lg text-lg md:text-xl border border-white/20 opacity-100 lg:opacity-0 group-hover:opacity-100" style="z-index: 100;">
                     <i class="fas fa-chevron-left"></i>
                 </button>
 
                 <!-- Desna Strelica -->
-                <button onclick="moveNewsSlider(1); event.stopPropagation();" class="news-slider-btn absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-10 h-10 md:w-12 md:h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all flex items-center justify-center shadow-lg text-lg md:text-xl border border-white/20 opacity-100 lg:opacity-0 group-hover:opacity-100" style="z-index: 100;">
+                <button onclick="moveNewsSlider(1, this); event.stopPropagation();" class="news-slider-btn absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-10 h-10 md:w-12 md:h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all flex items-center justify-center shadow-lg text-lg md:text-xl border border-white/20 opacity-100 lg:opacity-0 group-hover:opacity-100" style="z-index: 100;">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -702,10 +702,13 @@ const sfNews = [
                 <img src="img/domizio_int24.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
                 <img src="img/domizio_int25.png" alt="Gallery image" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
                 
-                <button onclick="moveNewsSlider(-1)" class="news-slider-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20">
+                <!-- Lijeva Strelica (Uvijek vidljiva na mobitelu) -->
+                <button onclick="moveNewsSlider(-1, this); event.stopPropagation();" class="news-slider-btn absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-10 h-10 md:w-12 md:h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all flex items-center justify-center shadow-lg text-lg md:text-xl border border-white/20 opacity-100 lg:opacity-0 group-hover:opacity-100" style="z-index: 100;">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button onclick="moveNewsSlider(1)" class="news-slider-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20">
+
+                <!-- Desna Strelica -->
+                <button onclick="moveNewsSlider(1, this); event.stopPropagation();" class="news-slider-btn absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-10 h-10 md:w-12 md:h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all flex items-center justify-center shadow-lg text-lg md:text-xl border border-white/20 opacity-100 lg:opacity-0 group-hover:opacity-100" style="z-index: 100;">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
