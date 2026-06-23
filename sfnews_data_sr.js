@@ -730,5 +730,216 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 8,
+        title: "EKSKLUZIVNI INTERVJU",
+        date: "23. Jun 2026.", 
+        imageSrc: "", 
+        shortTitle: "Intervju: Kevin Princ Nyerere",
+        contentHTML: `
+            <!-- SAKRIVAMO AUTOMATSKI DATUM NA VRHU -->
+            <style>
+                .main-article-container header p.text-gray-400 { display: none !important; }
+            </style>
+
+            <!-- CUSTOM NASLOVI -->
+            <h2 class="text-3xl md:text-5xl font-black text-white text-center mb-2 mt-4">Princ Kevin Nyerere</h2>
+            <h3 class="text-xl md:text-2xl font-bold text-fluorescent-green text-center mb-2 tracking-widest uppercase">Nasleđe, tehnologija i budućnost Afrike</h3>
+            
+            <p class="text-sm text-gray-400 text-center mb-10">Objavljeno: 23. Jun 2026.</p>
+            
+            <div class="mb-12">
+                <img src="img/kevin_int1.png" alt="Princ Kevin Nyerere" class="w-full rounded-xl shadow-lg border border-white/10 cursor-pointer object-cover" onclick="openModal(this.src, this.alt)">
+            </div>
+
+            <!-- UVOD SA SANJINOM SLIKOM -->
+            <div class="flex flex-col md:flex-row gap-8 my-10 items-start border-b border-gray-700 pb-10">
+                <img src="img/sanja_mm.png" alt="Sanja Andrijić Marinović" class="w-full md:w-1/3 rounded-lg shadow-lg object-cover border border-purple-500/30">
+                <div class="flex-1 space-y-4">
+                    <p class="font-bold text-white text-lg">Ekskluzivni razgovor vodi: Sanja Andrijić Marinović</p>
+                    <p class="text-gray-300 text-justify">Kao što smo i najavili, SFT21 zajednica postala je globalni most koji spaja Evropu i Afriku. Nakon što je naš prvi Ambasador, g. Domizio Cipriani, otvorio vrata diplomatskim krugovima, našem timu se pridružila Njegova Visost <b>Princ Kevin Nyerere</b> – potomak oca afričke nacije i prvi SFT21 Ambasador za afrički kontinent.</p>
+                    <p class="text-gray-300 text-justify">Kako bismo iz prve ruke saznali ko je čovek koji nosi tako veliko istorijsko nasleđe, sa kakvim se izazovima suočava na globalnoj sceni i kakva je njegova vizija budućnosti, odradili smo ovaj ekskluzivni intervju sa Nj.V. Princom Kevinom Nyerereom.</p>
+                </div>
+            </div>
+
+            <h3 class="text-3xl font-black text-white pt-4 mb-8 border-b border-gray-700 pb-4">I. ISTORIJSKO NASLEĐE I LIČNI PUT</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Prinče Kevin, Vaš deda, Julius Nyerere, ostaje jedan od najcenjenijih afričkih državnika. Koji su aspekti njegovog nasleđa najviše uticali na Vaš život?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Iskreno, naravno da je na mene uticala činjenica iz kakve porodice dolazim. Upravo zbog toga sam želeo da odradim svoj deo, kako bih to ime održao živim.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako balansirate odgovornost nošenja istorijskog porodičnog imena sa izgradnjom vlastitog puta i identiteta?</h4>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    "Ne razmišljam o porodičnoj istoriji, fokusiran sam na sebe. Ko je sposoban da učini nešto, taj će to i učiniti. Pokazao sam svetu za šta sam sposoban, a tek sam počeo."
+                </p>
+            </blockquote>
+
+            <h3 class="text-3xl font-black text-white pt-10 mb-8 border-b border-gray-700 pb-4">II. DIPLOMATIJA, PREDUZETNIŠTVO I PRILIKE</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Možete li nam reći nešto o svojim trenutnim poslovnim interesima i industrijama koje Vas najviše uzbuđuju?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Vrlo sam uzbuđen što mogu da promovišem Sijera Leone i Ekonomske zajednice zapadnoafričkih država (ECOWAS). To je fantastična nacija koja mi je otvorila zaista sjajna vrata na globalnoj sceni.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Vaši dobri prijatelji su predsednički par Sijera Leonea, Julius Maada Bio i Fatima Maada Bio?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Da, Fatima Maada, Julius Maada i dr Toni Morgan su ljudi koji su me vodili i pomogli mi da rastem u radu sa vladama, kako kroz poslovno iskustvo, tako i kroz sam život. Jako sam uzbuđen što mogu promovisati Sijera Leone i ECOWAS (Ekonomska zajednica država zapadne Afrike), a to je jedna veoma fantastična nacija koja mi je otvorila jako dobra vrata na globalnoj sceni.</p>
+
+            <!-- ================= SLAJDER 1 ================= -->
+            <div class="news-slider-frame relative w-full max-w-4xl mx-auto my-12 rounded-xl overflow-hidden group" style="aspect-ratio: 16/9; background: #000; border: 2px solid #80ff00; box-shadow: 0 0 20px rgba(128,255,0,0.2);">
+                <img src="img/Fatima Maada Bio.png" alt="SFT21 Galerija 1" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
+                <img src="img/Julius Maada Bio.png" alt="SFT21 Galerija 2" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Tony Morgan.png" alt="SFT21 Galerija 3" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Julius Maada Bio_1.png" alt="SFT21 Galerija 4" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Julius&Fatima.png" alt="SFT21 Galerija 5" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Tony Morgan&wife.png" alt="SFT21 Galerija 6" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima.png" alt="SFT21 Galerija 7" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_4.png" alt="SFT21 Galerija 8" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_5.png" alt="SFT21 Galerija 9" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_11.png" alt="SFT21 Galerija 10" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_12.png" alt="SFT21 Galerija 11" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_13.png" alt="SFT21 Galerija 12" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/We are Fatima_papa.png" alt="SFT21 Galerija 13" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                
+                <button onclick="moveNewsSlider(-1, this)" class="news-slider-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="moveNewsSlider(1, this)" class="news-slider-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <!-- ================= SLAJDER KRAJ ================= -->
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kojim se profesionalnim postignućem do sada najviše ponosite?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Ponosim se nadolazećim Bijenalom u Veneciji 2026. sa paviljonom Sijera Leonea, koji je podržan od strane ECOWAS-a te neverovatne porodice predsednika Bioa i prve dame. Ja sam počasni predsednik tog paviljona koji godišnje posećuje dva miliona posetilaca. Uz podršku ECOWAS-a, zamišljen je kao prostor aktivne prisutnosti, gde savremena umetnost postaje zajednički jezik i alat za povezivanje između Afrike i Italije.</p>
+
+            <!-- LUKSUZNI LINK NA BIJENALE U VENECIJI -->
+            <div class="mt-8 mb-12 p-5 bg-gray-800 bg-opacity-40 border border-gray-600 rounded-xl flex flex-col md:flex-row items-center justify-between hover:border-[#80ff00] transition-colors shadow-lg group">
+                <div class="flex items-center gap-5 mb-4 md:mb-0 w-full md:w-auto">
+                    <div class="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#80ff00]/20 transition-colors">
+                        <i class="fas fa-globe-europe text-3xl text-[#80ff00]"></i>
+                    </div>
+                    <div>
+                        <p class="text-white font-black text-sm md:text-base uppercase tracking-wider">La Biennale di Venezia 2026</p>
+                        <p class="text-xs text-gray-400 mt-1">Zvanična objava o paviljonu Republike Sijera Leone</p>
+                    </div>
+                </div>
+                <a href="https://www.labiennale.org/en/art/2026/sierra-leone-republic" target="_blank" class="w-full md:w-auto bg-[#80ff00] text-[#0e076a] px-6 py-3 rounded-lg font-black text-xs uppercase shadow-[0_0_15px_rgba(128,255,0,0.3)] hover:scale-105 transition-transform flex items-center justify-center gap-3">
+                    <span>Pročitaj objavu</span> <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koje prilike vidite za sledeću generaciju afričkih preduzetnika?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Tehnologije predstavljaju veliku priliku, ali i ogroman izazov. Ceo svet dolazi u Afriku, dolaze investitori sa ozbiljnim kapitalom, ali trebamo snažniju podršku institucija kako bismo naučili kako da upravljamo i da se prilagodimo tim trgovinskim investicijama. Iznad svega, trebaju nam veća ulaganja u obrazovanje.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Na kojim dugoročnim projektima trenutno radite?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Želim da izgradim škole širom Afrike.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koji je najveći profesionalni izazov s kojim ste se suočili i čemu vas je on naučio?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Najveći izazov je biti sam kada nastupe ozbiljni problemi. U Africi, ali i u svetu, ako nemate ljude od poverenja, teško je ponovo se izdići. Poseban je izazov nositi se sa pritiskom i mentalnim zdravljem usled visokih nivoa odgovornosti i neverovatno brzog ritma. Tržište nikad ne spava i ljudi su uvek spremni da vas iskoriste.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako balansirate poslovne odgovornosti sa javnim angažmanima i humanitarnim radom?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Ja jednostavno radim. Stalno sam na telefonu i razgovaram. Komunikacija je izuzetno važna, kao i stalni pokušaji da se pronađu rešenja.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koju ulogu inovacije igraju u vašoj poslovnoj strategiji?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Igraju veliku ulogu, jer upravo nam inovacije olakšavaju način na koji strateški možemo postići ono što se ponekad čini teškim ili gotovo nemogućim.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koje bi veštine, po vašem mišljenju, trebalo da razvije svaki mladi preduzetnik?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Komunikacija je ključ, a posebno transparentnost u radu te duh odricanja i žrtve.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koje kvalitete najviše cenite kod ljudi s kojima birate da radite?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Iskrenost, 'glad' za uspehom i strast (pozitivnu ljutnju). Ljudi sa kojima radim trebali bi da trče brže od mene, a ne da ja moram da trčim dvostruko za njih. Vrlo sam pragmatičan i naučio sam da kada stvari izgledaju lako, obično nisu onakve kakvima se čine.</p>
+
+            <h3 class="text-3xl font-black text-white pt-10 mb-8 border-b border-gray-700 pb-4">III. PRIVATNI ŽIVOT I FILOZOFIJA</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako upravljate stresom i održavate fokus tokom zahtevnih perioda?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Uvek sam pod stresom jer predstavljam institucije. Gledajući svog partnera, predsednika i prvu damu, znam da ne mogu i ne smem da imam izgovore ni za šta. Uvek se mora raditi, a s razlogom se kaže da dijamanti nastaju pod pritiskom.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koja je lična navika najviše doprinela vašem uspehu?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Ja još uvek nisam uspešan, ali odlučnost je ono što mi je pomoglo do sada.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koliko je porodica važna u vašem životu i donošenju odluka?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Porodica je vrlo važna, ali odluke donosim sam. Rodio sam se sam i umreću sam.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Da li postoji neko specifično životno iskustvo koje je iz temelja promenilo Vaš pogled na svet?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Mnoga iskustva su uticala na mene, posebno kada počnete da gledate na život iz druge perspektive. Putujući svetom, uistinu sam shvatio bol ljudi i njihove izazove. Puno sam rizikovao u životu, ali sam puno toga i napravio.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Na kojem ličnom cilju trenutno radite, a da ljudi to možda ne znaju?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Mentalno zdravlje mi je jako važno. Možemo imati sav novac ovoga sveta, ali ako glava, odnosno mozak ne funkcioniše, sve to gubi smisao.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Izvan poslovnih i javnih dužnosti, koje su vaše strasti i hobiji?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Moj hobi je pokušati da pomognem što većem broju ljudi i truditi se da ostanem iskren, da budem istinski svoj.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Tri reči koje vas najbolje opisuju?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Čovek. Ponizan. Odlučan.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Najbolji savet koji ste ikada dobili?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Počni da misliš na sebe i brini se za sebe. Život je kratak.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Vaša najveća ambicija?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Da se penzionišem sa suprugom i jednostavno živim normalnim životom.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Jedna stvar koju ljudi često pogrešno razumeju o vama?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Misle da je ono što radim lako, ali ja zapravo svakodnevno rizikujem svoj život.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Šta vas najviše uzbuđuje u vezi sa budućnošću?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Svet je u haosu. Iskreno, ne razmišljam previše o budućnosti, trudim se da živim u sadašnjosti.</p>
+
+            <!-- ================= SLAJDER  2 ================= -->
+            <div class="news-slider-frame relative w-full max-w-4xl mx-auto my-12 rounded-xl overflow-hidden group" style="aspect-ratio: 16/9; background: #000; border: 2px solid #80ff00; box-shadow: 0 0 20px rgba(128,255,0,0.2);">
+                <img src="img/Prince Kevin_7.png" alt="SFT21 Galerija 1" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_1.png" alt="SFT21 Galerija 2" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_2.png" alt="SFT21 Galerija 3" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_3.png" alt="SFT21 Galerija 4" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_4.png" alt="SFT21 Galerija 5" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_5.png" alt="SFT21 Galerija 6" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_6.png" alt="SFT21 Galerija 7" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_8.png" alt="SFT21 Galerija 8" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_9.png" alt="SFT21 Galerija 9" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/Prince Kevin_10.png" alt="SFT21 Galerija 10" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                
+                <button onclick="moveNewsSlider(-1, this)" class="news-slider-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="moveNewsSlider(1, this)" class="news-slider-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 shadow-lg text-xl border border-white/20"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <!-- ================= SLAJDER KRAJ ================= -->
+
+            <h3 class="text-3xl font-black text-white pt-8 mb-8 border-b border-gray-700 pb-4">IV. SFT21 VIZIJA I AFRIČKE PRILIKE</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Nedavno ste postali Ambasador za SFT21. Šta Vas je privuklo ovoj ulozi i šta za Vas znači ovo imenovanje?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Inkluzija, bilateralne prilike i povezanost sa svetom. To znači da gradimo mostove, a ne zidove, što je izuzetno važno, pogotovo danas u ovom svetu haosa.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako se ciljevi i vizija SFT21 podudaraju sa Vašim ličnim vrednostima i težnjama?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Obožavam izazove i verujem da SFT21 ima puno toga da ponudi svima nama. Voleo bih da vam sada dam precizan odgovor, ali sve će doći na svoje mesto sa vremenom.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kao SFT21 Ambasador, koje konkretne inicijative ili projekte najviše iščekujete da podržite?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Bilo šta što može doneti korist malim i srednjim preduzećima, a ne nužno samo i uvek velikim projektima.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kakve prilike vidite za mlade ljude da se snažnije uključe u vođstvo, društveno služenje i razvoj zajednice kroz organizacije poput SFT21?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Kao što sam već rekao, u svetu haosa mladim ljudima treba pravo usmerenje. Moraju pronaći stvarne, iskrene ljude koji će im pokazati njihov pravi potencijal. SFT21 može biti to svetlo za njih.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Gledajući unapred, kakav uticaj se nadate da ćete ostvariti kroz svoju ulogu u SFT21 tokom sledećih nekoliko godina?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Videćemo.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Šta za Vas znači služenje javnosti u današnjem svetu koji se tako brzo menja?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Ja se bavim humanitarnim radom i mnogim drugim stvarima u tišini, dok ljudi putem društvenih mreža ili drugih kanala mogu videti i jedan drugi moj aspekt. Dakle, pre nego što krenemo da menjamo svet, pobrinimo se za svoje susede – mala dela prerašće u velike promene.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: I za kraj, koja je Vaša vizija budućnosti, kako lično, tako i kao Ambasadora za SFT21?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Nj.V. Kevin Princ Nyerere:</b> Povezati što je moguće više ljudi kako bi naučili više, i naravno, zaraditi novac koji ću investirati u svet kako bih pomogao onima koji su u potrebi, jer sam ja srećan čovek.</p>
+
+
+
+            <div class="text-center pt-12 mt-8 border-t border-gray-700">
+                <p class="text-xl text-white font-bold mb-4">Iskrenost, poniznost i rad pod pritiskom.</p>
+                <p class="text-lg text-gray-300 mb-6">Ovo su vrednosti koje Nj.V. Kevin Princ Nyerere donosi u SFT21 zajednicu. Ponosni smo što ovakvi lideri stoje uz nas u izgradnji pravednijeg poslovnog modela za Evropu i Afriku.</p>
+                <p class="text-lg text-fluorescent-green font-bold mb-10">Zajedno ispisujemo istoriju.</p>
+                
+                <p class="text-2xl text-white font-black mb-16 uppercase tracking-widest">Budite ponosni član SFteam-a!</p>
+
+                <p class="text-xl text-gray-200">Semper Fidelis,</p>
+                <p class="text-xl text-white font-normal mt-2">Sanja Andrijić Marinović</p>
+                <p class="text-base text-gray-400 mt-1">Direktorka za odnose s javnošću i medije, SFT21 LLC</p>
+            </div>
+            
+            <footer class="pt-8 border-t border-gray-700 mt-8">
+                <p class="hashtag-container text-sm text-center">
+                    #KevinNyerere #SFT21Ambasador #Africa #ECOWAS #SierraLeone #SFteam #SFT21BusinessConcept #SanjaAndrijicMarinovic
+                </p>
+            </footer>
+        `
     }
 ];
