@@ -173,25 +173,31 @@ window.closeImageModal = () => {
 // ==========================================
 window.currentNewsSlideIdx = 0;
 
-window.moveNewsSlider = (direction) => {
-    const slides = document.querySelectorAll('.news-slide-img');
-    if (!slides || slides.length === 0) return;
+window.moveNewsSlider = (direction, btnElement) => {
+    // Ako btnElement nije poslan (npr. u starim vijestima), funkcija se neće srušiti
+    if (!btnElement) return;
+
+    // Pronađi točan okvir slajdera unutar kojeg je kliknut gumb
+    const sliderContainer = btnElement.closest('.news-slider-frame');
+    if (!sliderContainer) return;
+
+    // Pronađi sve slike samo unutar tog slajdera
+    const images = sliderContainer.querySelectorAll('.news-slide-img');
+    if (images.length === 0) return;
+
+    let activeIndex = 0;
     
-    // Sakrij trenutnu sliku
-    slides[window.currentNewsSlideIdx].classList.add('hidden');
-    slides[window.currentNewsSlideIdx].classList.remove('animate-fade-in');
+    // Pronađi sliku koja je trenutno prikazana (nema klasu 'hidden') i sakrij je
+    images.forEach((img, index) => {
+        if (!img.classList.contains('hidden')) {
+            activeIndex = index;
+            img.classList.add('hidden'); 
+        }
+    });
+
+    // Izračunaj novu poziciju (matematika koja osigurava beskonačno kruženje)
+    let newIndex = (activeIndex + direction + images.length) % images.length;
     
-    // Izračunaj koja je iduća slika (Beskonačni krug)
-    window.currentNewsSlideIdx += direction;
-    
-    if (window.currentNewsSlideIdx >= slides.length) {
-        window.currentNewsSlideIdx = 0; 
-    }
-    if (window.currentNewsSlideIdx < 0) {
-        window.currentNewsSlideIdx = slides.length - 1; 
-    }
-    
-    // Pokaži novu sliku
-    slides[window.currentNewsSlideIdx].classList.remove('hidden');
-    slides[window.currentNewsSlideIdx].classList.add('animate-fade-in'); 
+    // Prikaži novu sliku
+    images[newIndex].classList.remove('hidden');
 };
