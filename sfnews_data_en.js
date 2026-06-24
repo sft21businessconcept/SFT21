@@ -781,6 +781,9 @@ const sfNews = [
             <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Your good friends are the presidential couple of Sierra Leone, Julius Maada Bio and Fatima Maada Bio?</h4>
             <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>H.H. Kevin Prince Nyerere:</b> Yes, Fatima Maada, Julius Maada, and Dr. Tony Morgan are the people who guided me and helped me to grow in working with governments, both as an experience and in life itself. I am very excited to promote Sierra Leone and ECOWAS, which is a truly fantastic nation that has opened very good doors for me on the global stage.</p>
 
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Who is Dr. Tony Morgan?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Tony Morgan is Head of Strategic Communications (STRATCOM) in the Presidency of Sierra Leone. I formed a strong friendship with him. He helped me a lot in my professional life and became like my Big Brother.</p>
+
             <!-- ================= SLIDER 1 ================= -->
             <div class="news-slider-frame relative w-full max-w-4xl mx-auto my-12 rounded-xl overflow-hidden group" style="aspect-ratio: 16/9; background: #000; border: 2px solid #80ff00; box-shadow: 0 0 20px rgba(128,255,0,0.2);">
                 <img src="img/Fatima Maada Bio.png" alt="SFT21 Gallery 1" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
