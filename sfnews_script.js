@@ -81,19 +81,40 @@ window.loadNews = function(index) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-// --- AŽURIRANJE NAVIGACIJSKOG SLAJDERA ---
+// --- AŽURIRANJE NAVIGACIJSKOG SLAJDERA (PAMETNA PAGINACIJA) ---
 function updateSlider(totalNews) {
     const navContainer = document.getElementById('news-navigation');
     if (!navContainer) return;
     navContainer.innerHTML = '';
 
-    for (let i = 0; i < totalNews; i++) {
+    // Određivanje broja vidljivih kružića: max 5 za mobitele, sve za desktop
+    const maxVisible = window.innerWidth <= 768 ? 5 : totalNews;
+
+    let startIdx = 0;
+    let endIdx = totalNews - 1;
+
+    // Matematika kliznog prozora ako ima previše vijesti
+    if (totalNews > maxVisible) {
+        if (currentNewsIndex <= 2) {
+            startIdx = 0;
+            endIdx = maxVisible - 1;
+        } else if (currentNewsIndex >= totalNews - 3) {
+            startIdx = totalNews - maxVisible;
+            endIdx = totalNews - 1;
+        } else {
+            startIdx = currentNewsIndex - 2;
+            endIdx = currentNewsIndex + 2;
+        }
+    }
+
+    for (let i = startIdx; i <= endIdx; i++) {
         const newsID = i + 1;
         const shortTitle = sfNews[i].shortTitle;
         const button = document.createElement('button');
 
         button.textContent = newsID;
-        button.className = `w-9 h-9 rounded-full font-bold transition-all text-sm flex items-center justify-center shadow-sm`;
+        // Dodan flex-shrink-0 da se gumbi na mobitelu ne "spljošte"
+        button.className = `w-9 h-9 rounded-full font-bold transition-all text-sm flex items-center justify-center shadow-sm flex-shrink-0`;
         button.onclick = () => window.loadNews(i);
 
         if (i === currentNewsIndex) {
@@ -109,9 +130,10 @@ function updateSlider(totalNews) {
         }
     }
 
+    // Ažuriranje strelica
     if (prevBtn && nextBtn) {
         [prevBtn, nextBtn].forEach(btn => {
-            btn.className = "bg-white text-purple-600 w-9 h-9 rounded-full flex items-center justify-center font-bold hover:bg-purple-50 transition-all mx-2 shadow-sm";
+            btn.className = "bg-white text-purple-600 w-9 h-9 rounded-full flex items-center justify-center font-bold hover:bg-purple-50 transition-all mx-2 shadow-sm flex-shrink-0";
         });
         prevBtn.style.opacity = currentNewsIndex === 0 ? '0.3' : '1';
         nextBtn.style.opacity = currentNewsIndex === sfNews.length - 1 ? '0.3' : '1';
@@ -119,6 +141,13 @@ function updateSlider(totalNews) {
         nextBtn.classList.toggle('pointer-events-none', currentNewsIndex === sfNews.length - 1);
     }
 }
+
+// Dodajemo provjeru pri okretanju mobitela da ponovno iscrta pravilan broj kružića
+window.addEventListener('resize', () => {
+    if (typeof sfNews !== 'undefined') {
+        updateSlider(sfNews.length);
+    }
+});
 
 // --- POVEZIVANJE STRELICA ---
 if (prevBtn) prevBtn.onclick = () => window.loadNews(currentNewsIndex - 1);
