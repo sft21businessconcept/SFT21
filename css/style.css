@@ -2780,3 +2780,48 @@ body.light-mode .glass-card .fab {
 */
 
 /* --- KRAJ: Prilagodba za pulsirajući krug --- */
+
+/* ==========================================================================
+   SFNEWS - MOBILNA NAVIGACIJA (STRELICE I KRUŽIĆI)
+   ========================================================================== */
+
+.news-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+}
+
+/* Osigurava da se strelice NIKADA ne smanje ispod 40px */
+.news-nav-arrow {
+    flex-shrink: 0 !important; 
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Kontejner za kružiće s brojevima */
+.news-pagination-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Prilagodba veličine kružića za manje ekrane */
+@media (max-width: 768px) {
+    .news-pagination-dots { gap: 5px; }
+    .news-pagination-dots button {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 12px !important;
+        flex-shrink: 0 !important; /* Sprječava da se kružići spljošte */
+    }
+}
+
