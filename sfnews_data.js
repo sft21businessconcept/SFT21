@@ -780,6 +780,9 @@ const sfNews = [
             <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Vaši dobri prijatelji su predsjednički par Sierra Leonea, Julius Maada Bio i Fatima Maada Bio?</h4>
             <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>NjV. Kevin Princ Nyerere:</b> Da, Fatima Maada, Julius Maada i dr. Tony Morgan su ljudi koji su me vodili i pomogli mi da rastem u radu s vladama, kako kroz poslovno iskustvo, tako i kroz sam život. Jako sam uzbuđen što mogu promovirati Sijera Leone i ECOWAS (Ekonomska zajednica država zapadne Afrike), a to je jedna vrlo fantastična nacija koja mi je otvorila jako dobra vrata na globalnoj sceni.</p>
 
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Tko je dr. Tony Morgan?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Tony Morgan je voditelj Strateških komunikacija (STRATCOM) u Predsjedništvu Sijera Leonea. S njim sam uspostavio snažno prijateljstvo. Puno mi je pomogao u profesionalnom životu i postao mi je poput mog Velikog brata.</p>
+
             <!-- ================= SLAJDER 1 ================= -->
             <div class="news-slider-frame relative w-full max-w-4xl mx-auto my-12 rounded-xl overflow-hidden group" style="aspect-ratio: 16/9; background: #000; border: 2px solid #80ff00; box-shadow: 0 0 20px rgba(128,255,0,0.2);">
                 <img src="img/Fatima Maada Bio.png" alt="SFT21 Galerija 1" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300" onclick="openModal(this.src, this.alt)">
