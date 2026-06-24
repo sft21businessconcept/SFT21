@@ -799,6 +799,7 @@ const sfNews = [
                 <img src="img/We are Fatima_12.png" alt="SFT21 Galerija 11" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
                 <img src="img/We are Fatima_13.png" alt="SFT21 Galerija 12" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
                 <img src="img/We are Fatima_papa.png" alt="SFT21 Galerija 13" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
+                <img src="img/special envoj for trade and investment.png" alt="SFT21 Galerija 14" class="news-slide-img w-full h-full object-contain cursor-pointer transition-opacity duration-300 hidden" onclick="openModal(this.src, this.alt)">
                 
                 <!-- Lijeva Strelica (Uvijek vidljiva na mobitelu) -->
                 <button onclick="moveNewsSlider(-1, this)" class="news-slider-btn absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white w-10 h-10 md:w-12 md:h-12 rounded-full hover:bg-[#80ff00] hover:text-[#1a0b2e] transition-all z-10 flex items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 shadow-lg text-lg md:text-xl border border-white/20">
