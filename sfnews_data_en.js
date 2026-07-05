@@ -1,4 +1,4 @@
-const sfNews = [
+const sfNews = [ 
     {
         id: 1,
         title: "SFT21 is NOW OFFICIALLY “SFT21, LLC“, a company registered in the United States!",
