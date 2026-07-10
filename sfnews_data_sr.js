@@ -1112,10 +1112,10 @@ const sfNews = [
                     </div>
                 </div>
 
-                <button onclick="document.getElementById('waka-gallery').scrollBy({left: -350, behavior: 'smooth'})" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); color: white; width: 40px; height: 60px; border-radius: 0 8px 8px 0; border: 1px solid rgba(255,255,255,0.1); border-left: none; cursor: pointer; z-index: 10;">
+                <button onclick="let el=document.getElementById('waka-gallery'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft<=10) el.scrollTo({left:max, behavior:'smooth'}); else el.scrollBy({left:-350, behavior:'smooth'});" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-r-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
                     <i class="fas fa-chevron-left text-xl"></i>
                 </button>
-                <button onclick="document.getElementById('waka-gallery').scrollBy({left: 350, behavior: 'smooth'})" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); color: white; width: 40px; height: 60px; border-radius: 8px 0 0 8px; border: 1px solid rgba(255,255,255,0.1); border-right: none; cursor: pointer; z-index: 10;">
+                <button onclick="let el=document.getElementById('waka-gallery'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft>=max-10) el.scrollTo({left:0, behavior:'smooth'}); else el.scrollBy({left:350, behavior:'smooth'});" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-l-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
                     <i class="fas fa-chevron-right text-xl"></i>
                 </button>
             </div>
