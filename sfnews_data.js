@@ -955,5 +955,187 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 9,
+        title: "OPERATIVNA MOĆ SFT21",
+        date: "", 
+        imageSrc: "", 
+        shortTitle: "Dr. Waka Waka u SFT21",
+        contentHTML: `
+            <!-- SAKRIVANJE AUTO-GENERIRANOG DATUMA NA VRHU -->
+            <style>
+                .main-article-container header p { display: none !important; }
+                #waka-gallery::-webkit-scrollbar { display: none; }
+            </style>
+
+            <!-- BIJELI PODNASLOV  -->
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-2 leading-snug mt-[-10px]">
+                U menadžment SFT21 kompanije dolazi nam Dr. Pierre Hughes Ngatchou - Waka Waka!
+            </h3>
+
+            <!-- DATUM -->
+            <p class="text-sm text-gray-500 mt-2 mb-8 text-center">Objavljeno: 07. Srpanj 2026.</p>
+
+            <!-- Slika dr. Waka Waka -->
+            <div class="text-center mb-12">
+                <img src="img/wakawaka1.png" alt="Dr. Waka Waka" class="mx-auto max-h-100 w-auto object-contain rounded-lg">
+            </div>
+
+            <!-- UVODNI TEKST -->
+            <p class="font-semibold text-white text-lg">Dragi prijatelji, vizionari, članovi i poslovni partneri SFT21 zajednice…</p>
+            
+            <p class="mt-4 text-gray-300 text-justify">Svaki veliki projekt, svaka ideja koja mijenja svijet, prolazi kroz faze svog razvoja. Mi smo u proteklom periodu dokazali da SFT21 nije samo vizija na papiru, već živi organizam koji privlači pažnju najviših slojeva globalnog društva.</p>
+            
+            <p class="mt-4 text-gray-300 text-justify mb-8">Kada smo vam prije samo nekoliko dana predstavili našeg prvog Ambasadora, gospodina Domizia Ciprianija, a par dana poslije i Njegovu Visost, Princa Kevina Nyererea, jasno smo vam dali do znanja da SFT21 kompanija postavlja čvrste temelje u najvišim krugovima europskog kapitala i afričke diplomacije. Pokazali smo svima vama koji ste imali priliku to vidjeti – a tek ćemo pokazati i dokazati cijelom svijetu – da je naša vizija i poslovni koncept jedan od najmoćnijih poslovnih modela na internetu, koji je kao takav prepoznat od strane globalne elite.</p>            
+            
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-4 mb-4">Vrijeme je za akciju na terenu</h3>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Međutim, svi oni koji se ozbiljno bave pravim, velikim globalnim poslovima jako dobro znaju jednu istinu... diplomacija, veze i preporuke su temelj koji može, i otvara mnoga vrata kroz koja moramo proći. Ali, da bi se ta vrata širom otvorila, da bi se naša vizija ostvarila i implementirala u domove milijuna ljudi, da bi se stvorio stvarni sustav, stvarna ekonomija, proizvodnja i operativna moć koja mijenja živote... <b>nama je potrebna akcija. Potrebna nam je vojska ljudi na terenu.</b></p>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">A da bi pokrenuli ljude, uz naš najmoćniji i najpošteniji poslovni koncept na internetu, trebamo prave ljude, lidere i motivatore. To su ljudi s terena, koji ne samo da pričaju o promjenama, već ih stvaraju vlastitim rukama i djelima.</p>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    I zato Vam danas, s iznimnim zadovoljstvom i ponosom predstavljamo našeg novog Predsjednika za globalni razvoj SFT21 kompanije – Dr. Pierre Hughes Ngatchoua, u svijetu i među narodom poznatog kao Dr. Waka Waka ili Prof. Pierre!
+                </p>
+            </blockquote>
+
+            <h3 class="text-3xl font-black text-white pt-4 mb-8 border-b border-gray-700 pb-4">Službeno obraćanje osnivača: Operativni motor SFT21</h3>
+
+            <!-- GLAVNI VIDEO PLAYER -->
+            <div class="hero-video-wrapper my-8" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 0 30px rgba(128, 255, 0, 0.2); border: 2px solid #80ff00;">
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    src="https://www.youtube.com/embed/vlYNs3GU1-k"
+                    title="Obraćanje osnivača - Dr. Pierre Hughes Ngatchou" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h4 class="text-2xl font-bold text-fluorescent-green mt-8 mb-4">Tko je Dr. Pierre Hughes Ngatchou, u narodu poznat kao dr. Waka Waka ili Prof. Pierre?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Dr. Pierre Hugues Ngatchou je kanadsko-američki državljanin, rođeni lider, socijalni poduzetnik i sveučilišni profesor. Čovjek koji govori sedam jezika i koji je tijekom svog života proputovao više od stotinu zemalja. Ali nije putovao kao turist, već kao čovjek s misijom – održavajući radionice, predavanja i konferencije za vlade, Ujedinjene narode, sveučilišta, crkve i lokalne zajednice diljem svijeta.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Kada govorimo o Prof. Pierre, mi ne govorimo o direktoru koji poslovanje vodi iz udobne kožne fotelje. Mi govorimo o čovjeku koji je svoju viziju platio krvlju, znojem i vlastitim zdravljem. On je čovjek terena. U proteklih deset godina suočavao se sa progonima i nepravednim uhićenjima od strane onih kojima slobodan i obrazovan narod ne odgovara.  Ali ništa ga nije zaustavilo. Svaki udarac učinio ga je jačim.</p>            
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-4">JJK International Cooperative – Najveća kršćanska zadruga na svijetu</h4>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-10">Prof. Pierre je međunarodni direktor i osnivač <b>JJK Panafricanism Agribusiness Cooperative (JJK – Just Jesus King)</b>, najveće kršćanske poljoprivredne i edukativne zadruge na svijetu. Njegova organizacija aktivno djeluje više od dva desetljeća u 23 afričke države, Kanadi, SAD-u, Kini, Filipinima i Južnoj Americi.</p>
+            
+            <!-- Logo JJK Panafricanism Agribusiness Cooperative -->
+            <div class="text-center mb-12">
+                <img src="img/jjk_logo.png" alt="JJK Panafricanism Agribusiness Cooperative" class="mx-auto max-h-80 w-auto object-contain rounded-lg">
+            </div>
+
+             <h3 class="text-3xl font-black text-white pt-8 mb-6 border-b border-gray-700 pb-4">Sinergija sa SFT21 i povijesni korak u Europi</h3>
+            
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Postavlja se pitanje: Zašto čovjek ovakvog kalibra i utjecaja prihvaća poziciju Predsjednika za globalni razvoj u SFT21 kompaniji?</p>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Prof. Pierre prepoznao je da njegov dosadašnji rad, želja za ekonomskim osnaživanjem malog čovjeka i borba za pravednost sada dobivaju ultimativni tehnološki alat. Prepoznao je naš poslovni model – povezivanje malih domaćih proizvođača, trgovaca i potrošača – kao savršen ekosustav u borbi protiv velikih korporacija.</p>
+
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Međutim, ovo partnerstvo nije jednostrano. Nije samo Dr. Waka Waka došao nama – <b>mi, kao SFT21, postajemo operativni temelj njegove globalne misije</b>. Da bi to dokazao, Prof. Pierre je povukao potez koji će trajno zacementirati naše zajedništvo.</p>
+    
+            <div class="p-6 bg-black/20 border-l-4 rounded-r-lg my-8 shadow-lg" style="border-left-color: #80ff00 !important;">
+                <p class="text-2xl font-black mb-3 uppercase tracking-wide" style="color: #80ff00 !important;">Sanja Andrijić Marinović na čelu JJK Europe</p>
+                <p class="text-gray-300 text-lg leading-relaxed">S ogromnim ponosom objavljujem da je naša direktorica za odnose s javnošću i medije, gđa. <b>Sanja Gloria Andrijić Marinović</b>, službeno imenovana na poziciju <b>Predsjednice JJK Europe Pan-Africanism organizacije!</b> U postupku je otvaranje glavnog sjedišta JJK Europe s uredima u Rimu, pod njezinim vodstvom.</p>
+            </div>
+
+            <div class="my-10 text-center">
+                <img src="img/sanja_predsjednica JJK Europe.png" alt="Sanja Gloria Andrijić Marinović - Predsjednica JJK Europe" class="w-1/2 mx-auto rounded-xl shadow-lg border border-white/10 cursor-pointer" onclick="openModal(this.src, this.alt)">
+            </div>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">SFT21 i naši ljudi postaju primarni tehnološki i komercijalni most između afričkih proizvođača i europskog tržišta. Kroz naš SFshop, afrička organska hrana i proizvodi pronaći će izravan kanal u Europu. Zajedno stvaramo tisuće novih radnih mjesta, eliminiramo izrabljivače i vraćamo poštenu zaradu proizvođačima, trgovcima i našim franšizerima. Prof. Pierre i SFT21 su sinergija o kojoj će se tek pisati!</p>
+
+            <h3 class="text-2xl font-black text-white pt-8 mb-6 border-t border-gray-700">Poruka SFteamu: Probudite se!</h3>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Dragi moji prijatelji... ovo više nije samo poslovni projekt. Ovo nije utopijska priča na papiru. Kada u svojim redovima imate financijsku inteligenciju Monaka, diplomatsko i plemićko nasljeđe Afrike, a sada i nezaustavljivu operativnu silu kakva je Dr. Pierre Hugues Ngatchou... uz našu Sanju koja iz Rima spaja Europu i Afriku... onda vjerujte da mi doista sudjelujemo u pisanju povijesti.</p>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-12 font-bold text-lg">
+                Budite ponosni na zastavu ispod koje stojimo. Pričajte ljudima tko nas vodi i tko stoji uz nas. Gradite svoje timove snažnije nego ikada. Ujedinimo se, dobri ljudi. I nemojte čekati da netko drugi učini nešto za vas. Budite VI ona karika u lancu onih koji su spremni pomoći drugima u borbi za bolje sutra.
+            </p>
+
+            
+            <p class="leading-relaxed text-center mb-10 font-black text-xl" style="color: #80ff00 !important;">
+                U ime SFT21 kompanije i vjernih članova našeg SFteama želimo iskrenu i od srca dobrodošlicu Dr. Pierru Hughesu Ngatchou – Waka Waki, čovjeku nevjerojatne energije. Tvoja strast i tvoja vizija od danas su neraskidivi dio našeg koda. Dobrodošao u SFT21 obitelj!
+            </p>
+
+            <!-- SLAJDER SLIKA (ZAKUCANE DIMENZIJE) -->
+            <div style="position: relative; width: 100%; margin: 2rem auto;">
+                <div id="waka-gallery" style="display: flex; overflow-x: auto; gap: 16px; scroll-behavior: smooth; padding-bottom: 10px; scrollbar-width: none; -ms-overflow-style: none;">
+                    
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka2.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 2" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka3.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 3" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka4.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 4" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka5.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 5" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka6.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 6" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka7.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 7" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka9.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 9" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka10.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 10" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka12.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 12" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka13.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 13" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka14.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 14" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka15.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 15" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka16.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 16" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakawaka17.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 17" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <button onclick="document.getElementById('waka-gallery').scrollBy({left: -350, behavior: 'smooth'})" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); color: white; width: 40px; height: 60px; border-radius: 0 8px 8px 0; border: 1px solid rgba(255,255,255,0.1); border-left: none; cursor: pointer; z-index: 10;">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button onclick="document.getElementById('waka-gallery').scrollBy({left: 350, behavior: 'smooth'})" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); color: white; width: 40px; height: 60px; border-radius: 8px 0 0 8px; border: 1px solid rgba(255,255,255,0.1); border-right: none; cursor: pointer; z-index: 10;">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+            </div>
+
+            <!-- GUMBI ZA VIDEO -->
+            <div class="flex flex-col md:flex-row gap-4 justify-center mt-8 mb-12">
+                <a href="https://youtu.be/aBy4De-Jx10" target="_blank" class="bg-red-600 text-white px-6 py-4 rounded-xl font-bold uppercase shadow-lg hover:bg-red-700 hover:scale-105 transition-all text-center flex items-center justify-center gap-3">
+                    <i class="fab fa-youtube text-2xl"></i> Dr. Pierre Hughes Ngatchou - Waka Waka
+                </a>
+            </div>
+
+            <div class="text-center pt-8 border-t border-gray-700">
+                <p class="text-2xl text-white font-black mb-4 uppercase tracking-widest">Dobrodošli u novo doba poslovanja.</p>
+                
+                <p class="mt-4">S entuzijazmom i vjerom u bolje sutra,</p>
+                <p class="font-semibold text-purple-400 text-lg mt-2 mb-4">Semper Fidelis</p>
+                <p class="text-white font-bold">Mladen Pejić i Zoran Lazarević</p>
+                <p class="text-sm text-gray-400">Osnivači, SFT21 LLC</p>
+            </div>
+            
+            <footer class="mt-12 pt-6 border-t border-gray-700">
+                <p class="hashtag-container text-sm text-center">
+                    #SFT21 #JJKInternational #DrWakaWaka #SanjaAndrijicMarinovic #GlobalExpansion #AfricaToEurope #SFteam #Agribusiness
+                </p>
+            </footer>
+        `
     }
 ];
