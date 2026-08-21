@@ -1138,6 +1138,494 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 10,
+        title: "EXCLUSIVE INTERVIEW",
+        date: "", 
+        imageSrc: "", 
+        shortTitle: "Interview: Dr. Waka Waka",
+        contentHTML: `
+            <style>
+                .main-article-container header p { display: none !important; }
+                #waka-gallery-1::-webkit-scrollbar, #waka-gallery-2::-webkit-scrollbar { display: none; }
+            </style>
+
+            <h3 class="text-center mb-6 leading-snug mt-[-10px]">
+                <span class="block text-4xl md:text-5xl font-black text-white mb-3 tracking-wide">
+                    Dr. Waka Waka
+                </span>
+                <span class="block text-xl md:text-2xl font-bold text-gray-300">
+                    Vision, faith, and connecting Africa with Europe through SFT21
+                </span>
+            </h3>
+
+            <p class="text-sm text-gray-500 mt-2 mb-8 text-center">Published: August 21, 2026</p>
+
+            <div class="text-center mb-12">
+                <img src="img/gloria&wakawaka.png" alt="Dr. Waka Waka and Gloria" class="mx-auto max-h-100 w-auto object-contain rounded-lg shadow-lg">
+            </div>
+
+            <p class="font-semibold text-white text-lg">Exclusive interview by: Sanja Gloria Andrijić Marinović</p>
+            
+            <p class="mt-4 text-gray-300 text-justify mb-10">After officially assuming the position of President for Global Development of SFT21 Company, Dr. Hugues Pierre Ngatchou, known worldwide as Dr. Waka Waka or Prof. Pierre, sat down with our Director of Public Relations and Media, Mrs. Sanja Gloria Andrijić Marinović. In this deep and inspiring conversation, Dr. Waka Waka reveals what drives him, how he combines technology with agriculture, and why he recognized SFT21 as a key tool for global change.</p>
+            
+            <h3 class="text-3xl font-black text-white pt-4 mb-8 border-b border-gray-700 pb-4">I. Life Path, Faith, and the "Volcano of Energy"</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Dr. Waka Waka, welcome. Your life has taken you to more than 100 countries. Looking back, what experience has shaped you the most as a leader?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Before I say anything else, I want to give thanks to God Almighty. It is only by His grace that I am alive, safe, and well today. He has protected me through every journey, every border crossed, and every new land I have entered. It is He who opened the doors for me to travel to more than one hundred countries, not for personal glory, but for a higher purpose: the glory of love and unity in Christ. Every step I have taken has been guided by His hand, and for that I am deeply grateful.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">I also give thanks with all my heart to my parents. They did not give me riches of gold or silver, houses or lands, but they gave me something far more valuable. They gave me an education rooted in peace, joy, love, and harmony. They taught me not just to read and write, but to see the world with eyes of compassion and understanding. Without them, I would never have had the opportunity to go to school, to learn, to grow, and to become who I am today. Education truly is power. It is the key that unlocks the doors of perception. Through education, I received the knowledge that allowed me to see the world not as a collection of separate nations, but as one global village, one human family living under one sky.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">My father and mother gave me the greatest inheritance any child could ask for: knowledge. Material things can be spent, lost, or stolen, but knowledge stays with you forever. It travels with you wherever you go. And it is that knowledge that gave me the wings to see the world.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">I have come to understand something profound: traveling is more than a PhD received from any university. You can study the world in books, but until you walk the streets, breathe the air, taste the food, hear the music, and look into the eyes of people from different cultures, you have not truly learned. The world itself becomes your classroom, and every person you meet becomes your teacher.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">As a leader, I can say this with conviction: to be a true leader, you must travel. You must leave the comfort of what is familiar and open yourself to the unknown. When you travel, you begin to appreciate the greatness of God in ways you never could by staying in one place. You see His creativity painted across mountains, oceans, deserts, and forests. You witness the goodness of God reflected in the kindness of strangers who do not speak your language but welcome you with a smile and a meal. You see the greatness of humanity when you realize that everywhere you go, people share the same fundamental desires—to love, to be loved, to live in peace, to raise their children with hope, and to worship the Creator in their own way.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">This experience humbles you. It strips away pride and prejudice. It teaches you that no single culture, no single language, and no single nation has a monopoly on truth or goodness. It teaches you real love—not the superficial kind, but a deep, abiding love for every human being, every animal, and every single creature of God. You begin to understand that we are all connected, all part of a magnificent tapestry woven by the Creator’s hand.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">A leader without real love for humanity and real love for creation is not a true leader. You cannot lead people you do not love. You cannot serve a world you do not care for. Leadership is not about titles, positions, or power. Leadership is about the heart. It is about seeing the image of God in every person you meet and treating them with dignity, respect, and compassion.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">I learned this through traveling. Every mile I have traveled has taught me something new about God, about others, and about myself. And this, more than anything else, is what has shaped me as a leader. It is the understanding that we are all one, all loved by the same Creator, and all called to walk in love and unity.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">As the Scripture reminds us so beautifully:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "And over all these virtues put on love, which binds them all together in perfect unity."
+                </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Colossians 3:14 (NIV)</p>
+            </div>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Love is the thread that holds everything together. Without it, all our knowledge, all our achievements, and all our travels mean nothing. But with it, we can truly change the world—one heart, one encounter, one journey at a time. That is the meaning of JJK Forever.</p>
+
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: People describe you as a "volcano of energy." Where does that energy and passion come from every single day?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Honestly, my energy comes from God, and especially from love. When you truly love humanity and all of creation, you will never grow tired. Love is the source, the root, and the foundation. It is love that creates passion, and passion that creates joy. And that joy becomes a fire—a real, burning energy that never runs dry. It is not something I manufacture on my own; it flows naturally from a heart that is connected to the source of all love.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">My energy comes from the love of Christ. When I pause and simply think about what Christ did for me—the sacrifice He made, the grace He poured out, the unconditional love He showed—my heart overflows with gratitude. That gratitude turns into joy, and that joy fills me with a strength and vitality that I cannot explain in human terms alone. It is a supernatural energy, a divine fuel that renews itself every single morning. The love of Christ is not a distant concept; it is a living, breathing reality that wakes me up with purpose and carries me through every moment of the day.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">In addition to that spiritual foundation, I have learned that we are called to be good stewards of the body God has given us. Exercising and meditation add fuel to the energy that love has already ignited. When I move my body, I honor the temple God gave me. When I sit in stillness and meditate on His Word and His goodness, I allow my mind and spirit to be refreshed and recharged. These practices do not create energy on their own, but they fan the flame that love has already lit within me.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Happiness and positivity are not things I chase; they are the natural fruits that grow from that love energy. When your life is rooted in love—love for God, love for others, love for yourself as God's creation—you cannot help but radiate joy. It spills over into everything you do. It becomes contagious. It becomes the fire that others see and describe as a volcano of energy.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">For me, every day is a gift, and every person I meet is an opportunity to share that love. That is why I do not run out of energy. Because the source is not in me alone—it is in the eternal, inexhaustible well of God's love.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">As the Scripture declares so powerfully:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "The joy of the Lord is your strength."
+                </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Nehemiah 8:10 (NIV)</p>
+            </div>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">That verse says it all. My strength does not come from my own abilities, my own efforts, or my own willpower. It comes from the joy that flows out of a relationship with the living God. When His joy is your strength, you can face anything, endure anything, and pour out love without ever running empty. That is the secret behind the volcano.</p>
+
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: You often say that leadership is about serving others. What does true leadership mean to you?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> To me, true leadership is what I call true loveship—true love expressed in action. It is altruistic leadership, where your goal is not to be above people, but to be used to help people. True leadership means making others better than we found them, and helping humanity move forward with dignity, hope, and purpose.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">I believe a leader should not focus only on position, title, or recognition. Real leadership shows itself in service: listening to people, understanding their needs, encouraging them, and standing with them—especially when it is difficult. True leadership builds people. It strengthens families. It improves communities. It turns compassion into impact.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">And the foundation of that kind of leadership is humility. Humility is the posture of someone who understands that everything good comes from God, and that the leader is simply a servant with a responsibility. That is why the Bible teaches that the greatest person is the one who serves others.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">So for me, true leadership is serving with love, leading with humility, and putting the well-being of people first—because leadership is not about “how high you go,” but about how much you lift others.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">As Scripture says:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "For even the Son of Man did not come to be served, but to serve…"
+                </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Mark 10:45 (NIV)</p>
+            </div>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">That is the model of true leadership: Christ served. And everyone who truly follows Him will lead the same way—through love, service, and humility.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: In the past, you were famous for your dancing clubs, which were a kind of cure for youth toxicity and dependence. You were earning $25,000 monthly. How did it come about that you stopped that fruitful work?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Yes, my dancing clubs became a kind of healing space for many young people. In communities where there is toxic dependence—like alcohol, smoking, and drugs—young people often feel trapped, bored, or without a positive outlet.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">My goal was to give them something better than that dependency: a place where they could express themselves, build confidence, learn discipline, and enjoy life in a healthy environment. Dancing gave them joy, structure, and belonging. It reminded them that they are not meant to waste their potential, but to discover their talents and use them for good.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Yes, our work was fruitful. The clubs grew strongly, and that impact also reflected in the support we received. In many cases, the income helped the project continue and expand—because when you create something valuable for young people, people recognize it and support it. But I want to be clear: the purpose was never to chase money.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">I didn’t stop because it wasn’t working. I stopped because love was what was fueling me—and love was calling me to start a different project. I was moved by what I saw: young people drinking, smoking, and taking drugs, not because they wanted destruction, but because they didn’t have a safe, positive place to express themselves. There was no space for youth to become themselves in a constructive way. That’s why I was inspired to create a project where young people could:</p>
+            <ul class="list-disc pl-8 mb-6 text-gray-300 leading-relaxed space-y-2">
+                <li>express their talents (especially through music and dance),</li>
+                <li>grow in a positive environment,</li>
+                <li>receive tutoring and guidance,</li>
+                <li>and build a future with hope.</li>
+            </ul>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">And because it was connected to my school project as well, it worked extremely well. That was the key: when education and love meet, change becomes real. When love is applied properly, it can create “magic”—not magic as illusion, but real transformation. So I learned this message deeply: we should not look at people only in terms of merchandise, commodities, or profit, but in terms of love, human value, and the future.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">That is why I created the club. The club eventually generated great income—but again, it was never about money. It was about love. And love can be so powerful that it changes your desires. It makes you focus on purpose instead of pressure. When love is truly in you, you can’t even imagine living only for profit.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "For the love of money is a root of all kinds of evil. Some people, eager for money, have wandered from the faith…" </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 1 Timothy 6:10 (NIV)</p>
+                <br><br/>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "Start children off on the way they should go, and even when they are old they will not turn from it." </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Proverbs 22:6 (NIV)</p>
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: You have worked with governments, universities, churches, the United Nations, and local communities. What have all these different environments taught you about people?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> What these different environments taught me is that people are essentially the same everywhere—we all have beautiful souls. We are human beings living in different “envelope skins,” in different cultures and backgrounds, but our value is universal.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">What’s striking, however, is that many of these great institutions—whether governments, universities, or even faith organizations—often fail to fully understand a simple truth: love does not differentiate people.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Love sees humanity, not division.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Yet we still see systems classifying humans based on race, ethnicity, religion, or origin, and that classification creates separation—leading to problems like racism, religious prejudice, and unnecessary conflict.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">It becomes easy for society to forget that we are one family.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">That is exactly why we created JJK Food on a Table for all agribusiness cooperatives of God to use food as a bridge. We believe food is one of the strongest reminders of our unity: regardless of where someone comes from, everyone needs to eat to survive. Hunger and the need for daily nourishment are common to all humanity.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">So we use food to preach and demonstrate unity through love—because when people sit together, eat together, and cooperate together, barriers begin to break. Education also matters, and we continue to promote unity through love, knowledge, and collaboration.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">My work with these organizations opened my eyes—and also opened my heart—so that I could do better for humanity. I realized that true progress isn’t only about policies or programs; it’s about the mindset of love and unity that guides how we treat people.</p>            
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "How good and pleasant it is when God’s people live together in unity!" </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Psalm 133:1 (NIV)</p>
+            </div>
+
+            <!-- SLIDER 1 -->
+            <div style="position: relative; width: 100%; margin: 2rem auto;">
+                <div id="waka-gallery-1" style="display: flex; overflow-x: auto; gap: 16px; scroll-behavior: smooth; padding-bottom: 10px; scrollbar-width: none; -ms-overflow-style: none;">
+                    
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint1.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 1" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint2.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 2" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint3.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 3" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint4.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 4" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint5.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 5" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint6.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 6" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint7.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 7" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint8.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 8" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint9.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 9" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint10.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 10" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint11.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 11" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <button onclick="let el=document.getElementById('waka-gallery-1'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft<=10) el.scrollTo({left:max, behavior:'smooth'}); else el.scrollBy({left:-350, behavior:'smooth'});" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-r-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button onclick="let el=document.getElementById('waka-gallery-1'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft>=max-10) el.scrollTo({left:0, behavior:'smooth'}); else el.scrollBy({left:350, behavior:'smooth'});" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-l-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Your mission has always combined education with fighting poverty. Why do you believe these two are inseparable?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Yes—we follow the footsteps of Jesus Christ. And for a long time, I’ve asked a very simple question to presidents, leaders of countries, leaders of organizations, and even church leaders:</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">“If Jesus Christ was on earth today, where would He be every single day, and what would He do?”</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">“Where would He stay?”</p>   
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">That question helped me understand what true mission looks like. I learned from Christ that His compassion was not only emotional—it was practical. He cared for people, fed the hungry, and also trained people. He didn’t just give temporary help; He helped people become self-sustainable. That is why I follow the same path taught by my father’s faith in Christ: feeding the needy and training people to stand on their own.</p>                     
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">So for me, education and poverty-fighting are inseparable because education gives people the knowledge, skills, and confidence to create a better future. Poverty-fighting removes the immediate suffering so people can actually learn, work, and grow. In other words, we teach, feed, and build—all in love, through action.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Even in the Bible, we see this heart of service. Father Abraham was known for feeding the needy, and he even welcomed angels. The message is clear: God’s love becomes real when it is expressed through care and provision. The Bible is truly about love—and one of the ways love is shown is by making sure people can live with dignity: that they can eat well, drink well, and survive with peace. And when people are nourished, educated, and empowered, peace becomes possible—because poverty and hopelessness often destroy peace. But love, education, and provision restore it.</p>  
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Is not this the kind of fasting I have chosen: to loose the chains of injustice... to share your food with the hungry and provide the poor wanderer with shelter?” </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Isaiah 58:6-7 (NIV)</p>
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Throughout your life you have faced difficult moments, including serious illness and personal challenges. What helped you keep moving forward?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> What helped me keep moving forward—especially during illness and personal challenges—was love and faith in Jesus Christ. Love gave me a reason to endure. When life felt heavy, love reminded me that I was not alone—that God cared, and that others also mattered. That love strengthened my heart and helped me stay hopeful, even when I was tired.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">And my faith in Jesus Christ gave me direction. I held on to the belief that every trial has meaning and that God can bring strength from weakness. Even in the darkest moments, I trusted that God was still working, still guiding, and still protecting me. So I kept moving because my foundation was not only human strength—it was spiritual strength: the love of Christ and the faith that He will carry me through.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “But those who hope in the Lord will renew their strength. They will soar on wings like eagles.” </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Isaiah 40:31 (NIV)</p>
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Faith is clearly central to your life. How does it influence your decisions as an entrepreneur and humanitarian?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Faith influences everything I do—my decisions, my purpose, and my way of serving people. I honestly, with humility, consider myself a servant of humanity and an immigrant on earth. I came into this world with nothing, and I will return to God with nothing. So for me, life and success are not ownership—they are stewardship. Everything I do is borrowed time, entrusted to me by God.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">That is why I see myself as a social holistic entrepreneur and also a professor by profession. My faith guides the way I combine those roles:</p>
+            <ul class="list-disc pl-8 mb-6 text-gray-300 leading-relaxed space-y-2">
+                <li>As an entrepreneur, I build projects that aim to improve lives—not just make profit.</li>
+                <li>As a professor and educator, I help people gain knowledge and skills so they can rise.</li>
+                <li>As a humanitarian, I focus on compassion and practical support, because love must become action.</li>
+            </ul>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Faith helps me make decisions based on values, not only on results. It asks me: Will this project bring dignity? Will it lift people? Will it help communities become stronger? Will it honor God through service? When faith is the center, entrepreneurship becomes more than business—it becomes ministry. It reminds me that the goal is to serve humanity with integrity, patience, and love.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Therefore, whether you eat or drink, or whatever you do, do all to the glory of God.” </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 1 Corinthians 10:31 (NIV)</p>
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: You often speak about giving rather than receiving. In today's business world, can generosity also be a competitive advantage?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Yes—generosity in Christ can absolutely be a competitive advantage, but not in the way people usually think. In the business world, many compete for money, clients, and image. But true competitiveness, for me, comes from the trust and value rooted in the love of God and humanity you create when you choose generosity.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">When you give—whether it’s knowledge, support, partnerships, training, or fair treatment—you build credibility. People remember how you made them feel and how you helped them grow. That kind of reputation becomes a strength that money cannot quickly buy. Generosity also builds long-term relationships. In my experience, businesses that operate with love and integrity attract loyal partners, employees, and communities. People want to work with someone who is not only interested in profit, but also in people. Most importantly, generosity aligns you with purpose. When your motivation is to serve, you become more consistent, more patient, and more resilient. And that creates sustainable success.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">So yes, generosity can be a competitive advantage—but the best advantage is this: you win the hearts of people for Jesus, and that is what creates lasting impact.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Each person should give what they have decided in their heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.” </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 2 Corinthians 9:7 (NIV)</p>
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: You've helped students obtain educational opportunities and have supported communities through food and agricultural initiatives. Which success story has touched your heart the most?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> There are many success stories that touch my heart, but one stands out most clearly for me. It is when I see my students—whom God allowed me to help—become medical doctors, and then return to their communities to serve the people they came from.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">I remember the situation of many pregnant women in those communities. In the past, some of them were dying simply because there was no access to proper treatment. When those students came back as doctors, the outcome changed. Lives that would have been lost were saved. And when I witness that, it makes me truly happy—because I see the value of education turning into real healing.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Another success story that brings me joy is seeing students build agribusiness enterprises. It is beautiful to watch them start providing for their families, creating jobs, and strengthening their communities. When people gain better jobs because they received strong training—especially through study abroad—it becomes proof that education can transform not only individuals but entire societies. We have helped send more than 7,000 students abroad to obtain better degrees, and honestly, there are too many incredible stories with each person’s unique impact.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">But above all, the most important thing for me is not only the degrees or the projects. What touches me most is the smile—and especially when I see them giving thanks to God Almighty. That smile reminds me that the purpose is not just success by human standards, but success with gratitude, love, and service. So yes—there are many stories—but the greatest joy is seeing life being saved, people being empowered, and God being honored through what they do.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Those who are wise will shine like the brightness of the heavens, and those who lead many to righteousness, like the stars for ever and ever.” </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Daniel 12:3 (NIV)</p>
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: If you could solve one global problem in the next ten years, what would it be?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> If I could solve one global problem in the next ten years, it would be famine and the lack of quality education—for everyone. Because when people don’t have food, they cannot think, study, work, or grow. And when people don’t have education, they remain trapped in poverty and hopelessness. So for me, hunger and educational inequality are deeply connected.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">But I don’t want to solve these problems only with programs—I want to solve them with love, harmony, and unity among all races and nations. I want a world where people can live with dignity, learn with confidence, and build futures together.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">My hope is simple: I want to see everyone happy and saved in Jesus Christ. When people experience God’s love, it changes hearts—and when hearts change, communities change. So my vision is clear: end famine, ensure quality education access for all, and promote unity in love—so that humanity can move forward in peace, hope, and salvation.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “For the Lord gives wisdom; from his mouth come knowledge and understanding.” </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Proverbs 2:6 (NIV)</p>
+            </div>
+
+            
+            <h3 class="text-3xl font-black text-white pt-8 mb-8 border-b border-gray-700 pb-4">II. Technology, Agriculture, and SFT21</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Many people see technology and agriculture as completely different worlds, yet you combine AI, blockchain, education, and farming. Why do these belong together?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Because for me, technology and agriculture are not separate worlds—they are the same mission of God serving the same people. Agriculture is the foundation of life, it starts from God as explained in the Bible. It feeds communities, supports families, and can lift whole regions out of poverty. But agriculture today often struggles with problems like low productivity, lack of transparency, weak access to markets, and limited training—especially for farmers and young people.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">That is where technology belongs. AI helps improve decision-making—better planning, forecasting, and understanding crops and climate so farmers can produce more and waste less.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Blockchain helps bring transparency and trust into agriculture—so cooperatives, farmers, and buyers can track information fairly and reduce fraud or exploitation.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Education makes technology real, because tools are only useful when people understand how to apply them. Education trains farmers, teaches business skills, and empowers youth to lead their own success.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">So I combine them because I believe the goal is not just to grow crops—it is to grow human capacity. It is to create systems where farmers are respected, cooperatives are strong, and young people can build sustainable agribusiness careers. But again I'm talking about good healthier food for the body mind and souls.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">In short: agriculture provides the food; education provides the skills; and technology provides the efficiency and transparency. When these belong together, hunger reduces, incomes increase, and communities become stronger.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “For God is not a God of disorder but of peace…” </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 1 Corinthians 14:33 (NIV)</p>
+            </div>  
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How can technology become a tool that serves ordinary people instead of only large corporations?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Technology should serve ordinary people because that is how we honor its purpose. In my belief, God gave us technology to help humanity—so that we can become better at loving one another, cooperating, and building a future together. Technology is not only for power or profit. It is for progress with purpose: to improve lives, reduce suffering, and create opportunities for everyone—not just a few.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">When technology is used only by large corporations, it often becomes focused on greed, selfish interests, and profit at the expense of communities. That creates inequality—digital gaps, unfair access, and systems where the rich grow richer while ordinary people remain excluded. So technology must be guided by values: love, justice, and responsibility. We need tools that are accessible, affordable, and built with communities in mind—especially farmers, students, entrepreneurs, and families who work hard every day. That is how technology becomes a blessing: when it helps people rise with dignity, when it shares opportunities, and when it strengthens unity instead of division.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “Each of you should use whatever gift you have received to serve others, as faithful stewards of God’s grace in its various forms.” </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 1 Peter 4:10 (NIV)</p> 
+            </div>  
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    You have been elected in SFT21 as President for Global Development. What convinced you that this project deserves your trust?
+                </p>
+            </blockquote>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> My journey with SFT21 began through a trusted friend, Gloria (Sanja), who shared with me the heart and vision behind this organization. She spoke not just about programs or plans, but about values—and that caught my attention.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">I took the time to research SFT21 deeply. I wanted to understand what drives this organization, what it stands for, and where it is heading. What I discovered resonated with me at the deepest level: the values of SFT21 align perfectly with my own personal values and the mission I have dedicated my life to.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6 font-bold text-white">The most important thing that convinced me was this—SFT21 puts Love first. In a world where many organizations prioritize power, profit, or prestige, finding a team that genuinely places love at the center of global development is rare and precious. Love is not just a word for them; it is the foundation of how they operate, how they serve, and how they envision the future.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">This is why I made the decision to work with these people. I believe that when love leads, transformation follows. When love is the foundation, development becomes holistic—touching not only economies and infrastructures, but hearts, communities, and generations.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">I am honored to serve as President for Global Development, and I am confident that together, with love as our guiding principle, we will build something truly meaningful for humanity.</p> 
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “And now these three remain: faith, hope and love. But the greatest of these is love.” </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 1 Corinthians 13:13 (NIV)</p> 
+            </div>    
+            
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What are your priorities for your first year in this role?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> My priorities for the first year are clear and rooted in purpose.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">First, I will focus on building bridges—bridges between all people of every race, every region, and every background within the organization. Unity is not automatic; it must be built intentionally, with respect, dialogue, and genuine connection. I want to create an environment where everyone feels seen, heard, and valued as part of one family with a shared mission.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Second, I will work to create more solidarity. Solidarity means we do not just work alongside each other—we stand with each other. We share burdens, celebrate victories together, and move forward as one body. When solidarity is strong, no challenge is too great and no community is left behind.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Third, I commit to lead by example. I do not believe in leading from a distance or only with words. True leadership is visible, humble, and active. I will be present, I will serve, and I will demonstrate the values we preach—love, integrity, hard work, and compassion. People follow not just a title, but a testimony.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">These three priorities—bridges, solidarity, and example—will guide every decision I make in this first year and beyond.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “Be completely humble and gentle; be patient, bearing with one another in love. Make every effort to keep the unity of the Spirit through the bond of peace.”</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Ephesians 4:2-3 (NIV)</p>
+            </div>  
+            
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: You have worked extensively across Africa, North America, and Asia. What opportunities do you see for stronger cooperation between Africa and Europe?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Having worked extensively across Africa, North America, and Asia, I have seen firsthand that no continent can thrive in isolation. The future belongs to partnerships built on mutual respect, shared values, and common purpose.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Between Africa and Europe, I see tremendous opportunities for stronger cooperation in several key areas.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">First, agribusiness and food security ...Organic food. Africa has vast arable land, a young workforce, and growing markets. Europe has advanced agricultural technology, research capabilities, and supply chain expertise. When these strengths come together—not through exploitation, but through fair partnership—both continents benefit. Africa can increase its food production and reduce hunger, while Europe gains reliable, sustainable partners in global food systems.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Second, education and skills development. Africa's youth population is one of the largest in the world, full of potential and ambition. Europe has world-class universities, vocational training models, and innovation hubs. By creating exchange programs, scholarship opportunities, and joint research initiatives, we can equip a new generation of leaders who understand both continents and can build bridges between them.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Third, technology and digital transformation. Africa is leaping forward in mobile technology, fintech, and digital entrepreneurship. Europe has deep experience in infrastructure, regulation, and scaling technology enterprises. Cooperation in this area can accelerate digital inclusion, create jobs, and ensure that technology serves ordinary people—not just corporations.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Fourth, renewable energy and climate action. Africa is rich in solar, wind, and hydro resources. Europe has the investment capacity and technical expertise to support green energy transitions. Together, we can build sustainable energy systems that protect the planet and power economic growth.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">But beyond all these sectors, the greatest opportunity is a shift in mindset. Cooperation must move from charity and dependency to genuine partnership and co-creation. Africa is not a problem to be solved; it is a continent of solutions, innovation, and resilience. Europe must see Africa as an equal partner, and Africa must continue to rise with confidence and vision.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">When both continents work together with love, respect, and shared goals, we can create a future where everyone eats, everyone learns, and everyone lives with dignity.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “Two are better than one, because they have a good return for their labor.”</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Ecclesiastes 4:9 (NIV)</p>
+            </div>  
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How important is it to build partnerships that create opportunities directly for local producers and entrepreneurs?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> In the sacred work of the JJK Spiritual Cooperative of Agribusiness, building Africa–Europe partnerships that create direct opportunities for local producers and entrepreneurs is not merely a transaction—it is a divine mandate.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">When we bridge the rich soil and resilient spirit of African farmers with European markets, we cultivate far more than crops; we nurture dignity, self-reliance, and a legacy of shared abundance.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Scripture affirms this truth powerfully:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Two are better than one, because they have a good return for their labor: If either of them falls down, one can help the other up.” </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Ecclesiastes 4:9-10 (NIV)</p>
+            </div> 
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Through this cooperative, every partnership becomes a covenant of mutual upliftment—where seeds of faith are planted, harvests of hope are reaped, and both continents rise together, rooted in integrity and blessed by collaboration.</p>
+
+            <!-- SLIDER 2 -->
+            <div style="position: relative; width: 100%; margin: 2rem auto;">
+                <div id="waka-gallery-2" style="display: flex; overflow-x: auto; gap: 16px; scroll-behavior: smooth; padding-bottom: 10px; scrollbar-width: none; -ms-overflow-style: none;">
+                    
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint22.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 22" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint23.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 23" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint12.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 12" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint13.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 13" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint14.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 14" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint15.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 15" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint16.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 16" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint17.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 17" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint18.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 18" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint19.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 19" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint20.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 20" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint21.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 21" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <button onclick="let el=document.getElementById('waka-gallery-2'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft<=10) el.scrollTo({left:max, behavior:'smooth'}); else el.scrollBy({left:-350, behavior:'smooth'});" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-r-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button onclick="let el=document.getElementById('waka-gallery-2'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft>=max-10) el.scrollTo({left:0, behavior:'smooth'}); else el.scrollBy({left:350, behavior:'smooth'});" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-l-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+
+            </div>
+
+            <h3 class="text-3xl font-black text-white pt-8 mb-8 border-b border-gray-700 pb-4">III. Cooperation and Wisdom for New Generations</h3>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What qualities do you look for when choosing people to work alongside you?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> I personally look at the heart of the person.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">At the JJK Spiritual Cooperative of Agribusiness, we seek souls whose hearts overflow with an abundant love for God and a genuine love for humanity. Beyond skill and experience, we look for those who carry a servant’s spirit—humility, integrity, resilience, and a deep-rooted commitment to lifting others as we grow together.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">When we choose partners, we are not merely selecting colleagues; we are building a family of faith-driven stewards, united across Africa and Europe to sow seeds of transformation in every field and every life we touch.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Scripture reminds us of the one quality from which all others flow:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Love the Lord your God with all your heart and with all your soul and with all your mind… Love your neighbor as yourself.” </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Matthew 22:37, 39 (NIV)</p>
+            </div> 
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">With this sacred foundation, every hand that joins ours becomes an instrument of grace, turning ordinary labor into a harvest of hope for generations.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: What advice would you give to young entrepreneurs who have a dream but lack resources?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> To every young entrepreneur whose dream feels larger than their resources, we say this: begin where you are, with what you have, and with the faith that God multiplies the little placed in willing hands.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">At the JJK Spiritual Cooperative, we have seen that the size of your heart and the clarity of your purpose matter far more than the size of your starting capital. Do not despise the seed of an idea planted in faith—nurture it with discipline, seek wise partnerships across Africa and Europe, and trust that every great harvest once began as a single, hidden grain.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Let this truth anchor your soul:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Do not despise these small beginnings, for the Lord rejoices to see the work begin.”</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Zechariah 4:10 (NLT)</p>
+            </div> 
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Your dream is not a burden; it is a calling. Rise with courage, surround yourself with those who love God and humanity, and watch how heaven and earth conspire to bring your vision to life.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: How do you stay optimistic during difficult times?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Optimism in the midst of trials is not a fleeting emotion—it is a spiritual discipline.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">I remain anchored by reading the Bible, loving God with all my heart and loving my neighbor as myself. I find strength in music, serving with humility, recognizing that every act of lowly service draws me closer to the heart of Christ. And I keep hope alive by feeding the needy, because there is no greater antidote to despair than becoming a vessel of provision for someone else.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">In the Africa–Europe partnership we nurture through this cooperative, these three sacred practices—love, humility, and generosity—transform every season of hardship into fertile ground for miracles.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">The Word of God illuminates this path perfectly:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “He has shown you, O mortal, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.”</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Micah 6:8 (NIV)</p>
+            </div> 
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">When we pour ourselves out for God and for others, even the darkest valleys become doorways to a brighter harvest.</p>
+
+            <!-- Quick Questions -->
+            <div class="bg-gray-800 bg-opacity-40 p-6 rounded-xl border border-gray-700 my-10">
+                <h4 class="text-lg font-bold text-white mb-4 uppercase tracking-widest border-b border-gray-600 pb-2">Quick Questions:</h4>
+                <ul class="text-gray-300 space-y-3">
+                    <li><span class="text-fluorescent-green font-bold">Coffee or tea?</span> > Lemongrass tea.</li>
+                    <li><span class="text-fluorescent-green font-bold">Early morning or late night?</span> > Both.</li>
+                    <li><span class="text-fluorescent-green font-bold">Books or podcasts?</span> > Both.</li>
+                    <li><span class="text-fluorescent-green font-bold">One country everyone should visit?</span> > Visit the world. Please.</li>
+                    <li><span class="text-fluorescent-green font-bold">One habit that changed your life?</span> > Meditating in Almighty GOD</li>
+                    <li><span class="text-fluorescent-green font-bold">One sentence that describes your mission?</span> > Just Jesus King Forever, LOVE by actions</li>
+                    <li><span class="text-fluorescent-green font-bold">What inspires you every day?</span> > Sharing LOVE as sharing the virus of healing humanity.</li>
+                </ul>
+            </div>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: If you could leave one message for people watching this interview, what would you like them to remember?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Love life passionately, and live each day as though it were your last on this earth—with the unwavering awareness that Jesus Christ walks beside you right now. Let this sacred urgency transform every ordinary moment into an offering of love, purpose, and service.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">In the fields of Africa and the markets of Europe, and wherever your own journey unfolds, may you embrace the gift of today not with fear, but with a heart fully alive to God and to the people He places in your path. The Kingdom of God is within yourself.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Scripture seals this truth upon our souls:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Teach us to number our days, that we may gain a heart of wisdom.”</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Psalm 90:12 (NIV)</p>
+            </div> 
+            
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Let this be the legacy you carry: a life so anchored in Christ that every sunrise becomes a holy invitation to love, to give, and to live without regret.</p>
+
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Finally, what does success mean to Dr. Waka Waka—not in business, but in life?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Success, in the truest sense, is not measured by wealth or recognition, but by the quiet, daily commitment to give my very best to make someone happy and to make my God happy.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">It means waking each morning with one sacred mission: to share the best gift I have ever received—the gift of love. Whether in a boardroom, a farm field, or a simple conversation, if I have loved well and brought a smile to the face of another, I have already succeeded. For in the end, a life poured out in love is the only legacy that echoes into eternity.</p>
+
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Scripture beautifully captures this ultimate measure of a life well lived:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “And now these three remain: faith, hope and love. But the greatest of these is love.”</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 1 Corinthians 13:13 (NIV)</p>
+            </div> 
+            
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">This is my definition of success—loving God by loving His people, and letting that love be the harvest that feeds the world.</p>
+
+
+            <div class="text-center pt-8 border-t border-gray-700 mt-10">
+                <p class="text-2xl text-white font-black mb-4 uppercase tracking-widest">Global expansion has begun.</p>
+                
+                <p class="mt-4">With enthusiasm and faith in a better tomorrow,</p>
+                <p class="font-semibold text-purple-400 text-lg mt-2 mb-4">Semper Fidelis</p>
+                <p class="text-white font-bold">Mladen Pejić & Zoran Lazarević</p>
+                <p class="text-sm text-gray-400">Founders, SFT21 LLC</p>
+            </div>
+            
+            <footer class="mt-12 pt-6 border-t border-gray-700">
+                <p class="hashtag-container text-sm text-center">
+                    #SFT21 #JJKInternational #DrWakaWaka #SanjaAndrijicMarinovic #GlobalExpansion #Interview #Agribusiness
+                </p>
+            </footer>
+        `
     }
 ];
 
