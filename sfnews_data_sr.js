@@ -1171,7 +1171,7 @@ const sfNews = [
 
             <!-- Slika dr. Waka Waka (Naslovna) -->
             <div class="text-center mb-12">
-                <img src="img/gloria&wakawaka.png" alt="Dr. Waka Waka i Gloria" class="mx-auto max-h-100 w-auto object-contain rounded-lg shadow-lg">
+                <img src="img/gloria&wakawaka.jpg" alt="Dr. Waka Waka i Gloria" class="mx-auto max-h-100 w-auto object-contain rounded-lg shadow-lg">
             </div>
 
             <!-- UVODNI TEKST --> 
@@ -1282,37 +1282,37 @@ const sfNews = [
                 <div id="waka-gallery-1" style="display: flex; overflow-x: auto; gap: 16px; scroll-behavior: smooth; padding-bottom: 10px; scrollbar-width: none; -ms-overflow-style: none;">
                     
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint1.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 1" onclick="openModal(this.src)">
+                        <img src="img/wakaint1.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 1" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint2.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 2" onclick="openModal(this.src)">
+                        <img src="img/wakaint2.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 2" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint3.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 3" onclick="openModal(this.src)">
+                        <img src="img/wakaint3.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 3" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint4.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 4" onclick="openModal(this.src)">
+                        <img src="img/wakaint4.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 4" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint5.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 5" onclick="openModal(this.src)">
+                        <img src="img/wakaint5.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 5" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint6.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 6" onclick="openModal(this.src)">
+                        <img src="img/wakaint6.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 6" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint7.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 7" onclick="openModal(this.src)">
+                        <img src="img/wakaint7.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 7" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint8.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 8" onclick="openModal(this.src)">
+                        <img src="img/wakaint8.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 8" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint9.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 9" onclick="openModal(this.src)">
+                        <img src="img/wakaint9.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 9" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint10.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 10" onclick="openModal(this.src)">
+                        <img src="img/wakaint10.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 10" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint11.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 11" onclick="openModal(this.src)">
+                        <img src="img/wakaint11.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 11" onclick="openModal(this.src)">
                     </div>
                 </div>
 
@@ -1492,52 +1492,52 @@ const sfNews = [
                 <div id="waka-gallery-2" style="display: flex; overflow-x: auto; gap: 16px; scroll-behavior: smooth; padding-bottom: 10px; scrollbar-width: none; -ms-overflow-style: none;">
                     
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint24.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 24" onclick="openModal(this.src)">
+                        <img src="img/wakaint24.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 24" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint22.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 22" onclick="openModal(this.src)">
+                        <img src="img/wakaint22.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 22" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint23.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 23" onclick="openModal(this.src)">
+                        <img src="img/wakaint23.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 23" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint12.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 12" onclick="openModal(this.src)">
+                        <img src="img/wakaint12.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 12" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint13.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 13" onclick="openModal(this.src)">
+                        <img src="img/wakaint13.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 13" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint14.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 14" onclick="openModal(this.src)">
+                        <img src="img/wakaint14.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 14" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint15.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 15" onclick="openModal(this.src)">
+                        <img src="img/wakaint15.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 15" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint16.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 16" onclick="openModal(this.src)">
+                        <img src="img/wakaint16.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 16" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint17.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 17" onclick="openModal(this.src)">
+                        <img src="img/wakaint17.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 17" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint18.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 18" onclick="openModal(this.src)">
+                        <img src="img/wakaint18.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 18" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint19.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 19" onclick="openModal(this.src)">
+                        <img src="img/wakaint19.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 19" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint20.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 20" onclick="openModal(this.src)">
+                        <img src="img/wakaint20.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 20" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint21.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 21" onclick="openModal(this.src)">
+                        <img src="img/wakaint21.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 21" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint25.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 25" onclick="openModal(this.src)">
+                        <img src="img/wakaint25.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 25" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint26.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 26" onclick="openModal(this.src)">
+                        <img src="img/wakaint26.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 26" onclick="openModal(this.src)">
                     </div>
                     <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="img/wakaint27.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 27" onclick="openModal(this.src)">
+                        <img src="img/wakaint27.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 27" onclick="openModal(this.src)">
                     </div>
                 </div>
 
