@@ -1120,7 +1120,7 @@ const sfNews = [
                 <a href="https://youtu.be/aBy4De-Jx10" target="_blank" class="bg-red-600 text-white px-6 py-4 rounded-xl font-bold uppercase shadow-lg hover:bg-red-700 hover:scale-105 transition-all text-center flex items-center justify-center gap-3">
                     <i class="fab fa-youtube text-2xl"></i> Dr. Pierre Hughes Ngatchou - Waka Waka
                 </a>
-            </div>
+            </div> 
 
             <div class="text-center pt-8 border-t border-gray-700">
                 <p class="text-2xl text-white font-black mb-4 uppercase tracking-widest">Dobrodošli u novo doba poslovanja.</p>
