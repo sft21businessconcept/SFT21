@@ -1137,5 +1137,572 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 10,
+        title: "EKSKLUZIVNI INTERVJU",
+        date: "", 
+        imageSrc: "", 
+        shortTitle: "Intervju: Dr. Waka Waka",
+        contentHTML: `
+            <!-- SAKRIVANJE AUTO-GENERIRANOG DATUMA NA VRHU -->
+            <style>
+                .main-article-container header p { display: none !important; }
+                #waka-interview-gallery::-webkit-scrollbar { display: none; }
+            </style>
+
+            <!-- BIJELI PODNASLOV  -->
+            <h3 class="text-center mb-6 leading-snug mt-[-10px]">
+                <span class="block text-4xl md:text-5xl font-black text-white mb-3 tracking-wide">
+                    Dr. Waka Waka
+                </span>
+                <span class="block text-xl md:text-2xl font-bold text-gray-300">
+                    Vizija, vjera i spajanje Afrike s Europom kroz SFT21
+                </span>
+            </h3>
+
+            <!-- DATUM -->
+            <p class="text-sm text-gray-500 mt-2 mb-8 text-center">Objavljeno: 21. Kolovoz 2026.</p>
+
+            <!-- Slika dr. Waka Waka (Naslovna) -->
+            <div class="text-center mb-12">
+                <img src="img/gloria&wakawaka.png" alt="Dr. Waka Waka&Gloria" class="mx-auto max-h-100 w-auto object-contain rounded-lg shadow-lg">
+            </div>
+
+            <!-- UVODNI TEKST --> 
+            <p class="font-semibold text-white text-lg">Ekskluzivni razgovor vodi: Sanja Gloria Andrijić Marinović</p>
+            
+            <p class="mt-4 text-gray-300 text-justify mb-10">Nakon što je službeno preuzeo poziciju Predsjednika za globalni razvoj SFT21 kompanije, Dr. Hughes Pierre Ngatchou, u svijetu poznatiji kao Dr. Waka Waka ili Prof. Pierre, sjeo je s našom direktoricom za odnose s javnošću i medije, gđom. Sanjom Gloriom Andrijić Marinović. U ovom dubokom i inspirativnom razgovoru, Dr. Waka Waka otkriva što ga pokreće, kako spaja tehnologiju s poljoprivredom te zašto je prepoznao SFT21 kao ključni alat za globalnu promjenu.</p>
+            
+            <h3 class="text-3xl font-black text-white pt-4 mb-8 border-b border-gray-700 pb-4">I. Životni put, vjera i "vulkan energije"</h3>
+
+            <!-- Q1 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Dr. Waka Waka, dobrodošli. Vaš život odveo Vas je u više od 100 zemalja. Gledajući unazad, koje Vas je iskustvo najviše oblikovalo kao lidera?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Prije nego što kažem bilo što drugo, želim zahvaliti Svemogućem Bogu. Samo sam po Njegovoj milosti danas živ, siguran i dobro. Čuvao me na svakom putovanju, pri svakom prelasku granice i u svakoj novoj zemlji u koju sam ušao. On je taj koji mi je otvorio vrata za putovanje u više od stotinu zemalja, ne radi osobne slave, već radi više svrhe: slave ljubavi i jedinstva u Kristu. Svaki moj korak bio je vođen Njegovom rukom i na tome sam duboko zahvalan.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Također od sveg srca zahvaljujem svojim roditeljima. Nisu mi ostavili bogatstvo u zlatu ili srebru, kućama ili zemlji, ali su mi dali nešto daleko vrjednije. Dali su mi odgoj i obrazovanje ukorijenjeno u miru, radosti, ljubavi i harmoniji. Naučili su me ne samo čitati i pisati, već gledati na svijet očima suosjećanja i razumijevanja. Bez njih nikada ne bih imao priliku ići u školu, učiti, rasti i postati ono što sam danas. Obrazovanje je uistinu moć. Ono je ključ koji otključava vrata percepcije. Kroz obrazovanje sam stekao znanje koje mi je omogućilo da svijet ne vidim kao skup odvojenih nacija, već kao jedno globalno selo, jednu ljudsku obitelj koja živi pod istim nebom. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Otac i majka dali su mi najveće nasljedstvo koje dijete može tražiti: znanje. Materijalne stvari mogu se potrošiti, izgubiti ili ukrasti, ali znanje ostaje s vama zauvijek. Ono putuje s vama kamo god pošli. I upravo mi je to znanje dalo krila da vidim svijet. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">S vremenom sam shvatio nešto duboko: putovanja pružaju više od doktorata s bilo kojeg sveučilišta. Možete proučavati svijet u knjigama, ali sve dok ne prošetate ulicama, ne udahnete zrak, ne okusite hranu, ne čujete glazbu i ne pogledate u oči ljude iz različitih kultura, niste doista naučili. Sam svijet postaje vaša učionica, a svaka osoba koju sretnete vaš učitelj. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Kao vođa, mogu reći s uvjerenjem: da biste bili pravi vođa, morate putovati. Morate napustiti udobnost onoga što vam je poznato i otvoriti se nepoznatom. Kada putujete, počinjete cijeniti Božju veličinu na načine na koje nikada ne biste mogli ostajući na jednom mjestu. Vidite Njegovu kreativnost oslikanu na planinama, oceanima, pustinjama i šumama. Svjedočite Božjoj dobroti koja se ogleda u ljubaznosti stranaca koji ne govore vaš jezik, ali vas dočekuju s osmijehom i obrokom. Vidite veličinu čovječanstva kada shvatite da kamo god pođete, ljudi dijele iste temeljne želje — voljeti, biti voljeni, živjeti u miru, odgajati svoju djecu s nadom i štovati Stvoritelja na svoj način.  </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">To vas iskustvo čini poniznima. Ono uklanja ponos i predrasude. Uči vas da nijedna kultura, nijedan jezik i nijedna nacija nemaju monopol nad istinom ili dobrotom. Uči vas pravoj ljubavi — ne onoj površnoj, već dubokoj, trajnoj ljubavi prema svakom ljudskom biću, svakoj životinji i svakom Božjem stvorenju. Počinjete shvaćati da smo svi povezani, svi dio veličanstvene tapiserije satkane Stvoriteljevom rukom. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Vođa bez prave ljubavi prema čovječanstvu i pravog poštovanja prema svemu stvorenom nije pravi vođa. Ne možete voditi ljude koje ne volite. Ne možete služiti svijetu do kojeg vam nije stalo. Vodstvo se ne svodi na titule, položaje ili moć. Vodstvo je stvar srca. Riječ je o prepoznavanju Božje slike u svakoj osobi koju sretnete i postupanju s njom s dostojanstvom, poštovanjem i suosjećanjem. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">To sam naučio kroz putovanja. Svaki prijeđeni kilometar naučio me nečemu novom o Bogu, o drugima i o meni samome. I to me je, više od svega, oblikovalo kao vođu. To je spoznaja da smo svi jedno, svi voljeni od istoga Stvoritelja i svi pozvani hodati u ljubavi i jedinstvu. </p>
+
+            <!-- Citat (Kološanima 3,14) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Kao što nas Pismo tako lijepo podsjeća:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "A povrh svega toga zaodjenite se u ljubav, koja je spona savršenstva.“
+                </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Kološanima 3,14</p>
+            </div>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Ljubav je nit koja sve drži na okupu. Bez nje svo naše znanje, sva naša postignuća i sva naša putovanja ne znače ništa. No s njom uistinu možemo promijeniti svijet — jedno po jedno srce, jedan po jedan susret, jedno po jedno putovanje. To je značenje poruke JJK Forever. </p>
+
+
+            <!-- Q2 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Ljudi Vas opisuju kao "vulkan energije". Odakle svakodnevno crpite tu energiju i strast?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Iskreno, moja energija dolazi od Boga, a posebno iz ljubavi. Kada uistinu volite čovječanstvo i sve što je stvoreno, nikada se ne umarate. Ljubav je izvor, korijen i temelj. Ljubav stvara strast, a strast stvara radost. Ta radost postaje vatra – stvarna, goruća energija koja nikada ne presušuje. To nije nešto što sam proizvodim; to prirodno teče iz srca koje je povezano s izvorom svake ljubavi.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Moja energija dolazi iz Kristove ljubavi. Kada zastanem i jednostavno razmislim o onome što je Krist učinio za mene – o žrtvi koju je podnio, milosti koju je izlio, bezuvjetnoj ljubavi koju je pokazao — moje srce preplavljuje zahvalnost. Ta se zahvalnost pretvara u radost, a ta me radost ispunjava snagom i vitalnošću koju ne mogu objasniti samo ljudskim pojmovima. To je nadnaravna energija, božansko gorivo koje se obnavlja svakoga jutra. Kristova ljubav nije daleki koncept; ona je živa, dišuća stvarnost koja me budi sa svrhom i vodi kroz svaki trenutak dana.  </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Uz taj duhovni temelj, naučio sam da smo pozvani biti dobri upravitelji tijela koje nam je Bog dao. Tjelovježba i meditacija dolijevaju gorivo na energiju koju je ljubav već zapalila. Kada pokrećem svoje tijelo, poštujem hram koji mi je Bog dao. Kada sjedim u tišini i meditiram o Njegovoj Riječi i Njegovoj dobroti, dopuštam svome umu i duhu da se osvježe i napune. Te prakse ne stvaraju energiju same po sebi, već raspiruju plamen koji je ljubav već zapalila u meni. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Sreća i pozitiva nisu stvari koje naganjam; one su prirodni plodovi koji rastu iz te energije ljubavi. Kada vam je život ukorijenjen u ljubavi – ljubavi prema Bogu, ljubavi prema drugima, ljubavi prema sebi kao Božjem stvorenju — ne možete si pomoći a da ne zračite radošću. Ona se prelijeva u sve što radite. Postaje zarazna. Postaje vatra koju drugi vide i opisuju kao vulkan energije. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Za mene je svaki dan dar, a svaka osoba koju sretnem prilika je za dijeljenje te ljubavi. Zato mi ne ponestaje energije. Jer izvor nije samo u meni – on je u vječnom, neiscrpnom izvoru Božje ljubavi.  </p>
+
+            <!-- Citat (Nehemija 8,10) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Kao što Pismo tako snažno objavljuje:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "Radost Gospodnja vaša je snaga.“
+                </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Nehemija 8,10</p>
+            </div>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Taj stih govori sve. Moja snaga ne dolazi iz mojih sposobnosti, mojih napora ili moje snage volje. Dolazi iz radosti koja izvire iz odnosa sa živim Bogom. Kada je Njegova radost vaša snaga, možete se suočiti sa svime, izdržati sve i izlijevati ljubav bez straha da ćete presušiti. To je tajna iza tog vulkana. </p>
+
+
+            <!-- Q3 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Često govorite da je vodstvo zapravo služenje drugima. Što za Vas znači istinsko vodstvo?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b> Dr. Waka Waka:</b> Za mene je istinsko vodstvo ono što nazivam "LOVESHIP“ (vodstvo temeljeno na ljubavi) — prava ljubav izražena kroz djela. To je altruistično vodstvo u kojem vaš cilj nije biti iznad ljudi, već biti upotrijebljen kako biste im pomogli. Pravo vodstvo znači ostaviti ljude boljima nego što smo ih našli i pomoći čovječanstvu da napreduje s dostojanstvom, nadom i svrhom. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Vjerujem da se vođa ne bi trebao usmjeravati isključivo na položaj, titulu ili priznanja. Pravo se vodstvo očituje u služenju: slušanju ljudi, razumijevanju njihovih potreba, ohrabrivanju i stajanju uz njih — sobito kada je teško. Pravo vodstvo izgrađuje ljude. Ono jača obitelji. Ono unaprjeđuje zajednice. Ono pretvara suosjećanje u stvarni utjecaj. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Temelj takvog vodstva jest poniznost. Poniznost je stav osobe koja razumije da sve dobro dolazi od Boga i da je vođa jednostavno sluga s odgovornošću. Zato Biblija uči da je najveći onaj koji služi drugima. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Dakle, za mene je pravo vodstvo služenje s ljubavlju, vođenje s poniznošću i stavljanje dobrobiti ljudi na prvo mjesto — jer se vodstvo ne mjeri time „koliko ste visoko stigli“, već time koliko ste druge uzdignuli. </p>
+
+            <!-- Citat (Marko 10,45) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Kao što Pismo kaže:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "Jer ni Sin Čovječji nije došao da bude služen, nego da služi…“
+                </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Marko 10,45</p>
+            </div>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">To je model pravog vodstva: Krist je služio. I svatko tko Ga uistinu slijedi vodit će na isti način — kroz ljubav, služenje i poniznost.  </p>
+
+            <!-- Q4 (Dance clubs combined) -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: U prošlosti ste bili poznati po svojim plesnim klubovima, koji su bili svojevrsni lijek protiv ovisnosti mladih. Zarađivali ste i do 25.000 dolara mjesečno. Kako je došlo do toga da ste prekinuli taj unosan posao?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Da, moji su plesni klubovi postali prostor iscjeljenja za mnoge mlade ljude. U zajednicama u kojima postoji problem ovisnosti — poput alkohola, pušenja i droge — mladi se često osjećaju zarobljeno, bezvoljno ili bez pozitivnog ispušnog ventila.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Moj je cilj bio pružiti im nešto bolje od ovisnosti: mjesto gdje se mogu izraziti, izgraditi samopouzdanje, naučiti disciplinu i uživati u životu u zdravom okruženju. Ples im je pružio radost, strukturu i osjećaj pripadnosti. Podsjetio ih je da nisu stvoreni da troše svoj potencijal, već da otkriju svoje talente i upotrijebe ih za dobro.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Da, naš je rad bio plodonosan. Klubovi su snažno rasli, a taj se utjecaj odrazio i na potporu koju smo primali. U mnogim je slučajevima taj prihod omogućio nastavak i širenje projekta — jer kada stvorite nešto vrijedno za mlade, ljudi to prepoznaju i podrže. Ali želim biti jasan: svrha nikada nije bila trčanje za novcem.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Nisam prestao zato što projekt nije funkcionirao. Prestao sam zato što me je pokretala ljubav — a ljubav me pozivala da pokrenem novi projekt. Bio sam dirnut onim što sam vidio: mladi su pili, pušili i uzimali drogu ne zato što su željeli uništenje, već zato što nisu imali sigurno, pozitivno mjesto za izražavanje. Nije bilo prostora u kojem bi mladi mogli konstruktivno pronaći sebe. Zato sam dobio nadahnuće stvoriti projekt u kojem bi mladi mogli:</p>
+            <ul class="list-disc pl-8 mb-6 text-gray-300 leading-relaxed space-y-2">
+                <li>izraziti svoje talente (posebno kroz glazbu i ples),</li>
+                <li>razvijati se u pozitivnom okruženju,</li>
+                <li>dobiti poduku, mentorstvo i vodstvo,</li>
+                <li>i graditi budućnost s nadom.</li>
+            </ul>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">A budući da je to bilo povezano i s mojim školskim projektom, funkcioniralo je iznimno dobro. To je bio ključ: kada se obrazovanje i ljubav spoje, promjena postaje stvarna. Kada se ljubav pravilno primijeni, ona može stvoriti „čaroliju“ — ne iluziju, već stvarnu transformaciju. Duboko sam usvojio ovu poruku: ne bismo trebali gledati na ljude samo kao na robu, artikle ili profit, već kroz prizmu ljubavi, ljudske vrijednosti i budućnosti. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Zato sam stvorio taj klub. On je s vremenom ostvario velik prihod — ali ponavljam, nikada se nije radilo o novcu. Radilo se o ljubavi. A ljubav može biti toliko snažna da mijenja vaše želje. Pomaže vam da se usredotočite na svrhu umjesto na pritisak. Kada je ljubav doista u vama, ne možete ni zamisliti život koji se svodi samo na profit. </p>
+
+            <!-- Citat (Timoteju 6,10) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "Jer korijen svih zala jest srebroljublje; za njim povučeni, neki odlutaše od vjere…“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Timoteju 6,10</p>
+                <br><br/>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "Upućuj dijete prema njegovu putu, pa ni u starosti neće odstupiti od njega.“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Mudre izreke 22,6</p>
+            </div>
+
+             <!-- Q5 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Radili ste s vladama, sveučilištima, crkvama, Ujedinjenim narodima i lokalnim zajednicama. Što su vas sva ta različita okruženja naučila o ljudima?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Ono što su me ta različita okruženja naučila jest da su ljudi posvuda u osnovi isti — svi imamo prekrasne duše. Mi smo ljudska bića koja žive u različitim „omotačima kože“, u različitim kulturama i podrijetlima, ali naša je vrijednost univerzalna.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Ono što je zapanjujuće, međutim, jest to što mnoge od tih velikih institucija —bilo da se radi o vladama, sveučilištima ili vjerskim organizacijama — često ne uspijevaju u potpunosti shvatiti jednostavnu istinu: ljubav ne dijeli ljude.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Ljubav vidi čovječanstvo, a ne podjele.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Ipak, još uvijek vidimo sustave koji klasificiraju ljude na temelju rase, etničke pripadnosti, vjere ili podrijetla, a ta klasifikacija stvara razdore — što dovodi do problema poput rasizma, vjerskih predrasuda i nepotrebnih sukoba. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Društvo lako zaboravi da smo jedna obitelj.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Upravo smo zato stvorili inicijativu „JJK Food on a Table“ za sve Božje poljoprivredne zadruge, kako bismo koristili hranu kao most. Vjerujemo da je hrana jedan od najsnažnijih podsjetnika na naše jedinstvo: bez obzira na to odakle netko dolazi, svatko mora jesti da bi preživio. Glad i potreba za svakodnevnom prehranom zajedničke su cijelom čovječanstvu. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Stoga koristimo hranu kako bismo širili i pokazivali jedinstvo kroz ljubav — jer kada ljudi sjednu zajedno, jedu zajedno i surađuju, barijere počinju padati. Obrazovanje je također važno te nastavljamo promicati jedinstvo kroz ljubav, znanje i suradnju. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Moj rad s tim organizacijama otvorio mi je oči — ali i srce — kako bih mogao učiniti više za čovječanstvo. Shvatio sam da se istinski napredak ne svodi samo na politike ili programe; riječ je o načinu razmišljanja prožetom ljubavlju i jedinstvom koji usmjerava naš odnos prema ljudima. </p>            
+
+            <!-- Citat (Psalam  133,1) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    "Gle, kako je dobro i kako je milo kao braća zajedno živjeti!“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Psalm 133,1</p>
+            </div>
+
+            <!-- SLAJDER SLIKA 1 -->
+            <div style="position: relative; width: 100%; margin: 2rem auto;">
+                <div id="waka-gallery-1" style="display: flex; overflow-x: auto; gap: 16px; scroll-behavior: smooth; padding-bottom: 10px; scrollbar-width: none; -ms-overflow-style: none;">
+                    
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint1.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 1" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint2.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 2" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint3.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 3" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint4.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 4" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint5.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 5" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint6.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 6" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint7.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 7" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint8.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 8" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint9.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 9" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint10.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 10" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint11.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 11" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <button onclick="let el=document.getElementById('waka-gallery-1'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft<=10) el.scrollTo({left:max, behavior:'smooth'}); else el.scrollBy({left:-350, behavior:'smooth'});" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-r-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button onclick="let el=document.getElementById('waka-gallery-1'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft>=max-10) el.scrollTo({left:0, behavior:'smooth'}); else el.scrollBy({left:350, behavior:'smooth'});" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-l-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+
+            </div>
+
+            <!-- Q6 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Vaša misija oduvijek povezuje obrazovanje s borbom protiv siromaštva. Zašto vjerujete da su to dvoje nerazdvojni?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Da — mi slijedimo stope Isusa Krista. Dugo sam postavljao vrlo jednostavno pitanje predsjednicima, vođama država, čelnicima organizacija, pa čak i crkvenim vođama:</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">“Da je Isus Krist danas na zemlji, gdje bi bio svakoga dana i što bi radio?“</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">“Gdje bi boravio?“ </p>   
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">To mi je pitanje pomoglo razumjeti kako izgleda prava misija. Od Krista sam naučio da Njegovo suosjećanje nije bilo samo emocionalno — bilo je praktično. Brinuo se za ljude, hranio gladne, ali ih je i poučavao. Nije pružao samo privremenu pomoć; pomagao je ljudima da postanu samoodrživi. Zato slijedim isti put preuzet iz vjere moga oca u Krista: hraniti potrebite i obučavati ljude da stanu na vlastite noge. </p>                     
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Za mene su obrazovanje i borba protiv siromaštva nerazdvojni jer obrazovanje daje ljudima znanje, vještine i samopouzdanje za stvaranje bolje  budućnosti. Borba protiv siromaštva uklanja neposrednu patnju kako bi ljudi uopće mogli učiti, raditi i napredovati. Drugim riječima, mi poučavamo, hranimo i gradimo — sve u ljubavi, kroz konkretna djela.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Čak i u Bibliji vidimo takvo srce služenja. Praotac Abraham bio je poznat po tome što je hranio potrebite te je čak ugostio i anđele. Poruka je jasna: Božja ljubav postaje stvarna kada se izražava kroz brigu i skrb. Biblija uistinu govori o ljubavi — a jedan od načina na koji se ljubav pokazuje jest omogućiti ljudima dostojanstven život: da se mogu dobro hraniti, imati pitku vodu i preživljavati u miru. Kada su ljudi nahranjeni, obrazovani i osnaženi, mir postaje moguć — jer siromaštvo i beznađe često uništavaju mir. No ljubav, obrazovanje i osiguravanje osnovnih potreba taj mir obnavljaju.</p>  
+
+            <!-- Citat (Izaija 58,6-7) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Nije li ovo post koji sam izabrao: raskinuti okove nepravedne... podijeliti kruh svoj s gladnima i uvesti pod krov beskućnike?“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Izaija 58,6-7/p>
+            </div>
+
+            <!-- Q7 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Tijekom života suočili ste se s teškim trenucima, uključujući tešku bolest i osobne izazove. Što vam je pomoglo da nastavite dalje?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Ono što mi je pomoglo da idem naprijed — osobito tijekom bolesti i osobnih izazova — bila je ljubav i vjera u Isusa Krista. Ljubav mi je dala razlog za ustrajnost. Kada je život bio težak, ljubav me podsjećala da nisam sam — da je Bogu stalo i da su drugi ljudi također važni. Ta je ljubav ojačala moje srce i pomogla mi zadržati nadu, čak i onda kada sam bio iscrpljen.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">A moja vjera u Isusa Krista dala mi je smjer. Držao sam se uvjerenja da svaka kušnja ima smisao i da Bog iz slabosti može izvući snagu. Čak i u najmračnijim trenucima vjerovao sam da Bog i dalje djeluje, vodi me i štiti. Nastavio sam dalje jer moj temelj nije bila samo ljudska snaga — bila je to duhovna snaga: Kristova ljubav i vjera da će me On provesti kroz sve.“</p>
+
+            <!-- Citat (Izaija 40,31) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Ali onima što se u Jahvu uzdaju snaga se obnavlja, krila im rastu kao orlovima…“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Izaija 40,31</p>
+            </div>
+
+            <!-- Q8 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Vjera je očito u središtu vašeg života. Kako ona utječe na vaše odluke kao poduzetnika i humanitarca?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Vjera utječe na sve što radim — na moje odluke, moju svrhu i moj način služenja ljudima. Iskreno i ponizno smatram se slugom čovječanstva i prolaznikom na ovoj zemlji. Na ovaj sam svijet došao bez ičega i Bogu ću se vratiti bez ičega. Za mene život i uspjeh nisu vlasništvo — oni su upravljanje onim što nam je povjereno. Sve što radim jest posuđeno vrijeme koje mi je Bog povjerio.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Zato sebe vidim kao cjelovitog socijalnog poduzetnika i profesora po zanimanju. Moja vjera usmjerava način na koji spajam te uloge:</p>
+            <ul class="list-disc pl-8 mb-6 text-gray-300 leading-relaxed space-y-2">
+                <li>Kao poduzetnik, gradim projekte kojima je cilj poboljšati živote — a ne samo ostvariti profit. </li>
+                <li>Kao profesor i edukator, pomažem ljudima steći znanje i vještine kako bi se mogli uzdići.</li>
+                <li>dobiti poduku, mentorstvo i vodstvo,</li>
+                <li>Kao humanitarac, usredotočujem se na suosjećanje i praktičnu podršku, jer ljubav mora postati djelo.</li>
+            </ul>
+
+            <!-- Citat (Korinćanima  10,31) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Dakle, ili jeli, ili pili, ili drugo što činili, sve na slavu Božju činite.“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 1. Korinćanima 10,31</p>
+            </div>
+
+            <!-- Q9 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Često govorite o davanju umjesto primanja. Može li u današnjem poslovnom svijetu velikodušnost biti i konkurentska prednost?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Da — velikodušnost u Kristu apsolutno može biti konkurentska prednost, ali ne na način na koji ljudi obično misle. U poslovnom svijetu mnogi se natječu za novac, klijente i imidž. No prava konkurentnost, po mome mišljenju, proizlazi iz povjerenja i vrijednosti ukorijenjenih u ljubavi prema Bogu i čovječanstvu, koje stvarate kada odaberete velikodušnost.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Kada dajete — bilo da je riječ o znanju, podršci, partnerstvima, obuci ili poštenom tretmanu — gradite vjerodostojnost. Ljudi pamte kako su se osjećali uz vas i kako ste im pomogli da rastu. Ta vrsta ugleda postaje snaga koju novac ne može brzo kupiti. Velikodušnost također gradi dugoročne odnose. Prema mom iskustvu, poduzeća koja posluju s ljubavlju i integritetom privlače vjerne partnere, zaposlenike i zajednice. Ljudi žele raditi s nekim koga ne zanima samo profit, već i ljudi. Ono što je najvažnije, velikodušnost vas usklađuje sa svrhom. Kada vam je motivacija služenje, postajete dosljedniji, strpljiviji i otporniji. A to stvara održiv uspjeh.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Dakle, da, velikodušnost može biti konkurentska prednost — ali najveća prednost je ova: pridobivate srca ljudi za Isusa, a to je ono što stvara trajni utjecaj.</p>
+
+
+            <!-- Citat (Korinćanima  9,7) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Svatko neka dade kako je u srcu odlučio; ne sa žalošću ili na silu, jer Bog ljubi vesela darivatelja.“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 2. Korinćanima 9,7</p>
+            </div>
+
+            <!-- Q10 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Pomogli ste studentima da ostvare obrazovne prilike i podržali zajednice kroz prehrambene i poljoprivredne inicijative. Koja vam je priča o uspjehu najviše dirnula srce?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Mnogo je priča o uspjehu koje diraju moje srce, no jedna se posebno ističe. To je trenutak kada vidim svoje studente — kojima mi je Bog omogućio pomoći — kako postaju liječnici i zatim se vraćaju u svoje zajednice služiti ljudima iz kojih su potekli.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Sjećam se teškog položaja mnogih trudnica u tim zajednicama. U prošlosti su neke od njih umirale jednostavno zato što nije bilo pristupa odgovarajućoj medicinskoj skrbi. Kada su se ti studenti vratili kao liječnici, ishod se promijenio. Životi koji bi bili izgubljeni, spašeni su. Kada tome svjedočim, to me čini uistinu sretnim — jer vidim kako se vrijednost obrazovanja pretvara u stvarno iscjeljenje.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Druga priča o uspjehu koja mi donosi radost jest gledati studente kako grade poljoprivredna poduzeća. Predivno je vidjeti ih kako počinju prehranjivati svoje obitelji, stvarati radna mjesta i jačati svoje zajednice. Kada ljudi dobiju bolje poslove zahvaljujući kvalitetnoj obuci — osobito kroz studij u inozemstvu — to postaje dokaz da obrazovanje može transformirati ne samo pojedince već i čitava društva. Pomogli smo poslati više od 7.000 studenata u inozemstvo na visoko obrazovanje i doista postoji previše nevjerojatnih priča sa specifičnim utjecajem svake osobe. </p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> No iznad svega, najvažnija stvar za mene nisu samo diplome ili projekti. Ono što me najviše dira jest osmijeh — a osobito kada ih vidim kako zahvaljuju Svemogućem Bogu. Taj me osmijeh podsjeća da svrha nije samo uspjeh prema ljudskim mjerilima, već uspjeh praćen zahvalnošću, ljubavlju i služenjem. Dakle, da — priča je mnogo — ali najveća je radost vidjeti spašene živote, osnažene ljude i Boga proslavljenog kroz ono što čine.</p>
+
+            <!-- Citat (Danijel  12,3) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Umnici će blistati kao sjajni nebeski svod, i koji su mnoge učili pravednosti, kao zvijezde navijeke, u svu vječnost.“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 2. Danijel  12,3</p>
+            </div>
+
+            <!-- Q11 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kad biste u sljedećih deset godina mogli riješiti jedan globalni problem, što bi to bilo?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b>  Kad bih u sljedećih deset godina mogao riješiti jedan globalni problem, to bi bila glad i nedostatak kvalitetnog obrazovanja — za sve. Jer kada ljudi nemaju hrane, ne mogu razmišljati, učiti, raditi niti se razvijati. A kada ljudi nemaju obrazovanje, ostaju zarobljeni u siromaštvu i beznađu. Stoga su za mene glad i obrazovna nejednakost duboko povezani.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">  Ali ne želim te probleme rješavati samo programima — želim ih rješavati s ljubavlju, harmonijom i jedinstvom među svim rasama i narodima. Želim svijet u kojem ljudi mogu živjeti dostojanstveno, učiti sa samopouzdanjem i zajedno graditi budućnost.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">  Moja je nada jednostavna: želim vidjeti sve ljude sretne i spašene u Isusu Kristu. Kada ljudi iskuse Božju ljubav, to mijenja srca — a kada se srca promijene, mijenjaju se i zajednice. Moja je vizija stoga jasna: iskorijeniti glad, osigurati pristup kvalitetnom obrazovanju za sve i promicati jedinstvo u ljubavi — kako bi čovječanstvo moglo ići naprijed u miru, nadi i spasenju.</p>
+
+            <!-- Citat (Mudre izreke 2,6) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “Jer Jahve daje mudrost, iz njegovih usta dolazi znanje i razboritost.“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Mudre izreke 2,6</p>
+            </div> 
+
+            
+            <h3 class="text-3xl font-black text-white pt-8 mb-8 border-b border-gray-700 pb-4">II. Tehnologija, poljoprivreda i SFT21</h3>
+
+            <!-- GLAVNI VIDEO PLAYER 
+            <div class="hero-video-wrapper my-8" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 0 30px rgba(128, 255, 0, 0.2); border: 2px solid #80ff00;">
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    src="YOUR_VIDEO_URL_HERE" 
+                    title="Intervju - Dr. Hugues Pierre Ngatchou" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>-->
+
+            <!-- Q12 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Mnogi ljudi vide tehnologiju i poljoprivredu kao potpuno različite svjetove, ali Vi kombinirate umjetnu inteligenciju (AI), blockchain, edukaciju i poljoprivredu. Zašto to pripada zajedno?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Zato što za mene tehnologija i poljoprivreda nisu odvojeni svjetovi – oni su dio iste Božje misije služenja istim ljudima.. Poljoprivreda je temelj života; ona počinje od Boga, kako je objašnjeno u Bibliji. Ona hrani zajednice, uzdržava obitelji i može izvući čitave regije iz siromaštva. No poljoprivreda se danas često bori s problemima poput niske produktivnosti, netransparentnosti, slabog pristupa tržištima i ograničene obuke — osobito za poljoprivrednike i mlade.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Umjetna inteligencija (AI) pomaže u donošenju boljih odluka — boljem planiranju, predviđanju i razumijevanju usjeva i klime, kako bi poljoprivrednici proizvodili više uz manje otpada.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Blockchain donosi transparentnost i povjerenje u poljoprivredu — omogućujući zadrugama, poljoprivrednicima i kupcima pravedno praćenje informacija te smanjenje prijevara i izrabljivanja.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Obrazovanje čini tehnologiju primjenjivom, jer su alati korisni samo ako ljudi razumiju kako ih koristiti. Obrazovanje obučava poljoprivrednike,  podučava poslovne vještine i osnažuje mlade da sami vode svoj uspjeh.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Spajam ih jer vjerujem da cilj nije samo uzgoj usjeva — cilj je razvijati ljudske kapacitete. Cilj je stvoriti sustave u kojima se poljoprivrednici poštuju, zadruge su snažne, a mladi mogu graditi održive karijere u agrobiznisu. No ponavljam, govorim o dobroj, zdravijoj hrani za tijelo, um i dušu.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Ukratko: poljoprivreda osigurava hranu; obrazovanje pruža vještine; a tehnologija omogućuje učinkovitost i transparentnost. Kada se to spoji, glad se smanjuje, prihodi rastu, a zajednice postaju snažnije.</p>
+
+            <!-- Citat (Korinćanima 14,33) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “Jer Bog nije Bog nereda, nego mira…“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Korinćanima 14,33</p>
+            </div>  
+
+            <!-- Q13 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako tehnologija može postati alat koji služi običnim ljudima, a ne samo velikim korporacijama?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Tehnologija treba služiti običnim ljudima jer time poštujemo njezinu pravu svrhu. Vjerujem da nam je Bog dao tehnologiju kako bi pomogao čovječanstvu — da bismo bolje voljeli jedni druge, surađivali i zajedno gradili budućnost. Tehnologija ne služi samo stjecanju moći ili profita. Ona služi napretku sa svrhom: poboljšanju života, smanjenju patnje i stvaranju prilika za svakoga — a ne samo za nekolicinu.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Kada tehnologiju koriste isključivo velike korporacije, ona se često usmjerava na pohlepu, sebične interese i profit na štetu zajednica. To stvara nejednakost — digitalni jaz, nepravedan pristup i sustave u kojima bogati postaju još bogatiji, dok obični ljudi ostaju isključeni. Zato tehnologija mora biti vođena vrijednostima: ljubavlju, pravdom i odgovornošću. Potrebni su nam alati koji su dostupni, pristupačni i stvoreni imajući na umu zajednice — posebno na poljoprivrednike, studente, poduzetnike i obitelji koje svakodnevno naporno rade.Tako tehnologija postaje blagoslov: kada pomaže ljudima da se uzdignu s dostojanstvom, kada dijeli prilike i kada jača jedinstvo umjesto podjela.</p>
+
+            <!-- Citat (Ptrova 4,10) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “Jedni druge poslužujte – svatko po primljenom daru – kao dobri upravitelji različite Božje milosti!“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 1. Petrova 4,10</p> 
+            </div>  
+
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    Odabrani ste za Predsjednika za globalni razvoj u SFT21. Što Vas je uvjerilo da ovaj projekt zaslužuje Vaše povjerenje?
+                </p>
+            </blockquote>
+
+            <!-- Q14 -->
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Moje putovanje sa SFT21 počelo je preko pouzdane prijateljice, Vas, Glorie (Sanje), koja je sa mnom podijelila srce i viziju ove organizacije. Govorili ste mi ne samo o programima ili planovima, već o vrijednostima – i to je privuklo moju pažnju.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Uzeo sam si vremena da duboko istražim SFT21. Želio sam razumjeti što pokreće ovu organizaciju, za što se zalaže i kamo ide. Ono što sam otkrio rezoniralo je sa mnom na najdubljoj razini: vrijednosti SFT21 savršeno su usklađene s mojim osobnim vrijednostima i misijom kojoj sam posvetio život.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6 font-bold text-white">Najvažnija stvar koja me uvjerila jest ova – SFT21 stavlja Ljubav na prvo mjesto. U svijetu gdje mnoge organizacije daju prioritet moći, profitu ili prestižu, pronaći tim koji iskreno stavlja čovjeka i ljubav u središte globalnog razvoja je rijetko i dragocjeno. Za njih ljubav nije samo riječ; ona je temelj njihova djelovanja, služenja i vizije budućnosti.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Zato sam donio odluku raditi s tim ljudima. Vjerujem da kada ljubav vodi, preobrazba slijedi. Kada je ljubav temelj, razvoj postaje cjelovit — dotičući ne samo gospodarstva i infrastrukturu, već i srca, zajednice i naraštaje.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Počašćen sam što služim kao predsjednik za globalni razvoj i uvjeren sam da ćemo zajedno, s ljubavlju kao vodiljom, izgraditi nešto uistinu značajno za čovječanstvo.</p> 
+
+            <!-- Citat (1. Korinćanima  13,13) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “A sada ostaje vjera, ufanje i ljubav, ovo troje; ali najveća je među njima ljubav.“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 1. Korinćanima 13,13</p> 
+            </div>    
+            
+            <!-- Q15 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koji su vaši prioriteti za prvu godinu na ovoj funkciji?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Moji prioriteti za prvu godinu su jasni i ukorijenjeni u svrsi.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Prvo, usredotočit ću se na izgradnju mostova — mostova među ljudima svih rasa, svih regija i svih podrijetla unutar organizacije. Jedinstvo ne dolazi automatski; mora se graditi namjerno, s poštovanjem, dijalogom i iskrenom povezanošću. Želim stvoriti okruženje u kojem se svatko osjeća viđenim, saslušanim i cijenjenim kao dio jedne obitelji sa zajedničkom misijom.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Drugo, radit ću na stvaranju veće solidarnosti. Solidarnost znači da ne radimo samo jedni uz druge — mi stojimo jedni uz druge. Dijelimo terete, slavimo pobjede zajedno i idemo naprijed kao jedno tijelo. Kada je solidarnost snažna, nijedan izazov nije prevelik i nijedna zajednica ne biva zapostavljena.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Treće, obvezujem se voditi vlastitim primjerom. Ne vjerujem u vođenje s distance ili samo riječima. Pravo vodstvo je vidljivo, ponizno i aktivno. Bit ću prisutan, služit ću i pokazivati vrijednosti koje propovijedamo — ljubav, integritet, naporan rad i suosjećanje. Ljudi ne slijede samo titulu, već svjedočanstvo života.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Ova tri prioriteta — mostovi, solidarnost i primjer — vodit će svaku moju odluku u ovoj prvoj godini i nadalje.</p>
+
+            <!-- Citat (Efežanima 4,2-3) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “Sa svom poniznošću i blagošću, sa strpljivošću podupirite jedni druge u ljubavi; trudite se sačuvati jedinstvo Duha svezom mira!“</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Efežanima 4,2-3</p>
+            </div>  
+            
+
+            <!-- Q16 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Radili ste diljem Afrike, Sjeverne Amerike i Azije. Koje prilike vidite za snažniju suradnju između Afrike i Europe?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Radeći diljem Afrike, Sjeverne Amerike i Azije, iz prve sam ruke vidio da nijedan kontinent ne može napredovati u izolaciji. Budućnost pripada partnerstvima izgrađenima na međusobnom poštovanju, zajedničkim vrijednostima i zajedničkoj svrsi.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Između Afrike i Europe vidim izvanredne mogućnosti za jaču suradnju u nekoliko ključnih područja:</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> 1.  Agrobiznis i sigurnost hrane (organska hrana): Afrika ima ogromne površine obradive zemlje, mladu radnu snagu i rastuća tržišta. Europa posjeduje  naprednu poljoprivrednu tehnologiju, istraživačke kapacitete i stručnost u opskrbnim lancima. Kada se te snage spoje — ne kroz izrabljivanje, već kroz pošteno partnerstvo — oba kontinenta imaju koristi. Afrika može povećati proizvodnju hrane i smanjiti glad, dok Europa dobiva pouzdane, održive partnere u globalnim prehrambenim sustavima.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> 2.  Obrazovanje i razvoj vještina: Afrička populacija mladih jedna je od najvećih na svijetu, puna potencijala i ambicije. Europa ima svjetski priznata sveučilišta, modele strukovnog obrazovanja i inovacijske centre.  Stvaranjem programa razmjene, mogućnosti stipendiranja i zajedničkih istraživačkih inicijativa možemo opremiti novu generaciju vođa koji razumiju oba kontinenta i mogu graditi mostove među njima.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> 3.  Tehnologija i digitalna transformacija: Afrika bilježi golem skok u mobilnoj tehnologiji, finteku i digitalnom poduzetništvu. Europa posjeduje duboko iskustvo u infrastrukturi, regulativi i skaliranju tehnoloških poduzeća. Suradnja na ovom području može ubrzati digitalnu uključenost, stvoriti radna mjesta i osigurati da tehnologija služi običnim ljudima — a ne samo korporacijama.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> 4.  Obnovljivi izvori energije i klimatsko djelovanje: Afrika je bogata sunčevom energijom, vjetrom i hidroresursima. Europa ima investicijske kapacitete i tehničku stručnost za podršku tranziciji na zelenu energiju. Zajedno možemo izgraditi održive energetske sustave koji štite planet i potiču gospodarski rast.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> No iznad svih ovih sektora, najveća je prilika promjena načina razmišljanja. Suradnja mora prijeći s milodara i ovisnosti na istinsko partnerstvo i zajedničko stvaranje. Afrika nije problem koji treba riješiti; ona je kontinent rješenja, inovacija i otpornosti. Europa mora vidjeti Afriku kao ravnopravnog partnera, a Afrika se mora nastaviti uzdizati sa samopouzdanjem i vizijom.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Kada oba kontinenta surađuju s ljubavlju, poštovanjem i zajedničkim ciljevima, možemo stvoriti budućnost u kojoj se svatko hrani, svatko uči i svatko živi dostojanstveno.</p>
+
+            <!-- Citat (Propovjednik  4,9) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                   “Bolje je dvojici nego jednome, jer imaju bolju plaću za svoj trud.“</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Propovjednik  4,9</p>
+            </div>  
+
+            <!-- Q17 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koliko je važno graditi partnerstva koja stvaraju prilike izravno za lokalne proizvođače i poduzetnike?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> U posvećenom radu Duhovne zadruge za agrobiznis “JJK Spiritual Cooperative of Agribusiness“, izgradnja partnerstava između Afrike i Europe koja stvaraju izravne prilike za lokalne proizvođače i poduzetnike nije samo poslovna transakcija — to je božanski mandat.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Kada premostimo bogatu zemlju i nesalomljivi duh afričkih poljoprivrednika s europskim tržištima, uzgajamo mnogo više od samih usjeva; njegujemo dostojanstvo, samoodrživost i nasljeđe zajedničkog obilja.</p>
+
+            <!-- Citat (Propovjednik  4, 9-10) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Pismo snažno potvrđuje ovu istinu:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Bolje je dvojici nego jednome, jer imaju bolju plaću za svoj trud: padne li jedan, drugi će ga podići.“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Propovjednik  4, 9-10</p>
+            </div> 
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Kroz ovu zadrugu svako partnerstvo postaje savez uzajamnog podizanja — gdje se sadi sjeme vjere, žanje se žetva nade, a oba se kontinenta uzdižu zajedno, ukorijenjena u integritetu i blagoslovljena suradnjom. </p>
+
+            
+            <!-- SLIDER 2 -->
+            <div style="position: relative; width: 100%; margin: 2rem auto;">
+                <div id="waka-gallery-2" style="display: flex; overflow-x: auto; gap: 16px; scroll-behavior: smooth; padding-bottom: 10px; scrollbar-width: none; -ms-overflow-style: none;">
+                    
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint24.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 24" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint22.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 22" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint23.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Slika 23" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint12.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 12" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint13.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 13" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint14.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 14" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint15.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 15" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint16.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 16" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint17.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 17" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint18.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 18" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint19.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 19" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint20.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 20" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint21.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 21" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint25.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 25" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint26.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 26" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/wakaint27.png" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Image 27" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <button onclick="let el=document.getElementById('waka-gallery-2'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft<=10) el.scrollTo({left:max, behavior:'smooth'}); else el.scrollBy({left:-350, behavior:'smooth'});" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-r-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button onclick="let el=document.getElementById('waka-gallery-2'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft>=max-10) el.scrollTo({left:0, behavior:'smooth'}); else el.scrollBy({left:350, behavior:'smooth'});" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-l-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+
+            </div>
+
+            <h3 class="text-3xl font-black text-white pt-8 mb-8 border-b border-gray-700 pb-4">III. Suradnja i mudrost za nove generacije</h3>
+
+
+            <!-- Q18 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koje kvalitete tražite pri odabiru ljudi s kojima ćete surađivati?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Osobno gledam u srce osobe.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> U Duhovnoj zadruzi za agrobiznis JJK tražimo duše čija srca preplavljuju obilna ljubav prema Bogu i iskrena ljubav prema čovječanstvu. Osim vještina i iskustva, tražimo one koji nose duh služenja — poniznost, integritet, otpornost i duboko ukorijenjenu predanost uzdizanju drugih dok zajedno rastemo.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Kada biramo partnere, ne biramo samo kolege; gradimo obitelj upravitelja vođenih vjerom, ujedinjenih diljem Afrike i Europe kako bismo posijali sjeme transformacije na svakom polju i u svakom životu kojeg se dotaknemo.</p>
+
+            <!-- Citat (Matej  22,37.39) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Pismo nas podsjeća na jednu kvalitetu iz koje proizlaze sve ostale:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Ljubi Gospodina Boga svojega svim srcem svojim i svom dušom svojom i svim umom svojim… Ljubi svoga bližnjega kao sebe samoga.“ </p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Matej  22,37.39</p>
+            </div> 
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> S ovim svetim temeljem, svaka ruka koja se pridruži našoj postaje instrument milosti, pretvarajući običan rad u žetvu nade za generacije.</p>
+
+            <!-- Q19 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Koji biste savjet dali mladim poduzetnicima koji imaju san, ali im nedostaju resursi?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Svakom mladom poduzetniku čiji se san čini većim od raspoloživih resursa poručujemo: počnite tu gdje jeste, s onim što imate i s vjerom da Bog umnaža i ono malo što se stavi u voljne ruke.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> U Duhovnoj zadruzi JJK vidjeli smo da su veličina vašeg srca i jasnoća vaše svrhe daleko važniji od veličine vašeg početnog kapitala. Nemojte prezirati sjeme ideje posađeno u vjeri — njegujte ga disciplinom, tražite mudra partnerstva diljem Afrike i Europe i vjerujte da je svaka velika žetva nekoć započela kao jedno skriveno zrno.</p>
+
+            <!-- Citat (Zaharija  4,10) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Neka ova istina usidri vašu dušu:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Jer tko je prezreo dan skromnih početaka? Radovat će se videći visak u ruci Zerubabelovoj…“</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Zaharija  4,10</p>
+            </div> 
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Vaš san nije teret; on je poziv. Ustanite s hrabrošću, okružite se onima koji ljube Boga i čovječanstvo i gledajte kako nebo i zemlja surađuju kako bi vašu viziju oživjeli.</p>
+
+            <!-- Q20 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kako ostajete optimistični tijekom teških trenutaka?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Optimizam usred kušnji nije prolazna emocija — to je duhovna disciplina.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Ostajem usidren čitajući Bibliju, ljubeći Boga svim svojim srcem i ljubeći svoga bližnjega kao samoga sebe. Snagu nalazim u glazbi i poniznom služenju, prepoznajući da me svaki čin nesebičnog služenja približava Kristovu srcu. I održavam nadu živom hraneći potrebite, jer nema većeg lijeka protiv očaja od toga da postanete kanal providnosti za nekoga drugoga.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> U partnerstvu Afrike i Europe koje njegujemo kroz ovu zadrugu, ove tri svete prakse — ljubav, poniznost i velikodušnost — pretvaraju svako razdoblje nevolje u plodno tlo za čuda.</p>
+
+            <!-- Citat (Mihej  6,8) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic">Božja Riječ savršeno osvjetljava ovaj put:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Objavljeno ti je, čovječe, što je dobro, što Jahve traži od tebe: samo činiti pravicu, ljubiti milosrđe i smjerno hoditi s Bogom svojim.“</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Mihej  6,8</p>
+            </div> 
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Kada se predajemo Bogu i drugima, čak i najmračnije doline postaju vrata prema svjetlijoj žetvi.</p>
+
+            <!-- Brza pitanja -->
+            <div class="bg-gray-800 bg-opacity-40 p-6 rounded-xl border border-gray-700 my-10">
+                <h4 class="text-lg font-bold text-white mb-4 uppercase tracking-widest border-b border-gray-600 pb-2">Blic pitanja:</h4>
+                <ul class="text-gray-300 space-y-3">
+                    <li><span class="text-fluorescent-green font-bold">Kava ili čaj?</span> > Čaj od limunske trave.</li>
+                    <li><span class="text-fluorescent-green font-bold">Rano jutro ili kasna noć?</span> > Oboje.</li>
+                    <li><span class="text-fluorescent-green font-bold">Knjige ili podcasti?</span> > Oboje.</li>
+                    <li><span class="text-fluorescent-green font-bold">Zemlja koju svatko treba posjetiti?</span> > Posjetite svijet. Molim vas.</li>
+                    <li><span class="text-fluorescent-green font-bold">Jedna navika koja vam je promijenila život? </span> > Meditiranje u Svemogućem BOGU</li>
+                    <li><span class="text-fluorescent-green font-bold">Jedna rečenica koja opisuje vašu misiju?  </span> > Samo Kralj Isus Zauvijek, LJUBAV djelima (Just Jesus King Forever, LOVE by actions)</li>
+                    <li><span class="text-fluorescent-green font-bold">Što Vas svakodnevno inspirira?</span> > Dijeljenje ljubavi, poput širenja virusa koji iscjeljuje čovječanstvo.</li>
+                </ul>
+            </div>
+
+            <!-- Q21 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: Kad biste mogli ostaviti jednu poruku ljudima koji čitaju ovaj intervju, što biste voljeli da zapamte?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Volite život strastveno i živite svaki dan kao da vam je posljednji na ovoj zemlji — s nepokolebljivom sviješću da Isus Krist upravo sada hoda pokraj vas. Neka ova sveta hitnost preobrazi svaki običan trenutak u dar ljubavi, svrhe i služenja.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> Na poljima Afrike, na tržištima Europe i gdje god se odvijalo vaše vlastito putovanje, prigrlite dar današnjeg dana bez straha, sa srcem potpuno otvorenim Bogu i ljudima koje On stavlja na vaš put. Kraljevstvo Božje je unutar vas samih.</p>
+
+            <!-- Citat (Psalam  90,12) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic"Pismo utiskuje ovu istinu u naše duše:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “Nauči nas dane naše brojiti, da stečemo mudro srce.“</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— Psalam  90,12</p>
+            </div> 
+            
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">Neka ovo bude nasljeđe koje nosite: život toliko usidren u Kristu da svaki izlazak sunca postaje sveti poziv na ljubav, darivanje i život bez žaljenja. </p>
+
+            <!-- Q22 -->
+            <h4 class="text-xl font-bold text-fluorescent-green mt-8 mb-3">Sanja: I za kraj, što za Vas znači uspjeh – ne u poslu, nego u životu?</h4>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"><b>Dr. Waka Waka:</b> Uspjeh se, u najistinitijem smislu, ne mjeri bogatstvom ili priznanjima, već tihom, svakodnevnom predanošću da dam sve od sebe kako bih nekoga usrećio i kako bih usrećio svoga Boga.</p>
+            <p class="text-gray-300 leading-relaxed text-justify mb-6"> To znači buditi se svakog jutra s jednom svetom misijom: podijeliti najbolji dar koji sam ikada primio — dar ljubavi. Bilo u dvorani za sastanke, na poljoprivrednom polju ili u jednostavnom razgovoru, ako sam iskreno volio i izmamio osmijeh na lice drugoga, već sam uspio. Jer na kraju, život proveden u ljubavi jedino je nasljeđe koje odjekuje u vječnosti.</p>
+
+            <!-- Citat (1. Korinćanima  13,13) -->
+            <div class="my-10 p-6 rounded-lg bg-black/20" style="border: 1px solid #80ff00; box-shadow: 0 0 15px rgba(128, 255, 0, 0.05);">
+                <p class="text-gray-400 text-sm mb-2 italic"Pismo utiskuje ovu istinu u naše duše:</p>
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    “A sada ostaje vjera, ufanje i ljubav, ovo troje; ali najveća je među njima ljubav.“</p>
+                <p class="text-right text-fluorescent-green font-bold mt-3 text-sm">— 1. Korinćanima  13,13</p>
+            </div> 
+            
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">To je moja definicija uspjeha — voljeti Boga ljubeći Njegov narod i dopustiti da ta ljubav bude žetva koja hrani svijet. </p>
+
+
+            <div class="text-center pt-8 border-t border-gray-700 mt-10">
+                <p class="text-2xl text-white font-black mb-4 uppercase tracking-widest">Globalna ekspanzija je započela.</p>
+                
+                <p class="mt-4">S entuzijazmom i vjerom u bolje sutra,</p>
+                <p class="font-semibold text-purple-400 text-lg mt-2 mb-4">Semper Fidelis</p>
+                <p class="text-white font-bold">Mladen Pejić i Zoran Lazarević</p>
+                <p class="text-sm text-gray-400">Osnivači, SFT21 LLC</p>
+            </div>
+            
+            <footer class="mt-12 pt-6 border-t border-gray-700">
+                <p class="hashtag-container text-sm text-center">
+                    #SFT21 #JJKInternational #DrWakaWaka #SanjaAndrijicMarinovic #GlobalExpansion #Interview #Agribusiness
+                </p>
+            </footer>
+        `
     }
-];
+]; 
