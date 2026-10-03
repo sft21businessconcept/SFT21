@@ -1704,5 +1704,192 @@ const sfNews = [
                 </p>
             </footer>
         `
+    },
+    {
+        id: 11,
+        title: "EKSKLUZIVNA PRILIKA",
+        date: "", 
+        imageSrc: "", 
+        shortTitle: "Monte-Carlo Business Club",
+        contentHTML: `
+            <!-- SAKRIVANJE AUTO-GENERIRANOG DATUMA NA VRHU -->
+            <style>
+                .main-article-container header p { display: none !important; }
+                #mc-gallery::-webkit-scrollbar { display: none; }
+            </style>
+
+            <!-- ZELENI TEKST ODMAH ISPOD GLAVNOG NASLOVA (ZA BROJ MANJI) -->
+            <h2 class="text-2xl md:text-4xl font-bold text-fluorescent-green text-center uppercase tracking-wide mb-6 mt-[-10px]">
+                ULAZAK U ELITNI BUSINESS CLUB
+            </h2>
+
+            <!-- BIJELI PODNASLOV -->
+            <h3 class="text-center mb-6 leading-snug">
+                <span class="block text-3xl md:text-5xl font-black text-white mb-3 tracking-wide uppercase">
+                    MONTE-CARLO COMMITTEE
+                </span>
+                <span class="block text-lg md:text-2xl font-bold text-fluorescent-green">
+                    Povlašteno članstvo uz 50% popusta ekskluzivno za članove SFT21 zajednice
+                </span>
+            </h3>
+
+            <!-- DATUM -->
+            <p class="text-sm text-gray-500 mt-2 mb-8 text-center font-mono">Objavljeno: 03. Listopad 2026.</p>
+
+            <!-- NASLOVNA SLIKA -->
+            <div class="text-center mb-12">
+                <img src="img/MC_Committee_2.jpg" alt="Monte-Carlo Committee" class="mx-auto max-h-120 w-auto object-contain rounded-xl shadow-2xl border border-white/10 cursor-pointer" onclick="openModal(this.src)">
+            </div>
+
+            <!-- UVODNI TEKST -->
+            <p class="font-semibold text-white text-lg">Dragi članovi, franšizeri i partneri SFT21 zajednice,</p>
+            
+            <p class="mt-4 text-gray-300 text-justify leading-relaxed">
+                Nakon povijesnog ulaska gospodina <b>Domizia Ciprianija</b> na poziciju našeg prvog Ambasadora, plodovi te suradnje i strateške sinergije donose nam prvu veliku, opipljivu i ekskluzivnu priliku. S ponosom objavljujemo otvaranje vrata jednog od najelitnijih privatnih poslovnih klubova na svijetu – <b>Monte-Carlo Committee Business Cluba</b> – izravno za članove naše SFT21 zajednice.
+            </p>
+
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
+                <p class="text-xl font-bold text-white italic">
+                    "Redovna godišnja članarina u ovom prestižnom klubu iznosi 1.500 €. Međutim, zahvaljujući izravnom dogovoru s gospodinom Ciprianijem, članovi SFT21 zajednice ostvaruju povlašteni status i popust od čak 50% – ulazak uz članarinu od samo 750 €!"
+                </p>
+            </blockquote>
+
+            <h3 class="text-3xl font-black text-white pt-4 mb-8 border-b border-gray-700 pb-4">Što je Monte-Carlo Committee?</h3>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">
+                Smješten u samom srcu Kneževine Monako (<i>19 galerie Charles III, Le Metropole, 98000 Monaco</i>), <b>Monte-Carlo Committee</b> djeluje kao službeni <i>Think Tank</i> Svjetske konfederacije Reda templara. To je zatvorena, visoko etička platforma koja okuplja međunarodne lidere, investitore, poduzetnike i vizionare najvišeg kalibra.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                <div class="p-6 bg-black/30 border border-dim rounded-xl">
+                    <h4 class="text-lg font-bold text-fluorescent-green mb-3 uppercase tracking-wider"><i class="fas fa-bullseye mr-2"></i> Područja fokusa:</h4>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li>• <b>35%</b> Etičke financije i investicije</li>
+                        <li>• <b>25%</b> Geopolitika i međunarodni odnosi</li>
+                        <li>• <b>20%</b> Nasljeđe i filantropija</li>
+                        <li>• <b>20%</b> Inovacije i održivost</li>
+                    </ul>
+                </div>
+                <div class="p-6 bg-black/30 border border-dim rounded-xl">
+                    <h4 class="text-lg font-bold text-fluorescent-green mb-3 uppercase tracking-wider"><i class="fas fa-shield-alt mr-2"></i> 100% Etičke vrijednosti:</h4>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li>• Rigorozan proces selekcije članova</li>
+                        <li>• Izvanredna poslovna postignuća</li>
+                        <li>• Intelektualni i društveni utjecaj</li>
+                        <li>• Apsolutna diskrecija i povjerljivost</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- GLAVNI VIDEO PLAYER -->
+            <h3 class="text-2xl font-bold text-fluorescent-green pt-8 mb-4 text-center uppercase tracking-wide">Pogledajte ekskluzivni video prikaz</h3>
+            <div class="hero-video-wrapper my-8" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 0 30px rgba(128, 255, 0, 0.2); border: 2px solid #80ff00;">
+                <!-- Ovdje ubaci ID YouTube videa ili putanju do MP4 datoteke -->
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    src="https://www.youtube.com/embed/V7w4VUFXnJ4" 
+                    title="Monte-Carlo Committee Business Club" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h3 class="text-3xl font-black text-white pt-8 mb-6 border-b border-gray-700 pb-4">Povlastice članstva i Plan aktivnosti (Roadmap)</h3>
+
+            <p class="text-gray-300 leading-relaxed text-justify mb-6">
+                Kao član Monte-Carlo Committeeja ne kupujete samo člansku iskaznicu – ulazite u prostor gdje se sklapaju poslovi najviše razine, sudjeluje na privatnim simpozijima, svečanim galama na Francuskoj rivijeri te stječe pristup naprednim edukacijama koje nisu dostupne javnosti:
+            </p>
+
+            <div class="space-y-4 my-6 text-gray-300">
+                <div class="p-4 bg-gray-800/40 border-l-4 border-fluorescent-green rounded-r-lg">
+                    <p class="font-bold text-white text-base">Poslovni doručak & Konvocacija članova (Prosinac 2026.)</p>
+                    <p class="text-sm mt-1">Ekskluzivno okupljanje članova u dvoranama Akademije u Monaku, razmjena projekata i umrežavanje s elitnim investitorima.</p>
+                </div>
+
+                <div class="p-4 bg-gray-800/40 border-l-4 border-purple-500 rounded-r-lg">
+                    <p class="font-bold text-white text-base">Visoka edukacija: Fiducijarno upravljanje & Izvanredne financije (Veljača 2027.)</p>
+                    <p class="text-sm mt-1">Stručni seminari o strukturiranju trustova, M&A procesima i međunarodnom poreznom usklađenju koje vode vodeći međunarodni eksperti.</p>
+                </div>
+
+                <div class="p-4 bg-gray-800/40 border-l-4 border-yellow-500 rounded-r-lg">
+                    <p class="font-bold text-white text-base">Iskustveni seminar: Kvantne znanosti i Drevna znanja (Svibanj 2027.)</p>
+                    <p class="text-sm mt-1">Jedinstven spoj moderne znanosti, bio-rezonance i drevnih templarskih tradicija primijenjenih u vođenju i osobnom razvoju.</p>
+                </div>
+            </div>
+
+            <div class="p-6 bg-black/40 border border-dim rounded-xl my-10 text-center">
+                <h4 class="text-2xl font-black text-white mb-2 uppercase tracking-wide">Kako ostvariti povlašteni pristup?</h4>
+                <p class="text-gray-300 max-w-2xl mx-auto text-sm leading-relaxed mb-6">
+                    Svi zainteresirani članovi SFT21 zajednice koji žele iskoristiti popust od 50% i postati članovi ovog svjetskog kluba mogu se prijaviti putem službene verifikacije kontaktom na službeni email kompanije uz naznaku <b>Monte-Carlo Committee / SFT21 Preporuka</b>.
+                </p>
+                <div class="inline-block bg-purple-900/50 border border-purple-500 text-purple-200 px-6 py-3 rounded-lg font-mono text-sm">
+                    <a href="mailto:official@sft21.com" class="hover:underline text-purple-200">Kontakt: official@sft21.com</a>
+                </div>
+            </div>
+
+            <!-- ================= SLAJDER SLIKA (BESKONAČNO KRUŽENJE) ================= -->
+            <h4 class="text-2xl font-bold text-white text-center mt-16 mb-6 uppercase tracking-widest">Galerija Monte-Carlo Committee</h4>
+            
+            <div style="position: relative; width: 100%; margin: 2rem auto;">
+                <div id="mc-gallery" style="display: flex; overflow-x: auto; gap: 16px; scroll-behavior: smooth; padding-bottom: 10px; scrollbar-width: none; -ms-overflow-style: none;">
+                    
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/MC_Committee_1.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Monte Carlo Lifestyle" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/MC_Committee_2.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Domizio Cipriani Club" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/MC_Committee_3.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Svečani prijem" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/MC_Committee_4.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Monaco Luxury" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/MC_Committee_5.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Membership Flyer" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/MC_Committee_6.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Convocazione dei Soci" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/MC_Committee_7.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Seminario Alta Formazione" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/MC_Committee_8.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Seminario Esperienziale" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/MC_Committee_9.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Seminario Esperienziale" onclick="openModal(this.src)">
+                    </div>
+                    <div style="flex: 0 0 85%; max-width: 350px; height: 250px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); overflow: hidden;">
+                        <img src="img/MC_Committee_10.jpg" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" alt="Seminario Esperienziale" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <!-- Strelice za pomicanje (beskonačno kruženje) -->
+                <button onclick="let el=document.getElementById('mc-gallery'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft<=10) el.scrollTo({left:max, behavior:'smooth'}); else el.scrollBy({left:-350, behavior:'smooth'});" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-r-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button onclick="let el=document.getElementById('mc-gallery'); let max=el.scrollWidth-el.clientWidth; if(el.scrollLeft>=max-10) el.scrollTo({left:0, behavior:'smooth'}); else el.scrollBy({left:350, behavior:'smooth'});" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-l-lg hover:bg-[#80ff00] hover:text-[#0e076a] transition-colors z-10">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+            </div>
+            <!-- ================= SLAJDER KRAJ ================= -->
+
+            <div class="text-center pt-8 border-t border-gray-700 mt-10">
+                <p class="text-2xl text-white font-black mb-4 uppercase tracking-widest">Budućnost pripada onima koji prepoznaju priliku.</p>
+                
+                <p class="mt-4 text-gray-300">S entuzijazmom i vjerom u bolje sutra,</p>
+                <p class="font-semibold text-purple-400 text-lg mt-2 mb-4">Semper Fidelis</p>
+                <p class="text-white font-bold">Mladen Pejić i Zoran Lazarević</p>
+                <p class="text-sm text-gray-400">Osnivači, SFT21 LLC</p>
+            </div>
+            
+            <footer class="mt-12 pt-6 border-t border-gray-700">
+                <p class="hashtag-container text-sm text-center">
+                    #SFT21 #MonteCarloCommittee #DomizioCipriani #Monaco #ExclusiveClub #EthicalFinance #GlobalBusiness #SFteam
+                </p>
+            </footer>
+        `
     }
 ]; 
