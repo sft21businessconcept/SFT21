@@ -1682,10 +1682,20 @@ const sfNews = [
                 Following the historic appointment of Mr. <b>Domizio Cipriani</b> as our first Ambassador, the fruits of this collaboration and strategic synergy bring us our first major, tangible, and exclusive opportunity. We proudly announce the opening of the doors of one of the world's most elite private business clubs – the <b>Monte-Carlo Committee Business Club</b> – directly to the members of our SFT21 community.
             </p>
 
-            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
-                <p class="text-xl font-bold text-white italic">
-                    "The standard annual membership fee for this prestigious club is €1,500. However, access to the club is strictly by recommendation from an existing member."
-                </p>
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg space-y-4">
+                <div>
+                    <p class="text-lg md:text-xl font-bold text-white">
+                        💎 Club Admission Fee (one-time): <span class="text-fluorescent-green font-mono">1,000 €</span>
+                    </p>
+                    <p class="text-sm font-normal text-gray-400 italic pl-7 mt-1">
+                        (strictly by recommendation of an existing club member)
+                    </p>
+                </div>
+                <div>
+                    <p class="text-lg md:text-xl font-bold text-white">
+                        💎 Regular Annual Membership: <span class="text-fluorescent-green font-mono">500 €</span>
+                    </p>
+                </div>
             </blockquote>
 
             <h3 class="text-3xl font-black text-white pt-4 mb-8 border-b border-gray-700 pb-4">What is the Monte-Carlo Committee?</h3>
