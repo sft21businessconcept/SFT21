@@ -1694,10 +1694,20 @@ const sfNews = [
                 Nakon istorijskog ulaska gospodina <b>Domizia Ciprianija</b> na poziciju našeg prvog Ambasadora, plodovi te saradnje i strateške sinergije donose nam prvu veliku, opipljivu i ekskluzivnu priliku. Sa ponosom objavljujemo otvaranje vrata jednog od najelitnijih privatnih poslovnih klubova na svetu – <b>Monte-Carlo Committee Business Cluba</b> – direktno za članove naše SFT21 zajednice.
             </p>
 
-            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg">
-                <p class="text-xl font-bold text-white italic">
-                    "Redovna godišnja članarina u ovom prestižnom klubu iznosi 1.500 €. Međutim, pristup klubu je moguć isključivo na preporuku nekog od već postojećih članova kluba."
-                </p>
+            <blockquote class="border-l-4 border-purple-500 pl-6 my-10 bg-gray-800 bg-opacity-30 p-6 rounded-r-lg space-y-4">
+                <div>
+                    <p class="text-lg md:text-xl font-bold text-white">
+                        💎 Pristupnica klubu (jednokratno): <span class="text-fluorescent-green font-mono">1.000 €</span>
+                    </p>
+                    <p class="text-sm font-normal text-gray-400 italic pl-7 mt-1">
+                        (isključivo na preporuku nekog od već postojećih članova kluba)
+                    </p>
+                </div>
+                <div>
+                    <p class="text-lg md:text-xl font-bold text-white">
+                        💎 Redovna godišnja članarina: <span class="text-fluorescent-green font-mono">500 €</span>
+                    </p>
+                </div>
             </blockquote>
 
             <h3 class="text-3xl font-black text-white pt-4 mb-8 border-b border-gray-700 pb-4">Šta je Monte-Carlo Committee?</h3>
